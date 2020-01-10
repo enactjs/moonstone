@@ -45,6 +45,7 @@
     "ilib": "^14.4.0 || ^14.4.0-webostv1"
   },
   "devDependencies": {
+    "enact-ui-tests": "github:enyojs/enact-ui-tests",
     "ilib": "^14.4.0"
   }
 }
