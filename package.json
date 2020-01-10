@@ -7,6 +7,7 @@
     "clean": "enact clean",
     "lint": "enact lint --strict",
     "test": "enact test",
+    "test-ui": "wdio tests/ui/wdio.conf.js",
     "test-json": "enact test --json",
     "test-watch": "enact test --watch",
     "transpile": "enact transpile"
