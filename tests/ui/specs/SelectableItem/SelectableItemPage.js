@@ -1,6 +1,6 @@
 'use strict';
-const Page = require('../../Page.js');
-const {element, getSubComponent, getText} = require('../../utils.js');
+const Page = require('enact-ui-tests/test/Page.js');
+const {element, getSubComponent, getText} = require('enact-ui-tests/test/utils.js');
 
 const getMarqueeText = getSubComponent('ui', 'Marquee', 'text');
 

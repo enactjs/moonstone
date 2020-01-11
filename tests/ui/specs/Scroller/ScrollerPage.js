@@ -1,6 +1,6 @@
 'use strict';
-const Page = require('../../Page.js');
-const {element} = require('../../utils.js');
+const Page = require('enact-ui-tests/test/Page.js');
+const {element} = require('enact-ui-tests/test/utils.js');
 
 class ScrollerPage extends Page {
 
