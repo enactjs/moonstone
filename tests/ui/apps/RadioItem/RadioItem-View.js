@@ -1,5 +1,5 @@
-import RadioItem from '@enact/moonstone/RadioItem';
-import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
+import RadioItem from '../../../../RadioItem';
+import MoonstoneDecorator from '../../../../MoonstoneDecorator';
 import React from 'react';
 import spotlight from '@enact/spotlight';
 

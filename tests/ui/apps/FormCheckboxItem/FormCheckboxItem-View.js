@@ -1,5 +1,5 @@
-import FormCheckboxItem from '@enact/moonstone/FormCheckboxItem';
-import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
+import FormCheckboxItem from '../../../../FormCheckboxItem';
+import MoonstoneDecorator from '../../../../MoonstoneDecorator';
 import React from 'react';
 import spotlight from '@enact/spotlight';
 

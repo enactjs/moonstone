@@ -1,5 +1,5 @@
-import Input from '@enact/moonstone/Input';
-import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
+import Input from '../../../../Input';
+import MoonstoneDecorator from '../../../../MoonstoneDecorator';
 import React from 'react';
 import spotlight from '@enact/spotlight';
 

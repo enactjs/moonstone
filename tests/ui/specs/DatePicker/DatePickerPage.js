@@ -2,10 +2,11 @@
 const Page = require('enact-ui-tests/test/Page.js');
 const {element, getComponent, getSubComponent, getText} = require('enact-ui-tests/test/utils.js');
 
-const getIcon = getComponent('moonstone', 'Icon');
-const getLabeledItem = getComponent('moonstone', 'LabeledItem');
-const getLabeledItemTitle = getSubComponent('moonstone', 'LabeledItem', 'title');
-const getLabeledItemValue = getSubComponent('moonstone', 'LabeledItem', 'label');
+const getIcon = getComponent({component: 'Icon'});
+const getLabeledItem = getComponent({component: 'LabeledItem'});
+const getLabeledItemTitle = getSubComponent({component: 'LabeledItem', child: 'title'});
+const getLabeledItemValue = getSubComponent({component: 'LabeledItem', child: 'label'});
+const getPickerChild = (child, picker) => getComponent({internal: true, component: 'Picker', child}, picker);
 
 class PickerInterface {
 	constructor (id) {
@@ -27,16 +28,21 @@ class PickerInterface {
 		!this.self.isExisting('.enact_ui_Transition_Transition_shown') && this.self.isExisting('.enact_ui_Transition_Transition_hidden'));
 	}
 
-	get day () { return element('.enact_moonstone_DatePicker_DatePicker_day .enact_moonstone_internal_Picker_Picker_picker', this.self); }
-	get dayLabel () { return element('.enact_moonstone_DatePicker_DatePicker_day .enact_moonstone_internal_DateComponentPicker_DateComponentPicker_label', this.self); }
-	get month () { return element('.enact_moonstone_DatePicker_DatePicker_month .enact_moonstone_internal_Picker_Picker_picker', this.self); }
-	get monthLabel () { return element('.enact_moonstone_DatePicker_DatePicker_month .enact_moonstone_internal_DateComponentPicker_DateComponentPicker_label', this.self); }
-	get year () { return element('.enact_moonstone_DatePicker_DatePicker_year .enact_moonstone_internal_Picker_Picker_picker', this.self); }
-	get yearLabel () { return element('.enact_moonstone_DatePicker_DatePicker_year .enact_moonstone_internal_DateComponentPicker_DateComponentPicker_label', this.self); }
+	get day () {
+		return getComponent(
+			{internal: true, component: 'Picker'},
+			getComponent({component: 'DatePicker', child: 'day'}, this.self)
+		);
+	}
+	get dayLabel () { return getComponent({internal: true, component: 'DateComponentPicker', child: 'label'}, getComponent({component: 'DatePicker', child: 'day'}, this.self)); }
+	get month () { return getComponent({internal: true, component: 'Picker'}, getComponent({component: 'DatePicker', child: 'month'}, this.self)); }
+	get monthLabel () { return getComponent({internal: true, component: 'DateComponentPicker', child: 'label'}, getComponent({component: 'DatePicker', child: 'month'}, this.self)); }
+	get year () { return getComponent({internal: true, component: 'Picker'}, getComponent({component: 'DatePicker', child: 'year'}, this.self)); }
+	get yearLabel () { return getComponent({internal: true, component: 'DateComponentPicker', child: 'label'}, getComponent({component: 'DatePicker', child: 'year'}, this.self)); }
 
-	decrementer (picker) { return element('.enact_moonstone_internal_Picker_Picker_decrementer', picker); }
-	incrementer (picker) { return element('.enact_moonstone_internal_Picker_Picker_incrementer', picker); }
-	item (picker) { return element('.enact_moonstone_internal_Picker_Picker_item', picker); }
+	decrementer (picker) { return getPickerChild('decrementer', picker); }
+	incrementer (picker) { return getPickerChild('incrementer', picker); }
+	item (picker) { return getPickerChild('item', picker); }
 }
 
 class DatePickerPage extends Page {

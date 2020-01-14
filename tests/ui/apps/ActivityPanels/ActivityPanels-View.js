@@ -6,10 +6,10 @@ import spotlight from '@enact/spotlight';
 spotlight.setPointerMode(false);
 
 import PropTypes from 'prop-types';
-import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
-import {ActivityPanels, Panel, Header} from '@enact/moonstone/Panels';
-import Item from '@enact/moonstone/Item';
-import Button from '@enact/moonstone/Button';
+import MoonstoneDecorator from '../../../../MoonstoneDecorator';
+import {ActivityPanels, Panel, Header} from '../../../../Panels';
+import Item from '../../../../Item';
+import Button from '../../../../Button';
 
 class App extends React.Component {
 	static propTypes = {

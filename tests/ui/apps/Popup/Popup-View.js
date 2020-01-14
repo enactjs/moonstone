@@ -1,6 +1,6 @@
-import Button from '@enact/moonstone/Button';
-import Popup from '@enact/moonstone/Popup';
-import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
+import Button from '../../../../Button';
+import Popup from '../../../../Popup';
+import MoonstoneDecorator from '../../../../MoonstoneDecorator';
 import React, {Component} from 'react';
 import spotlight from '@enact/spotlight';
 import SpotlightContainerDecorator from '@enact/spotlight/SpotlightContainerDecorator';

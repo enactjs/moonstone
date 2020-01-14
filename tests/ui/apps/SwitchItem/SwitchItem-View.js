@@ -1,5 +1,5 @@
-import SwitchItem from '@enact/moonstone/SwitchItem';
-import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
+import SwitchItem from '../../../../SwitchItem';
+import MoonstoneDecorator from '../../../../MoonstoneDecorator';
 import React from 'react';
 import spotlight from '@enact/spotlight';
 

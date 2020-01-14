@@ -2,12 +2,12 @@
 const Page = require('enact-ui-tests/test/Page.js');
 const {element, getComponent, getSubComponent, getText} = require('enact-ui-tests/test/utils.js');
 
-const getIcon = getComponent('moonstone', 'Icon');
-const getInput = getComponent('moonstone', 'Input');
-const getLabeledItem = getComponent('moonstone', 'LabeledItem');
-const getLabeledItemTitle = getSubComponent('moonstone', 'LabeledItem', 'title');
-const getLabeledItemValue = getSubComponent('moonstone', 'LabeledItem', 'label');
-const getLabeledItemIcon = getSubComponent('moonstone', 'LabeledItem', 'icon');
+const getIcon = getComponent({component: 'Icon'});
+const getInput = getComponent({component: 'Input'});
+const getLabeledItem = getComponent({component: 'LabeledItem'});
+const getLabeledItemTitle = getSubComponent({component: 'LabeledItem', child: 'title'});
+const getLabeledItemValue = getSubComponent({component: 'LabeledItem', child: 'label'});
+const getLabeledItemIcon = getSubComponent({component: 'LabeledItem', child: 'icon'});
 
 class ExpandableInterface {
 	constructor (id) {
@@ -27,18 +27,18 @@ class ExpandableInterface {
 	get titleIcon () { return getLabeledItemIcon(this.self); }
 	get label () { return getLabeledItemValue(this.self); }
 	get labelText () { return getText(this.label); }
-	get isLabelExists () { return this.self.isVisible('.enact_moonstone_LabeledItem_LabeledItem_label'); }
+	get isLabelExists () { return this.self.isVisible('.LabeledItem_LabeledItem_label'); }
 	get isOpen () {
 		return !(!this.self.isExisting('.enact_ui_Transition_Transition_transition') ||
 		!this.self.isExisting('.enact_ui_Transition_Transition_shown') && this.self.isExisting('.enact_ui_Transition_Transition_hidden'));
 	}
-	get iconBefore () { return element('.enact_moonstone_Input_Input_iconBefore', this.self); }
+	get iconBefore () { return element('.Input_Input_iconBefore', this.self); }
 	get iconBeforeSymbol () { return getText(this.iconBefore); }
-	get iconAfter () { return element('.enact_moonstone_Input_Input_iconAfter', this.self); }
+	get iconAfter () { return element('.Input_Input_iconAfter', this.self); }
 	get iconAfterSymbol () { return getText(this.iconAfter); }
-	get isIconBefore () { return this.self.isExisting('.enact_moonstone_Input_Input_iconBefore');}
-	get isIconAfter () { return this.self.isExisting('.enact_moonstone_Input_Input_iconAfter');}
-	get placeHolder () { return this.self.getAttribute('.enact_moonstone_Input_Input_input', 'placeholder'); }
+	get isIconBefore () { return this.self.isExisting('.Input_Input_iconBefore');}
+	get isIconAfter () { return this.self.isExisting('.Input_Input_iconAfter');}
+	get placeHolder () { return this.self.getAttribute('.Input_Input_input', 'placeholder'); }
 
 }
 

@@ -1,11 +1,11 @@
-import {Button} from '@enact/moonstone/Button';
+import {Button} from '../../../../Button';
 import {Row, Column, Cell} from '@enact/ui/Layout';
-import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
+import MoonstoneDecorator from '../../../../MoonstoneDecorator';
 import React from 'react';
 import spotlight from '@enact/spotlight';
 
-import {Panel, Header} from '@enact/moonstone/Panels';
-import Scroller from '@enact/moonstone/Scroller';
+import {Panel, Header} from '../../../../Panels';
+import Scroller from '../../../../Scroller';
 
 const fullHeightStyle = {
 	height: '100%'

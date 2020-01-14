@@ -1,5 +1,5 @@
-import SelectableItem from '@enact/moonstone/SelectableItem';
-import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
+import SelectableItem from '../../../../SelectableItem';
+import MoonstoneDecorator from '../../../../MoonstoneDecorator';
 import React from 'react';
 import spotlight from '@enact/spotlight';
 

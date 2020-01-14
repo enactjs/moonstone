@@ -1,10 +1,10 @@
-import {Button} from '@enact/moonstone/Button';
+import {Button} from '../../../../Button';
 import ri from '@enact/ui/resolution';
 import {Row, Column, Cell} from '@enact/ui/Layout';
-import SwitchItem from '@enact/moonstone/SwitchItem';
-import ToggleButton from '@enact/moonstone/ToggleButton';
-import VirtualList from '@enact/moonstone/VirtualList';
-import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
+import SwitchItem from '../../../../SwitchItem';
+import ToggleButton from '../../../../ToggleButton';
+import VirtualList from '../../../../VirtualList';
+import MoonstoneDecorator from '../../../../MoonstoneDecorator';
 import React from 'react';
 import spotlight from '@enact/spotlight';
 import SpotlightContainerDecorator from '@enact/spotlight/SpotlightContainerDecorator';

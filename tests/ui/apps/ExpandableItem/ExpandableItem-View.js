@@ -1,6 +1,6 @@
-import ExpandableItem from '@enact/moonstone/ExpandableItem';
-import Item from '@enact/moonstone/Item';
-import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
+import ExpandableItem from '../../../../ExpandableItem';
+import Item from '../../../../Item';
+import MoonstoneDecorator from '../../../../MoonstoneDecorator';
 import React from 'react';
 import spotlight from '@enact/spotlight';
 

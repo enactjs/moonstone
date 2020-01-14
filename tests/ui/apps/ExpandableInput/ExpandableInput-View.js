@@ -1,5 +1,5 @@
-import ExpandableInput from '@enact/moonstone/ExpandableInput';
-import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
+import ExpandableInput from '../../../../ExpandableInput';
+import MoonstoneDecorator from '../../../../MoonstoneDecorator';
 import React from 'react';
 import spotlight from '@enact/spotlight';
 

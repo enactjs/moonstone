@@ -1,5 +1,5 @@
-import DatePicker from '@enact/moonstone/DatePicker';
-import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
+import DatePicker from '../../../../DatePicker';
+import MoonstoneDecorator from '../../../../MoonstoneDecorator';
 import React from 'react';
 import spotlight from '@enact/spotlight';
 

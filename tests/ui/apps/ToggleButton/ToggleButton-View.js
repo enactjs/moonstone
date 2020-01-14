@@ -1,5 +1,5 @@
-import ToggleButton from '@enact/moonstone/ToggleButton';
-import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
+import ToggleButton from '../../../../ToggleButton';
+import MoonstoneDecorator from '../../../../MoonstoneDecorator';
 import React from 'react';
 import spotlight from '@enact/spotlight';
 
