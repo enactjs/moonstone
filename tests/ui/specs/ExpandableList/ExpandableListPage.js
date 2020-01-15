@@ -37,19 +37,19 @@ class SpotlightMultiplePage extends Page {
 		this.components = {};
 		// TODO: Put `selectedClass` into constructor
 		this.components.radioSelect = new ExpandableInterface('expandable1');
-		this.components.radioSelect.selectedClass = '.enact_moonstone_RadioItem_RadioItem_selected';
+		this.components.radioSelect.selectedClass = '.RadioItem_RadioItem_selected';
 		this.components.multiSelect = new ExpandableInterface('expandable2');
-		this.components.multiSelect.selectedClass = '.enact_moonstone_Checkbox_Checkbox_selected';
+		this.components.multiSelect.selectedClass = '.Checkbox_Checkbox_selected';
 		this.components.singleSelect = new ExpandableInterface('expandable3');
-		this.components.singleSelect.selectedClass = '.enact_moonstone_RadioItem_RadioItem_selected';
+		this.components.singleSelect.selectedClass = '.RadioItem_RadioItem_selected';
 		this.components.noLockBottom = new ExpandableInterface('expandable4');
-		this.components.noLockBottom.selectedClass = '.enact_moonstone_RadioItem_RadioItem_selected';
+		this.components.noLockBottom.selectedClass = '.RadioItem_RadioItem_selected';
 		this.components.noAutoClose = new ExpandableInterface('expandable5');
-		this.components.noAutoClose.selectedClass = '.enact_moonstone_RadioItem_RadioItem_selected';
+		this.components.noAutoClose.selectedClass = '.RadioItem_RadioItem_selected';
 		this.components.defaultOpen = new ExpandableInterface('expandable6');
-		this.components.defaultOpen.selectedClass = '.enact_moonstone_RadioItem_RadioItem_selected';
+		this.components.defaultOpen.selectedClass = '.RadioItem_RadioItem_selected';
 		this.components.disabled = new ExpandableInterface('expandable7');
-		this.components.disabled.selectedClass = '.enact_moonstone_RadioItem_RadioItem_selected';
+		this.components.disabled.selectedClass = '.RadioItem_RadioItem_selected';
 	}
 
 	open (urlExtra) {

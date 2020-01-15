@@ -28,16 +28,16 @@ class PickerInterface {
 		!this.self.isExisting('.enact_ui_Transition_Transition_shown') && this.self.isExisting('.enact_ui_Transition_Transition_hidden'));
 	}
 
-	get hour () { return element('.enact_moonstone_TimePicker_TimePicker_hourComponents .enact_moonstone_internal_Picker_Picker_picker', this.self); }
-	get hourLabel () { return element('.enact_moonstone_TimePicker_TimePicker_hourComponents .enact_moonstone_internal_DateComponentPicker_DateComponentPicker_label', this.self); }
-	get meridiem () { return element('.enact_moonstone_TimePicker_TimePicker_meridiemComponent .enact_moonstone_internal_Picker_Picker_picker', this.self); }
-	get meridiemLabel () { return element('.enact_moonstone_TimePicker_TimePicker_meridiemComponents .enact_moonstone_internal_DateComponentPicker_DateComponentPicker_label', this.self); }
-	get minute () { return element('.enact_moonstone_TimePicker_TimePicker_minutesComponents .enact_moonstone_internal_Picker_Picker_picker', this.self); }
-	get minuteLabel () { return element('.enact_moonstone_TimePicker_TimePicker_minuteComponents .enact_moonstone_internal_DateComponentPicker_DateComponentPicker_label', this.self); }
+	get hour () { return element('.TimePicker_TimePicker_hourComponents .internal_Picker_Picker_picker', this.self); }
+	get hourLabel () { return element('.TimePicker_TimePicker_hourComponents .internal_DateComponentPicker_DateComponentPicker_label', this.self); }
+	get meridiem () { return element('.TimePicker_TimePicker_meridiemComponent .internal_Picker_Picker_picker', this.self); }
+	get meridiemLabel () { return element('.TimePicker_TimePicker_meridiemComponents .internal_DateComponentPicker_DateComponentPicker_label', this.self); }
+	get minute () { return element('.TimePicker_TimePicker_minutesComponents .internal_Picker_Picker_picker', this.self); }
+	get minuteLabel () { return element('.TimePicker_TimePicker_minuteComponents .internal_DateComponentPicker_DateComponentPicker_label', this.self); }
 
-	decrementer (picker) { return element('.enact_moonstone_internal_Picker_Picker_decrementer', picker); }
-	incrementer (picker) { return element('.enact_moonstone_internal_Picker_Picker_incrementer', picker); }
-	item (picker) { return element('.enact_moonstone_internal_Picker_Picker_item', picker); }
+	decrementer (picker) { return element('.internal_Picker_Picker_decrementer', picker); }
+	incrementer (picker) { return element('.internal_Picker_Picker_incrementer', picker); }
+	item (picker) { return element('.internal_Picker_Picker_item', picker); }
 }
 
 class TimePickerPage extends Page {
