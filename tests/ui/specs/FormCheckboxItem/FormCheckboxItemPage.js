@@ -2,8 +2,8 @@
 const Page = require('enact-ui-tests/test/Page.js');
 const {getComponent, getSubComponent, getText} = require('enact-ui-tests/test/utils.js');
 
-const getIcon = getComponent('moonstone', 'Icon');
-const getMarqueeText = getSubComponent('ui', 'Marquee', 'text');
+const getIcon = getComponent({component:'Icon'});
+const getMarqueeText = getSubComponent({component:'Marquee', child:'text'});
 
 class FormCheckboxItemInterface {
 	constructor (id) {

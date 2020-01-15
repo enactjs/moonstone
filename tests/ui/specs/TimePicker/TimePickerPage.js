@@ -2,10 +2,10 @@
 const Page = require('enact-ui-tests/test/Page.js');
 const {element, getComponent, getSubComponent, getText} = require('enact-ui-tests/test/utils.js');
 
-const getIcon = getComponent('moonstone', 'Icon');
-const getLabeledItem = getComponent('moonstone', 'LabeledItem');
-const getLabeledItemTitle = getSubComponent('moonstone', 'LabeledItem', 'title');
-const getLabeledItemValue = getSubComponent('moonstone', 'LabeledItem', 'label');
+const getIcon = getComponent({component: 'Icon'});
+const getLabeledItem = getComponent({component: 'LabeledItem'});
+const getLabeledItemTitle = getSubComponent({component: 'LabeledItem', child: 'title'});
+const getLabeledItemValue = getSubComponent({component: 'LabeledItem', child: 'label'});
 
 class PickerInterface {
 	constructor (id) {
