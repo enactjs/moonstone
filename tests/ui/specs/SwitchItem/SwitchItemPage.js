@@ -2,7 +2,7 @@
 const Page = require('enact-ui-tests/test/Page.js');
 const {element, getSubComponent, getText} = require('enact-ui-tests/test/utils.js');
 
-const getMarqueeText = getSubComponent('ui', 'Marquee', 'text');
+const getMarqueeText = getSubComponent({lib: 'ui', component:'Marquee', child:'text'});
 
 
 class SwitchItemInterface {
@@ -16,8 +16,8 @@ class SwitchItemInterface {
 
 	get self () { return browser.element(`#${this.id}`); }
 	get valueText () { return getText(getMarqueeText(this.self)); }
-	get isSelected () { return !!element('.enact_moonstone_Switch_Switch_selected', this.self).value; }
-	get isInline () { return browser.isExisting(`#${this.id}.enact_moonstone_Item_Item_inline`); }
+	get isSelected () { return !!element('.Switch_Switch_selected', this.self).value; }
+	get isInline () { return browser.isExisting(`#${this.id}.Item_Item_inline`); }
 }
 
 class SwitchItemPage extends Page {

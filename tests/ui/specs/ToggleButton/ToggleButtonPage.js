@@ -2,8 +2,7 @@
 const Page = require('enact-ui-tests/test/Page.js');
 const {getSubComponent, getText} = require('enact-ui-tests/test/utils.js');
 
-const getMarqueeText = getSubComponent('ui', 'Marquee', 'text');
-
+const getMarqueeText = getSubComponent({lib: 'ui', component:'Marquee', child:'text'});
 class ToggleButtonInterface {
 	constructor (id) {
 		this.id = id;
@@ -15,8 +14,8 @@ class ToggleButtonInterface {
 
 	get self () { return browser.element(`#${this.id}`); }
 	get valueText () { return getText(getMarqueeText(this.self)); }
-	get isSelected () { return browser.isExisting(`#${this.id}.enact_moonstone_ToggleButton_ToggleButton_selected`); }
-	get isSmall () { return browser.isExisting(`#${this.id}.enact_moonstone_ToggleButton_ToggleButton_small`); }
+	get isSelected () { return browser.isExisting(`#${this.id}.ToggleButton_ToggleButton_selected`); }
+	get isSmall () { return browser.isExisting(`#${this.id}.ToggleButton_ToggleButton_small`); }
 }
 
 class ToggleButtonPage extends Page {

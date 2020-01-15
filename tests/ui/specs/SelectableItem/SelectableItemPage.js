@@ -2,7 +2,7 @@
 const Page = require('enact-ui-tests/test/Page.js');
 const {element, getSubComponent, getText} = require('enact-ui-tests/test/utils.js');
 
-const getMarqueeText = getSubComponent('ui', 'Marquee', 'text');
+const getMarqueeText = getSubComponent({lib: 'ui', component:'Marquee', child:'text'});
 
 class SelectableItemInterface {
 	constructor (id) {
@@ -15,9 +15,9 @@ class SelectableItemInterface {
 
 	get self () { return browser.element(`#${this.id}`); }
 	get valueText () { return getText(getMarqueeText(this.self)); }
-	get isSelected () { return !!element('.enact_moonstone_SelectableItem_SelectableIcon_selected', this.self).value; }
+	get isSelected () { return !!element('.SelectableItem_SelectableIcon_selected', this.self).value; }
 	get isToggled () { return !!element('.enact_ui_ToggleIcon_ToggleIcon_selected', this.self).value; }
-	get isInline () { return browser.isExisting(`#${this.id}.enact_moonstone_Item_Item_inline`); }
+	get isInline () { return browser.isExisting(`#${this.id}.Item_Item_inline`); }
 }
 
 class SelectableItemPage extends Page {

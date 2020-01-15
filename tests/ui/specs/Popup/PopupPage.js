@@ -14,7 +14,7 @@ class PopupCommon {
 	get buttonPopup8 () { return element('#buttonPopup8', browser); }
 	get buttonPopup9 () { return element('#buttonPopup9', browser); }
 	get   popupLayer () { return element('#floatLayer', browser); }
-	get isPopupExist () { return this.popupLayer.isExisting('.enact_moonstone_Popup_Popup_popup'); }
+	get isPopupExist () { return this.popupLayer.isExisting('.Popup_Popup_popup'); }
 	get isScrimExist () { return this.popupLayer.isExisting('.enact_ui_FloatingLayer_Scrim_scrim'); }
 }
 
@@ -27,11 +27,11 @@ class PopupInterface {
 	get          self () { return element(`#${this.id}`, browser); }
 	get      buttonOK () { return element(`#${this.id} #buttonOK`, browser); }
 	get  buttonCancel () { return element(`#${this.id} #buttonCancel`, browser); }
-	get   buttonClose () { return element(`#${this.id} .enact_moonstone_IconButton_IconButton_iconButton`, browser); }
-	get   closeSymbol () { return getText(element(`#${this.id} .enact_moonstone_Icon_Icon_icon`, browser)); }
+	get   buttonClose () { return element(`#${this.id} .IconButton_IconButton_iconButton`, browser); }
+	get   closeSymbol () { return getText(element(`#${this.id} .Icon_Icon_icon`, browser)); }
 	get         popup () { return element(`#${this.id}`, browser); }
 	get         title () { return getText(element(`#${this.id}>div>div`, browser)); }
-	get isCloseButton () { return this.self.isExisting('.enact_moonstone_IconButton_IconButton_iconButton'); }
+	get isCloseButton () { return this.self.isExisting('.IconButton_IconButton_iconButton'); }
 }
 
 class PopupPage extends Page {

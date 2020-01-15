@@ -2,7 +2,7 @@
 const Page = require('enact-ui-tests/test/Page.js');
 const {getSubComponent, getText} = require('enact-ui-tests/test/utils.js');
 
-const getMarqueeText = getSubComponent('ui', 'Marquee', 'text');
+const getMarqueeText = getSubComponent({lib: 'ui', component:'Marquee', child:'text'});
 
 class RadioItemInterface {
 	constructor (id) {
@@ -15,8 +15,8 @@ class RadioItemInterface {
 
 	get self () { return browser.element(`#${this.id}`); }
 	get valueText () { return getText(getMarqueeText(this.self)); }
-	get isSelected () { return this.self.isExisting('.enact_moonstone_RadioItem_RadioItem_selected'); }
-	get isInline () { return browser.isExisting(`#${this.id}.enact_moonstone_Item_Item_inline`); }
+	get isSelected () { return this.self.isExisting('.RadioItem_RadioItem_selected'); }
+	get isInline () { return browser.isExisting(`#${this.id}.Item_Item_inline`); }
 }
 
 class RadioItemPage extends Page {

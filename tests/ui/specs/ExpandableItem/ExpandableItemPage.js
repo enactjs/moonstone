@@ -2,10 +2,10 @@
 const Page = require('enact-ui-tests/test/Page.js');
 const {element, getComponent, getSubComponent, getText} = require('enact-ui-tests/test/utils.js');
 
-const getIcon = getComponent('moonstone', 'Icon');
-const getLabeledItem = getComponent('moonstone', 'LabeledItem');
-const getLabeledItemTitle = getSubComponent('moonstone', 'LabeledItem', 'title');
-const getLabeledItemValue = getSubComponent('moonstone', 'LabeledItem', 'label');
+const getIcon = getComponent({component: 'Icon'});
+const getLabeledItem = getComponent({component: 'LabeledItem'});
+const getLabeledItemTitle = getSubComponent({component:'LabeledItem',  child: 'title'});
+const getLabeledItemValue = getSubComponent({component:'LabeledItem',  child: 'label'});
 
 class ExpandableItemInterface {
 	constructor (id) {
@@ -26,9 +26,9 @@ class ExpandableItemInterface {
 		return !(!this.self.isExisting('.enact_ui_Transition_Transition_transition') ||
 		!this.self.isExisting('.enact_ui_Transition_Transition_shown') && this.self.isExisting('.enact_ui_Transition_Transition_hidden'));
 	}
-	get  hasLabel () { return this.self.isVisible('.enact_moonstone_LabeledItem_LabeledItem_label'); }
+	get  hasLabel () { return this.self.isVisible('.LabeledItem_LabeledItem_label'); }
 
-	get item () { return element('.enact_ui_Transition_Transition_transition .enact_moonstone_Item_Item_item', this.self); }
+	get item () { return element('.enact_ui_Transition_Transition_transition .Item_Item_item', this.self); }
 }
 
 class ExpandableItemPage extends Page {
