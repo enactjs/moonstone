@@ -1,6 +1,6 @@
 'use strict';
 const Page = require('enact-ui-tests/test/Page.js');
-const {getComponent, getSubComponent, getText} = require('enact-ui-tests/test/utils.js');
+const {componentSelector, getComponent, getSubComponent, getText, hasClass} = require('enact-ui-tests/test/utils.js');
 
 const getIcon = getComponent({component:'Icon'});
 const getMarqueeText = getSubComponent({lib: 'ui', component:'Marquee', child:'text'});
@@ -18,10 +18,10 @@ class FormCheckboxItemInterface {
 	get valueText () { return getText(getMarqueeText(this.self)); }
 	get icon () { return getIcon(this.self);}
 	get iconSymbol () { return getText(this.icon); }
-	get isChecked () { return this.self.isExisting('.FormCheckbox_FormCheckbox_selected'); }
-	get isAfter () { return this.self.isExisting('.SlotItem_SlotItem_after'); }
-	get isBefore () { return this.self.isExisting('.SlotItem_SlotItem_before'); }
-	get isInline () { return browser.isExisting(`#${this.id}.Item_Item_inline`); }
+	get isChecked () { return this.self.isExisting(componentSelector({component: 'FormCheckbox', child: 'selected'})); }
+	get isAfter () { return this.self.isExisting(componentSelector({component: 'SlotItem', child: 'after'})); }
+	get isBefore () { return this.self.isExisting(componentSelector({component: 'SlotItem', child: 'before'})); }
+	get isInline () { return hasClass(componentSelector({component: 'Item', child: 'inline'}), this.self); }
 }
 
 class FormCheckboxItemPage extends Page {
