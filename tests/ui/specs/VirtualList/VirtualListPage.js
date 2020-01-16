@@ -3,7 +3,7 @@ const Page = require('enact-ui-tests/test/Page.js');
 const {element} = require('enact-ui-tests/test/utils.js');
 
 const scrollableSelector = '.enact_ui_Scrollable_Scrollable_scrollable';
-const scrollbarSelector = '.enact_moonstone_Scrollable_Scrollbar_scrollbar';
+const scrollbarSelector = '.Scrollable_Scrollbar_scrollbar';
 
 class VirtualListPage extends Page {
 
@@ -40,7 +40,7 @@ class VirtualListPage extends Page {
 			const scroller = document.querySelector(_scrollableSelector),
 				{top, left, width} = scroller.getBoundingClientRect();
 			let currentY = top + 1,
-				middle = left + Math.floor((left + width)/2);
+				middle = left + Math.floor((left + width) / 2);
 			for (let i = 0; i < 10; i++) {
 				let el = document.elementFromPoint(middle, currentY + i);
 				// Search parents for the row ID
@@ -64,7 +64,7 @@ class VirtualListPage extends Page {
 				{bottom, left, width} = scroller.getBoundingClientRect();
 
 			let currentY = bottom - 1,
-				middle = left + Math.floor((left + width)/2);
+				middle = left + Math.floor((left + width) / 2);
 
 			for (let i = 0; i < 10; i++) {
 				let el = document.elementFromPoint(middle, currentY - i);
