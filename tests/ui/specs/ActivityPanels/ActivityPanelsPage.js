@@ -23,10 +23,10 @@ class SpotlightMultiplePage extends Page {
 	get button2 () { return browser.element('#button2'); }
 	get button3 () { return browser.element('#button3'); }
 	get button4 () { return browser.element('#button4'); }
-	get breadcrumb () { return browser.element('.enact_moonstone_Panels_Panels_breadcrumb'); }
-	get breadcrumbHeader () { return browser.element('.enact_moonstone_Panels_Panels_breadcrumbHeader'); }
-	get closeButton () { return browser.element('.enact_moonstone_Panels_ApplicationCloseButton_applicationCloseButton'); }
-	get panelTitle () { return browser.getText('.enact_moonstone_Panels_Header_title .enact_ui_Marquee_Marquee_text'); }
+	get breadcrumb () { return browser.element('.Panels_Panels_breadcrumb'); }
+	get breadcrumbHeader () { return browser.element('.Panels_Panels_breadcrumbHeader'); }
+	get closeButton () { return browser.element('.Panels_ApplicationCloseButton_applicationCloseButton'); }
+	get panelTitle () { return browser.getText('.Panels_Header_title .enact_ui_Marquee_Marquee_text'); }
 	get body () { return browser.element('body'); }
 }
 
