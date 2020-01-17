@@ -1,4 +1,6 @@
 import Spotlight from '@enact/spotlight';
+import {action} from '@enact/storybook-utils/addons/actions';
+import {boolean, select} from '@enact/storybook-utils/addons/knobs';
 import {Row, Cell, Column} from '@enact/ui/Layout';
 import ri from '@enact/ui/resolution';
 import Pause from '@enact/spotlight/Pause';
@@ -35,8 +37,6 @@ import Scroller from '../../../../Scroller';
 import Slider from '../../../../Slider';
 
 import docs from '../../images/icon-enact-docs.png';
-import {boolean, select} from '../../src/enact-knobs';
-import {action} from '../../src/utils';
 
 const Container = SpotlightContainerDecorator(
 	{enterTo: 'last-focused'},

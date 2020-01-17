@@ -1,3 +1,6 @@
+import {action} from '@enact/storybook-utils/addons/actions';
+import {boolean, number, select} from '@enact/storybook-utils/addons/knobs';
+import {mergeComponentMetadata} from '@enact/storybook-utils';
 import Group from '@enact/ui/Group';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -15,9 +18,6 @@ import Heading from '../../../../Heading';
 import Item from '../../../../Item';
 import {ScrollableBase} from '../../../../Scrollable';
 import Scroller from '../../../../Scroller';
-
-import {boolean, number, select} from '../../src/enact-knobs';
-import {action, mergeComponentMetadata} from '../../src/utils';
 
 const Config = mergeComponentMetadata('Scroller', UiScrollableBase, ScrollableBase, Scroller);
 

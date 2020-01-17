@@ -1,3 +1,4 @@
+import {select} from '@enact/storybook-utils/addons/knobs';
 import React from 'react';
 import {storiesOf} from '@storybook/react';
 
@@ -20,8 +21,6 @@ import Scroller from '../../../../Scroller';
 import SelectableItem from '../../../../SelectableItem';
 import SlotItem from '../../../../SlotItem';
 import SwitchItem from '../../../../SwitchItem';
-
-import {select} from '../../src/enact-knobs';
 
 const inputData = {
 	english: 'We name themes after gemstones',

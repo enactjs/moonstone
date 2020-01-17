@@ -1,3 +1,4 @@
+import {boolean, select, text} from '@enact/storybook-utils/addons/knobs';
 import React from 'react';
 import {storiesOf} from '@storybook/react';
 
@@ -7,7 +8,6 @@ import Image from '../../../../Image';
 import Item from '../../../../Item';
 
 import icons from '../default/icons';
-import {boolean, select, text} from '../../src/enact-knobs';
 
 const iconNames = ['', ...icons];
 

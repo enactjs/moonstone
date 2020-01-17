@@ -1,12 +1,11 @@
+import {action} from '@enact/storybook-utils/addons/actions';
+import {boolean, text} from '@enact/storybook-utils/addons/knobs';
 import Group from '@enact/ui/Group';
 import React from 'react';
 import {storiesOf} from '@storybook/react';
 
 import Heading from '../../../../Heading';
 import SwitchItem from '../../../../SwitchItem';
-
-import {boolean, text} from '../../src/enact-knobs';
-import {action} from '../../src/utils';
 
 SwitchItem.displayName = 'SwitchItem';
 

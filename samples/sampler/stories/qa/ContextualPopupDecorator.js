@@ -1,3 +1,5 @@
+import {select} from '@enact/storybook-utils/addons/knobs';
+import {mergeComponentMetadata} from '@enact/storybook-utils';
 import {Group} from '@enact/ui/Group';
 import ri from '@enact/ui/resolution';
 import React from 'react';
@@ -8,9 +10,6 @@ import CheckboxItem from '../../../../CheckboxItem';
 import {ContextualPopupDecorator} from '../../../../ContextualPopupDecorator';
 import Heading from '../../../../Heading';
 import {IconButton} from '../../../../IconButton';
-
-import {select} from '../../src/enact-knobs';
-import {mergeComponentMetadata} from '../../src/utils';
 
 const ContextualButton = ContextualPopupDecorator(Button);
 const Config = mergeComponentMetadata('ContextualButton', ContextualButton);

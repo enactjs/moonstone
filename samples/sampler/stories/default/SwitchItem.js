@@ -1,3 +1,6 @@
+import {action} from '@enact/storybook-utils/addons/actions';
+import {boolean, text, select} from '@enact/storybook-utils/addons/knobs';
+import {mergeComponentMetadata, nullify} from '@enact/storybook-utils';
 import UiToggleItem, {ToggleItemBase as UiToggleItemBase} from '@enact/ui/ToggleItem';
 import React from 'react';
 import {storiesOf} from '@storybook/react';
@@ -8,9 +11,6 @@ import SwitchItem from '../../../../SwitchItem';
 import ToggleItem from '../../../../ToggleItem';
 
 import {listIcons} from './icons';
-
-import {boolean, text, select} from '../../src/enact-knobs';
-import {action, mergeComponentMetadata, nullify} from '../../src/utils';
 
 SwitchItem.displayName = 'SwitchItem';
 const Config = mergeComponentMetadata('SwitchItem', ItemBase, Item, UiToggleItemBase, UiToggleItem, ToggleItem, SwitchItem);

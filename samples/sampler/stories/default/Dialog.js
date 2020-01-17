@@ -1,3 +1,6 @@
+import {action} from '@enact/storybook-utils/addons/actions';
+import {boolean, text} from '@enact/storybook-utils/addons/knobs';
+import {mergeComponentMetadata} from '@enact/storybook-utils';
 import React from 'react';
 import {storiesOf} from '@storybook/react';
 
@@ -5,9 +8,6 @@ import Dialog from '../../../../Dialog';
 import Popup from '../../../../Popup';
 import BodyText from '../../../../BodyText';
 import Button from '../../../../Button';
-
-import {boolean, text} from '../../src/enact-knobs';
-import {action, mergeComponentMetadata} from '../../src/utils';
 
 const Config = mergeComponentMetadata('Dialog', Popup, Dialog);
 Dialog.displayName = 'Dialog';

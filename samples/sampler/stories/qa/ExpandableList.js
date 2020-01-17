@@ -1,3 +1,6 @@
+import {action} from '@enact/storybook-utils/addons/actions';
+import {boolean, text, select} from '@enact/storybook-utils/addons/knobs';
+import {mergeComponentMetadata} from '@enact/storybook-utils';
 import {RadioControllerDecorator} from '@enact/ui/RadioDecorator';
 import React from 'react';
 import {storiesOf} from '@storybook/react';
@@ -6,9 +9,6 @@ import Button from '../../../../Button';
 import Heading from '../../../../Heading';
 import ExpandableList, {ExpandableListBase} from '../../../../ExpandableList';
 import Scroller from '../../../../Scroller';
-
-import {boolean, text, select} from '../../src/enact-knobs';
-import {action, mergeComponentMetadata} from '../../src/utils';
 
 const Config = mergeComponentMetadata('ExpandableList', ExpandableList, ExpandableListBase);
 

@@ -1,6 +1,6 @@
+import {boolean, select} from '@enact/storybook-utils/addons/knobs';
 import React from 'react';
 import {storiesOf} from '@storybook/react';
-import {boolean, select} from '../../src/enact-knobs';
 
 import BodyText from '../../../../BodyText';
 

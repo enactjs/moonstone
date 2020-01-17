@@ -1,3 +1,6 @@
+import {action} from '@enact/storybook-utils/addons/actions';
+import {boolean, select, text} from '@enact/storybook-utils/addons/knobs';
+import {mergeComponentMetadata} from '@enact/storybook-utils';
 import UIButton, {ButtonBase as UIButtonBase} from '@enact/ui/Button';
 import React from 'react';
 import {storiesOf} from '@storybook/react';
@@ -6,9 +9,6 @@ import IconButton, {IconButtonBase} from '../../../../IconButton';
 import Button, {ButtonBase} from '../../../../Button';
 
 import icons from './icons';
-
-import {boolean, select, text} from '../../src/enact-knobs';
-import {action, mergeComponentMetadata} from '../../src/utils';
 
 // import icons
 import docs from '../../images/icon-enact-docs.png';

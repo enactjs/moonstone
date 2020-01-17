@@ -1,12 +1,12 @@
-import icons from '../default/icons';
+import {boolean, select, text} from '@enact/storybook-utils/addons/knobs';
+import {action} from '@enact/storybook-utils/addons/actions';
 import ri from '@enact/ui/resolution';
 import React from 'react';
 import {storiesOf} from '@storybook/react';
 
 import {Input, InputBase} from '../../../../Input';
 
-import {boolean, select, text} from '../../src/enact-knobs';
-import {action} from '../../src/utils';
+import icons from '../default/icons';
 
 Input.displayName = 'Input';
 

@@ -1,3 +1,5 @@
+import {select, text} from '@enact/storybook-utils/addons/knobs';
+import {mergeComponentMetadata} from '@enact/storybook-utils';
 import UiIcon from '@enact/ui/Icon';
 import React from 'react';
 import {storiesOf} from '@storybook/react';
@@ -7,9 +9,6 @@ import Heading from '../../../../Heading';
 import Scroller from '../../../../Scroller';
 
 import iconNames from './icons';
-
-import {select, text} from '../../src/enact-knobs';
-import {mergeComponentMetadata} from '../../src/utils';
 
 // import icons
 import docs from '../../images/icon-enact-docs.png';

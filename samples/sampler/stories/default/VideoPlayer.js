@@ -1,3 +1,6 @@
+import {action} from '@enact/storybook-utils/addons/actions';
+import {boolean, number, select, text} from '@enact/storybook-utils/addons/knobs';
+import {mergeComponentMetadata} from '@enact/storybook-utils';
 import React from 'react';
 import {storiesOf} from '@storybook/react';
 
@@ -6,9 +9,6 @@ import IconButton from '../../../../IconButton';
 import VideoPlayer, {MediaControls, VideoPlayerBase} from '../../../../VideoPlayer';
 
 import icons from './icons';
-
-import {boolean, number, select, text} from '../../src/enact-knobs';
-import {action, mergeComponentMetadata} from '../../src/utils';
 
 // Set up some defaults for info and knobs
 const prop = {

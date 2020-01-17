@@ -1,4 +1,6 @@
 import SpotlightContainerDecorator from '@enact/spotlight/SpotlightContainerDecorator';
+import {boolean, select, text} from '@enact/storybook-utils/addons/knobs';
+import {action} from '@enact/storybook-utils/addons/actions';
 import Toggleable from '@enact/ui/Toggleable';
 import React from 'react';
 import {storiesOf} from '@storybook/react';
@@ -6,9 +8,6 @@ import {storiesOf} from '@storybook/react';
 import Button from '../../../../Button';
 import Notification from '../../../../Notification';
 import Popup from '../../../../Popup';
-
-import {boolean, select, text} from '../../src/enact-knobs';
-import {action} from '../../src/utils';
 
 Popup.displayName = 'Popup';
 

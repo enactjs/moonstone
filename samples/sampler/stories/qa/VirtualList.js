@@ -1,8 +1,11 @@
-import React, {useState} from 'react';
-import PropTypes from 'prop-types';
+import {action} from '@enact/storybook-utils/addons/actions';
+import {boolean, number, select} from '@enact/storybook-utils/addons/knobs';
+import {mergeComponentMetadata} from '@enact/storybook-utils';
 import ri from '@enact/ui/resolution';
 import {ScrollableBase as UiScrollableBase} from '@enact/ui/Scrollable';
 import {VirtualListBase as UiVirtualListBase} from '@enact/ui/VirtualList';
+import React, {useState} from 'react';
+import PropTypes from 'prop-types';
 
 import Item from '../../../../Item';
 import {ActivityPanels, Panel, Header} from '../../../../Panels';
@@ -11,9 +14,6 @@ import SwitchItem from '../../../../SwitchItem';
 import VirtualList, {VirtualListBase} from '../../../../VirtualList';
 
 import {storiesOf} from '@storybook/react';
-
-import {boolean, number, select} from '../../src/enact-knobs';
-import {action, mergeComponentMetadata} from '../../src/utils';
 
 const Config = mergeComponentMetadata('VirtualList', UiVirtualListBase, UiScrollableBase, VirtualListBase);
 

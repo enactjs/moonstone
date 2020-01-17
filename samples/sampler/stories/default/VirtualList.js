@@ -1,3 +1,6 @@
+import {action} from '@enact/storybook-utils/addons/actions';
+import {boolean, number, select} from '@enact/storybook-utils/addons/knobs';
+import {mergeComponentMetadata} from '@enact/storybook-utils';
 import React from 'react';
 import ri from '@enact/ui/resolution';
 import {ScrollableBase as UiScrollableBase} from '@enact/ui/Scrollable';
@@ -6,9 +9,6 @@ import {VirtualListBase as UiVirtualListBase} from '@enact/ui/VirtualList';
 
 import Item from '../../../../Item';
 import VirtualList, {VirtualListBase} from '../../../../VirtualList';
-
-import {boolean, number, select} from '../../src/enact-knobs';
-import {action, mergeComponentMetadata} from '../../src/utils';
 
 const
 	wrapOption = {

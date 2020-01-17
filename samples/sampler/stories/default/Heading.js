@@ -1,12 +1,11 @@
+import {boolean, select, text} from '@enact/storybook-utils/addons/knobs';
+import {mergeComponentMetadata} from '@enact/storybook-utils';
 import UiHeading from '@enact/ui/Heading';
 import React from 'react';
 import {storiesOf} from '@storybook/react';
 
 import BodyText from '../../../../BodyText';
 import Heading, {HeadingBase} from '../../../../Heading';
-
-import {boolean, select, text} from '../../src/enact-knobs';
-import {mergeComponentMetadata} from '../../src/utils';
 
 Heading.displayName = 'Heading';
 const Config = mergeComponentMetadata('Heading', UiHeading, HeadingBase, Heading);

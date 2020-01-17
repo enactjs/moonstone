@@ -1,12 +1,11 @@
+import {boolean, text, select} from '@enact/storybook-utils/addons/knobs';
+import {mergeComponentMetadata} from '@enact/storybook-utils';
 import React from 'react';
 import {storiesOf} from '@storybook/react';
 
 import Button from '../../../../Button';
 import Input from '../../../../Input';
 import {Header, HeaderBase} from '../../../../Panels';
-
-import {mergeComponentMetadata} from '../../src/utils';
-import {boolean, text, select} from '../../src/enact-knobs';
 
 Header.displayName = 'Header';
 const Config = mergeComponentMetadata('Header', HeaderBase, Header);

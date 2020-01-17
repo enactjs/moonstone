@@ -1,11 +1,12 @@
-import {decrementIcons, incrementIcons} from './icons';
+import {action} from '@enact/storybook-utils/addons/actions';
+import {boolean, number, select, text} from '@enact/storybook-utils/addons/knobs';
+import {mergeComponentMetadata} from '@enact/storybook-utils';
 import React from 'react';
 import {storiesOf} from '@storybook/react';
 
 import EditableIntegerPicker, {EditableIntegerPickerBase} from '../../../../EditableIntegerPicker';
 
-import {boolean, number, select, text} from '../../src/enact-knobs';
-import {action, mergeComponentMetadata} from '../../src/utils';
+import {decrementIcons, incrementIcons} from './icons';
 
 const Config = mergeComponentMetadata('EditableIntegerPicker', EditableIntegerPickerBase, EditableIntegerPicker);
 EditableIntegerPicker.displayName = 'EditableIntegerPicker';

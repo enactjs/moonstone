@@ -1,3 +1,4 @@
+import {select, text} from '@enact/storybook-utils/addons/knobs';
 import ri from '@enact/ui/resolution';
 import React from 'react';
 import {storiesOf} from '@storybook/react';
@@ -5,8 +6,6 @@ import {storiesOf} from '@storybook/react';
 import Heading from '../../../../Heading';
 import Item from '../../../../Item';
 import Scroller from '../../../../Scroller';
-
-import {select, text} from '../../src/enact-knobs';
 
 Heading.displayName = 'Heading';
 

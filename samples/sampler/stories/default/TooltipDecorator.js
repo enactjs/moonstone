@@ -1,11 +1,10 @@
+import {boolean, number, object, select, text} from '@enact/storybook-utils/addons/knobs';
+import {mergeComponentMetadata} from '@enact/storybook-utils';
 import React from 'react';
 import {storiesOf} from '@storybook/react';
 
 import Button from '../../../../Button';
 import TooltipDecorator, {Tooltip, TooltipBase} from '../../../../TooltipDecorator';
-
-import {boolean, number, object, select, text} from '../../src/enact-knobs';
-import {mergeComponentMetadata} from '../../src/utils';
 
 const Config = mergeComponentMetadata('TooltipDecorator', TooltipDecorator, Tooltip, TooltipBase);
 const TooltipButton = TooltipDecorator({tooltipDestinationProp: 'decoration'}, Button);

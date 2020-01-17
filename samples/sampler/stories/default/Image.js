@@ -1,10 +1,10 @@
+import {action} from '@enact/storybook-utils/addons/actions';
+import {object, select} from '@enact/storybook-utils/addons/knobs';
+import {mergeComponentMetadata} from '@enact/storybook-utils';
 import React from 'react';
 import {storiesOf} from '@storybook/react';
 
 import Image, {ImageBase, ImageDecorator} from '../../../../Image';
-
-import {object, select} from '../../src/enact-knobs';
-import {action, mergeComponentMetadata} from '../../src/utils';
 
 const src = {
 	'hd':  'http://via.placeholder.com/200x200',

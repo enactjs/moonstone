@@ -1,3 +1,5 @@
+import {mergeComponentMetadata} from '@enact/storybook-utils';
+import {number} from '@enact/storybook-utils/addons/knobs';
 import ri from '@enact/ui/resolution';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -7,9 +9,6 @@ import Button from '../../../../Button';
 import ContextualPopupDecorator from '../../../../ContextualPopupDecorator';
 import IconButton from '../../../../IconButton';
 import IncrementSlider, {IncrementSliderBase} from '../../../../IncrementSlider';
-
-import {mergeComponentMetadata} from '../../src/utils';
-import {number} from '../../src/enact-knobs';
 
 import IncrementSliderDelayValue from './components/IncrementSliderDelayValue';
 

@@ -1,5 +1,6 @@
 import kind from '@enact/core/kind';
 import {I18nContextDecorator} from '@enact/i18n/I18nDecorator';
+import {boolean, number, select} from '@enact/storybook-utils/addons/knobs';
 import Spottable from '@enact/spotlight/Spottable';
 import ri from '@enact/ui/resolution';
 import React from 'react';
@@ -10,8 +11,6 @@ import Heading from '../../../../Heading';
 import Icon from '../../../../Icon';
 import Item, {ItemBase} from '../../../../Item';
 import Marquee, {MarqueeController} from '../../../../Marquee';
-
-import {boolean, number, select} from '../../src/enact-knobs';
 
 Marquee.displayName = 'Marquee';
 

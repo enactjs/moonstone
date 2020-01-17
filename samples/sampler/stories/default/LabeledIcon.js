@@ -1,3 +1,5 @@
+import {boolean, select, text} from '@enact/storybook-utils/addons/knobs';
+import {mergeComponentMetadata} from '@enact/storybook-utils';
 import {LabeledIconBase as UiLabeledIconBase, LabeledIcon as UiLabeledIcon} from '@enact/ui/LabeledIcon';
 import UiIcon from '@enact/ui/Icon';
 import React from 'react';
@@ -7,9 +9,6 @@ import LabeledIcon from '../../../../LabeledIcon';
 import Icon, {IconBase} from '../../../../Icon';
 
 import iconNames from './icons';
-
-import {mergeComponentMetadata} from '../../src/utils';
-import {boolean, select, text} from '../../src/enact-knobs';
 
 LabeledIcon.displayName = 'LabeledIcon';
 const Config = mergeComponentMetadata('LabeledIcon', UiLabeledIconBase, UiLabeledIcon, UiIcon, IconBase, Icon, LabeledIcon);

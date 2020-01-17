@@ -1,3 +1,5 @@
+import {action} from '@enact/storybook-utils/addons/actions';
+import {boolean, select} from '@enact/storybook-utils/addons/knobs';
 import PickerAddRemove from './components/PickerAddRemove';
 import PickerRTL from './components/PickerRTL';
 import React from 'react';
@@ -5,8 +7,6 @@ import {storiesOf} from '@storybook/react';
 
 import Picker from '../../../../Picker';
 
-import {action} from '../../src/utils';
-import {boolean, select} from '../../src/enact-knobs';
 import iconNames from '../default/icons';
 
 Picker.displayName = 'Picker';

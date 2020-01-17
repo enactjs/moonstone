@@ -1,3 +1,6 @@
+import {boolean, select, text} from '@enact/storybook-utils/addons/knobs';
+import {action} from '@enact/storybook-utils/addons/actions';
+import {mergeComponentMetadata} from '@enact/storybook-utils';
 import UiToggleItem, {ToggleItemBase as UiToggleItemBase} from '@enact/ui/ToggleItem';
 import Group from '@enact/ui/Group';
 import React from 'react';
@@ -6,9 +9,6 @@ import {storiesOf} from '@storybook/react';
 import CheckboxItem from '../../../../CheckboxItem';
 import Item, {ItemBase} from '../../../../Item';
 import ToggleItem from '../../../../ToggleItem';
-
-import {boolean, select, text} from '../../src/enact-knobs';
-import {action, mergeComponentMetadata} from '../../src/utils';
 
 const Config = mergeComponentMetadata('CheckboxItem', ItemBase, Item, UiToggleItemBase, UiToggleItem, ToggleItem, CheckboxItem);
 

@@ -1,4 +1,6 @@
 import kind from '@enact/core/kind';
+import {action} from '@enact/storybook-utils/addons/actions';
+import {boolean} from '@enact/storybook-utils/addons/knobs';
 import React from 'react';
 import PropTypes from 'prop-types';
 import ri from '@enact/ui/resolution';
@@ -7,9 +9,6 @@ import {storiesOf} from '@storybook/react';
 import BodyText from '../../../../BodyText';
 import Button from '../../../../Button';
 import Icon from '../../../../Icon';
-
-import {boolean} from '../../src/enact-knobs';
-import {action} from '../../src/utils';
 
 import css from './About.module.less';
 

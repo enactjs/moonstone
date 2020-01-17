@@ -1,7 +1,10 @@
-import React from 'react';
+import {action} from '@enact/storybook-utils/addons/actions';
+import {boolean, number, select} from '@enact/storybook-utils/addons/knobs';
+import {mergeComponentMetadata} from '@enact/storybook-utils';
 import ri from '@enact/ui/resolution';
 import {ScrollableBase as UiScrollableBase} from '@enact/ui/Scrollable';
 import {VirtualListBase as UiVirtualListBase} from '@enact/ui/VirtualList/VirtualListBase';
+import React from 'react';
 
 import Button from '../../../../Button';
 import ContexturePopupDecorator from '../../../../ContextualPopupDecorator';
@@ -10,10 +13,6 @@ import Item from '../../../../Item';
 import {VirtualGridList, VirtualListBase} from '../../../../VirtualList';
 
 import {storiesOf} from '@storybook/react';
-
-import {boolean, number, select} from '../../src/enact-knobs';
-import {action, mergeComponentMetadata} from '../../src/utils';
-
 
 const Config = mergeComponentMetadata('VirtualGridList', UiVirtualListBase, UiScrollableBase, VirtualListBase);
 

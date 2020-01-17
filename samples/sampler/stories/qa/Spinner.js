@@ -1,13 +1,12 @@
-import React from 'react';
+import {action} from '@enact/storybook-utils/addons/actions';
+import {boolean, select, text} from '@enact/storybook-utils/addons/knobs';
 import ri from '@enact/ui/resolution';
+import React from 'react';
 import {storiesOf} from '@storybook/react';
 
 import Button from '../../../../Button';
 import Input from '../../../../Input';
 import Spinner from '../../../../Spinner';
-
-import {action} from '../../src/utils';
-import {boolean, select, text} from '../../src/enact-knobs';
 
 Spinner.displayName = 'Spinner';
 

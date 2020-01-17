@@ -1,3 +1,4 @@
+import {number} from '@enact/storybook-utils/addons/knobs';
 import ri from '@enact/ui/resolution';
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -6,8 +7,6 @@ import {storiesOf} from '@storybook/react';
 import Item from '../../../../Item';
 import Slider from '../../../../Slider';
 import VirtualList from '../../../../VirtualList';
-
-import {number} from '../../src/enact-knobs';
 
 Slider.displayName = 'Slider';
 

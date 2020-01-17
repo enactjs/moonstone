@@ -1,11 +1,10 @@
+import {boolean, select, text} from '@enact/storybook-utils/addons/knobs';
+import {action} from '@enact/storybook-utils/addons/actions';
 import Group from '@enact/ui/Group';
 import React from 'react';
 import {storiesOf} from '@storybook/react';
 
 import SelectableItem from '../../../../SelectableItem';
-
-import {boolean, select, text} from '../../src/enact-knobs';
-import {action} from '../../src/utils';
 
 SelectableItem.displayName = 'SelectableItem';
 

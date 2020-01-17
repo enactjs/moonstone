@@ -1,14 +1,13 @@
 import kind from '@enact/core/kind';
-import PropTypes from 'prop-types';
-import React from 'react';
+import {action} from '@enact/storybook-utils/addons/actions';
+import {boolean, number} from '@enact/storybook-utils/addons/knobs';
 import Touchable from '@enact/ui/Touchable';
 import ri from '@enact/ui/resolution';
+import PropTypes from 'prop-types';
+import React from 'react';
 import {storiesOf} from '@storybook/react';
 
 import Button from '../../../../Button';
-
-import {boolean, number} from '../../src/enact-knobs';
-import {action} from '../../src/utils';
 
 const TouchableDiv = Touchable('div');
 

@@ -1,3 +1,6 @@
+import {action} from '@enact/storybook-utils/addons/actions';
+import {boolean} from '@enact/storybook-utils/addons/knobs';
+import {mergeComponentMetadata} from '@enact/storybook-utils';
 import UiToggleItem, {ToggleItemBase as UiToggleItemBase} from '@enact/ui/ToggleItem';
 import React from 'react';
 import {storiesOf} from '@storybook/react';
@@ -5,9 +8,6 @@ import {storiesOf} from '@storybook/react';
 import Item, {ItemBase} from '../../../../Item';
 import RadioItem from '../../../../RadioItem';
 import ToggleItem from '../../../../ToggleItem';
-
-import {boolean} from '../../src/enact-knobs';
-import {action, mergeComponentMetadata} from '../../src/utils';
 
 RadioItem.displayName = 'RaditoItem';
 const Config = mergeComponentMetadata('RadioItem', ItemBase, Item, UiToggleItemBase, UiToggleItem, ToggleItem, RadioItem);

@@ -1,11 +1,10 @@
+import {boolean, select, text} from '@enact/storybook-utils/addons/knobs';
 import React from 'react';
 import {storiesOf} from '@storybook/react';
 
 import Heading from '../../../../Heading';
 import LabeledItem from '../../../../LabeledItem';
 import Scroller from '../../../../Scroller';
-
-import {boolean, select, text} from '../../src/enact-knobs';
 
 LabeledItem.displayName = 'LabeledItem';
 

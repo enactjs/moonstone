@@ -1,10 +1,9 @@
+import {boolean, select} from '@enact/storybook-utils/addons/knobs';
+import {mergeComponentMetadata} from '@enact/storybook-utils';
 import React from 'react';
 import {storiesOf} from '@storybook/react';
 
 import MediaOverlay, {MediaOverlayBase, MediaOverlayDecorator} from '../../../../MediaOverlay';
-
-import {boolean, select} from '../../src/enact-knobs';
-import {mergeComponentMetadata} from '../../src/utils';
 
 const prop = {
 	videoTitles: [

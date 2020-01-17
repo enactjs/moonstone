@@ -1,4 +1,6 @@
 import kind from '@enact/core/kind';
+import {boolean, number, object, select, text} from '@enact/storybook-utils/addons/knobs';
+import {mergeComponentMetadata} from '@enact/storybook-utils';
 import Layout, {Cell} from '@enact/ui/Layout';
 import ri from '@enact/ui/resolution';
 import React from 'react';
@@ -10,9 +12,6 @@ import TooltipDecorator from '../../../../TooltipDecorator';
 import Input from '../../../../Input';
 import IconButton from '../../../../IconButton';
 import Scroller from '../../../../Scroller';
-
-import {boolean, number, object, select, text} from '../../src/enact-knobs';
-import {mergeComponentMetadata} from '../../src/utils';
 
 const Config = mergeComponentMetadata('TooltipDecorator', TooltipDecorator);
 const TooltipButton = TooltipDecorator({tooltipDestinationProp: 'decoration'}, Button);

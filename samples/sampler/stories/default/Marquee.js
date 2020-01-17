@@ -1,9 +1,8 @@
+import {boolean, number, select, text} from '@enact/storybook-utils/addons/knobs';
 import React from 'react';
 import {storiesOf} from '@storybook/react';
 
 import Marquee from '../../../../Marquee';
-
-import {boolean, number, select, text} from '../../src/enact-knobs';
 
 Marquee.displayName = 'Marquee';
 
