@@ -1,7 +1,7 @@
 {
-  "name": "enact-sampler",
+  "name": "moonstone-sampler",
   "version": "3.2.5",
-  "description": "Component and QA samples for Enact",
+  "description": "Component and QA samples for Moonstone",
   "private": true,
   "main": "index.js",
   "scripts": {
