@@ -1,10 +1,10 @@
 {
-	"id": "com.webos.app.enactsampler",
-	"version": "1.0.0-alpha.2",
+	"id": "com.webos.app.enactmoonstonesampler",
+	"version": "3.2.5",
 	"vendor": "LGE-SVL",
 	"type": "web",
 	"main": "index.html",
-	"title": "Enact Sampler",
+	"title": "Enact Moonstone Sampler",
 	"icon": "icon.png",
 	"miniicon": "icon-mini.png",
 	"largeIcon": "icon-large.png",
