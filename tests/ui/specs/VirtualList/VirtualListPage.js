@@ -1,6 +1,6 @@
 'use strict';
-const Page = require('enact-ui-tests/test/Page.js');
-const {element} = require('enact-ui-tests/test/utils.js');
+const Page = require('@enact/ui-test-utils/test/Page.js');
+const {element} = require('@enact/ui-test-utils/test/utils.js');
 
 const scrollableSelector = '.enact_ui_Scrollable_Scrollable_scrollable';
 const scrollbarSelector = '.Scrollable_Scrollbar_scrollbar';

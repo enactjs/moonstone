@@ -1,5 +1,5 @@
 'use strict';
-const Page = require('enact-ui-tests/test/Page.js');
+const Page = require('@enact/ui-test-utils/test/Page.js');
 
 class CheckboxItemInterface {
 	constructor (id) {
