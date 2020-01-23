@@ -2,25 +2,25 @@ import {select} from '@enact/storybook-utils/addons/knobs';
 import React from 'react';
 import {storiesOf} from '@storybook/react';
 
-import BodyText from '../../../../BodyText';
-import Button from '../../../../Button';
-import CheckboxItem from '../../../../CheckboxItem';
-import Heading from '../../../../Heading';
-import ExpandableInput from '../../../../ExpandableInput';
-import ExpandableList from '../../../../ExpandableList';
-import ExpandablePicker from '../../../../ExpandablePicker';
-import FormCheckboxItem from '../../../../FormCheckboxItem';
-import GridListImageItem from '../../../../GridListImageItem';
-import {Header} from '../../../../Panels';
-import Input from '../../../../Input';
-import Item from '../../../../Item';
-import LabeledItem from '../../../../LabeledItem';
-import Marquee from '../../../../Marquee';
-import RadioItem from '../../../../RadioItem';
-import Scroller from '../../../../Scroller';
-import SelectableItem from '../../../../SelectableItem';
-import SlotItem from '../../../../SlotItem';
-import SwitchItem from '../../../../SwitchItem';
+import BodyText from '@enact/moonstone/BodyText';
+import Button from '@enact/moonstone/Button';
+import CheckboxItem from '@enact/moonstone/CheckboxItem';
+import Heading from '@enact/moonstone/Heading';
+import ExpandableInput from '@enact/moonstone/ExpandableInput';
+import ExpandableList from '@enact/moonstone/ExpandableList';
+import ExpandablePicker from '@enact/moonstone/ExpandablePicker';
+import FormCheckboxItem from '@enact/moonstone/FormCheckboxItem';
+import GridListImageItem from '@enact/moonstone/GridListImageItem';
+import {Header} from '@enact/moonstone/Panels';
+import Input from '@enact/moonstone/Input';
+import Item from '@enact/moonstone/Item';
+import LabeledItem from '@enact/moonstone/LabeledItem';
+import Marquee from '@enact/moonstone/Marquee';
+import RadioItem from '@enact/moonstone/RadioItem';
+import Scroller from '@enact/moonstone/Scroller';
+import SelectableItem from '@enact/moonstone/SelectableItem';
+import SlotItem from '@enact/moonstone/SlotItem';
+import SwitchItem from '@enact/moonstone/SwitchItem';
 
 const inputData = {
 	english: 'We name themes after gemstones',

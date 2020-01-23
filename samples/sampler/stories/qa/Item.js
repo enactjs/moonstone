@@ -2,10 +2,10 @@ import {boolean, select, text} from '@enact/storybook-utils/addons/knobs';
 import React from 'react';
 import {storiesOf} from '@storybook/react';
 
-import Button from '../../../../Button';
-import Icon from '../../../../Icon';
-import Image from '../../../../Image';
-import Item from '../../../../Item';
+import Button from '@enact/moonstone/Button';
+import Icon from '@enact/moonstone/Icon';
+import Image from '@enact/moonstone/Image';
+import Item from '@enact/moonstone/Item';
 
 import icons from '../default/icons';
 

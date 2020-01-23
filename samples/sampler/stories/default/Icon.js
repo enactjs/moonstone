@@ -4,9 +4,9 @@ import UiIcon from '@enact/ui/Icon';
 import React from 'react';
 import {storiesOf} from '@storybook/react';
 
-import Icon, {IconBase} from '../../../../Icon';
-import Heading from '../../../../Heading';
-import Scroller from '../../../../Scroller';
+import Icon, {IconBase} from '@enact/moonstone/Icon';
+import Heading from '@enact/moonstone/Heading';
+import Scroller from '@enact/moonstone/Scroller';
 
 import iconNames from './icons';
 

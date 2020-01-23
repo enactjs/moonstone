@@ -5,10 +5,10 @@ import UiToggleItem, {ToggleItemBase as UiToggleItemBase} from '@enact/ui/Toggle
 import React from 'react';
 import {storiesOf} from '@storybook/react';
 
-import Icon from '../../../../Icon';
-import Item, {ItemBase} from '../../../../Item';
-import RadioItem from '../../../../RadioItem';
-import ToggleItem from '../../../../ToggleItem';
+import Icon from '@enact/moonstone/Icon';
+import Item, {ItemBase} from '@enact/moonstone/Item';
+import RadioItem from '@enact/moonstone/RadioItem';
+import ToggleItem from '@enact/moonstone/ToggleItem';
 
 import {listIcons} from './icons';
 

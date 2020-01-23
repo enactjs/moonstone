@@ -5,11 +5,11 @@ import ri from '@enact/ui/resolution';
 import React from 'react';
 import {storiesOf} from '@storybook/react';
 
-import Button from '../../../../Button';
-import CheckboxItem from '../../../../CheckboxItem';
-import {ContextualPopupDecorator} from '../../../../ContextualPopupDecorator';
-import Heading from '../../../../Heading';
-import {IconButton} from '../../../../IconButton';
+import Button from '@enact/moonstone/Button';
+import CheckboxItem from '@enact/moonstone/CheckboxItem';
+import {ContextualPopupDecorator} from '@enact/moonstone/ContextualPopupDecorator';
+import Heading from '@enact/moonstone/Heading';
+import {IconButton} from '@enact/moonstone/IconButton';
 
 const ContextualButton = ContextualPopupDecorator(Button);
 const Config = mergeComponentMetadata('ContextualButton', ContextualButton);

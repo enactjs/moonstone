@@ -6,11 +6,11 @@ import {ScrollableBase as UiScrollableBase} from '@enact/ui/Scrollable';
 import {VirtualListBase as UiVirtualListBase} from '@enact/ui/VirtualList/VirtualListBase';
 import React from 'react';
 
-import Button from '../../../../Button';
-import ContexturePopupDecorator from '../../../../ContextualPopupDecorator';
-import GridListImageItem from '../../../../GridListImageItem';
-import Item from '../../../../Item';
-import {VirtualGridList, VirtualListBase} from '../../../../VirtualList';
+import Button from '@enact/moonstone/Button';
+import ContexturePopupDecorator from '@enact/moonstone/ContextualPopupDecorator';
+import GridListImageItem from '@enact/moonstone/GridListImageItem';
+import Item from '@enact/moonstone/Item';
+import {VirtualGridList, VirtualListBase} from '@enact/moonstone/VirtualList';
 
 import {storiesOf} from '@storybook/react';
 

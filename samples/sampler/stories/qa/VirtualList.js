@@ -7,11 +7,11 @@ import {VirtualListBase as UiVirtualListBase} from '@enact/ui/VirtualList';
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 
-import Item from '../../../../Item';
-import {ActivityPanels, Panel, Header} from '../../../../Panels';
-import Scroller from '../../../../Scroller';
-import SwitchItem from '../../../../SwitchItem';
-import VirtualList, {VirtualListBase} from '../../../../VirtualList';
+import Item from '@enact/moonstone/Item';
+import {ActivityPanels, Panel, Header} from '@enact/moonstone/Panels';
+import Scroller from '@enact/moonstone/Scroller';
+import SwitchItem from '@enact/moonstone/SwitchItem';
+import VirtualList, {VirtualListBase} from '@enact/moonstone/VirtualList';
 
 import {storiesOf} from '@storybook/react';
 

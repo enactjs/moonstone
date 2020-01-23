@@ -5,10 +5,10 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import {storiesOf} from '@storybook/react';
 
-import Button from '../../../../Button';
-import ContextualPopupDecorator from '../../../../ContextualPopupDecorator';
-import IconButton from '../../../../IconButton';
-import IncrementSlider, {IncrementSliderBase} from '../../../../IncrementSlider';
+import Button from '@enact/moonstone/Button';
+import ContextualPopupDecorator from '@enact/moonstone/ContextualPopupDecorator';
+import IconButton from '@enact/moonstone/IconButton';
+import IncrementSlider, {IncrementSliderBase} from '@enact/moonstone/IncrementSlider';
 
 import IncrementSliderDelayValue from './components/IncrementSliderDelayValue';
 

@@ -4,10 +4,10 @@ import {mergeComponentMetadata} from '@enact/storybook-utils';
 import React from 'react';
 import {storiesOf} from '@storybook/react';
 
-import Dialog from '../../../../Dialog';
-import Popup from '../../../../Popup';
-import BodyText from '../../../../BodyText';
-import Button from '../../../../Button';
+import Dialog from '@enact/moonstone/Dialog';
+import Popup from '@enact/moonstone/Popup';
+import BodyText from '@enact/moonstone/BodyText';
+import Button from '@enact/moonstone/Button';
 
 const Config = mergeComponentMetadata('Dialog', Popup, Dialog);
 Dialog.displayName = 'Dialog';

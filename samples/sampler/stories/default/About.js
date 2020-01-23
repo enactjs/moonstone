@@ -6,9 +6,9 @@ import PropTypes from 'prop-types';
 import ri from '@enact/ui/resolution';
 import {storiesOf} from '@storybook/react';
 
-import BodyText from '../../../../BodyText';
-import Button from '../../../../Button';
-import Icon from '../../../../Icon';
+import BodyText from '@enact/moonstone/BodyText';
+import Button from '@enact/moonstone/Button';
+import Icon from '@enact/moonstone/Icon';
 
 import css from './About.module.less';
 

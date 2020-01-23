@@ -5,8 +5,8 @@ import UiButton, {ButtonBase as UIButtonBase} from '@enact/ui/Button';
 import React from 'react';
 import {storiesOf} from '@storybook/react';
 
-import Button, {ButtonBase} from '../../../../Button';
-import ToggleButton from '../../../../ToggleButton';
+import Button, {ButtonBase} from '@enact/moonstone/Button';
+import ToggleButton from '@enact/moonstone/ToggleButton';
 
 // Set up some defaults for info and knobs
 const prop = {

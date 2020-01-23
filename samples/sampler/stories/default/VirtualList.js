@@ -7,8 +7,8 @@ import {ScrollableBase as UiScrollableBase} from '@enact/ui/Scrollable';
 import {storiesOf} from '@storybook/react';
 import {VirtualListBase as UiVirtualListBase} from '@enact/ui/VirtualList';
 
-import Item from '../../../../Item';
-import VirtualList, {VirtualListBase} from '../../../../VirtualList';
+import Item from '@enact/moonstone/Item';
+import VirtualList, {VirtualListBase} from '@enact/moonstone/VirtualList';
 
 const
 	wrapOption = {

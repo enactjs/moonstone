@@ -6,9 +6,9 @@ import Group from '@enact/ui/Group';
 import React from 'react';
 import {storiesOf} from '@storybook/react';
 
-import CheckboxItem from '../../../../CheckboxItem';
-import Item, {ItemBase} from '../../../../Item';
-import ToggleItem from '../../../../ToggleItem';
+import CheckboxItem from '@enact/moonstone/CheckboxItem';
+import Item, {ItemBase} from '@enact/moonstone/Item';
+import ToggleItem from '@enact/moonstone/ToggleItem';
 
 const Config = mergeComponentMetadata('CheckboxItem', ItemBase, Item, UiToggleItemBase, UiToggleItem, ToggleItem, CheckboxItem);
 

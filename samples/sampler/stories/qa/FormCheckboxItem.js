@@ -1,8 +1,8 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
 
-import FormCheckboxItem from '../../../../FormCheckboxItem';
-import Button from '../../../../Button';
+import FormCheckboxItem from '@enact/moonstone/FormCheckboxItem';
+import Button from '@enact/moonstone/Button';
 
 class FormCheckboxItemView extends React.Component {
 

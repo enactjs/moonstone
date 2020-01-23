@@ -6,8 +6,8 @@ import ri from '@enact/ui/resolution';
 import {ScrollableBase as UiScrollableBase} from '@enact/ui/Scrollable';
 import {storiesOf} from '@storybook/react';
 
-import {ScrollableBase} from '../../../../Scrollable';
-import Scroller from '../../../../Scroller';
+import {ScrollableBase} from '@enact/moonstone/Scrollable';
+import Scroller from '@enact/moonstone/Scroller';
 
 const
 	prop = {

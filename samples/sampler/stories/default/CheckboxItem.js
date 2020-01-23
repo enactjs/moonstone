@@ -7,10 +7,10 @@ import {listIcons} from './icons';
 import React from 'react';
 import {storiesOf} from '@storybook/react';
 
-import CheckboxItem from '../../../../CheckboxItem';
-import ToggleItem from '../../../../ToggleItem';
-import Item, {ItemBase} from '../../../../Item';
-import Icon from '../../../../Icon';
+import CheckboxItem from '@enact/moonstone/CheckboxItem';
+import ToggleItem from '@enact/moonstone/ToggleItem';
+import Item, {ItemBase} from '@enact/moonstone/Item';
+import Icon from '@enact/moonstone/Icon';
 
 CheckboxItem.displayName = 'CheckboxItem';
 const Config = mergeComponentMetadata('CheckboxItem', UiItem, ItemBase, Item, UiToggleItemBase, UiToggleItem, ToggleItem, CheckboxItem);

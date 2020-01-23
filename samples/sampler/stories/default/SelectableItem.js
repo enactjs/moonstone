@@ -5,10 +5,10 @@ import UiToggleItem, {ToggleItemBase as UiToggleItemBase} from '@enact/ui/Toggle
 import React from 'react';
 import {storiesOf} from '@storybook/react';
 
-import Icon from '../../../../Icon';
-import Item, {ItemBase} from '../../../../Item';
-import SelectableItem from '../../../../SelectableItem';
-import ToggleItem from '../../../../ToggleItem';
+import Icon from '@enact/moonstone/Icon';
+import Item, {ItemBase} from '@enact/moonstone/Item';
+import SelectableItem from '@enact/moonstone/SelectableItem';
+import ToggleItem from '@enact/moonstone/ToggleItem';
 
 import {listIcons} from './icons';
 

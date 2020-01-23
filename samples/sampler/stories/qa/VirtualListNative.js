@@ -7,8 +7,8 @@ import {ScrollableBaseNative as UiScrollableBaseNative} from '@enact/ui/Scrollab
 import {VirtualListBaseNative as UiVirtualListBaseNative} from '@enact/ui/VirtualList/VirtualListBase';
 import React from 'react';
 
-import Item from '../../../../Item';
-import {VirtualListNative, VirtualListBase} from '../../../../VirtualList';
+import Item from '@enact/moonstone/Item';
+import {VirtualListNative, VirtualListBase} from '@enact/moonstone/VirtualList';
 
 import {storiesOf} from '@storybook/react';
 

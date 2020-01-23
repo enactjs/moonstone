@@ -5,9 +5,9 @@ import UIButton, {ButtonBase as UIButtonBase} from '@enact/ui/Button';
 import React from 'react';
 import {storiesOf} from '@storybook/react';
 
-import Button, {ButtonBase} from '../../../../Button';
-import IconButton from '../../../../IconButton';
-import Heading from '../../../../Heading';
+import Button, {ButtonBase} from '@enact/moonstone/Button';
+import IconButton from '@enact/moonstone/IconButton';
+import Heading from '@enact/moonstone/Heading';
 
 import iconNames from '../default/icons';
 
