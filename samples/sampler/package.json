@@ -19,9 +19,11 @@
   "dependencies": {
     "@enact/core": "^3.2.5",
     "@enact/i18n": "^3.2.5",
+    "@enact/moonstone": "../../",
     "@enact/spotlight": "^3.2.5",
     "@enact/ui": "^3.2.5",
     "classnames": "^2.2.6",
+    "ilib": "^14.4.0",
     "query-string": "^6.7.0",
     "react": "^16.8.6"
   },
