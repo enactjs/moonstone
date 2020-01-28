@@ -10,3 +10,6 @@ node_modules
 dist
 build
 bundle.js
+
+# ilib
+_resources_
