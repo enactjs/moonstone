@@ -4,8 +4,10 @@
   "description": "Large-screen/TV support library for Enact, containing a variety of UI components.",
   "main": "index.js",
   "scripts": {
+    "bootstrap": "npm link && enact link && cd samples && cd sampler && npm run bootstrap",
     "clean": "enact clean",
     "lint": "enact lint --strict && eslint tests",
+    "sampler": "npm run --prefix samples/sampler serve",
     "test": "enact test",
     "test-ui": "wdio tests/ui/wdio.conf.js",
     "test-ui-docker": "wdio tests/ui/wdio.docker.conf.js",
@@ -28,7 +30,8 @@
     }
   },
   "eslintConfig": {
-    "extends": "enact/strict"
+    "extends": "enact/strict",
+    "root": true
   },
   "dependencies": {
     "@enact/core": "^3.2.5",
