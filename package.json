@@ -6,7 +6,7 @@
   "scripts": {
     "bootstrap": "npm link && enact link && cd samples && cd sampler && npm run bootstrap",
     "clean": "enact clean",
-    "lint": "enact lint --strict && eslint tests",
+    "lint": "enact lint --strict && cd tests && enact lint --local",
     "sampler": "npm run --prefix samples/sampler serve",
     "test": "enact test",
     "test-ui": "wdio tests/ui/wdio.conf.js",
@@ -52,7 +52,7 @@
   },
   "devDependencies": {
     "@babel/preset-env": "^7.4.3",
-    "@enact/ui-test-utils": "github:enactjs/ui-test-utils#develop",
+    "@enact/ui-test-utils": "^0.1.0",
     "ilib": "^14.4.0"
   }
 }
