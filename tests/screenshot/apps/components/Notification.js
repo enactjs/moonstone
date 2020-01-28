@@ -11,10 +11,16 @@ const NotificationTests = [
 		textSize: 'large',
 		component: <Notification open>-Lorem</Notification>
 	},
-	// <Notification open scrimType="transparent">-Lorem</Notification>,
-	// <Notification open scrimType="translucent">-Lorem</Notification>,
-	// <Notification><buttons><Button>Hello</Button></buttons></Notification>,
-	// <Notification><>Hello<buttons><Button>Hello</Button></buttons></></Notification>
+	{
+		wrapper: 'full',
+		component: <Notification open scrimType="transparent">-Lorem</Notification>
+	},
+	{
+		wrapper: 'full',
+		component: <Notification open scrimType="translucent">-Lorem</Notification>
+	},
+	<Notification open><buttons><Button>Hello</Button></buttons></Notification>,
+	<Notification open><>Hello<buttons><Button>Hello</Button></buttons></></Notification>,
 	// *************************************************************
 	// locale = 'ar-SA'
 	// *************************************************************
