@@ -1,4 +1,4 @@
-// Sandstone
+// Moonstone
 import BodyText from '../../../BodyText';
 import Button from '../../../Button';
 import Checkbox from '../../../Checkbox';

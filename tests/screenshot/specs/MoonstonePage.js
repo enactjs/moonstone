@@ -1,17 +1,17 @@
 'use strict';
 const {Page} = require('@enact/ui-test-utils/utils');
 
-class SandstonePage extends Page {
+class MoonstonePage extends Page {
 	constructor () {
 		super();
-		this.title = 'Sandstone Test';
+		this.title = 'Moonstone Test';
 	}
 
 	open (urlExtra) {
-		super.open('Sandstone-View', urlExtra);
+		super.open('Moonstone-View', urlExtra);
 	}
 
 	get component () { return browser.element('[data-ui-test-id="test"]'); }
 }
 
-module.exports = new SandstonePage();
+module.exports = new MoonstonePage();

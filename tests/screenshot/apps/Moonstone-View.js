@@ -5,10 +5,10 @@ import React from 'react';
 
 import MoonstoneDecorator from '../../../MoonstoneDecorator';
 
-import {components, testMetadata} from './SandstoneComponents';
+import {components, testMetadata} from './MoonstoneComponents';
 import imports from './importer';
 
-import css from './Sandstone-View.less';
+import css from './Moonstone-View.less';
 
 const url = new URL(window.location.href);
 
