@@ -5,6 +5,6 @@ const Page = require('../MoonstonePage');
 runTest({
 	testName: 'Moonstone Light High Contrast',
 	Page: Page,
-	skin: 'dark',
+	skin: 'light',
 	highContrast: true
 });
