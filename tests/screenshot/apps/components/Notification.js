@@ -2,13 +2,14 @@ import Notification from '../../../../Notification';
 import Button from '@enact/moonstone/Button';
 import React from 'react';
 
+// si-LK - Sinhala language
+const SinhalaString = 'සේවය නඩත්තු කිරීම හෝ වැඩි දියුණු කිරීම සඳහා කලා ගැලරිය සේවයට එකතු කිරීම, නවීකරණය කිරීම, පිවිසීම අක්‍රිය කිරීම හෝ අවසන් කිරීම යනාදිය තම පූර්ණ අභිමතය පරිදි සිදු කිරීමට LG Electronics Inc. හට හිමිකම් ඇත.කලා ගැලරිය සේවාව ලද හැකි වන්නේ ඔබ ඉහත නියමයන්ට එකඟ වුවහොත් පමණි.';
+
 const NotificationTests = [
 	// withLongButtonsAndSinhala: Text does not overlap in Notification Popup [GT-27998}
-	// Left the Jira test as manual since we cannot use the same string length with SST.
-	// Below we are using a much shorter string.
 	{
 		locale: 'si-LK',
-		component: <Notification open><><div>ේවය නඩත්තු කිරීම හෝ වැඩි දියුණු කිරීම සඳහා කලා ගැලරිය සේවයට එකතු කිරීම, නවීකරණය කිරීම, පිවිසීම</div><buttons><Button>OK</Button><Button>Nevermind</Button></buttons></></Notification>
+		component: <Notification open><><div>{SinhalaString}</div><buttons><Button>OK</Button><Button>Nevermind</Button></buttons></></Notification>
 	},
 	// end of [GT-27998}
 
