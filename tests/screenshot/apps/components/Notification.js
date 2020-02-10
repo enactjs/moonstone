@@ -1,5 +1,5 @@
 import Notification from '../../../../Notification';
-import Button from '@enact/moonstone/Button';
+import Button from '../../../../Button';
 import React from 'react';
 
 // si-LK - Sinhala language
