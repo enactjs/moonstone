@@ -8,11 +8,11 @@ const DialogTests = [
 	// <Dialog open title="Hello Dialog" titleBelow="This is a simple organized dialog" />,
 	// showCloseButton = true
 	// Test GT-25406 - need test above as comparison - see jira for details
-	<Dialog open showCloseButton title="Hello Dialog" titleBelow="This is an organized dialog showing CloseButton" />,
+	<Dialog open showCloseButton title="Hello Dialog" titleBelow="CloseButton dialog - an organized dialog" />,
 	// [GT-24996] Step 4 - no Divider
-	<Dialog open showCloseButton title="Hello Dialog" titleBelow="This is an organized dialog without a Divider" noDivider />,
+	<Dialog open showCloseButton title="Hello Dialog" titleBelow="No Divider dialog- an organized dialog" noDivider />,
 	// noDivider: false (default) [GT-24996] Step 5
-	<Dialog open showCloseButton title="hEllo dIalog" titleBelow="This is an organized dialog with uppercase in title" />,
+	<Dialog open showCloseButton title="hEllo dIalog" titleBelow="Uppercase dialog- an organized dialog" />,
 	// 'large text' = true - showCloseButton = true
 	// There should be no change with Large text in Dialog. Dialog is unaffected by textSize.
 	// Only buttons size will change with Large text.
@@ -38,16 +38,16 @@ const DialogTests = [
 	// Test GT-25406 - need test above as comparison - see jira for details
 	{
 		locale: 'ar-SA',
-		component: <Dialog open showCloseButton title="Hello Dialog" titleBelow="This is an organized dialog showing CloseButton" />
+		component: <Dialog open showCloseButton title="Hello Dialog" titleBelow="CloseButton dialog - an organized dialog" />
 	},
 	// RTL for [GT-24996] Step 4
 	{
 		locale: 'ar-SA',
-		component: <Dialog open showCloseButton title="Hello Dialog" titleBelow="This is an organized dialog without a Divider" noDivider />
+		component: <Dialog open showCloseButton title="Hello Dialog" titleBelow="No Divider dialog - an organized dialog" noDivider />
 	},
 	{
 		locale: 'ar-SA',
-		component: <Dialog open showCloseButton title="hEllo dIalog" titleBelow="This is an organized dialog with Upper case in title" />
+		component: <Dialog open showCloseButton title="hEllo dIalog" titleBelow="Uppercase dialog - an organized dialog" />
 	},
 	// 'large text' = true - showCloseButton = true
 	// There should be no change with Large text in Dialog. Dialog is unaffected by textSize.
