@@ -10,14 +10,14 @@ class SelectableItemInterface {
 	}
 
 	focus () {
-		return browser.selectorExecute(`#${this.id}`, (els) => els && !els[0].focus());
+		return browser.execute((el) => el.focus(), $(`#${this.id}`));
 	}
 
-	get self () { return browser.element(`#${this.id}`); }
+	get self () { return $(`#${this.id}`); }
 	get valueText () { return getText(getMarqueeText(this.self)); }
-	get isSelected () { return !!element('.SelectableItem_SelectableIcon_selected', this.self).value; }
-	get isToggled () { return !!element('.enact_ui_ToggleIcon_ToggleIcon_selected', this.self).value; }
-	get isInline () { return browser.isExisting(`#${this.id}.Item_Item_inline`); }
+	get isSelected () { return !!element('.SelectableItem_SelectableIcon_selected', this.self).isExisting(); }
+	get isToggled () { return !!element('.enact_ui_ToggleIcon_ToggleIcon_selected', this.self).isExisting(); }
+	get isInline () { return browser.$(`#${this.id}.Item_Item_inline`).isExisting(); }
 }
 
 class SelectableItemPage extends Page {

@@ -11,7 +11,7 @@ class MoonstonePage extends Page {
 		super.open('Moonstone-View', urlExtra);
 	}
 
-	get component () { return browser.element('[data-ui-test-id="test"]'); }
+	get component () { return $('[data-ui-test-id="test"]'); }
 }
 
 module.exports = new MoonstonePage();

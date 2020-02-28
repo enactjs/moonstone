@@ -12,7 +12,7 @@ describe('ExpandableInput', function () {
 			const expandable = Page.components.default;
 
 			it('should have focus on first expandable at start', function () {
-				expect(expandable.title.hasFocus()).to.be.true();
+				expect(expandable.title.isFocused()).to.be.true();
 			});
 
 			validateTitle(expandable, 'ExpandableInput Default');
@@ -36,7 +36,7 @@ describe('ExpandableInput', function () {
 					});
 
 					expectOpen(expandable);
-					expect(expandable.input.hasFocus()).to.be.true();
+					expect(expandable.input.isFocused()).to.be.true();
 				});
 
 				it('should have correct input value', function () {
@@ -58,7 +58,7 @@ describe('ExpandableInput', function () {
 						Page.spotlightUp();
 					});
 					expectClosed(expandable);
-					expect(expandable.title.hasFocus()).to.be.true();
+					expect(expandable.title.isFocused()).to.be.true();
 				});
 
 				it('should close and move focus to title on SpotlightDown', function () {
@@ -71,7 +71,7 @@ describe('ExpandableInput', function () {
 						Page.spotlightDown();
 					});
 					expectClosed(expandable);
-					expect(expandable.title.hasFocus()).to.be.true();
+					expect(expandable.title.isFocused()).to.be.true();
 				});
 
 				it('should close on select twice', function () {
@@ -143,7 +143,7 @@ describe('ExpandableInput', function () {
 						expandable.title.click();
 					});
 					expectOpen(expandable);
-					expect(expandable.input.hasFocus()).to.be.true();
+					expect(expandable.input.isFocused()).to.be.true();
 				});
 
 				it('should close on title click when open', function () {
@@ -177,7 +177,7 @@ describe('ExpandableInput', function () {
 					});
 					expectOpen(expandable);
 					Page.hover();
-					expect(expandable.input.hasFocus()).to.be.true();
+					expect(expandable.input.isFocused()).to.be.true();
 				});
 
 				describe('input value', function () {
@@ -222,7 +222,7 @@ describe('ExpandableInput', function () {
 					});
 
 					expectOpen(expandable);
-					expect(expandable.input.hasFocus()).to.be.true();
+					expect(expandable.input.isFocused()).to.be.true();
 				});
 
 				it('should have correct input value', function () {
@@ -244,7 +244,7 @@ describe('ExpandableInput', function () {
 						Page.spotlightUp();
 					});
 					expectClosed(expandable);
-					expect(expandable.title.hasFocus()).to.be.true();
+					expect(expandable.title.isFocused()).to.be.true();
 				});
 
 				it('should close on select twice', function () {
@@ -260,7 +260,7 @@ describe('ExpandableInput', function () {
 						expandable.title.click();
 					});
 					expectOpen(expandable);
-					expect(expandable.input.hasFocus()).to.be.true();
+					expect(expandable.input.isFocused()).to.be.true();
 				});
 
 				it('should close on title click when open', function () {
@@ -315,13 +315,13 @@ describe('ExpandableInput', function () {
 					});
 
 					expectClosed(expandable);
-					expect(expandable.title.hasFocus()).to.be.true();
+					expect(expandable.title.isFocused()).to.be.true();
 				});
 
 				it('should focus input on spotlightDown', function () {
 					Page.spotlightDown();
 					expectOpen(expandable);
-					expect(expandable.input.hasFocus()).to.be.true();
+					expect(expandable.input.isFocused()).to.be.true();
 				});
 
 				it('should open on select twice', function () {
@@ -426,13 +426,13 @@ describe('ExpandableInput', function () {
 					});
 
 					expectClosed(expandable);
-					expect(expandable.title.hasFocus()).to.be.true();
+					expect(expandable.title.isFocused()).to.be.true();
 				});
 
 				it('should focus input on spotlightDown', function () {
 					Page.spotlightDown();
 					expectOpen(expandable);
-					expect(expandable.input.hasFocus()).to.be.true();
+					expect(expandable.input.isFocused()).to.be.true();
 				});
 			});
 
@@ -475,13 +475,13 @@ describe('ExpandableInput', function () {
 					});
 
 					expectClosed(expandable);
-					expect(expandable.title.hasFocus()).to.be.true();
+					expect(expandable.title.isFocused()).to.be.true();
 				});
 
 				it('should focus input on spotlightDown', function () {
 					Page.spotlightDown();
 					expectOpen(expandable);
-					expect(expandable.input.hasFocus()).to.be.true();
+					expect(expandable.input.isFocused()).to.be.true();
 				});
 			});
 
@@ -524,13 +524,13 @@ describe('ExpandableInput', function () {
 					});
 
 					expectClosed(expandable);
-					expect(expandable.title.hasFocus()).to.be.true();
+					expect(expandable.title.isFocused()).to.be.true();
 				});
 
 				it('should focus input on spotlightDown', function () {
 					Page.spotlightDown();
 					expectOpen(expandable);
-					expect(expandable.input.hasFocus()).to.be.true();
+					expect(expandable.input.isFocused()).to.be.true();
 				});
 			});
 
@@ -582,13 +582,13 @@ describe('ExpandableInput', function () {
 					});
 
 					expectClosed(expandable);
-					expect(expandable.title.hasFocus()).to.be.true();
+					expect(expandable.title.isFocused()).to.be.true();
 				});
 
 				it('should focus input on spotlightDown', function () {
 					Page.spotlightDown();
 					expectOpen(expandable);
-					expect(expandable.input.hasFocus()).to.be.true();
+					expect(expandable.input.isFocused()).to.be.true();
 				});
 			});
 
@@ -615,7 +615,7 @@ describe('ExpandableInput', function () {
 				it('should be spottable', function () {
 					expandable.focus();
 					// Page.spotlightDown();
-					expect(expandable.title.hasFocus()).to.be.true();
+					expect(expandable.title.isFocused()).to.be.true();
 				});
 				it('should stay closed on title selected', function () {
 					Page.spotlightSelect();
@@ -639,7 +639,7 @@ describe('ExpandableInput', function () {
 				// Additional follow up required to sort out why.
 				Page.components.default.focus();
 				Page.spotlightDown();
-				expect(Page.components.defaultValue.title.hasFocus()).to.be.true();
+				expect(Page.components.defaultValue.title.isFocused()).to.be.true();
 			});
 		});
 
@@ -666,7 +666,7 @@ describe('ExpandableInput', function () {
 			const expandable = Page.components.default;
 
 			it('should have focus on first item at start', function () {
-				expect(expandable.title.hasFocus()).to.be.true();
+				expect(expandable.title.isFocused()).to.be.true();
 			});
 
 			it('should have title icon be on the right side title label', function () {

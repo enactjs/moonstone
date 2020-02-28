@@ -97,13 +97,13 @@ describe('ActivityPanels', function () {
 		});
 
 		it('should move from first panel to the third', function () {
-			Page.button1.moveToObject();
+			Page.button1.moveTo();
 			Page.waitTransitionEnd(5000, undefined, () => {
 				Page.spotlightSelect();
 			});
 
 			expect(Page.panelTitle.toLowerCase()).to.equal('SECOND'.toLowerCase());
-			Page.item8.moveToObject();
+			Page.item8.moveTo();
 			Page.waitTransitionEnd(5000, undefined, () => {
 				Page.spotlightSelect();
 			});
@@ -112,26 +112,26 @@ describe('ActivityPanels', function () {
 		});
 
 		it('should move to first panel from the third', function () {
-			Page.button1.moveToObject();
+			Page.button1.moveTo();
 			Page.waitTransitionEnd(5000, undefined, () => {
 				Page.spotlightSelect();
 			});
 
 			expect(Page.panelTitle.toLowerCase()).to.equal('SECOND'.toLowerCase());
-			Page.item8.moveToObject();
+			Page.item8.moveTo();
 			Page.waitTransitionEnd(5000, undefined, () => {
 				Page.spotlightSelect();
 			});
 
 			expect(Page.panelTitle.toLowerCase()).to.equal('THIRD'.toLowerCase());
-			Page.breadcrumbHeader.moveToObject();
+			Page.breadcrumbHeader.moveTo();
 			Page.waitTransitionEnd(5000, undefined, () => {
 				Page.spotlightSelect();
 			});
 
 			expect(Page.panelTitle.toLowerCase()).to.equal('SECOND'.toLowerCase());
-			Page.item8.moveToObject();
-			Page.breadcrumbHeader.moveToObject();
+			Page.item8.moveTo();
+			Page.breadcrumbHeader.moveTo();
 			Page.waitTransitionEnd(5000, undefined, () => {
 				Page.spotlightSelect();
 			});
@@ -154,7 +154,7 @@ describe('ActivityPanels', function () {
 
 	describe('Spotlight', function () {
 		it('should spot item 1 on render', function () {
-			expect(Page.item1.hasFocus()).to.be.true();
+			expect(Page.item1.isFocused()).to.be.true();
 		});
 
 		describe('pointer', function () {
@@ -167,7 +167,7 @@ describe('ActivityPanels', function () {
 					Page.backKey();
 				});
 
-				expect(Page.item2.hasFocus()).to.be.false();
+				expect(Page.item2.isFocused()).to.be.false();
 			});
 
 			// The ESC button (Back Key) does _not_ unset the pointer mode and does _not_ focus [ENYO-5865] [ENYO-5882]
@@ -175,12 +175,12 @@ describe('ActivityPanels', function () {
 				Page.waitTransitionEnd(5000, undefined, () => {
 					Page.item2.click();
 				});
-				Page.item8.moveToObject();
+				Page.item8.moveTo();
 				Page.waitTransitionEnd(5000, undefined, () => {
 					Page.backKey();
 				});
 
-				expect(Page.item2.hasFocus()).to.be.false();
+				expect(Page.item2.isFocused()).to.be.false();
 			});
 		});
 
@@ -191,7 +191,7 @@ describe('ActivityPanels', function () {
 					Page.spotlightSelect();
 				});
 
-				expect(Page.item5.hasFocus()).to.be.true();
+				expect(Page.item5.isFocused()).to.be.true();
 			});
 
 			it('should spot last focused item when transitioning back using back key', function () {
@@ -199,12 +199,12 @@ describe('ActivityPanels', function () {
 				Page.waitTransitionEnd(5000, 'panel open', () => {
 					Page.spotlightSelect();
 				});
-				expect(Page.item5.hasFocus()).to.be.true();
+				expect(Page.item5.isFocused()).to.be.true();
 				Page.waitTransitionEnd(5000, 'panel back', () => {
 					Page.backKey();
 				});
 
-				expect(Page.item2.hasFocus()).to.be.true();
+				expect(Page.item2.isFocused()).to.be.true();
 			});
 
 			// Revisit this test.  As we can't focus the breadcrumb with 5-way by going down right now
@@ -216,22 +216,22 @@ describe('ActivityPanels', function () {
 					Page.spotlightSelect();
 				});
 
-				expect(Page.item5.hasFocus(), 'Item 5 focus').to.be.true();
+				expect(Page.item5.isFocused(), 'Item 5 focus').to.be.true();
 				Page.waitTransitionEnd(5000, undefined, () => {
 					Page.spotlightSelect();
 				});
 
-				expect(Page.button3.hasFocus(), 'Button 3 focus').to.be.true();
+				expect(Page.button3.isFocused(), 'Button 3 focus').to.be.true();
 				Page.spotlightRight();
-				expect(Page.button4.hasFocus(), 'Button 4 focus').to.be.true();
+				expect(Page.button4.isFocused(), 'Button 4 focus').to.be.true();
 				Page.spotlightLeft();
 				Page.spotlightLeft();
-				expect(Page.breadcrumb.hasFocus(), 'Breadcrumb focus').to.be.true();
+				expect(Page.breadcrumb.isFocused(), 'Breadcrumb focus').to.be.true();
 				Page.waitTransitionEnd(5000, undefined, () => {
 					Page.spotlightSelect();
 				});
 
-				expect(Page.item5.hasFocus(), 'Item 5 refocus').to.be.true();
+				expect(Page.item5.isFocused(), 'Item 5 refocus').to.be.true();
 			});
 
 			it('should spot last focused item in first panel when transitioning after deep navigation', function () {
@@ -241,20 +241,20 @@ describe('ActivityPanels', function () {
 				});
 
 				Page.spotlightDown();
-				expect(Page.item6.hasFocus(), 'Item 6 focus').to.be.true();
+				expect(Page.item6.isFocused(), 'Item 6 focus').to.be.true();
 				Page.waitTransitionEnd(5000, undefined, () => {
 					Page.spotlightSelect();
 				});
 
-				expect(Page.button3.hasFocus(), 'Button 3 focus').to.be.true();
+				expect(Page.button3.isFocused(), 'Button 3 focus').to.be.true();
 				Page.waitTransitionEnd(5000, undefined, () => {
 					Page.backKey();
 				});
-				expect(Page.item6.hasFocus(), 'Item 6 refocus').to.be.true();
+				expect(Page.item6.isFocused(), 'Item 6 refocus').to.be.true();
 				Page.waitTransitionEnd(5000, undefined, () => {
 					Page.backKey();
 				});
-				expect(Page.item2.hasFocus(), 'Item 2 refocus').to.be.true();
+				expect(Page.item2.isFocused(), 'Item 2 refocus').to.be.true();
 			});
 
 			// Panel does not remember last focused item when moving forward to already visited panel
@@ -267,18 +267,18 @@ describe('ActivityPanels', function () {
 					Page.spotlightSelect();
 				});
 
-				expect(Page.item5.hasFocus()).to.be.true();
+				expect(Page.item5.isFocused()).to.be.true();
 				Page.spotlightLeft();
-				expect(Page.breadcrumb.hasFocus()).to.be.true();
+				expect(Page.breadcrumb.isFocused()).to.be.true();
 				Page.spotlightRight();
-				expect(Page.item5.hasFocus()).to.be.true();
+				expect(Page.item5.isFocused()).to.be.true();
 				Page.spotlightDown();
 				Page.spotlightDown();
 				Page.spotlightDown();
 				Page.spotlightLeft();
 				Page.spotlightRight();
-				expect(Page.item5.hasFocus()).to.be.true(); // only from 2.4.0
-				// expect(Page.item8.hasFocus()).to.be.true(); // on 2.3.0 and prior
+				expect(Page.item5.isFocused()).to.be.true(); // only from 2.4.0
+				// expect(Page.item8.isFocused()).to.be.true(); // on 2.3.0 and prior
 			});
 
 			it('should spot the seventh item on last panel', function () {
@@ -297,13 +297,13 @@ describe('ActivityPanels', function () {
 					Page.spotlightSelect();
 				});
 
-				expect(Page.item5.hasFocus()).to.be.true();
+				expect(Page.item5.isFocused()).to.be.true();
 				Page.spotlightDown();
 				Page.spotlightDown();
 				Page.spotlightLeft();
-				expect(Page.breadcrumb.hasFocus()).to.be.true();
+				expect(Page.breadcrumb.isFocused()).to.be.true();
 				Page.spotlightRight();
-				expect(Page.item7.hasFocus()).to.be.true();
+				expect(Page.item7.isFocused()).to.be.true();
 			});
 
 			it('should spot third item on first panel', function () {
@@ -313,90 +313,90 @@ describe('ActivityPanels', function () {
 					Page.spotlightSelect();
 				});
 
-				expect(Page.item5.hasFocus()).to.be.true();
+				expect(Page.item5.isFocused()).to.be.true();
 				Page.spotlightLeft();
 				Page.waitTransitionEnd(5000, undefined, () => {
 					Page.spotlightSelect();
 				});
 
-				expect(Page.item3.hasFocus()).to.be.true();
+				expect(Page.item3.isFocused()).to.be.true();
 			});
 		});
 
 		describe('5way and pointer', function () {
 			it('should not spot in None panel', function () {
-				Page.button1.moveToObject();
+				Page.button1.moveTo();
 				Page.waitTransitionEnd(5000, undefined, () => {
 					Page.spotlightSelect();
 				});
 
 				expect(Page.panelTitle.toLowerCase()).to.equal('SECOND'.toLowerCase());
-				Page.item8.moveToObject();
+				Page.item8.moveTo();
 				Page.waitTransitionEnd(5000, undefined, () => {
 					Page.spotlightSelect();
 				});
 
-				expect(Page.button3.hasFocus()).to.be.true();
+				expect(Page.button3.isFocused()).to.be.true();
 				Page.waitTransitionEnd(5000, undefined, () => {
 					Page.spotlightSelect();
 				});
 
-				expect(Page.body.hasFocus()).to.be.true();
+				expect(Page.body.isFocused()).to.be.true();
 			});
 
 			it('should spot default item in Default panel', function () {
-				Page.button1.moveToObject();
+				Page.button1.moveTo();
 				Page.waitTransitionEnd(5000, undefined, () => {
 					Page.spotlightSelect();
 				});
 
 				expect(Page.panelTitle.toLowerCase()).to.equal('SECOND'.toLowerCase());
-				Page.item8.moveToObject();
+				Page.item8.moveTo();
 				Page.waitTransitionEnd(5000, undefined, () => {
 					Page.spotlightSelect();
 				});
 
 				expect(Page.panelTitle.toLowerCase()).to.equal('THIRD'.toLowerCase());
-				Page.button4.moveToObject();
+				Page.button4.moveTo();
 				Page.waitTransitionEnd(5000, undefined, () => {
 					Page.spotlightSelect();
 				});
 
 				expect(Page.panelTitle.toLowerCase()).to.equal('NONE'.toLowerCase());
-				Page.button1.moveToObject();
+				Page.button1.moveTo();
 				Page.waitTransitionEnd(5000, undefined, () => {
 					Page.spotlightSelect();
 				});
 
-				expect(Page.item5.hasFocus()).to.be.true();
+				expect(Page.item5.isFocused()).to.be.true();
 			});
 
 			it('should re-spot last focused in last focused panel', function () {
-				Page.button1.moveToObject();
+				Page.button1.moveTo();
 				Page.waitTransitionEnd(5000, undefined, () => {
 					Page.spotlightSelect();
 				});
 
-				expect(Page.item5.hasFocus(), 'item 5 focus 1').to.be.true();
-				Page.item8.moveToObject();
+				expect(Page.item5.isFocused(), 'item 5 focus 1').to.be.true();
+				Page.item8.moveTo();
 				Page.waitTransitionEnd(5000, undefined, () => {
 					Page.spotlightSelect();
 				});
 
-				expect(Page.button3.hasFocus(), 'button 3 focus').to.be.true();
+				expect(Page.button3.isFocused(), 'button 3 focus').to.be.true();
 				Page.waitTransitionEnd(5000, undefined, () => {
 					Page.spotlightSelect();
 				});
 
-				expect(Page.body.hasFocus(), 'body focus').to.be.true();
+				expect(Page.body.isFocused(), 'body focus').to.be.true();
 				Page.spotlightDown();
-				expect(Page.breadcrumb.hasFocus(), 'breadcrumb focus').to.be.true();
-				Page.button1.moveToObject();
+				expect(Page.breadcrumb.isFocused(), 'breadcrumb focus').to.be.true();
+				Page.button1.moveTo();
 				Page.waitTransitionEnd(5000, undefined, () => {
 					Page.spotlightSelect();
 				});
 
-				expect(Page.item5.hasFocus(), 'item 5 focus 2').to.be.true();
+				expect(Page.item5.isFocused(), 'item 5 focus 2').to.be.true();
 				// Focus to item 6 so it can be last-focused item when returning
 				Page.spotlightDown();
 				Page.waitTransitionEnd(5000, undefined, () => {
@@ -407,30 +407,30 @@ describe('ActivityPanels', function () {
 					Page.spotlightSelect();
 				});
 
-				expect(Page.item6.hasFocus(), 'item 6').to.be.true();
+				expect(Page.item6.isFocused(), 'item 6').to.be.true();
 			});
 
 			it('should spot last focused item when transitioning back with Back key, deep navigation', function () {
-				Page.item3.moveToObject();
+				Page.item3.moveTo();
 				Page.waitTransitionEnd(5000, undefined, () => {
 					Page.spotlightSelect();
 				});
 
-				expect(Page.item5.hasFocus()).to.be.true();
+				expect(Page.item5.isFocused()).to.be.true();
 				Page.waitTransitionEnd(5000, undefined, () => {
 					Page.spotlightSelect();
 				});
 
-				expect(Page.button3.hasFocus()).to.be.true();
+				expect(Page.button3.isFocused()).to.be.true();
 				Page.waitTransitionEnd(5000, undefined, () => {
 					Page.backKey();
 				});
-				expect(Page.item5.hasFocus()).to.be.true();
+				expect(Page.item5.isFocused()).to.be.true();
 				Page.waitTransitionEnd(5000, undefined, () => {
 					Page.backKey();
 				});
 
-				expect(Page.item3.hasFocus()).to.be.true();
+				expect(Page.item3.isFocused()).to.be.true();
 			});
 		});
 	});

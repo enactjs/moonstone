@@ -8,7 +8,7 @@ describe('SelectableItem', function () {
 	});
 
 	it('should have focus on first item at start', function () {
-		expect(Page.components.selectableDefault.self.hasFocus()).to.be.true();
+		expect(Page.components.selectableDefault.self.isFocused()).to.be.true();
 	});
 
 	describe('default', function () {
@@ -36,13 +36,13 @@ describe('SelectableItem', function () {
 
 			it('should move focus down on SpotlightDown', function () {
 				Page.spotlightDown();
-				expect(Page.components.selectableDefaultSelected.self.hasFocus()).to.be.true();
+				expect(Page.components.selectableDefaultSelected.self.isFocused()).to.be.true();
 			});
 
 			it('should move focus up on SpotlightUp', function () {
 				Page.components.selectableDefaultSelected.focus();
 				Page.spotlightUp();
-				expect(selectableItem.self.hasFocus()).to.be.true();
+				expect(selectableItem.self.isFocused()).to.be.true();
 			});
 		});
 
@@ -163,7 +163,7 @@ describe('SelectableItem', function () {
 			it('should be able to focus the item', function () {
 				prevSelectableItem.focus();
 				Page.spotlightDown();
-				expect(selectableItem.self.hasFocus()).to.be.true();
+				expect(selectableItem.self.isFocused()).to.be.true();
 			});
 		});
 
@@ -198,7 +198,7 @@ describe('SelectableItem', function () {
 			it('should be able to focus the item', function () {
 				selectableDisabled.focus();
 				Page.spotlightDown();
-				expect(selectableItem.self.hasFocus()).to.be.true();
+				expect(selectableItem.self.isFocused()).to.be.true();
 			});
 			it('should not unselect the item when selected', function () {
 				selectableItem.focus();

@@ -7,7 +7,7 @@ describe('SwitchItem', function () {
 	});
 
 	it('should have focus on first item at start', function () {
-		expect(Page.components.switchDefault.self.hasFocus()).to.be.true();
+		expect(Page.components.switchDefault.self.isFocused()).to.be.true();
 	});
 
 	describe('default', function () {
@@ -35,13 +35,13 @@ describe('SwitchItem', function () {
 
 			it('should move focus down on SpotlightDown', function () {
 				Page.spotlightDown();
-				expect(Page.components.switchDefaultSelected.self.hasFocus()).to.be.true();
+				expect(Page.components.switchDefaultSelected.self.isFocused()).to.be.true();
 			});
 
 			it('should move focus up on SpotlightUp', function () {
 				Page.components.switchDefaultSelected.focus();
 				Page.spotlightUp();
-				expect(switchItem.self.hasFocus()).to.be.true();
+				expect(switchItem.self.isFocused()).to.be.true();
 			});
 		});
 
@@ -162,7 +162,7 @@ describe('SwitchItem', function () {
 			it('should be able focus the item', function () {
 				prevSwitchItem.focus();
 				Page.spotlightDown();
-				expect(switchItem.self.hasFocus()).to.be.true();
+				expect(switchItem.self.isFocused()).to.be.true();
 			});
 		});
 
@@ -197,7 +197,7 @@ describe('SwitchItem', function () {
 			it('should be able focus the item', function () {
 				prevSwitchInline.focus();
 				Page.spotlightDown();
-				expect(switchItem.self.hasFocus()).to.be.true();
+				expect(switchItem.self.isFocused()).to.be.true();
 			});
 			it('should not unselect the item when clicked', function () {
 				switchItem.focus();

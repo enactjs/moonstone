@@ -14,8 +14,8 @@ class PopupCommon {
 	get buttonPopup8 () { return element('#buttonPopup8', browser); }
 	get buttonPopup9 () { return element('#buttonPopup9', browser); }
 	get   popupLayer () { return element('#floatLayer', browser); }
-	get isPopupExist () { return this.popupLayer.isExisting('.Popup_Popup_popup'); }
-	get isScrimExist () { return this.popupLayer.isExisting('.enact_ui_FloatingLayer_Scrim_scrim'); }
+	get isPopupExist () { return this.popupLayer.$('.Popup_Popup_popup').isExisting(); }
+	get isScrimExist () { return this.popupLayer.$('.enact_ui_FloatingLayer_Scrim_scrim').isExisting(); }
 }
 
 class PopupInterface {
@@ -31,7 +31,7 @@ class PopupInterface {
 	get   closeSymbol () { return getText(element(`#${this.id} .Icon_Icon_icon`, browser)); }
 	get         popup () { return element(`#${this.id}`, browser); }
 	get         title () { return getText(element(`#${this.id}>div>div`, browser)); }
-	get isCloseButton () { return this.self.isExisting('.IconButton_IconButton_iconButton'); }
+	get isCloseButton () { return this.self.$('.IconButton_IconButton_iconButton').isExisting(); }
 }
 
 class PopupPage extends Page {
@@ -58,11 +58,11 @@ class PopupPage extends Page {
 	}
 
 	clickPopupFloatLayer () {
-		browser.click('#floatLayer');
+		$('#floatLayer').click();
 	}
 
 	clickPopupMain () {
-		browser.click('#popupMain');
+		$('#popupMain').click();
 	}
 }
 
