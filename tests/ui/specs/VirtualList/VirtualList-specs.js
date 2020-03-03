@@ -1,6 +1,6 @@
 
 const Page = require('./VirtualListPage'),
-	{expectFocusedItem, expectNoFocusedItem, waitUntilFocused} = require('./VirtualList-utils');
+	{expectFocusedItem, expectNoFocusedItem, waitForScrollStop, waitUntilFocused} = require('./VirtualList-utils');
 
 describe('VirtualList', function () {
 
@@ -139,14 +139,13 @@ describe('VirtualList', function () {
 				waitUntilFocused(i);
 			}
 			// Step 7: 2. Click the last item.
+			waitForScrollStop();
 			Page.spotlightSelect();
 			// Verify Step 7: Spotlight is on the last item.
-			Page.delay(1000);
 			expectFocusedItem(99, 'step 7 focus');
 			// Step 8: 5-way Down
 			Page.spotlightDown();
 			Page.spotlightDown(); // 1 extra 5-way down to check Spotlight does not pass buttonBottom when wrap is off.
-			Page.delay(1000);
 			// Verify Step 8: 1. The list *does not* Scroll to the Top. 2. Spotlight stays on the last item.
 			// Checking focus is on buttonBottom instead of last item since 5-way Down on last item using this app takes Spotlight to buttonBottom.
 			expect(Page.buttonBottom.isFocused(), 'step 8 focus').to.be.true();
@@ -255,7 +254,7 @@ describe('VirtualList', function () {
 			// Step 4.1. 5-way Spot the item below the last item on a current page.
 			for (let i = 0; i < 12; ++i) {
 				Page.spotlightDown();
-				Page.delay(80); // TODO: 80 is an arbitrary value to help provide expected behavior between rapidly repeating keydown events
+				waitUntilFocused(i + 1);
 			}
 			expectFocusedItem(12);
 			// Step 4.2. 5-way Right.
@@ -300,7 +299,7 @@ describe('VirtualList', function () {
 			expectFocusedItem(0);
 			for (let i = 0; i < 99; ++i) {
 				Page.spotlightDown();
-				Page.delay(80); // TODO: 80 is an arbitrary value to help provide expected behavior between rapidly repeating keydown events
+				waitUntilFocused(i + 1);
 			}
 			// Verify Step 7: 1. Spotlight displays on the last item.
 			expectFocusedItem(99, 'step 7.1 focus');
@@ -354,7 +353,7 @@ describe('VirtualList', function () {
 			// Step 7. 5-way Down several times to scroll down the list.
 			for (let i = 16; i <= 29; ++i) {
 				Page.spotlightDown();
-				Page.delay(80);
+				waitUntilFocused(i + 1);
 			}
 			expectFocusedItem(30, 'focus Item 30');
 			// Verify Step 7: Up Paging Control (∧) is still Enabled.
@@ -362,10 +361,9 @@ describe('VirtualList', function () {
 			// Step 8. 5-way Spot the last item.
 			for (let i = 30; i < 99; ++i) {
 				Page.spotlightDown();
-				Page.delay(80);
+				waitUntilFocused(i + 1);
 			}
 			// Verify Step 8: 1. Spotlight displays on the last item.
-			Page.delay(1000);
 			expectFocusedItem(99, 'focus Item 99');
 			// Verify Step 8: 2. Up Paging Control (∧) is still Enabled.
 			Page.delay(1000);
@@ -376,10 +374,9 @@ describe('VirtualList', function () {
 			// Step 9: 5-way Spot the first item.
 			for (let i = 0; i < 99; ++i) {
 				Page.spotlightUp();
-				Page.delay(80);
+				waitUntilFocused(98 - i);
 			}
 			// Verify Step 9: 1. Spotlight displays on the first item.
-			Page.delay(1000);
 			expectFocusedItem(0, 'focus Item 0');
 			// Verify Step 9: 2. Up Paging Control (∧) is Disabled.
 			Page.delay(1000);
@@ -415,11 +412,11 @@ describe('VirtualList', function () {
 			// Step 6: 5-way Up to the first item ('*Item 000*').
 			for (let i = Number(bottomId.slice(4)); i > 0; i--) {
 				Page.spotlightUp();
-				Page.delay(80);
+				waitUntilFocused(i - 1);
 			}
+			waitForScrollStop();	// Could trigger scrolling if partially visible
 			// Verify Step 6:  1. The list Scroll Down. 2. The Spotted item is placed on the Top.
-			expectFocusedItem(Number((Page.topVisibleItemId().slice(4))), 'focus Item 00');
-			expectFocusedItem(0, 'focus Item 00');  // to double check it is really top item
+			expectFocusedItem(Number((Page.topVisibleItemId().slice(4))), 'focus top visible');
 		});
 
 		describe('onKeyDown event behavior [GT-27663]', function () {
@@ -440,7 +437,7 @@ describe('VirtualList', function () {
 				expect(Page.buttonScrollUp.isFocused(), 'focus 6').to.be.true();
 				Page.spotlightLeft();
 				expectFocusedItem(0, 'focus 7');
-				expect(Page.list.getAttribute('data-keydown-events')).to.equal('0');
+				expect(Page.list.getAttribute('data-keydown-events')).to.be.null();
 			});
 
 			it('should prevent bubbling when wrapping', function () {
@@ -456,7 +453,7 @@ describe('VirtualList', function () {
 				Page.spotlightDown();
 				Page.delay(1500);  // TODO: Need better way to detect scroll end
 				expectFocusedItem(0, 'focus 3');
-				expect(Page.list.getAttribute('data-keydown-events')).to.equal('0');
+				expect(Page.list.getAttribute('data-keydown-events')).to.be.null();
 			});
 
 			it('should allow bubbling while navigating out of a focusableScrollbar list via scroll buttons', function () {
@@ -488,7 +485,7 @@ describe('VirtualList', function () {
 				expectFocusedItem(0, 'focus 2');
 				for (let i = 0; i < 99; ++i) {
 					Page.spotlightDown();
-					Page.delay(80); // TODO: 80 is an arbitrary value to help provide expected behavior between rapidly repeating keydown events
+					waitUntilFocused(i + 1);
 				}
 				expectFocusedItem(99, 'focus 3');
 				Page.spotlightDown();
@@ -515,7 +512,7 @@ describe('VirtualList', function () {
 				expectFocusedItem(0, 'focus 5');
 				for (let i = 0; i < 99; ++i) {
 					Page.spotlightDown();
-					Page.delay(80); // TODO: 80 is an arbitrary value to help provide expected behavior between rapidly repeating keydown events
+					waitUntilFocused(i + 1);
 				}
 				expectFocusedItem(99, 'focus 6');
 				Page.delay(1500);
@@ -541,7 +538,7 @@ describe('VirtualList', function () {
 				expectFocusedItem(0, 'focus 5');
 				for (let i = 0; i < 99; ++i) {
 					Page.spotlightDown();
-					Page.delay(80); // TODO: 80 is an arbitrary value to help provide expected behavior between rapidly repeating keydown events
+					waitUntilFocused(i + 1);
 				}
 				expectFocusedItem(99, 'focus 6');
 				Page.delay(1500);

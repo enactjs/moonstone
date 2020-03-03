@@ -29,16 +29,26 @@ function isNotScrolling () {
 }
 
 /**
- * Waits for scrolling to start, then stop
+ * Waits for scrolling to stop
  *
  * @param {Number} [timeout=3000]
  */
 function waitForScrollStop (timeout = 3000) {
+	browser.waitUntil(isNotScrolling, timeout);
+}
+
+/**
+ * Waits for scrolling to start, then stop
+ *
+ * @param {Number} [timeout=3000]
+ */
+function waitForScrollStartStop (timeout = 3000) {
 	browser.waitUntil(isScrolling, timeout);
 	browser.waitUntil(isNotScrolling, timeout);
 }
 
 exports.expectFocusedItem = expectFocusedItem;
 exports.expectNoFocusedItem = expectNoFocusedItem;
+exports.waitForScrollStartStop = waitForScrollStartStop;
 exports.waitForScrollStop = waitForScrollStop;
 exports.waitUntilFocused = waitUntilFocused;
