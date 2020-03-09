@@ -13,7 +13,7 @@ describe('CheckboxItem', function () {
 			const checkboxItem = Page.components.checkboxDefault;
 
 			it('should have focus on first item at start', function () {
-				expect(checkboxItem.self.hasFocus()).to.be.true();
+				expect(checkboxItem.self.isFocused()).to.be.true();
 			});
 
 			it('should have correct text', function () {
@@ -51,13 +51,13 @@ describe('CheckboxItem', function () {
 
 				it('should move focus down on SpotlightDown', function () {
 					Page.spotlightDown();
-					expect(Page.components.checkboxDefaultSelected.self.hasFocus()).to.be.true();
+					expect(Page.components.checkboxDefaultSelected.self.isFocused()).to.be.true();
 				});
 
 				it('should move focus up on SpotlightUp', function () {
 					Page.components.checkboxDefaultSelected.focus();
 					Page.spotlightUp();
-					expect(checkboxItem.self.hasFocus()).to.be.true();
+					expect(checkboxItem.self.isFocused()).to.be.true();
 				});
 			});
 
@@ -293,7 +293,7 @@ describe('CheckboxItem', function () {
 				it('should be able to focus the item', function () {
 					prevCheckboxItem.focus();
 					Page.spotlightDown();
-					expect(checkboxItem.self.hasFocus()).to.be.true();
+					expect(checkboxItem.self.isFocused()).to.be.true();
 				});
 				it('should not uncheck the item when selected', function () {
 					Page.spotlightDown();
@@ -319,7 +319,7 @@ describe('CheckboxItem', function () {
 		});
 
 		it('should have focus on first item at start', function () {
-			expect(Page.components.checkboxDefault.self.hasFocus()).to.be.true();
+			expect(Page.components.checkboxDefault.self.isFocused()).to.be.true();
 		});
 
 		it('should have icon to the right of text when default', function () {

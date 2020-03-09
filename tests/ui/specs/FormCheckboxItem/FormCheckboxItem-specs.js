@@ -8,7 +8,7 @@ describe('FormCheckboxItem', function () {
 	});
 
 	it('should have focus on first item at start', function () {
-		expect(Page.components.formCheckboxDefault.self.hasFocus()).to.be.true();
+		expect(Page.components.formCheckboxDefault.self.isFocused()).to.be.true();
 	});
 
 	describe('default', function () {
@@ -45,13 +45,13 @@ describe('FormCheckboxItem', function () {
 
 			it('should move focus down on SpotlightDown', function () {
 				Page.spotlightDown();
-				expect(Page.components.formCheckboxDefaultSelected.self.hasFocus()).to.be.true();
+				expect(Page.components.formCheckboxDefaultSelected.self.isFocused()).to.be.true();
 			});
 
 			it('should move focus up on SpotlightUp', function () {
 				Page.components.formCheckboxDefaultSelected.focus();
 				Page.spotlightUp();
-				expect(FormCheckboxItem.self.hasFocus()).to.be.true();
+				expect(FormCheckboxItem.self.isFocused()).to.be.true();
 			});
 		});
 
@@ -281,7 +281,7 @@ describe('FormCheckboxItem', function () {
 			it('should be able to focus the item', function () {
 				prevFormCheckboxItem.focus();
 				Page.spotlightDown();
-				expect(FormCheckboxItem.self.hasFocus()).to.be.true();
+				expect(FormCheckboxItem.self.isFocused()).to.be.true();
 			});
 
 			it('should not uncheck the item when selected', function () {
@@ -326,7 +326,7 @@ describe('FormCheckboxItem', function () {
 			it('should be able to focus the item', function () {
 				FormCheckboxItem.focus();
 				Page.spotlightDown();
-				expect(formCheckboxInlineDisabled.self.hasFocus()).to.be.true();
+				expect(formCheckboxInlineDisabled.self.isFocused()).to.be.true();
 			});
 			it('should not uncheck the item when selected', function () {
 				FormCheckboxItem.focus();

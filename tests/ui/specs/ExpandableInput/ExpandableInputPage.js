@@ -15,7 +15,7 @@ class ExpandableInterface {
 	}
 
 	focus () {
-		return browser.selectorExecute(`#${this.id}>div`, (els) => els && !els[0].focus());
+		return browser.execute((el) => el.focus(), $(`#${this.id}>div`));
 	}
 
 	get self () { return element(`#${this.id}`, browser); }
@@ -23,22 +23,22 @@ class ExpandableInterface {
 	get chevron () { return getText(getIcon(this.self)); }
 	get title () { return getLabeledItem(this.self); }
 	get titleText () { return getText(getLabeledItemTitle(this.self)); }
-	get titleTextMarquee () { return getLabeledItemTitle(this.self).element('.enact_ui_Marquee_Marquee_text'); }
+	get titleTextMarquee () { return getLabeledItemTitle(this.self).$('.enact_ui_Marquee_Marquee_text'); }
 	get titleIcon () { return getLabeledItemIcon(this.self); }
 	get label () { return getLabeledItemValue(this.self); }
 	get labelText () { return getText(this.label); }
-	get isLabelExists () { return this.self.isVisible('.LabeledItem_LabeledItem_label'); }
+	get isLabelExists () { return this.self.$('.LabeledItem_LabeledItem_label').isDisplayed(); }
 	get isOpen () {
-		return !(!this.self.isExisting('.enact_ui_Transition_Transition_transition') ||
-		!this.self.isExisting('.enact_ui_Transition_Transition_shown') && this.self.isExisting('.enact_ui_Transition_Transition_hidden'));
+		return !(!this.self.$('.enact_ui_Transition_Transition_transition').isExisting() ||
+		!this.self.$('.enact_ui_Transition_Transition_shown').isExisting() && this.self.$('.enact_ui_Transition_Transition_hidden').isExisting());
 	}
 	get iconBefore () { return element('.Input_Input_iconBefore', this.self); }
 	get iconBeforeSymbol () { return getText(this.iconBefore); }
 	get iconAfter () { return element('.Input_Input_iconAfter', this.self); }
 	get iconAfterSymbol () { return getText(this.iconAfter); }
-	get isIconBefore () { return this.self.isExisting('.Input_Input_iconBefore');}
-	get isIconAfter () { return this.self.isExisting('.Input_Input_iconAfter');}
-	get placeHolder () { return this.self.getAttribute('.Input_Input_input', 'placeholder'); }
+	get isIconBefore () { return this.self.$('.Input_Input_iconBefore').isExisting();}
+	get isIconAfter () { return this.self.$('.Input_Input_iconAfter').isExisting();}
+	get placeHolder () { return this.self.$('.Input_Input_input').getAttribute('placeholder'); }
 
 }
 
@@ -67,7 +67,7 @@ class ExpandableInputPage extends Page {
 	}
 
 	hover () {
-		browser.moveToObject('#expandable2');
+		$('#expandable2').moveTo();
 	}
 
 }

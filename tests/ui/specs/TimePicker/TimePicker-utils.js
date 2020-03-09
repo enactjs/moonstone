@@ -2,7 +2,7 @@
 const extractValues = (picker) => {
 	const hour = parseInt(picker.item(picker.hour).getText());
 	const minute = parseInt(picker.item(picker.minute).getText());
-	const meridiem = picker.meridiem.value ? picker.item(picker.meridiem).getText() : null;
+	const meridiem = picker.meridiem.isExisting() ? picker.item(picker.meridiem).getText() : null;
 
 	return {hour, minute, meridiem};
 };
@@ -20,9 +20,9 @@ function expectClosed (picker) {
 }
 
 function expectNoLabels (picker) {
-	expect(picker.hourLabel.value).to.be.null();
-	expect(picker.minuteLabel.value).to.be.null();
-	expect(picker.meridiemLabel.value).to.be.null();
+	expect(picker.hourLabel.isExisting()).to.be.false();
+	expect(picker.minuteLabel.isExisting()).to.be.false();
+	expect(picker.meridiemLabel.isExisting()).to.be.false();
 }
 
 function expectOpen (picker) {

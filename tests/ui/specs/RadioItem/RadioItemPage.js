@@ -10,13 +10,13 @@ class RadioItemInterface {
 	}
 
 	focus () {
-		return browser.selectorExecute(`#${this.id}`, (els) => els && !els[0].focus());
+		return browser.execute((el) => el.focus(), $(`#${this.id}`));
 	}
 
-	get self () { return browser.element(`#${this.id}`); }
+	get self () { return $(`#${this.id}`); }
 	get valueText () { return getText(getMarqueeText(this.self)); }
-	get isSelected () { return this.self.isExisting('.RadioItem_RadioItem_selected'); }
-	get isInline () { return browser.isExisting(`#${this.id}.Item_Item_inline`); }
+	get isSelected () { return this.self.$('.RadioItem_RadioItem_selected').isExisting(); }
+	get isInline () { return browser.$(`#${this.id}.Item_Item_inline`).isExisting(); }
 }
 
 class RadioItemPage extends Page {
