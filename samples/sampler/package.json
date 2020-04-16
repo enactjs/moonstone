@@ -16,6 +16,9 @@
     "serve-qa": "start-storybook -p 8080 -c .qa-storybook --ci"
   },
   "license": "Apache-2.0",
+  "enact": {
+  	"theme": "moonstone"
+  },
   "eslintConfig": {
     "extends": "enact/strict",
     "root": true
