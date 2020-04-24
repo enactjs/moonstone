@@ -27,10 +27,7 @@ function createResBundle (options) {
 	let opts = options;
 
 	if (typeof ILIB_MOONSTONE_PATH !== 'undefined') {
-		opts = {
-			basePath: ILIB_MOONSTONE_PATH,
-			...options
-		};
+		opts.basePath = ILIB_MOONSTONE_PATH;
 	}
 
 	if (!opts.onLoad) return;
