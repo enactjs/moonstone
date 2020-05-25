@@ -1,6 +1,6 @@
 
 const Page = require('./VirtualListPage'),
-	{expectFocusedItem, expectNoFocusedItem, waitForScrollStop, waitUntilFocused} = require('./VirtualList-utils');
+	{expectFocusedItem, expectNoFocusedItem, waitForScrollStop, waitUntilFocused, waitUntilVisible} = require('./VirtualList-utils');
 
 describe('VirtualList', function () {
 
@@ -362,6 +362,7 @@ describe('VirtualList', function () {
 			for (let i = 30; i < 99; ++i) {
 				Page.spotlightDown();
 				waitUntilFocused(i + 1);
+				waitUntilVisible(i + 1);
 			}
 			// Verify Step 8: 1. Spotlight displays on the last item.
 			expectFocusedItem(99, 'focus Item 99');
@@ -375,6 +376,7 @@ describe('VirtualList', function () {
 			for (let i = 0; i < 99; ++i) {
 				Page.spotlightUp();
 				waitUntilFocused(98 - i);
+				waitUntilVisible(98 - i);
 			}
 			// Verify Step 9: 1. Spotlight displays on the first item.
 			expectFocusedItem(0, 'focus Item 0');
