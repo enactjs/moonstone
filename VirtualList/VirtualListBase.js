@@ -27,9 +27,10 @@ const
 	isUp = is('up'),
 	JS = 'JS',
 	Native = 'Native',
-	// using 'bitwise or' for string > number conversion based on performance: https://jsperf.com/convert-string-to-number-techniques/7
 	getNumberValue = (index) => {
+		// using '+ operator' for string > number conversion based on performance: https://jsperf.com/convert-string-to-number-techniques/7
 		let number = +index;
+		// should return -1 if index is not a number or a negative value
 		return number >= 0 ? number : -1;
 	},
 	nop = () => {},
