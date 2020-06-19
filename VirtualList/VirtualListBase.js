@@ -478,7 +478,7 @@ const VirtualListBaseFactory = (type) => {
 					this.isScrolledBy5way = true;
 					this.isWrappedBy5way = isWrapped;
 
-					if (isWrapped && wrap === true && this.getItemNode(nextIndex)) {
+					if (isWrapped && wrap === true && this.getItemNode(nextIndex) === null) {
 						this.pause.pause();
 						target.blur();
 					}
