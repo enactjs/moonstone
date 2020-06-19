@@ -3,7 +3,7 @@ import {is} from '@enact/core/keymap';
 import Spotlight, {getDirection} from '@enact/spotlight';
 import Accelerator from '@enact/spotlight/Accelerator';
 import Pause from '@enact/spotlight/Pause';
-import {Spottable, spottableClass} from '@enact/spotlight/Spottable';
+import {Spottable} from '@enact/spotlight/Spottable';
 import {VirtualListBase as UiVirtualListBase, VirtualListBaseNative as UiVirtualListBaseNative} from '@enact/ui/VirtualList';
 import PropTypes from 'prop-types';
 import clamp from 'ramda/src/clamp';
@@ -33,8 +33,7 @@ const
 		// should return -1 if index is not a number or a negative value
 		return number >= 0 ? number : -1;
 	},
-	nop = () => {},
-	spottableSelector = `.${spottableClass}`;
+	nop = () => {};
 
 /**
  * The base version of [VirtualListBase]{@link moonstone/VirtualList.VirtualListBase} and
@@ -353,6 +352,10 @@ const VirtualListBaseFactory = (type) => {
 			}, null);
 		}
 
+		/*
+		 * Returns a node for a given index after checking `data-index` attribute.
+		 * Returns null if no matching node is found.
+		 */
 		getItemNode = (index) => {
 			const
 				{numOfItems} = this.uiRefCurrent.state,
@@ -475,9 +478,7 @@ const VirtualListBaseFactory = (type) => {
 					this.isScrolledBy5way = true;
 					this.isWrappedBy5way = isWrapped;
 
-					if (isWrapped && wrap === true && (
-						this.uiRefCurrent.containerRef.current.querySelector(`[data-index='${nextIndex}']${spottableSelector}`) == null
-					)) {
+					if (isWrapped && wrap === true && this.getItemNode(nextIndex)) {
 						this.pause.pause();
 						target.blur();
 					}

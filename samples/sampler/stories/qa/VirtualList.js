@@ -338,13 +338,6 @@ storiesOf('VirtualList', module)
 		() => {
 			return (
 				<VirtualList
-					overscrollEffectOn={{
-						arrowKey: false,
-						drag: false,
-						pageKey: true,
-						track: false,
-						wheel: false
-					}}
 					dataSize={updateDataSize(number('dataSize', Config, defaultDataSize))}
 					focusableScrollbar={boolean('focusableScrollbar', Config)}
 					itemRenderer={renderItem(ContainerItemWithControls, ri.scale(number('itemSize', Config, 78)), true)}
