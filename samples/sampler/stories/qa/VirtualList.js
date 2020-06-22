@@ -1,3 +1,4 @@
+import SpotlightContainerDecorator from '@enact/spotlight/SpotlightContainerDecorator';
 import {action} from '@enact/storybook-utils/addons/actions';
 import {boolean, number, select} from '@enact/storybook-utils/addons/knobs';
 import {mergeComponentMetadata} from '@enact/storybook-utils';
@@ -7,6 +8,7 @@ import {VirtualListBase as UiVirtualListBase} from '@enact/ui/VirtualList';
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 
+import IconButton from '@enact/moonstone/IconButton';
 import Item from '@enact/moonstone/Item';
 import {ActivityPanels, Panel, Header} from '@enact/moonstone/Panels';
 import Scroller from '@enact/moonstone/Scroller';
@@ -116,6 +118,29 @@ class StatefulSwitchItem extends React.Component {
 		);
 	}
 }
+
+const ContainerItemWithControls = SpotlightContainerDecorator(({children, index, style, ...rest}) => {
+	const itemHeight = ri.scaleToRem(78);
+	const containerStyle = {...style, display: 'flex', width: '100%', height: itemHeight};
+	const textStyle = {flex: '1 1 100%', lineHeight: itemHeight};
+	const IconStyle = {flex: '0 0 auto', marginTop: ri.scaleToRem(9)};
+	return (
+		<div {...rest} style={containerStyle}>
+			<div style={textStyle}>
+				{children}
+			</div>
+			<IconButton data-index={index} style={IconStyle}>
+				{'list'}
+			</IconButton>
+			<IconButton data-index={index} style={IconStyle}>
+				{'star'}
+			</IconButton>
+			<IconButton data-index={index} style={IconStyle}>
+				{'home'}
+			</IconButton>
+		</div>
+	);
+});
 
 // eslint-disable-next-line enact/prop-types
 const InPanels = ({className, title, ...rest}) => {
@@ -303,6 +328,21 @@ storiesOf('VirtualList', module)
 					focusableScrollbar={boolean('focusableScrollbar', Config)}
 					itemRenderer={renderItem(StatefulSwitchItem, ri.scale(number('itemSize', Config, 72)), true)}
 					itemSize={ri.scale(number('itemSize', Config, 72))}
+				/>
+			);
+		},
+		{propTables: [Config]}
+	)
+	.add(
+		'with container items have spottable controls',
+		() => {
+			return (
+				<VirtualList
+					dataSize={updateDataSize(number('dataSize', Config, defaultDataSize))}
+					focusableScrollbar={boolean('focusableScrollbar', Config)}
+					itemRenderer={renderItem(ContainerItemWithControls, ri.scale(number('itemSize', Config, 78)), true)}
+					itemSize={ri.scale(number('itemSize', Config, 78))}
+					wrap={wrapOption[select('wrap', ['false', 'true', '"noAnimation"'], Config)]}
 				/>
 			);
 		},
