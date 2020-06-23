@@ -19,7 +19,7 @@
 import kind from '@enact/core/kind';
 import Spottable from '@enact/spotlight/Spottable';
 import {IconButtonDecorator as UiIconButtonDecorator} from '@enact/ui/IconButton';
-import UiLabeledIcon from '@enact/ui/LabeledIcon';
+import {LabeledIconBase as UiLabeledIconBase, LabeledIconDecorator as UiLabeledIconDecorator} from '@enact/ui/LabeledIcon';
 import Pure from '@enact/ui/internal/Pure';
 import PropTypes from 'prop-types';
 import compose from 'ramda/src/compose';
@@ -41,7 +41,7 @@ const IconButton = compose(
  *
  * @class LabeledIconButtonBase
  * @memberof moonstone/LabeledIconButton
- * @extends ui/LabeledIcon.LabeledIcon
+ * @extends ui/LabeledIcon.LabeledIconBase
  * @ui
  * @public
  */
@@ -135,7 +135,7 @@ const LabeledIconButtonBase = kind({
 	},
 
 	render: ({css, flip, icon, selected, 'data-webos-voice-disabled': voiceDisabled, 'data-webos-voice-group-label': voiceGroupLabel, 'data-webos-voice-intent': voiceIntent, 'data-webos-voice-label': voiceLabel, ...rest}) => {
-		return UiLabeledIcon.inline({
+		return UiLabeledIconBase.inline({
 			...rest,
 			icon: (
 				<IconButton
@@ -159,10 +159,12 @@ const LabeledIconButtonBase = kind({
  *
  * @hoc
  * @memberof moonstone/LabeledIconButton
+ * @mixes moonstone/LabeledIcon.LabeledIconDecorator
  * @mixes moonstone/Skinnable.Skinnable
  * @public
  */
 const LabeledIconButtonDecorator = compose(
+	UiLabeledIconDecorator,
 	Pure,
 	Skinnable
 );
