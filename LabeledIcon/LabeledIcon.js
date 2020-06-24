@@ -16,7 +16,7 @@
  */
 
 import kind from '@enact/core/kind';
-import UiLabeledIcon from '@enact/ui/LabeledIcon';
+import {LabeledIconBase as UiLabeledIconBase, LabeledIconDecorator as UiLabeledIconDecorator} from '@enact/ui/LabeledIcon';
 import Pure from '@enact/ui/internal/Pure';
 import PropTypes from 'prop-types';
 import compose from 'ramda/src/compose';
@@ -34,6 +34,7 @@ const Icon = Skinnable(IconBase);
  *
  * @class LabeledIconBase
  * @memberof moonstone/LabeledIcon
+ * @extends ui/LabeledIcon.LabeledIconBase
  * @ui
  * @public
  */
@@ -64,7 +65,7 @@ const LabeledIconBase = kind({
 	},
 
 	render: (props) => {
-		return UiLabeledIcon.inline({
+		return UiLabeledIconBase.inline({
 			...props,
 			iconComponent: Icon,
 			css: props.css
@@ -77,10 +78,12 @@ const LabeledIconBase = kind({
  *
  * @hoc
  * @memberof moonstone/LabeledIcon
+ * @mixes ui/LabeledIcon.LabeledIconDecorator
  * @mixes moonstone/Skinnable.Skinnable
  * @public
  */
 const LabeledIconDecorator = compose(
+	UiLabeledIconDecorator,
 	Pure,
 	Skinnable
 );
