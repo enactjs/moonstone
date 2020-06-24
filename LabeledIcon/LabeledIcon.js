@@ -78,7 +78,7 @@ const LabeledIconBase = kind({
  *
  * @hoc
  * @memberof moonstone/LabeledIcon
- * @mixes moonstone/LabeledIcon.LabeledIconDecorator
+ * @mixes ui/LabeledIcon.LabeledIconDecorator
  * @mixes moonstone/Skinnable.Skinnable
  * @public
  */
