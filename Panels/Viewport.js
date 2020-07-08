@@ -20,9 +20,9 @@ import css from './Panels.module.less';
  * @private
  */
 const ViewportBase = class extends React.Component {
-	static displayName = 'Viewport'
+	static displayName = 'Viewport';
 
-	static contextType = SharedState
+	static contextType = SharedState;
 
 	static propTypes = /** @lends moonstone/Panels.Viewport.prototype */ {
 
@@ -64,12 +64,12 @@ const ViewportBase = class extends React.Component {
 		 * @default false
 		 */
 		noAnimation: PropTypes.bool
-	}
+	};
 
 	static defaultProps = {
 		index: 0,
 		noAnimation: false
-	}
+	};
 
 	constructor () {
 		super();
@@ -109,7 +109,7 @@ const ViewportBase = class extends React.Component {
 		}
 
 		return true;
-	}
+	};
 
 	removeTransitioningClass = () => {
 		if (this.node) {
@@ -117,25 +117,25 @@ const ViewportBase = class extends React.Component {
 		}
 
 		return true;
-	}
+	};
 
-	pause = () => this.paused.pause()
+	pause = () => this.paused.pause();
 
-	resume = () => this.paused.resume()
+	resume = () => this.paused.resume();
 
-	handle = handle.bind(this)
+	handle = handle.bind(this);
 
 	handleTransition = this.handle(
 		forward('onTransition'),
 		this.removeTransitioningClass,
 		this.resume
-	)
+	);
 
 	handleWillTransition = this.handle(
 		forward('onWillTransition'),
 		this.addTransitioningClass,
 		this.pause
-	)
+	);
 
 	mapChildren = (children, generateId) => React.Children.map(children, (child, index) => {
 		if (child) {
@@ -153,9 +153,9 @@ const ViewportBase = class extends React.Component {
 		} else {
 			return null;
 		}
-	})
+	});
 
-	getEnteringProp = (noAnimation) => noAnimation ? null : 'hideChildren'
+	getEnteringProp = (noAnimation) => noAnimation ? null : 'hideChildren';
 
 	render () {
 		const {arranger, children, generateId, index, noAnimation, ...rest} = this.props;

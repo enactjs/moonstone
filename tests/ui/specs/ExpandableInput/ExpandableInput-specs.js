@@ -1,3 +1,4 @@
+/* eslint-disable no-undefined */
 const Page = require('./ExpandableInputPage'),
 	{validateTitle, expectClosed, expectOpen} = require('./ExpandableInput-utils.js'),
 	{expectOrdering} = require('@enact/ui-test-utils/utils');

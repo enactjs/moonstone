@@ -120,9 +120,9 @@ const getTargetInViewByDirectionFromPosition = (direction, position, container) 
  * @private
  */
 class ScrollableBaseNative extends Component {
-	static displayName = 'ScrollableNative'
+	static displayName = 'ScrollableNative';
 
-	static contextType = SharedState
+	static contextType = SharedState;
 
 	static propTypes = /** @lends moonstone/ScrollableNative.ScrollableNative.prototype */ {
 		/**
@@ -266,7 +266,7 @@ class ScrollableBaseNative extends Component {
 		 * @public
 		 */
 		scrollUpAriaLabel: PropTypes.string
-	}
+	};
 
 	static defaultProps = {
 		'data-spotlight-container-disabled': false,
@@ -279,7 +279,7 @@ class ScrollableBaseNative extends Component {
 			wheel: true
 		},
 		preventBubblingOnKeyDown: 'none'
-	}
+	};
 
 	constructor (props) {
 		super(props);
@@ -329,23 +329,23 @@ class ScrollableBaseNative extends Component {
 	}
 
 	// status
-	isWheeling = false
+	isWheeling = false;
 
 	// spotlight
-	lastScrollPositionOnFocus = null
-	indexToFocus = null
-	nodeToFocus = null
-	pointToFocus = null
+	lastScrollPositionOnFocus = null;
+	indexToFocus = null;
+	nodeToFocus = null;
+	pointToFocus = null;
 
 	// voice control
-	isVoiceControl = false
-	voiceControlDirection = 'vertical'
+	isVoiceControl = false;
+	voiceControlDirection = 'vertical';
 
 	// overscroll
 	overscrollJobs = {
 		horizontal: {before: null, after: null},
 		vertical: {before: null, after: null}
-	}
+	};
 
 	// Only intended to be used within componentDidMount, this method will fetch the last stored
 	// scroll position from SharedState and scroll (without animation) to that position
@@ -386,7 +386,7 @@ class ScrollableBaseNative extends Component {
 		) && !this.props['data-spotlight-container-disabled']) {
 			this.childRef.current.setContainerDisabled(true);
 		}
-	}
+	};
 
 	onMouseDown = (ev) => {
 		if (this.isScrollButtonFocused()) {
@@ -398,7 +398,7 @@ class ScrollableBaseNative extends Component {
 		} else {
 			this.childRef.current.setContainerDisabled(false);
 		}
-	}
+	};
 
 	onTouchStart = () => {
 		const focusedItem = Spotlight.getCurrent();
@@ -406,7 +406,7 @@ class ScrollableBaseNative extends Component {
 		if (!Spotlight.isPaused() && focusedItem && !this.isScrollButtonFocused()) {
 			focusedItem.blur();
 		}
-	}
+	};
 
 	/*
 	 * wheel event handler;
@@ -498,15 +498,15 @@ class ScrollableBaseNative extends Component {
 		if (needToHideThumb) {
 			this.uiRef.current.startHidingThumb();
 		}
-	}
+	};
 
 	start = (animate) => {
 		if (!animate) {
 			this.focusOnItem();
 		}
-	}
+	};
 
-	isContent = (element) => (element && this.uiRef.current && this.uiRef.current.childRefCurrent.containerRef.current.contains(element))
+	isContent = (element) => (element && this.uiRef.current && this.uiRef.current.childRefCurrent.containerRef.current.contains(element));
 
 	// event handlers for Spotlight support
 
@@ -528,7 +528,7 @@ class ScrollableBaseNative extends Component {
 				this.lastScrollPositionOnFocus = pos;
 			}
 		}
-	}
+	};
 
 	calculateAndScrollTo = () => {
 		const
@@ -571,7 +571,7 @@ class ScrollableBaseNative extends Component {
 			// update `scrollHeight`
 			this.uiRef.current.bounds.scrollHeight = this.uiRef.current.getScrollBounds().scrollHeight;
 		}
-	}
+	};
 
 	onFocus = (ev) => {
 		const
@@ -595,7 +595,7 @@ class ScrollableBaseNative extends Component {
 		} else if (this.childRef.current.setLastFocusedNode) {
 			this.childRef.current.setLastFocusedNode(ev.target);
 		}
-	}
+	};
 
 	scrollByPage = (direction) => {
 		const
@@ -640,7 +640,7 @@ class ScrollableBaseNative extends Component {
 
 			this.uiRef.current.scrollToAccumulatedTarget(pageDistance, true, this.props.overscrollEffectOn.pageKey);
 		}
-	}
+	};
 
 	hasFocus () {
 		let current = Spotlight.getCurrent();
@@ -665,7 +665,7 @@ class ScrollableBaseNative extends Component {
 				edge = (direction === 'up' || !isRtl && direction === 'left' || isRtl && direction === 'right') ? 'before' : 'after';
 			this.uiRef.current.checkAndApplyOverscrollEffect(orientation, edge, overscrollTypeOnce);
 		}
-	}
+	};
 
 	scrollByPageOnPointerMode = (ev) => {
 		const {keyCode, repeat} = ev;
@@ -686,7 +686,7 @@ class ScrollableBaseNative extends Component {
 		}
 
 		return false; // means to be propagated
-	}
+	};
 
 	onKeyDown = (ev) => {
 		const {keyCode, repeat, target} = ev;
@@ -731,7 +731,7 @@ class ScrollableBaseNative extends Component {
 				}
 			}
 		}
-	}
+	};
 
 	onScrollbarButtonClick = ({isPreviousScrollButton, isVerticalScrollBar}) => {
 		const
@@ -747,7 +747,7 @@ class ScrollableBaseNative extends Component {
 		}
 
 		this.uiRef.current.scrollToAccumulatedTarget(pageDistance, isVerticalScrollBar, this.props.overscrollEffectOn.scrollbarButton);
-	}
+	};
 
 	focusOnScrollButton (scrollbarRef, isPreviousScrollButton) {
 		if (scrollbarRef.current) {
@@ -781,7 +781,7 @@ class ScrollableBaseNative extends Component {
 				}
 			}
 		}
-	}
+	};
 
 	scrollStopOnScroll = () => {
 		if (!this.props['data-spotlight-container-disabled']) {
@@ -794,7 +794,7 @@ class ScrollableBaseNative extends Component {
 			this.isVoiceControl = false;
 			this.updateFocusAfterVoiceControl();
 		}
-	}
+	};
 
 	focusOnItem () {
 		const childRef = this.childRef;
@@ -830,14 +830,14 @@ class ScrollableBaseNative extends Component {
 	scrollTo = (opt) => {
 		this.indexToFocus = (opt.focus && typeof opt.index === 'number') ? opt.index : null;
 		this.nodeToFocus = (opt.focus && opt.node instanceof Object && opt.node.nodeType === 1) ? opt.node : null;
-	}
+	};
 
 	alertThumb = () => {
 		const bounds = this.uiRef.current.getScrollBounds();
 
 		this.uiRef.current.showThumb(bounds);
 		this.uiRef.current.startHidingThumb();
-	}
+	};
 
 	alertThumbAfterRendered = () => {
 		const spotItem = Spotlight.getCurrent();
@@ -845,7 +845,7 @@ class ScrollableBaseNative extends Component {
 		if (!Spotlight.getPointerMode() && this.isContent(spotItem) && this.uiRef.current.isUpdatedScrollThumb) {
 			this.alertThumb();
 		}
-	}
+	};
 
 	handleResizeWindow = () => {
 		const focusedItem = Spotlight.getCurrent();
@@ -853,7 +853,7 @@ class ScrollableBaseNative extends Component {
 		if (focusedItem) {
 			focusedItem.blur();
 		}
-	}
+	};
 
 	// Callback for scroller updates; calculate and, if needed, scroll to new position based on focused item.
 	handleScrollerUpdate = () => {
@@ -868,12 +868,12 @@ class ScrollableBaseNative extends Component {
 		// updated in calculateAndScrollTo but we might not have made it to that point), it will be
 		// out of date when we land back in this method next time.
 		this.uiRef.current.bounds.scrollHeight = this.uiRef.current.getScrollBounds().scrollHeight;
-	}
+	};
 
 	clearOverscrollEffect = (orientation, edge) => {
 		this.overscrollJobs[orientation][edge].startAfter(overscrollTimeout, orientation, edge, overscrollTypeNone, 0);
 		this.uiRef.current.setOverscrollStatus(orientation, edge, overscrollTypeNone, 0);
-	}
+	};
 
 	applyOverscrollEffect = (orientation, edge, type, ratio) => {
 		const nodeRef = this.overscrollRefs[orientation].current;
@@ -885,13 +885,13 @@ class ScrollableBaseNative extends Component {
 				this.overscrollJobs[orientation][edge].start(orientation, edge, overscrollTypeDone, 0);
 			}
 		}
-	}
+	};
 
 	createOverscrollJob = (orientation, edge) => {
 		if (!this.overscrollJobs[orientation][edge]) {
 			this.overscrollJobs[orientation][edge] = new Job(this.applyOverscrollEffect.bind(this), overscrollTimeout);
 		}
-	}
+	};
 
 	stopOverscrollJob = (orientation, edge) => {
 		const job = this.overscrollJobs[orientation][edge];
@@ -899,7 +899,7 @@ class ScrollableBaseNative extends Component {
 		if (job) {
 			job.stop();
 		}
-	}
+	};
 
 	// FIXME setting event handlers directly to work on the V8 snapshot.
 	addEventListeners = (childContainerRef) => {
@@ -910,7 +910,7 @@ class ScrollableBaseNative extends Component {
 				childContainerRef.current.setAttribute('data-webos-voice-intent', 'Scroll');
 			}
 		}
-	}
+	};
 
 	// FIXME setting event handlers directly to work on the V8 snapshot.
 	removeEventListeners = (childContainerRef) => {
@@ -921,7 +921,7 @@ class ScrollableBaseNative extends Component {
 				childContainerRef.current.removeAttribute('data-webos-voice-intent');
 			}
 		}
-	}
+	};
 
 	updateFocusAfterVoiceControl = () => {
 		const spotItem = Spotlight.getCurrent();
@@ -943,12 +943,12 @@ class ScrollableBaseNative extends Component {
 				}
 			}
 		}
-	}
+	};
 
 	isReachedEdge = (scrollPos, ltrBound, rtlBound, isRtl = false) => {
 		const bound = isRtl ? rtlBound : ltrBound;
 		return (bound === 0 && scrollPos === 0) || (bound > 0 && scrollPos >= bound - 1);
-	}
+	};
 
 	onVoice = (e) => {
 		const
@@ -995,7 +995,7 @@ class ScrollableBaseNative extends Component {
 			}
 			e.preventDefault();
 		}
-	}
+	};
 
 	handleScroll = handle(
 		forward('onScroll'),
@@ -1003,7 +1003,7 @@ class ScrollableBaseNative extends Component {
 		({scrollLeft: x, scrollTop: y}, {id}, context) => {
 			context.set(`${id}.scrollPosition`, {x, y});
 		}
-	).bindAs(this, 'handleScroll')
+	).bindAs(this, 'handleScroll');
 
 	render () {
 		const

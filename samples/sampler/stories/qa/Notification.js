@@ -27,14 +27,14 @@ class StatefulNotification extends React.Component {
 	addToMessage = () => {
 		this.messageArray.push(this.messageFiller);
 		this.setState({message: this.parseMessage()});
-	}
+	};
 
-	parseMessage = () => this.messageArray.join(' ')
+	parseMessage = () => this.messageArray.join(' ');
 
 	removeFromMessage = () => {
 		this.messageArray.pop();
 		this.setState({message: this.parseMessage()});
-	}
+	};
 
 	render () {
 		const {message} = this.state;
@@ -65,7 +65,7 @@ class LongButtonsSinhala extends React.Component {
 	}
 	toggleState = () => {
 		this.setState(({thirdButton}) => ({thirdButton: !thirdButton}));
-	}
+	};
 
 	render () {
 		return (

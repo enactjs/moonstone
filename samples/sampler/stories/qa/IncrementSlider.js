@@ -28,7 +28,7 @@ class IncrementSliderView extends React.Component {
 		setTimeout(() => {
 			this.setState({value: ev.value});
 		}, 200);
-	}
+	};
 
 	render () {
 		return (
@@ -55,7 +55,7 @@ class IncrementSliderWithContextualPopup extends React.Component {
 		this.setState((prevState) => {
 			return {open: !prevState.open};
 		});
-	}
+	};
 
 	renderPopup = () => (
 		<div style={{width: 400}}>
@@ -91,7 +91,7 @@ class IncrementSliderWithContextualPopup extends React.Component {
 class IncrementSliderWithMinValue extends React.Component {
 	static propTypes = {
 		value: PropTypes.number
-	}
+	};
 
 	constructor (props) {
 		super(props);
@@ -111,7 +111,7 @@ class IncrementSliderWithMinValue extends React.Component {
 		return null;
 	}
 
-	handleChange = ({value}) => this.setState({value})
+	handleChange = ({value}) => this.setState({value});
 
 	render () {
 		return (

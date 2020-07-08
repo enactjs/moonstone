@@ -36,7 +36,7 @@ class ExpandableListChildrenLengthUpdate extends React.Component {
 		this.setState(({index}) => ({
 			index: 1 - index
 		}));
-	}
+	};
 
 	render () {
 		return (
@@ -63,13 +63,13 @@ class ExpandableListWithAddedChildren extends React.Component {
 		this.setState({
 			list: []
 		});
-	}
+	};
 
 	setTen = () => {
 		this.setState({
 			list: ['a', 'b', 'c', 'd', 'e', 'a', 'b', 'c', 'd', 'e']
 		});
-	}
+	};
 
 	render () {
 		return (

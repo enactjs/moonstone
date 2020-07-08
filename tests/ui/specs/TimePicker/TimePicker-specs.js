@@ -1,3 +1,4 @@
+/* eslint-disable no-undefined */
 const Page = require('./TimePickerPage');
 const {expectClosed, expectOpen, expectNoLabels, extractValues, validateTitle} = require('./TimePicker-utils.js');
 

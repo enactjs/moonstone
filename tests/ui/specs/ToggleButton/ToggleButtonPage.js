@@ -12,10 +12,18 @@ class ToggleButtonInterface {
 		return browser.execute((el) => el.focus(), $(`#${this.id}`));
 	}
 
-	get self () { return $(`#${this.id}`); }
-	get valueText () { return getText(getMarqueeText(this.self)); }
-	get isSelected () { return browser.$(`#${this.id}.ToggleButton_ToggleButton_selected`).isExisting(); }
-	get isSmall () { return browser.$(`#${this.id}.ToggleButton_ToggleButton_small`).isExisting(); }
+	get self () {
+		return $(`#${this.id}`);
+	}
+	get valueText () {
+		return getText(getMarqueeText(this.self));
+	}
+	get isSelected () {
+		return browser.$(`#${this.id}.ToggleButton_ToggleButton_selected`).isExisting();
+	}
+	get isSmall () {
+		return browser.$(`#${this.id}.ToggleButton_ToggleButton_small`).isExisting();
+	}
 }
 
 class ToggleButtonPage extends Page {

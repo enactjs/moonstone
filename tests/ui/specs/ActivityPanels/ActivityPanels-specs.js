@@ -1,3 +1,4 @@
+/* eslint-disable no-undefined */
 let Page = require('./ActivityPanelsPage');
 
 describe('ActivityPanels', function () {

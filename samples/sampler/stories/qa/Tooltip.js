@@ -51,7 +51,7 @@ class TooltipTest extends React.Component {
 
 	handleClick = () => {
 		this.setState({showButton: false});
-	}
+	};
 
 	render () {
 		return (
@@ -95,7 +95,7 @@ class ChangeableTooltip extends React.Component {
 		} else {
 			this.setState({text: 'short'});
 		}
-	}
+	};
 
 	handleChangeLeft = ({value}) => {
 		this.setState(prevState => ({
@@ -104,7 +104,7 @@ class ChangeableTooltip extends React.Component {
 				left: value
 			}
 		}));
-	}
+	};
 
 	handleChangeTop = ({value}) => {
 		this.setState(prevState => ({
@@ -113,7 +113,7 @@ class ChangeableTooltip extends React.Component {
 				top: value
 			}
 		}));
-	}
+	};
 
 	render () {
 		const {left, top} = this.state.position;
@@ -189,19 +189,19 @@ class TooltipFollow extends React.Component {
 		this.setState((prevState) => {
 			return {widthMinus: prevState.widthMinus - 30};
 		});
-	}
+	};
 
 	handleWidthPlusClick = () => {
 		this.setState((prevState) => {
 			return {widthPlus: prevState.widthPlus + 30};
 		});
-	}
+	};
 
 	handlePositionClick = () => {
 		this.setState((prevState) => {
 			return {left: prevState.left + 30};
 		});
-	}
+	};
 
 	render = () => {
 		return (
@@ -255,7 +255,7 @@ class TooltipFollow extends React.Component {
 				</Cell>
 			</Layout>
 		);
-	}
+	};
 }
 
 

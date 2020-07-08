@@ -77,7 +77,7 @@ const forwardBlur = forward('onBlur'),
  */
 
 const PickerBase = class extends React.Component {
-	static displayName = 'Picker'
+	static displayName = 'Picker';
 
 	static propTypes = /** @lends moonstone/internal/Picker.Picker.prototype */ {
 		/**
@@ -387,7 +387,7 @@ const PickerBase = class extends React.Component {
 		 * @public
 		 */
 		wrap: PropTypes.bool
-	}
+	};
 
 	static defaultProps = {
 		accessibilityHint: '',
@@ -395,7 +395,7 @@ const PickerBase = class extends React.Component {
 		spotlightDisabled: false,
 		step: 1,
 		value: 0
-	}
+	};
 
 	constructor (props) {
 		super(props);
@@ -445,14 +445,14 @@ const PickerBase = class extends React.Component {
 	computeNextValue = (delta) => {
 		const {min, max, value, wrap} = this.props;
 		return wrap ? wrapRange(min, max, value + delta) : clamp(min, max, value + delta);
-	}
+	};
 
-	adjustDirection = (dir) => this.props.reverse ? -dir : dir
+	adjustDirection = (dir) => this.props.reverse ? -dir : dir;
 
 	hasReachedBound = (delta) => {
 		const {value} = this.props;
 		return this.computeNextValue(this.adjustDirection(delta)) === value;
-	}
+	};
 
 	updateValue = (dir) => {
 		const {disabled, onChange, step} = this.props;
@@ -462,7 +462,7 @@ const PickerBase = class extends React.Component {
 			const value = this.computeNextValue(dir * step);
 			onChange({value});
 		}
-	}
+	};
 
 	handleBlur = (ev) => {
 		forwardBlur(ev, this.props);
@@ -470,7 +470,7 @@ const PickerBase = class extends React.Component {
 		this.setState({
 			active: false
 		});
-	}
+	};
 
 	handleFocus = (ev) => {
 		forwardFocus(ev, this.props);
@@ -478,48 +478,48 @@ const PickerBase = class extends React.Component {
 		this.setState({
 			active: true
 		});
-	}
+	};
 
 	setTransitionDirection = (dir) => {
 		// change the transition direction based on the button press
 		this.reverseTransition = !(dir > 0);
-	}
+	};
 
 	handleDecrement = () => {
 		if (!this.hasReachedBound(-this.props.step)) {
 			this.updateValue(-1);
 			this.setPressedState(-1);
 		}
-	}
+	};
 
 	handleIncrement = () => {
 		if (!this.hasReachedBound(this.props.step)) {
 			this.updateValue(1);
 			this.setPressedState(1);
 		}
-	}
+	};
 
 	setPressedState = (pressed) => {
 		const {joined} = this.props;
 		if (joined) {
 			this.setState({pressed});
 		}
-	}
+	};
 
 	clearPressedState = () => {
 		this.pickerButtonPressed = 0;
 		this.setState({
 			pressed: 0
 		});
-	}
+	};
 
-	emulateMouseUp = new Job(this.clearPressedState, 175)
+	emulateMouseUp = new Job(this.clearPressedState, 175);
 
 	handleUp = () => {
 		if (this.props.joined && (this.pickerButtonPressed !== 0 || this.state.pressed !== 0)) {
 			this.emulateMouseUp.start();
 		}
-	}
+	};
 
 	handleDown = () => {
 		const {joined} = this.props;
@@ -531,12 +531,12 @@ const PickerBase = class extends React.Component {
 			this.handleDecrement();
 			this.emulateMouseUp.start();
 		}
-	}
+	};
 
 	handleIncDown = () => {
 		this.pickerButtonPressed = true;
 		this.handleIncrement();
-	}
+	};
 
 	handleWheel = (ev) => {
 		const {step} = this.props;
@@ -565,19 +565,19 @@ const PickerBase = class extends React.Component {
 				ev.stopPropagation();
 			}
 		}
-	}
+	};
 
-	throttleWheelInc = new Job(this.handleIncrement, 100)
+	throttleWheelInc = new Job(this.handleIncrement, 100);
 
-	throttleWheelDec = new Job(this.handleDecrement, 100)
+	throttleWheelDec = new Job(this.handleDecrement, 100);
 
 	setDecPickerButtonPressed = () => {
 		this.pickerButtonPressed = -1;
-	}
+	};
 
 	setIncPickerButtonPressed = () => {
 		this.pickerButtonPressed = 1;
-	}
+	};
 
 	handleHoldPulse = () => {
 		const {joined} = this.props;
@@ -586,7 +586,7 @@ const PickerBase = class extends React.Component {
 		} else if (joined && this.pickerButtonPressed === -1) {
 			this.handleDecrement();
 		}
-	}
+	};
 
 	handleKeyDown = (ev) => {
 		const {
@@ -625,7 +625,7 @@ const PickerBase = class extends React.Component {
 				onSpotlightRight(ev);
 			}
 		}
-	}
+	};
 
 	handleKeyUp = (ev) => {
 		const {
@@ -643,7 +643,7 @@ const PickerBase = class extends React.Component {
 				this.pickerButtonPressed = 0;
 			}
 		}
-	}
+	};
 
 	handleDecKeyDown = (ev) => {
 		const {keyCode} = ev;
@@ -669,7 +669,7 @@ const PickerBase = class extends React.Component {
 				forward(`onSpotlight${cap(direction)}`, ev, this.props);
 			}
 		}
-	}
+	};
 
 	handleIncKeyDown = (ev) => {
 		const {keyCode} = ev;
@@ -695,7 +695,7 @@ const PickerBase = class extends React.Component {
 				forward(`onSpotlight${cap(direction)}`, ev, this.props);
 			}
 		}
-	}
+	};
 
 	handleVoice = (ev) => {
 		const voiceIndex = ev && ev.detail && typeof ev.detail.matchedIndex !== 'undefined' && Number(ev.detail.matchedIndex);
@@ -708,7 +708,7 @@ const PickerBase = class extends React.Component {
 				ev.preventDefault();
 			}
 		}
-	}
+	};
 
 	determineClasses (decrementerDisabled, incrementerDisabled) {
 		const {joined, orientation, width} = this.props;

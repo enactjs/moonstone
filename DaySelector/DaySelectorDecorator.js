@@ -85,7 +85,7 @@ function getLocaleState (dayNameLength, locale) {
 const DaySelectorDecorator = hoc((config, Wrapped) => {	// eslint-disable-line no-unused-vars
 	return class extends React.Component {
 
-		static displayName = 'DaySelectorDecorator'
+		static displayName = 'DaySelectorDecorator';
 
 		static propTypes = /** @lends moonstone/DaySelector.DaySelectorDecorator.prototype */ {
 			/**
@@ -173,12 +173,12 @@ const DaySelectorDecorator = hoc((config, Wrapped) => {	// eslint-disable-line n
 			 * @private
 			 */
 			title: PropTypes.any
-		}
+		};
 
 		static defaultProps = {
 			dayNameLength: 'long',
 			disabled: false
-		}
+		};
 
 		/*
 		 * Determines which day type should be returned, based on the selected indices.
@@ -279,7 +279,7 @@ const DaySelectorDecorator = hoc((config, Wrapped) => {	// eslint-disable-line n
 			const content = this.getSelectedDayString(selected, labels);
 
 			forwardSelect({selected, content}, this.props);
-		}
+		};
 
 		render () {
 			const {dayNameLength, locale, selected, ...rest} = this.props;

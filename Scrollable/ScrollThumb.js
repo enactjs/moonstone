@@ -22,11 +22,11 @@ class ScrollThumb extends Component {
 		 * @private
 		 */
 		cbAlertThumb: PropTypes.func
-	}
+	};
 
 	static defaultProps = {
 		cbAlertThumb: nop
-	}
+	};
 
 	componentDidUpdate () {
 		this.props.cbAlertThumb();

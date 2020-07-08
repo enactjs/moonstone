@@ -53,7 +53,7 @@ class ContextualPopupWithActivator extends React.Component {
 
 	handleOpenToggle = () => {
 		this.setState(({open}) => ({open: !open}));
-	}
+	};
 
 	render () {
 		return (
@@ -86,17 +86,17 @@ class ContextualPopupWithArrowFunction extends React.Component {
 
 	handleOnClick = () => {
 		this.setState({isOpen: true});
-	}
+	};
 
 	handleItemClick = () => {
 		this.setState((state) => {
 			return {twoGroup: !state.twoGroup};
 		});
-	}
+	};
 
 	setRef = (node) => {
 		this.ref = node;
-	}
+	};
 
 	popupComponent = () => {
 		return (

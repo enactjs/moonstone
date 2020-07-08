@@ -1,3 +1,4 @@
+/* eslint-disable no-undefined */
 let Page = require('./PopupPage'),
 	{validateTitle, expectClosed, expectOpen, expectNoneScrimOpen, expectCloseButton} = require('./Popup-utils.js');
 
@@ -806,7 +807,7 @@ describe('Popup', function () {
 
 		describe('5-way and Pointer', function () {
 
-			it('should retain spotlight on the Close button inside the popup [GT-21627]', function (){
+			it('should retain spotlight on the Close button inside the popup [GT-21627]', function () {
 				Page.waitTransitionEnd(3000, undefined, () => {
 					popupCommon.buttonPopup6.click();
 				});
@@ -852,7 +853,7 @@ describe('Popup', function () {
 				expect(popup.buttonCancel.isFocused()).to.be.true();
 			});
 
-			it('should not spot Buttons Outside of Popup - [GT-21630]', function (){
+			it('should not spot Buttons Outside of Popup - [GT-21630]', function () {
 				Page.waitTransitionEnd(3000, undefined, () => {
 					popupCommon.buttonPopup6.click();
 				});
@@ -1034,7 +1035,7 @@ describe('Popup', function () {
 
 		describe('5-way and Pointer', function () {
 
-			it('should navigate to nearest neighbor [GT-25513]', function (){
+			it('should navigate to nearest neighbor [GT-25513]', function () {
 				Page.waitTransitionEnd(3000, undefined, () => {
 					popupCommon.buttonPopup7.click();
 				});

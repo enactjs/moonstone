@@ -138,7 +138,7 @@ const ReadyState = {
 
 const DropdownListSpotlightDecorator = hoc((config, Wrapped) => {
 	return class extends React.Component {
-		static displayName = 'DropdownListSpotlightDecorator'
+		static displayName = 'DropdownListSpotlightDecorator';
 
 		static propTypes = {
 			/*
@@ -147,7 +147,7 @@ const DropdownListSpotlightDecorator = hoc((config, Wrapped) => {
 			 * @type {Number}
 			 */
 			selected: PropTypes.number
-		}
+		};
 
 		constructor (props) {
 			super(props);
@@ -177,7 +177,7 @@ const DropdownListSpotlightDecorator = hoc((config, Wrapped) => {
 
 		setScrollTo = (scrollTo) => {
 			this.scrollTo = scrollTo;
-		}
+		};
 
 		scrollIntoView = () => {
 			const {selected} = this.props;
@@ -191,7 +191,7 @@ const DropdownListSpotlightDecorator = hoc((config, Wrapped) => {
 			}
 
 			this.setState({ready});
-		}
+		};
 
 		focusSelected () {
 			if (Spotlight.focus(this.node.dataset.spotlightId)) {

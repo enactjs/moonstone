@@ -33,7 +33,7 @@ class HourPicker extends React.Component {
 	static propTypes = {
 		hasMeridiem: PropTypes.bool,
 		value: PropTypes.number
-	}
+	};
 
 	constructor (props) {
 		super(props);

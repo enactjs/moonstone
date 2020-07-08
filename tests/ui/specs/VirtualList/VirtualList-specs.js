@@ -408,7 +408,7 @@ describe('VirtualList', function () {
 			Page.spotlightUp();
 			// Verify Step 5: 1. The list *does not* Scroll Down.
 			// Check the bottomVisibleItem is still the same as the one before 5-way Up to check the list did not scroll Down
-			expect(Number(bottomId.slice(4)) === ((Number((Page.bottomVisibleItemId().slice(4)))))-1).to.be.true();
+			expect(Number(bottomId.slice(4)) === ((Number((Page.bottomVisibleItemId().slice(4))))) - 1).to.be.true();
 			// Verify Step 5: 2. The Spotted item is placed above the item on the Bottom.
 			expectFocusedItem(Number((bottomId.slice(4))), 'focus bottomId');
 			// Step 6: 5-way Up to the first item ('*Item 000*').

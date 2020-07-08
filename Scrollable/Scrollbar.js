@@ -19,7 +19,7 @@ import componentCss from './Scrollbar.module.less';
  * @private
  */
 class ScrollbarBase extends Component {
-	static displayName = 'ScrollbarBase'
+	static displayName = 'ScrollbarBase';
 
 	static propTypes = /** @lends moonstone/Scrollable.Scrollbar.prototype */ {
 		/**
@@ -78,12 +78,12 @@ class ScrollbarBase extends Component {
 		 * @public
 		 */
 		vertical: PropTypes.bool
-	}
+	};
 
 	static defaultProps = {
 		corner: false,
 		vertical: true
-	}
+	};
 
 	constructor (props) {
 		super(props);

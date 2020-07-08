@@ -18,27 +18,61 @@ class ExpandableInterface {
 		return browser.execute((el) => el.focus(), $(`#${this.id}>div`));
 	}
 
-	get self () { return element(`#${this.id}`, browser); }
-	get input () { return getInput(this.self); }
-	get chevron () { return getText(getIcon(this.self)); }
-	get title () { return getLabeledItem(this.self); }
-	get titleText () { return getText(getLabeledItemTitle(this.self)); }
-	get titleTextMarquee () { return getLabeledItemTitle(this.self).$('.enact_ui_Marquee_Marquee_text'); }
-	get titleIcon () { return getLabeledItemIcon(this.self); }
-	get label () { return getLabeledItemValue(this.self); }
-	get labelText () { return getText(this.label); }
-	get isLabelExists () { return this.self.$('.LabeledItem_LabeledItem_label').isDisplayed(); }
+	get self () {
+		return element(`#${this.id}`, browser);
+	}
+	get input () {
+		return getInput(this.self);
+	}
+	get chevron () {
+		return getText(getIcon(this.self));
+	}
+	get title () {
+		return getLabeledItem(this.self);
+	}
+	get titleText () {
+		return getText(getLabeledItemTitle(this.self));
+	}
+	get titleTextMarquee () {
+		return getLabeledItemTitle(this.self).$('.enact_ui_Marquee_Marquee_text');
+	}
+	get titleIcon () {
+		return getLabeledItemIcon(this.self);
+	}
+	get label () {
+		return getLabeledItemValue(this.self);
+	}
+	get labelText () {
+		return getText(this.label);
+	}
+	get isLabelExists () {
+		return this.self.$('.LabeledItem_LabeledItem_label').isDisplayed();
+	}
 	get isOpen () {
 		return !(!this.self.$('.enact_ui_Transition_Transition_transition').isExisting() ||
 		!this.self.$('.enact_ui_Transition_Transition_shown').isExisting() && this.self.$('.enact_ui_Transition_Transition_hidden').isExisting());
 	}
-	get iconBefore () { return element('.Input_Input_iconBefore', this.self); }
-	get iconBeforeSymbol () { return getText(this.iconBefore); }
-	get iconAfter () { return element('.Input_Input_iconAfter', this.self); }
-	get iconAfterSymbol () { return getText(this.iconAfter); }
-	get isIconBefore () { return this.self.$('.Input_Input_iconBefore').isExisting();}
-	get isIconAfter () { return this.self.$('.Input_Input_iconAfter').isExisting();}
-	get placeHolder () { return this.self.$('.Input_Input_input').getAttribute('placeholder'); }
+	get iconBefore () {
+		return element('.Input_Input_iconBefore', this.self);
+	}
+	get iconBeforeSymbol () {
+		return getText(this.iconBefore);
+	}
+	get iconAfter () {
+		return element('.Input_Input_iconAfter', this.self);
+	}
+	get iconAfterSymbol () {
+		return getText(this.iconAfter);
+	}
+	get isIconBefore () {
+		return this.self.$('.Input_Input_iconBefore').isExisting();
+	}
+	get isIconAfter () {
+		return this.self.$('.Input_Input_iconAfter').isExisting();
+	}
+	get placeHolder () {
+		return this.self.$('.Input_Input_input').getAttribute('placeholder');
+	}
 
 }
 

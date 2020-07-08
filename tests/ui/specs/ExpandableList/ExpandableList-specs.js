@@ -1,3 +1,4 @@
+/* eslint-disable no-undefined */
 const Page = require('./ExpandableListPage'),
 	{validateTitle, expectClosed, expectOpen} = require('./ExpandableList-utils.js');
 
