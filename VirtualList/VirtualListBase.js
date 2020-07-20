@@ -456,7 +456,7 @@ const VirtualListBaseFactory = (type) => {
 			this.isScrolledBy5way = false;
 			this.isScrolledByJump = false;
 
-			if (nextIndex >= 0) {
+			if (nextIndex >= 0 && index >= 0) {
 				const
 					row = Math.floor(index / dimensionToExtent),
 					nextRow = Math.floor(nextIndex / dimensionToExtent),
@@ -522,7 +522,7 @@ const VirtualListBaseFactory = (type) => {
 						if (!ev.currentTarget.contains(candidate)) { // if the candidate is out of a list
 							isLeaving = true;
 						}
-					} else if (candidateIndex !== index) { // the focused node is an item and focus will move out of the item
+					} else if (index >= 0 && candidateIndex !== index) { // the focused node is an item and focus will move out of the item
 						const {repeat} = ev;
 						const {isDownKey, isUpKey, isLeftMovement, isRightMovement, isWrapped, nextIndex} = this.getNextIndex({index, keyCode, repeat});
 
