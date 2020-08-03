@@ -56,7 +56,7 @@ const ExpandableSpotlightDecorator = hoc(defaultConfig, (config, Wrapped) => {
 	const {getChildFocusTarget, noPointerMode} = config;
 
 	return class extends React.Component {
-		static displayName = 'ExpandableSpotlightDecorator'
+		static displayName = 'ExpandableSpotlightDecorator';
 
 		static propTypes =  /** @lends moonstone/ExpandableItem.ExpandableSpotlightDecorator.prototype */ {
 			/**
@@ -86,12 +86,12 @@ const ExpandableSpotlightDecorator = hoc(defaultConfig, (config, Wrapped) => {
 			 * @public
 			 */
 			open: PropTypes.bool
-		}
+		};
 
 		static defaultProps = {
 			disabled: false,
 			noAutoFocus: false
-		}
+		};
 
 		constructor (props) {
 			super(props);
@@ -148,7 +148,7 @@ const ExpandableSpotlightDecorator = hoc(defaultConfig, (config, Wrapped) => {
 					}
 				}
 			}
-		}
+		};
 
 		highlightLabeledItem = () => {
 			const current = Spotlight.getCurrent();
@@ -183,7 +183,7 @@ const ExpandableSpotlightDecorator = hoc(defaultConfig, (config, Wrapped) => {
 
 				setContainerLastFocusedElement(label, containerIds);
 			}
-		}
+		};
 
 		highlight = (callback) => {
 			if (Spotlight.isPaused()) return;
@@ -202,58 +202,58 @@ const ExpandableSpotlightDecorator = hoc(defaultConfig, (config, Wrapped) => {
 			if (changePointerMode) {
 				Spotlight.setPointerMode(pointerMode);
 			}
-		}
+		};
 
 
 		pause = () => {
 			this.paused.pause();
-		}
+		};
 
 		resume = () => {
 			this.paused.resume();
-		}
+		};
 
 		handleHide = () => {
 			this.resume();
 			this.highlight(this.highlightLabeledItem);
-		}
+		};
 
-		handle = handle.bind(this)
+		handle = handle.bind(this);
 
 		handleClose = this.handle(
 			forward('onClose'),
 			this.pause
-		)
+		);
 
 		handleOpen = this.handle(
 			forward('onOpen'),
 			this.pause
-		)
+		);
 
 		handleShow = () => {
 			this.resume();
 			this.highlight(this.highlightContents);
-		}
+		};
 
 		handleBlur = () => {
 			this.renderJob.stop();
-		}
+		};
 
 		handleFocus = () => {
 			if (this.state.hideChildren) {
 				this.renderJob.idle();
 			}
-		}
+		};
 
 		renderJob = new Job(() => {
 			this.setState({
 				hideChildren: false
 			});
-		})
+		});
 
 		setContainerNode = (node) => {
 			this.containerNode = ReactDOM.findDOMNode(node);	// eslint-disable-line react/no-find-dom-node
-		}
+		};
 
 		render () {
 			const {open, hideChildren} = this.state;

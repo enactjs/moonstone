@@ -469,7 +469,7 @@ const MediaControlsBase = kind({
  */
 const MediaControlsDecorator = hoc((config, Wrapped) => {	// eslint-disable-line no-unused-vars
 	class MediaControlsDecoratorHOC extends React.Component {
-		static displayName = 'MediaControlsDecorator'
+		static displayName = 'MediaControlsDecorator';
 
 		static propTypes = /** @lends moonstone/VideoPlayer.MediaControlsDecorator.prototype */ {
 			/**
@@ -654,14 +654,14 @@ const MediaControlsDecorator = hoc((config, Wrapped) => {	// eslint-disable-line
 			 * @public
 			 */
 			visible: PropTypes.bool
-		}
+		};
 
 		static defaultProps = {
 			initialJumpDelay: 400,
 			jumpDelay: 200,
 			moreButtonColor: 'blue',
 			moreButtonSpotlightId: 'moreButton'
-		}
+		};
 
 		constructor (props) {
 			super(props);
@@ -735,7 +735,7 @@ const MediaControlsDecorator = hoc((config, Wrapped) => {	// eslint-disable-line
 
 		handleMoreClick = () => {
 			this.toggleMoreComponents();
-		}
+		};
 
 		handleKeyDown = (ev) => {
 			const {
@@ -754,7 +754,7 @@ const MediaControlsDecorator = hoc((config, Wrapped) => {	// eslint-disable-line
 				this.paused.pause();
 				this.startListeningForPulses(ev.keyCode);
 			}
-		}
+		};
 
 		handleKeyUp = (ev) => {
 			const {
@@ -794,12 +794,12 @@ const MediaControlsDecorator = hoc((config, Wrapped) => {	// eslint-disable-line
 					forward('onFastForward', ev, this.props);
 				}
 			}
-		}
+		};
 
 		handleBlur = () => {
 			this.stopListeningForPulses();
 			this.paused.resume();
-		}
+		};
 
 		startListeningForPulses = (keyCode) => {
 			// Ignore new pulse calls if key code is same, otherwise start new series if we're pulsing
@@ -812,12 +812,12 @@ const MediaControlsDecorator = hoc((config, Wrapped) => {	// eslint-disable-line
 				this.keyLoop = setTimeout(this.handlePulse, this.props.initialJumpDelay);
 				forward('onJump', {keyCode}, this.props);
 			}
-		}
+		};
 
 		handlePulse = () => {
 			forward('onJump', {keyCode: this.pulsingKeyCode}, this.props);
 			this.keyLoop = setTimeout(this.handlePulse, this.props.jumpDelay);
-		}
+		};
 
 		handlePlayButtonClick = (ev) => {
 			forward('onPlayButtonClick', ev, this.props);
@@ -826,7 +826,7 @@ const MediaControlsDecorator = hoc((config, Wrapped) => {	// eslint-disable-line
 			} else {
 				forward('onPause', ev, this.props);
 			}
-		}
+		};
 
 		stopListeningForPulses () {
 			this.pulsing = false;
@@ -845,23 +845,23 @@ const MediaControlsDecorator = hoc((config, Wrapped) => {	// eslint-disable-line
 			const max = Math.max(leftCount, rightCount);
 
 			this.mediaControlsNode.style.setProperty('--moon-video-player-max-side-components', max);
-		}
+		};
 
 		getMediaControls = (node) => {
 			this.mediaControlsNode = ReactDOM.findDOMNode(node); // eslint-disable-line react/no-find-dom-node
-		}
+		};
 
 		areMoreComponentsAvailable = () => {
 			return this.state.showMoreComponents;
-		}
+		};
 
 		showMoreComponents = () => {
 			this.setState({showMoreComponents: true});
-		}
+		};
 
 		hideMoreComponents = () => {
 			this.setState({showMoreComponents: false});
-		}
+		};
 
 		toggleMoreComponents () {
 			this.setState((prevState) => {
@@ -878,7 +878,7 @@ const MediaControlsDecorator = hoc((config, Wrapped) => {	// eslint-disable-line
 			} else if (this.props.visible) {
 				forward('onClose', ev, this.props);
 			}
-		}
+		};
 
 		render () {
 			const props = Object.assign({}, this.props);

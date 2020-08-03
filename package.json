@@ -7,7 +7,7 @@
     "bootstrap": "enact bootstrap",
     "clean": "enact clean",
     "cleanall": "enact clean --all",
-    "lint": "enact lint --local",
+    "lint": "enact lint --strict",
     "sampler": "npm run --prefix samples/sampler serve",
     "test": "enact test",
     "test-ui": "start-tests tests/ui/wdio.conf.js",
@@ -34,8 +34,7 @@
     }
   },
   "eslintConfig": {
-    "extends": "enact/strict",
-    "root": true
+    "extends": "enact-proxy/strict"
   },
   "dependencies": {
     "@enact/core": "^3.2.5",
@@ -57,6 +56,7 @@
   "devDependencies": {
     "@babel/preset-env": "^7.4.3",
     "@enact/ui-test-utils": "^0.3.0",
+    "eslint-config-enact-proxy": "^1.0.0",
     "ilib": "^14.4.0"
   }
 }

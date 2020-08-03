@@ -31,7 +31,7 @@ const EditableIntegerPickerDecorator = hoc((config, Wrapped) => {	// eslint-disa
 
 	return class extends React.Component {
 
-		static displayName = 'EditableIntegerPickerDecorator'
+		static displayName = 'EditableIntegerPickerDecorator';
 
 		static propTypes =  /** @lends moonstone/EditableIntegerPicker.EditableIntegerPickerDecorator.prototype */ {
 			/**
@@ -77,11 +77,11 @@ const EditableIntegerPickerDecorator = hoc((config, Wrapped) => {	// eslint-disa
 			 * @public
 			 */
 			value: PropTypes.number
-		}
+		};
 
 		static defaultProps = {
 			value: 0
-		}
+		};
 
 		constructor (props) {
 			super(props);
@@ -103,7 +103,7 @@ const EditableIntegerPickerDecorator = hoc((config, Wrapped) => {	// eslint-disa
 				});
 				forwardChange(ev, this.props);
 			}
-		}
+		};
 
 		prepareInput = () => {
 			this.setState({
@@ -111,25 +111,25 @@ const EditableIntegerPickerDecorator = hoc((config, Wrapped) => {	// eslint-disa
 				noAnimation: true
 			});
 			this.freezeSpotlight(true);
-		}
+		};
 
 		handleClick = (ev) => {
 			if (!this.props.disabled && ev.type === 'click') {
 				this.prepareInput();
 			}
 			forwardClick(ev, this.props);
-		}
+		};
 
 		getInputNode = (node) => {
 			if (node) {
 				this.inputNode = node;
 				this.inputNode.focus();
 			}
-		}
+		};
 
 		getPickerNode = (node) => {
 			this.pickerNode = ReactDOM.findDOMNode(node);	// eslint-disable-line react/no-find-dom-node
-		}
+		};
 
 		freezeSpotlight = (freeze) => {
 			if (!freeze) {
@@ -137,7 +137,7 @@ const EditableIntegerPickerDecorator = hoc((config, Wrapped) => {	// eslint-disa
 			} else {
 				this.paused.pause();
 			}
-		}
+		};
 
 		handleKeyDown = (ev) => {
 			const keyCode = ev.keyCode;
@@ -148,7 +148,7 @@ const EditableIntegerPickerDecorator = hoc((config, Wrapped) => {	// eslint-disa
 				this.handleBlur(ev);
 			}
 			forwardKeyDown(ev, this.props);
-		}
+		};
 
 		handleBlur = (ev) => {
 			const value = this.validateValue(parseInt(ev.target.value));
@@ -163,11 +163,11 @@ const EditableIntegerPickerDecorator = hoc((config, Wrapped) => {	// eslint-disa
 				this.freezeSpotlight(false);
 			});
 			forwardBlur(ev, this.props);
-		}
+		};
 
 		validateValue = (value) => {
 			return (value <= this.props.max) && (value >= this.props.min) ? value : this.state.value;
-		}
+		};
 
 		render () {
 			return (

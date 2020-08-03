@@ -16,24 +16,47 @@ class VirtualListPage extends Page {
 		super.open('VirtualList-View', urlExtra);
 	}
 
-	get buttonFocusableScrollbar () { return element('#focusableScrollbar', browser); }
-	get buttonHideScrollbar () { return element('#hideScrollbar', browser); }
-	get buttonTop () { return element('#top', browser); }
-	get buttonLeft () { return element('#left', browser); }
-	get buttonRight () { return element('#right', browser); }
-	get buttonBottom () { return element('#bottom', browser); }
-	get buttonScrollUp () { return element(`${scrollbarSelector} :nth-child(1)`, browser); }
-	get buttonScrollDown () { return element(`${scrollbarSelector} :nth-child(3)`, browser); }
-	get buttonWrap () { return element('#wrap', browser); }
-	get scrollBarSize () { return $(`${scrollbarSelector}`).getSize(); }
-	get list () { return element('#list', browser); }
-	get listSize () { return $(`${scrollableSelector}`).getSize(); }
+	get buttonFocusableScrollbar () {
+		return element('#focusableScrollbar', browser);
+	}
+	get buttonHideScrollbar () {
+		return element('#hideScrollbar', browser);
+	}
+	get buttonTop () {
+		return element('#top', browser);
+	}
+	get buttonLeft () {
+		return element('#left', browser);
+	}
+	get buttonRight () {
+		return element('#right', browser);
+	}
+	get buttonBottom () {
+		return element('#bottom', browser);
+	}
+	get buttonScrollUp () {
+		return element(`${scrollbarSelector} :nth-child(1)`, browser);
+	}
+	get buttonScrollDown () {
+		return element(`${scrollbarSelector} :nth-child(3)`, browser);
+	}
+	get buttonWrap () {
+		return element('#wrap', browser);
+	}
+	get scrollBarSize () {
+		return $(`${scrollbarSelector}`).getSize();
+	}
+	get list () {
+		return element('#list', browser);
+	}
+	get listSize () {
+		return $(`${scrollableSelector}`).getSize();
+	}
 
 	item (id) {
 		return element(`#${typeof id === 'number' ? `item${id}` : id}`, browser);
 	}
 
-	/* global document */
 	topVisibleItemId () {
 		return browser.execute(function (_scrollableSelector) {
 			const scroller = document.querySelector(_scrollableSelector),
@@ -56,7 +79,6 @@ class VirtualListPage extends Page {
 		}, scrollableSelector);
 	}
 
-	/* global document */
 	bottomVisibleItemId () {
 		return browser.execute(function (_scrollableSelector) {
 			const scroller = document.querySelector(_scrollableSelector),
@@ -82,7 +104,6 @@ class VirtualListPage extends Page {
 		}, scrollableSelector);
 	}
 
-	/* global document */
 	itemOffsetTopById (id) {
 		return browser.execute(function (_element) {
 			return _element.getBoundingClientRect().top;

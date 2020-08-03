@@ -41,7 +41,7 @@ const dataContainerDisabledAttribute = 'data-spotlight-container-disabled';
  * @public
  */
 class ScrollerBase extends Component {
-	static displayName = 'ScrollerBase'
+	static displayName = 'ScrollerBase';
 
 	static propTypes = /** @lends moonstone/Scroller.ScrollerBase.prototype */ {
 		/**
@@ -85,7 +85,7 @@ class ScrollerBase extends Component {
 		 * @private
 		 */
 		spotlightId: PropTypes.string
-	}
+	};
 
 	componentDidMount () {
 		this.configureSpotlight();
@@ -106,7 +106,7 @@ class ScrollerBase extends Component {
 		this.setContainerDisabled(false);
 	}
 
-	uiRefCurrent = null
+	uiRefCurrent = null;
 
 	configureSpotlight () {
 		Spotlight.set(this.props.spotlightId, {
@@ -129,7 +129,7 @@ class ScrollerBase extends Component {
 				return node;
 			}
 		} while ((node = node.parentNode) && node !== this.uiRefCurrent.containerRef.current);
-	}
+	};
 
 	/**
 	 * Calculates the "focus bounds" of a node. If the node is within a spotlight container, that
@@ -143,7 +143,7 @@ class ScrollerBase extends Component {
 	getFocusedItemBounds = (node) => {
 		node = this.getSpotlightContainerForNode(node) || node;
 		return node.getBoundingClientRect();
-	}
+	};
 
 	/**
 	 * Calculates the new `scrollTop`.
@@ -227,7 +227,7 @@ class ScrollerBase extends Component {
 		const itemBounds = item.getBoundingClientRect();
 
 		return calcItemInView(itemBounds, scrollerBounds, scrollTop, scrollHeight, scrollTopDelta);
-	}
+	};
 
 	/**
 	 * Calculates the new `scrollLeft`.
@@ -266,7 +266,7 @@ class ScrollerBase extends Component {
 		}
 
 		return nextScrollLeft;
-	}
+	};
 
 	/**
 	 * Calculates the new top and left position for scroller based on focusedItem.
@@ -300,17 +300,17 @@ class ScrollerBase extends Component {
 		}
 
 		return this.uiRefCurrent.scrollPos;
-	}
+	};
 
 	focusOnNode = (node) => {
 		if (node) {
 			Spotlight.focus(node);
 		}
-	}
+	};
 
 	handleGlobalKeyDown = () => {
 		this.setContainerDisabled(false);
-	}
+	};
 
 	setContainerDisabled = (bool) => {
 		const
@@ -326,7 +326,7 @@ class ScrollerBase extends Component {
 				document.removeEventListener('keydown', this.handleGlobalKeyDown, {capture: true});
 			}
 		}
-	}
+	};
 
 	handleLeaveContainer = ({direction, target}) => {
 		const contentsContainer = this.uiRefCurrent.containerRef.current;
@@ -344,14 +344,14 @@ class ScrollerBase extends Component {
 				this.props.scrollAndFocusScrollbarButton(direction);
 			}
 		}
-	}
+	};
 
 	initUiRef = (ref) => {
 		if (ref) {
 			this.uiRefCurrent = ref;
 			this.props.initUiChildRef(ref);
 		}
-	}
+	};
 
 	render () {
 		const props = Object.assign({}, this.props);

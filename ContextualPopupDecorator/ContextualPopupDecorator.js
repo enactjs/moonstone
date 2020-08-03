@@ -76,7 +76,7 @@ const Decorator = hoc(defaultConfig, (config, Wrapped) => {
 	const {noArrow, noSkin, openProp} = config;
 
 	return class extends React.Component {
-		static displayName = 'ContextualPopupDecorator'
+		static displayName = 'ContextualPopupDecorator';
 
 		static propTypes = /** @lends moonstone/ContextualPopupDecorator.ContextualPopupDecorator.prototype */ {
 			/**
@@ -231,7 +231,7 @@ const Decorator = hoc(defaultConfig, (config, Wrapped) => {
 			 * @public
 			 */
 			spotlightRestrict: PropTypes.oneOf(['none', 'self-first', 'self-only'])
-		}
+		};
 
 		static defaultProps = {
 			'data-webos-voice-exclusive': true,
@@ -240,7 +240,7 @@ const Decorator = hoc(defaultConfig, (config, Wrapped) => {
 			open: false,
 			showCloseButton: false,
 			spotlightRestrict: 'self-first'
-		}
+		};
 
 		constructor (props) {
 			super(props);
@@ -474,17 +474,17 @@ const Decorator = hoc(defaultConfig, (config, Wrapped) => {
 					containerPosition: this.getContainerPosition(containerNode, clientNode)
 				});
 			}
-		}
+		};
 
 		getContainerNode = (node) => {
 			this.containerNode = node;
-		}
+		};
 
 		getClientNode = (node) => {
 			this.clientNode = ReactDOM.findDOMNode(node); // eslint-disable-line react/no-find-dom-node
-		}
+		};
 
-		handle = handle.bind(this)
+		handle = handle.bind(this);
 
 		handleKeyUp = this.handle(
 			forProp('open', true),
@@ -492,7 +492,7 @@ const Decorator = hoc(defaultConfig, (config, Wrapped) => {
 			() => Spotlight.getCurrent() === this.state.activator,
 			stop,
 			forward('onClose')
-		)
+		);
 
 		handleOpen = (ev) => {
 			forward('onOpen', ev, this.props);
@@ -503,14 +503,14 @@ const Decorator = hoc(defaultConfig, (config, Wrapped) => {
 				activator: current
 			});
 			this.spotPopupContent();
-		}
+		};
 
 		handleClose = () => {
 			this.updateLeaveFor(null);
 			this.setState({
 				activator: null
 			});
-		}
+		};
 
 		handleDirectionalKey (ev) {
 			// prevent default page scrolling
@@ -543,7 +543,7 @@ const Decorator = hoc(defaultConfig, (config, Wrapped) => {
 					this.spotPopupContent();
 				}
 			}
-		}
+		};
 
 		// handle key event from contextual popup and closes the popup
 		handleContainerKeyDown = (ev) => {
@@ -558,7 +558,7 @@ const Decorator = hoc(defaultConfig, (config, Wrapped) => {
 			if (Spotlight.move(direction) && !this.containerNode.contains(Spotlight.getCurrent())) {
 				forward('onClose', ev, this.props);
 			}
-		}
+		};
 
 		spotActivator = (activator) => {
 			if (activator && activator === Spotlight.getCurrent()) {
@@ -567,7 +567,7 @@ const Decorator = hoc(defaultConfig, (config, Wrapped) => {
 			if (!Spotlight.focus(activator)) {
 				Spotlight.focus();
 			}
-		}
+		};
 
 		spotPopupContent = () => {
 			const {spotlightRestrict} = this.props;
@@ -580,7 +580,7 @@ const Decorator = hoc(defaultConfig, (config, Wrapped) => {
 			if (!Spotlight.focus(containerId)) {
 				Spotlight.setActiveContainer(containerId);
 			}
-		}
+		};
 
 		render () {
 			const {'data-webos-voice-exclusive': voiceExclusive, showCloseButton, popupComponent: PopupComponent, popupClassName, noAutoDismiss, open, onClose, popupProps, skin, spotlightRestrict, ...rest} = this.props;

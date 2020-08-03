@@ -206,7 +206,7 @@ const VirtualListBaseFactory = (type) => {
 				PropTypes.bool,
 				PropTypes.oneOf(['noAnimation'])
 			])
-		}
+		};
 
 		static defaultProps = {
 			dataSize: 0,
@@ -214,7 +214,7 @@ const VirtualListBaseFactory = (type) => {
 			pageScroll: false,
 			spacing: 0,
 			wrap: false
-		}
+		};
 
 		constructor (props) {
 			super(props);
@@ -278,14 +278,14 @@ const VirtualListBaseFactory = (type) => {
 			this.setContainerDisabled(false);
 		}
 
-		isScrolledBy5way = false
-		isScrolledByJump = false
-		isWrappedBy5way = false
-		lastFocusedIndex = null
-		preservedIndex = null
-		lastSpotlightDirection = null
-		restoreLastFocused = false
-		uiRefCurrent = null
+		isScrolledBy5way = false;
+		isScrolledByJump = false;
+		isWrappedBy5way = false;
+		lastFocusedIndex = null;
+		preservedIndex = null;
+		lastSpotlightDirection = null;
+		restoreLastFocused = false;
+		uiRefCurrent = null;
 
 		setContainerDisabled = (bool) => {
 			const
@@ -301,7 +301,7 @@ const VirtualListBaseFactory = (type) => {
 					document.removeEventListener('keydown', this.handleGlobalKeyDown, {capture: true});
 				}
 			}
-		}
+		};
 
 		configureSpotlight = (spotlightId) => {
 			const {spacing} = this.props;
@@ -323,7 +323,7 @@ const VirtualListBaseFactory = (type) => {
 				 */
 				obliqueMultiplier: spacing > 0 ? spacing : 1
 			});
-		}
+		};
 
 		lastFocusedPersist = () => {
 			if (this.lastFocusedIndex != null) {
@@ -333,7 +333,7 @@ const VirtualListBaseFactory = (type) => {
 					key: this.lastFocusedIndex
 				};
 			}
-		}
+		};
 
 		/*
 		 * Restores the data-index into the placeholder if it exists. Tries to find a matching child
@@ -350,7 +350,7 @@ const VirtualListBaseFactory = (type) => {
 			return all.reduce((focused, node) => {
 				return focused || Number(node.dataset.index) === key && node;
 			}, null);
-		}
+		};
 
 		/*
 		 * Returns a node for a given index after checking `data-index` attribute.
@@ -367,7 +367,7 @@ const VirtualListBaseFactory = (type) => {
 			}
 
 			return null;
-		}
+		};
 
 		findSpottableItem = (indexFrom, indexTo) => {
 			const {dataSize} = this.props;
@@ -377,7 +377,7 @@ const VirtualListBaseFactory = (type) => {
 			} else {
 				return clamp(0, dataSize - 1, indexFrom);
 			}
-		}
+		};
 
 		getNextIndex = ({index, keyCode, repeat}) => {
 			const {dataSize, rtl, wrap} = this.props;
@@ -441,7 +441,7 @@ const VirtualListBaseFactory = (type) => {
 			}
 
 			return {isDownKey, isUpKey, isLeftMovement, isRightMovement, isWrapped, nextIndex};
-		}
+		};
 
 		/**
 		 * Handle `onKeyDown` event
@@ -493,7 +493,7 @@ const VirtualListBaseFactory = (type) => {
 			} else if (!repeat && Spotlight.move(direction)) {
 				SpotlightAccelerator.reset();
 			}
-		}
+		};
 
 		onKeyDown = (ev) => {
 			const {keyCode, target} = ev;
@@ -581,13 +581,13 @@ const VirtualListBaseFactory = (type) => {
 			} else if (isPageUp(keyCode) || isPageDown(keyCode)) {
 				this.isScrolledBy5way = false;
 			}
-		}
+		};
 
 		onKeyUp = ({keyCode}) => {
 			if (getDirection(keyCode) || isEnter(keyCode)) {
 				SpotlightAccelerator.reset();
 			}
-		}
+		};
 
 		/**
 		 * Handle global `onKeyDown` event
@@ -595,7 +595,7 @@ const VirtualListBaseFactory = (type) => {
 
 		handleGlobalKeyDown = () => {
 			this.setContainerDisabled(false);
-		}
+		};
 
 		/**
 		 * Focus on the Node of the VirtualList item
@@ -607,7 +607,7 @@ const VirtualListBaseFactory = (type) => {
 			}
 
 			return false;
-		}
+		};
 
 		focusByIndex = (index, direction) => {
 			const item = this.getItemNode(index);
@@ -638,7 +638,7 @@ const VirtualListBaseFactory = (type) => {
 			}
 
 			return returnVal;
-		}
+		};
 
 		/**
 		 * Manage a placeholder
@@ -656,13 +656,13 @@ const VirtualListBaseFactory = (type) => {
 					this.restoreLastFocused = true;
 				}
 			}
-		}
+		};
 
 		handleUpdateItems = ({firstIndex, lastIndex}) => {
 			if (this.restoreLastFocused && this.preservedIndex >= firstIndex && this.preservedIndex <= lastIndex) {
 				this.restoreFocus();
 			}
-		}
+		};
 
 		/**
 		 * Restore the focus of VirtualList
@@ -676,7 +676,7 @@ const VirtualListBaseFactory = (type) => {
 			}
 
 			return false;
-		}
+		};
 
 		restoreFocus = () => {
 			if (
@@ -707,7 +707,7 @@ const VirtualListBaseFactory = (type) => {
 					}
 				}
 			}
-		}
+		};
 
 		/**
 		 * calculator
@@ -756,15 +756,15 @@ const VirtualListBaseFactory = (type) => {
 
 				return this.uiRefCurrent.gridPositionToItemPosition(gridPosition);
 			}
-		}
+		};
 
-		shouldPreventScrollByFocus = () => ((type === JS) ? (this.isScrolledBy5way) : (this.isScrolledBy5way || this.isScrolledByJump))
+		shouldPreventScrollByFocus = () => ((type === JS) ? (this.isScrolledBy5way) : (this.isScrolledBy5way || this.isScrolledByJump));
 
-		shouldPreventOverscrollEffect = () => (this.isWrappedBy5way)
+		shouldPreventOverscrollEffect = () => (this.isWrappedBy5way);
 
 		setLastFocusedNode = (node) => {
 			this.lastFocusedIndex = node.dataset && getNumberValue(node.dataset.index);
-		}
+		};
 
 		updateStatesAndBounds = ({dataSize, moreInfo, numOfItems}) => {
 			const {preservedIndex} = this;
@@ -772,16 +772,16 @@ const VirtualListBaseFactory = (type) => {
 			return (this.restoreLastFocused && numOfItems > 0 && preservedIndex < dataSize && (
 				preservedIndex < moreInfo.firstVisibleIndex || preservedIndex > moreInfo.lastVisibleIndex
 			));
-		}
+		};
 
-		getScrollBounds = () => this.uiRefCurrent.getScrollBounds()
+		getScrollBounds = () => this.uiRefCurrent.getScrollBounds();
 
 		initUiRef = (ref) => {
 			if (ref) {
 				this.uiRefCurrent = ref;
 				this.props.initUiChildRef(ref);
 			}
-		}
+		};
 
 		render () {
 			const {itemRenderer, itemsRenderer, role, ...rest} = this.props;

@@ -28,13 +28,17 @@ const items = [],
 	},
 	numItems = 100;
 
-const renderItem = (size) => ({index, ...rest}) => {
-	const style = {height: size + 'px', ...itemStyle};
-	return (
-		<StatefulSwitchItem index={index} style={style} {...rest} id={`item${index}`}>
-			{items[index].item}
-		</StatefulSwitchItem>
-	);
+const renderItem = (size) => {
+	const Wrapper = ({index, ...rest}) => {
+		const style = {height: size + 'px', ...itemStyle};
+		return (
+			<StatefulSwitchItem index={index} style={style} {...rest} id={`item${index}`}>
+				{items[index].item}
+			</StatefulSwitchItem>
+		);
+	};
+	Wrapper.displayName = 'SwitchItemWrapper';
+	return Wrapper;
 };
 
 const updateDataSize = (dataSize) => {
@@ -78,7 +82,7 @@ class StatefulSwitchItem extends React.Component {
 		this.setState(({selected}) => ({
 			selected: !selected
 		}));
-	}
+	};
 
 	render () {
 		const props = Object.assign({}, this.props);
@@ -110,20 +114,20 @@ class app extends React.Component {
 		} else {
 			this.rootRef.current.dataset.keydownEvents = 1;
 		}
-	}
+	};
 
 	onScrollStart = () => {
 		this.scrollingRef.current.innerHTML = 'Scrolling';
-	}
+	};
 
 	onScrollStop = () => {
 		this.scrollingRef.current.innerHTML = 'Not Scrolling';
-	}
+	};
 
 	onToggle = ({currentTarget}) => {
 		const key = currentTarget.getAttribute('id');
 		this.setState((state) => ({[key]: !state[key]}));
-	}
+	};
 
 	render () {
 		const {focusableScrollbar, hideScrollbar, wrap} = this.state;

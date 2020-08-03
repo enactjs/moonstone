@@ -1,3 +1,4 @@
+/* eslint-disable no-undefined */
 const Page = require('./ExpandableItemPage');
 const {expectClosed, expectOpen, validateTitle, getChevronRotation} = require('./ExpandableItem-utils');
 

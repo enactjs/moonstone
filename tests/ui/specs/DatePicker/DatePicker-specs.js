@@ -1,3 +1,4 @@
+/* eslint-disable no-undefined */
 const Page = require('./DatePickerPage');
 const {daysInMonth, expectClosed, expectNoLabels, expectOpen, extractValues, validateTitle} = require('./DatePicker-utils.js');
 

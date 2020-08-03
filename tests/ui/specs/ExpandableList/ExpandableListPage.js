@@ -16,18 +16,32 @@ class ExpandableInterface {
 		return browser.execute((el) => el.focus(), $(`#${this.id}>div`));
 	}
 
-	get      self () { return element(`#${this.id}`, browser); }
-	get   chevron () { return getText(getIcon(this.self)); }
-	get     title () { return getLabeledItem(this.self); }
-	get titleText () { return getText(getLabeledItemTitle(this.self)); }
-	get     value () { return getLabeledItemValue(this.self); }
-	get valueText () { return getText(this.value); }
+	get      self () {
+		return element(`#${this.id}`, browser);
+	}
+	get   chevron () {
+		return getText(getIcon(this.self));
+	}
+	get     title () {
+		return getLabeledItem(this.self);
+	}
+	get titleText () {
+		return getText(getLabeledItemTitle(this.self));
+	}
+	get     value () {
+		return getLabeledItemValue(this.self);
+	}
+	get valueText () {
+		return getText(this.value);
+	}
 	get    isOpen () {
 		return !(!this.self.$('.enact_ui_Transition_Transition_transition').isExisting() ||
 		!this.self.$('.enact_ui_Transition_Transition_shown').isExisting() && this.self.$('.enact_ui_Transition_Transition_hidden').isExisting());
 	}
 
-	item (n) { return element(`[role="checkbox"]:nth-of-type(${n + 1})`, this.self); }
+	item (n) {
+		return element(`[role="checkbox"]:nth-of-type(${n + 1})`, this.self);
+	}
 }
 
 class SpotlightMultiplePage extends Page {
