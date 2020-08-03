@@ -19,10 +19,6 @@
   "enact": {
     "theme": "moonstone"
   },
-  "eslintConfig": {
-    "extends": "enact/strict",
-    "root": true
-  },
   "dependencies": {
     "@enact/core": "^3.2.5",
     "@enact/i18n": "^3.2.5",
