@@ -6,6 +6,7 @@ The following is a curated list of changes in the Enact moonstone module, newest
 
 ### Fixed
 
+- `moonstone/Input` run time error when using `dismissOnEnter`
 - `moonstone/VirtualList` to support navigation with spottable children inside an item
 - `moonstone/VirtualList.VirtualList`, `moonstone/VirtualList.VirtualGridList` add `data-webos-voice-disabled` prop for disable voice control
 - `moonstone/LabeledIconButton` add props to change voice control in IconButton
