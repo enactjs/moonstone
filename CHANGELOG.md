@@ -12,6 +12,10 @@ The following is a curated list of changes in the Enact moonstone module, newest
 - `moonstone/VirtualList.VirtualList` to render properly without error when `itemSizes` is given and `dataSize` is 0
 - `moonstone/EditableIntegerPicker` to fire onChange events, after changing the value via pointer and 5-way select button
 
+## [3.2.6] - 2020-08-20
+
+No significant changes.
+
 ## [3.2.5] - 2019-11-14
 
 ### Fixed
