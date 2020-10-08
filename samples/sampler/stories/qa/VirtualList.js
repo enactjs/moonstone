@@ -342,7 +342,6 @@ storiesOf('VirtualList', module)
 					focusableScrollbar={boolean('focusableScrollbar', Config)}
 					itemRenderer={renderItem(ContainerItemWithControls, ri.scale(number('itemSize', Config, 78)), true)}
 					itemSize={ri.scale(number('itemSize', Config, 78))}
-					spotlightId="virtual-list"
 					wrap={wrapOption[select('wrap', ['false', 'true', '"noAnimation"'], Config)]}
 				/>
 			);
