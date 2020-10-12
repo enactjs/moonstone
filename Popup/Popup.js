@@ -1,11 +1,12 @@
 /**
  * Modal component that appears at the bottom of the screen and takes up the full screen width.
  *
+ * @example
+ * <Popup open>Hello!</Popup>
+ *
  * @module moonstone/Popup
  * @exports Popup
  * @exports PopupBase
- * @example
- * <Popup open>Hello!</Popup>
  */
 
 import {is} from '@enact/core/keymap';
@@ -73,7 +74,7 @@ const PopupBase = kind({
 
 		/**
 		 * Customizes the component by mapping the supplied collection of CSS class names to the
-		 * corresponding internal Elements and states of this component.
+		 * corresponding internal elements and states of this component.
 		 *
 		 * The following classes are supported:
 		 *
@@ -273,6 +274,7 @@ const OpenState = {
  *
  * @class Popup
  * @memberof moonstone/Popup
+ * @extends moonstone/Popup.PopupBase
  * @ui
  * @public
  */
@@ -395,7 +397,7 @@ class Popup extends React.Component {
 		 * @public
 		 */
 		spotlightRestrict: PropTypes.oneOf(['self-first', 'self-only'])
-	}
+	};
 
 	static defaultProps = {
 		noAnimation: false,
@@ -404,7 +406,7 @@ class Popup extends React.Component {
 		scrimType: 'translucent',
 		showCloseButton: false,
 		spotlightRestrict: 'self-only'
-	}
+	};
 
 	constructor (props) {
 		super(props);
@@ -478,7 +480,7 @@ class Popup extends React.Component {
 		} else if (this.state.popupOpen === OpenState.OPEN && this.props.open) {
 			this.spotPopupContent();
 		}
-	}
+	};
 
 	handleKeyDown = (ev) => {
 		const {onClose, spotlightRestrict} = this.props;
@@ -507,7 +509,7 @@ class Popup extends React.Component {
 				onClose(ev);
 			}
 		}
-	}
+	};
 
 	handlePopupHide = (ev) => {
 		forwardHide(ev, this.props);
@@ -524,7 +526,7 @@ class Popup extends React.Component {
 				this.spotActivator(this.state.activator);
 			}
 		}
-	}
+	};
 
 	handlePopupShow = (ev) => {
 		forwardShow(ev, this.props);
@@ -540,7 +542,7 @@ class Popup extends React.Component {
 				this.spotPopupContent();
 			}
 		}
-	}
+	};
 
 	spotActivator = (activator) => {
 		const current = Spotlight.getCurrent();
@@ -556,7 +558,7 @@ class Popup extends React.Component {
 				Spotlight.focus();
 			}
 		}
-	}
+	};
 
 	spotPopupContent = () => {
 		const {containerId} = this.state;
@@ -574,7 +576,7 @@ class Popup extends React.Component {
 			}
 			Spotlight.setActiveContainer(containerId);
 		}
-	}
+	};
 
 	render () {
 		const {noAutoDismiss, onClose, scrimType, ...rest} = this.props;

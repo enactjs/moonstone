@@ -19,7 +19,7 @@
 import kind from '@enact/core/kind';
 import Spottable from '@enact/spotlight/Spottable';
 import {IconButtonDecorator as UiIconButtonDecorator} from '@enact/ui/IconButton';
-import UiLabeledIcon from '@enact/ui/LabeledIcon';
+import {LabeledIconBase as UiLabeledIconBase, LabeledIconDecorator as UiLabeledIconDecorator} from '@enact/ui/LabeledIcon';
 import Pure from '@enact/ui/internal/Pure';
 import PropTypes from 'prop-types';
 import compose from 'ramda/src/compose';
@@ -41,7 +41,7 @@ const IconButton = compose(
  *
  * @class LabeledIconButtonBase
  * @memberof moonstone/LabeledIconButton
- * @extends ui/LabeledIcon.LabeledIcon
+ * @extends ui/LabeledIcon.LabeledIconBase
  * @ui
  * @public
  */
@@ -51,7 +51,7 @@ const LabeledIconButtonBase = kind({
 	propTypes: /** @lends moonstone/LabeledIconButton.LabeledIconButtonBase.prototype */ {
 		/**
 		 * Customizes the component by mapping the supplied collection of CSS class names to the
-		 * corresponding internal Elements and states of this component.
+		 * corresponding internal elements and states of this component.
 		 *
 		 * The following classes are supported:
 		 *
@@ -66,6 +66,38 @@ const LabeledIconButtonBase = kind({
 		 * @public
 		 */
 		css: PropTypes.object,
+
+		/**
+		 * Disables voice control.
+		 *
+		 * @type {Boolean}
+		 * @public
+		 */
+		'data-webos-voice-disabled': PropTypes.bool,
+
+		/**
+		 * The voice control group label.
+		 *
+		 * @type {String}
+		 * @public
+		 */
+		'data-webos-voice-group-label': PropTypes.string,
+
+		/**
+		 * The voice control intent.
+		 *
+		 * @type {String}
+		 * @public
+		 */
+		'data-webos-voice-intent': PropTypes.string,
+
+		/**
+		 * The voice control label.
+		 *
+		 * @type {String}
+		 * @public
+		 */
+		'data-webos-voice-label': PropTypes.string,
 
 		/**
 		 * Flip the icon horizontally, vertically or both.
@@ -102,11 +134,18 @@ const LabeledIconButtonBase = kind({
 		publicClassNames: ['labeledIconButton', 'icon', 'label', 'large', 'selected', 'small']
 	},
 
-	render: ({css, flip, icon, selected, ...rest}) => {
-		return UiLabeledIcon.inline({
+	render: ({css, flip, icon, selected, 'data-webos-voice-disabled': voiceDisabled, 'data-webos-voice-group-label': voiceGroupLabel, 'data-webos-voice-intent': voiceIntent, 'data-webos-voice-label': voiceLabel, ...rest}) => {
+		return UiLabeledIconBase.inline({
 			...rest,
 			icon: (
-				<IconButton flip={flip} selected={selected}>
+				<IconButton
+					flip={flip}
+					selected={selected}
+					data-webos-voice-disabled={voiceDisabled}
+					data-webos-voice-group-label={voiceGroupLabel}
+					data-webos-voice-intent={voiceIntent}
+					data-webos-voice-label={voiceLabel}
+				>
 					{icon}
 				</IconButton>
 			),
@@ -120,10 +159,12 @@ const LabeledIconButtonBase = kind({
  *
  * @hoc
  * @memberof moonstone/LabeledIconButton
+ * @mixes ui/LabeledIcon.LabeledIconDecorator
  * @mixes moonstone/Skinnable.Skinnable
  * @public
  */
 const LabeledIconButtonDecorator = compose(
+	UiLabeledIconDecorator,
 	Pure,
 	Skinnable
 );

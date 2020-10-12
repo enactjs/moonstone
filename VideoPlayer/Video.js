@@ -19,7 +19,7 @@ import PropTypes from 'prop-types';
  * @private
  */
 const VideoBase = class extends React.Component {
-	static displayName = 'Video'
+	static displayName = 'Video';
 
 	static propTypes = /** @lends moonstone/VideoPlayer.Video.prototype */ {
 		/**
@@ -59,7 +59,7 @@ const VideoBase = class extends React.Component {
 		 * * `pause()` - pause video
 		 * * `load()` - load video
 		 *
-		 * The [`source`]{@link moonstone/VideoPlayer.VideoBase.source} property is passed to
+		 * The [`source`]{@link moonstone/VideoPlayer.Video.source} property is passed to
 		 * the video component as a child node.
 		 *
 		 * @type {String|Component|Element}
@@ -96,11 +96,11 @@ const VideoBase = class extends React.Component {
 		 * @public
 		 */
 		source: PropTypes.oneOfType([PropTypes.string, PropTypes.node])
-	}
+	};
 
 	static defaultProps = {
 		mediaComponent: 'video'
-	}
+	};
 
 	componentDidUpdate (prevProps) {
 		const {source, preloadSource} = this.props;
@@ -159,7 +159,7 @@ const VideoBase = class extends React.Component {
 
 		// prevent the from bubbling to upstream handlers
 		ev.stopPropagation();
-	}
+	};
 
 	clearMedia ({setMedia} = this.props) {
 		if (setMedia) {
@@ -182,14 +182,14 @@ const VideoBase = class extends React.Component {
 	setVideoRef = (node) => {
 		this.video = node;
 		this.setMedia();
-	}
+	};
 
 	setPreloadRef = (node) => {
 		if (node) {
 			node.load();
 		}
 		this.preloadVideo = node;
-	}
+	};
 
 	render () {
 		const {
@@ -275,7 +275,7 @@ const VideoDecorator = compose(
  * ```
  *
  * @class Video
- * @mixes ui/Slottable
+ * @mixes ui/Slottable.Slottable
  * @memberof moonstone/VideoPlayer
  * @ui
  * @public

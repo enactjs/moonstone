@@ -16,7 +16,7 @@ const AccessibilityDecorator = hoc((config, Wrapped) => {	// eslint-disable-line
 	return class extends React.Component {
 		static contextType = ResizeContext;
 
-		static displayName = 'AccessibilityDecorator'
+		static displayName = 'AccessibilityDecorator';
 
 		static propTypes =  /** @lends moonstone/MoonstoneDecorator.AccessibilityDecorator.prototype */ {
 			/**
@@ -26,6 +26,7 @@ const AccessibilityDecorator = hoc((config, Wrapped) => {	// eslint-disable-line
 			 * the components' contrast to this preset.
 			 *
 			 * @type {Boolean}
+			 * @default false
 			 * @public
 			 */
 			highContrast: PropTypes.bool,
@@ -37,17 +38,17 @@ const AccessibilityDecorator = hoc((config, Wrapped) => {	// eslint-disable-line
 			 * information to adjust the components' text sizes to this preset.
 			 * Current presets are `'normal'` (default), and `'large'`.
 			 *
-			 * @type {String}
+			 * @type {('normal'|'large')}
 			 * @default 'normal'
 			 * @public
 			 */
 			textSize: PropTypes.oneOf(['normal', 'large'])
-		}
+		};
 
 		static defaultProps = {
 			highContrast: false,
 			textSize: 'normal'
-		}
+		};
 
 		componentDidMount () {
 			this.resizeRegistry.parent = this.context;

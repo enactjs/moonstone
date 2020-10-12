@@ -1,12 +1,22 @@
 {
   "name": "@enact/moonstone",
-  "version": "3.2.6",
+  "version": "3.3.0",
   "description": "Large-screen/TV support library for Enact, containing a variety of UI components.",
   "main": "index.js",
   "scripts": {
+    "bootstrap": "enact bootstrap",
     "clean": "enact clean",
+    "cleanall": "enact clean --all",
     "lint": "enact lint --strict",
+    "sampler": "npm run --prefix samples/sampler serve",
+    "sampler-qa": "npm run --prefix samples/sampler serve-qa",
     "test": "enact test",
+    "test-ui": "start-tests tests/ui/wdio.conf.js",
+    "test-ui-docker": "start-tests tests/ui/wdio.docker.conf.js",
+    "test-ui-tv": "start-tests tests/ui/wdio.tv.conf.js",
+    "test-ss": "start-tests tests/screenshot/wdio.conf.js",
+    "test-ss-docker": "start-tests tests/screenshot/wdio.docker.conf.js",
+    "test-ss-tv": "start-tests tests/screenshot/wdio.tv.conf.js",
     "test-json": "enact test --json",
     "test-watch": "enact test --watch",
     "transpile": "enact transpile"
@@ -25,13 +35,13 @@
     }
   },
   "eslintConfig": {
-    "extends": "enact/strict"
+    "extends": "enact-proxy/strict"
   },
   "dependencies": {
-    "@enact/core": "^3.2.6",
-    "@enact/i18n": "^3.2.6",
-    "@enact/spotlight": "^3.2.6",
-    "@enact/ui": "^3.2.6",
+    "@enact/core": "^3.4.7",
+    "@enact/i18n": "^3.4.7",
+    "@enact/spotlight": "^3.4.7",
+    "@enact/ui": "^3.4.7",
     "classnames": "^2.2.5",
     "invariant": "^2.2.2",
     "prop-types": "^15.7.2",
@@ -42,9 +52,11 @@
     "warning": "^3.0.0"
   },
   "peerDependencies": {
-    "ilib": "^14.4.0 || ^14.4.0-webostv1"
+    "ilib": "^14.4.0 || ^14.6.0-webos"
   },
   "devDependencies": {
+    "@enact/ui-test-utils": "^0.5.0",
+    "eslint-config-enact-proxy": "^1.0.0",
     "ilib": "^14.4.0"
   }
 }

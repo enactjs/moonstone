@@ -6,12 +6,12 @@ import PropTypes from 'prop-types';
 const ExpandablePickerDecorator = hoc((config, Wrapped) => {	// eslint-disable-line no-unused-vars
 
 	return class extends React.Component {
-		static displayName = 'ExpandablePickerDecorator'
+		static displayName = 'ExpandablePickerDecorator';
 
 		static propTypes = {
 			open: PropTypes.bool,
 			value: PropTypes.number
-		}
+		};
 
 		constructor (props) {
 			super(props);
@@ -32,7 +32,7 @@ const ExpandablePickerDecorator = hoc((config, Wrapped) => {	// eslint-disable-l
 			this.setState({
 				value: ev.value
 			});
-		}
+		};
 
 		render () {
 			const {value} = this.props.open ? this.state : this.props;

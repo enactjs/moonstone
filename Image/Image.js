@@ -38,7 +38,7 @@ const ImageBase = kind({
 	propTypes: /** @lends moonstone/Image.ImageBase.prototype */ {
 		/**
 		 * Customizes the component by mapping the supplied collection of CSS class names to the
-		 * corresponding internal Elements and states of this component.
+		 * corresponding internal elements and states of this component.
 		 *
 		 * The following classes are supported:
 		 *
@@ -78,11 +78,11 @@ const ImageBase = kind({
 // another time. -B 2018-05-01
 const ResponsiveImageDecorator = hoc((config, Wrapped) => {	// eslint-disable-line no-unused-vars
 	return class extends React.Component {
-		static displayName = 'ResponsiveImageDecorator'
+		static displayName = 'ResponsiveImageDecorator';
 
 		static propTypes = {
 			src: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
-		}
+		};
 
 		constructor (props) {
 			super(props);
@@ -109,7 +109,7 @@ const ResponsiveImageDecorator = hoc((config, Wrapped) => {	// eslint-disable-li
 
 				return null;
 			});
-		}
+		};
 
 		render () {
 			return <Wrapped {...this.props} />;

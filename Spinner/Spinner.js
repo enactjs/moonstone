@@ -82,6 +82,7 @@ const SpinnerCore = kind({
  *
  * @class SpinnerBase
  * @memberof moonstone/Spinner
+ * @extends ui/Spinner.SpinnerBase
  * @ui
  * @public
  */
@@ -91,11 +92,12 @@ const SpinnerBase = kind({
 	propTypes: /** @lends moonstone/Spinner.SpinnerBase.prototype */ {
 		/**
 		 * Customizes the component by mapping the supplied collection of CSS class names to the
-		 * corresponding internal Elements and states of this component.
+		 * corresponding internal elements and states of this component.
 		 *
 		 * The following classes are supported:
 		 *
-		 * * `spinner` - The root component class, unless there is a scrim. The scrim and floating layer can be a sibbling or parent to this root "spinner" element.
+		 * * `spinner` - The root component class, unless there is a scrim. The scrim and floating
+		 *	layer can be a sibling or parent to this root "spinner" element.
 		 *
 		 * @type {Object}
 		 * @public
@@ -183,7 +185,7 @@ const SpinnerSpotlightDecorator = hoc((config, Wrapped) => {
 			 * @public
 			 */
 			blockClickOn: PropTypes.oneOf(['screen', 'container', null])
-		}
+		};
 
 		constructor (props) {
 			super(props);
@@ -236,6 +238,7 @@ const SpinnerDecorator = compose(
  *
  * @class Spinner
  * @memberof moonstone/Spinner
+ * @extends moonstone/Spinner.SpinnerBase
  * @mixes moonstone/Spinner.SpinnerDecorator
  * @ui
  * @public

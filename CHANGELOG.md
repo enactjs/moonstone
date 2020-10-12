@@ -2,6 +2,20 @@
 
 The following is a curated list of changes in the Enact moonstone module, newest changes on the top.
 
+## [3.3.0] - 2020-10-08
+
+### Added
+
+- `moonstone/VirtualList` and `moonstone/VirtualList.VirtualGridList` prop `data-webos-voice-disabled` for disable voice control
+- `moonstone/LabeledIconButton` props to change voice control in IconButton
+
+### Fixed
+
+- `moonstone/Input` run time error when using `dismissOnEnter`
+- `moonstone/VirtualList` to support navigation with spottable children inside an item
+- `moonstone/VirtualList` to render properly without error when `itemSizes` is given and `dataSize` is 0
+- `moonstone/EditableIntegerPicker` to fire `onChange` events, after changing the value via pointer and 5-way select button
+
 ## [3.2.6] - 2020-08-20
 
 No significant changes.
