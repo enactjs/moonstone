@@ -3,7 +3,6 @@ const Page = require('./DatePickerPage');
 const {daysInMonth, expectClosed, expectNoLabels, expectOpen, extractValues, validateTitle} = require('./DatePicker-utils.js');
 
 describe('DatePicker', function () {
-	Page.open();
 
 	it('should have focus on start', function () {
 		expect(Page.components.datePickerDefaultClosedWithoutNoneText.title.isFocused()).to.be.true();
