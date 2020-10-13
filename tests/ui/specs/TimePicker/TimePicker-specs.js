@@ -5,6 +5,7 @@ const {expectClosed, expectOpen, expectNoLabels, extractValues, validateTitle} =
 describe('TimePicker', function () {
 
 	it('should have focus on start', function () {
+		Page.open();
 		expect(Page.components.timePickerDefaultClosedWithoutNoneText.title.isFocused()).to.be.true();
 	});
 

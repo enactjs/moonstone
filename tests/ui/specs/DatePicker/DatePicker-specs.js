@@ -5,6 +5,7 @@ const {daysInMonth, expectClosed, expectNoLabels, expectOpen, extractValues, val
 describe('DatePicker', function () {
 
 	it('should have focus on start', function () {
+		Page.open();
 		expect(Page.components.datePickerDefaultClosedWithoutNoneText.title.isFocused()).to.be.true();
 	});
 
