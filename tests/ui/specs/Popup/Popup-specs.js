@@ -814,7 +814,7 @@ describe('Popup', function () {
 				expectOpen(popupCommon);
 				Page.showPointerByKeycode();
 				// Position the pointer inside popup to the right of the Cancel button (step 4)
-				$('#buttonCancel').moveTo(200, 200);
+				$('#popup6').moveTo(500, 150);
 				// 5-way to the Cancel button
 				Page.spotlightLeft();
 				// Spotight is on Cancel button (verify step 4)
@@ -844,7 +844,7 @@ describe('Popup', function () {
 				// Wave the pointer to change to cursor mode (step 5)
 				Page.showPointerByKeycode();
 				// Position the pointer on the right of the Cancel buttion inside popup
-				$('#buttonCancel').moveTo(200, 200);
+				$('#popup6').moveTo(500, 150);
 				// Spotlight on button in popup is blur (verify step 5)
 				expect(popup.buttonOK.isFocused()).to.be.false();
 				// Change from pointer to 5-way mode (step 6)
