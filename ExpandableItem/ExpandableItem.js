@@ -402,7 +402,7 @@ const ExpandableItemBase = kind({
 					data-expandable-label
 					disabled={disabled}
 					label={label}
-					onTap={handleOpen}
+					onClick={handleOpen}
 					onKeyDown={handleLabelKeyDown}
 					onSpotlightDisappear={onSpotlightDisappear}
 					onSpotlightLeft={onSpotlightLeft}
