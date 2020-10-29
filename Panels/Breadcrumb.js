@@ -82,8 +82,7 @@ const BreadcrumbBase = kind({
 			{...rest}
 			aria-label={$L('GO TO PREVIOUS')}
 			data-index={index}
-			// eslint-disable-next-line react/jsx-no-bind
-			onClick={(...param) => setTimeout(() => onSelect(...param), 50)}
+			onClick={(...param) => setTimeout(() => onSelect(...param), 50)} // eslint-disable-line react/jsx-no-bind
 		>
 			<div className={css.breadcrumbHeader}>
 				{children}
