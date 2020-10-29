@@ -82,7 +82,7 @@ const BreadcrumbBase = kind({
 			{...rest}
 			aria-label={$L('GO TO PREVIOUS')}
 			data-index={index}
-			onClick={onSelect}
+			onClick={(...param) => setTimeout(() => onSelect(...param), 100)}
 		>
 			<div className={css.breadcrumbHeader}>
 				{children}
