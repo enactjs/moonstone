@@ -6,6 +6,7 @@ The following is a curated list of changes in the Enact moonstone module, newest
 
 ### Fixed
 
+- `moonstone/ExpandableList` to keep focus properly when selecting an item by touch
 - `moonstone/Panels` Breadcrumb to get focus when touching
 
 ## [3.3.0] - 2020-10-08

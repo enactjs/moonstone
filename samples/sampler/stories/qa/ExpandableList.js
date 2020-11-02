@@ -107,13 +107,22 @@ storiesOf('ExpandableList', module)
 		'grouped',
 		() => (
 			<ExpandableGroup>
-				<ExpandableList title="First">
+				<ExpandableList
+					closeOnSelect={boolean('closeOnSelect', Config)}
+					title="First"
+				>
 					{['One', 'Two', 'Three']}
 				</ExpandableList>
-				<ExpandableList title="Second">
+				<ExpandableList
+					closeOnSelect={boolean('closeOnSelect', Config)}
+					title="Second"
+				>
 					{['Fourth', 'Fifth', 'Sixth']}
 				</ExpandableList>
-				<ExpandableList title="Third">
+				<ExpandableList
+					closeOnSelect={boolean('closeOnSelect', Config)}
+					title="Third"
+				>
 					{['Seventh', 'Eighth', 'Ninth']}
 				</ExpandableList>
 			</ExpandableGroup>
