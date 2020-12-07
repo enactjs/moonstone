@@ -1,6 +1,6 @@
 'use strict';
-const Page = require('@enact/ui-test-utils/test/Page.js');
-const {element, getComponent, getSubComponent, getText} = require('@enact/ui-test-utils/test/utils.js');
+const {Page} = require('@enact/ui-test-utils/utils');
+const {element, getComponent, getSubComponent, getText} = require('@enact/ui-test-utils/utils');
 
 const getIcon = getComponent({component: 'Icon'});
 const getLabeledItem = getComponent({component: 'LabeledItem'});
@@ -13,31 +13,61 @@ class PickerInterface {
 	}
 
 	focus () {
-		return browser.selectorExecute(`#${this.id}>div`, (els) => els && !els[0].focus());
+		return browser.execute((el) => el.focus(), $(`#${this.id}>div`));
 	}
 
-	get      self () { return element(`#${this.id}`, browser); }
-	get   chevron () { return getText(getIcon(this.self)); }
-	get     title () { return getLabeledItem(this.self); }
-	get titleText () { return getText(getLabeledItemTitle(this.self)); }
-	get     value () { return getLabeledItemValue(this.self); }
-	get valueText () { return getText(this.value); }
-	// get    isOpen () { return this.self.isExisting('.enact_ui_Transition_Transition_shown'); }
+	get      self () {
+		return element(`#${this.id}`, browser);
+	}
+	get   chevron () {
+		return getText(getIcon(this.self));
+	}
+	get     title () {
+		return getLabeledItem(this.self);
+	}
+	get titleText () {
+		return getText(getLabeledItemTitle(this.self));
+	}
+	get     value () {
+		return getLabeledItemValue(this.self);
+	}
+	get valueText () {
+		return getText(this.value);
+	}
+	// get    isOpen () { return this.self.$('.enact_ui_Transition_Transition_shown').isExisting(); }
 	get    isOpen () {
-		return !(!this.self.isExisting('.enact_ui_Transition_Transition_transition') ||
-		!this.self.isExisting('.enact_ui_Transition_Transition_shown') && this.self.isExisting('.enact_ui_Transition_Transition_hidden'));
+		return !(!this.self.$('.enact_ui_Transition_Transition_transition').isExisting() ||
+		!this.self.$('.enact_ui_Transition_Transition_shown').isExisting() && this.self.$('.enact_ui_Transition_Transition_hidden').isExisting());
 	}
 
-	get hour () { return element('.TimePicker_TimePicker_hourComponents .internal_Picker_Picker_picker', this.self); }
-	get hourLabel () { return element('.TimePicker_TimePicker_hourComponents .internal_DateComponentPicker_DateComponentPicker_label', this.self); }
-	get meridiem () { return element('.TimePicker_TimePicker_meridiemComponent .internal_Picker_Picker_picker', this.self); }
-	get meridiemLabel () { return element('.TimePicker_TimePicker_meridiemComponents .internal_DateComponentPicker_DateComponentPicker_label', this.self); }
-	get minute () { return element('.TimePicker_TimePicker_minutesComponents .internal_Picker_Picker_picker', this.self); }
-	get minuteLabel () { return element('.TimePicker_TimePicker_minuteComponents .internal_DateComponentPicker_DateComponentPicker_label', this.self); }
+	get hour () {
+		return element('.TimePicker_TimePicker_hourComponents .internal_Picker_Picker_picker', this.self);
+	}
+	get hourLabel () {
+		return element('.TimePicker_TimePicker_hourComponents .internal_DateComponentPicker_DateComponentPicker_label', this.self);
+	}
+	get meridiem () {
+		return element('.TimePicker_TimePicker_meridiemComponent .internal_Picker_Picker_picker', this.self);
+	}
+	get meridiemLabel () {
+		return element('.TimePicker_TimePicker_meridiemComponents .internal_DateComponentPicker_DateComponentPicker_label', this.self);
+	}
+	get minute () {
+		return element('.TimePicker_TimePicker_minutesComponents .internal_Picker_Picker_picker', this.self);
+	}
+	get minuteLabel () {
+		return element('.TimePicker_TimePicker_minuteComponents .internal_DateComponentPicker_DateComponentPicker_label', this.self);
+	}
 
-	decrementer (picker) { return element('.internal_Picker_Picker_decrementer', picker); }
-	incrementer (picker) { return element('.internal_Picker_Picker_incrementer', picker); }
-	item (picker) { return element('.internal_Picker_Picker_item', picker); }
+	decrementer (picker) {
+		return element('.internal_Picker_Picker_decrementer', picker);
+	}
+	incrementer (picker) {
+		return element('.internal_Picker_Picker_incrementer', picker);
+	}
+	item (picker) {
+		return element('.internal_Picker_Picker_item', picker);
+	}
 }
 
 class TimePickerPage extends Page {

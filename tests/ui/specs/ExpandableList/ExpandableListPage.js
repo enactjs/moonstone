@@ -1,6 +1,6 @@
 'use strict';
-const Page = require('@enact/ui-test-utils/test/Page.js');
-const {element, getComponent, getSubComponent, getText} = require('@enact/ui-test-utils/test/utils.js');
+const {Page} = require('@enact/ui-test-utils/utils');
+const {element, getComponent, getSubComponent, getText} = require('@enact/ui-test-utils/utils');
 
 const getIcon = getComponent({component: 'Icon'});
 const getLabeledItem = getComponent({component: 'LabeledItem'});
@@ -13,21 +13,35 @@ class ExpandableInterface {
 	}
 
 	focus () {
-		return browser.selectorExecute(`#${this.id}>div`, (els) => els && !els[0].focus());
+		return browser.execute((el) => el.focus(), $(`#${this.id}>div`));
 	}
 
-	get      self () { return element(`#${this.id}`, browser); }
-	get   chevron () { return getText(getIcon(this.self)); }
-	get     title () { return getLabeledItem(this.self); }
-	get titleText () { return getText(getLabeledItemTitle(this.self)); }
-	get     value () { return getLabeledItemValue(this.self); }
-	get valueText () { return getText(this.value); }
+	get      self () {
+		return element(`#${this.id}`, browser);
+	}
+	get   chevron () {
+		return getText(getIcon(this.self));
+	}
+	get     title () {
+		return getLabeledItem(this.self);
+	}
+	get titleText () {
+		return getText(getLabeledItemTitle(this.self));
+	}
+	get     value () {
+		return getLabeledItemValue(this.self);
+	}
+	get valueText () {
+		return getText(this.value);
+	}
 	get    isOpen () {
-		return !(!this.self.isExisting('.enact_ui_Transition_Transition_transition') ||
-		!this.self.isExisting('.enact_ui_Transition_Transition_shown') && this.self.isExisting('.enact_ui_Transition_Transition_hidden'));
+		return !(!this.self.$('.enact_ui_Transition_Transition_transition').isExisting() ||
+		!this.self.$('.enact_ui_Transition_Transition_shown').isExisting() && this.self.$('.enact_ui_Transition_Transition_hidden').isExisting());
 	}
 
-	item (n) { return element(`[role="checkbox"]:nth-of-type(${n + 1})`, this.self); }
+	item (n) {
+		return element(`[role="checkbox"]:nth-of-type(${n + 1})`, this.self);
+	}
 }
 
 class SpotlightMultiplePage extends Page {
@@ -59,5 +73,3 @@ class SpotlightMultiplePage extends Page {
 }
 
 module.exports = new SpotlightMultiplePage();
-
-

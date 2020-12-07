@@ -74,25 +74,25 @@ class DisappearTest extends React.Component {
 
 	removeButton = () => {
 		this.setState({showButton: false});
-	}
+	};
 
 	restoreButton = () => {
 		this.setState({showButton: true});
-	}
+	};
 
 	resetFocus = () => {
 		Spotlight.focus('restoreButton');
-	}
+	};
 
 	startTimer = () => {
 		this.timer = window.setTimeout(this.removeButton, 4000);
-	}
+	};
 
 	stopTimer = () => {
 		if (this.timer) {
 			window.clearTimeout(this.timer);
 		}
-	}
+	};
 
 	render () {
 		return (
@@ -129,11 +129,11 @@ class DisableOnClick extends React.Component {
 
 	handleButtonDisable = () => {
 		this.setState({disabled: true});
-	}
+	};
 
 	handleButtonEnable = () => {
 		this.setState({disabled: false});
-	}
+	};
 
 	render () {
 		return (
@@ -169,7 +169,7 @@ class DisableTest extends React.Component {
 		this.paused.resume();
 	}
 
-	paused = new Pause('Pause Test')
+	paused = new Pause('Pause Test');
 
 	handleToggle = () => {
 		if (this.paused.isPaused()) {
@@ -177,7 +177,7 @@ class DisableTest extends React.Component {
 		} else {
 			this.paused.pause();
 		}
-	}
+	};
 
 	render () {
 		return (
@@ -204,7 +204,7 @@ class PopupFocusTest extends React.Component {
 		scrimType: PropTypes.oneOf(['transparent', 'translucent', 'none']),
 		showCloseButton: PropTypes.bool,
 		spotlightRestrict: PropTypes.oneOf(['self-first', 'self-only'])
-	}
+	};
 
 	static defaultProps = {
 		noAnimation: false,
@@ -212,7 +212,7 @@ class PopupFocusTest extends React.Component {
 		scrimType: 'translucent',
 		showCloseButton: false,
 		spotlightRestrict: 'self-only'
-	}
+	};
 
 	constructor (props) {
 		super(props);
@@ -223,11 +223,11 @@ class PopupFocusTest extends React.Component {
 
 	handleClosePopup = () => {
 		this.setState({popupOpen: false});
-	}
+	};
 
 	handleOpenPopup = () => {
 		this.setState({popupOpen: true});
-	}
+	};
 
 	render () {
 		const {noAnimation, noAutoDismiss, scrimType, showCloseButton, spotlightRestrict} = this.props;
@@ -264,22 +264,22 @@ class PopupFocusTest extends React.Component {
 class FocusedAndDisabled extends React.Component {
 	state = {
 		index: -1
-	}
+	};
 
 	tests = [
 		<Button icon="star">Button</Button>,
 		<IconButton>star</IconButton>,
 		<Button icon={docs}>Button</Button>,
 		<IconButton>{docs}</IconButton>
-	]
+	];
 
-	handleClear = () => this.setState({index: -1})
+	handleClear = () => this.setState({index: -1});
 
 	select = (index) => {
 		Spotlight.setPointerMode(false);
 		Spotlight.focus(`component-${index}`);
 		this.setState({index});
-	}
+	};
 
 	render () {
 		return (

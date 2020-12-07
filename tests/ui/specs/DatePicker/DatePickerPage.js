@@ -1,6 +1,6 @@
 'use strict';
-const Page = require('@enact/ui-test-utils/test/Page.js');
-const {element, getComponent, getSubComponent, getText} = require('@enact/ui-test-utils/test/utils.js');
+const {Page} = require('@enact/ui-test-utils/utils');
+const {element, getComponent, getSubComponent, getText} = require('@enact/ui-test-utils/utils');
 
 const getIcon = getComponent({component: 'Icon'});
 const getLabeledItem = getComponent({component: 'LabeledItem'});
@@ -14,18 +14,30 @@ class PickerInterface {
 	}
 
 	focus () {
-		return browser.selectorExecute(`#${this.id}>div`, (els) => els && !els[0].focus());
+		return browser.execute((el) => el.focus(), $(`#${this.id}>div`));
 	}
 
-	get      self () { return element(`#${this.id}`, browser); }
-	get   chevron () { return getText(getIcon(this.self)); }
-	get     title () { return getLabeledItem(this.self); }
-	get titleText () { return getText(getLabeledItemTitle(this.self)); }
-	get     value () { return getLabeledItemValue(this.self); }
-	get valueText () { return getText(this.value); }
+	get      self () {
+		return element(`#${this.id}`, browser);
+	}
+	get   chevron () {
+		return getText(getIcon(this.self));
+	}
+	get     title () {
+		return getLabeledItem(this.self);
+	}
+	get titleText () {
+		return getText(getLabeledItemTitle(this.self));
+	}
+	get     value () {
+		return getLabeledItemValue(this.self);
+	}
+	get valueText () {
+		return getText(this.value);
+	}
 	get    isOpen () {
-		return !(!this.self.isExisting('.enact_ui_Transition_Transition_transition') ||
-		!this.self.isExisting('.enact_ui_Transition_Transition_shown') && this.self.isExisting('.enact_ui_Transition_Transition_hidden'));
+		return !(!this.self.$('.enact_ui_Transition_Transition_transition').isExisting() ||
+		!this.self.$('.enact_ui_Transition_Transition_shown').isExisting() && this.self.$('.enact_ui_Transition_Transition_hidden').isExisting());
 	}
 
 	get day () {
@@ -34,15 +46,31 @@ class PickerInterface {
 			getComponent({component: 'DatePicker', child: 'day'}, this.self)
 		);
 	}
-	get dayLabel () { return getComponent({internal: true, component: 'DateComponentPicker', child: 'label'}, getComponent({component: 'DatePicker', child: 'day'}, this.self)); }
-	get month () { return getComponent({internal: true, component: 'Picker'}, getComponent({component: 'DatePicker', child: 'month'}, this.self)); }
-	get monthLabel () { return getComponent({internal: true, component: 'DateComponentPicker', child: 'label'}, getComponent({component: 'DatePicker', child: 'month'}, this.self)); }
-	get year () { return getComponent({internal: true, component: 'Picker'}, getComponent({component: 'DatePicker', child: 'year'}, this.self)); }
-	get yearLabel () { return getComponent({internal: true, component: 'DateComponentPicker', child: 'label'}, getComponent({component: 'DatePicker', child: 'year'}, this.self)); }
+	get dayLabel () {
+		return getComponent({internal: true, component: 'DateComponentPicker', child: 'label'}, getComponent({component: 'DatePicker', child: 'day'}, this.self));
+	}
+	get month () {
+		return getComponent({internal: true, component: 'Picker'}, getComponent({component: 'DatePicker', child: 'month'}, this.self));
+	}
+	get monthLabel () {
+		return getComponent({internal: true, component: 'DateComponentPicker', child: 'label'}, getComponent({component: 'DatePicker', child: 'month'}, this.self));
+	}
+	get year () {
+		return getComponent({internal: true, component: 'Picker'}, getComponent({component: 'DatePicker', child: 'year'}, this.self));
+	}
+	get yearLabel () {
+		return getComponent({internal: true, component: 'DateComponentPicker', child: 'label'}, getComponent({component: 'DatePicker', child: 'year'}, this.self));
+	}
 
-	decrementer (picker) { return getPickerChild('decrementer', picker); }
-	incrementer (picker) { return getPickerChild('incrementer', picker); }
-	item (picker) { return getPickerChild('item', picker); }
+	decrementer (picker) {
+		return getPickerChild('decrementer', picker);
+	}
+	incrementer (picker) {
+		return getPickerChild('incrementer', picker);
+	}
+	item (picker) {
+		return getPickerChild('item', picker);
+	}
 }
 
 class DatePickerPage extends Page {

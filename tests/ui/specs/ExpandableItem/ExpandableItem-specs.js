@@ -1,3 +1,4 @@
+/* eslint-disable no-undefined */
 const Page = require('./ExpandableItemPage');
 const {expectClosed, expectOpen, validateTitle, getChevronRotation} = require('./ExpandableItem-utils');
 
@@ -7,7 +8,7 @@ describe('ExpandableItem', function () {
 	});
 
 	it('should have focus on start', function () {
-		expect(Page.components.expandableItemDefaultClosedWithoutNoneText.title.hasFocus()).to.be.true();
+		expect(Page.components.expandableItemDefaultClosedWithoutNoneText.title.isFocused()).to.be.true();
 	});
 
 	describe('default', function () {
@@ -26,7 +27,7 @@ describe('ExpandableItem', function () {
 				});
 
 				expectOpen(expandableItem);
-				expect(expandableItem.item.hasFocus()).to.be.true();
+				expect(expandableItem.item.isFocused()).to.be.true();
 			});
 
 			it('should close when pressing select on label', function () {
@@ -51,9 +52,9 @@ describe('ExpandableItem', function () {
 				});
 
 				expectOpen(expandableItem);
-				expect(expandableItem.item.hasFocus()).to.be.true();
+				expect(expandableItem.item.isFocused()).to.be.true();
 				Page.spotlightDown();
-				expect(Page.components.expandableItemDefaultClosedWithNoneText.title.hasFocus()).to.be.true();
+				expect(Page.components.expandableItemDefaultClosedWithNoneText.title.isFocused()).to.be.true();
 			});
 		});
 
@@ -101,7 +102,7 @@ describe('ExpandableItem', function () {
 				});
 
 				expectClosed(expandableItem);
-				expect(expandableItem.title.hasFocus()).to.be.true();
+				expect(expandableItem.title.isFocused()).to.be.true();
 			});
 		});
 
@@ -136,7 +137,7 @@ describe('ExpandableItem', function () {
 			});
 
 			expectOpen(expandableItem);
-			expect(expandableItem.item.hasFocus()).to.be.true();
+			expect(expandableItem.item.isFocused()).to.be.true();
 			Page.waitTransitionEnd(3000, undefined, () => {
 				Page.spotlightUp();
 			});
@@ -154,9 +155,9 @@ describe('ExpandableItem', function () {
 			});
 
 			expectOpen(expandableItem);
-			expect(expandableItem.item.hasFocus()).to.be.true();
+			expect(expandableItem.item.isFocused()).to.be.true();
 			Page.spotlightDown();
-			expect(expandableItem.item.hasFocus()).to.be.true();
+			expect(expandableItem.item.isFocused()).to.be.true();
 		});
 	});
 
@@ -168,10 +169,10 @@ describe('ExpandableItem', function () {
 			it.skip('should allow navigation after opening', function () {
 				Page.components.expandableItemWithLockBottom.focus();
 				Page.spotlightDown();
-				expect(expandableItem.title.hasFocus()).to.be.true();
+				expect(expandableItem.title.isFocused()).to.be.true();
 				Page.spotlightSelect();
 				Page.spotlightUp();
-				expect(expandableItem.title.hasFocus()).to.be.false();
+				expect(expandableItem.title.isFocused()).to.be.false();
 			});
 		});
 
@@ -265,7 +266,7 @@ describe('ExpandableItem', function () {
 			it('should be able to receive focus', function () {
 				Page.components.expandableItemNeverLabel.focus();
 				Page.spotlightDown();
-				expect(expandableItem.title.hasFocus()).to.be.true();
+				expect(expandableItem.title.isFocused()).to.be.true();
 			});
 			it('should not open when selected', function () {
 				Page.spotlightSelect();

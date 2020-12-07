@@ -1,5 +1,5 @@
 'use strict';
-const Page = require('@enact/ui-test-utils/test/Page.js');
+const {Page} = require('@enact/ui-test-utils/utils');
 
 class CheckboxItemInterface {
 	constructor (id) {
@@ -9,18 +9,36 @@ class CheckboxItemInterface {
 	}
 
 	focus () {
-		return browser.selectorExecute(`#${this.id}`, (els) => els && !els[0].focus());
+		return browser.execute((el) => el.focus(), $(`#${this.id}`));
 	}
 
-	get self () { return browser.element(`#${this.id}`); }
-	get value () { return browser.element(this.marqueeTextSelector); }
-	get valueText () { return this.value.getText(); }
-	get icon () { return browser.element(this.iconSelector); }
-	get iconSymbol () { return this.icon.getText(); }
-	get isChecked () { return browser.isExisting(`#${this.id} .Checkbox_Checkbox_selected`); }
-	get isAfter () { return browser.isExisting(`#${this.id} .SlotItem_SlotItem_after`); }
-	get isBefore () { return browser.isExisting(`#${this.id} .SlotItem_SlotItem_before`); }
-	get isInline () { return browser.isExisting(`#${this.id}.Item_Item_inline`); }
+	get self () {
+		return $(`#${this.id}`);
+	}
+	get value () {
+		return $(this.marqueeTextSelector);
+	}
+	get valueText () {
+		return this.value.getText();
+	}
+	get icon () {
+		return $(this.iconSelector);
+	}
+	get iconSymbol () {
+		return this.icon.getText();
+	}
+	get isChecked () {
+		return browser.$(`#${this.id} .Checkbox_Checkbox_selected`).isExisting();
+	}
+	get isAfter () {
+		return browser.$(`#${this.id} .SlotItem_SlotItem_after`).isExisting();
+	}
+	get isBefore () {
+		return browser.$(`#${this.id} .SlotItem_SlotItem_before`).isExisting();
+	}
+	get isInline () {
+		return browser.$(`#${this.id}.Item_Item_inline`).isExisting();
+	}
 }
 
 class CheckboxItemPage extends Page {

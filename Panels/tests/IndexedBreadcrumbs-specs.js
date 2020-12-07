@@ -38,7 +38,7 @@ describe('IndexedBreadcrumbs', () => {
 		expect(actual).toBe(expected);
 	});
 
-	test(
+	test.skip(
 		'should call {onBreadcrumbClick} once when breadcrumb is clicked',
 		() => {
 			const handleClick = jest.fn();

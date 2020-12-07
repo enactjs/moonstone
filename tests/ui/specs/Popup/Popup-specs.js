@@ -1,3 +1,4 @@
+/* eslint-disable no-undefined */
 let Page = require('./PopupPage'),
 	{validateTitle, expectClosed, expectOpen, expectNoneScrimOpen, expectCloseButton} = require('./Popup-utils.js');
 
@@ -10,7 +11,7 @@ describe('Popup', function () {
 	});
 
 	it('should focus the first button on start', function () {
-		expect(popupCommon.buttonPopup1.hasFocus()).to.be.true();
+		expect(popupCommon.buttonPopup1.isFocused()).to.be.true();
 	});
 
 	it('should not have the popup on start', function () {
@@ -36,7 +37,7 @@ describe('Popup', function () {
 					Page.spotlightSelect();
 				});
 				expectOpen(popupCommon);
-				expect(popup.buttonOK.hasFocus()).to.be.true();
+				expect(popup.buttonOK.isFocused()).to.be.true();
 			});
 
 			it('should spot cancel button on 5-way right in popup container', function () {
@@ -45,7 +46,7 @@ describe('Popup', function () {
 				});
 				expectOpen(popupCommon);
 				Page.spotlightRight();
-				expect(popup.buttonCancel.hasFocus()).to.be.true();
+				expect(popup.buttonCancel.isFocused()).to.be.true();
 			});
 
 			it('should spot close button on two 5-way right in popup container', function () {
@@ -55,7 +56,7 @@ describe('Popup', function () {
 				expectOpen(popupCommon);
 				Page.spotlightRight();
 				Page.spotlightRight();
-				expect(popup.buttonClose.hasFocus()).to.be.true();
+				expect(popup.buttonClose.isFocused()).to.be.true();
 			});
 
 			it('should not move spot from close button on 5-way up in popup container', function () {
@@ -66,7 +67,7 @@ describe('Popup', function () {
 				Page.spotlightRight();
 				Page.spotlightRight();
 				Page.spotlightUp();
-				expect(popup.buttonClose.hasFocus()).to.be.true();
+				expect(popup.buttonClose.isFocused()).to.be.true();
 			});
 
 			it('should not move spot from close button on 5-way right in popup container', function () {
@@ -77,7 +78,7 @@ describe('Popup', function () {
 				Page.spotlightRight();
 				Page.spotlightRight();
 				Page.spotlightRight();
-				expect(popup.buttonClose.hasFocus()).to.be.true();
+				expect(popup.buttonClose.isFocused()).to.be.true();
 			});
 
 			it('should spot back the ok button on 5-way right then left in popup container', function () {
@@ -87,7 +88,7 @@ describe('Popup', function () {
 				expectOpen(popupCommon);
 				Page.spotlightRight();
 				Page.spotlightLeft();
-				expect(popup.buttonOK.hasFocus()).to.be.true();
+				expect(popup.buttonOK.isFocused()).to.be.true();
 			});
 
 			it('should spot back the popup button on closing the popup', function () {
@@ -99,7 +100,7 @@ describe('Popup', function () {
 					Page.spotlightSelect();
 				});
 				expectClosed(popupCommon);
-				expect(popupCommon.buttonPopup1.hasFocus()).to.be.true();
+				expect(popupCommon.buttonPopup1.isFocused()).to.be.true();
 			});
 
 			it('should spot back the popup button on auto dismiss the popup', function () {
@@ -111,7 +112,7 @@ describe('Popup', function () {
 					Page.backKey();
 				});
 				expectClosed(popupCommon);
-				expect(popupCommon.buttonPopup1.hasFocus()).to.be.true();
+				expect(popupCommon.buttonPopup1.isFocused()).to.be.true();
 			});
 		});
 
@@ -208,7 +209,7 @@ describe('Popup', function () {
 					Page.spotlightSelect();
 				});
 				expectOpen(popupCommon);
-				expect(popup.buttonOK.hasFocus()).to.be.true();
+				expect(popup.buttonOK.isFocused()).to.be.true();
 			});
 
 			it('should not dismiss the popup and should not move spotlight from the popup container', function () {
@@ -220,7 +221,7 @@ describe('Popup', function () {
 				Page.backKey();
 				browser.pause(300);  // Wait for delay in case of transition (shouldn't happen)
 				expectOpen(popupCommon);
-				expect(popup.buttonOK.hasFocus()).to.be.true();
+				expect(popup.buttonOK.isFocused()).to.be.true();
 			});
 		});
 
@@ -299,7 +300,7 @@ describe('Popup', function () {
 					Page.backKey();
 				});
 				expectClosed(popupCommon);
-				expect(popupCommon.buttonPopup3.hasFocus()).to.be.true();
+				expect(popupCommon.buttonPopup3.isFocused()).to.be.true();
 			});
 		});
 
@@ -354,7 +355,7 @@ describe('Popup', function () {
 				Page.spotlightSelect();
 				browser.pause(100); // needed to pass instead of waitTransitionEnd
 				expectOpen(popupCommon);
-				expect(popup.buttonOK.hasFocus()).to.be.true();
+				expect(popup.buttonOK.isFocused()).to.be.true();
 			});
 
 			it('should spot cancel button on 5-way right in popup container', function () {
@@ -363,7 +364,7 @@ describe('Popup', function () {
 				browser.pause(100); // needed to pass instead of waitTransitionEnd
 				expectOpen(popupCommon);
 				Page.spotlightRight();
-				expect(popup.buttonCancel.hasFocus()).to.be.true();
+				expect(popup.buttonCancel.isFocused()).to.be.true();
 			});
 
 			it('should spot close button on two 5-way right in popup container', function () {
@@ -373,7 +374,7 @@ describe('Popup', function () {
 				expectOpen(popupCommon);
 				Page.spotlightRight();
 				Page.spotlightRight();
-				expect(popup.buttonClose.hasFocus()).to.be.true();
+				expect(popup.buttonClose.isFocused()).to.be.true();
 			});
 
 			it('should not move spot from close button on 5-way up in popup container', function () {
@@ -384,7 +385,7 @@ describe('Popup', function () {
 				Page.spotlightRight();
 				Page.spotlightRight();
 				Page.spotlightUp();
-				expect(popup.buttonClose.hasFocus()).to.be.true();
+				expect(popup.buttonClose.isFocused()).to.be.true();
 			});
 
 			it('should not move spot from close button on 5-way right in popup container', function () {
@@ -395,7 +396,7 @@ describe('Popup', function () {
 				Page.spotlightRight();
 				Page.spotlightRight();
 				Page.spotlightRight();
-				expect(popup.buttonClose.hasFocus()).to.be.true();
+				expect(popup.buttonClose.isFocused()).to.be.true();
 			});
 
 			it('should spot back the ok button on 5-way right then left in popup container', function () {
@@ -405,7 +406,7 @@ describe('Popup', function () {
 				expectOpen(popupCommon);
 				Page.spotlightRight();
 				Page.spotlightLeft();
-				expect(popup.buttonOK.hasFocus()).to.be.true();
+				expect(popup.buttonOK.isFocused()).to.be.true();
 			});
 
 			it('should spot back the popup button on closing the popup', function () {
@@ -416,7 +417,7 @@ describe('Popup', function () {
 				Page.spotlightSelect();
 				browser.pause(100); // needed to pass instead of waitTransitionEnd
 				expectClosed(popupCommon);
-				expect(popupCommon.buttonPopup4.hasFocus()).to.be.true();
+				expect(popupCommon.buttonPopup4.isFocused()).to.be.true();
 			});
 
 			it('should spot back the popup button on auto dismiss the popup', function () {
@@ -427,7 +428,7 @@ describe('Popup', function () {
 				Page.backKey();
 				browser.pause(100); // needed to pass instead of waitTransitionEnd
 				expectClosed(popupCommon);
-				expect(popupCommon.buttonPopup4.hasFocus()).to.be.true();
+				expect(popupCommon.buttonPopup4.isFocused()).to.be.true();
 			});
 		});
 
@@ -513,7 +514,7 @@ describe('Popup', function () {
 					Page.spotlightSelect();
 				});
 				expectOpen(popupCommon);
-				expect(popup.buttonOK.hasFocus()).to.be.true();
+				expect(popup.buttonOK.isFocused()).to.be.true();
 			});
 
 			it('should spot cancel button on 5-way right in popup container', function () {
@@ -524,7 +525,7 @@ describe('Popup', function () {
 				});
 				expectOpen(popupCommon);
 				Page.spotlightRight();
-				expect(popup.buttonCancel.hasFocus()).to.be.true();
+				expect(popup.buttonCancel.isFocused()).to.be.true();
 			});
 
 			it('should not move spot from cancel button on 5-way left in popup container', function () {
@@ -536,7 +537,7 @@ describe('Popup', function () {
 				expectOpen(popupCommon);
 				Page.spotlightRight();
 				Page.spotlightUp();
-				expect(popup.buttonCancel.hasFocus()).to.be.true();
+				expect(popup.buttonCancel.isFocused()).to.be.true();
 			});
 
 			it('should not move spot from cancel button on 5-way right in popup container', function () {
@@ -548,7 +549,7 @@ describe('Popup', function () {
 				expectOpen(popupCommon);
 				Page.spotlightRight();
 				Page.spotlightRight();
-				expect(popup.buttonCancel.hasFocus()).to.be.true();
+				expect(popup.buttonCancel.isFocused()).to.be.true();
 			});
 
 			it('should spot back the ok button on 5-way right then left in popup container', function () {
@@ -560,7 +561,7 @@ describe('Popup', function () {
 				expectOpen(popupCommon);
 				Page.spotlightRight();
 				Page.spotlightLeft();
-				expect(popup.buttonOK.hasFocus()).to.be.true();
+				expect(popup.buttonOK.isFocused()).to.be.true();
 			});
 
 			it('should spot back the popup button on closing the popup', function () {
@@ -575,7 +576,7 @@ describe('Popup', function () {
 				});
 
 				expectClosed(popupCommon);
-				expect(popupCommon.buttonPopup5.hasFocus()).to.be.true();
+				expect(popupCommon.buttonPopup5.isFocused()).to.be.true();
 			});
 
 			it('should close the popup on spotlight select on cancel in the popup', function () {
@@ -590,7 +591,7 @@ describe('Popup', function () {
 					Page.spotlightSelect();
 				});
 				expectClosed(popupCommon);
-				expect(popupCommon.buttonPopup5.hasFocus()).to.be.true();
+				expect(popupCommon.buttonPopup5.isFocused()).to.be.true();
 			});
 
 			it('should close the popup on spotlight select on close in the popup', function () {
@@ -606,7 +607,7 @@ describe('Popup', function () {
 					Page.spotlightSelect();
 				});
 				expectClosed(popupCommon);
-				expect(popupCommon.buttonPopup5.hasFocus()).to.be.true();
+				expect(popupCommon.buttonPopup5.isFocused()).to.be.true();
 			});
 
 			it('should spot back the popup button on auto dismiss the popup', function () {
@@ -620,7 +621,7 @@ describe('Popup', function () {
 					Page.backKey();
 				});
 				expectClosed(popupCommon);
-				expect(popupCommon.buttonPopup5.hasFocus()).to.be.true();
+				expect(popupCommon.buttonPopup5.isFocused()).to.be.true();
 			});
 		});
 
@@ -675,7 +676,7 @@ describe('Popup', function () {
 					Page.spotlightSelect();
 				});
 				expectOpen(popupCommon);
-				expect(popup.buttonOK.hasFocus()).to.be.true();
+				expect(popup.buttonOK.isFocused()).to.be.true();
 			});
 
 			it('should spot cancel button on 5-way right in popup container', function () {
@@ -687,7 +688,7 @@ describe('Popup', function () {
 				});
 				expectOpen(popupCommon);
 				Page.spotlightRight();
-				expect(popup.buttonCancel.hasFocus()).to.be.true();
+				expect(popup.buttonCancel.isFocused()).to.be.true();
 			});
 
 			it('should spot back the ok button on 5-way right then left in popup container', function () {
@@ -700,7 +701,7 @@ describe('Popup', function () {
 				expectOpen(popupCommon);
 				Page.spotlightRight();
 				Page.spotlightLeft();
-				expect(popup.buttonOK.hasFocus()).to.be.true();
+				expect(popup.buttonOK.isFocused()).to.be.true();
 			});
 
 			it('should not move spot from close button on 5-way right after 5-way up in popup container', function () {
@@ -714,7 +715,7 @@ describe('Popup', function () {
 				Page.spotlightRight();
 				Page.spotlightUp();
 				Page.spotlightRight();
-				expect(popup.buttonClose.hasFocus()).to.be.true();
+				expect(popup.buttonClose.isFocused()).to.be.true();
 			});
 
 			it('should not move spot from close button on 5-way right in popup container', function () {
@@ -728,7 +729,7 @@ describe('Popup', function () {
 				Page.spotlightRight();
 				Page.spotlightRight();
 				Page.spotlightRight();
-				expect(popup.buttonClose.hasFocus()).to.be.true();
+				expect(popup.buttonClose.isFocused()).to.be.true();
 			});
 
 			it('should spot the cancel button on 5-way right then down in popup container', function () {
@@ -741,7 +742,7 @@ describe('Popup', function () {
 				expectOpen(popupCommon);
 				Page.spotlightRight();
 				Page.spotlightDown();
-				expect(popup.buttonCancel.hasFocus()).to.be.true();
+				expect(popup.buttonCancel.isFocused()).to.be.true();
 			});
 
 			it('should spot back the popup button on closing the popup', function () {
@@ -756,7 +757,7 @@ describe('Popup', function () {
 					Page.spotlightSelect();
 				});
 				expectClosed(popupCommon);
-				expect(popupCommon.buttonPopup6.hasFocus()).to.be.true();
+				expect(popupCommon.buttonPopup6.isFocused()).to.be.true();
 			});
 
 			it('should spot back the popup button on auto dismiss the popup', function () {
@@ -771,7 +772,7 @@ describe('Popup', function () {
 					Page.backKey();
 				});
 				expectClosed(popupCommon);
-				expect(popupCommon.buttonPopup6.hasFocus()).to.be.true();
+				expect(popupCommon.buttonPopup6.isFocused()).to.be.true();
 			});
 		});
 
@@ -806,26 +807,26 @@ describe('Popup', function () {
 
 		describe('5-way and Pointer', function () {
 
-			it('should retain spotlight on the Close button inside the popup [GT-21627]', function (){
+			it('should retain spotlight on the Close button inside the popup [GT-21627]', function () {
 				Page.waitTransitionEnd(3000, undefined, () => {
 					popupCommon.buttonPopup6.click();
 				});
 				expectOpen(popupCommon);
 				Page.showPointerByKeycode();
 				// Position the pointer inside popup to the right of the Cancel button (step 4)
-				browser.moveToObject('#buttonCancel', 200, 200);
+				$('#popup6').moveTo(500, 150);
 				// 5-way to the Cancel button
 				Page.spotlightLeft();
 				// Spotight is on Cancel button (verify step 4)
-				expect(popup.buttonCancel.hasFocus()).to.be.true();
+				expect(popup.buttonCancel.isFocused()).to.be.true();
 				// 5-way Up (step 5)
 				Page.spotlightUp();
 				// Spotight remains on the Close button inside the popup (verify step 5)
-				expect(popup.buttonClose.hasFocus()).to.be.true();
+				expect(popup.buttonClose.isFocused()).to.be.true();
 				// 5-way up (step 6)
 				Page.spotlightUp();
 				// Spotlight remains on the close button inside the popup (verify step 6)
-				expect(popup.buttonClose.hasFocus()).to.be.true();
+				expect(popup.buttonClose.isFocused()).to.be.true();
 			});
 
 			it('should focus the popup button when changing from pointer to 5-way in popup container - [GT-25753]', function () {
@@ -833,7 +834,7 @@ describe('Popup', function () {
 				Page.spotlightRight();
 				Page.spotlightDown();
 				// Spotlight is on the button 'spotlightRestrict - self-only' (verify step 3)
-				expect(popupCommon.buttonPopup6.hasFocus()).to.be.true();
+				expect(popupCommon.buttonPopup6.isFocused()).to.be.true();
 				// Open popup (step 4)
 				Page.waitTransitionEnd(3000, undefined, () => {
 					popupCommon.buttonPopup6.click();
@@ -843,27 +844,27 @@ describe('Popup', function () {
 				// Wave the pointer to change to cursor mode (step 5)
 				Page.showPointerByKeycode();
 				// Position the pointer on the right of the Cancel buttion inside popup
-				browser.moveToObject('#buttonCancel', 200, 200);
+				$('#popup6').moveTo(500, 150);
 				// Spotlight on button in popup is blur (verify step 5)
-				expect(popup.buttonOK.hasFocus()).to.be.false();
+				expect(popup.buttonOK.isFocused()).to.be.false();
 				// Change from pointer to 5-way mode (step 6)
 				Page.spotlightLeft();
 				// Spotlight is on the button inside the Popup (verify step 6)
-				expect(popup.buttonCancel.hasFocus()).to.be.true();
+				expect(popup.buttonCancel.isFocused()).to.be.true();
 			});
 
-			it('should not spot Buttons Outside of Popup - [GT-21630]', function (){
+			it('should not spot Buttons Outside of Popup - [GT-21630]', function () {
 				Page.waitTransitionEnd(3000, undefined, () => {
 					popupCommon.buttonPopup6.click();
 				});
 				// Verify the popup opens
 				expectOpen(popupCommon);
 				// Hover a button outside Popup (step 4)
-				browser.moveToObject('#buttonPopup9', 200, 200);
+				$('#buttonPopup9').moveTo(200, 200);
 				// Test spotlight cannot leave popup (step 4)
 				Page.spotlightUp();
 				// Check spotlight is NOT on buttons outside popup (verify step 4)
-				expect(popup.buttonOK.hasFocus()).to.be.true();
+				expect(popup.buttonOK.isFocused()).to.be.true();
 				// Close Popup (step 5)
 				Page.waitTransitionEnd(3000, undefined, () => {
 					popup.buttonClose.click();
@@ -872,7 +873,7 @@ describe('Popup', function () {
 				// Hover the button 'spotlightRestrict - self-only' outside of the popup (step 6)
 				Page.spotlightUp();
 				// Check spotlight is on the button 'spotlightRestrict - self-only' outside popup (verify step 6)
-				expect(popupCommon.buttonPopup6.hasFocus()).to.be.true();
+				expect(popupCommon.buttonPopup6.isFocused()).to.be.true();
 				// Open popup (step 7)
 				Page.waitTransitionEnd(3000, undefined, () => {
 					popupCommon.buttonPopup6.click();
@@ -880,11 +881,11 @@ describe('Popup', function () {
 				// Verify the popup opens (step 7)
 				expectOpen(popupCommon);
 				// Hover outside Popup (step 8)
-				browser.moveToObject('#buttonPopup9', 200, 200);
+				$('#buttonPopup9').moveTo(200, 200);
 				// Test spotlight cannot leave popup (step 8)
 				Page.spotlightUp();
 				// Check spotlight is NOT on buttons outside popup (verify step 8)
-				expect(popup.buttonOK.hasFocus()).to.be.true();
+				expect(popup.buttonOK.isFocused()).to.be.true();
 			});
 		});
 	});
@@ -910,7 +911,7 @@ describe('Popup', function () {
 					Page.spotlightSelect();
 				});
 				expectOpen(popupCommon);
-				expect(popup.buttonOK.hasFocus()).to.be.true();
+				expect(popup.buttonOK.isFocused()).to.be.true();
 			});
 
 			it('should spot cancel button on 5-way right in popup container', function () {
@@ -921,7 +922,7 @@ describe('Popup', function () {
 				});
 				expectOpen(popupCommon);
 				Page.spotlightRight();
-				expect(popup.buttonCancel.hasFocus()).to.be.true();
+				expect(popup.buttonCancel.isFocused()).to.be.true();
 			});
 
 			it('should spot back the ok button on 5-way right then left in popup container', function () {
@@ -933,7 +934,7 @@ describe('Popup', function () {
 				expectOpen(popupCommon);
 				Page.spotlightRight();
 				Page.spotlightLeft();
-				expect(popup.buttonOK.hasFocus()).to.be.true();
+				expect(popup.buttonOK.isFocused()).to.be.true();
 			});
 
 			it('should not move spot from close button on 5-way right after 5-way up in popup container', function () {
@@ -946,7 +947,7 @@ describe('Popup', function () {
 				Page.spotlightRight();
 				Page.spotlightUp();
 				Page.spotlightRight();
-				expect(popup.buttonClose.hasFocus()).to.be.true();
+				expect(popup.buttonClose.isFocused()).to.be.true();
 			});
 
 			it('should not move spot from close button on 5-way right in popup container', function () {
@@ -959,7 +960,7 @@ describe('Popup', function () {
 				Page.spotlightRight();
 				Page.spotlightRight();
 				Page.spotlightRight();
-				expect(popup.buttonClose.hasFocus()).to.be.true();
+				expect(popup.buttonClose.isFocused()).to.be.true();
 			});
 
 			it('should spot the cancel button on 5-way right then down in popup container', function () {
@@ -971,7 +972,7 @@ describe('Popup', function () {
 				expectOpen(popupCommon);
 				Page.spotlightRight();
 				Page.spotlightDown();
-				expect(popup.buttonCancel.hasFocus()).to.be.true();
+				expect(popup.buttonCancel.isFocused()).to.be.true();
 			});
 
 			it('should spot back the popup button on closing the popup', function () {
@@ -985,7 +986,7 @@ describe('Popup', function () {
 					Page.spotlightSelect();
 				});
 				expectClosed(popupCommon);
-				expect(popupCommon.buttonPopup7.hasFocus()).to.be.true();
+				expect(popupCommon.buttonPopup7.isFocused()).to.be.true();
 			});
 
 			it('should spot back the popup button on auto dismiss the popup', function () {
@@ -999,7 +1000,7 @@ describe('Popup', function () {
 					Page.backKey();
 				});
 				expectClosed(popupCommon);
-				expect(popupCommon.buttonPopup7.hasFocus()).to.be.true();
+				expect(popupCommon.buttonPopup7.isFocused()).to.be.true();
 			});
 		});
 
@@ -1034,22 +1035,22 @@ describe('Popup', function () {
 
 		describe('5-way and Pointer', function () {
 
-			it('should navigate to nearest neighbor [GT-25513]', function (){
+			it('should navigate to nearest neighbor [GT-25513]', function () {
 				Page.waitTransitionEnd(3000, undefined, () => {
 					popupCommon.buttonPopup7.click();
 				});
 				expectOpen(popupCommon);
 				Page.showPointerByKeycode();
 				// Position the pointer inside popup to the right of the Cancel button (step 4)
-				browser.moveToObject('#buttonCancel', 200, 200);
+				$('#buttonCancel').moveTo(200, 200);
 				// 5-way to the OK button (step 5) (How to get it to spot Cancel button?)
 				Page.spotlightLeft();
 				// Spotight is on OK button (verify steo 5)
-				expect(popup.buttonOK.hasFocus()).to.be.true();
+				expect(popup.buttonOK.isFocused()).to.be.true();
 				// Move to the Close X button (step 7)
 				Page.spotlightUp();
 				// Spotlight remains on the close button inside the popup (verfiy step 7)
-				expect(popup.buttonClose.hasFocus()).to.be.true();
+				expect(popup.buttonClose.isFocused()).to.be.true();
 			});
 		});
 	});
@@ -1076,7 +1077,7 @@ describe('Popup', function () {
 					Page.spotlightSelect();
 				});
 				expectOpen(popupCommon);
-				expect(popup.buttonOK.hasFocus()).to.be.true();
+				expect(popup.buttonOK.isFocused()).to.be.true();
 			});
 
 			it('should spot cancel button on 5-way right in popup container', function () {
@@ -1088,7 +1089,7 @@ describe('Popup', function () {
 				});
 				expectOpen(popupCommon);
 				Page.spotlightRight();
-				expect(popup.buttonCancel.hasFocus()).to.be.true();
+				expect(popup.buttonCancel.isFocused()).to.be.true();
 			});
 
 			it('should spot back the ok button on 5-way right then left in popup container', function () {
@@ -1101,7 +1102,7 @@ describe('Popup', function () {
 				expectOpen(popupCommon);
 				Page.spotlightRight();
 				Page.spotlightLeft();
-				expect(popup.buttonOK.hasFocus()).to.be.true();
+				expect(popup.buttonOK.isFocused()).to.be.true();
 			});
 
 			it('should not move spot from close button on 5-way right after 5-way up in popup container', function () {
@@ -1115,7 +1116,7 @@ describe('Popup', function () {
 				Page.spotlightRight();
 				Page.spotlightUp();
 				Page.spotlightRight();
-				expect(popup.buttonClose.hasFocus()).to.be.true();
+				expect(popup.buttonClose.isFocused()).to.be.true();
 			});
 
 			it('should not move spot from close button on 5-way right in popup container', function () {
@@ -1129,7 +1130,7 @@ describe('Popup', function () {
 				Page.spotlightRight();
 				Page.spotlightRight();
 				Page.spotlightRight();
-				expect(popup.buttonClose.hasFocus()).to.be.true();
+				expect(popup.buttonClose.isFocused()).to.be.true();
 			});
 
 			it('should spot the cancel button on 5-way right then down in popup container', function () {
@@ -1142,7 +1143,7 @@ describe('Popup', function () {
 				expectOpen(popupCommon);
 				Page.spotlightRight();
 				Page.spotlightDown();
-				expect(popup.buttonCancel.hasFocus()).to.be.true();
+				expect(popup.buttonCancel.isFocused()).to.be.true();
 			});
 
 			it('should spot back the popup button on closing the popup', function () {
@@ -1157,7 +1158,7 @@ describe('Popup', function () {
 					Page.spotlightSelect();
 				});
 				expectClosed(popupCommon);
-				expect(popupCommon.buttonPopup8.hasFocus()).to.be.true();
+				expect(popupCommon.buttonPopup8.isFocused()).to.be.true();
 			});
 
 			it('should spot back the popup button on auto dismiss the popup', function () {
@@ -1172,7 +1173,7 @@ describe('Popup', function () {
 					Page.backKey();
 				});
 				expectClosed(popupCommon);
-				expect(popupCommon.buttonPopup8.hasFocus()).to.be.true();
+				expect(popupCommon.buttonPopup8.isFocused()).to.be.true();
 			});
 		});
 
@@ -1188,7 +1189,7 @@ describe('Popup', function () {
 				});
 				expectClosed(popupCommon);
 				// The ESC button (Back Key) does not switch out of pointer mode [ENYO-5865] [ENYO-5882]
-				expect(popupCommon.buttonPopup8.hasFocus()).to.be.false();
+				expect(popupCommon.buttonPopup8.isFocused()).to.be.false();
 			});
 
 			it('should dismiss the popup on click on outside the popup', function () {
@@ -1275,7 +1276,7 @@ describe('Popup', function () {
 					Page.spotlightSelect();
 				});
 				expectNoneScrimOpen(popupCommon);
-				expect(popup.buttonOK.hasFocus()).to.be.true();
+				expect(popup.buttonOK.isFocused()).to.be.true();
 			});
 
 			it('should spot cancel button on 5-way right in popup container', function () {
@@ -1288,7 +1289,7 @@ describe('Popup', function () {
 				});
 				expectNoneScrimOpen(popupCommon);
 				Page.spotlightRight();
-				expect(popup.buttonCancel.hasFocus()).to.be.true();
+				expect(popup.buttonCancel.isFocused()).to.be.true();
 			});
 
 			it('should spot back the ok button on 5-way right then left in popup container', function () {
@@ -1302,7 +1303,7 @@ describe('Popup', function () {
 				expectNoneScrimOpen(popupCommon);
 				Page.spotlightRight();
 				Page.spotlightLeft();
-				expect(popup.buttonOK.hasFocus()).to.be.true();
+				expect(popup.buttonOK.isFocused()).to.be.true();
 			});
 
 			it('should not move spot from close button on 5-way right after 5-way up in popup container', function () {
@@ -1317,7 +1318,7 @@ describe('Popup', function () {
 				Page.spotlightRight();
 				Page.spotlightUp();
 				Page.spotlightRight();
-				expect(popup.buttonClose.hasFocus()).to.be.true();
+				expect(popup.buttonClose.isFocused()).to.be.true();
 			});
 
 			it('should not move spot from close button on 5-way right in popup container', function () {
@@ -1332,7 +1333,7 @@ describe('Popup', function () {
 				Page.spotlightRight();
 				Page.spotlightRight();
 				Page.spotlightRight();
-				expect(popup.buttonClose.hasFocus()).to.be.true();
+				expect(popup.buttonClose.isFocused()).to.be.true();
 			});
 
 			it('should spot the cancel button on 5-way right then down in popup container', function () {
@@ -1346,7 +1347,7 @@ describe('Popup', function () {
 				expectNoneScrimOpen(popupCommon);
 				Page.spotlightRight();
 				Page.spotlightDown();
-				expect(popup.buttonCancel.hasFocus()).to.be.true();
+				expect(popup.buttonCancel.isFocused()).to.be.true();
 			});
 
 			it('should spot back the popup button on closing the popup', function () {
@@ -1362,7 +1363,7 @@ describe('Popup', function () {
 					Page.spotlightSelect();
 				});
 				expectClosed(popupCommon);
-				expect(popupCommon.buttonPopup9.hasFocus()).to.be.true();
+				expect(popupCommon.buttonPopup9.isFocused()).to.be.true();
 			});
 
 			it('should spot back the popup button on auto dismiss the popup', function () {
@@ -1378,7 +1379,7 @@ describe('Popup', function () {
 					Page.backKey();
 				});
 				expectClosed(popupCommon);
-				expect(popupCommon.buttonPopup9.hasFocus()).to.be.true();
+				expect(popupCommon.buttonPopup9.isFocused()).to.be.true();
 			});
 		});
 

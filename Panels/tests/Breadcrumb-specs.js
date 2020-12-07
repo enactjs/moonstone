@@ -4,7 +4,7 @@ import Breadcrumb from '../Breadcrumb';
 
 describe('Breadcrumb', () => {
 
-	test('should include {index} in the payload of {onSelect}', () => {
+	test.skip('should include {index} in the payload of {onSelect}', () => {
 		const handleSelect = jest.fn();
 		const subject = mount(
 			<Breadcrumb index={3} onSelect={handleSelect} />
@@ -18,7 +18,7 @@ describe('Breadcrumb', () => {
 		expect(actual).toBe(expected);
 	});
 
-	test(
+	test.skip(
 		'should include call both the {onClick} and {onSelect} handlers on click',
 		() => {
 			const handleSelect = jest.fn();

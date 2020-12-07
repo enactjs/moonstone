@@ -52,7 +52,7 @@ const handleUpDown = handle(
  * @public
  */
 class ExpandableInputBase extends React.Component {
-	static displayName = 'ExpandableInput'
+	static displayName = 'ExpandableInput';
 
 	static propTypes = /** @lends moonstone/ExpandableInput.ExpandableInputBase.prototype */ {
 		/**
@@ -186,11 +186,11 @@ class ExpandableInputBase extends React.Component {
 		 * @public
 		 */
 		value: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-	}
+	};
 
 	static defaultProps = {
 		spotlightDisabled: false
-	}
+	};
 
 	constructor (props) {
 		super(props);
@@ -235,7 +235,7 @@ class ExpandableInputBase extends React.Component {
 		forward('onChange', {
 			value: this.state.initialValue
 		}, this.props);
-	}
+	};
 
 	shouldClose () {
 		return this.paused.resume() && !this.pointer;
@@ -247,28 +247,28 @@ class ExpandableInputBase extends React.Component {
 		[forKey('left'), forward('onSpotlightLeft')],
 		[forKey('right'), forward('onSpotlightRight')],
 		[forKey('cancel'), this.resetValue]
-	).bind(this)
+	).bind(this);
 
 	handleActivate = () => {
 		this.paused.pause();
-	}
+	};
 
-	handleChange = (val) => forward('onChange', val, this.props)
+	handleChange = (val) => forward('onChange', val, this.props);
 
 	handleDown = () => {
 		this.pointer = true;
-	}
+	};
 
 	handleOpen = handle(
 		forward('onOpen'),
 		(ev, {value}) => this.setState({initialValue: value})
-	).bind(this)
+	).bind(this);
 
 	handleUp = () => {
 		this.pointer = false;
-	}
+	};
 
-	calcClassName = (className) => (className ? `${css.expandableInput} ${className}` : css.expandableInput)
+	calcClassName = (className) => (className ? `${css.expandableInput} ${className}` : css.expandableInput);
 
 	render () {
 		const {

@@ -1,6 +1,6 @@
 'use strict';
-const Page = require('@enact/ui-test-utils/test/Page.js');
-const {element, getComponent, getSubComponent, getText} = require('@enact/ui-test-utils/test/utils.js');
+const {Page} = require('@enact/ui-test-utils/utils');
+const {element, getComponent, getSubComponent, getText} = require('@enact/ui-test-utils/utils');
 
 const getIcon = getComponent({component: 'Icon'});
 const getLabeledItem = getComponent({component: 'LabeledItem'});
@@ -13,22 +13,38 @@ class ExpandableItemInterface {
 	}
 
 	focus () {
-		return browser.selectorExecute(`#${this.id}>div`, (els) => els && !els[0].focus());
+		return browser.execute((el) => el.focus(), $(`#${this.id}>div`));
 	}
 
-	get      self () { return element(`#${this.id}`, browser); }
-	get   chevron () { return getIcon(this.self); }
-	get     title () { return getLabeledItem(this.self); }
-	get titleText () { return getText(getLabeledItemTitle(this.self)); }
-	get     value () { return getLabeledItemValue(this.self); }
-	get valueText () { return getText(this.value); }
+	get      self () {
+		return element(`#${this.id}`, browser);
+	}
+	get   chevron () {
+		return getIcon(this.self);
+	}
+	get     title () {
+		return getLabeledItem(this.self);
+	}
+	get titleText () {
+		return getText(getLabeledItemTitle(this.self));
+	}
+	get     value () {
+		return getLabeledItemValue(this.self);
+	}
+	get valueText () {
+		return getText(this.value);
+	}
 	get    isOpen () {
-		return !(!this.self.isExisting('.enact_ui_Transition_Transition_transition') ||
-		!this.self.isExisting('.enact_ui_Transition_Transition_shown') && this.self.isExisting('.enact_ui_Transition_Transition_hidden'));
+		return !(!this.self.$('.enact_ui_Transition_Transition_transition').isExisting() ||
+		!this.self.$('.enact_ui_Transition_Transition_shown').isExisting() && this.self.$('.enact_ui_Transition_Transition_hidden').isExisting());
 	}
-	get  hasLabel () { return this.self.isVisible('.LabeledItem_LabeledItem_label'); }
+	get  hasLabel () {
+		return this.self.$('.LabeledItem_LabeledItem_label').isDisplayed();
+	}
 
-	get item () { return element('.enact_ui_Transition_Transition_transition .Item_Item_item', this.self); }
+	get item () {
+		return element('.enact_ui_Transition_Transition_transition .Item_Item_item', this.self);
+	}
 }
 
 class ExpandableItemPage extends Page {
@@ -39,8 +55,8 @@ class ExpandableItemPage extends Page {
 		this.components.expandableItemDefaultClosedWithoutNoneText = new ExpandableItemInterface('expandableItemDefaultClosedWithoutNoneText');
 		this.components.expandableItemDefaultClosedWithNoneText = new ExpandableItemInterface('expandableItemDefaultClosedWithNoneText');
 		this.components.expandableItemDefaultOpenWithNoneText = new ExpandableItemInterface('expandableItemDefaultOpenWithNoneText');
-		this.components.expandableItemWithAutoClose= new ExpandableItemInterface('expandableItemWithAutoClose');
-		this.components.expandableItemWithLockBottom= new ExpandableItemInterface('expandableItemWithLockBottom');
+		this.components.expandableItemWithAutoClose = new ExpandableItemInterface('expandableItemWithAutoClose');
+		this.components.expandableItemWithLockBottom = new ExpandableItemInterface('expandableItemWithLockBottom');
 		this.components.expandableItemWithoutChildren = new ExpandableItemInterface('expandableItemWithoutChildren');
 		this.components.expandableItemAutoLabel = new ExpandableItemInterface('expandableItemAutoLabel');
 		this.components.expandableItemAlwaysLabel = new ExpandableItemInterface('expandableItemAlwaysLabel');

@@ -36,7 +36,7 @@ class ScrollerResizableItem extends React.Component {
 	static propTypes = {
 		more: PropTypes.bool,
 		toggleMore: PropTypes.func
-	}
+	};
 	render () {
 		const height = ri.unit(this.props.more ? 1500 : 400, 'rem');
 		const text = this.props.more ? 'less' : 'more';
@@ -63,7 +63,7 @@ class ScrollerWithResizable extends React.Component {
 
 	handleClick = () => {
 		this.setState(prevState => ({more: !prevState.more}));
-	}
+	};
 
 	render () {
 		return (

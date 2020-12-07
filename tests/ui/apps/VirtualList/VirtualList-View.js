@@ -28,13 +28,17 @@ const items = [],
 	},
 	numItems = 100;
 
-const renderItem = (size) => ({index, ...rest}) => {
-	const style = {height: size + 'px', ...itemStyle};
-	return (
-		<StatefulSwitchItem index={index} style={style} {...rest} id={`item${index}`}>
-			{items[index].item}
-		</StatefulSwitchItem>
-	);
+const renderItem = (size) => {
+	const Wrapper = ({index, ...rest}) => {
+		const style = {height: size + 'px', ...itemStyle};
+		return (
+			<StatefulSwitchItem index={index} style={style} {...rest} id={`item${index}`}>
+				{items[index].item}
+			</StatefulSwitchItem>
+		);
+	};
+	Wrapper.displayName = 'SwitchItemWrapper';
+	return Wrapper;
 };
 
 const updateDataSize = (dataSize) => {
@@ -78,7 +82,7 @@ class StatefulSwitchItem extends React.Component {
 		this.setState(({selected}) => ({
 			selected: !selected
 		}));
-	}
+	};
 
 	render () {
 		const props = Object.assign({}, this.props);
@@ -98,29 +102,43 @@ class app extends React.Component {
 		this.state = {
 			focusableScrollbar: false,
 			hideScrollbar: false,
-			keyDownEvents: 0,
 			wrap: false
 		};
+		this.rootRef = React.createRef();
+		this.scrollingRef = React.createRef();
 	}
 
 	onKeyDown = () => {
-		this.setState(({keyDownEvents}) => ({keyDownEvents: keyDownEvents + 1}));
-	}
+		if (this.rootRef.current.dataset.keydownEvents) {
+			this.rootRef.current.dataset.keydownEvents = Number(this.rootRef.current.dataset.keydownEvents) + 1;
+		} else {
+			this.rootRef.current.dataset.keydownEvents = 1;
+		}
+	};
+
+	onScrollStart = () => {
+		this.scrollingRef.current.innerHTML = 'Scrolling';
+	};
+
+	onScrollStop = () => {
+		this.scrollingRef.current.innerHTML = 'Not Scrolling';
+	};
 
 	onToggle = ({currentTarget}) => {
 		const key = currentTarget.getAttribute('id');
 		this.setState((state) => ({[key]: !state[key]}));
-	}
+	};
 
 	render () {
-		const {focusableScrollbar, hideScrollbar, keyDownEvents, wrap} = this.state;
+		const {focusableScrollbar, hideScrollbar, wrap} = this.state;
 		return (
-			<div {...this.props} data-keydown-events={keyDownEvents} id="list" style={fullHeightStyle}>
+			<div {...this.props} id="list" style={fullHeightStyle} ref={this.rootRef}>
 				<Column>
 					<Cell component={OptionsContainer} shrink>
 						<ToggleButton id="focusableScrollbar" onClick={this.onToggle} selected={focusableScrollbar}>focusableScrollbar</ToggleButton>
 						<ToggleButton id="hideScrollbar" onClick={this.onToggle} selected={hideScrollbar}>hide scrollbar</ToggleButton>
 						<ToggleButton id="wrap" onClick={this.onToggle} selected={wrap}>wrap</ToggleButton>
+						<span id="scrolling" ref={this.scrollingRef}>Not Scrolling</span>
 					</Cell>
 					<Cell component={ListContainer}>
 						<Row align="center" style={fullHeightStyle}>
@@ -139,6 +157,8 @@ class app extends React.Component {
 											itemRenderer={renderItem(itemSize)}
 											itemSize={itemSize}
 											onKeyDown={this.onKeyDown}
+											onScrollStart={this.onScrollStart}
+											onScrollStop={this.onScrollStop}
 											spacing={0}
 											verticalScrollbar={getScrollbarVisibility(hideScrollbar)}
 											wrap={wrap}

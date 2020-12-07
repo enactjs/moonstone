@@ -48,7 +48,7 @@ class PopupResumeFocusAfterOpenState extends React.Component {
 				isPopup: false
 			});
 		}, 200);
-	}
+	};
 
 	render () {
 		return (

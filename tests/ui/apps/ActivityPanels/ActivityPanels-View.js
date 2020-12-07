@@ -14,11 +14,11 @@ import Button from '../../../../Button';
 class App extends React.Component {
 	static propTypes = {
 		index: PropTypes.number
-	}
+	};
 
 	static defaultProps = {
 		index: 0
-	}
+	};
 
 	constructor (props) {
 		super(props);
@@ -27,9 +27,9 @@ class App extends React.Component {
 		};
 	}
 
-	handleSelectBreadcrumb = ({index}) => this.setState({index})
+	handleSelectBreadcrumb = ({index}) => this.setState({index});
 
-	handleClick = () => this.setState({index: this.state.index + 1})
+	handleClick = () => this.setState(state => ({index: state.index + 1}));
 
 	render () {
 		return (

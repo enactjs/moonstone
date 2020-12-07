@@ -1,6 +1,6 @@
 'use strict';
-const Page = require('@enact/ui-test-utils/test/Page.js');
-const {getSubComponent, getText} = require('@enact/ui-test-utils/test/utils.js');
+const {Page} = require('@enact/ui-test-utils/utils');
+const {getSubComponent, getText} = require('@enact/ui-test-utils/utils');
 
 const getMarqueeText = getSubComponent({lib: 'ui', component:'Marquee', child:'text'});
 class ToggleButtonInterface {
@@ -9,13 +9,21 @@ class ToggleButtonInterface {
 	}
 
 	focus () {
-		return browser.selectorExecute(`#${this.id}`, (els) => els && !els[0].focus());
+		return browser.execute((el) => el.focus(), $(`#${this.id}`));
 	}
 
-	get self () { return browser.element(`#${this.id}`); }
-	get valueText () { return getText(getMarqueeText(this.self)); }
-	get isSelected () { return browser.isExisting(`#${this.id}.ToggleButton_ToggleButton_selected`); }
-	get isSmall () { return browser.isExisting(`#${this.id}.ToggleButton_ToggleButton_small`); }
+	get self () {
+		return $(`#${this.id}`);
+	}
+	get valueText () {
+		return getText(getMarqueeText(this.self));
+	}
+	get isSelected () {
+		return browser.$(`#${this.id}.ToggleButton_ToggleButton_selected`).isExisting();
+	}
+	get isSmall () {
+		return browser.$(`#${this.id}.ToggleButton_ToggleButton_small`).isExisting();
+	}
 }
 
 class ToggleButtonPage extends Page {
