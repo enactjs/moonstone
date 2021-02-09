@@ -368,7 +368,7 @@ class ScrollButtons extends Component {
 				key="prevButton"
 				onClick={this.onClickPrev}
 				onDown={this.onDownPrev}
-				onHoldPulse={this.onClickPrev}
+				onHold={this.onClickPrev}
 				ref={this.prevButtonRef}
 			>
 				{prevIcon}
@@ -381,7 +381,7 @@ class ScrollButtons extends Component {
 				key="nextButton"
 				onClick={this.onClickNext}
 				onDown={this.onDownNext}
-				onHoldPulse={this.onClickNext}
+				onHold={this.onClickNext}
 				ref={this.nextButtonRef}
 			>
 				{nextIcon}
