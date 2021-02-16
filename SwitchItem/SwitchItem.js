@@ -14,7 +14,6 @@
 import kind from '@enact/core/kind';
 import ComponentOverride from '@enact/ui/ComponentOverride';
 import EnactPropTypes from '@enact/core/internal/prop-types';
-import React from 'react';
 import PropTypes from 'prop-types';
 
 import Switch from '../Switch';

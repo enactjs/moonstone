@@ -1,7 +1,6 @@
 import {boolean, select, text} from '@enact/storybook-utils/addons/knobs';
 import {action} from '@enact/storybook-utils/addons/actions';
 import Group from '@enact/ui/Group';
-import React from 'react';
 import {storiesOf} from '@storybook/react';
 
 import SelectableItem from '@enact/moonstone/SelectableItem';

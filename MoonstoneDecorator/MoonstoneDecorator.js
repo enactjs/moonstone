@@ -8,7 +8,7 @@
 import {addAll} from '@enact/core/keymap';
 import hoc from '@enact/core/hoc';
 import I18nDecorator from '@enact/i18n/I18nDecorator';
-import React from 'react';
+import {Component} from 'react';
 import classNames from 'classnames';
 import {ResolutionDecorator} from '@enact/ui/resolution';
 import {FloatingLayerDecorator} from '@enact/ui/FloatingLayer';
@@ -225,7 +225,7 @@ const MoonstoneDecorator = hoc(defaultConfig, (config, Wrapped) => {
 		}
 	});
 
-	const Decorator = class extends React.Component {
+	const Decorator = class extends Component {
 		static displayName = 'MoonstoneDecorator';
 
 		render () {

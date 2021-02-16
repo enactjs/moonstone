@@ -20,7 +20,7 @@ import kind from '@enact/core/kind';
 import {I18nContextDecorator} from '@enact/i18n/I18nDecorator';
 import Pure from '@enact/ui/internal/Pure';
 import PropTypes from 'prop-types';
-import React from 'react';
+import {Children} from 'react';
 
 import {Expandable, ExpandableItemBase} from '../ExpandableItem';
 import IconButton from '../IconButton';
@@ -318,7 +318,7 @@ const ExpandablePickerBase = kind({
 	},
 
 	computed: {
-		label: ({children, value}) => React.Children.toArray(children)[value]
+		label: ({children, value}) => Children.toArray(children)[value]
 	},
 
 	render: (props) => {

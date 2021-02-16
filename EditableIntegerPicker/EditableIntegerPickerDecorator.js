@@ -2,7 +2,7 @@ import {addAll, is} from '@enact/core/keymap';
 import {forward} from '@enact/core/handle';
 import hoc from '@enact/core/hoc';
 import PropTypes from 'prop-types';
-import React from 'react';
+import {Component} from 'react';
 import ReactDOM from 'react-dom';
 import Spotlight from '@enact/spotlight';
 import Pause from '@enact/spotlight/Pause';
@@ -29,7 +29,7 @@ const EditableIntegerPickerDecorator = hoc((config, Wrapped) => {	// eslint-disa
 	const forwardClick = forward('onClick');
 	const forwardKeyDown = forward('onKeyDown');
 
-	return class extends React.Component {
+	return class extends Component {
 
 		static displayName = 'EditableIntegerPickerDecorator';
 

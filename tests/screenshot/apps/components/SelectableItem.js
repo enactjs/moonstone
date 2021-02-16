@@ -1,5 +1,4 @@
 import SelectableItem from '../../../../SelectableItem';
-import React from 'react';
 
 const SelectableItemTests = [
 	<SelectableItem />,

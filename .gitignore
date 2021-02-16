@@ -13,3 +13,4 @@ bundle.js
 
 # Testing
 errorShots
+.eslintcache

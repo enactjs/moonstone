@@ -1,6 +1,5 @@
 import Input from '../../../../Input';
 import MoonstoneDecorator from '../../../../MoonstoneDecorator';
-import React from 'react';
 import spotlight from '@enact/spotlight';
 
 window.spotlight = spotlight;

@@ -1,9 +1,9 @@
-import React from 'react';
+import {Component} from 'react';
 import PropTypes from 'prop-types';
 
 import {IncrementSlider} from '@enact/moonstone/IncrementSlider';
 
-class IncrementSliderDelayValue extends React.Component {
+class IncrementSliderDelayValue extends Component {
 	static displayName = 'IncrementSliderDelayValue';
 
 	static propTypes = {

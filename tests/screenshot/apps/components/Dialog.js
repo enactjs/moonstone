@@ -1,5 +1,4 @@
 import Dialog from '../../../../Dialog';
-import React from 'react';
 
 const DialogTests = [
 	// showCloseButton = false(default)

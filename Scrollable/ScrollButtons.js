@@ -4,7 +4,7 @@ import {is} from '@enact/core/keymap';
 import {Announce} from '@enact/ui/AnnounceDecorator';
 import Spotlight, {getDirection} from '@enact/spotlight';
 import PropTypes from 'prop-types';
-import React, {Component} from 'react';
+import {createRef, Component} from 'react';
 import ReactDOM from 'react-dom';
 
 import $L from '../internal/$L';
@@ -167,9 +167,9 @@ class ScrollButtons extends Component {
 			nextButtonDisabled: true
 		};
 
-		this.announceRef = React.createRef();
-		this.nextButtonRef = React.createRef();
-		this.prevButtonRef = React.createRef();
+		this.announceRef = createRef();
+		this.nextButtonRef = createRef();
+		this.prevButtonRef = createRef();
 	}
 
 	componentDidMount () {

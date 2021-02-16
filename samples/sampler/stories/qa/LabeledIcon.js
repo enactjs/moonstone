@@ -2,7 +2,6 @@ import {mergeComponentMetadata} from '@enact/storybook-utils';
 import {boolean, select, text} from '@enact/storybook-utils/addons/knobs';
 import {LabeledIconBase as UiLabeledIconBase, LabeledIcon as UiLabeledIcon} from '@enact/ui/LabeledIcon';
 import UiIcon from '@enact/ui/Icon';
-import React from 'react';
 import {storiesOf} from '@storybook/react';
 import Scroller from '@enact/ui/Scroller';
 import Layout, {Cell} from '@enact/ui/Layout';

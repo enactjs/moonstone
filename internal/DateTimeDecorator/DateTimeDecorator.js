@@ -12,7 +12,7 @@ import {I18nContextDecorator} from '@enact/i18n/I18nDecorator';
 import Changeable from '@enact/ui/Changeable';
 import DateFactory from 'ilib/lib/DateFactory';
 import PropTypes from 'prop-types';
-import React from 'react';
+import {Component} from 'react';
 
 import {Expandable} from '../../ExpandableItem';
 
@@ -50,7 +50,7 @@ const DateTimeDecorator = hoc((config, Wrapped) => {
 		return null;
 	});
 
-	const Decorator = class extends React.Component {
+	const Decorator = class extends Component {
 		static displayName = 'DateTimeDecorator';
 
 		static propTypes = /** @lends moonstone/internal/DateTimeDecorator.DateTimeDecorator.prototype */ {

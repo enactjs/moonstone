@@ -1,5 +1,4 @@
 import Slider from '../../../../Slider';
-import React from 'react';
 
 // TODO: progressAnchor, RTL, disabled
 
