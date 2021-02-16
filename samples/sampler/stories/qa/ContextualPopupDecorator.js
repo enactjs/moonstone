@@ -2,7 +2,7 @@ import {select} from '@enact/storybook-utils/addons/knobs';
 import {mergeComponentMetadata} from '@enact/storybook-utils';
 import {Group} from '@enact/ui/Group';
 import ri from '@enact/ui/resolution';
-import React from 'react';
+import {Component} from 'react';
 import {storiesOf} from '@storybook/react';
 
 import Button from '@enact/moonstone/Button';
@@ -44,7 +44,7 @@ const renderSuperTallPopup = () => (
 	</div>
 );
 
-class ContextualPopupWithActivator extends React.Component {
+class ContextualPopupWithActivator extends Component {
 	constructor (props) {
 		super(props);
 
@@ -69,7 +69,7 @@ class ContextualPopupWithActivator extends React.Component {
 }
 
 // PLAT-77119
-class ContextualPopupWithArrowFunction extends React.Component {
+class ContextualPopupWithArrowFunction extends Component {
 	constructor (props) {
 		super(props);
 		this.state = {

@@ -1,7 +1,7 @@
 import ApiDecorator from '@enact/core/internal/ApiDecorator';
 import {ScrollbarBase as UiScrollbarBase} from '@enact/ui/Scrollable/Scrollbar';
 import PropTypes from 'prop-types';
-import React, {Component} from 'react';
+import {createRef, Component} from 'react';
 
 import ScrollButtons from './ScrollButtons';
 import ScrollThumb from './ScrollThumb';
@@ -92,8 +92,8 @@ class ScrollbarBase extends Component {
 			props.setApiProvider(this);
 		}
 
-		this.scrollbarRef = React.createRef();
-		this.scrollButtonsRef = React.createRef();
+		this.scrollbarRef = createRef();
+		this.scrollButtonsRef = createRef();
 	}
 
 	componentDidMount () {

@@ -1,4 +1,4 @@
-import React from 'react';
+import {Children} from 'react';
 // VideoPlayer utils.js
 //
 
@@ -82,7 +82,7 @@ const calcNumberValueOfPlaybackRate = (rate) => {
  * @returns {Number} Number of children nodes
  * @private
  */
-const countReactChildren = (children) => React.Children.toArray(children).filter(n => n != null).length;
+const countReactChildren = (children) => Children.toArray(children).filter(n => n != null).length;
 
 export {
 	calcNumberValueOfPlaybackRate,

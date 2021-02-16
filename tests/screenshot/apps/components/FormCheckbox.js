@@ -1,5 +1,4 @@
 import FormCheckbox from '../../../../FormCheckbox';
-import React from 'react';
 
 const FormCheckboxTests = [
 	<FormCheckbox />

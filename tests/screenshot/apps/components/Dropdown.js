@@ -1,5 +1,4 @@
 import Dropdown from '../../../../Dropdown';
-import React from 'react';
 
 // TO DO: add children options
 // TO DO: add direction up/down

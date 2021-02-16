@@ -11,7 +11,6 @@ import IdProvider from '@enact/ui/internal/IdProvider';
 import {Layout, Cell} from '@enact/ui/Layout';
 import Slottable from '@enact/ui/Slottable';
 import PropTypes from 'prop-types';
-import React from 'react';
 
 import {MarqueeDecorator} from '../Marquee';
 import Popup from '../Popup';

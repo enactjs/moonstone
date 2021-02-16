@@ -14,7 +14,7 @@
 
 import Changeable from '@enact/ui/Changeable';
 import {adaptEvent, call, forKey, forward, handle, oneOf, preventDefault, stopImmediate} from '@enact/core/handle';
-import React from 'react';
+import {Component} from 'react';
 import PropTypes from 'prop-types';
 import Pure from '@enact/ui/internal/Pure';
 import Pause from '@enact/spotlight/Pause';
@@ -51,7 +51,7 @@ const handleUpDown = handle(
  * @ui
  * @public
  */
-class ExpandableInputBase extends React.Component {
+class ExpandableInputBase extends Component {
 	static displayName = 'ExpandableInput';
 
 	static propTypes = /** @lends moonstone/ExpandableInput.ExpandableInputBase.prototype */ {

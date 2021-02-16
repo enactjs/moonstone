@@ -7,7 +7,7 @@
  */
 
 import kind from '@enact/core/kind';
-import React from 'react';
+import {Children, cloneElement} from 'react';
 import PropTypes from 'prop-types';
 import Slottable from '@enact/ui/Slottable';
 
@@ -136,11 +136,11 @@ const NotificationBase = kind({
 
 	computed: {
 		className: ({buttons, styler}) => styler.append({
-			wide: (buttons && React.Children.toArray(buttons).filter(Boolean).length > 2)
+			wide: (buttons && Children.toArray(buttons).filter(Boolean).length > 2)
 		}),
-		buttons: ({buttons}) => React.Children.map(buttons, (button) => {
+		buttons: ({buttons}) => Children.map(buttons, (button) => {
 			if (button && button.props && !button.props.small) {
-				return React.cloneElement(button, {size: 'small'});
+				return cloneElement(button, {size: 'small'});
 			} else {
 				return button;
 			}

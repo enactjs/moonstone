@@ -1,6 +1,6 @@
 import {forKey, forward, handle} from '@enact/core/handle';
 import kind from '@enact/core/kind';
-import React from 'react';
+import {Component} from 'react';
 import PropTypes from 'prop-types';
 
 import $L from '../internal/$L';
@@ -29,7 +29,7 @@ const hours12 = [
  * @ui
  * @private
  */
-class HourPicker extends React.Component {
+class HourPicker extends Component {
 	static propTypes = {
 		hasMeridiem: PropTypes.bool,
 		value: PropTypes.number

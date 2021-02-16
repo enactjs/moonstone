@@ -7,7 +7,7 @@ import {Spottable} from '@enact/spotlight/Spottable';
 import {VirtualListBase as UiVirtualListBase, VirtualListBaseNative as UiVirtualListBaseNative} from '@enact/ui/VirtualList';
 import PropTypes from 'prop-types';
 import clamp from 'ramda/src/clamp';
-import React, {Component} from 'react';
+import {Fragment, Component} from 'react';
 import warning from 'warning';
 
 import {Scrollable, dataIndexAttribute} from '../Scrollable';
@@ -920,7 +920,7 @@ const listItemsRenderer = (props) => {
 	} = props;
 
 	return (
-		<React.Fragment>
+		<Fragment>
 			{cc.length ? (
 				<div ref={initUiItemContainerRef} role={role}>{cc}</div>
 			) : null}
@@ -934,7 +934,7 @@ const listItemsRenderer = (props) => {
 					onFocus={handlePlaceholderFocus}
 				/>
 			)}
-		</React.Fragment>
+		</Fragment>
 	);
 };
 /* eslint-enable enact/prop-types */

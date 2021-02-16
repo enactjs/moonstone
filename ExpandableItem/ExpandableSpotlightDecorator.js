@@ -4,7 +4,7 @@ import hoc from '@enact/core/hoc';
 import {Job} from '@enact/core/util';
 import Spotlight from '@enact/spotlight';
 import Pause from '@enact/spotlight/Pause';
-import React from 'react';
+import {Component} from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 
@@ -55,7 +55,7 @@ const defaultConfig = {
 const ExpandableSpotlightDecorator = hoc(defaultConfig, (config, Wrapped) => {
 	const {getChildFocusTarget, noPointerMode} = config;
 
-	return class extends React.Component {
+	return class extends Component {
 		static displayName = 'ExpandableSpotlightDecorator';
 
 		static propTypes =  /** @lends moonstone/ExpandableItem.ExpandableSpotlightDecorator.prototype */ {

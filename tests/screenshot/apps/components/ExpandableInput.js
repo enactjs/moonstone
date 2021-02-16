@@ -1,5 +1,4 @@
 import ExpandableInput from '../../../../ExpandableInput';
-import React from 'react';
 
 const ExpandableInputTests = [
 	<ExpandableInput title="Expandable Input" />
