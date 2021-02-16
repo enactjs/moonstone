@@ -5,6 +5,7 @@
  * @exports MoonstoneDecorator
  */
 
+import {setDefaultTargetById} from '@enact/core/dispatcher';
 import {addAll} from '@enact/core/keymap';
 import hoc from '@enact/core/hoc';
 import I18nDecorator from '@enact/i18n/I18nDecorator';
@@ -107,6 +108,15 @@ const defaultConfig = /** @lends moonstone/MoonstoneDecorator.MoonstoneDecorator
 	},
 
 	/**
+	 * Specifies the id of the React DOM tree root node
+	 *
+	 * @type {String}
+	 * @default 'root'
+	 * @public
+	 */
+	rootId: 'root',
+
+	/**
 	 * Applies skinning support.
 	 *
 	 * @type {Boolean}
@@ -157,7 +167,7 @@ const defaultConfig = /** @lends moonstone/MoonstoneDecorator.MoonstoneDecorator
  */
 const MoonstoneDecorator = hoc(defaultConfig, (config, Wrapped) => {
 	const {accessible, ri, i18n, spotlight, float, noAutoFocus, overlay,
-		skin, disableFullscreen} = config;
+		skin, disableFullscreen, rootId} = config;
 
 	// Apply classes depending on screen type (overlay / fullscreen)
 	const bgClassName = classNames({
@@ -215,6 +225,9 @@ const MoonstoneDecorator = hoc(defaultConfig, (config, Wrapped) => {
 		pointerHide: 1537,
 		pointerShow: 1536
 	});
+
+	// set the DOM node ID of the React DOM tree root
+	setDefaultTargetById(rootId);
 
 	// configure the default hold time
 	configure({
