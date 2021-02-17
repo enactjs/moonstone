@@ -6,7 +6,7 @@ The following is a curated list of changes in the Enact moonstone module, newest
 
 ### Added
 
-- `agate/ThemeDecorator` config `rootId` to specify React DOM tree root for global event handlers
+- `moonstone/MoonstoneDecorator` config `rootId` to specify React DOM tree root for global event handlers
 
 ## [3.3.1] - 2020-11-02
 
