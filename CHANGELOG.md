@@ -2,6 +2,12 @@
 
 The following is a curated list of changes in the Enact moonstone module, newest changes on the top.
 
+## [unreleased]
+
+### Added
+
+- `moonstone/MoonstoneDecorator` config `rootId` to specify React DOM tree root for global event handlers
+
 ## [3.3.1] - 2020-11-02
 
 ### Fixed
