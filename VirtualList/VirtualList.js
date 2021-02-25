@@ -13,7 +13,6 @@
 import kind from '@enact/core/kind';
 import {gridListItemSizeShape, itemSizesShape} from '@enact/ui/VirtualList';
 import PropTypes from 'prop-types';
-import React from 'react';
 
 import {ScrollableVirtualList, ScrollableVirtualListNative, VirtualListBase, VirtualListBaseNative} from './VirtualListBase';
 

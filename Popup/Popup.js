@@ -14,7 +14,7 @@ import {on, off} from '@enact/core/dispatcher';
 import {Row, Cell} from '@enact/ui/Layout';
 import FloatingLayer from '@enact/ui/FloatingLayer';
 import kind from '@enact/core/kind';
-import React from 'react';
+import {Component} from 'react';
 import PropTypes from 'prop-types';
 import Spotlight, {getDirection} from '@enact/spotlight';
 import Pause from '@enact/spotlight/Pause';
@@ -278,7 +278,7 @@ const OpenState = {
  * @ui
  * @public
  */
-class Popup extends React.Component {
+class Popup extends Component {
 
 	static propTypes = /** @lends moonstone/Popup.Popup.prototype */ {
 		/**

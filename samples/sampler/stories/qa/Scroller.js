@@ -3,7 +3,7 @@ import {boolean, number, select} from '@enact/storybook-utils/addons/knobs';
 import {mergeComponentMetadata} from '@enact/storybook-utils';
 import Group from '@enact/ui/Group';
 import PropTypes from 'prop-types';
-import React from 'react';
+import {Component} from 'react';
 import ri from '@enact/ui/resolution';
 import Spotlight from '@enact/spotlight';
 import SpotlightContainerDecorator from '@enact/spotlight/SpotlightContainerDecorator';
@@ -32,7 +32,7 @@ const
 		scrollbarOption: ['auto', 'hidden', 'visible']
 	};
 
-class ScrollerResizableItem extends React.Component {
+class ScrollerResizableItem extends Component {
 	static propTypes = {
 		more: PropTypes.bool,
 		toggleMore: PropTypes.func
@@ -53,7 +53,7 @@ class ScrollerResizableItem extends React.Component {
 	}
 }
 
-class ScrollerWithResizable extends React.Component {
+class ScrollerWithResizable extends Component {
 	constructor (props) {
 		super(props);
 		this.state = {
@@ -81,7 +81,7 @@ class ScrollerWithResizable extends React.Component {
 	}
 }
 
-class ScrollerWithTwoExpandableList extends React.Component {
+class ScrollerWithTwoExpandableList extends Component {
 	render () {
 
 		return (
@@ -115,7 +115,7 @@ class ScrollerWithTwoExpandableList extends React.Component {
 
 const Container = SpotlightContainerDecorator('div');
 
-class ScrollerWithLargeContainer extends React.Component {
+class ScrollerWithLargeContainer extends Component {
 	componentDidMount () {
 		setTimeout(() => {
 			Spotlight.focus('scroller');
@@ -497,7 +497,6 @@ storiesOf('Scroller', module)
 					onKeyDown={action('onKeyDown')}
 					onScrollStart={action('onScrollStart')}
 					onScrollStop={action('onScrollStop')}
-
 					verticalScrollbar="visible"
 				>
 					<Scroller

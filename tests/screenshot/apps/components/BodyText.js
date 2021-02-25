@@ -1,5 +1,4 @@
 import BodyText from '../../../../BodyText';
-import React from 'react';
 
 const BodyTextTests = [
 	<BodyText>This is some text</BodyText>,

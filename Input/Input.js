@@ -15,7 +15,6 @@ import {isRtlText} from '@enact/i18n/util';
 import Changeable from '@enact/ui/Changeable';
 import Pure from '@enact/ui/internal/Pure';
 import PropTypes from 'prop-types';
-import React from 'react';
 
 import $L from '../internal/$L';
 import Skinnable from '../Skinnable';

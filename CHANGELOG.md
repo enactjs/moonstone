@@ -2,6 +2,14 @@
 
 The following is a curated list of changes in the Enact moonstone module, newest changes on the top.
 
+## [4.0.0-alpha.1] - 2021-02-25
+
+-  The framework was updated to support React 17.0.1
+
+### Added
+
+- `moonstone/MoonstoneDecorator` config `rootId` to specify React DOM tree root for global event handlers
+
 ## [3.3.1] - 2020-11-02
 
 ### Fixed

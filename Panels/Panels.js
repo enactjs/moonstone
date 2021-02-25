@@ -5,7 +5,6 @@ import IdProvider from '@enact/ui/internal/IdProvider';
 import {shape} from '@enact/ui/ViewManager';
 import PropTypes from 'prop-types';
 import compose from 'ramda/src/compose';
-import React from 'react';
 
 import Skinnable from '../Skinnable';
 

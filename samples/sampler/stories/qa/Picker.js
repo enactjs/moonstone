@@ -2,7 +2,6 @@ import {action} from '@enact/storybook-utils/addons/actions';
 import {boolean, select} from '@enact/storybook-utils/addons/knobs';
 import PickerAddRemove from './components/PickerAddRemove';
 import PickerRTL from './components/PickerRTL';
-import React from 'react';
 import {storiesOf} from '@storybook/react';
 
 import Picker from '@enact/moonstone/Picker';

@@ -1,4 +1,3 @@
-import React from 'react';
 import {mount} from 'enzyme';
 import SelectableItem from '../SelectableItem';
 import css from '../SelectableIcon.module.less';

@@ -1,5 +1,4 @@
 import Item from '../../../../Item';
-import React from 'react';
 
 const ItemTests = [
 	<Item>Hello Item</Item>,

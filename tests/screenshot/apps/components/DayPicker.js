@@ -1,5 +1,4 @@
 import DayPicker from '../../../../DayPicker';
-import React from 'react';
 
 const DayPickerTests = [
 	<DayPicker title="Day Picker" />,

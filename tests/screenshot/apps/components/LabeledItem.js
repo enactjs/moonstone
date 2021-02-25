@@ -1,5 +1,4 @@
 import LabeledItem from '../../../../LabeledItem';
-import React from 'react';
 
 const LabeledItemTests = [
 	<LabeledItem>Labeled Item</LabeledItem>,

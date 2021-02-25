@@ -18,7 +18,6 @@ import Pure from '@enact/ui/internal/Pure';
 import Spottable from '@enact/spotlight/Spottable';
 import PropTypes from 'prop-types';
 import compose from 'ramda/src/compose';
-import React from 'react';
 
 import {ButtonBase} from '../Button';
 import Icon from '../Icon';
