@@ -1,5 +1,4 @@
 import ToggleIcon from '../../../../ToggleIcon';
-import React from 'react';
 
 const ToggleIconTests = [
 	<ToggleIcon />,

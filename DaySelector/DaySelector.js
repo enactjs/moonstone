@@ -20,7 +20,6 @@ import Group from '@enact/ui/Group';
 import Pure from '@enact/ui/internal/Pure';
 import PropTypes from 'prop-types';
 import compose from 'ramda/src/compose';
-import React from 'react';
 
 import Skinnable from '../Skinnable';
 

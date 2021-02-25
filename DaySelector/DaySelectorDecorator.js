@@ -5,7 +5,7 @@ import ilib from '@enact/i18n';
 import DateFmt from 'ilib/lib/DateFmt';
 import LocaleInfo from 'ilib/lib/LocaleInfo';
 import PropTypes from 'prop-types';
-import React from 'react';
+import {Component} from 'react';
 
 import $L from '../internal/$L';
 
@@ -83,7 +83,7 @@ function getLocaleState (dayNameLength, locale) {
  * @public
  */
 const DaySelectorDecorator = hoc((config, Wrapped) => {	// eslint-disable-line no-unused-vars
-	return class extends React.Component {
+	return class extends Component {
 
 		static displayName = 'DaySelectorDecorator';
 

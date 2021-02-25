@@ -2,7 +2,6 @@ import {boolean, select, text} from '@enact/storybook-utils/addons/knobs';
 import {mergeComponentMetadata} from '@enact/storybook-utils';
 import UIButton, {ButtonBase as UIButtonBase} from '@enact/ui/Button';
 import {LabeledIconBase as UiLabeledIconBase, LabeledIcon as UiLabeledIcon} from '@enact/ui/LabeledIcon';
-import React from 'react';
 import {storiesOf} from '@storybook/react';
 
 import LabeledIconButton from '@enact/moonstone/LabeledIconButton';

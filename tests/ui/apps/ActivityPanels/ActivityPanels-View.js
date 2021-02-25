@@ -1,4 +1,4 @@
-import React from 'react';
+import {Component} from 'react';
 import spotlight from '@enact/spotlight';
 
 // NOTE: Forcing pointer mode off so we can be sure that regardless of webOS pointer mode the app
@@ -11,7 +11,7 @@ import {ActivityPanels, Panel, Header} from '../../../../Panels';
 import Item from '../../../../Item';
 import Button from '../../../../Button';
 
-class App extends React.Component {
+class App extends Component {
 	static propTypes = {
 		index: PropTypes.number
 	};

@@ -3,7 +3,7 @@ import {boolean, number, object, select, text} from '@enact/storybook-utils/addo
 import {mergeComponentMetadata} from '@enact/storybook-utils';
 import Layout, {Cell} from '@enact/ui/Layout';
 import ri from '@enact/ui/resolution';
-import React from 'react';
+import {Component} from 'react';
 import {storiesOf} from '@storybook/react';
 
 import BodyText from '@enact/moonstone/BodyText';
@@ -40,7 +40,7 @@ const prop = {
 	}
 };
 
-class TooltipTest extends React.Component {
+class TooltipTest extends Component {
 	constructor (props) {
 		super(props);
 
@@ -72,7 +72,7 @@ class TooltipTest extends React.Component {
 	}
 }
 
-class ChangeableTooltip extends React.Component {
+class ChangeableTooltip extends Component {
 	constructor (props) {
 		super(props);
 		this.state = {
@@ -175,7 +175,7 @@ const IconButtonItem = kind({
 	}
 });
 
-class TooltipFollow extends React.Component {
+class TooltipFollow extends Component {
 	constructor (props) {
 		super(props);
 		this.state = {

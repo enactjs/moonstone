@@ -1,5 +1,5 @@
 import ri from '@enact/ui/resolution';
-import React from 'react';
+import {Component} from 'react';
 import {storiesOf} from '@storybook/react';
 
 import ExpandableList from '@enact/moonstone/ExpandableList';
@@ -13,7 +13,7 @@ const data = [
 	'c'
 ];
 
-class NoUpdate extends React.Component {
+class NoUpdate extends Component {
 	shouldComponentUpdate () {
 		return false;
 	}

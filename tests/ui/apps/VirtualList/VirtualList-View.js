@@ -5,7 +5,7 @@ import SwitchItem from '../../../../SwitchItem';
 import ToggleButton from '../../../../ToggleButton';
 import VirtualList from '../../../../VirtualList';
 import MoonstoneDecorator from '../../../../MoonstoneDecorator';
-import React from 'react';
+import {Component, createRef} from 'react';
 import spotlight from '@enact/spotlight';
 import SpotlightContainerDecorator from '@enact/spotlight/SpotlightContainerDecorator';
 
@@ -57,7 +57,7 @@ const updateDataSize = (dataSize) => {
 
 updateDataSize(numItems);
 
-class StatefulSwitchItem extends React.Component {
+class StatefulSwitchItem extends Component {
 	constructor (props) {
 		super(props);
 		this.state = {
@@ -96,7 +96,7 @@ class StatefulSwitchItem extends React.Component {
 	}
 }
 
-class app extends React.Component {
+class app extends Component {
 	constructor (props) {
 		super(props);
 		this.state = {
@@ -104,8 +104,8 @@ class app extends React.Component {
 			hideScrollbar: false,
 			wrap: false
 		};
-		this.rootRef = React.createRef();
-		this.scrollingRef = React.createRef();
+		this.rootRef = createRef();
+		this.scrollingRef = createRef();
 	}
 
 	onKeyDown = () => {

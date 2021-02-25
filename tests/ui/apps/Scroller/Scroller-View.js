@@ -1,7 +1,7 @@
 import {Button} from '../../../../Button';
 import {Row, Column, Cell} from '@enact/ui/Layout';
 import MoonstoneDecorator from '../../../../MoonstoneDecorator';
-import React from 'react';
+import {Component} from 'react';
 import spotlight from '@enact/spotlight';
 
 import {Panel, Header} from '../../../../Panels';
@@ -27,7 +27,7 @@ const Page = ({children, ...rest}) => (
 	</div>
 );
 
-class app extends React.Component {
+class app extends Component {
 	constructor (props) {
 		super(props);
 		this.state = {

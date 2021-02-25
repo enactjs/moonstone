@@ -2,7 +2,7 @@ import {mergeComponentMetadata} from '@enact/storybook-utils';
 import {number} from '@enact/storybook-utils/addons/knobs';
 import ri from '@enact/ui/resolution';
 import PropTypes from 'prop-types';
-import React from 'react';
+import {Component} from 'react';
 import {storiesOf} from '@storybook/react';
 
 import Button from '@enact/moonstone/Button';
@@ -15,7 +15,7 @@ import IncrementSliderDelayValue from './components/IncrementSliderDelayValue';
 const ContextualPopupButton = ContextualPopupDecorator(IconButton);
 const IncrementSliderConfig = mergeComponentMetadata('IncrementSlider', IncrementSliderBase, IncrementSlider);
 
-class IncrementSliderView extends React.Component {
+class IncrementSliderView extends Component {
 
 	constructor (props) {
 		super(props);
@@ -43,7 +43,7 @@ class IncrementSliderView extends React.Component {
 	}
 }
 
-class IncrementSliderWithContextualPopup extends React.Component {
+class IncrementSliderWithContextualPopup extends Component {
 	constructor (props) {
 		super(props);
 		this.state = {
@@ -88,7 +88,7 @@ class IncrementSliderWithContextualPopup extends React.Component {
 	}
 }
 
-class IncrementSliderWithMinValue extends React.Component {
+class IncrementSliderWithMinValue extends Component {
 	static propTypes = {
 		value: PropTypes.number
 	};

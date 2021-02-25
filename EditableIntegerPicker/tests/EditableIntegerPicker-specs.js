@@ -1,4 +1,3 @@
-import React from 'react';
 import {mount} from 'enzyme';
 import {EditableIntegerPicker, EditableIntegerPickerBase} from '../EditableIntegerPicker';
 import Spotlight from '@enact/spotlight';

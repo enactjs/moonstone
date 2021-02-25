@@ -1,4 +1,3 @@
-import React from 'react';
 import {mount} from 'enzyme';
 import DatePicker from '../DatePicker';
 import css from '../DatePicker.module.less';

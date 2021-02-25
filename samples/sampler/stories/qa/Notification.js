@@ -1,7 +1,7 @@
 import {action} from '@enact/storybook-utils/addons/actions';
 import {boolean} from '@enact/storybook-utils/addons/knobs';
 import {mergeComponentMetadata} from '@enact/storybook-utils';
-import React from 'react';
+import {Component} from 'react';
 import {storiesOf} from '@storybook/react';
 
 import Button from '@enact/moonstone/Button';
@@ -12,7 +12,7 @@ const Config = mergeComponentMetadata('Notification', Notification, Popup);
 
 Notification.displayName = 'Notification';
 
-class StatefulNotification extends React.Component {
+class StatefulNotification extends Component {
 	constructor (props) {
 		super(props);
 
@@ -56,7 +56,7 @@ class StatefulNotification extends React.Component {
 // si-LK - sinhala language
 const sinhala = 'සේවය නඩත්තු කිරීම හෝ වැඩි දියුණු කිරීම සඳහා කලා ගැලරිය සේවයට එකතු කිරීම, නවීකරණය කිරීම, පිවිසීම අක්‍රිය කිරීම හෝ අවසන් කිරීම යනාදිය තම පූර්ණ අභිමතය පරිදි සිදු කිරීමට LG Electronics Inc. හට හිමිකම් ඇත.කලා ගැලරිය සේවාව ලද හැකි වන්නේ ඔබ ඉහත නියමයන්ට එකඟ වුවහොත් පමණි.';
 
-class LongButtonsSinhala extends React.Component {
+class LongButtonsSinhala extends Component {
 	constructor (props) {
 		super(props);
 		this.state = {

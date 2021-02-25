@@ -1,5 +1,4 @@
 import EditableIntegerPicker from '../../../../EditableIntegerPicker';
-import React from 'react';
 
 // ***NOTE:***
 // 'min' and 'max' are required for the image to be valid.

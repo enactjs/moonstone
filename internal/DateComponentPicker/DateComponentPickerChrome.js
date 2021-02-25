@@ -1,5 +1,5 @@
 import kind from '@enact/core/kind';
-import React from 'react';
+import {Children} from 'react';
 import PropTypes from 'prop-types';
 
 import css from './DateComponentPicker.module.less';
@@ -40,7 +40,7 @@ const DateComponentPickerChromeBase = kind({
 
 	render: ({children, label, ...rest}) => (
 		<div {...rest}>
-			{React.Children.only(children)}
+			{Children.only(children)}
 			{label ? <div className={css.label}>{label}</div> : null}
 		</div>
 	)
