@@ -1,7 +1,6 @@
 import kind from '@enact/core/kind';
 import IconButton from '../IconButton';
 import onlyUpdateForKeys from 'recompose/onlyUpdateForKeys';
-import React from 'react';
 import PropTypes from 'prop-types';
 
 /**

@@ -23,7 +23,6 @@ import {getTargetByDirectionFromElement} from '@enact/spotlight/src/target';
 import SpotlightContainerDecorator from '@enact/spotlight/SpotlightContainerDecorator';
 import PropTypes from 'prop-types';
 import last from 'ramda/src/last';
-import React from 'react';
 
 import LabeledItem from '../LabeledItem';
 import {extractVoiceProps} from '../internal/util';

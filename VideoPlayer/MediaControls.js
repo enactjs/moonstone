@@ -13,7 +13,7 @@ import {forward} from '@enact/core/handle';
 
 import onlyUpdateForKeys from 'recompose/onlyUpdateForKeys';
 import PropTypes from 'prop-types';
-import React from 'react';
+import {Component} from 'react';
 import ReactDOM from 'react-dom';
 
 import $L from '../internal/$L';
@@ -468,7 +468,7 @@ const MediaControlsBase = kind({
  * @private
  */
 const MediaControlsDecorator = hoc((config, Wrapped) => {	// eslint-disable-line no-unused-vars
-	class MediaControlsDecoratorHOC extends React.Component {
+	class MediaControlsDecoratorHOC extends Component {
 		static displayName = 'MediaControlsDecorator';
 
 		static propTypes = /** @lends moonstone/VideoPlayer.MediaControlsDecorator.prototype */ {

@@ -11,7 +11,6 @@
 
 import kind from '@enact/core/kind';
 import PropTypes from 'prop-types';
-import React from 'react';
 
 import ToggleIcon from '../ToggleIcon';
 import Icon from '@enact/ui/Icon';

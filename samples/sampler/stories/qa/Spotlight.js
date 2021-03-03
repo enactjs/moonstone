@@ -5,7 +5,7 @@ import {Row, Cell, Column} from '@enact/ui/Layout';
 import ri from '@enact/ui/resolution';
 import Pause from '@enact/spotlight/Pause';
 import SpotlightContainerDecorator from '@enact/spotlight/SpotlightContainerDecorator';
-import React from 'react';
+import {Component, cloneElement} from 'react';
 import PropTypes from 'prop-types';
 import {storiesOf} from '@storybook/react';
 
@@ -59,7 +59,7 @@ const style = {
 
 const Items = ['First', 'Second', 'Third'];
 
-class DisappearTest extends React.Component {
+class DisappearTest extends Component {
 	constructor (props) {
 		super(props);
 
@@ -118,7 +118,7 @@ class DisappearTest extends React.Component {
 	}
 }
 
-class DisableOnClick extends React.Component {
+class DisableOnClick extends Component {
 	constructor (props) {
 		super(props);
 
@@ -150,7 +150,7 @@ class DisableOnClick extends React.Component {
 	}
 }
 
-class DisableTest extends React.Component {
+class DisableTest extends Component {
 	constructor (props) {
 		super(props);
 
@@ -197,7 +197,7 @@ class DisableTest extends React.Component {
 	}
 }
 
-class PopupFocusTest extends React.Component {
+class PopupFocusTest extends Component {
 	static propTypes = {
 		noAnimation: PropTypes.bool,
 		noAutoDismiss: PropTypes.bool,
@@ -261,7 +261,7 @@ class PopupFocusTest extends React.Component {
 	}
 }
 
-class FocusedAndDisabled extends React.Component {
+class FocusedAndDisabled extends Component {
 	state = {
 		index: -1
 	};
@@ -297,7 +297,7 @@ class FocusedAndDisabled extends React.Component {
 						<IconButton onTap={() => this.select(index)}>
 							arrowlargeright
 						</IconButton>
-						{React.cloneElement(comp, {
+						{cloneElement(comp, {
 							disabled: this.state.index === index,
 							spotlightId: `component-${index}`
 						})}

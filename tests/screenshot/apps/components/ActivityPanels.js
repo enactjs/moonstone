@@ -1,5 +1,4 @@
 import {Panel, Header, ActivityPanels} from '../../../../Panels';
-import React from 'react';
 
 // Panel components to show in the Panels
 const PanelComponents = [

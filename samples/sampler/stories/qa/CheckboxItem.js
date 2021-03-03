@@ -3,7 +3,6 @@ import {action} from '@enact/storybook-utils/addons/actions';
 import {mergeComponentMetadata} from '@enact/storybook-utils';
 import UiToggleItem, {ToggleItemBase as UiToggleItemBase} from '@enact/ui/ToggleItem';
 import Group from '@enact/ui/Group';
-import React from 'react';
 import {storiesOf} from '@storybook/react';
 
 import CheckboxItem from '@enact/moonstone/CheckboxItem';

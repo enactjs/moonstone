@@ -24,7 +24,6 @@ import kind from '@enact/core/kind';
 import EnactPropTypes from '@enact/core/internal/prop-types';
 import ForwardRef from '@enact/ui/ForwardRef';
 import Pure from '@enact/ui/internal/Pure';
-import React from 'react';
 import PropTypes from 'prop-types';
 import Toggleable from '@enact/ui/Toggleable';
 import {ToggleItemBase as UiToggleItem} from '@enact/ui/ToggleItem';

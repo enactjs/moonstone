@@ -16,7 +16,6 @@ import {ItemBase as UiItemBase, ItemDecorator as UiItemDecorator} from '@enact/u
 import Pure from '@enact/ui/internal/Pure';
 import PropTypes from 'prop-types';
 import compose from 'ramda/src/compose';
-import React from 'react';
 
 import {MarqueeDecorator} from '../Marquee';
 import Skinnable from '../Skinnable';

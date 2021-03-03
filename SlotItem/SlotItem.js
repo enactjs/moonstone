@@ -28,7 +28,6 @@ import {ItemDecorator as UiItemDecorator} from '@enact/ui/Item';
 import Toggleable from '@enact/ui/Toggleable';
 import PropTypes from 'prop-types';
 import compose from 'ramda/src/compose';
-import React from 'react';
 
 import {ItemBase} from '../Item';
 import {MarqueeDecorator} from '../Marquee';

@@ -1,4 +1,3 @@
-import React from 'react';
 import {ExpandableItemBase} from '../ExpandableItem';
 import {mount} from 'enzyme';
 

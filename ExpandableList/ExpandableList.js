@@ -21,7 +21,6 @@ import equals from 'ramda/src/equals';
 import Group from '@enact/ui/Group';
 import kind from '@enact/core/kind';
 import Pure from '@enact/ui/internal/Pure';
-import React from 'react';
 import PropTypes from 'prop-types';
 
 import CheckboxItem from '../CheckboxItem';

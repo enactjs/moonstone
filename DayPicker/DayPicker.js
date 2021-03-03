@@ -19,7 +19,6 @@ import Changeable from '@enact/ui/Changeable';
 import Pure from '@enact/ui/internal/Pure';
 import compose from 'ramda/src/compose';
 import PropTypes from 'prop-types';
-import React from 'react';
 
 // We're using the i18n features for DaySelectorDecorator only and not the complete HOC stack so we
 // reach into the internal module to pluck it out directly

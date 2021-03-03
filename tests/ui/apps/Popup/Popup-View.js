@@ -1,7 +1,7 @@
 import Button from '../../../../Button';
 import Popup from '../../../../Popup';
 import MoonstoneDecorator from '../../../../MoonstoneDecorator';
-import React, {Component} from 'react';
+import {Component} from 'react';
 import spotlight from '@enact/spotlight';
 import SpotlightContainerDecorator from '@enact/spotlight/SpotlightContainerDecorator';
 

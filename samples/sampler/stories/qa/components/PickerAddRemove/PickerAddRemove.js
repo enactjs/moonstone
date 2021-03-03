@@ -1,11 +1,11 @@
-import React from 'react';
+import {Component} from 'react';
 import PropTypes from 'prop-types';
 
 import Button from '@enact/moonstone/Button';
 import Input from '@enact/moonstone/Input';
 import Picker from '@enact/moonstone/Picker';
 
-class PickerAddRemove extends React.Component {
+class PickerAddRemove extends Component {
 	static displayName = 'PickerAddRemove';
 
 	static propTypes = {

@@ -1,6 +1,6 @@
 import {boolean, select, text} from '@enact/storybook-utils/addons/knobs';
 import {mergeComponentMetadata} from '@enact/storybook-utils';
-import React from 'react';
+import {Fragment} from 'react';
 import {storiesOf} from '@storybook/react';
 
 import {Header, HeaderBase} from '@enact/moonstone/Panels';
@@ -16,18 +16,18 @@ const prop = {
 	children: {
 		'no buttons': null,
 		'1 button': <IconButton>gear</IconButton>,
-		'2 buttons': <React.Fragment>
+		'2 buttons': <Fragment>
 			<Button>A Button</Button>
 			<IconButton>gear</IconButton>
-		</React.Fragment>
+		</Fragment>
 	},
 	controls: {
 		'no buttons': null,
 		'1 button': <IconButton>gear</IconButton>,
-		'2 buttons': <React.Fragment>
+		'2 buttons': <Fragment>
 			<IconButton>star</IconButton>
 			<IconButton>gear</IconButton>
-		</React.Fragment>
+		</Fragment>
 	},
 	marqueeOn: ['', 'hover', 'render'],
 	type: ['compact', 'dense', 'standard']

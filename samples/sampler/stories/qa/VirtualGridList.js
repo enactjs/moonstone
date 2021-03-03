@@ -4,7 +4,7 @@ import {mergeComponentMetadata} from '@enact/storybook-utils';
 import ri from '@enact/ui/resolution';
 import {ScrollableBase as UiScrollableBase} from '@enact/ui/Scrollable';
 import {VirtualListBase as UiVirtualListBase} from '@enact/ui/VirtualList/VirtualListBase';
-import React from 'react';
+import {Component} from 'react';
 
 import Button from '@enact/moonstone/Button';
 import ContexturePopupDecorator from '@enact/moonstone/ContextualPopupDecorator';
@@ -73,7 +73,7 @@ const ContexturePopupButton = ContexturePopupDecorator(Button);
 
 let lastIndex = 0;
 
-class MyVirtualList extends React.Component {
+class MyVirtualList extends Component {
 	componentDidMount () {
 		this.scrollTo({index: lastIndex, animate: false, focus: true});
 	}
@@ -113,7 +113,7 @@ class MyVirtualList extends React.Component {
 	}
 }
 
-class ButtonAndVirtualGridList extends React.Component {
+class ButtonAndVirtualGridList extends Component {
 	constructor (props) {
 		super(props);
 		this.state = {

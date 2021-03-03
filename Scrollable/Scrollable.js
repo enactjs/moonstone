@@ -19,7 +19,7 @@ import {getTargetByDirectionFromElement, getTargetByDirectionFromPosition} from 
 import {getRect, intersects} from '@enact/spotlight/src/utils';
 import SpotlightContainerDecorator from '@enact/spotlight/SpotlightContainerDecorator';
 import PropTypes from 'prop-types';
-import React, {Component} from 'react';
+import {createRef, Component} from 'react';
 
 import $L from '../internal/$L';
 import {SharedState} from '../internal/SharedStateDecorator';
@@ -310,11 +310,11 @@ class ScrollableBase extends Component {
 		};
 
 		this.overscrollRefs = {
-			horizontal: React.createRef(),
-			vertical: React.createRef()
+			horizontal: createRef(),
+			vertical: createRef()
 		};
-		this.childRef = React.createRef();
-		this.uiRef = React.createRef();
+		this.childRef = createRef();
+		this.uiRef = createRef();
 
 		configureSpotlightContainer(props);
 	}
