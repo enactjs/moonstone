@@ -3,7 +3,8 @@ import Icon from '@enact/moonstone/Icon';
 import IconButton from '@enact/moonstone/IconButton';
 import {VirtualListNative} from '@enact/moonstone/VirtualList';
 import ri from '@enact/ui/resolution';
-import {Component, createRef} from 'react';
+import PropTypes from 'prop-types';
+import {createRef, Component} from 'react';
 import ReactDOM from 'react-dom';
 
 const
@@ -27,6 +28,13 @@ const
 	initialItemSizes = [ri.scale(60), ri.scale(110), ri.scale(160)];
 
 class ExpandableDifferenctHeightItem extends Component {
+	static propTypes = {
+		'data-index': PropTypes.number,
+		index: PropTypes.number,
+		items: PropTypes.array,
+		updateItemStatus: PropTypes.func
+	};
+
 	itemStyleDefault = {
 		position: 'absolute',
 		width: '100%',
@@ -35,25 +43,25 @@ class ExpandableDifferenctHeightItem extends Component {
 		fontSize,
 		lineHeight,
 		whiteSpace: 'pre'
-	}
+	};
 
 	buttonStyleDefault = {
 		display: 'block',
 		height: '50px',
 		marginLeft: 'auto',
 		marginRight: 0
-	}
+	};
 
 	textStyleDefault = {
 		overflow: 'hidden',
 		textOverflow: 'ellipsis'
-	}
+	};
 
 	iconButtonStyleDefault = {
 		position: 'absolute',
 		top: 0,
 		right: 0
-	}
+	};
 
 	render () {
 		const
@@ -104,6 +112,10 @@ class ExpandableDifferenctHeightItem extends Component {
 }
 
 class ResizableItem extends Component {
+	static propTypes = {
+		updateItemSize: PropTypes.func
+	};
+
 	constructor (props) {
 		super(props);
 		this.itemRef = createRef();
@@ -186,7 +198,7 @@ class VerticalExpandableDifferentHeightItemList extends Component {
 				return {itemSize: [...itemSize.slice(0, index), size, ...itemSize.slice(index + 1)]};
 			});
 		}
-	}
+	};
 
 	updateItemStatus = (index, open) => {
 		this.setState(({itemSize, items}) => {
@@ -197,11 +209,11 @@ class VerticalExpandableDifferentHeightItemList extends Component {
 				items: [...items.slice(0, index), {title, numOfLines, open}, ...items.slice(index + 1)]
 			};
 		});
-	}
+	};
 
 	renderItem = (props) => {
 		return <ResizableItem {...props} />;
-	}
+	};
 
 	render () {
 		return (

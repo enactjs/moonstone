@@ -17,13 +17,13 @@ for (let i = 0; i < 1000; i++) {
 }
 
 class VirtualGridListSample extends Component {
-	componentDidMount() {
+	componentDidMount () {
 		this.scrollTo({animate: false, focus: true, index: 19});
 	}
 
 	getScrollTo = (scrollTo) => {
 		this.scrollTo = scrollTo;
-	}
+	};
 
 	renderItem = ({index, ...rest}) => {
 		return (
@@ -36,7 +36,7 @@ class VirtualGridListSample extends Component {
 		);
 	};
 
-	render() {
+	render () {
 		return (
 			<VirtualGridList
 				cbScrollTo={this.getScrollTo}

@@ -1,6 +1,7 @@
 import Item from '@enact/moonstone/Item';
 import {VirtualListNative} from '@enact/moonstone/VirtualList';
 import ri from '@enact/ui/resolution';
+import PropTypes from 'prop-types';
 import {Component} from 'react';
 
 const
@@ -23,6 +24,11 @@ const
 	spacing = 40;
 
 class DifferenctHeightItem extends Component {
+	static propTypes = {
+		index: PropTypes.number,
+		items: PropTypes.array
+	};
+
 	itemStyleDefault = {
 		position: 'absolute',
 		width: '100%',
@@ -31,7 +37,7 @@ class DifferenctHeightItem extends Component {
 		fontSize,
 		lineHeight,
 		whiteSpace: 'pre'
-	}
+	};
 
 	render () {
 		const
@@ -80,7 +86,7 @@ class VerticalDifferentHeightItemList extends Component {
 
 	renderItem = (props) => {
 		return <DifferenctHeightItem {...props} />;
-	}
+	};
 
 	render () {
 		return (

@@ -32,7 +32,7 @@ class VirtualListSample extends Component {
 
 	onSelect = ({selected}) => {
 		this.setState({view: views[selected]});
-	}
+	};
 
 	render () {
 		const View = this.state.view;
