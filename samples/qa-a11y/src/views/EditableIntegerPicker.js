@@ -2,9 +2,9 @@ import EditableIntegerPicker from '@enact/moonstone/EditableIntegerPicker';
 import Heading from '@enact/moonstone/Heading';
 import Scroller from '@enact/moonstone/Scroller';
 import PropTypes from 'prop-types';
-import React from 'react';
+import {Component} from 'react';
 
-class EditableIntegerPickerWithAriaText extends React.Component {
+class EditableIntegerPickerWithAriaText extends Component {
 	static propTypes = {
 		defaultValue: PropTypes.number,
 		unit: PropTypes.string

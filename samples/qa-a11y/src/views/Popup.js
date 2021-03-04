@@ -2,11 +2,11 @@ import Button from '@enact/moonstone/Button';
 import Heading from '@enact/moonstone/Heading';
 import Item from '@enact/moonstone/Item';
 import Popup from '@enact/moonstone/Popup';
-import React from 'react';
+import {Component} from 'react';
 import ri from '@enact/ui/resolution';
 import Scroller from '@enact/moonstone/Scroller';
 
-class PopupView extends React.Component {
+class PopupView extends Component {
 	constructor (props) {
 		super(props);
 		this.state = {

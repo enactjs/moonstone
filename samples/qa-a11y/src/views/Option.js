@@ -1,29 +1,29 @@
-import {contextTypes} from '@enact/i18n/I18nDecorator';
+import {useI18nContext} from '@enact/i18n/I18nDecorator';
 import Heading from '@enact/moonstone/Heading';
 import PropTypes from 'prop-types';
-import React from 'react';
+import {useCallback} from 'react';
 import ToggleButton from '@enact/moonstone/ToggleButton';
 
-class Option extends React.Component {
-	static propTypes = {
-		handleDebug: PropTypes.func.isRequired,
-		isDebugMode: PropTypes.bool.isRequired
-	};
+const Option = (props) => {
+	const {handleDebug, isDebugMode} = props;
+	const {rtl, updateLocale} = useI18nContext();
+	const handleClick = useCallback(() => {
+		updateLocale(rtl ? 'en-US' : 'ar-SA');
+	}, [rtl, updateLocale]);
 
-	static contextTypes = contextTypes;
+	return (
+		<div>
+			<Heading showLine>Set a language direction</Heading>
+			<ToggleButton size="small" onClick={handleClick} selected={rtl}>RTL</ToggleButton>
+			<Heading showLine>Set an aria debug mode</Heading>
+			<ToggleButton size="small" onClick={handleDebug} selected={isDebugMode}>Debug aria</ToggleButton>
+		</div>
+	);
+};
 
-	handleLocale = () => this.context.updateLocale(this.context.rtl ? 'en-US' : 'ar-SA');
-
-	render () {
-		return (
-			<div>
-				<Heading showLine>Set a language direction</Heading>
-				<ToggleButton size="small" onClick={this.handleLocale} selected={this.context.rtl}>RTL</ToggleButton>
-				<Heading showLine>Set an aria debug mode</Heading>
-				<ToggleButton size="small" onClick={this.props.handleDebug} selected={this.props.isDebugMode}>Debug aria</ToggleButton>
-			</div>
-		);
-	}
-}
+Option.propTypes = {
+	handleDebug: PropTypes.func.isRequired,
+	isDebugMode: PropTypes.bool.isRequired
+};
 
 export default Option;

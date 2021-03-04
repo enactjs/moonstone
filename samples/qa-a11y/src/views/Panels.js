@@ -1,6 +1,6 @@
 import {ActivityPanels, Panel, Header} from '@enact/moonstone/Panels';
 import Item from '@enact/moonstone/Item';
-import React from 'react';
+import {Component} from 'react';
 import ri from '@enact/ui/resolution';
 import Scroller from '@enact/moonstone/Scroller';
 import Spotlight from '@enact/spotlight';
@@ -11,7 +11,7 @@ for (let i = 0; i < 50; i++) {
 	itemList.push('item' + i);
 }
 
-class PanelsView extends React.Component {
+class PanelsView extends Component {
 	constructor (props) {
 		super(props);
 		this.state = {

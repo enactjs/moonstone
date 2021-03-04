@@ -2,7 +2,7 @@ import Button from '@enact/moonstone/Button';
 import ContextualPopupDecorator from '@enact/moonstone/ContextualPopupDecorator';
 import Group from '@enact/ui/Group';
 import RadioItem from '@enact/moonstone/RadioItem';
-import React from 'react';
+import {Component} from 'react';
 import Toggleable from '@enact/ui/Toggleable';
 
 const ContextualButton = Toggleable(
@@ -12,7 +12,7 @@ const ContextualButton = Toggleable(
 	)
 );
 
-class ContextualPopupDecoratorView extends React.Component {
+class ContextualPopupDecoratorView extends Component {
 
 	renderPopup1 = () => (
 		<div>

@@ -1,9 +1,9 @@
 import Heading from '@enact/moonstone/Heading';
 import IconButton from '@enact/moonstone/IconButton';
 import ProgressBar from '@enact/moonstone/ProgressBar';
-import React from 'react';
+import {Component} from 'react';
 
-class ProgressBarView extends React.Component {
+class ProgressBarView extends Component {
 	constructor () {
 		super();
 		this.state = {

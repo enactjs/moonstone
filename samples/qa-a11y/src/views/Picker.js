@@ -3,7 +3,7 @@ import Heading from '@enact/moonstone/Heading';
 import ExpandablePicker from '@enact/moonstone/ExpandablePicker';
 import Picker from '@enact/moonstone/Picker';
 import RangePicker from '@enact/moonstone/RangePicker';
-import React from 'react';
+import {Component} from 'react';
 import Scroller from '@enact/moonstone/Scroller';
 import TimePicker from '@enact/moonstone/TimePicker';
 
@@ -18,7 +18,7 @@ const
 	subjects = ['English', 'Maths', 'Korean', 'Science', 'History'],
 	subjectValue = ['80', '90', '100', '70', '50'];
 
-class CustomPicker extends React.Component {
+class CustomPicker extends Component {
 	constructor (props) {
 		super(props);
 		this.state = {
