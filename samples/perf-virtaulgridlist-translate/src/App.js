@@ -45,7 +45,6 @@ class VirtualGridListSample extends Component {
 				itemRenderer={this.renderItem}
 				itemSize={{minWidth: ri.scale(316), minHeight: ri.scale(300)}}
 				spacing={ri.scale(67)}
-				scrollMode="translate"
 			/>
 		);
 	}

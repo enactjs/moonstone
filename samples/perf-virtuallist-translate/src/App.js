@@ -49,7 +49,6 @@ class VirtualListSample extends Component {
 					focusableScrollbar
 					itemRenderer={this.renderItem}
 					itemSize={ri.scale(62)}
-					scrollMode="translate"
 				/>
 			</div>
 		);
