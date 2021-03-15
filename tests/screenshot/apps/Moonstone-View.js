@@ -1,7 +1,7 @@
 import classnames from 'classnames/bind';
 import {generateDate, urlParamsToObject} from '@enact/ui-test-utils/utils';
 import spotlight from '@enact/spotlight';
-import React from 'react';
+import {cloneElement, Component as ReactComponent} from 'react';
 
 import MoonstoneDecorator from '../../../MoonstoneDecorator';
 
@@ -55,7 +55,7 @@ function prepareTest (componentName, testId) {
 	}
 
 	return {
-		testElement: React.cloneElement(component, ElementProps, children),
+		testElement: cloneElement(component, ElementProps, children),
 		wrapperClasses: getWrapperClasses(components[componentName][testId])
 	};
 }
@@ -79,7 +79,7 @@ function prepareFromUrl () {
 	};
 }
 
-class App extends React.Component {
+class App extends ReactComponent {
 	static getDerivedStateFromError () {
 		// Update state so the next render will show the fallback UI.
 		return {hasError: true};

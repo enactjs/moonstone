@@ -23,7 +23,6 @@ import {getTargetByDirectionFromElement} from '@enact/spotlight/src/target';
 import SpotlightContainerDecorator from '@enact/spotlight/SpotlightContainerDecorator';
 import PropTypes from 'prop-types';
 import last from 'ramda/src/last';
-import React from 'react';
 
 import LabeledItem from '../LabeledItem';
 import {extractVoiceProps} from '../internal/util';
@@ -402,7 +401,7 @@ const ExpandableItemBase = kind({
 					data-expandable-label
 					disabled={disabled}
 					label={label}
-					onTap={handleOpen}
+					onClick={handleOpen}
 					onKeyDown={handleLabelKeyDown}
 					onSpotlightDisappear={onSpotlightDisappear}
 					onSpotlightLeft={onSpotlightLeft}

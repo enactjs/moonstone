@@ -1,6 +1,5 @@
 import SwitchItem from '../../../../SwitchItem';
 import MoonstoneDecorator from '../../../../MoonstoneDecorator';
-import React from 'react';
 import spotlight from '@enact/spotlight';
 
 // NOTE: Forcing pointer mode off so we can be sure that regardless of webOS pointer mode the app

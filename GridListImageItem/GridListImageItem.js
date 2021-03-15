@@ -18,7 +18,6 @@ import compose from 'ramda/src/compose';
 import {GridListImageItem as UiGridListImageItem} from '@enact/ui/GridListImageItem';
 import kind from '@enact/core/kind';
 import PropTypes from 'prop-types';
-import React from 'react';
 import Spottable from '@enact/spotlight/Spottable';
 
 import Icon from '../Icon';

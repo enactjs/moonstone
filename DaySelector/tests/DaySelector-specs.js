@@ -1,4 +1,3 @@
-import React from 'react';
 import {mount} from 'enzyme';
 
 import DaySelector from '../DaySelector';
@@ -6,6 +5,7 @@ import DaySelector from '../DaySelector';
 const tap = (node) => {
 	node.simulate('mousedown');
 	node.simulate('mouseup');
+	node.simulate('click');
 };
 
 describe('DaySelector', () => {

@@ -5,7 +5,6 @@ import {Column, Cell} from '@enact/ui/Layout';
 import ri from '@enact/ui/resolution';
 import {ScrollableBaseNative as UiScrollableBaseNative} from '@enact/ui/Scrollable/ScrollableNative';
 import {VirtualListBaseNative as UiVirtualListBaseNative} from '@enact/ui/VirtualList/VirtualListBase';
-import React from 'react';
 
 import Item from '@enact/moonstone/Item';
 import {VirtualListNative, VirtualListBase} from '@enact/moonstone/VirtualList';

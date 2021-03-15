@@ -1,6 +1,5 @@
 import ContextualPopupDecorator from '../../../../ContextualPopupDecorator';
 import Button from '../../../../Button';
-import React from 'react';
 
 const ContextualPopupButton = ContextualPopupDecorator(Button);
 const Popup = () => <div>hello</div>;

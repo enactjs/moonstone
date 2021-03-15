@@ -1,5 +1,4 @@
 import DaySelector from '../../../../DaySelector';
-import React from 'react';
 
 const DaySelectorTests = [
 	<DaySelector />,

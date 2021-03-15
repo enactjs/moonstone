@@ -2,15 +2,34 @@
 
 The following is a curated list of changes in the Enact moonstone module, newest changes on the top.
 
-## [unreleased]
+## [4.0.0-alpha.1] - 2021-02-25
+
+-  The framework was updated to support React 17.0.1
+
+### Added
+
+- `moonstone/MoonstoneDecorator` config `rootId` to specify React DOM tree root for global event handlers
+
+## [3.3.1] - 2020-11-02
 
 ### Fixed
 
+- `moonstone/ExpandableList` to keep focus properly when selecting an item by touch
+- `moonstone/Panels` Breadcrumb to get focus when touching
+
+## [3.3.0] - 2020-10-08
+
+### Added
+
+- `moonstone/VirtualList` and `moonstone/VirtualList.VirtualGridList` prop `data-webos-voice-disabled` for disable voice control
+- `moonstone/LabeledIconButton` props to change voice control in IconButton
+
+### Fixed
+
+- `moonstone/Input` run time error when using `dismissOnEnter`
 - `moonstone/VirtualList` to support navigation with spottable children inside an item
-- `moonstone/VirtualList.VirtualList`, `moonstone/VirtualList.VirtualGridList` add `data-webos-voice-disabled` prop for disable voice control
-- `moonstone/LabeledIconButton` add props to change voice control in IconButton
-- `moonstone/VirtualList.VirtualList` to render properly without error when `itemSizes` is given and `dataSize` is 0
-- `moonstone/EditableIntegerPicker` to fire onChange events, after changing the value via pointer and 5-way select button
+- `moonstone/VirtualList` to render properly without error when `itemSizes` is given and `dataSize` is 0
+- `moonstone/EditableIntegerPicker` to fire `onChange` events, after changing the value via pointer and 5-way select button
 
 ## [3.2.6] - 2020-08-20
 

@@ -23,7 +23,6 @@ import {LabeledIconBase as UiLabeledIconBase, LabeledIconDecorator as UiLabeledI
 import Pure from '@enact/ui/internal/Pure';
 import PropTypes from 'prop-types';
 import compose from 'ramda/src/compose';
-import React from 'react';
 
 import {IconButtonBase} from '../IconButton';
 import Skinnable from '../Skinnable';

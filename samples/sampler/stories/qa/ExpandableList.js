@@ -2,7 +2,7 @@ import {action} from '@enact/storybook-utils/addons/actions';
 import {boolean, text, select} from '@enact/storybook-utils/addons/knobs';
 import {mergeComponentMetadata} from '@enact/storybook-utils';
 import {RadioControllerDecorator} from '@enact/ui/RadioDecorator';
-import React from 'react';
+import {Component} from 'react';
 import {storiesOf} from '@storybook/react';
 
 import Button from '@enact/moonstone/Button';
@@ -24,7 +24,7 @@ for (let i = 0; i < 21; i++) {
 	optionsArray.push(`Option ${i + 1}`);
 }
 
-class ExpandableListChildrenLengthUpdate extends React.Component {
+class ExpandableListChildrenLengthUpdate extends Component {
 	constructor (props) {
 		super(props);
 		this.state = {
@@ -51,7 +51,7 @@ class ExpandableListChildrenLengthUpdate extends React.Component {
 	}
 }
 
-class ExpandableListWithAddedChildren extends React.Component {
+class ExpandableListWithAddedChildren extends Component {
 	constructor (props) {
 		super(props);
 		this.state = {
@@ -107,13 +107,22 @@ storiesOf('ExpandableList', module)
 		'grouped',
 		() => (
 			<ExpandableGroup>
-				<ExpandableList title="First">
+				<ExpandableList
+					closeOnSelect={boolean('closeOnSelect', Config)}
+					title="First"
+				>
 					{['One', 'Two', 'Three']}
 				</ExpandableList>
-				<ExpandableList title="Second">
+				<ExpandableList
+					closeOnSelect={boolean('closeOnSelect', Config)}
+					title="Second"
+				>
 					{['Fourth', 'Fifth', 'Sixth']}
 				</ExpandableList>
-				<ExpandableList title="Third">
+				<ExpandableList
+					closeOnSelect={boolean('closeOnSelect', Config)}
+					title="Third"
+				>
 					{['Seventh', 'Eighth', 'Ninth']}
 				</ExpandableList>
 			</ExpandableGroup>

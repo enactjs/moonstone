@@ -4,7 +4,6 @@ import {mergeComponentMetadata, nullify} from '@enact/storybook-utils';
 import UiToggleItem, {ToggleItemBase as UiToggleItemBase} from '@enact/ui/ToggleItem';
 import UiItem from '@enact/ui/Item';
 import {listIcons} from './icons';
-import React from 'react';
 import {storiesOf} from '@storybook/react';
 
 import CheckboxItem from '@enact/moonstone/CheckboxItem';

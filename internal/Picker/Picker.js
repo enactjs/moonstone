@@ -8,7 +8,7 @@ import {SlideLeftArranger, SlideTopArranger, ViewManager} from '@enact/ui/ViewMa
 import Spotlight, {getDirection} from '@enact/spotlight';
 import PropTypes from 'prop-types';
 import equals from 'ramda/src/equals';
-import React from 'react';
+import {Component as ReactComponent} from 'react';
 import ReactDOM from 'react-dom';
 import shouldUpdate from 'recompose/shouldUpdate';
 
@@ -76,7 +76,7 @@ const forwardBlur = forward('onBlur'),
  * @private
  */
 
-const PickerBase = class extends React.Component {
+const PickerBase = class extends ReactComponent {
 	static displayName = 'Picker';
 
 	static propTypes = /** @lends moonstone/internal/Picker.Picker.prototype */ {
@@ -579,7 +579,7 @@ const PickerBase = class extends React.Component {
 		this.pickerButtonPressed = 1;
 	};
 
-	handleHoldPulse = () => {
+	handleHold = () => {
 		const {joined} = this.props;
 		if (joined && this.pickerButtonPressed === 1) {
 			this.handleIncrement();
@@ -878,7 +878,7 @@ const PickerBase = class extends React.Component {
 				onBlur={this.handleBlur}
 				onDown={this.handleDown}
 				onFocus={this.handleFocus}
-				onHoldPulse={this.handleHoldPulse}
+				onHold={this.handleHold}
 				onKeyDown={this.handleKeyDown}
 				onKeyUp={this.handleKeyUp}
 				onUp={this.handleUp}
@@ -898,7 +898,7 @@ const PickerBase = class extends React.Component {
 					icon={incrementIcon}
 					joined={joined}
 					onDown={this.handleIncrement}
-					onHoldPulse={this.handleIncrement}
+					onHold={this.handleIncrement}
 					onKeyDown={this.handleIncKeyDown}
 					onSpotlightDisappear={onSpotlightDisappear}
 					spotlightDisabled={spotlightDisabled}
@@ -935,7 +935,7 @@ const PickerBase = class extends React.Component {
 					icon={decrementIcon}
 					joined={joined}
 					onDown={this.handleDecrement}
-					onHoldPulse={this.handleDecrement}
+					onHold={this.handleDecrement}
 					onKeyDown={this.handleDecKeyDown}
 					onSpotlightDisappear={onSpotlightDisappear}
 					spotlightDisabled={spotlightDisabled}

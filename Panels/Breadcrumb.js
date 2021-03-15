@@ -2,7 +2,6 @@ import {handle, forward, adaptEvent} from '@enact/core/handle';
 import kind from '@enact/core/kind';
 import Spottable from '@enact/spotlight/Spottable';
 import PropTypes from 'prop-types';
-import React from 'react';
 
 import $L from '../internal/$L';
 
@@ -82,7 +81,7 @@ const BreadcrumbBase = kind({
 			{...rest}
 			aria-label={$L('GO TO PREVIOUS')}
 			data-index={index}
-			onClick={onSelect}
+			onClick={(...param) => setTimeout(() => onSelect(...param), 50)} // eslint-disable-line react/jsx-no-bind
 		>
 			<div className={css.breadcrumbHeader}>
 				{children}

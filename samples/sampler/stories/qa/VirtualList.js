@@ -5,7 +5,7 @@ import {mergeComponentMetadata} from '@enact/storybook-utils';
 import ri from '@enact/ui/resolution';
 import {ScrollableBase as UiScrollableBase} from '@enact/ui/Scrollable';
 import {VirtualListBase as UiVirtualListBase} from '@enact/ui/VirtualList';
-import React, {useState} from 'react';
+import {Component, useState} from 'react';
 import PropTypes from 'prop-types';
 
 import IconButton from '@enact/moonstone/IconButton';
@@ -76,7 +76,7 @@ updateDataSize(defaultDataSize);
 
 const updateItemSize = ({minSize, dataSize, size}) => ({minSize, size: new Array(dataSize).fill(size)});
 
-class StatefulSwitchItem extends React.Component {
+class StatefulSwitchItem extends Component {
 	static propTypes = {
 		index: PropTypes.number
 	};
@@ -174,7 +174,7 @@ const InPanels = ({className, title, ...rest}) => {
 };
 
 // eslint-disable-next-line enact/prop-types
-class VirtualListWithCBScrollTo extends React.Component {
+class VirtualListWithCBScrollTo extends Component {
 	static propTypes = {
 		dataSize: PropTypes.number
 	};

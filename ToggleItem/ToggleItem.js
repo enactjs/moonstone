@@ -22,10 +22,12 @@
 import hoc from '@enact/core/hoc';
 import kind from '@enact/core/kind';
 import EnactPropTypes from '@enact/core/internal/prop-types';
+import ForwardRef from '@enact/ui/ForwardRef';
 import Pure from '@enact/ui/internal/Pure';
-import React from 'react';
 import PropTypes from 'prop-types';
-import {ToggleItemBase as UiToggleItem, ToggleItemDecorator as UiToggleItemDecorator} from '@enact/ui/ToggleItem';
+import Toggleable from '@enact/ui/Toggleable';
+import {ToggleItemBase as UiToggleItem} from '@enact/ui/ToggleItem';
+import Touchable from '@enact/ui/Touchable';
 import Spottable from '@enact/spotlight/Spottable';
 import compose from 'ramda/src/compose';
 
@@ -143,7 +145,9 @@ const defaultConfig = {
 const ToggleItemDecorator = hoc(defaultConfig, ({invalidateProps}, Wrapped) => {
 	return compose(
 		Pure,
-		UiToggleItemDecorator,
+		ForwardRef({prop: 'componentRef'}),
+		Toggleable({toggleProp: 'onClick', eventProps: ['value']}),
+		Touchable,
 		Spottable,
 		MarqueeDecorator({className: componentCss.content, invalidateProps}),
 		Skinnable
