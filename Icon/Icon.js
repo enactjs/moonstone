@@ -12,7 +12,7 @@
  */
 
 import kind from '@enact/core/kind';
-import UiIcon from '@enact/ui/Icon';
+import {IconBase as UiIconBase} from '@enact/ui/Icon';
 import Pure from '@enact/ui/internal/Pure';
 import PropTypes from 'prop-types';
 import compose from 'ramda/src/compose';
@@ -50,7 +50,7 @@ const IconBase = kind({
 		size: 'small'
 	},
 
-	render: (props) => UiIcon.inline({
+	render: (props) => UiIconBase.inline({
 		...props,
 		css: componentCss,
 		iconList
