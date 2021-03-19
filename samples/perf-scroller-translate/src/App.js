@@ -31,7 +31,6 @@ const ScrollerSample = (props) => {
 	return (
 		<Scroller
 			{...props}
-			scrollMode="translate"
 		>
 			{items}
 		</Scroller>
