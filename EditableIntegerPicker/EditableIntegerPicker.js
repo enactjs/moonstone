@@ -340,7 +340,7 @@ const EditableIntegerPicker = Pure(
 		EditableIntegerPickerDecorator(
 			MarqueeController(
 				{marqueeOnFocus: true},
-				ForwardRef({prop: 'pickerRef'}, EditableIntegerPickerBase),
+				ForwardRef({prop: 'pickerRef'}, EditableIntegerPickerBase)
 			)
 		)
 	)
