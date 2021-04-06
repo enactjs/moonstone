@@ -16,6 +16,7 @@
 import kind from '@enact/core/kind';
 import {clamp} from '@enact/core/util';
 import Changeable from '@enact/ui/Changeable';
+import ForwardRef from "@enact/ui/ForwardRef";
 import Pure from '@enact/ui/internal/Pure';
 import PropTypes from 'prop-types';
 
@@ -339,7 +340,7 @@ const EditableIntegerPicker = Pure(
 		EditableIntegerPickerDecorator(
 			MarqueeController(
 				{marqueeOnFocus: true},
-				EditableIntegerPickerBase
+				ForwardRef({prop: 'pickerRef'}, EditableIntegerPickerBase),
 			)
 		)
 	)
