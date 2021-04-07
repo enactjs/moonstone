@@ -8,7 +8,6 @@ The following is a curated list of changes in the Enact moonstone module, newest
 
 - `moonstone/Viewport` to delete `controlsRef` and `controlsMeasurements` from DOM
 
-
 ## [4.0.0-alpha.1] - 2021-02-25
 
 -  The framework was updated to support React 17.0.1
