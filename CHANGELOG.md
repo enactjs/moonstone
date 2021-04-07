@@ -6,7 +6,7 @@ The following is a curated list of changes in the Enact moonstone module, newest
 
 ### Fixed
 
-- `moonstone/Viewport` to delete `controlsRef` and `controlsMeasurements` from DOM
+- `moonstone/Viewport` to not pass `controlsRef` and `controlsMeasurements` to ui/ViewManager
 
 ## [4.0.0-alpha.1] - 2021-02-25
 
