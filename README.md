@@ -37,6 +37,19 @@ Tests are implemented in mocha and are run with the Karma runner.
 npm test
 ```
 
+## Let's create your own Moonstone App
+
+The Enact CLI itself can install the moonstone template via NPM or git URI.
+```
+enact template install @enact/template-moonstone
+```
+
+Once installed, you can specify the `moonstone` template during new application creation:
+
+```
+enact create -t moonstone MyApp
+```
+
 ## Copyright and License Information
 
 Unless otherwise specified, all content, including all source code files and documentation files in this repository are:
