@@ -6,7 +6,7 @@ The following is a curated list of changes in the Enact moonstone module, newest
 
 ### Fixed
 
-- `moonstone/EditableIntegerPicker` to use `@enact/ui/ForwardRef` for `pickerRef` prop
+- `moonstone/EditableIntegerPicker` to use to correctly pass reference to `moonstone/internal/Picker`
 
 ## [4.0.0-alpha.1] - 2021-02-25
 
