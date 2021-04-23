@@ -169,6 +169,9 @@ const ViewportBase = class extends Component {
 			`Panels index, ${index}, is invalid for number of children, ${count}`
 		);
 
+		delete rest.controlsRef;
+		delete rest.controlsMeasurements;
+
 		return (
 			<ViewManager
 				{...rest}
