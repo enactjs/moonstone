@@ -14,9 +14,10 @@ const SpottableDiv = Spottable('div');
 
 /**
  * The width of a breadcrumb which may be used to allocate space for it in a panels layout.
+ * Note: This value will be scaled according to the resolution.
  *
  * @type {Number}
- * @default 96;
+ * @default 96
  * @private
  * @memberof moonstone/Panels
  */

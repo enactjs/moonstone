@@ -158,7 +158,6 @@ const DropdownBase = kind({
 		 * The title will be replaced if an item is selected.
 		 *
 		 * @type {String}
-		 * @required
 		 * @public
 		 */
 		title: PropTypes.string,
@@ -345,7 +344,7 @@ const DropdownDecorator = compose(
  * By default, `Dropdown` maintains the state of its `selected` property. Supply the
  * `defaultSelected` property to control its initial value. If you wish to directly control updates
  * to the component, supply a value to `selected` at creation time and update it in response to
- * `onSelected` events.
+ * `onSelect` events.
  *
  * @class Dropdown
  * @memberof moonstone/Dropdown
