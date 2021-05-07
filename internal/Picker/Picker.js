@@ -776,11 +776,12 @@ const PickerBase = class extends ReactComponent {
 	}
 
 	initRef (prop) {
-		return (componentRef) => {
+		return (ref) => {
 			// need a way, for now, to get a DOM node ref ~and~ use onUp. Likely should rework the
 			// wheel handler to avoid this requirement
 			// eslint-disable-next-line react/no-find-dom-node
-			this[prop] = componentRef && ReactDOM.findDOMNode(componentRef);
+			this[prop] = ref && ReactDOM.findDOMNode(ref);
+			forward('componentRef', ref, this.props);
 		};
 	}
 

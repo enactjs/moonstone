@@ -6,6 +6,7 @@ import {storiesOf} from '@storybook/react';
 import EditableIntegerPicker, {EditableIntegerPickerBase} from '@enact/moonstone/EditableIntegerPicker';
 
 import {decrementIcons, incrementIcons} from './icons';
+import Button from '../../../../Button';
 
 const Config = mergeComponentMetadata('EditableIntegerPicker', EditableIntegerPickerBase, EditableIntegerPicker);
 EditableIntegerPicker.displayName = 'EditableIntegerPicker';
@@ -20,23 +21,28 @@ storiesOf('Moonstone', module)
 	.add(
 		'EditableIntegerPicker',
 		() => (
-			<EditableIntegerPicker
-				decrementIcon={select('decrementIcon', ['', ...decrementIcons], Config)}
-				defaultValue={20}
-				disabled={boolean('disabled', Config)}
-				incrementIcon={select('incrementIcon', ['', ...incrementIcons], Config)}
-				max={number('max', Config, 100)}
-				min={number('min', Config, 0)}
-				noAnimation={boolean('noAnimation', Config)}
-				onBlur={action('onBlur')}
-				onChange={action('onChange')}
-				onKeyDown={action('onKeyDown')}
-				orientation={select('orientation', prop.orientation, Config)}
-				step={number('step', Config)}
-				unit={text('unit', Config)}
-				width={select('width', prop.width,  Config)}
-				wrap={boolean('wrap', Config)}
-			/>
+			<div>
+				<Button>Hello</Button>
+				<EditableIntegerPicker
+					decrementIcon={select('decrementIcon', ['', ...decrementIcons], Config)}
+					defaultValue={20}
+					disabled={boolean('disabled', Config)}
+					incrementIcon={select('incrementIcon', ['', ...incrementIcons], Config)}
+					max={number('max', Config, 100)}
+					min={number('min', Config, 0)}
+					noAnimation={boolean('noAnimation', Config)}
+					onBlur={action('onBlur')}
+					onChange={action('onChange')}
+					onKeyDown={action('onKeyDown')}
+					orientation={select('orientation', prop.orientation, Config)}
+					step={number('step', Config)}
+					unit={text('unit', Config)}
+					width={select('width', prop.width,  Config)}
+					wrap={boolean('wrap', Config)}
+				/>
+				<Button>Hello</Button>
+			</div>
+
 		),
 		{
 			info: {
