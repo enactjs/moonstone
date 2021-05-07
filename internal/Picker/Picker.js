@@ -1,6 +1,7 @@
 import {forward, stopImmediate} from '@enact/core/handle';
 import {is} from '@enact/core/keymap';
 import platform from '@enact/core/platform';
+import EnactPropTypes from '@enact/core/internal/prop-types';
 import {cap, clamp, Job} from '@enact/core/util';
 import IdProvider from '@enact/ui/internal/IdProvider';
 import Touchable from '@enact/ui/Touchable';
@@ -163,6 +164,14 @@ const PickerBase = class extends ReactComponent {
 		 * @public
 		 */
 		className: PropTypes.string,
+
+		/**
+		 * Called with a reference to the root component.
+		 *
+		 * @type {Object|Function}
+		 * @public
+		 */
+		componentRef: EnactPropTypes.ref,
 
 		/**
 		 * Disables voice control.
