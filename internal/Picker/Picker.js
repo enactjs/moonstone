@@ -1,7 +1,7 @@
 import {forward, stopImmediate} from '@enact/core/handle';
+import EnactPropTypes from '@enact/core/internal/prop-types';
 import {is} from '@enact/core/keymap';
 import platform from '@enact/core/platform';
-import EnactPropTypes from '@enact/core/internal/prop-types';
 import {cap, clamp, Job} from '@enact/core/util';
 import IdProvider from '@enact/ui/internal/IdProvider';
 import Touchable from '@enact/ui/Touchable';
