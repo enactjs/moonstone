@@ -1,4 +1,5 @@
 import {forward, stopImmediate} from '@enact/core/handle';
+import EnactPropTypes from '@enact/core/internal/prop-types';
 import {is} from '@enact/core/keymap';
 import platform from '@enact/core/platform';
 import {cap, clamp, Job} from '@enact/core/util';
@@ -163,6 +164,14 @@ const PickerBase = class extends ReactComponent {
 		 * @public
 		 */
 		className: PropTypes.string,
+
+		/**
+		 * Called with a reference to the root component.
+		 *
+		 * @type {Object|Function}
+		 * @public
+		 */
+		componentRef: EnactPropTypes.ref,
 
 		/**
 		 * Disables voice control.
@@ -781,6 +790,9 @@ const PickerBase = class extends ReactComponent {
 			// wheel handler to avoid this requirement
 			// eslint-disable-next-line react/no-find-dom-node
 			this[prop] = ref && ReactDOM.findDOMNode(ref);
+			if (this.props.componentRef) {
+				this.props.componentRef(ref);
+			}
 		};
 	}
 
@@ -819,6 +831,7 @@ const PickerBase = class extends ReactComponent {
 
 		delete rest['aria-label'];
 		delete rest.accessibilityHint;
+		delete rest.componentRef;
 		delete rest.decrementAriaLabel;
 		delete rest.decrementIcon;
 		delete rest.incrementAriaLabel;
