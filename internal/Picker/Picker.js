@@ -790,7 +790,9 @@ const PickerBase = class extends ReactComponent {
 			// wheel handler to avoid this requirement
 			// eslint-disable-next-line react/no-find-dom-node
 			this[prop] = ref && ReactDOM.findDOMNode(ref);
-			forward('componentRef', ref, this.props);
+			if (this.props.componentRef) {
+				this.props.componentRef(ref);
+			}
 		};
 	}
 
