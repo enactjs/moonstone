@@ -112,10 +112,10 @@ const InputBase = kind({
 		 * The tooltip text to be displayed when the input is
 		 * [invalid]{@link moonstone/Input.InputBase.invalid}.
 		 *
-		 * If this value is *falsy*, the tooltip will not be shown.
+		 * If this value is *falsy*, the tooltip will be shown with the default message.
 		 *
 		 * @type {String}
-		 * @default ''
+		 * @default 'Please enter a valid value.'
 		 * @public
 		 */
 		invalidMessage: PropTypes.string,

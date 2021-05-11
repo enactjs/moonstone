@@ -96,7 +96,7 @@ const ProgressBarBase = kind({
 		 * ```
 		 * <ProgressBar
 		 *   tooltip={
-		 *     <ProgressBarTooltip side="after" />
+		 *     <ProgressBarTooltip position="after" />
 		 *   }
 		 * />
 		 * ```
@@ -107,7 +107,7 @@ const ProgressBarBase = kind({
 		 * Usage:
 		 * ```
 		 * <ProgressBar>
-		 *   <ProgressBarTooltip side="after" />
+		 *   <ProgressBarTooltip position="after" />
 		 * </ProgressBar>
 		 * ```
 		 *
