@@ -2,6 +2,12 @@
 
 The following is a curated list of changes in the Enact moonstone module, newest changes on the top.
 
+## [unreleased]
+
+### Fixed
+
+- `moonstone/Slider` to apply active style while dragging by touch
+
 ## [4.0.0] - 2021-04-08
 
 - The framework was updated to be compatible with Enact 4.0.0
