@@ -33,6 +33,7 @@ storiesOf('Moonstone', module)
 					onChange={action('onChange')}
 					orientation={select('orientation', ['horizontal', 'vertical'], IncrementSliderConfig)}
 					step={number('step', IncrementSliderConfig)} // def: 1
+					style={{marginLeft: '96px',	marginRight: '96px'}}
 				>
 					{tooltip ? (
 						<IncrementSliderTooltip
