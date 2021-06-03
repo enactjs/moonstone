@@ -6,7 +6,6 @@ import {Component} from 'react';
 import ScrollerComponent from '@enact/moonstone/Scroller';
 import ViewManager from '@enact/ui/ViewManager';
 
-import A11yDecorator from '../views/A11yDecorator';
 import Button from '../views/Button';
 import ContextualPopupDecorator from '../views/ContextualPopupDecorator';
 import DayPicker from '../views/DayPicker';
@@ -41,7 +40,6 @@ import View from './View';
 const views = [
 	{title: 'About qa-a11y', view: Home},
 	{debugProps: true, title: 'Option', view: Option},
-	{title: 'A11yDecorator', view: A11yDecorator},
 	{title: 'Button', view: Button},
 	{title: 'ContextualPopupDecorator', view: ContextualPopupDecorator},
 	{title: 'DayPicker', view: DayPicker},
