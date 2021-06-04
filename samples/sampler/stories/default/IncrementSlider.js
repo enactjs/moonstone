@@ -1,6 +1,7 @@
 import {action} from '@enact/storybook-utils/addons/actions';
 import {boolean, number, select} from '@enact/storybook-utils/addons/knobs';
 import {mergeComponentMetadata} from '@enact/storybook-utils';
+import ri from '@enact/ui/resolution';
 import {storiesOf} from '@storybook/react';
 
 import IncrementSlider, {IncrementSliderBase, IncrementSliderTooltip} from '@enact/moonstone/IncrementSlider';
@@ -33,6 +34,7 @@ storiesOf('Moonstone', module)
 					onChange={action('onChange')}
 					orientation={select('orientation', ['horizontal', 'vertical'], IncrementSliderConfig)}
 					step={number('step', IncrementSliderConfig)} // def: 1
+					style={{marginLeft: ri.scaleToRem(72), marginRight: ri.scaleToRem(72)}}
 				>
 					{tooltip ? (
 						<IncrementSliderTooltip

@@ -1,5 +1,6 @@
 import {boolean, number, select} from '@enact/storybook-utils/addons/knobs';
 import {mergeComponentMetadata, nullify} from '@enact/storybook-utils';
+import ri from '@enact/ui/resolution';
 import {storiesOf} from '@storybook/react';
 
 import ProgressBar, {ProgressBarTooltip} from '@enact/moonstone/ProgressBar';
@@ -29,6 +30,7 @@ storiesOf('Moonstone', module)
 					highlighted={boolean('highlighted', ProgressBarConfig)}
 					orientation={select('orientation', ['horizontal', 'vertical'], ProgressBarConfig, 'horizontal')}
 					progress={number('progress', ProgressBarConfig, {range: true, min: 0, max: 1, step: 0.01}, 0.4)}
+					style={{marginLeft: ri.scaleToRem(72), marginRight: ri.scaleToRem(72)}}
 				>
 					{tooltip ? (
 						<ProgressBarTooltip
