@@ -1,6 +1,7 @@
 import {action} from '@enact/storybook-utils/addons/actions';
 import {boolean, number, select} from '@enact/storybook-utils/addons/knobs';
 import {mergeComponentMetadata, nullify} from '@enact/storybook-utils';
+import ri from '@enact/ui/resolution';
 import {storiesOf} from '@storybook/react';
 
 import Slider, {SliderTooltip} from '@enact/moonstone/Slider';
@@ -37,6 +38,7 @@ storiesOf('Moonstone', module)
 					onChange={action('onChange')}
 					orientation={select('orientation', ['horizontal', 'vertical'], SliderConfig, 'horizontal')}
 					step={number('step', SliderConfig, 1)}
+					style={{marginLeft: ri.scaleToRem(72), marginRight: ri.scaleToRem(72)}}
 				>
 					{tooltip ? (
 						<SliderTooltip
