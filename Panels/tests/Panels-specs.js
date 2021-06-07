@@ -77,7 +77,6 @@ describe('Panels Specs', () => {
 	test.skip(
 		'should set {autoFocus} on child to "default-element" on first render',
 		() => {
-			// eslint-disable-next-line enact/prop-types
 			const Panel = ({autoFocus, id}) => <div id={id}>{autoFocus}</div>;
 			const panels = mount(
 				<Panels index={0}>
@@ -96,7 +95,6 @@ describe('Panels Specs', () => {
 	test.skip(
 		'should set {autoFocus} on child to "default-element" when navigating to a higher index',
 		() => {
-			// eslint-disable-next-line enact/prop-types
 			const Panel = ({autoFocus, id}) => <div id={id}>{autoFocus}</div>;
 			const panels = mount(
 				<Panels index={0}>
@@ -119,7 +117,6 @@ describe('Panels Specs', () => {
 	test.skip(
 		'should not set {autoFocus} on child when navigating to a higher index when it has an autoFocus prop set',
 		() => {
-			// eslint-disable-next-line enact/prop-types
 			const Panel = ({autoFocus, id}) => <div id={id}>{autoFocus}</div>;
 			const panels = mount(
 				<Panels index={0}>
