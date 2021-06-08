@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/accessible-emoji */
 import IconButton from '../../../../IconButton';
 
 import buttonstate from '../../images/button-state.svg';

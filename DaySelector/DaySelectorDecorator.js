@@ -82,7 +82,7 @@ function getLocaleState (dayNameLength, locale) {
  * @omit defaultValue
  * @public
  */
-const DaySelectorDecorator = hoc((config, Wrapped) => {	// eslint-disable-line no-unused-vars
+const DaySelectorDecorator = hoc((config, Wrapped) => {
 	return class extends Component {
 
 		static displayName = 'DaySelectorDecorator';

@@ -939,7 +939,7 @@ const listItemsRenderer = (props) => {
 };
 /* eslint-enable enact/prop-types */
 
-const ScrollableVirtualList = ({role, ...rest}) => { // eslint-disable-line react/jsx-no-bind
+const ScrollableVirtualList = ({role, ...rest}) => {
 	warning(
 		!rest.itemSizes || !rest.cbScrollTo,
 		'VirtualList with `minSize` in `itemSize` prop does not support `cbScrollTo` prop'
