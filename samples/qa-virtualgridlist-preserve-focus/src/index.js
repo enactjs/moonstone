@@ -1,4 +1,3 @@
-import 'web-animations-js';
 import {Provider} from 'react-redux';
 import {render} from 'react-dom';
 
