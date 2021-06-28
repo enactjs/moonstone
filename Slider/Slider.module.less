@@ -196,6 +196,26 @@
 			});
 		});
 
+		:global(.spotlight-input-touch) &.pressed {
+			.bar {
+				background-color: @moon-slider-active-bar-bg-color;			
+			}
+
+			.fill {
+				background-color: @moon-slider-active-fill-bg-color;
+			}
+
+			.load {
+				background-color: @moon-slider-active-load-bg-color;
+			}
+
+			.knob::before {
+				background-color:@moon-slider-active-knob-bg-color;
+				border-color: @moon-slider-active-knob-border-color;
+				transform: @knob-transform-active;
+			}
+		}
+
 		.disabled({
 			opacity: 1;
 

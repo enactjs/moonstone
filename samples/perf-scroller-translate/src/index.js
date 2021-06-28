@@ -1,4 +1,3 @@
-import 'web-animations-js';
 import enactPkg from '@enact/core/package.json';
 import {render} from 'react-dom';
 

@@ -314,7 +314,7 @@ const EditableIntegerPickerBase = kind({
 		delete rest.unit;
 
 		return (
-			<Picker aria-valuetext={ariaValueText} {...rest} index={0} ref={pickerRef} />
+			<Picker aria-valuetext={ariaValueText} {...rest} index={0} componentRef={pickerRef} />
 		);
 	}
 });

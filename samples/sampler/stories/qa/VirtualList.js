@@ -173,7 +173,6 @@ const InPanels = ({className, title, ...rest}) => {
 	);
 };
 
-// eslint-disable-next-line enact/prop-types
 class VirtualListWithCBScrollTo extends Component {
 	static propTypes = {
 		dataSize: PropTypes.number
