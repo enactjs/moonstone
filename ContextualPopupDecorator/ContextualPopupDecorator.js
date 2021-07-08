@@ -293,6 +293,8 @@ const Decorator = hoc(defaultConfig, (config, Wrapped) => {
 				this.adjustedDirection = this.props.direction;
 				// NOTE: `setState` is called and will cause re-render
 				this.positionContextualPopup();
+			} else if (this.props.direction === this.props.rtl ? 'right' : 'left' && prevProps.showCloseButton !== this.props.showCloseButton) {
+				this.positionContextualPopup();
 			}
 
 			if (this.props.open && !prevProps.open) {
