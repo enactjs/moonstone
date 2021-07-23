@@ -45,7 +45,7 @@ describe('BodyText Specs', () => {
 		expect(bodyText).toHaveClass(expected);
 	});
 
-	test('should have small class if `size` is true', () => {
+	test('should have small class if `size` is small', () => {
 		render(<BodyText size="small">Hello!</BodyText>);
 		const bodyText = screen.getByText('Hello!');
 
@@ -54,7 +54,7 @@ describe('BodyText Specs', () => {
 		expect(bodyText).toHaveClass(expected);
 	});
 
-	test('should have center class if `center` is true', () => {
+	test('should have centered class if `centered` is true', () => {
 		render(<BodyText centered>Hello!</BodyText>);
 		const bodyText = screen.getByText('Hello!');
 

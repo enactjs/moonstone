@@ -40,7 +40,7 @@ describe('Heading Specs', () => {
 		expect(heading).toHaveClass(expected);
 	});
 
-	test('should render a Heading with size large', () => {
+	test('should render a Heading with size small', () => {
 		render(<Heading size="small">{content}</Heading>);
 		const heading = screen.getByText(content).parentElement.parentElement;
 
