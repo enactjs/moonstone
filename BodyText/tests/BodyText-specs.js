@@ -5,9 +5,7 @@ import BodyText from '../BodyText';
 
 describe('BodyText Specs', () => {
 	test('should render a text', () => {
-		render(
-			<BodyText>Hello! </BodyText>
-		);
+		render(<BodyText>Hello!</BodyText>);
 		const bodyText = screen.getByText('Hello!');
 
 		expect(bodyText).toBeInTheDocument();
@@ -30,9 +28,7 @@ describe('BodyText Specs', () => {
 	});
 
 	test('should support single-line marqueeing content when `noWrap` is true', () => {
-		render(
-			<BodyText noWrap>Hello!</BodyText>
-		);
+		render(<BodyText noWrap>Hello!</BodyText>);
 		const bodyText = screen.getByText('Hello!').parentElement;
 
 		const expected = 'marquee';
@@ -41,9 +37,7 @@ describe('BodyText Specs', () => {
 	});
 
 	test('should include the noWrap class if `noWrap` is true', () => {
-		render(
-			<BodyText noWrap>Hello!</BodyText>
-		);
+		render(<BodyText noWrap>Hello!</BodyText>);
 		const bodyText = screen.getByText('Hello!').parentElement.parentElement;
 
 		const expected = 'noWrap';
@@ -52,9 +46,7 @@ describe('BodyText Specs', () => {
 	});
 
 	test('should have small class if `size` is true', () => {
-		render(
-			<BodyText size="small">Hello!</BodyText>
-		);
+		render(<BodyText size="small">Hello!</BodyText>);
 		const bodyText = screen.getByText('Hello!');
 
 		const expected = 'small';
@@ -63,9 +55,7 @@ describe('BodyText Specs', () => {
 	});
 
 	test('should have center class if `center` is true', () => {
-		render(
-			<BodyText centered>Hello!</BodyText>
-		);
+		render(<BodyText centered>Hello!</BodyText>);
 		const bodyText = screen.getByText('Hello!');
 
 		const expected = 'centered';

@@ -7,18 +7,14 @@ describe('Heading Specs', () => {
 	const content = 'Hello Heading!';
 
 	test('should render a Heading with content', () => {
-		render(
-			<Heading>{content}</Heading>
-		);
+		render(<Heading>{content}</Heading>);
 		const heading = screen.getByText(content);
 
 		expect(heading).toBeInTheDocument();
 	});
 
 	test('should render a Heading with showLine', () => {
-		render(
-			<Heading showLine>{content}</Heading>
-		);
+		render(<Heading showLine>{content}</Heading>);
 		const heading = screen.getByText(content).parentElement.parentElement;
 
 		const expected = 'showLine';
@@ -27,9 +23,7 @@ describe('Heading Specs', () => {
 	});
 
 	test('should render a Heading with size large', () => {
-		render(
-			<Heading size="large">{content}</Heading>
-		);
+		render(<Heading size="large">{content}</Heading>);
 		const heading = screen.getByText(content).parentElement.parentElement;
 
 		const expected = 'large';
@@ -38,9 +32,7 @@ describe('Heading Specs', () => {
 	});
 
 	test('should render a Heading with size medium', () => {
-		render(
-			<Heading>{content}</Heading>
-		);
+		render(<Heading>{content}</Heading>);
 		const heading = screen.getByText(content).parentElement.parentElement;
 
 		const expected = 'medium';
@@ -49,9 +41,7 @@ describe('Heading Specs', () => {
 	});
 
 	test('should render a Heading with size large', () => {
-		render(
-			<Heading size="small">{content}</Heading>
-		);
+		render(<Heading size="small">{content}</Heading>);
 		const heading = screen.getByText(content).parentElement.parentElement;
 
 		const expected = 'small';
@@ -60,9 +50,7 @@ describe('Heading Specs', () => {
 	});
 
 	test('should render a Heading with spacing large', () => {
-		render(
-			<Heading spacing="large">{content}</Heading>
-		);
+		render(<Heading spacing="large">{content}</Heading>);
 		const heading = screen.getByText(content).parentElement.parentElement;
 
 		const expected = 'largeSpacing';
@@ -71,9 +59,7 @@ describe('Heading Specs', () => {
 	});
 
 	test('should render a Heading with spacing medium', () => {
-		render(
-			<Heading spacing="medium">{content}</Heading>
-		);
+		render(<Heading spacing="medium">{content}</Heading>);
 		const heading = screen.getByText(content).parentElement.parentElement;
 
 		const expected = 'mediumSpacing';
@@ -82,9 +68,7 @@ describe('Heading Specs', () => {
 	});
 
 	test('should render a Heading with spacing small', () => {
-		render(
-			<Heading>{content}</Heading>
-		);
+		render(<Heading>{content}</Heading>);
 		const heading = screen.getByText(content).parentElement.parentElement;
 
 		const expected = 'smallSpacing';
@@ -93,9 +77,7 @@ describe('Heading Specs', () => {
 	});
 
 	test('should render a Heading with spacing none', () => {
-		render(
-			<Heading spacing="none">{content}</Heading>
-		);
+		render(<Heading spacing="none">{content}</Heading>);
 		const heading = screen.getByText(content).parentElement.parentElement;
 
 		const expected = 'noneSpacing';
