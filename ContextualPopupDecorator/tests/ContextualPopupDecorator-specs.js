@@ -1,6 +1,6 @@
 import {FloatingLayerDecorator} from '@enact/ui/FloatingLayer';
 import '@testing-library/jest-dom';
-import {render, screen} from '@testing-library/react';
+import {render, screen, within} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import {ContextualPopupDecorator} from '../ContextualPopupDecorator';
@@ -97,7 +97,7 @@ describe('ContextualPopupDecorator Specs', () => {
 		expect(handleClose).toHaveBeenCalled();
 	});
 
-	test('should have "right" className when direction is set to "right"', () => {
+	test('should have `right` className when direction is set to `right`', () => {
 		const handleClose = jest.fn();
 		const Root = FloatingLayerDecorator('div');
 		const message = 'goodbye';
@@ -114,5 +114,55 @@ describe('ContextualPopupDecorator Specs', () => {
 		const expectedValue = 'right';
 
 		expect(contextualPopup).toHaveAttribute(expectedAttribute, expectedValue);
+	});
+
+	test('should have a close button when `showCloseButton` is set to true', () => {
+		const handleClose = jest.fn();
+		const Root = FloatingLayerDecorator('div');
+		const message = 'goodbye';
+		render(
+			<Root>
+				<ContextualButton onClose={handleClose} open popupComponent={() => message} showCloseButton>
+					Hello
+				</ContextualButton>
+			</Root>
+		);
+		const closeButton = within(screen.getByRole('alert')).getByRole('button');
+
+		expect(closeButton).not.toBeNull();
+	});
+
+	test('should not have a close button when `showCloseButton` is not set', () => {
+		const handleClose = jest.fn();
+		const Root = FloatingLayerDecorator('div');
+		const message = 'goodbye';
+		render(
+			<Root>
+				<ContextualButton onClose={handleClose} open popupComponent={() => message}>
+					Hello
+				</ContextualButton>
+			</Root>
+		);
+		const closeButton = within(screen.getByRole('alert')).queryByRole('button');
+
+		expect(closeButton).toBeNull();
+	});
+
+	test('should emit onClose event when clicking the closeButton', () => {
+		const handleClose = jest.fn();
+		const Root = FloatingLayerDecorator('div');
+		const message = 'goodbye';
+		render(
+			<Root>
+				<ContextualButton onClose={handleClose} open popupComponent={() => message} showCloseButton>
+					Hello
+				</ContextualButton>
+			</Root>
+		);
+		const closeButton = within(screen.getByRole('alert')).getByRole('button');
+
+		userEvent.click(closeButton);
+
+		expect(handleClose).toHaveBeenCalled();
 	});
 });
