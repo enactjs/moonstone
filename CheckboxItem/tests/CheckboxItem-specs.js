@@ -11,7 +11,7 @@ describe('CheckboxItem Specs', () => {
 		const checkboxItem = screen.getByRole('checkbox');
 
 		const actual = checkboxItem.textContent.codePointAt();
-		const expected = 983138; // decimal converted charCode of Unicode 'trash' character
+		const expected = 983138; // decimal converted charCode of Unicode 'music' character
 
 		expect(actual).toBe(expected);
 	});

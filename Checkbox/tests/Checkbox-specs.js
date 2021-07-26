@@ -8,14 +8,15 @@ describe('Checkbox Specs', () => {
 		render(<CheckboxBase data-testid="checkbox" />);
 
 		const checkboxElement = screen.getByTestId('checkbox');
+		const expected = 'selected';
 
-		expect(checkboxElement.className).not.toContain('selected');
+		expect(checkboxElement).not.toHaveClass(expected);
 	});
 
 	test('should add the selected class when given the selected prop', () => {
 		render(<CheckboxBase data-testid="checkbox" selected />);
-		const checkboxElement = screen.getByTestId('checkbox');
 
+		const checkboxElement = screen.getByTestId('checkbox');
 		const expected = 'selected';
 
 		expect(checkboxElement).toHaveClass(expected);
