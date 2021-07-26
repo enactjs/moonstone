@@ -97,7 +97,7 @@ describe('ContextualPopupDecorator Specs', () => {
 		expect(handleClose).toHaveBeenCalled();
 	});
 
-	test('should have `right` className when direction is set to `right`', () => {
+	test('direction attribute should have `right` value when direction is set to `right`', () => {
 		const handleClose = jest.fn();
 		const Root = FloatingLayerDecorator('div');
 		const message = 'goodbye';
