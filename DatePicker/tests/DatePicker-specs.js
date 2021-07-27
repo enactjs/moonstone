@@ -1,196 +1,290 @@
-import {mount} from 'enzyme';
+import ilib from 'ilib';
+import DateFmt from 'ilib/lib/DateFmt';
+import '@testing-library/jest-dom';
+import {render, screen} from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+
 import DatePicker from '../DatePicker';
-import css from '../DatePicker.module.less';
+
+const dateToLocaleString = (date) => new DateFmt({
+	date: 'dmwy',
+	length: 'full',
+	timezone: 'local',
+	useNative: false
+}).format(date);
 
 describe('DatePicker', () => {
-
-	// Suite-wide setup
-
 	test('should not generate a label when value is undefined', () => {
-		const subject = mount(
-			<DatePicker title="Date" />
-		);
+		render(<DatePicker data-testid="datePicker" title="Date" />);
 
-		const expected = null;
-		const actual = subject.find('ExpandableItem').prop('label');
+		const expected = 1;
+		const actual = screen.getByTestId('datePicker').children.item(0).children;
 
-		expect(actual).toBe(expected);
+		expect(actual).toHaveLength(expected);
 	});
 
-	test(
-		'should emit an onChange event when changing a component picker',
-		() => {
-			const handleChange = jest.fn();
-			const subject = mount(
-				<DatePicker onChange={handleChange} open title="Date" value={new Date(2000, 6, 15)} locale="en-US" />
-			);
+	test('should emit an onChange event when changing a component picker', () => {
+		const handleChange = jest.fn();
+		render(
+			<DatePicker
+				locale="en-US"
+				onChange={handleChange}
+				open
+				title="Date"
+				value={new Date(2000, 6, 15)}
+			/>
+		);
+		const monthPickerUp = screen.getByLabelText('7 month change a value with up down button').children.item(0);
 
-			const base = subject.find('DateComponentRangePicker').first();
+		userEvent.click(monthPickerUp);
 
-			base.prop('onChange')({value: 0});
+		const expected = 1;
 
-			const expected = 1;
-			const actual = handleChange.mock.calls.length;
-
-			expect(actual).toBe(expected);
-		}
-	);
+		expect(handleChange).toBeCalledTimes(expected);
+	});
 
 	test('should omit labels when noLabels is true', () => {
-		const subject = mount(
-			<DatePicker day={1} maxDays={31} maxMonths={12} month={1} noLabels open order={['m', 'd', 'y']} title="Date" year={2000} />
+		render(
+			<DatePicker
+				data-testid="datePicker"
+				day={1}
+				maxDays={31}
+				maxMonths={12}
+				month={1}
+				noLabels
+				open
+				order={['m', 'd', 'y']}
+				title="Date"
+				year={2000}
+			/>
 		);
 
-		const expected = 3;
-		const actual = subject.find('DateComponentRangePicker').filterWhere(c => !c.prop('label')).length;
+		const dayLabel = screen.queryByText('day');
+		const monthLabel = screen.queryByText('month');
+		const yearLabel = screen.queryByText('year');
 
-		expect(actual).toBe(expected);
+		expect(dayLabel).toBeNull();
+		expect(monthLabel).toBeNull();
+		expect(yearLabel).toBeNull();
 	});
 
 	test('should create pickers arranged by order', () => {
-		const subject = mount(
-			<DatePicker title="Date" day={1} maxDays={31} month={1} maxMonths={12} year={2000} order={['m', 'd', 'y']} open />
+		render(
+			<DatePicker
+				day={1}
+				maxDays={31}
+				maxMonths={12}
+				month={1}
+				open
+				order={['m', 'd', 'y']}
+				title="Date"
+				year={2000}
+			/>
 		);
+		const dateComponent = screen.getByText('day').parentElement.parentElement;
 
-		const expected = ['month', 'day', 'year'];
-		const actual = subject.find('DateComponentRangePicker').map(c => c.prop('label'));
+		const expectedFirst = 'month';
+		const actualFirst = dateComponent.children.item(0);
+		const expectedSecond = 'day';
+		const actualSecond = dateComponent.children.item(1);
+		const expectedThird = 'year';
+		const actualThird = dateComponent.children.item(2);
 
-		expect(actual).toEqual(expected);
+		expect(actualFirst).toHaveClass(expectedFirst);
+		expect(actualSecond).toHaveClass(expectedSecond);
+		expect(actualThird).toHaveClass(expectedThird);
 	});
 
 	test('should accept a JavaScript Date for its value prop', () => {
-		const subject = mount(
-			<DatePicker open title="Date" value={new Date(2000, 0, 1)} locale="en-US" />
-		);
+		render(<DatePicker locale="en-US" open title="Date" value={new Date(2000, 8, 12)} />);
+		const year = screen.getByText('2000');
 
-		const yearPicker = subject.find(`DateComponentRangePicker.${css.year}`);
+		const actual = year.parentElement.parentElement;
+		const expectedAttribute = 'aria-valuetext';
+		const expectedValue = '2000 year';
 
-		const expected = 2000;
-		const actual = yearPicker.prop('value');
-
-		expect(actual).toBe(expected);
+		expect(year).toBeInTheDocument();
+		expect(actual).toHaveAttribute(expectedAttribute, expectedValue);
 	});
 
 	test('should set "dayAriaLabel" to day picker', () => {
 		const label = 'custom day aria-label';
-		const subject = mount(
-			<DatePicker dayAriaLabel={label} open title="Date" value={new Date(2000, 0, 1)} />
+		render(
+			<DatePicker
+				dayAriaLabel={label}
+				locale="en-US"
+				open
+				title="Date"
+				value={new Date(2000, 8, 12)}
+			/>
 		);
+		const dayPicker = screen.getByLabelText(label).parentElement;
 
-		const dayPicker = subject.find(`DateComponentRangePicker.${css.day}`);
+		const expected = 'day';
 
-		const expected = label;
-		const actual = dayPicker.prop('aria-label');
-
-		expect(actual).toBe(expected);
+		expect(dayPicker).toBeInTheDocument();
+		expect(dayPicker).toHaveClass(expected);
 	});
 
 	test('should set "monthAriaLabel" to month picker', () => {
 		const label = 'custom month aria-label';
-		const subject = mount(
-			<DatePicker monthAriaLabel={label} open title="Date" value={new Date(2000, 0, 1)} />
+		render(
+			<DatePicker
+				locale="en-US"
+				monthAriaLabel={label}
+				open
+				title="Date"
+				value={new Date(2000, 8, 12)}
+			/>
 		);
+		const monthPicker = screen.getByLabelText(label).parentElement;
 
-		const monthPicker = subject.find(`DateComponentRangePicker.${css.month}`);
+		const expected = 'month';
 
-		const expected = label;
-		const actual = monthPicker.prop('aria-label');
-
-		expect(actual).toBe(expected);
+		expect(monthPicker).toBeInTheDocument();
+		expect(monthPicker).toHaveClass(expected);
 	});
 
 	test('should set "yearAriaLabel" to year picker', () => {
 		const label = 'custom year aria-label';
-		const subject = mount(
-			<DatePicker open title="Date" value={new Date(2000, 0, 1)} yearAriaLabel={label} />
+		render(
+			<DatePicker
+				locale="en-US"
+				open
+				title="Date"
+				value={new Date(2000, 8, 12)}
+				yearAriaLabel={label}
+			/>
 		);
+		const yearPicker = screen.getByLabelText(label).parentElement;
 
-		const yearPicker = subject.find(`DateComponentRangePicker.${css.year}`);
+		const expected = 'year';
 
-		const expected = label;
-		const actual = yearPicker.prop('aria-label');
-
-		expect(actual).toBe(expected);
+		expect(yearPicker).toBeInTheDocument();
+		expect(yearPicker).toHaveClass(expected);
 	});
 
-	test('should set "dayLabel" to day label', () => {
+	test('should set "dayLabel" to day picker', () => {
 		const label = 'custom day label';
-		const subject = mount(
-			<DatePicker dayLabel={label} open title="Date" value={new Date(2000, 0, 1)} />
+		render(
+			<DatePicker
+				dayLabel={label}
+				open
+				title="Date"
+				value={new Date(2000, 0, 1)}
+			/>
 		);
+		const dayPicker = screen.getByText(label).parentElement;
 
-		const dayPicker = subject.find(`DateComponentRangePicker.${css.day}`);
+		const expected = 'day';
 
-		const expected = label;
-		const actual = dayPicker.prop('label');
-
-		expect(actual).toBe(expected);
+		expect(dayPicker).toHaveClass(expected);
 	});
 
-	test('should set "monthAriaLabel" to month picker', () => {
+	test('should set "monthLabel" to month picker', () => {
 		const label = 'custom month label';
-		const subject = mount(
-			<DatePicker monthLabel={label} open title="Date" value={new Date(2000, 0, 1)} />
+		render(
+			<DatePicker
+				monthLabel={label}
+				open
+				title="Date"
+				value={new Date(2000, 0, 1)}
+			/>
 		);
+		const monthPicker = screen.getByText(label).parentElement;
 
-		const monthPicker = subject.find(`DateComponentRangePicker.${css.month}`);
+		const expected = 'month';
 
-		const expected = label;
-		const actual = monthPicker.prop('label');
-
-		expect(actual).toBe(expected);
+		expect(monthPicker).toHaveClass(expected);
 	});
 
-	test('should set "yearAriaLabel" to year picker', () => {
+	test('should set "yearLabel" to year picker', () => {
 		const label = 'custom year label';
-		const subject = mount(
-			<DatePicker open title="Date" value={new Date(2000, 0, 1)} yearLabel={label} />
+		render(
+			<DatePicker
+				locale="en-US"
+				open
+				title="Date"
+				value={new Date(2000, 0, 1)}
+				yearLabel={label}
+			/>
 		);
+		const yearPicker = screen.getByText(label).parentElement;
 
-		const yearPicker = subject.find(`DateComponentRangePicker.${css.year}`);
+		const expected = 'year';
 
-		const expected = label;
-		const actual = yearPicker.prop('label');
-
-		expect(actual).toBe(expected);
+		expect(yearPicker).toHaveClass(expected);
 	});
 
 	test('should set "data-webos-voice-disabled" to day picker when voice control is disabled', () => {
-		const subject = mount(
-			<DatePicker open title="Date" value={new Date(2000, 0, 1)} data-webos-voice-disabled />
+		render(
+			<DatePicker
+				data-webos-voice-disabled
+				locale="en-US"
+				open
+				title="Date"
+				value={new Date(2000, 1, 1)}
+			/>
 		);
+		const dayPicker = screen.getByLabelText('1 day change a value with up down button');
 
-		const dayPicker = subject.find(`DateComponentRangePicker.${css.day}`);
+		const expected = 'data-webos-voice-disabled';
 
-		const expected = true;
-		const actual = dayPicker.prop('data-webos-voice-disabled');
-
-		expect(actual).toBe(expected);
+		expect(dayPicker).toHaveAttribute(expected);
 	});
 
 	test('should set "data-webos-voice-disabled" to month picker when voice control is disabled', () => {
-		const subject = mount(
-			<DatePicker open title="Date" value={new Date(2000, 0, 1)} data-webos-voice-disabled />
+		render(
+			<DatePicker
+				data-webos-voice-disabled
+				locale="en-US"
+				open
+				title="Date"
+				value={new Date(2000, 0, 1)}
+			/>
 		);
+		const monthPicker = screen.getByLabelText('1 month change a value with up down button');
 
-		const monthPicker = subject.find(`DateComponentRangePicker.${css.month}`);
+		const expected = 'data-webos-voice-disabled';
 
-		const expected = true;
-		const actual = monthPicker.prop('data-webos-voice-disabled');
-
-		expect(actual).toBe(expected);
+		expect(monthPicker).toHaveAttribute(expected);
 	});
 
 	test('should set "data-webos-voice-disabled" to year picker when voice control is disabled', () => {
-		const subject = mount(
-			<DatePicker open title="Date" value={new Date(2000, 0, 1)} data-webos-voice-disabled />
+		render(
+			<DatePicker
+				data-webos-voice-disabled
+				locale="en-US"
+				open
+				title="Date"
+				value={new Date(2000, 1, 1)}
+			/>
 		);
+		const yearPicker = screen.getByLabelText('2000 year change a value with up down button');
 
-		const yearPicker = subject.find(`DateComponentRangePicker.${css.year}`);
+		const expected = 'data-webos-voice-disabled';
 
-		const expected = true;
-		const actual = yearPicker.prop('data-webos-voice-disabled');
+		expect(yearPicker).toHaveAttribute(expected);
+	});
 
-		expect(actual).toBe(expected);
+	test('should format the date label to locale `en-US`', () => {
+		const date = new Date(2000, 0, 1);
+		render(<DatePicker locale="en-US" open title="Date" value={date} />);
+		const header = screen.getByText(dateToLocaleString(date)).parentElement.parentElement;
+
+		const expected = 'label';
+
+		expect(header).toHaveClass(expected);
+	});
+
+	test('should format the date label to locale `ar-SA`', () => {
+		ilib.setLocale('ar-SA');
+		const date = new Date(2000, 0, 1);
+		render(<DatePicker locale="ar-SA" open title="Date" value={date} />);
+		const header = screen.getByText(dateToLocaleString(date)).parentElement.parentElement;
+
+		const expected = 'label';
+
+		expect(header).toHaveClass(expected);
 	});
 });
