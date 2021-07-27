@@ -2,6 +2,12 @@
 
 The following is a curated list of changes in the Enact moonstone module, newest changes on the top.
 
+## [unreleased]
+
+### Fixed
+
+- `moonstone/ContextualPopupDecorator` to reposition the popup when prop `showCloseButton` is updated and prop `direction` is left (right in RTL locales)
+
 ## [4.0.1] - 2021-06-28
 
 ### Fixed
