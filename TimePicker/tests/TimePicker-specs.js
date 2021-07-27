@@ -105,10 +105,12 @@ describe('TimePicker', () => {
 		);
 		const minutes = screen.getByText('30');
 
-		const expected = 'item';
+		const actual = minutes.parentElement.parentElement;
+		const expectedAttribute = 'aria-valuetext';
+		const expectedValue = '30 minute';
 
 		expect(minutes).toBeInTheDocument();
-		expect(minutes).toHaveClass(expected);
+		expect(actual).toHaveAttribute(expectedAttribute, expectedValue);
 	});
 
 	test('should set `hourAriaLabel` to hour picker', () => {
@@ -233,7 +235,7 @@ describe('TimePicker', () => {
 		expect(hourPicker).toHaveAttribute(expected);
 	});
 
-	test('should set "data-webos-voice-disabled" to merdiem picker when voice control is disabled', () => {
+	test('should set "data-webos-voice-disabled" to meridiem picker when voice control is disabled', () => {
 		render(
 			<TimePicker
 				data-webos-voice-disabled
@@ -243,11 +245,11 @@ describe('TimePicker', () => {
 				value={new Date(2000, 0, 1, 12, 30)}
 			/>
 		);
-		const merdiemPicker = screen.getByLabelText('PM change a value with up down button');
+		const meridiemPicker = screen.getByLabelText('PM change a value with up down button');
 
 		const expected = 'data-webos-voice-disabled';
 
-		expect(merdiemPicker).toHaveAttribute(expected);
+		expect(meridiemPicker).toHaveAttribute(expected);
 	});
 
 	test('should set "data-webos-voice-disabled" to minute picker when voice control is disabled', () => {

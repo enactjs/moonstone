@@ -73,12 +73,12 @@ describe('DatePicker', () => {
 			<DatePicker
 				day={1}
 				maxDays={31}
-				month={1}
 				maxMonths={12}
-				year={2000}
-				order={['m', 'd', 'y']}
+				month={1}
 				open
+				order={['m', 'd', 'y']}
 				title="Date"
+				year={2000}
 			/>
 		);
 		const dateComponent = screen.getByText('day').parentElement.parentElement;
@@ -99,10 +99,12 @@ describe('DatePicker', () => {
 		render(<DatePicker locale="en-US" open title="Date" value={new Date(2000, 8, 12)} />);
 		const year = screen.getByText('2000');
 
-		const expected = 'item';
+		const actual = year.parentElement.parentElement;
+		const expectedAttribute = 'aria-valuetext';
+		const expectedValue = '2000 year';
 
 		expect(year).toBeInTheDocument();
-		expect(year).toHaveClass(expected);
+		expect(actual).toHaveAttribute(expectedAttribute, expectedValue);
 	});
 
 	test('should set "dayAriaLabel" to day picker', () => {
