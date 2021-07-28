@@ -3,7 +3,7 @@ import {render, screen} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import SwitchItem from '../SwitchItem';
-import {SwitchItemBase} from "../../../sandstone/SwitchItem";
+import {SwitchItemBase} from '../../../sandstone/SwitchItem';
 
 describe('SwitchItem Specs', () => {
 	test('should contain a Switch', () => {
