@@ -1,51 +1,58 @@
-import {mount} from 'enzyme';
+import '@testing-library/jest-dom';
+import {render, screen} from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+
 import SwitchItem from '../SwitchItem';
+import {SwitchItemBase} from "../../../sandstone/SwitchItem";
 
 describe('SwitchItem Specs', () => {
-
 	test('should contain a Switch', () => {
+		render(<SwitchItemBase />);
 
-		const switchItem = mount(
-			<SwitchItem>
-				SwitchItem
-			</SwitchItem>
-		);
+		const expected = 'switch';
+		const actual = screen.getAllByRole('button')[1];
 
-		const expected = 1;
-		const actual = switchItem.find('Switch').length;
-
-		expect(actual).toBe(expected);
+		expect(actual).toHaveClass(expected);
 	});
 
 	test('should pass selected to Switch element', () => {
+		render(<SwitchItemBase selected />);
 
-		const switchItem = mount(
-			<SwitchItem selected>
-				SwitchItem
-			</SwitchItem>
-		);
+		const expected = 'selected';
+		const SwitchItemElement = screen.getAllByRole('button')[0];
+		const SwitchElement = screen.getAllByRole('button')[1];
 
-		const SwitchComponent = switchItem.find('Switch');
-
-		const expected = true;
-		const actual = SwitchComponent.prop('selected');
-
-		expect(actual).toBe(expected);
+		expect(SwitchItemElement).toHaveClass(expected);
+		expect(SwitchElement).toHaveClass(expected);
 	});
 
 	test('should pass disabled to Switch element', () => {
+		render(<SwitchItemBase disabled />);
 
-		const switchItem = mount(
-			<SwitchItem disabled>
-				SwitchItem
-			</SwitchItem>
-		);
+		const expected = 'true';
+		const SwitchItemElement = screen.getAllByRole('button')[0];
 
-		const SwitchComponent = switchItem.find('Switch');
+		expect(SwitchItemElement).toHaveAttribute('aria-disabled', expected);
+	});
 
-		const expected = true;
-		const actual = SwitchComponent.prop('disabled');
+	test('should toggle Switch', () => {
+		const handleToggle = jest.fn();
+		render(<SwitchItem onToggle={handleToggle} />);
 
-		expect(actual).toBe(expected);
+		const actual = screen.getByRole('checkbox');
+
+		userEvent.click(actual);
+
+		expect(actual).toBeChecked();
+
+		const expectedTimes = 1;
+		expect(handleToggle).toBeCalledTimes(expectedTimes);
+	});
+
+	test('should render correct children', () => {
+		render(<SwitchItem>Hello SwitchItem</SwitchItem>);
+		const Child = screen.getByText(/Hello SwitchItem/i);
+
+		expect(Child).toBeInTheDocument();
 	});
 });
