@@ -1,258 +1,268 @@
-import {mount} from 'enzyme';
-import {EditableIntegerPicker, EditableIntegerPickerBase} from '../EditableIntegerPicker';
 import Spotlight from '@enact/spotlight';
+import '@testing-library/jest-dom';
+import {fireEvent, render, screen} from '@testing-library/react';
+
+import {EditableIntegerPicker, EditableIntegerPickerBase} from '../EditableIntegerPicker';
+import userEvent from "@testing-library/user-event";
 
 const isPaused = () => Spotlight.isPaused() ? 'paused' : 'not paused';
 
 const tap = (node) => {
-	node.simulate('mousedown');
-	node.simulate('mouseup');
+	fireEvent.mouseDown(node);
+	fireEvent.mouseUp(node);
 };
 
-const decrement = (slider) => tap(slider.find('Icon').last());
-const increment = (slider) => tap(slider.find('Icon').first());
-describe('EditableIntegerPicker', () => {
+const decrement = () => tap(screen.getByText('-'));
+const increment = () => tap(screen.getByText('+'));
 
-	test('should render a single child with the current value', () => {
-		const picker = mount(
-			<EditableIntegerPicker min={0} max={100} defaultValue={10} step={1} />
+describe('EditableIntegerPicker', () => {
+	test('should render a child with the current value', () => {
+		render(
+			<EditableIntegerPicker
+				decrementIcon={'minus'}
+				defaultValue={10}
+				incrementIcon={'plus'}
+				max={100}
+				min={0}
+				step={1}
+			/>
 		);
-		const expected = 10;
-		const actual = parseInt(picker.find('PickerItem').text());
-		expect(actual).toBe(expected);
+		const pickerItem = screen.getByText('10');
+
+		expect(pickerItem).toBeInTheDocument();
 	});
 
 	test('should increase by step amount on increment press', () => {
-		const picker = mount(
-			<EditableIntegerPicker min={0} max={100} defaultValue={10} step={10} noAnimation />
+		render(
+			<EditableIntegerPicker
+				decrementIcon={'minus'}
+				defaultValue={10}
+				incrementIcon={'plus'}
+				max={100}
+				min={0}
+				noAnimation
+				step={10}
+			/>
 		);
-		increment(picker);
-		const expected = 20;
-		const actual = parseInt(picker.find('PickerItem').first().text());
-		expect(actual).toBe(expected);
+
+		increment();
+
+		const actual = screen.getByText('20');
+
+		expect(actual).toBeInTheDocument();
 	});
 
 	test('should decrease by step amount on decrement press', () => {
-		const picker = mount(
-			<EditableIntegerPicker min={0} max={100} defaultValue={10} step={10} noAnimation />
+		render(
+			<EditableIntegerPicker
+				decrementIcon={'minus'}
+				defaultValue={10}
+				incrementIcon={'plus'}
+				max={100}
+				min={0}
+				noAnimation
+				step={10}
+			/>
 		);
-		decrement(picker);
-		const expected = 0;
-		const actual = parseInt(picker.find('PickerItem').first().text());
-		expect(actual).toBe(expected);
+
+		decrement();
+
+		const actual = screen.getByText('0');
+
+		expect(actual).toBeInTheDocument();
 	});
 
 	test('should enable input field on click', () => {
-		const picker = mount(
-			<EditableIntegerPicker min={0} max={100} defaultValue={10} step={1} />
+		render(<EditableIntegerPicker defaultValue={10} max={100} min={0} step={1} />);
+
+		userEvent.click(screen.getByText('10'));
+
+		setTimeout((done) => {
+			const expected = 'input';
+			const actual = screen.getByLabelText('undefined change a value with left right button').children.item(1);
+
+			expect(actual).toHaveClass(expected);
+			done()
+		}, 300);
+	});
+
+	test('should disable input field when blurred', () => {
+		render(<EditableIntegerPicker min={0} max={100} defaultValue={10} step={1} />);
+
+		userEvent.click(screen.getByText('10'));
+
+		const input = screen.getByLabelText('undefined change a value with left right button').children.item(1);
+		const inputField = input.children.item(0).children.item(0);
+
+		fireEvent.focus(inputField);
+		fireEvent.blur(inputField);
+
+		expect(inputField).not.toBeInTheDocument();
+	});
+
+	test('should take value inputted and navigate to the value on blur', () => {
+		render(
+			<EditableIntegerPicker
+				decrementIcon={'minus'}
+				defaultValue={10}
+				incrementIcon={'plus'}
+				max={100}
+				min={0}
+				noAnimation
+				step={1}
+			/>
 		);
 
-		picker.find('PickerItem').simulate('click', {target: {type: 'click'}});
+		userEvent.click(screen.getByText('10'));
+
+		const input = screen.getByLabelText('undefined change a value with left right button').children.item(1);
+		const inputField = input.children.item(0).children.item(0);
+
+		fireEvent.focus(inputField);
+		userEvent.type(inputField, '38');
+		fireEvent.blur(inputField);
+
+		const actual = screen.getByText('38');
+
+		expect(actual).toBeInTheDocument();
+	});
+
+	test('should send change event with correct value on blur', () => {
+		const handleChange = jest.fn();
+		render(
+			<EditableIntegerPicker
+				defaultValue={10}
+				max={100}
+				min={0}
+				noAnimation
+				onChange={handleChange}
+				step={1}
+			/>
+		);
+
+		userEvent.click(screen.getByText('10'));
+
+		const input = screen.getByLabelText('undefined change a value with left right button').children.item(1);
+		const inputField = input.children.item(0).children.item(0);
+
+		fireEvent.focus(inputField);
+		userEvent.type(inputField, '45');
+		fireEvent.blur(inputField);
+
+		const expected = 45;
+		const actual = handleChange.mock.calls[0][0].value;
+
+		expect(actual).toBe(expected);
+	});
+
+	test('should not send change event with invalid value on blur', () => {
+		const handleChange = jest.fn();
+		render(
+			<EditableIntegerPicker
+				defaultValue={12}
+				max={100}
+				min={0}
+				noAnimation
+				onChange={handleChange}
+				step={1}
+			/>
+		);
+
+		userEvent.click(screen.getByText('12'));
+
+		const input = screen.getByLabelText('undefined change a value with left right button').children.item(1);
+		const inputField = input.children.item(0).children.item(0);
+
+		fireEvent.focus(inputField);
+		userEvent.type(inputField, 'invalid');
+		fireEvent.blur(inputField);
+
+		expect(handleChange).not.toHaveBeenCalled();
+	});
+
+	test('should not send two change event when incrementing from edit mode', () => {
+		const handleChange = jest.fn();
+		render(
+			<EditableIntegerPicker
+				defaultValue={15}
+				max={100}
+				min={0}
+				noAnimation
+				onChange={handleChange}
+				step={1}
+			/>
+		);
+
+		userEvent.click(screen.getByText('15'));
+
+		const input = screen.getByLabelText('undefined change a value with left right button').children.item(1);
+		const inputField = input.children.item(0).children.item(0);
+
+		fireEvent.focus(inputField);
+		userEvent.type(inputField, '12');
+		fireEvent.blur(inputField);
+
 		const expected = 1;
-		const actual = picker.find('input').length;
-		expect(actual).toBe(expected);
+
+		expect(handleChange).toHaveBeenCalledTimes(expected);
 	});
 
-	test('should disable input when blurred', () => {
-		const node = document.body.appendChild(document.createElement('div'));
-		const picker = mount(
-			<EditableIntegerPicker min={0} max={100} defaultValue={10} step={1} />,
-			{attachTo: node}
-		);
+	test('should enable input field when some number is typed on the picker', () => {
+		render(<EditableIntegerPicker defaultValue={10} max={100} min={0} step={1} />);
+		const input = screen.getByText('10');
 
-		picker.find('PickerItem').simulate('click', {target: {type: 'click'}});
+		fireEvent.keyDown(input, {keyCode: 50});
 
-		const input = node.querySelector('input');
-		input.focus();
-		input.blur();
+		setTimeout((done) => {
+			const expected = 'input';
+			const actual = screen.getByLabelText('undefined change a value with left right button').children.item(1);
 
-		picker.update();
-
-		const expected = 0;
-		const actual = picker.find('input').length;
-
-		node.parentNode.removeChild(node);
-
-		expect(actual).toBe(expected);
+			expect(actual).toHaveClass(expected);
+			done()
+		}, 300);
 	});
-
-	test(
-		'should take value inputted and navigate to the value on blur',
-		() => {
-			const node = document.body.appendChild(document.createElement('div'));
-			const picker = mount(
-				<EditableIntegerPicker min={0} max={100} defaultValue={10} step={1} noAnimation />,
-				{attachTo: node}
-			);
-
-			picker.find('PickerItem').simulate('click', {target: {type: 'click'}});
-
-			const input = node.querySelector('input');
-			picker.find('input').simulate('focus');
-			input.value = 38;
-			input.blur();
-
-			picker.update();
-
-			const expected = 38;
-			const actual = parseInt(picker.find('PickerItem').first().text());
-
-			node.parentNode.removeChild(node);
-
-			expect(actual).toBe(expected);
-		}
-	);
-
-	test(
-		'should send change event with correct value on blur',
-		() => {
-			const handleChange = jest.fn();
-			const node = document.body.appendChild(document.createElement('div'));
-			const picker = mount(
-				<EditableIntegerPicker onChange={handleChange} min={0} max={100} defaultValue={10} step={1} noAnimation />,
-				{attachTo: node}
-			);
-
-			picker.find('PickerItem').simulate('click', {target: {type: 'click'}});
-
-			const input = node.querySelector('input');
-			picker.find('input').simulate('focus');
-			input.value = 38;
-			input.blur();
-
-			picker.update();
-
-			const expected = 38;
-			const actual = handleChange.mock.calls[0] &&
-				handleChange.mock.calls[0][0] &&
-				handleChange.mock.calls[0][0].value;
-
-			node.parentNode.removeChild(node);
-
-			expect(actual).toBe(expected);
-		}
-	);
-
-	test(
-		'should not send change event with invalid value on blur',
-		() => {
-			const handleChange = jest.fn();
-			const node = document.body.appendChild(document.createElement('div'));
-			const picker = mount(
-				<EditableIntegerPicker onChange={handleChange} min={0} max={100} defaultValue={10} step={1} noAnimation />,
-				{attachTo: node}
-			);
-
-			picker.find('PickerItem').simulate('click', {target: {type: 'click'}});
-
-			const input = node.querySelector('input');
-			picker.find('input').simulate('focus');
-			input.value = 138;
-			input.blur();
-
-			picker.update();
-
-			const expected = 0;
-			const actual = handleChange.mock.calls.length;
-
-			node.parentNode.removeChild(node);
-
-			expect(actual).toBe(expected);
-		}
-	);
-
-	test(
-		'should not send two change event when incrementing from edit mode',
-		() => {
-			const handleChange = jest.fn();
-			const node = document.body.appendChild(document.createElement('div'));
-			const picker = mount(
-				<EditableIntegerPicker onChange={handleChange} min={0} max={100} defaultValue={10} step={1} noAnimation />,
-				{attachTo: node}
-			);
-
-			picker.find('PickerItem').simulate('click', {target: {type: 'click'}});
-
-			const input = node.querySelector('input');
-			picker.find('input').simulate('focus');
-			input.value = 38;
-			increment(picker);
-			input.blur();	// It seems it must be manually blurred
-
-			picker.update();
-
-			const expected = 1;
-			const actual = handleChange.mock.calls.length;
-
-			node.parentNode.removeChild(node);
-
-			expect(actual).toBe(expected);
-		}
-	);
-
-	test(
-		'should enable input field when some number is typed on the picker',
-		() => {
-			const picker = mount(
-				<EditableIntegerPicker min={0} max={100} defaultValue={10} step={1} />
-			);
-
-			picker.simulate('keyDown', {keyCode: 50});
-			const expected = 1;
-			const actual = picker.find('input').length;
-
-			expect(actual).toBe(expected);
-		}
-	);
 
 	test('should pause the spotlight when input is focused', () => {
-		const node = document.body.appendChild(document.createElement('div'));
-		const picker = mount(
-			<EditableIntegerPicker min={0} max={100} defaultValue={10} step={1} />,
-			{attachTo: node}
-		);
+		render(<EditableIntegerPicker defaultValue={11} max={100} min={0} step={1} />);
 
-		picker.simulate('keyDown', {keyCode: 50});
-		const input = node.querySelector('input');
-		input.focus();
+		userEvent.click(screen.getByText('11'));
+
+		const input = screen.getByLabelText('undefined change a value with left right button').children.item(1);
+		const inputField = input.children.item(0).children.item(0);
+
+		fireEvent.focus(inputField);
 
 		const expected = 'paused';
 		const actual = isPaused();
 
 		Spotlight.resume();
-		node.parentNode.removeChild(node);
 
 		expect(actual).toBe(expected);
 	});
 
 	test('should resume the spotlight when input is blurred', () => {
-		const node = document.body.appendChild(document.createElement('div'));
-		const picker = mount(
-			<EditableIntegerPicker min={0} max={100} defaultValue={10} step={1} />,
-			{attachTo: node}
-		);
+		render(<EditableIntegerPicker defaultValue={13} max={100} min={0} step={1} />);
 
-		picker.find('PickerItem').simulate('click', {target: {type: 'click'}});
+		userEvent.click(screen.getByText('13'));
 
-		const input = node.querySelector('input');
-		input.focus();
-		input.blur();
+		const input = screen.getByLabelText('undefined change a value with left right button').children.item(1);
+		const inputField = input.children.item(0).children.item(0);
+
+		fireEvent.focus(inputField);
+		fireEvent.blur(inputField);
 
 		const expected = 'not paused';
 		const actual = isPaused();
-
-		node.parentNode.removeChild(node);
 
 		expect(actual).toBe(expected);
 	});
 
 	test('should be disabled when limited to a single value', () => {
-		const picker = mount(
-			<EditableIntegerPickerBase min={0} max={0} value={0} />
-		);
+		render(<EditableIntegerPickerBase max={0} min={0} value={0} />);
+		const picker = screen.getByLabelText('0 next item');
 
-		const actual = picker.find('Picker').last().prop('disabled');
-		expect(actual).toBe(true);
+		const expectedAttribute = 'disabled';
+
+		expect(picker).toHaveAttribute(expectedAttribute);
 	});
-
 });
