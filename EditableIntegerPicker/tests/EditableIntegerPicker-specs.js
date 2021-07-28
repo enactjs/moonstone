@@ -1,9 +1,10 @@
 import Spotlight from '@enact/spotlight';
 import '@testing-library/jest-dom';
 import {fireEvent, render, screen} from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+
 
 import {EditableIntegerPicker, EditableIntegerPickerBase} from '../EditableIntegerPicker';
-import userEvent from "@testing-library/user-event";
 
 const isPaused = () => Spotlight.isPaused() ? 'paused' : 'not paused';
 
@@ -82,7 +83,7 @@ describe('EditableIntegerPicker', () => {
 			const actual = screen.getByLabelText('undefined change a value with left right button').children.item(1);
 
 			expect(actual).toHaveClass(expected);
-			done()
+			done();
 		}, 300);
 	});
 
@@ -218,7 +219,7 @@ describe('EditableIntegerPicker', () => {
 			const actual = screen.getByLabelText('undefined change a value with left right button').children.item(1);
 
 			expect(actual).toHaveClass(expected);
-			done()
+			done();
 		}, 300);
 	});
 
