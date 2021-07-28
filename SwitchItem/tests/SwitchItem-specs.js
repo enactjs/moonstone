@@ -9,27 +9,16 @@ describe('SwitchItem Specs', () => {
 		render(<SwitchItemBase />);
 
 		const expected = 'switch';
-		const actual = screen.getAllByRole('button')[1];
+		const actual = screen.getByRole('checkbox').children[2].children[0];
 
 		expect(actual).toHaveClass(expected);
-	});
-
-	test('should pass selected to Switch element', () => {
-		render(<SwitchItemBase selected />);
-
-		const expected = 'selected';
-		const SwitchItemElement = screen.getAllByRole('button')[0];
-		const SwitchElement = screen.getAllByRole('button')[1];
-
-		expect(SwitchItemElement).toHaveClass(expected);
-		expect(SwitchElement).toHaveClass(expected);
 	});
 
 	test('should pass disabled to Switch element', () => {
 		render(<SwitchItemBase disabled />);
 
 		const expected = 'true';
-		const SwitchItemElement = screen.getAllByRole('button')[0];
+		const SwitchItemElement = screen.getByRole('checkbox');
 
 		expect(SwitchItemElement).toHaveAttribute('aria-disabled', expected);
 	});
