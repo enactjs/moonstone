@@ -10,7 +10,6 @@ const tap = (node) => {
 };
 
 describe('DaySelector', () => {
-
 	test('should set selected prop to true for the item that is selected by default', () => {
 		render(<DaySelector defaultSelected={0} />);
 		const daySelector = screen.getAllByRole('checkbox')[0].children.item(0).children.item(0);
