@@ -32,9 +32,7 @@ describe('DaySelector', () => {
 
 	test('should fire onSelect with the correct content when a day is selected', () => {
 		const handleSelect = jest.fn();
-		render(
-			<DaySelector onSelect={handleSelect} />
-		);
+		render(<DaySelector onSelect={handleSelect} />);
 		const item = screen.getAllByRole('checkbox')[6];
 
 		tap(item);
@@ -47,9 +45,7 @@ describe('DaySelector', () => {
 
 	test('should use the full string format when dayNameLength is `full`', () => {
 		const handleSelect = jest.fn();
-		render(
-			<DaySelector dayNameLength="full" onSelect={handleSelect} />
-		);
+		render(<DaySelector dayNameLength="full" onSelect={handleSelect} />);
 		const item = screen.getAllByRole('checkbox')[6];
 
 		tap(item);
@@ -98,9 +94,7 @@ describe('DaySelector', () => {
 
 	test('should set selected content as Every Weekend when every weekend is selected', () => {
 		const handleSelect = jest.fn();
-		render(
-			<DaySelector defaultSelected={[0]} onSelect={handleSelect} />
-		);
+		render(<DaySelector defaultSelected={[0]} onSelect={handleSelect} />);
 		const item = screen.getAllByRole('checkbox')[6];
 
 		tap(item);
