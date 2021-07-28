@@ -1,58 +1,41 @@
-import {mount, shallow} from 'enzyme';
+import '@testing-library/jest-dom';
+import {render, screen} from '@testing-library/react';
 
 import LabeledItem from '../LabeledItem';
-import css from '../LabeledItem.module.less';
 
 describe('LabeledItem Specs', () => {
+	test('should render a label `div` by default', () => {
+		render(<LabeledItem label="The Label">I am a labeledItem</LabeledItem>);
 
-	const labelClass = 'div.' + css.label;
+		const expected = 'label';
+		const actual = screen.getByText('The Label').parentElement.parentElement;
 
-	test('should render a label (<div>) by default', () => {
-		const item = mount(
-			<LabeledItem label="The Label">I am a labeledItem</LabeledItem>
-		);
-
-		const divTag = item.find(labelClass);
-		const expected = 1;
-		const actual = divTag.length;
-
-		expect(actual).toBe(expected);
+		expect(actual).toHaveClass(expected);
 	});
 
 	test('should not render a label if there is no \'label\' prop', () => {
-		const item = mount(
-			<LabeledItem>I am a labeledItem</LabeledItem>
-		);
+		render(<LabeledItem>I am a labeledItem</LabeledItem>);
 
-		const divTag = item.find(labelClass);
-		const expected = 0;
-		const actual = divTag.length;
+		const actual = screen.queryByLabelText('The Label');
 
-		expect(actual).toBe(expected);
+		expect(actual).toBeNull();
 	});
 
 	test('should create a LabeledItem that is enabled by default', () => {
-		const item = mount(
-			<LabeledItem>I am a labeledItem</LabeledItem>
-		);
+		render(<LabeledItem data-testid="enabled-item">I am a labeledItem</LabeledItem>);
 
-		const expected = 0;
-		const actual = item.find({disabled: true}).length;
+		const expected = 'false';
+		const actual = screen.getByTestId('enabled-item');
 
-		expect(actual).toBe(expected);
+		expect(actual).toHaveAttribute('aria-disabled', expected);
 	});
 
-	test(
-		'should have \'disabled\' HTML attribute when \'disabled=true\'',
-		() => {
-			const item = shallow(
-				<LabeledItem disabled>I am a disabled labeledItem</LabeledItem>
-			);
+	test('should have \'disabled\' HTML attribute when \'disabled=true\'', () => {
+		render(<LabeledItem data-testid="enabled-item" disabled>I am a disabled labeledItem</LabeledItem>);
 
-			const expected = 1;
-			const actual = item.find({disabled: true}).length;
+		const expected = 'true';
+		const actual = screen.getByTestId('enabled-item');
 
-			expect(actual).toBe(expected);
-		}
-	);
+		expect(actual).toHaveAttribute('aria-disabled', expected);
+	});
 });

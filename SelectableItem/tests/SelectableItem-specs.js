@@ -1,32 +1,25 @@
-import {mount} from 'enzyme';
+import '@testing-library/jest-dom';
+import {render, screen} from '@testing-library/react';
+
 import SelectableItem from '../SelectableItem';
-import css from '../SelectableIcon.module.less';
 
 describe('SelectableItem Specs', () => {
 	test('should render no icon when not selected', () => {
-		const selectableItem = mount(
-			<SelectableItem>
-				Hello SelectableItem
-			</SelectableItem>
-		);
+		render(<SelectableItem>Hello SelectableItem</SelectableItem>);
 
-		const expected = 0;
-		const actual = selectableItem.find(`.${css.selected}`).length;
+		const expected = 'selected';
+		const actual = screen.getByRole('checkbox').children[0].children[0];
 
-		expect(actual).toBe(expected);
+		expect(actual).not.toHaveClass(expected);
 	});
 
 	test('should render correct icon when selected', () => {
-		const selectableItem = mount(
-			<SelectableItem selected>
-				Hello SelectableItem
-			</SelectableItem>
-		);
+		render(<SelectableItem selected>Hello SelectableItem</SelectableItem>);
 
-		const expected = 1;
-		const actual = selectableItem.find(`.${css.selected}`).length;
+		const expected = 'selected';
+		const actual = screen.getByRole('checkbox').children[0].children[0];
 
-		expect(actual).toBe(expected);
+		expect(actual).toHaveClass(expected);
 	});
 
 });
