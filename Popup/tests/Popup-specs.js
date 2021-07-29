@@ -1,96 +1,95 @@
 import {FloatingLayerDecorator} from '@enact/ui/FloatingLayer';
-import {mount, shallow} from 'enzyme';
+import '@testing-library/jest-dom';
+import {render, screen} from '@testing-library/react';
 
-import {Popup, PopupBase} from '../Popup';
-import css from '../Popup.module.less';
+import Popup from '../Popup';
 
 const FloatingLayerController = FloatingLayerDecorator('div');
 
 describe('Popup specs', () => {
 	test('should be rendered opened if open is set to true', () => {
-		const popup = mount(
+		render(
 			<FloatingLayerController>
 				<Popup open><div>popup</div></Popup>
 			</FloatingLayerController>
 		);
 
-		const expected = true;
-		const actual = popup.find('FloatingLayer').prop('open');
+		const popup = screen.getByText('popup');
 
-		expect(actual).toBe(expected);
+		expect(popup).toBeInTheDocument();
 	});
 
 	test('should not be rendered if open is set to false', () => {
-		const popup = mount(
+		render(
 			<FloatingLayerController>
 				<Popup><div>popup</div></Popup>
 			</FloatingLayerController>
 		);
 
-		const expected = false;
-		const actual = popup.find('FloatingLayer').prop('open');
+		const popup = screen.queryByText('popup');
 
-		expect(actual).toBe(expected);
+		expect(popup).toBeNull();
 	});
 
-	test(
-		'should set popup close button "aria-label" to closeButtonAriaLabel',
-		() => {
-			const label = 'custom close button label';
-			const popup = shallow(
-				<PopupBase showCloseButton closeButtonAriaLabel={label}><div>popup</div></PopupBase>
-			);
+	test('should set popup close button "aria-label" to closeButtonAriaLabel', () => {
+		const label = 'custom close button label';
+		render(
+			<FloatingLayerController>
+				<Popup closeButtonAriaLabel={label} open showCloseButton><div>popup</div></Popup>
+			</FloatingLayerController>
+		);
 
-			const expected = label;
-			const actual = popup.find(`.${css.closeButton}`).prop('aria-label');
+		const expected = label;
+		const actual = screen.getByRole('button');
 
-			expect(actual).toBe(expected);
-		}
-	);
+		expect(actual).toHaveAttribute('aria-label', expected);
+	});
 
 	test('should set role to alert by default', () => {
-		const popup = shallow(
-			<PopupBase><div>popup</div></PopupBase>
-		);
-
-		const expected = 'alert';
-		const actual = popup.find(`.${css.popup}`).prop('role');
-
-		expect(actual).toBe(expected);
-	});
-
-	test('should allow role to be overridden', () => {
-		const popup = shallow(
-			<PopupBase role="dialog"><div>popup</div></PopupBase>
-		);
-
-		const expected = 'dialog';
-		const actual = popup.find(`.${css.popup}`).prop('role');
-
-		expect(actual).toBe(expected);
-	});
-
-	test('should set "data-webos-voice-exclusive" when popup is open', () => {
-		const popup = mount(
+		render(
 			<FloatingLayerController>
 				<Popup open><div>popup</div></Popup>
 			</FloatingLayerController>
 		);
 
-		const expected = true;
-		const actual = popup.find(`.${css.popup}`).first().prop('data-webos-voice-exclusive');
+		const popup = screen.getByRole('alert');
 
-		expect(actual).toBe(expected);
+		expect(popup).toBeInTheDocument();
+	});
+
+	test('should allow role to be overridden', () => {
+		render(
+			<FloatingLayerController>
+				<Popup open role="dialog"><div>popup</div></Popup>
+			</FloatingLayerController>
+		);
+
+		const popup = screen.getByRole('dialog');
+
+		expect(popup).toBeInTheDocument();
+	});
+
+	test('should set "data-webos-voice-exclusive" when popup is open', () => {
+		render(
+			<FloatingLayerController>
+				<Popup open><div>popup</div></Popup>
+			</FloatingLayerController>
+		);
+
+		const popup = screen.getByRole('alert');
+
+		expect(popup).toHaveAttribute('data-webos-voice-exclusive');
 	});
 
 	test('should set "data-webos-voice-disabled" when voice control is disabled', () => {
-		const popup = shallow(
-			<PopupBase open data-webos-voice-disabled><div>popup</div></PopupBase>
+		render(
+			<FloatingLayerController>
+				<Popup data-webos-voice-disabled open><div>popup</div></Popup>
+			</FloatingLayerController>
 		);
 
-		const expected = true;
-		const actual = popup.find(`.${css.popup}`).prop('data-webos-voice-disabled');
+		const popup = screen.getByRole('alert');
 
-		expect(actual).toBe(expected);
+		expect(popup).toHaveAttribute('data-webos-voice-disabled');
 	});
 });
