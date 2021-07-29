@@ -4,7 +4,25 @@ import {fireEvent, render, screen} from '@testing-library/react';
 import Switch, {SwitchBase} from '../Switch';
 
 describe('Switch Specs', () => {
-	test('should have `animated` className', () => {
+	test('should not have `selected` className by default', () => {
+		render(<SwitchBase selected>Toggle me</SwitchBase>);
+
+		const expected = 'selected';
+		const actual = screen.getByText('Toggle me').parentElement;
+
+		expect(actual).toHaveClass(expected);
+	});
+
+	test('should have `selected` className when selected is true', () => {
+		render(<SwitchBase selected>Toggle me</SwitchBase>);
+
+		const expected = 'selected';
+		const actual = screen.getByText('Toggle me').parentElement;
+
+		expect(actual).toHaveClass(expected);
+	});
+
+	test('should have `animated` className by default', () => {
 		render(<SwitchBase>Toggle me</SwitchBase>);
 
 		const expected = 'animated';
@@ -13,7 +31,7 @@ describe('Switch Specs', () => {
 		expect(actual).toHaveClass(expected);
 	});
 
-	test('should not have `animated` className', () => {
+	test('should not have `animated` className when noAnimation is true', () => {
 		render(<SwitchBase noAnimation>Toggle me</SwitchBase>);
 
 		const unexpected = 'animated';
