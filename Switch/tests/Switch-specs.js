@@ -5,12 +5,12 @@ import Switch, {SwitchBase} from '../Switch';
 
 describe('Switch Specs', () => {
 	test('should not have `selected` className by default', () => {
-		render(<SwitchBase selected>Toggle me</SwitchBase>);
+		render(<SwitchBase>Toggle me</SwitchBase>);
 
 		const expected = 'selected';
 		const actual = screen.getByText('Toggle me').parentElement;
 
-		expect(actual).toHaveClass(expected);
+		expect(actual).not.toHaveClass(expected);
 	});
 
 	test('should have `selected` className when selected is true', () => {

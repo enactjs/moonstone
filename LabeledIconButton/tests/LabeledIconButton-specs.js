@@ -4,6 +4,33 @@ import {render, screen} from '@testing-library/react';
 import LabeledIconButton from '../LabeledIconButton';
 
 describe('LabeledIconButton Voice Control Specs', () => {
+	test('should not have `selected` className by default', () => {
+		render(<LabeledIconButton>star</LabeledIconButton>);
+
+		const expected = 'selected';
+		const actual = screen.getByRole('button');
+
+		expect(actual).not.toHaveClass(expected);
+	});
+
+	test('should have `selected` className when selected is true', () => {
+		render(<LabeledIconButton selected>star</LabeledIconButton>);
+
+		const expected = 'selected';
+		const actual = screen.getByRole('button');
+
+		expect(actual).toHaveClass(expected);
+	});
+
+	test('should have `flipHorizontal` className when "flip" is set to "horizontal"', () => {
+		render(<LabeledIconButton flip="horizontal">star</LabeledIconButton>);
+
+		const expected = 'flipHorizontal';
+		const actual = screen.getByRole('button').children[1].children[0];
+
+		expect(actual).toHaveClass(expected);
+	});
+
 	test('should set "data-webos-voice-disabled" to IconButton', () => {
 		render(<LabeledIconButton data-webos-voice-disabled>star</LabeledIconButton>);
 
