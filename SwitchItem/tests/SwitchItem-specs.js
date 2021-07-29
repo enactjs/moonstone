@@ -14,6 +14,15 @@ describe('SwitchItem Specs', () => {
 		expect(actual).toHaveClass(expected);
 	});
 
+	test('should pass selected to Switch element', () => {
+		render(<SwitchItemBase selected />);
+
+		const expected = 'selected';
+		const SwitchElement = screen.getByRole('checkbox').children[2].children[0];
+
+		expect(SwitchElement).toHaveClass(expected);
+	});
+
 	test('should pass disabled to Switch element', () => {
 		render(<SwitchItemBase disabled />);
 
