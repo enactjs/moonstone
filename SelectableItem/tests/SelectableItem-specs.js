@@ -21,5 +21,4 @@ describe('SelectableItem Specs', () => {
 
 		expect(actual).toHaveClass(expected);
 	});
-
 });
