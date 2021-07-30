@@ -3,7 +3,6 @@ import '@testing-library/jest-dom';
 import {fireEvent, render, screen} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-
 import {EditableIntegerPicker, EditableIntegerPickerBase} from '../EditableIntegerPicker';
 
 const isPaused = () => Spotlight.isPaused() ? 'paused' : 'not paused';
@@ -78,13 +77,12 @@ describe('EditableIntegerPicker', () => {
 
 		userEvent.click(screen.getByText('10'));
 
-		setTimeout((done) => {
-			const expected = 'input';
-			const actual = screen.getByLabelText('undefined change a value with left right button').children.item(1);
+		const inputField = screen.getByLabelText('undefined change a value with left right button').children.item(1);
 
-			expect(actual).toHaveClass(expected);
-			done();
-		}, 300);
+		const expected = 'input';
+		const actual = inputField.firstElementChild.firstElementChild;
+
+		expect(actual).toHaveClass(expected);
 	});
 
 	test('should disable input field when blurred', () => {
@@ -214,13 +212,12 @@ describe('EditableIntegerPicker', () => {
 
 		fireEvent.keyDown(input, {keyCode: 50});
 
-		setTimeout((done) => {
-			const expected = 'input';
-			const actual = screen.getByLabelText('undefined change a value with left right button').children.item(1);
+		const inputField = screen.getByLabelText('undefined change a value with left right button').children.item(1);
 
-			expect(actual).toHaveClass(expected);
-			done();
-		}, 300);
+		const expected = 'input';
+		const actual = inputField.firstElementChild.firstElementChild;
+
+		expect(actual).toHaveClass(expected);
 	});
 
 	test('should pause the spotlight when input is focused', () => {
