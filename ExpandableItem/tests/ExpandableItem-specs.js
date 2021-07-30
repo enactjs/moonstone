@@ -1,5 +1,8 @@
+import '@testing-library/jest-dom';
+import {render, screen} from '@testing-library/react';
+import userEvent from "@testing-library/user-event";
+
 import {ExpandableItemBase} from '../ExpandableItem';
-import {mount} from 'enzyme';
 
 describe('ExpandableItem', () => {
 	describe('computed', () => {
@@ -40,35 +43,35 @@ describe('ExpandableItem', () => {
 			test('should call onClose when there is a prop onClose', () => {
 				const children = ['option1', 'option2', 'option3'];
 				const handleClose = jest.fn();
-
-				const expandableItem = mount(
+				render(
 					<ExpandableItemBase onClose={handleClose} title="Item" noneText="hello" open>
 						{children}
 					</ExpandableItemBase>
 				);
-				const item = expandableItem.find('LabeledItem');
-				item.simulate('click');
-				const expected = 1;
-				const actual = handleClose.mock.calls.length;
+				const item = screen.getByText('Item');
 
-				expect(actual).toBe(expected);
+				userEvent.click(item);
+
+				const expected = 1;
+
+				expect(handleClose).toHaveBeenCalledTimes(expected);
 			});
 
 			test('should call onOpen when there is a prop onOpen', () => {
 				const children = ['option1', 'option2', 'option3'];
 				const handleOpen = jest.fn();
-
-				const expandableItem = mount(
+				render(
 					<ExpandableItemBase onOpen={handleOpen} title="Item" noneText="hello">
 						{children}
 					</ExpandableItemBase>
 				);
-				const item = expandableItem.find('LabeledItem');
-				item.simulate('click');
-				const expected = 1;
-				const actual = handleOpen.mock.calls.length;
+				const item = screen.getByText('Item');
 
-				expect(actual).toBe(expected);
+				userEvent.click(item);
+
+				const expected = 1;
+
+				expect(handleOpen).toHaveBeenCalledTimes(expected);
 			});
 		});
 	});
@@ -76,17 +79,17 @@ describe('ExpandableItem', () => {
 	describe('Voice Control', () => {
 		test('should set "data-webos-voice-disabled" to LabeledItem when voice control is disabled', () => {
 			const children = ['option1', 'option2', 'option3'];
-
-			const expandableItem = mount(
-				<ExpandableItemBase data-webos-voice-disabled title="Item">
+			render(
+				<ExpandableItemBase data-webos-voice-disabled data-testid="Item" title="Item">
 					{children}
 				</ExpandableItemBase>
 			);
+			const item = screen.getByTestId('Item').firstElementChild;
 
-			const expected = true;
-			const actual = expandableItem.find('LabeledItem').prop('data-webos-voice-disabled');
+			const expectedAttribute = 'data-webos-voice-disabled';
+			const expectedValue = 'true';
 
-			expect(actual).toBe(expected);
+			expect(item).toHaveAttribute(expectedAttribute, expectedValue);
 		});
 	});
 });

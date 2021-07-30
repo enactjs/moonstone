@@ -1,109 +1,82 @@
-import {mount, shallow} from 'enzyme';
+import '@testing-library/jest-dom';
+import {fireEvent, render, screen} from '@testing-library/react';
+
 import {ExpandableInput, ExpandableInputBase} from '../ExpandableInput';
 
 describe('ExpandableInputBase', () => {
 	const inputHint = ' Input field';
 	describe('#aria-label', () => {
 		test('should use title, value, and input hint', () => {
-			const subject = shallow(
-				<ExpandableInputBase title="Item" value="value" />
-			);
+			render(<ExpandableInputBase data-testid="inputField" title="Item" value="value" />);
+			const inputField = screen.getByTestId('inputField').firstElementChild;
 
-			const expected = 'Item value' + inputHint;
-			const actual = subject.prop('aria-label');
+			const expectedValue = 'Item value' + inputHint;
+			const expectedAttribute = 'aria-label';
 
-			expect(actual).toBe(expected);
+			expect(inputField).toHaveAttribute(expectedAttribute, expectedValue);
 		});
 
-		test(
-			'should use title, noneText, and input hint when value is not set',
-			() => {
-				const subject = shallow(
-					<ExpandableInputBase title="Item" noneText="noneText" />
-				);
+		test('should use title, noneText, and input hint when value is not set', () => {
+			render(<ExpandableInputBase data-testid="inputField" title="Item" noneText="noneText" />);
+			const inputField = screen.getByTestId('inputField').firstElementChild;
 
-				const expected = 'Item noneText' + inputHint;
-				const actual = subject.prop('aria-label');
+			const expectedValue = 'Item noneText' + inputHint;
+			const expectedAttribute = 'aria-label';
 
-				expect(actual).toBe(expected);
-			}
-		);
+			expect(inputField).toHaveAttribute(expectedAttribute, expectedValue);
+		});
 
-		test(
-			'should use title and input hint when value and noneText are not set',
-			() => {
-				const subject = shallow(
-					<ExpandableInputBase title="Item" />
-				);
+		test('should use title and input hint when value and noneText are not set', () => {
+			render(<ExpandableInputBase data-testid="inputField" title="Item" />);
+			const inputField = screen.getByTestId('inputField').firstElementChild;
 
-				const expected = 'Item ' + inputHint; // the extra space is intentional
-				const actual = subject.prop('aria-label');
+			const expectedValue = 'Item ' + inputHint;
+			const expectedAttribute = 'aria-label';
 
-				expect(actual).toBe(expected);
-			}
-		);
+			expect(inputField).toHaveAttribute(expectedAttribute, expectedValue);
+		});
 
-		test(
-			'should use title, character count, and input hint when type is "password"',
-			() => {
-				const subject = shallow(
-					<ExpandableInputBase title="Item" type="password" value="long" />
-				);
+		test('should use title, character count, and input hint when type is `password`', () => {
+			render(<ExpandableInputBase data-testid="inputField" title="Item" type="password" value="long" />);
+			const inputField = screen.getByTestId('inputField').firstElementChild;
 
-				const expected = 'Item 4 characters' + inputHint;
-				const actual = subject.prop('aria-label');
+			const expectedValue = 'Item 4 characters' + inputHint;
+			const expectedAttribute = 'aria-label';
 
-				expect(actual).toBe(expected);
-			}
-		);
+			expect(inputField).toHaveAttribute(expectedAttribute, expectedValue);
+		});
 
-		test(
-			'should use title, single character count, and input hint when type is "password" and value length is 1',
-			() => {
-				const subject = shallow(
-					<ExpandableInputBase title="Item" type="password" value="1" />
-				);
+		test('should use title, single character count, and input hint when type is `password` and value length is 1', () => {
+			render(<ExpandableInputBase data-testid="inputField" title="Item" type="password" value="1" />);
+			const inputField = screen.getByTestId('inputField').firstElementChild;
 
-				const expected = 'Item 1 character' + inputHint;
-				const actual = subject.prop('aria-label');
+			const expectedValue = 'Item 1 character' + inputHint;
+			const expectedAttribute = 'aria-label';
 
-				expect(actual).toBe(expected);
-			}
-		);
+			expect(inputField).toHaveAttribute(expectedAttribute, expectedValue);
+		});
 	});
 
 	describe('#label', () => {
 		test('should use value', () => {
-			const subject = shallow(
-				<ExpandableInputBase title="Item" value="value" />
-			);
+			render(<ExpandableInputBase title="Item" value="value" />);
+			const inputField = screen.getByText('value');
 
-			const expected = 'value';
-			const actual = subject.prop('label');
-
-			expect(actual).toBe(expected);
+			expect(inputField).toBeInTheDocument();
 		});
 
 		test('should use noneText when value is not set', () => {
-			const subject = shallow(
-				<ExpandableInputBase title="Item" noneText="noneText" />
-			);
+			render(<ExpandableInputBase title="Item" noneText="noneText" />);
+			const inputField = screen.getByText('noneText');
 
-			const expected = 'noneText';
-			const actual = subject.prop('label');
-
-			expect(actual).toBe(expected);
+			expect(inputField).toBeInTheDocument();
 		});
 
-		test('should be excluded when type is "password"', () => {
-			const subject = shallow(
-				<ExpandableInputBase title="Item" value="value" type="password" />
-			);
+		test('should be excluded when type is `password`', () => {
+			render(<ExpandableInputBase title="Item" value="value" type="password" />);
+			const inputField = screen.queryByText('value');
 
-			const expected = null;
-			const actual = subject.prop('label');
-
-			expect(actual).toBe(expected);
+			expect(inputField).toBeNull();
 		});
 	});
 });
@@ -112,13 +85,9 @@ describe('ExpandableInput', () => {
 	test('should pass onChange callback to input', () => {
 		const handleChange = jest.fn();
 		const value = 'input string';
-		const evt = {target: {value: value}};
+		render(<ExpandableInput data-testid="inputField" title="Item" open onChange={handleChange} value="value"/>);
 
-		const subject = mount(
-			<ExpandableInput title="Item" open onChange={handleChange} />
-		);
-
-		subject.find('input').simulate('change', evt);
+		fireEvent.change(screen.getAllByText('value')[1].nextElementSibling, {target: {value: value}});
 
 		const expected = value;
 		const actual = handleChange.mock.calls[0][0].value;
