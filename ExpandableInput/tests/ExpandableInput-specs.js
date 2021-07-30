@@ -85,7 +85,7 @@ describe('ExpandableInput', () => {
 	test('should pass onChange callback to input', () => {
 		const handleChange = jest.fn();
 		const value = 'input string';
-		render(<ExpandableInput data-testid="inputField" title="Item" open onChange={handleChange} value="value"/>);
+		render(<ExpandableInput data-testid="inputField" title="Item" open onChange={handleChange} value="value" />);
 
 		fireEvent.change(screen.getAllByText('value')[1].nextElementSibling, {target: {value: value}});
 

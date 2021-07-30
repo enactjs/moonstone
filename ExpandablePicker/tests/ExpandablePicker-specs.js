@@ -17,7 +17,7 @@ describe('ExpandablePicker Specs', () => {
 				{children}
 			</ExpandablePicker>
 		);
-		const checkButton = screen.getByText("✓");
+		const checkButton = screen.getByText('✓');
 		tap(checkButton);
 
 		const expected = 'open';
@@ -34,7 +34,7 @@ describe('ExpandablePicker Specs', () => {
 				{children}
 			</ExpandablePicker>
 		);
-		const checkButton = screen.getByText("✓");
+		const checkButton = screen.getByText('✓');
 		tap(checkButton);
 
 		const expected = value;
@@ -51,7 +51,7 @@ describe('ExpandablePicker Specs', () => {
 				{children}
 			</ExpandablePicker>
 		);
-		const checkButton = screen.getByText("✓");
+		const checkButton = screen.getByText('✓');
 		tap(checkButton);
 
 		const expected = value;

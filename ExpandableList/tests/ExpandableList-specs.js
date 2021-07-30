@@ -4,11 +4,13 @@ import {render, screen} from '@testing-library/react';
 import {ExpandableList, ExpandableListBase} from '../ExpandableList';
 
 describe('ExpandableList', () => {
+	const children = ['option1', 'option2', 'option3'];
+
 	describe('#aria-multiselectable', () => {
 		test('should be true when select is multiple', () => {
 			render(
 				<ExpandableListBase title="Item" select="multiple">
-					{['option1', 'option2', 'option3']}
+					{children}
 				</ExpandableListBase>
 			);
 			const expandableList = screen.getByRole('group');
@@ -21,7 +23,6 @@ describe('ExpandableList', () => {
 	});
 
 	test('should update when children are updated', () => {
-		const children = ['option1', 'option2', 'option3'];
 		const {rerender} = render(
 			<ExpandableList title="Item" open>
 				{children}
@@ -61,7 +62,6 @@ describe('ExpandableList', () => {
 	});
 
 	test('should set "data-webos-voice-disabled" to LabeledItem when voice control is disabled', () => {
-		const children = ['option1', 'option2', 'option3'];
 		render(
 			<ExpandableListBase data-webos-voice-disabled title="Item" open>
 				{children}
@@ -76,7 +76,6 @@ describe('ExpandableList', () => {
 	});
 
 	test('should set "data-webos-voice-disabled" to child item when voice control is disabled', () => {
-		const children = ['option1', 'option2', 'option3'];
 		render(
 			<ExpandableList data-webos-voice-disabled title="Item" open>
 				{children}
@@ -91,7 +90,6 @@ describe('ExpandableList', () => {
 	});
 
 	test('should allow for selected as array when not multi-select', () => {
-		const children = ['option1', 'option2', 'option3'];
 		render(
 			<ExpandableList selected={[0, 1]} title="Item">
 				{children}

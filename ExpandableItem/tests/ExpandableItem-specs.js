@@ -1,10 +1,12 @@
 import '@testing-library/jest-dom';
 import {render, screen} from '@testing-library/react';
-import userEvent from "@testing-library/user-event";
+import userEvent from '@testing-library/user-event';
 
 import {ExpandableItemBase} from '../ExpandableItem';
 
 describe('ExpandableItem', () => {
+	const children = ['option1', 'option2', 'option3'];
+
 	describe('computed', () => {
 		describe('label', () => {
 			test('should use noneText when label is not set', () => {
@@ -41,7 +43,6 @@ describe('ExpandableItem', () => {
 
 		describe('handlers', () => {
 			test('should call onClose when there is a prop onClose', () => {
-				const children = ['option1', 'option2', 'option3'];
 				const handleClose = jest.fn();
 				render(
 					<ExpandableItemBase onClose={handleClose} title="Item" noneText="hello" open>
@@ -58,7 +59,6 @@ describe('ExpandableItem', () => {
 			});
 
 			test('should call onOpen when there is a prop onOpen', () => {
-				const children = ['option1', 'option2', 'option3'];
 				const handleOpen = jest.fn();
 				render(
 					<ExpandableItemBase onOpen={handleOpen} title="Item" noneText="hello">
@@ -78,7 +78,6 @@ describe('ExpandableItem', () => {
 
 	describe('Voice Control', () => {
 		test('should set "data-webos-voice-disabled" to LabeledItem when voice control is disabled', () => {
-			const children = ['option1', 'option2', 'option3'];
 			render(
 				<ExpandableItemBase data-webos-voice-disabled data-testid="Item" title="Item">
 					{children}
