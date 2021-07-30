@@ -1,86 +1,110 @@
-import {mount} from 'enzyme';
+import '@testing-library/jest-dom';
+import {render, screen} from '@testing-library/react';
+
 import {ExpandableList, ExpandableListBase} from '../ExpandableList';
 
 describe('ExpandableList', () => {
+	const children = ['option1', 'option2', 'option3'];
+
 	describe('#aria-multiselectable', () => {
 		test('should be true when select is multiple', () => {
-			const expandableList = mount(
-				<ExpandableListBase title="Item" select="multiple">
-					{['option1', 'option2', 'option3']}
+			render(
+				<ExpandableListBase select="multiple" title="Item">
+					{children}
 				</ExpandableListBase>
 			);
+			const expandableList = screen.getByRole('group');
 
-			const expected = true;
-			const actual = expandableList.find('ExpandableItem').prop('aria-multiselectable');
-			expect(actual).toBe(expected);
+			const expectedAttribute = 'aria-multiselectable';
+			const expectedValue = 'true';
+
+			expect(expandableList).toHaveAttribute(expectedAttribute, expectedValue);
 		});
 	});
 
-	test('should update when children are added', () => {
-		const children = ['option1', 'option2', 'option3'];
-
-		const expandableList = mount(
-			<ExpandableList title="Item" open>
+	test('should update when children are updated', () => {
+		const {rerender} = render(
+			<ExpandableList open title="Item">
 				{children}
 			</ExpandableList>
 		);
 
-		const updatedChildren = children.concat('option4', 'option5');
-		expandableList.setProps({children: updatedChildren});
+		const expectedFirst = 3;
+		const actualFirst = screen.getAllByRole('checkbox');
 
-		const expected = 5;
-		const actual = expandableList.find('GroupItem').length;
+		expect(actualFirst).toHaveLength(expectedFirst);
 
-		expect(actual).toBe(expected);
+		const removedChildren = children.slice(1);
+
+		rerender(
+			<ExpandableList open title="Item">
+				{removedChildren}
+			</ExpandableList>
+		);
+
+		const expectedSecond = 2;
+		const actualSecond = screen.getAllByRole('checkbox');
+
+		expect(actualSecond).toHaveLength(expectedSecond);
+
+		const addedChildren = children.concat(['option4']);
+
+		rerender(
+			<ExpandableList open title="Item">
+				{addedChildren}
+			</ExpandableList>
+		);
+
+		const expectedThird = 4;
+		const actualThird = screen.getAllByRole('checkbox');
+
+		expect(actualThird).toHaveLength(expectedThird);
 	});
 
 	test('should set "data-webos-voice-disabled" to LabeledItem when voice control is disabled', () => {
-		const children = ['option1', 'option2', 'option3'];
-
-		const expandableList = mount(
-			<ExpandableListBase data-webos-voice-disabled title="Item" open>
+		render(
+			<ExpandableListBase data-webos-voice-disabled open title="Item">
 				{children}
 			</ExpandableListBase>
 		);
+		const expandableList = screen.getByRole('group').firstElementChild;
 
-		const expected = true;
-		const actual = expandableList.find('LabeledItem').prop('data-webos-voice-disabled');
+		const expectedAttribute = 'data-webos-voice-disabled';
+		const expectedValue = 'true';
 
-		expect(actual).toBe(expected);
+		expect(expandableList).toHaveAttribute(expectedAttribute, expectedValue);
 	});
 
 	test('should set "data-webos-voice-disabled" to child item when voice control is disabled', () => {
-		const children = ['option1', 'option2', 'option3'];
-
-		const expandableList = mount(
-			<ExpandableList data-webos-voice-disabled title="Item" open>
+		render(
+			<ExpandableList data-webos-voice-disabled open title="Item">
 				{children}
 			</ExpandableList>
 		);
+		const expandableListItem = screen.getAllByRole('checkbox')[0];
 
-		const expected = true;
-		const actual = expandableList.find('GroupItem').first().prop('data-webos-voice-disabled');
+		const expectedAttribute = 'data-webos-voice-disabled';
+		const expectedValue = 'true';
 
-		expect(actual).toBe(expected);
+		expect(expandableListItem).toHaveAttribute(expectedAttribute, expectedValue);
 	});
 
 	test('should allow for selected as array when not multi-select', () => {
-		const children = ['option1', 'option2', 'option3'];
-
-		const expandableList = mount(
+		render(
 			<ExpandableList selected={[0, 1]} title="Item">
 				{children}
 			</ExpandableList>
 		);
+		const expandableList = screen.getByRole('radiogroup');
 
 		const expected = children[0];
-		const actual = expandableList.text().slice(-1 * expected.length);
+		const actual = expandableList.textContent.slice(-1 * expected.length);
 
 		expect(actual).toBe(expected);
 	});
 
 	test('should allow for selected as array when not multi-select with object', () => {
-		const children = [{
+		const childrenWithKey = [{
 			children: 'option1',
 			key: 'a'
 		}, {
@@ -90,21 +114,21 @@ describe('ExpandableList', () => {
 			children: 'option3',
 			key: 'c'
 		}];
-
-		const expandableList = mount(
+		render(
 			<ExpandableList selected={[1, 2]} title="Item">
-				{children}
+				{childrenWithKey}
 			</ExpandableList>
 		);
+		const expandableList = screen.getByRole('radiogroup');
 
-		const expected = children[1].children;
-		const actual = expandableList.text().slice(-1 * expected.length);
+		const expected = childrenWithKey[1].children;
+		const actual = expandableList.textContent.slice(-1 * expected.length);
 
 		expect(actual).toBe(expected);
 	});
 
 	test('should show noneText when selected is empty array', () => {
-		const children = [{
+		const childrenWithKey = [{
 			children: 'option1',
 			key: 'a'
 		}, {
@@ -114,15 +138,15 @@ describe('ExpandableList', () => {
 			children: 'option3',
 			key: 'c'
 		}];
-
-		const expandableList = mount(
-			<ExpandableList selected={[]} title="Item" noneText="hello">
-				{children}
+		render(
+			<ExpandableList noneText="hello" selected={[]} title="Item">
+				{childrenWithKey}
 			</ExpandableList>
 		);
+		const expandableList = screen.getByRole('radiogroup');
 
 		const expected = 'hello';
-		const actual = expandableList.text().slice(-1 * expected.length);
+		const actual = expandableList.textContent.slice(-1 * expected.length);
 
 		expect(actual).toBe(expected);
 	});
