@@ -104,7 +104,7 @@ describe('ExpandableList', () => {
 	});
 
 	test('should allow for selected as array when not multi-select with object', () => {
-		const children = [{
+		const childrenWithKey = [{
 			children: 'option1',
 			key: 'a'
 		}, {
@@ -116,19 +116,19 @@ describe('ExpandableList', () => {
 		}];
 		render(
 			<ExpandableList selected={[1, 2]} title="Item">
-				{children}
+				{childrenWithKey}
 			</ExpandableList>
 		);
 		const expandableList = screen.getByRole('radiogroup');
 
-		const expected = children[1].children;
+		const expected = childrenWithKey[1].children;
 		const actual = expandableList.textContent.slice(-1 * expected.length);
 
 		expect(actual).toBe(expected);
 	});
 
 	test('should show noneText when selected is empty array', () => {
-		const children = [{
+		const childrenWithKey = [{
 			children: 'option1',
 			key: 'a'
 		}, {
@@ -140,7 +140,7 @@ describe('ExpandableList', () => {
 		}];
 		render(
 			<ExpandableList selected={[]} title="Item" noneText="hello">
-				{children}
+				{childrenWithKey}
 			</ExpandableList>
 		);
 		const expandableList = screen.getByRole('radiogroup');
