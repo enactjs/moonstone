@@ -118,7 +118,7 @@ describe('ExpandablePicker Specs', () => {
 
 	test('should set "data-webos-voice-disabled" to decrement button when voice control is disabled', () => {
 		render(
-			<ExpandablePicker decrementAriaLabel="decrementer" data-webos-voice-disabled title="Options" open>
+			<ExpandablePicker data-webos-voice-disabled decrementAriaLabel="decrementer" open title="Options">
 				{children}
 			</ExpandablePicker>
 		);
@@ -132,7 +132,7 @@ describe('ExpandablePicker Specs', () => {
 
 	test('should set "data-webos-voice-disabled" to increment button when voice control is disabled', () => {
 		render(
-			<ExpandablePicker incrementAriaLabel="incrementer" data-webos-voice-disabled title="Options" open>
+			<ExpandablePicker data-webos-voice-disabled incrementAriaLabel="incrementer" open title="Options">
 				{children}
 			</ExpandablePicker>
 		);

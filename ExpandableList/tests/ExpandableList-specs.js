@@ -9,7 +9,7 @@ describe('ExpandableList', () => {
 	describe('#aria-multiselectable', () => {
 		test('should be true when select is multiple', () => {
 			render(
-				<ExpandableListBase title="Item" select="multiple">
+				<ExpandableListBase select="multiple" title="Item">
 					{children}
 				</ExpandableListBase>
 			);
@@ -24,7 +24,7 @@ describe('ExpandableList', () => {
 
 	test('should update when children are updated', () => {
 		const {rerender} = render(
-			<ExpandableList title="Item" open>
+			<ExpandableList open title="Item">
 				{children}
 			</ExpandableList>
 		);
@@ -37,7 +37,7 @@ describe('ExpandableList', () => {
 		const removedChildren = children.slice(1);
 
 		rerender(
-			<ExpandableList title="Item" open>
+			<ExpandableList open title="Item">
 				{removedChildren}
 			</ExpandableList>
 		);
@@ -50,7 +50,7 @@ describe('ExpandableList', () => {
 		const addedChildren = children.concat(['option4']);
 
 		rerender(
-			<ExpandableList title="Item" open>
+			<ExpandableList open title="Item">
 				{addedChildren}
 			</ExpandableList>
 		);
@@ -63,7 +63,7 @@ describe('ExpandableList', () => {
 
 	test('should set "data-webos-voice-disabled" to LabeledItem when voice control is disabled', () => {
 		render(
-			<ExpandableListBase data-webos-voice-disabled title="Item" open>
+			<ExpandableListBase data-webos-voice-disabled open title="Item">
 				{children}
 			</ExpandableListBase>
 		);
@@ -77,7 +77,7 @@ describe('ExpandableList', () => {
 
 	test('should set "data-webos-voice-disabled" to child item when voice control is disabled', () => {
 		render(
-			<ExpandableList data-webos-voice-disabled title="Item" open>
+			<ExpandableList data-webos-voice-disabled open title="Item">
 				{children}
 			</ExpandableList>
 		);
@@ -139,7 +139,7 @@ describe('ExpandableList', () => {
 			key: 'c'
 		}];
 		render(
-			<ExpandableList selected={[]} title="Item" noneText="hello">
+			<ExpandableList noneText="hello" selected={[]} title="Item">
 				{childrenWithKey}
 			</ExpandableList>
 		);

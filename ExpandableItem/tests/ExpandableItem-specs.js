@@ -45,7 +45,7 @@ describe('ExpandableItem', () => {
 			test('should call onClose when there is a prop onClose', () => {
 				const handleClose = jest.fn();
 				render(
-					<ExpandableItemBase onClose={handleClose} title="Item" noneText="hello" open>
+					<ExpandableItemBase noneText="hello" onClose={handleClose} open title="Item">
 						{children}
 					</ExpandableItemBase>
 				);
@@ -61,7 +61,7 @@ describe('ExpandableItem', () => {
 			test('should call onOpen when there is a prop onOpen', () => {
 				const handleOpen = jest.fn();
 				render(
-					<ExpandableItemBase onOpen={handleOpen} title="Item" noneText="hello">
+					<ExpandableItemBase noneText="hello" onOpen={handleOpen} title="Item">
 						{children}
 					</ExpandableItemBase>
 				);
@@ -79,7 +79,7 @@ describe('ExpandableItem', () => {
 	describe('Voice Control', () => {
 		test('should set "data-webos-voice-disabled" to LabeledItem when voice control is disabled', () => {
 			render(
-				<ExpandableItemBase data-webos-voice-disabled data-testid="Item" title="Item">
+				<ExpandableItemBase data-testid="Item" data-webos-voice-disabled title="Item">
 					{children}
 				</ExpandableItemBase>
 			);

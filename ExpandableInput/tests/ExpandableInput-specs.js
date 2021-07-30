@@ -17,7 +17,7 @@ describe('ExpandableInputBase', () => {
 		});
 
 		test('should use title, noneText, and input hint when value is not set', () => {
-			render(<ExpandableInputBase data-testid="inputField" title="Item" noneText="noneText" />);
+			render(<ExpandableInputBase data-testid="inputField" noneText="noneText" title="Item" />);
 			const inputField = screen.getByTestId('inputField').firstElementChild;
 
 			const expectedValue = 'Item noneText' + inputHint;
@@ -46,15 +46,18 @@ describe('ExpandableInputBase', () => {
 			expect(inputField).toHaveAttribute(expectedAttribute, expectedValue);
 		});
 
-		test('should use title, single character count, and input hint when type is `password` and value length is 1', () => {
-			render(<ExpandableInputBase data-testid="inputField" title="Item" type="password" value="1" />);
-			const inputField = screen.getByTestId('inputField').firstElementChild;
+		test(
+			'should use title, single character count, and input hint when type=`password` and value length=1',
+			() => {
+				render(<ExpandableInputBase data-testid="inputField" title="Item" type="password" value="1" />);
+				const inputField = screen.getByTestId('inputField').firstElementChild;
 
-			const expectedValue = 'Item 1 character' + inputHint;
-			const expectedAttribute = 'aria-label';
+				const expectedValue = 'Item 1 character' + inputHint;
+				const expectedAttribute = 'aria-label';
 
-			expect(inputField).toHaveAttribute(expectedAttribute, expectedValue);
-		});
+				expect(inputField).toHaveAttribute(expectedAttribute, expectedValue);
+			}
+		);
 	});
 
 	describe('#label', () => {
@@ -66,14 +69,14 @@ describe('ExpandableInputBase', () => {
 		});
 
 		test('should use noneText when value is not set', () => {
-			render(<ExpandableInputBase title="Item" noneText="noneText" />);
+			render(<ExpandableInputBase noneText="noneText" title="Item" />);
 			const inputField = screen.getByText('noneText');
 
 			expect(inputField).toBeInTheDocument();
 		});
 
 		test('should be excluded when type is `password`', () => {
-			render(<ExpandableInputBase title="Item" value="value" type="password" />);
+			render(<ExpandableInputBase title="Item" type="password" value="value" />);
 			const inputField = screen.queryByText('value');
 
 			expect(inputField).toBeNull();
@@ -85,7 +88,7 @@ describe('ExpandableInput', () => {
 	test('should pass onChange callback to input', () => {
 		const handleChange = jest.fn();
 		const value = 'input string';
-		render(<ExpandableInput data-testid="inputField" title="Item" open onChange={handleChange} value="value" />);
+		render(<ExpandableInput data-testid="inputField" onChange={handleChange} open title="Item" value="value" />);
 
 		fireEvent.change(screen.getAllByText('value')[1].nextElementSibling, {target: {value: value}});
 
