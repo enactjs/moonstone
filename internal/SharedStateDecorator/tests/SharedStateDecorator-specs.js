@@ -266,7 +266,7 @@ describe('SharedStateDecorator Specs', () => {
 		);
 
 		// remove the children which drops inner's shared state
-		rerender(<Component id="outer" value="value" />)
+		rerender(<Component id="outer" value="value" />);
 
 		// recreate it with the same id but no initial value to validate the previous state is
 		// restored. updateOnMount is used above to coerce a re-render on mount since the shared

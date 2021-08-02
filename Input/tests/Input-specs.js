@@ -47,7 +47,7 @@ describe('Input Specs', () => {
 		const input = screen.getByLabelText('Input field');
 
 		userEvent.click(input);
-		fireEvent.keyUp(input,{keyCode: 13, code:13});
+		fireEvent.keyUp(input, {keyCode: 13, code:13});
 
 		const expected = 1;
 
