@@ -104,7 +104,9 @@ describe('VirtualList', () => {
 				data-testid="list"
 				direction="horizontal"
 				itemRenderer={renderItem}
-				itemSize={30} />);
+				itemSize={30}
+			/>
+		);
 
 		const expected = 'horizontalScrollbarVisible';
 		const actual = screen.getByTestId('list').parentElement.parentElement.parentElement;
