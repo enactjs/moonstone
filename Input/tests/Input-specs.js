@@ -1,168 +1,154 @@
-import {mount} from 'enzyme';
-import Input from '../Input';
 import Spotlight from '@enact/spotlight';
+import '@testing-library/jest-dom';
+import {fireEvent, render, screen} from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+
+import Input from '../Input';
 
 const isPaused = () => Spotlight.isPaused() ? 'paused' : 'not paused';
 
 describe('Input Specs', () => {
 	test('should have an input element', () => {
-		const subject = mount(
-			<Input />
-		);
+		render(<Input />);
 
-		expect(subject.find('input')).toHaveLength(1);
+		const expected = 'INPUT';
+		const actual = screen.getByLabelText('Input field').lastElementChild.tagName;
+
+		expect(actual).toBe(expected);
 	});
 
 	test('should include a placeholder if specified', () => {
-		const subject = mount(
-			<Input placeholder="hello" />
-		);
+		const placeholder = 'hello';
+		render(<Input placeholder={placeholder} />);
+		const input = screen.getByText('hello').nextElementSibling;
 
-		expect(subject.find('input').prop('placeholder')).toBe('hello');
+		const expectedAttribute = 'placeholder';
+
+		expect(input).toHaveAttribute(expectedAttribute, placeholder);
 	});
 
 	test('should callback onChange when the text changes', () => {
 		const handleChange = jest.fn();
 		const value = 'blah';
 		const evt = {target: {value: value}};
-		const subject = mount(
-			<Input onChange={handleChange} />
-		);
+		render(<Input onChange={handleChange} />);
+		const input = screen.getByLabelText('Input field').lastElementChild;
 
-		subject.find('input').simulate('change', evt);
+		fireEvent.change(input, evt);
 
-		const expected = value;
 		const actual = handleChange.mock.calls[0][0].value;
 
-		expect(actual).toBe(expected);
+		expect(actual).toBe(value);
 	});
 
 	test('should blur input on enter if dismissOnEnter', () => {
-		const node = document.body.appendChild(document.createElement('div'));
 		const handleChange = jest.fn();
+		render(<Input dismissOnEnter onBlur={handleChange} />);
+		const input = screen.getByLabelText('Input field');
 
-		const subject = mount(
-			<Input onBlur={handleChange} dismissOnEnter />,
-			{attachTo: node}
-		);
-		const input = subject.find('input');
-
-		input.simulate('mouseDown');
-		input.simulate('keyUp', {which: 13, keyCode: 13, code:13});
-		node.remove();
+		userEvent.click(input);
+		fireEvent.keyUp(input, {keyCode: 13, code:13});
 
 		const expected = 1;
-		const actual = handleChange.mock.calls.length;
 
-		expect(actual).toBe(expected);
+		expect(handleChange).toHaveBeenCalledTimes(expected);
 	});
 
 	test('should be able to be disabled', () => {
-		const subject = mount(
-			<Input disabled />
-		);
+		render(<Input disabled />);
+		const input = screen.getByLabelText('Input field').lastElementChild;
 
-		expect(subject.find('input').prop('disabled')).toBe(true);
+		const expectedAttribute = 'disabled';
+
+		expect(input).toHaveAttribute(expectedAttribute);
 	});
 
 	test('should reflect the value if specified', () => {
-		const subject = mount(
-			<Input value="hello" />
-		);
+		render(<Input value="hello" />);
+		const input = screen.getByText('hello').nextElementSibling;
 
-		expect(subject.find('input').prop('value')).toBe('hello');
+		const expected = 'input';
+
+		expect(input).toHaveClass(expected);
 	});
 
 	test('should have dir equal to rtl when there is rtl text', () => {
-		const subject = mount(
-			<Input value="שועל החום הזריז קפץ מעל הכלב העצלן.ציפור עפה השעועית עם שקי" />
-		);
+		render(<Input data-testid="input" value="שועל החום הזריז קפץ מעל הכלב העצלן.ציפור עפה השעועית עם שקי" />);
+		const input = screen.getByTestId('input').lastElementChild;
 
-		const expected = 'rtl';
-		const actual = subject.find('input').prop('dir');
+		const expectedAttribute = 'dir';
+		const expectedValue = 'rtl';
 
-		expect(actual).toBe(expected);
+		expect(input).toHaveAttribute(expectedAttribute, expectedValue);
 	});
 
 	test('should have dir equal to ltr when there is ltr text', () => {
-		const subject = mount(
-			<Input value="content" />
-		);
+		render(<Input data-testid="input" value="content" />);
+		const input = screen.getByTestId('input').lastElementChild;
 
-		const expected = 'ltr';
-		const actual = subject.find('input').prop('dir');
+		const expectedAttribute = 'dir';
+		const expectedValue = 'ltr';
 
-		expect(actual).toBe(expected);
+		expect(input).toHaveAttribute(expectedAttribute, expectedValue);
 	});
 
-	test(
-		'should have dir equal to rtl when there is rtl text in the placeholder',
-		() => {
-			const subject = mount(
-				<Input value="שועל החום הזריז קפץ מעל הכלב העצלן.ציפור עפה השעועית עם שקי" />
-			);
+	test('should have dir equal to rtl when there is rtl text in the placeholder', () => {
+		render(<Input data-testid="input" placeholder="שועל החום הזריז קפץ מעל הכלב העצלן.ציפור עפה השעועית עם שקי" />);
+		const input = screen.getByTestId('input').lastElementChild;
 
-			const expected = 'rtl';
-			const actual = subject.find('input').prop('dir');
+		const expectedAttribute = 'dir';
+		const expectedValue = 'rtl';
 
-			expect(actual).toBe(expected);
-		}
-	);
+		expect(input).toHaveAttribute(expectedAttribute, expectedValue);
+	});
 
-	test(
-		'should have dir equal to ltr when there is ltr text in the placeholder',
-		() => {
-			const subject = mount(
-				<Input placeholder="content" />
-			);
+	test('should have dir equal to ltr when there is ltr text in the placeholder', () => {
+		render(<Input data-testid="input" placeholder="content" />);
+		const input = screen.getByTestId('input').lastElementChild;
 
-			const expected = 'ltr';
-			const actual = subject.find('input').prop('dir');
+		const expectedAttribute = 'dir';
+		const expectedValue = 'ltr';
 
-			expect(actual).toBe(expected);
-		}
-	);
+		expect(input).toHaveAttribute(expectedAttribute, expectedValue);
+	});
 
-	test(
-		'should have dir equal to rtl when there is ltr text in the placeholder, but rtl text in value',
-		() => {
-			const subject = mount(
-				<Input
-					placeholder="content"
-					value="שועל החום הזריז קפץ מעל הכלב העצלן.ציפור עפה השעועית עם שקי"
-				/>
-			);
+	test('should have dir equal to rtl if ltr text in the placeholder, but rtl text in value', () => {
+		render(
+			<Input
+				data-testid="input"
+				placeholder="content"
+				value="שועל החום הזריז קפץ מעל הכלב העצלן.ציפור עפה השעועית עם שקי"
+			/>
+		);
+		const input = screen.getByTestId('input').lastElementChild;
 
-			const expected = 'rtl';
-			const actual = subject.find('input').prop('dir');
+		const expectedAttribute = 'dir';
+		const expectedValue = 'rtl';
 
-			expect(actual).toBe(expected);
-		}
-	);
+		expect(input).toHaveAttribute(expectedAttribute, expectedValue);
+	});
 
-	test(
-		'should have dir equal to ltr when there is rtl text in the placeholder, but ltr text in value',
-		() => {
-			const subject = mount(
-				<Input
-					placeholder="שועל החום הזריז קפץ מעל הכלב העצלן.ציפור עפה השעועית עם שקי"
-					value="content"
-				/>
-			);
+	test('should have dir equal to ltr if rtl text in the placeholder, but ltr text in value', () => {
+		render(
+			<Input
+				data-testid="input"
+				placeholder="שועל החום הזריז קפץ מעל הכלב העצלן.ציפור עפה השעועית עם שקי"
+				value="content"
+			/>
+		);
+		const input = screen.getByTestId('input').lastElementChild;
 
-			const expected = 'ltr';
-			const actual = subject.find('input').prop('dir');
+		const expectedAttribute = 'dir';
+		const expectedValue = 'ltr';
 
-			expect(actual).toBe(expected);
-		}
-	);
+		expect(input).toHaveAttribute(expectedAttribute, expectedValue);
+	});
 
 	test('should pause spotlight when input has focus', () => {
-		const subject = mount(
-			<Input />
-		);
+		render(<Input />);
+		const input = screen.getByLabelText('Input field');
 
-		subject.simulate('mouseDown');
+		fireEvent.mouseDown(input);
 
 		const expected = 'paused';
 		const actual = isPaused();
@@ -173,12 +159,11 @@ describe('Input Specs', () => {
 	});
 
 	test('should resume spotlight on unmount', () => {
-		const subject = mount(
-			<Input />
-		);
+		const {unmount} = render(<Input />);
+		const input = screen.getByLabelText('Input field');
 
-		subject.simulate('mouseDown');
-		subject.unmount();
+		fireEvent.mouseDown(input);
+		unmount();
 
 		const expected = 'not paused';
 		const actual = isPaused();
@@ -188,45 +173,39 @@ describe('Input Specs', () => {
 		expect(actual).toBe(expected);
 	});
 
-	test(
-		'should display invalid message if it invalid and invalid message exists',
-		() => {
-			const subject = mount(
-				<Input invalid invalidMessage="invalid message" />
-			);
+	test('should display invalid message if it invalid and invalid message exists', () => {
+		render(<Input invalid invalidMessage="invalid message" />);
+		const tooltip = screen.getByText('invalid message');
 
-			expect(subject.find('Tooltip').prop('children')).toBe('invalid message');
-		}
-	);
+		const expected = 'tooltipLabel';
+
+		expect(tooltip).toHaveClass(expected);
+	});
 
 	test('should not display invalid message if it is valid', () => {
-		const subject = mount(
-			<Input invalidMessage="invalid message" />
-		);
+		render(<Input invalidMessage="invalid message" />);
+		const tooltip = screen.queryByText('invalid message');
 
-		expect(subject.find('Tooltip')).toHaveLength(0);
+		expect(tooltip).toBeNull();
 	});
 
 	test('should set voice intent if specified', () => {
-		const input = mount(
-			<Input data-webos-voice-intent="Select" />
-		);
+		render(<Input data-webos-voice-intent="Select" />);
+		const input = screen.getByLabelText('Input field').lastElementChild;
 
-		const expected = 'Select';
-		const actual = input.find('input').prop('data-webos-voice-intent');
+		const expectedAttribute = 'data-webos-voice-intent';
+		const expectedValue = 'Select';
 
-		expect(actual).toBe(expected);
+		expect(input).toHaveAttribute(expectedAttribute, expectedValue);
 	});
 
 	test('should set voice label if specified', () => {
 		const label = 'input label';
-		const input = mount(
-			<Input data-webos-voice-label={label} />
-		);
+		render(<Input data-webos-voice-label={label} />);
+		const input = screen.getByLabelText('Input field').lastElementChild;
 
-		const expected = label;
-		const actual = input.find('input').prop('data-webos-voice-label');
+		const expectedAttribute = 'data-webos-voice-label';
 
-		expect(actual).toBe(expected);
+		expect(input).toHaveAttribute(expectedAttribute, label);
 	});
 });
