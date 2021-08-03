@@ -10,7 +10,7 @@ describe('Region', () => {
 			const title = 'TITLE';
 
 			test('should use aria-label when set', () => {
-				render(<Region title={title} aria-label={ariaLabel} />);
+				render(<Region aria-label={ariaLabel} title={title} />);
 				const region = screen.getByRole('region');
 
 				expect(region).toHaveAttribute('aria-label', ariaLabel);
