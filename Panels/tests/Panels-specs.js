@@ -1,140 +1,106 @@
-import {mount} from 'enzyme';
+import '@testing-library/jest-dom';
+import {fireEvent, render, screen} from '@testing-library/react';
 
 import {Panels, PanelsBase} from '../Panels';
 
-const tap = (node) => {
-	node.simulate('mousedown');
-	node.simulate('mouseup');
-};
-
-// 2019-04-11 - Skipped tests here are avoiding a Hooks testing issue. At this time, enzyme does not
-// properly test hooks, specifically the useCallback method.
-
 describe('Panels Specs', () => {
+	test('should render application close button when \'noCloseButton\' is not specified', () => {
+		render(<Panels />);
 
-	test.skip(
-		'should render application close button when \'noCloseButton\' is not specified',
-		() => {
-			const panels = mount(
-				<Panels />
-			);
+		const applicationCloseButton = screen.getByRole('button');
+		const applicationCloseIcon = screen.getByRole('button').lastElementChild.children.item(0);
 
-			const applicationCloseButton = panels.find('IconButton');
-			const expected = 1;
-			const actual = applicationCloseButton.length;
+		expect(applicationCloseButton).toBeInTheDocument();
+		expect(applicationCloseIcon).toHaveClass('icon');
+	});
 
-			expect(actual).toBe(expected);
-		}
-	);
+	test('should not render application close button when \'noCloseButton\' is set to true', () => {
+		render(<Panels noCloseButton />);
 
-	test.skip(
-		'should not render application close button when \'noCloseButton\' is set to true',
-		() => {
-			const panels = mount(
-				<Panels noCloseButton />
-			);
+		const applicationCloseButton = screen.queryByRole('button');
 
-			const applicationCloseButton = panels.find('IconButton');
-			const expected = 0;
-			const actual = applicationCloseButton.length;
+		expect(applicationCloseButton).not.toBeInTheDocument();
+	});
 
-			expect(actual).toBe(expected);
-		}
-	);
+	test('should call onApplicationClose when application close button is clicked', () => {
+		const handleAppClose = jest.fn();
+		render(<Panels onApplicationClose={handleAppClose} />);
 
-	test.skip(
-		'should call onApplicationClose when application close button is clicked',
-		() => {
-			const handleAppClose = jest.fn();
-			const subject = mount(
-				<Panels onApplicationClose={handleAppClose} />
-			);
+		const applicationCloseButton = screen.getByRole('button');
+		fireEvent.click(applicationCloseButton);
 
-			tap(subject.find('IconButton'));
+		expect(handleAppClose).toHaveBeenCalled();
+	});
 
-			const expected = 1;
-			const actual = handleAppClose.mock.calls.length;
+	test('should set application close button "aria-label" to closeButtonAriaLabel', () => {
+		const label = 'custom close button label';
+		render(
+			<Panels closeButtonAriaLabel={label} />
+		);
 
-			expect(expected).toBe(actual);
-		}
-	);
+		const applicationCloseButton = screen.getByRole('button');
 
-	test.skip(
-		'should set application close button "aria-label" to closeButtonAriaLabel',
-		() => {
-			const label = 'custom close button label';
-			const panels = mount(
-				<Panels closeButtonAriaLabel={label} />
-			);
+		expect(applicationCloseButton).toHaveAttribute('aria-label', label);
+	});
 
-			const expected = label;
-			const actual = panels.find('IconButton').prop('aria-label');
+	test('should set {autoFocus} on child to "default-element" on first render', () => {
+		const DivPanel = ({autoFocus, id}) => <div data-testid="panel" id={id}>{autoFocus}</div>;
+		render(
+			<Panels index={0}>
+				<DivPanel />
+			</Panels>
+		);
 
-			expect(actual).toBe(expected);
-		}
-	);
+		const expected = 'default-element';
+		const actual = screen.getByTestId('panel').textContent;
 
-	test.skip(
-		'should set {autoFocus} on child to "default-element" on first render',
-		() => {
-			const Panel = ({autoFocus, id}) => <div id={id}>{autoFocus}</div>;
-			const panels = mount(
-				<Panels index={0}>
-					<Panel id="p1" />
-					<Panel id="p2" />
-				</Panels>
-			);
+		expect(actual).toBe(expected);
+	});
 
-			const expected = 'default-element';
-			const actual = panels.find('Panel').prop('autoFocus');
+	test('should set {autoFocus} on child to "default-element" when navigating to a higher index', () => {
+		const DivPanel = ({autoFocus, id}) => <div data-testid="panel" id={id}>{autoFocus}</div>;
+		const {rerender} = render(
+			<Panels index={0}>
+				<DivPanel />
+				<DivPanel id="p2" />
+			</Panels>
+		);
 
-			expect(actual).toBe(expected);
-		}
-	);
+		rerender(
+			<Panels index={1}>
+				<DivPanel />
+				<DivPanel id="p2" />
+			</Panels>
+		);
 
-	test.skip(
-		'should set {autoFocus} on child to "default-element" when navigating to a higher index',
-		() => {
-			const Panel = ({autoFocus, id}) => <div id={id}>{autoFocus}</div>;
-			const panels = mount(
-				<Panels index={0}>
-					<Panel id="p1" />
-					<Panel id="p2" />
-				</Panels>
-			);
+		const expected = 'default-element';
+		const actual = screen.getAllByTestId('panel')[0].textContent;
 
-			panels.setProps({
-				index: 1
-			});
+		expect(actual).toBe(expected);
+	});
 
-			const expected = 'default-element';
-			const actual = panels.find('Panel').prop('autoFocus');
+	test('should not set {autoFocus} on child when navigating to a higher index when it has an autoFocus prop set', () => {
+		const DivPanel = ({autoFocus, id}) => <div data-testid="panel" id={id}>{autoFocus}</div>;
+		const {rerender} = render(
+			<Panels index={0}>
+				<DivPanel />
+				<DivPanel id="p2" autoFocus="last-focused" />
+			</Panels>
+		);
 
-			expect(actual).toBe(expected);
-		}
-	);
+		rerender(
+			<Panels index={1}>
+				<DivPanel />
+				<DivPanel id="p2" autoFocus="last-focused" />
+			</Panels>
+		);
 
-	test.skip(
-		'should not set {autoFocus} on child when navigating to a higher index when it has an autoFocus prop set',
-		() => {
-			const Panel = ({autoFocus, id}) => <div id={id}>{autoFocus}</div>;
-			const panels = mount(
-				<Panels index={0}>
-					<Panel id="p1" />
-					<Panel id="p2" autoFocus="last-focused" />
-				</Panels>
-			);
+		const expected = 'last-focused';
+		const panel = screen.getAllByTestId('panel')[0];
 
-			panels.setProps({
-				index: 1
-			});
-
-			const expected = 'last-focused';
-			const actual = panels.find('Panel').prop('autoFocus');
-
-			expect(actual).toBe(expected);
-		}
-	);
+		expect(panel.textContent).toBe(expected);
+		expect(panel.id).toBe('p2');
+	});
 
 	describe('computed', () => {
 		describe('childProps', () => {

@@ -1,42 +1,39 @@
-import {mount} from 'enzyme';
+import '@testing-library/jest-dom';
+import {render, screen} from '@testing-library/react';
+
 import Header from '../Header';
-import css from '../Header.module.less';
 
 describe('Header Specs', () => {
-
 	test('should render with title text without changing case', () => {
 		let msg = 'cRaZy-cased super Header';
-
-		const header = mount(
+		render(
 			<Header><title>{msg}</title></Header>
 		);
 
-		const expected = msg;
-		const actual = header.find('h1').text();
+		const titleText = screen.getByText(msg)
 
-		expect(actual).toBe(expected);
+		expect(titleText).toBeInTheDocument();
 	});
 
 	test('should have fullBleed class applied', () => {
-		const header = mount(
+		render(
 			<Header fullBleed>
 				<title>Header</title>
 			</Header>
 		);
 
-		const expected = true;
-		const actual = header.find('header').hasClass(css.fullBleed);
+		const headerElement = screen.getByLabelText('Header');
 
-		expect(actual).toBe(expected);
+		expect(headerElement).toHaveClass('fullBleed');
 	});
 
 	test('should inject a custom component when headerInput is used', () => {
-		const Input = () => <input />;
+		const Input = () => <input data-testid="input" />;
 
 		// This just uses an <input> tag for easy discoverability. It should behave the same way
 		// as a moonstone/Input, the standard here, but that would require importing a diffenent
 		// component than what we're testing here.
-		const header = mount(
+		render(
 			<Header>
 				<title>Header</title>
 				<headerInput>
@@ -45,9 +42,8 @@ describe('Header Specs', () => {
 			</Header>
 		);
 
-		const expected = 1;
-		const actual = header.find('input');
+		const inputElement = screen.getByTestId('input');
 
-		expect(actual).toHaveLength(expected);
+		expect(inputElement).toBeInTheDocument();
 	});
 });
