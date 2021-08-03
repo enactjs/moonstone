@@ -5,7 +5,6 @@ import BreadcrumbDecorator from '../BreadcrumbDecorator';
 import Panels from '../Panels';
 
 describe('BreadcrumbDecorator', () => {
-
 	const Panel = () => <div />;
 
 	test('should wrap primitive breadcrumbs with Breadcrumb', () => {
