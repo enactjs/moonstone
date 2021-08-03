@@ -10,7 +10,7 @@ describe('Header Specs', () => {
 			<Header><title>{msg}</title></Header>
 		);
 
-		const titleText = screen.getByText(msg)
+		const titleText = screen.getByText(msg);
 
 		expect(titleText).toBeInTheDocument();
 	});
