@@ -1,9 +1,9 @@
+import Spotlight from '@enact/spotlight';
 import '@testing-library/jest-dom';
 import {fireEvent, render, screen} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import Input from '../Input';
-import Spotlight from '@enact/spotlight';
 
 const isPaused = () => Spotlight.isPaused() ? 'paused' : 'not paused';
 
@@ -43,7 +43,7 @@ describe('Input Specs', () => {
 
 	test('should blur input on enter if dismissOnEnter', () => {
 		const handleChange = jest.fn();
-		render(<Input onBlur={handleChange} dismissOnEnter />);
+		render(<Input dismissOnEnter onBlur={handleChange} />);
 		const input = screen.getByLabelText('Input field');
 
 		userEvent.click(input);
