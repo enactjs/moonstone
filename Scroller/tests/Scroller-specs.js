@@ -9,7 +9,7 @@ describe('Scroller', () => {
 	beforeEach(() => {
 		contents = (
 			<div>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br />
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br />
 				Aenean id blandit nunc. Donec lacinia nisi vitae mi dictum, eget pulvinar nunc tincidunt. Integer vehicula tempus rutrum. Sed efficitur neque in arcu dignissim cursus.
 			</div>
 		);
@@ -191,8 +191,7 @@ describe('Scroller', () => {
 			);
 
 			rerender(
-				<Scroller
-				>
+				<Scroller>
 					{''}
 				</Scroller>
 			);
