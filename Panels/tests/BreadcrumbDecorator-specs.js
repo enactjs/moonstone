@@ -1,5 +1,5 @@
-import {render, screen} from '@testing-library/react';
 import '@testing-library/jest-dom';
+import {render, screen} from '@testing-library/react';
 
 import BreadcrumbDecorator from '../BreadcrumbDecorator';
 import Panels from '../Panels';
@@ -130,6 +130,7 @@ describe('BreadcrumbDecorator', () => {
 		const expected = 'test_bc_2';
 		const actual = screen.getByText(/03/).parentElement;
 
+		// aria-owns is not visible in the DOM, so the id is used instead
 		expect(actual).toHaveAttribute('id', expected);
 	});
 });
