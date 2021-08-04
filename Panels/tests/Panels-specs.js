@@ -34,9 +34,7 @@ describe('Panels Specs', () => {
 
 	test('should set application close button "aria-label" to closeButtonAriaLabel', () => {
 		const label = 'custom close button label';
-		render(
-			<Panels closeButtonAriaLabel={label} />
-		);
+		render(<Panels closeButtonAriaLabel={label} />);
 
 		const applicationCloseButton = screen.getByRole('button');
 
@@ -84,14 +82,14 @@ describe('Panels Specs', () => {
 		const {rerender} = render(
 			<Panels index={0}>
 				<DivPanel />
-				<DivPanel id="p2" autoFocus="last-focused" />
+				<DivPanel autoFocus="last-focused" id="p2" />
 			</Panels>
 		);
 
 		rerender(
 			<Panels index={1}>
 				<DivPanel />
-				<DivPanel id="p2" autoFocus="last-focused" />
+				<DivPanel autoFocus="last-focused" id="p2" />
 			</Panels>
 		);
 

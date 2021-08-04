@@ -4,7 +4,6 @@ import userEvent from '@testing-library/user-event';
 import IndexedBreadcrumbs from '../IndexedBreadcrumbs';
 
 describe('IndexedBreadcrumbs', () => {
-
 	// Suite-wide setup
 
 	test('should generate {index} breadcrumbs when {index} <= {max}', () => {
