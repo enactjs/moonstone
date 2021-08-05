@@ -17,7 +17,6 @@ describe('MoonstoneDecorator', () => {
 		Spotlight.terminate();
 
 		const appRoot = screen.getByTestId('app');
-
 		const expectedClass = 'moonstone';
 		const expectedBgClass = css.bg;
 
@@ -33,7 +32,6 @@ describe('MoonstoneDecorator', () => {
 		Spotlight.terminate();
 
 		const appRoot = screen.getByTestId('app');
-
 		const expectedClass = 'author-class';
 
 		expect(appRoot).toHaveClass(expectedClass);
@@ -47,7 +45,6 @@ describe('MoonstoneDecorator', () => {
 		Spotlight.terminate();
 
 		const appRoot = screen.getByTestId('app');
-
 		const notExpected = 'moonstone';
 
 		expect(appRoot).not.toHaveClass(notExpected);
@@ -61,7 +58,6 @@ describe('MoonstoneDecorator', () => {
 		Spotlight.terminate();
 
 		const appRoot = screen.getByTestId('app');
-
 		const notExpected = css.bg;
 
 		expect(appRoot).not.toHaveClass(notExpected);
