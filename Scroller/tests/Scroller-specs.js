@@ -20,10 +20,7 @@ describe('Scroller', () => {
 	});
 
 	describe('Scrollbar visibility', () => {
-
-		test(
-			'should render both horizontal and vertical scrollbars when \'horizontalScrollbar\' and \'verticalScrollbar\' are "visible"',
-			() => {
+		test('should render both horizontal and vertical scrollbars when \'horizontalScrollbar\' and \'verticalScrollbar\' are "visible"', () => {
 				render(
 					<Scroller
 						horizontalScrollbar="visible"
@@ -43,9 +40,7 @@ describe('Scroller', () => {
 			}
 		);
 
-		test(
-			'should render only vertical scrollbar when \'verticalScrollbar\' is "visible" and \'horizontalScrollbar\' is "hidden"',
-			() => {
+		test('should render only vertical scrollbar when \'verticalScrollbar\' is "visible" and \'horizontalScrollbar\' is "hidden"', () => {
 				render(
 					<Scroller
 						horizontalScrollbar="hidden"
@@ -65,9 +60,7 @@ describe('Scroller', () => {
 			}
 		);
 
-		test(
-			'should not render any scrollbar when when \'horizontalScrollbar\' and \'verticalScrollbar\' are "hidden"',
-			() => {
+		test('should not render any scrollbar when when \'horizontalScrollbar\' and \'verticalScrollbar\' are "hidden"', () => {
 				render(
 					<Scroller
 						horizontalScrollbar="hidden"
@@ -89,10 +82,7 @@ describe('Scroller', () => {
 	});
 
 	describe('Scrollbar accessibility', () => {
-
-		test(
-			'should set "aria-label" to previous scroll button in the horizontal scroll bar',
-			() => {
+		test('should set "aria-label" to previous scroll button in the horizontal scroll bar', () => {
 				const label = 'custom button aria label';
 				render(
 					<Scroller
@@ -111,9 +101,7 @@ describe('Scroller', () => {
 				expect(previousScrollbarButton).toHaveClass('horizontal');
 			});
 
-		test(
-			'should set "aria-label" to next scroll button in the horizontal scroll bar',
-			() => {
+		test('should set "aria-label" to next scroll button in the horizontal scroll bar', () => {
 				const label = 'custom button aria label';
 				render(
 					<Scroller
@@ -133,15 +121,13 @@ describe('Scroller', () => {
 			}
 		);
 
-		test(
-			'should set "aria-label" to previous scroll button in the vertical scroll bar',
-			() => {
+		test('should set "aria-label" to previous scroll button in the vertical scroll bar', () => {
 				const label = 'custom button aria label';
 				render(
 					<Scroller
 						horizontalScrollbar="visible"
-						verticalScrollbar="visible"
 						scrollUpAriaLabel={label}
+						verticalScrollbar="visible"
 					>
 						{contents}
 					</Scroller>
@@ -155,9 +141,7 @@ describe('Scroller', () => {
 			}
 		);
 
-		test(
-			'should set "aria-label" to next scroll button in the vertical scroll bar',
-			() => {
+		test('should set "aria-label" to next scroll button in the vertical scroll bar', () => {
 				const label = 'custom button aria label';
 				render(
 					<Scroller
@@ -178,7 +162,7 @@ describe('Scroller', () => {
 		);
 	});
 
-	// TODO: Left this as skipped because we can't check at this moment the onUpdate call with react-testing-library
+	// Left this as skipped because we can't check at this moment the onUpdate call with react-testing-library
 	describe('ScrollerBase API', () => {
 		test.skip('should call onUpdate when Scroller updates', async () => {
 			const handleUpdate = jest.fn();
