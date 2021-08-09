@@ -1,4 +1,5 @@
-import {mount} from 'enzyme';
+import '@testing-library/jest-dom';
+import {render, screen} from '@testing-library/react';
 
 import Item from '../../Item';
 import VirtualList from '../VirtualList';
@@ -77,90 +78,72 @@ describe('VirtualList', () => {
 		resultScrollTop = null;
 	});
 
-	test('should render a list of \'items\'', () => {
-		const subject = mount(
-			<VirtualList
-				clientSize={clientSize}
-				dataSize={dataSize}
-				itemRenderer={renderItem}
-				itemSize={30}
-			/>
-		);
+	test('should render a list of `items`', () => {
+		render(<VirtualList clientSize={clientSize} dataSize={dataSize} itemRenderer={renderItem} itemSize={30} />);
 
 		const expected = 'Account 0';
-		const actual = subject.find('[data-index]').at(0).text();
+		const actual = screen.getByRole('list').children.item(0);
 
-		expect(actual).toBe(expected);
+		expect(actual).toHaveTextContent(expected);
 	});
 
 	test('should render (clientHeight / itemHeight + overhang) items', () => {
-		const subject = mount(
-			<VirtualList
-				clientSize={clientSize}
-				dataSize={dataSize}
-				itemRenderer={renderItem}
-				itemSize={30}
-			/>
-		);
+		render(<VirtualList clientSize={clientSize} dataSize={dataSize} itemRenderer={renderItem} itemSize={30} />);
 
 		const expected = 27; // 720 / 30 + 3
-		const actual = subject.find('Item[data-index]').length;
+		const actual = screen.getByRole('list').children;
 
-		expect(actual).toBe(expected);
+		expect(actual).toHaveLength(expected);
 	});
 
 	test('should render only one scrollbar', () => {
-		const subject = mount(
+		render(
 			<VirtualList
 				clientSize={clientSize}
 				dataSize={dataSize}
+				data-testid="list"
 				direction="horizontal"
 				itemRenderer={renderItem}
 				itemSize={30}
 			/>
 		);
 
-		const expected = 1;
-		const actual = subject.find('Scrollbar').length;
+		const expected = 'horizontalScrollbarVisible';
+		const actual = screen.getByTestId('list').parentElement.parentElement.parentElement;
 
-		expect(actual).toBe(expected);
+		expect(actual).toHaveClass(expected);
 	});
 
 	describe('ScrollTo', () => {
-		test(
-			'should scroll to the specific item of a given index with scrollTo',
-			(done) => {
-				const onScrollStop = handlerOnScrollStop(done, () => {
-					const expected = 300;
-					const actual = resultScrollTop;
-
-					expect(actual).toBe(expected);
-				});
-
-				mount(
-					<VirtualList
-						cbScrollTo={getScrollTo}
-						clientSize={clientSize}
-						dataSize={dataSize}
-						itemRenderer={renderItem}
-						itemSize={30}
-						onScrollStop={onScrollStop}
-					/>
-				);
-
-				myScrollTo({index: 10, animate: false});
-			}
-		);
-
-		test('should scroll to the given \'x\' position with scrollTo', (done) => {
+		test('should scroll to the specific item of a given index with scrollTo', (done) => {
 			const onScrollStop = handlerOnScrollStop(done, () => {
-				const expected = 100;
-				const actual = resultScrollLeft;
+				const expected = 300;
 
-				expect(actual).toBe(expected);
+				expect(resultScrollTop).toBe(expected);
 			});
 
-			mount(
+			render(
+				<VirtualList
+					cbScrollTo={getScrollTo}
+					clientSize={clientSize}
+					dataSize={dataSize}
+					itemRenderer={renderItem}
+					itemSize={30}
+					onScrollStop={onScrollStop}
+				/>
+			);
+
+			myScrollTo({index: 10, animate: false});
+		});
+
+		test('should scroll to the given `x` position with scrollTo', (done) => {
+			const onScrollStop = handlerOnScrollStop(done, () => {
+				const expected = 100;
+
+				expect(resultScrollLeft).toBe(expected);
+			});
+
+			render(
 				<VirtualList
 					cbScrollTo={getScrollTo}
 					clientSize={clientSize}
@@ -175,15 +158,14 @@ describe('VirtualList', () => {
 			myScrollTo({position: {x: 100}, animate: false});
 		});
 
-		test('should scroll to the given \'y\' position with scrollTo', (done) => {
+		test('should scroll to the given `y` position with scrollTo', (done) => {
 			const onScrollStop = handlerOnScrollStop(done, () => {
 				const expected = 100;
-				const actual = resultScrollTop;
 
-				expect(actual).toBe(expected);
+				expect(resultScrollTop).toBe(expected);
 			});
 
-			mount(
+			render(
 				<VirtualList
 					cbScrollTo={getScrollTo}
 					clientSize={clientSize}
@@ -199,7 +181,7 @@ describe('VirtualList', () => {
 
 		describe('scroll events', () => {
 			test('should call onScrollStart once', () => {
-				mount(
+				render(
 					<VirtualList
 						cbScrollTo={getScrollTo}
 						clientSize={clientSize}
@@ -213,13 +195,12 @@ describe('VirtualList', () => {
 				myScrollTo({position: {y: 100}, animate: false});
 
 				const expected = 1;
-				const actual = onScrollStartCount;
 
-				expect(actual).toBe(expected);
+				expect(onScrollStartCount).toBe(expected);
 			});
 
 			test('should call onScroll once', () => {
-				mount(
+				render(
 					<VirtualList
 						cbScrollTo={getScrollTo}
 						clientSize={clientSize}
@@ -233,20 +214,18 @@ describe('VirtualList', () => {
 				myScrollTo({position: {y: 100}, animate: false});
 
 				const expected = 1;
-				const actual = onScrollCount;
 
-				expect(actual).toBe(expected);
+				expect(onScrollCount).toBe(expected);
 			});
 
 			test('should call onScrollStop once', (done) => {
 				const onScrollStop = handlerOnScrollStop(done, () => {
 					const expected = 1;
-					const actual = onScrollStopCount;
 
-					expect(actual).toBe(expected);
+					expect(onScrollStopCount).toBe(expected);
 				});
 
-				mount(
+				render(
 					<VirtualList
 						cbScrollTo={getScrollTo}
 						clientSize={clientSize}
@@ -263,128 +242,129 @@ describe('VirtualList', () => {
 	});
 
 	describe('Adding an item', () => {
-		test(
-			'should render an added item named \'Password 0\' as the first item',
-			(done) => {
-				const itemArray = [{name: 'A'}, {name: 'B'}, {name: 'C'}];
-				const renderItemArray = ({index, ...rest}) => {
-					return (
-						<div {...rest} id={'item' + index}>
-							{itemArray[index].name}
-						</div>
-					);
-				};
-
-				const subject = mount(
-					<VirtualList
-						clientSize={clientSize}
-						dataSize={itemArray.length}
-						itemRenderer={renderItemArray}
-						itemSize={30}
-					/>
+		test('should render an added item named `Password 0` as the first item', (done) => {
+			const itemArray = [{name: 'A'}, {name: 'B'}, {name: 'C'}];
+			const renderItemArray = ({index, ...rest}) => {
+				return (
+					<div {...rest} id={'item' + index}>
+						{itemArray[index].name}
+					</div>
 				);
+			};
 
-				itemArray.unshift({name: 'Password 0'});
-				subject.setProps({dataSize: itemArray.length});
+			const {rerender} = render(
+				<VirtualList
+					clientSize={clientSize}
+					dataSize={itemArray.length}
+					itemRenderer={renderItemArray}
+					itemSize={30}
+				/>
+			);
 
-				setTimeout(() => {
-					const expected = itemArray[0].name;
-					const actual = subject.find('[data-index]').at(0).text();
+			itemArray.unshift({name: 'Password 0'});
 
-					expect(actual).toBe(expected);
-					done();
-				}, 0);
-			}
-		);
+			rerender(
+				<VirtualList
+					clientSize={clientSize}
+					dataSize={itemArray.length}
+					itemRenderer={renderItemArray}
+					itemSize={30}
+				/>
+			);
+
+			setTimeout(() => {
+				const expected = itemArray[0].name;
+				const actual = screen.getByRole('list').firstElementChild;
+
+				expect(actual).toHaveTextContent(expected);
+				done();
+			}, 0);
+		});
 	});
 
 	describe('Scrollbar accessibility', () => {
-		test(
-			'should set "aria-label" to previous scroll button in the horizontal scrollbar',
-			() => {
-				const label = 'custom button aria label';
-				const subject = mount(
-					<VirtualList
-						clientSize={clientSize}
-						dataSize={dataSize}
-						direction="horizontal"
-						scrollLeftAriaLabel={label}
-						itemRenderer={renderItem}
-						itemSize={30}
-					/>
-				);
+		test('should set `aria-label` to previous scroll button in the horizontal scrollbar', () => {
+			const label = 'custom button aria label';
+			render(
+				<VirtualList
+					clientSize={clientSize}
+					dataSize={dataSize}
+					direction="horizontal"
+					itemRenderer={renderItem}
+					itemSize={30}
+					scrollLeftAriaLabel={label}
+				/>
+			);
 
-				const expected = label;
-				const actual = subject.find('ScrollButton').at(0).prop('aria-label');
+			const expectedAttribute = 'aria-label';
+			const expectedValue = label;
 
-				expect(actual).toBe(expected);
-			}
-		);
+			const actual = screen.getAllByRole('button')[0];
 
-		test(
-			'should set "aria-label" to next scroll button in the horizontal scrollbar',
-			() => {
-				const label = 'custom button aria label';
-				const subject = mount(
-					<VirtualList
-						clientSize={clientSize}
-						dataSize={dataSize}
-						direction="horizontal"
-						scrollRightAriaLabel={label}
-						itemRenderer={renderItem}
-						itemSize={30}
-					/>
-				);
+			expect(actual).toHaveAttribute(expectedAttribute, expectedValue);
+		});
 
-				const expected = label;
-				const actual = subject.find('ScrollButton').at(1).prop('aria-label');
+		test('should set `aria-label` to next scroll button in the horizontal scrollbar', () => {
+			const label = 'custom button aria label';
+			render(
+				<VirtualList
+					clientSize={clientSize}
+					dataSize={dataSize}
+					direction="horizontal"
+					itemRenderer={renderItem}
+					itemSize={30}
+					scrollRightAriaLabel={label}
+				/>
+			);
 
-				expect(actual).toBe(expected);
-			}
-		);
+			const expectedAttribute = 'aria-label';
+			const expectedValue = label;
 
-		test(
-			'should set "aria-label" to previous scroll button in the vertical scrollbar',
-			() => {
-				const label = 'custom button aria label';
-				const subject = mount(
-					<VirtualList
-						clientSize={clientSize}
-						dataSize={dataSize}
-						direction="vertical"
-						itemRenderer={renderItem}
-						itemSize={30}
-						scrollUpAriaLabel={label}
-					/>
-				);
+			const actual = screen.getAllByRole('button')[1];
 
-				const expected = label;
-				const actual = subject.find('ScrollButton').at(0).prop('aria-label');
+			expect(actual).toHaveAttribute(expectedAttribute, expectedValue);
+		});
 
-				expect(actual).toBe(expected);
-			}
-		);
+		test('should set `aria-label` to previous scroll button in the vertical scrollbar', () => {
+			const label = 'custom button aria label';
+			render(
+				<VirtualList
+					clientSize={clientSize}
+					dataSize={dataSize}
+					direction="vertical"
+					itemRenderer={renderItem}
+					itemSize={30}
+					scrollUpAriaLabel={label}
+				/>
+			);
 
-		test(
-			'should set "aria-label" to next scroll button in the vertical scrollbar',
-			() => {
-				const label = 'custom button aria label';
-				const subject = mount(
-					<VirtualList
-						clientSize={clientSize}
-						dataSize={dataSize}
-						direction="vertical"
-						itemRenderer={renderItem}
-						itemSize={30}
-						scrollDownAriaLabel={label}
-					/>
-				);
+			const expectedAttribute = 'aria-label';
+			const expectedValue = label;
 
-				const expected = label;
-				const actual = subject.find('ScrollButton').at(1).prop('aria-label');
+			const actual = screen.getAllByRole('button')[0];
 
-				expect(actual).toBe(expected);
-			}
-		);
+			expect(actual).toHaveAttribute(expectedAttribute, expectedValue);
+		});
+
+		test('should set `aria-label` to next scroll button in the vertical scrollbar', () => {
+			const label = 'custom button aria label';
+			render(
+				<VirtualList
+					clientSize={clientSize}
+					dataSize={dataSize}
+					direction="vertical"
+					itemRenderer={renderItem}
+					itemSize={30}
+					scrollDownAriaLabel={label}
+				/>
+			);
+
+			const expectedAttribute = 'aria-label';
+			const expectedValue = label;
+
+			const actual = screen.getAllByRole('button')[1];
+
+			expect(actual).toHaveAttribute(expectedAttribute, expectedValue);
+		});
 	});
 });
