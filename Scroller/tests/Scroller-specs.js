@@ -10,7 +10,8 @@ describe('Scroller', () => {
 		contents = (
 			<div>
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br />
-				Aenean id blandit nunc. Donec lacinia nisi vitae mi dictum, eget pulvinar nunc tincidunt. Integer vehicula tempus rutrum. Sed efficitur neque in arcu dignissim cursus.
+				Aenean id blandit nunc. Donec lacinia nisi vitae mi dictum, eget pulvinar nunc tincidunt. Integer vehicula tempus rutrum.
+				Sed efficitur neque in arcu dignissim cursus.
 			</div>
 		);
 	});
@@ -35,8 +36,10 @@ describe('Scroller', () => {
 			const leftScrollbarButton = screen.getByLabelText('scroll left');
 			const rightScrollbarButton = screen.getByLabelText('scroll right');
 
-			expect(upScrollbarButton && downScrollbarButton).toBeInTheDocument();
-			expect(leftScrollbarButton && rightScrollbarButton).toBeInTheDocument();
+			expect(upScrollbarButton).toBeInTheDocument();
+			expect(downScrollbarButton).toBeInTheDocument();
+			expect(leftScrollbarButton).toBeInTheDocument();
+			expect(rightScrollbarButton).toBeInTheDocument();
 		});
 
 		test('should render only vertical scrollbar when \'verticalScrollbar\' is "visible" and \'horizontalScrollbar\' is "hidden"', () => {
@@ -54,8 +57,10 @@ describe('Scroller', () => {
 			const leftScrollbarButton = screen.queryByLabelText('scroll left');
 			const rightScrollbarButton = screen.queryByLabelText('scroll right');
 
-			expect(upScrollbarButton && downScrollbarButton).toBeInTheDocument();
-			expect(leftScrollbarButton && rightScrollbarButton).toBeNull();
+			expect(upScrollbarButton).toBeInTheDocument();
+			expect(downScrollbarButton).toBeInTheDocument();
+			expect(leftScrollbarButton).toBeNull();
+			expect(rightScrollbarButton).toBeNull();
 		});
 
 		test('should not render any scrollbar when when \'horizontalScrollbar\' and \'verticalScrollbar\' are "hidden"', () => {
@@ -73,8 +78,10 @@ describe('Scroller', () => {
 			const leftScrollbarButton = screen.queryByLabelText('scroll left');
 			const rightScrollbarButton = screen.queryByLabelText('scroll right');
 
-			expect(upScrollbarButton && downScrollbarButton).toBeNull();
-			expect(leftScrollbarButton && rightScrollbarButton).toBeNull();
+			expect(upScrollbarButton).toBeNull();
+			expect(downScrollbarButton).toBeNull();
+			expect(leftScrollbarButton).toBeNull();
+			expect(rightScrollbarButton).toBeNull();
 		});
 	});
 
@@ -160,18 +167,10 @@ describe('Scroller', () => {
 	describe('ScrollerBase API', () => {
 		test.skip('should call onUpdate when Scroller updates', async () => {
 			const handleUpdate = jest.fn();
-			const {rerender} = render(
-				<Scroller
-					onUpdate={handleUpdate}
-				>
-					{contents}
-				</Scroller>
-			);
+			const {rerender} = render(<Scroller onUpdate={handleUpdate}>{contents}</Scroller>);
 
 			rerender(
-				<Scroller>
-					{''}
-				</Scroller>
+				<Scroller>{''}</Scroller>
 			);
 
 			await waitFor(() => expect(handleUpdate).toHaveBeenCalled());
