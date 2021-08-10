@@ -395,7 +395,7 @@ describe('VirtualList', function () {
 			// Step 3. 1. Position the pointer on the last item in a current page.
 			bottomId = Page.bottomVisibleItemId();
 			Page.showPointerByKeycode();
-			Page.item(bottomId).moveTo();
+			Page.item(bottomId).moveTo({yOffset:10});	// The upper part of the item, not the center
 			// Verify Step 3: Spotlight displays on the item.
 			Page.delay(1000); // needed to run on mpc
 			expectFocusedItem(Number((Page.bottomVisibleItemId().slice(4))), 'focus bottomId');
