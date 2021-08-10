@@ -40,13 +40,9 @@ describe('IndexedBreadcrumbs', () => {
 
 	test.skip('should call {onBreadcrumbClick} once when breadcrumb is clicked', () => {
 		const handleClick = jest.fn();
-		render(
-			<nav>
-				{IndexedBreadcrumbs('id', 1, 1, handleClick)}
-			</nav>
-		);
-
+		render(<nav>{IndexedBreadcrumbs('id', 1, 1, handleClick)}</nav>);
 		const breadcrumb = screen.getByLabelText('GO TO PREVIOUS');
+
 		userEvent.click(breadcrumb);
 
 		expect(handleClick).toHaveBeenCalled();

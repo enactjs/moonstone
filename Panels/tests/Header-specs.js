@@ -6,9 +6,7 @@ import Header from '../Header';
 describe('Header Specs', () => {
 	test('should render with title text without changing case', () => {
 		let msg = 'cRaZy-cased super Header';
-		render(
-			<Header><title>{msg}</title></Header>
-		);
+		render(<Header><title>{msg}</title></Header>);
 
 		const titleText = screen.getByText(msg);
 
@@ -16,11 +14,7 @@ describe('Header Specs', () => {
 	});
 
 	test('should have fullBleed class applied', () => {
-		render(
-			<Header fullBleed>
-				<title>Header</title>
-			</Header>
-		);
+		render(<Header fullBleed><title>Header</title></Header>);
 
 		const headerElement = screen.getByLabelText('Header');
 
