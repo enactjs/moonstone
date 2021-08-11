@@ -13,7 +13,7 @@ describe('TooltipDecorator', () => {
 		render(
 			<Root>
 				<FloatingLayerBase open>
-					<Tooltip data-testis="tooltip">
+					<Tooltip>
 						{tooltipText}
 					</Tooltip>
 				</FloatingLayerBase>
@@ -30,7 +30,7 @@ describe('TooltipDecorator', () => {
 		render(
 			<Root>
 				<FloatingLayerBase open={false}>
-					<Tooltip data-testis="tooltip">
+					<Tooltip>
 						{tooltipText}
 					</Tooltip>
 				</FloatingLayerBase>
