@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import {render, screen, waitFor} from '@testing-library/react';
 
-import Scroller from '../Scroller';
+import Scroller, {ScrollerBase} from '../Scroller';
 
 describe('Scroller', () => {
 	let contents;
@@ -163,14 +163,13 @@ describe('Scroller', () => {
 		});
 	});
 
-	// Left this as skipped because we can't check at this moment the onUpdate call with react-testing-library
 	describe('ScrollerBase API', () => {
-		test.skip('should call onUpdate when Scroller updates', async () => {
+		test('should call onUpdate when Scroller updates', async () => {
 			const handleUpdate = jest.fn();
-			const {rerender} = render(<Scroller onUpdate={handleUpdate}>{contents}</Scroller>);
+			const {rerender} = render(<ScrollerBase onUpdate={handleUpdate}>{contents}</ScrollerBase>);
 
 			rerender(
-				<Scroller>{''}</Scroller>
+				<ScrollerBase onUpdate={handleUpdate}>{''}</ScrollerBase>
 			);
 
 			await waitFor(() => expect(handleUpdate).toHaveBeenCalled());
