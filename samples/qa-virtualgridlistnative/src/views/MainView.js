@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 
 import ImageList from '../components/ImageList';
 import PanelHeader from '../components/PanelHeader';
@@ -9,19 +9,16 @@ const MainView = () => {
 	const [focusableScrollbar, setFocusableScrollbar] = useState(false);
 	const [horizontal, setHorizontal] = useState(false);
 
-	useEffect(() => {
-	}, [focusableScrollbar, horizontal])
-
-	function onChangeFocusableScrollbar() {
+	function onChangeFocusableScrollbar () {
 		setFocusableScrollbar(!focusableScrollbar);
 	}
 
-	function onChangeDirection() {
+	function onChangeDirection () {
 		setHorizontal(!horizontal);
 	}
 
 	return (
-		<div className={css.mainView} style={{flexDirection: horizontal? 'row' : 'column'}}>
+		<div className={css.mainView} style={{flexDirection: horizontal ? 'row' : 'column'}}>
 			<PanelHeader
 				title="VirtualGridList Native"
 				type="compact"
@@ -37,5 +34,5 @@ const MainView = () => {
 			</div>
 		</div>
 	);
-}
+};
 export default MainView;
