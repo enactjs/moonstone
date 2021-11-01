@@ -9,12 +9,12 @@ const MainView = () => {
 	const [focusableScrollbar, setFocusableScrollbar] = useState(false);
 	const [horizontal, setHorizontal] = useState(false);
 
-	function onChangeFocusableScrollbar () {
-		setFocusableScrollbar(!focusableScrollbar);
-	}
-
 	function onChangeDirection () {
 		setHorizontal(!horizontal);
+	}
+
+	function onChangeFocusableScrollbar () {
+		setFocusableScrollbar(!focusableScrollbar);
 	}
 
 	return (
