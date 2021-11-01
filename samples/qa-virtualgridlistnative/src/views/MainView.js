@@ -20,16 +20,16 @@ const MainView = () => {
 	return (
 		<div className={css.mainView} style={{flexDirection: horizontal ? 'row' : 'column'}}>
 			<PanelHeader
-				title="VirtualGridList Native"
-				type="compact"
 				onChangeDirection={onChangeDirection}
 				onChangeFocusableScrollbar={onChangeFocusableScrollbar}
+				title="VirtualGridList Native"
+				type="compact"
 			/>
 			<div className={css.content}>
 				<ImageList
 					className={css.list}
-					focusableScrollbar={focusableScrollbar}
 					direction={horizontal ? 'horizontal' : 'vertical'}
+					focusableScrollbar={focusableScrollbar}
 				/>
 			</div>
 		</div>
