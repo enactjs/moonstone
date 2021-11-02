@@ -9,7 +9,7 @@ const LocaleSwitch = (props) => {
 	}, [rtl, updateLocale]);
 
 	return (
-		<ToggleButton onToggle={onClick} {...props}>RTL</ToggleButton>
+		<ToggleButton onClick={onClick} {...props}>RTL</ToggleButton>
 	);
 };
 

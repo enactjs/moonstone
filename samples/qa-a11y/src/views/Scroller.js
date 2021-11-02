@@ -27,14 +27,14 @@ class ScrollerView extends Component {
 				<Cell shrink>
 					<ToggleButton
 						size="small"
-						onToggle={this.onClickChangeAriaLabelButton}
+						onClick={this.onClickChangeAriaLabelButton}
 						selected={customAriaLabel}
 					>
 						Customizable aria-labels on ScrollButtons
 					</ToggleButton>
 					<ToggleButton
 						size="small"
-						onToggle={this.onClickChangeJSNativeButton}
+						onClick={this.onClickChangeJSNativeButton}
 						selected={isNative}
 					>
 						Native
