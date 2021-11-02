@@ -27,7 +27,7 @@ class PanelHeader extends Component {
 				<div style={{direction: 'ltr'}}>
 					height:<Input size="small" onChange={handleHeight} style={inputWidth} type="number" value={height} />
 					width:<Input size="small" onChange={handleWidth} style={inputWidth} type="number" value={width} />
-					<ToggleButton size="small" onClick={handleFocusableScrollbar}>Focusable Scrollbar</ToggleButton>
+					<ToggleButton size="small" onToggle={handleFocusableScrollbar}>Focusable Scrollbar</ToggleButton>
 					<LocaleSwitch size="small" />
 					<Heading showLine />
 				</div>

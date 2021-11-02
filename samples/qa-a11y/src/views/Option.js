@@ -14,9 +14,9 @@ const Option = (props) => {
 	return (
 		<div>
 			<Heading showLine>Set a language direction</Heading>
-			<ToggleButton size="small" onClick={handleClick} selected={rtl}>RTL</ToggleButton>
+			<ToggleButton size="small" onToggle={handleClick} selected={rtl}>RTL</ToggleButton>
 			<Heading showLine>Set an aria debug mode</Heading>
-			<ToggleButton size="small" onClick={handleDebug} selected={isDebugMode}>Debug aria</ToggleButton>
+			<ToggleButton size="small" onToggle={handleDebug} selected={isDebugMode}>Debug aria</ToggleButton>
 		</div>
 	);
 };

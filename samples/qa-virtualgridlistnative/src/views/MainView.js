@@ -18,7 +18,7 @@ const MainView = () => {
 	}
 
 	return (
-		<div className={css.mainView} style={{flexDirection: horizontal ? 'row' : 'column'}}>
+		<div className={css.mainView}>
 			<PanelHeader
 				onChangeDirection={onChangeDirection}
 				onChangeFocusableScrollbar={onChangeFocusableScrollbar}

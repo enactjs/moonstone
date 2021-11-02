@@ -100,12 +100,12 @@ const PanelHeader = kind({
 		},
 		changeDirectionButton: ({onChangeDirection, showOverlay}) => {
 			if (!showOverlay) {
-				return (<ToggleButton size="small" minWidth onClick={onChangeDirection}>Horizontal</ToggleButton>);
+				return (<ToggleButton size="small" minWidth onToggle={onChangeDirection}>Horizontal</ToggleButton>);
 			}
 		},
 		changeFocusableScrollbarButton: ({onChangeFocusableScrollbar, showOverlay}) => {
 			if (!showOverlay) {
-				return (<ToggleButton size="small" minWidth onClick={onChangeFocusableScrollbar}>Focusable Scrollbar</ToggleButton>);
+				return (<ToggleButton size="small" minWidth onToggle={onChangeFocusableScrollbar}>Focusable Scrollbar</ToggleButton>);
 			}
 		},
 		changeListProps: ({changeMinHeight, changeMinWidth, changeSpacing, data, setData, showOverlay}) => {
