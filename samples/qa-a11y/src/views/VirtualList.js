@@ -81,7 +81,7 @@ class VirtualListView extends Component {
 					</ToggleButton>
 					<ToggleButton
 						size="small"
-						onToggle={this.onClickChangeJSNativeButton}
+						onClick={this.onClickChangeJSNativeButton}
 						selected={isNative}
 					>
 						Native
