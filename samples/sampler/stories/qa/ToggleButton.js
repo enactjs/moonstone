@@ -21,7 +21,7 @@ storiesOf('ToggleButton', module)
 		'with long text',
 		() => (
 			<ToggleButton
-				onToggle={action('onClick')}
+				onToggle={action('onToggle')}
 				backgroundOpacity={select('backgroundOpacity', prop.backgroundOpacity, Config)}
 				disabled={boolean('disabled', Config)}
 				size={select('size', ['small', 'large'], Config)}
@@ -34,7 +34,7 @@ storiesOf('ToggleButton', module)
 		'with tall characters',
 		() => (
 			<ToggleButton
-				onToggle={action('onClick')}
+				onToggle={action('onToggle')}
 				backgroundOpacity={select('backgroundOpacity', prop.backgroundOpacity, Config)}
 				disabled={boolean('disabled', Config)}
 				size={select('size', ['small', 'large'], Config)}
