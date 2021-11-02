@@ -124,6 +124,7 @@ storiesOf('Moonstone', module)
 						noMiniFeedback={boolean('noMiniFeedback', Config)}
 						noSlider={boolean('noSlider', Config)}
 						pauseAtEnd={boolean('pauseAtEnd', Config)}
+						playsInline={boolean('playsInline', Config, true)}
 						poster={poster}
 						seekDisabled={boolean('seekDisabled', Config)}
 						spotlightDisabled={boolean('spotlightDisabled', Config)}
