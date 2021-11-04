@@ -36,20 +36,26 @@ const PanelsBase = kind({
 		className: 'moonstoneEnvironmentPanels'
 	},
 
-	render: ({children, description, noHeader, noPanel, noPanels, title, ...rest}) => (
-		!noPanels ? <Panels {...rest} onApplicationClose={reloadPage}>
-			{!noPanel ? <Panel className={css.panel}>
-				{!noHeader ? [<Header type="compact" title={title} key="header" />,
-					<Column key="body">
-						{description ? (
-							<Cell shrink component={BodyText} className={css.description}>{description}</Cell>
-						) : null}
-						<Cell className={css.storyCell}>{children}</Cell>
-					</Column>] : children
-				}
-			</Panel> : children}
-		</Panels> : <div {...rest}>{children}</div>
-	)
+	render: ({children, description, noHeader, noPanel, noPanels, title, className, ...rest}) => {
+		// eslint-disable-next-line
+		const android = /android/i.test(navigator.userAgent || navigator.vendor || window.opera);
+		const panelsClassName = `${className} ${android ? css.panelsAndroid : ''}`;
+
+		return (
+			!noPanels ? <Panels className={panelsClassName} {...rest} classonApplicationClose={reloadPage}>
+				{!noPanel ? <Panel className={css.panel}>
+					{!noHeader ? [<Header type="compact" title={title} key="header" />,
+						<Column key="body">
+							{description ? (
+								<Cell shrink component={BodyText} className={css.description}>{description}</Cell>
+							) : null}
+							<Cell className={css.storyCell}>{children}</Cell>
+						</Column>] : children
+					}
+				</Panel> : children}
+			</Panels> : <div {...rest}>{children}</div>
+		);
+	}
 });
 
 const FullscreenBase = kind({
