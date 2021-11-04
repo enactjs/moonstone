@@ -6,7 +6,7 @@ The following is a curated list of changes in the Enact moonstone module, newest
 
 ### Added
 
-- `moonstone/Video` prop `playsInline` to control whether video is played inline
+- `moonstone/Video` attribute `playsInline` to allow playing videos on iOS devices without requiring fullscreen mode
 
 ## [4.0.3] - 2021-09-29
 
