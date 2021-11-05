@@ -38,11 +38,13 @@ const PanelsBase = kind({
 
 	render: ({children, description, noHeader, noPanel, noPanels, title, className, ...rest}) => {
 		// eslint-disable-next-line
-		const android = /android/i.test(navigator.userAgent || navigator.vendor || window.opera);
+		const android = /android/i.test(navigator.userAgent || navigator.vendor || window.opera)
+			&& screen.availHeight < screen.availWidth;
+
 		const panelsClassName = `${className} ${android ? css.panelsAndroid : ''}`;
 
 		return (
-			!noPanels ? <Panels className={panelsClassName} {...rest} classonApplicationClose={reloadPage}>
+			!noPanels ? <Panels className={panelsClassName} {...rest} onApplicationClose={reloadPage}>
 				{!noPanel ? <Panel className={css.panel}>
 					{!noHeader ? [<Header type="compact" title={title} key="header" />,
 						<Column key="body">
