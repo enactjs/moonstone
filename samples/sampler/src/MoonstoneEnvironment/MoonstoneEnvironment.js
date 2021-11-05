@@ -38,8 +38,9 @@ const PanelsBase = kind({
 
 	render: ({children, description, noHeader, noPanel, noPanels, title, className, ...rest}) => {
 		// eslint-disable-next-line
-		const android = /android/i.test(navigator.userAgent || navigator.vendor || window.opera)
-			&& screen.availHeight < screen.availWidth;
+		const android = /android/i.test(navigator.userAgent || navigator.vendor || window.opera) &&
+			// eslint-disable-next-line
+			screen.availHeight < screen.availWidth;
 		const panelsClassName = `${className} ${android ? css.panelsAndroid : ''}`;
 
 		return (
