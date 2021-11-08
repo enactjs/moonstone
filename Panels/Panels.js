@@ -230,14 +230,20 @@ const PanelsBase = kind({
 		viewportId: ({id}) => id && `${id}-viewport`
 	},
 
-	render: ({arranger, childProps, children, closeButtonAriaLabel, closeButtonBackgroundOpacity, controls, controlsRef, generateId, id, index, noAnimation, noCloseButton, noSharedState, onApplicationClose, viewportId, ...rest}) => {
+	render: ({arranger, childProps, children, className, closeButtonAriaLabel, closeButtonBackgroundOpacity, controls, controlsRef, generateId, id, index, noAnimation, noCloseButton, noSharedState, onApplicationClose, viewportId, ...rest}) => {
 		delete rest.controlsMeasurements;
 		delete rest.onBack;
 
+		// eslint-disable-next-line
+		const android = /android/i.test(navigator.userAgent || navigator.vendor || window.opera) &&
+			// eslint-disable-next-line
+			screen.availHeight < screen.availWidth;
 		const controlsId = getControlsId(id);
+		const panelsClassName = `${className} ${android ? css.panelsAndroid : ''}`;
+
 
 		return (
-			<div {...rest} id={id}>
+			<div {...rest} className={panelsClassName} id={id}>
 				<Controls
 					closeButtonAriaLabel={closeButtonAriaLabel}
 					closeButtonBackgroundOpacity={closeButtonBackgroundOpacity}
