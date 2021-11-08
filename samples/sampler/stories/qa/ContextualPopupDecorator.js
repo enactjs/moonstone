@@ -10,6 +10,7 @@ import CheckboxItem from '@enact/moonstone/CheckboxItem';
 import {ContextualPopupDecorator} from '@enact/moonstone/ContextualPopupDecorator';
 import Heading from '@enact/moonstone/Heading';
 import {IconButton} from '@enact/moonstone/IconButton';
+import {IncrementSlider} from '@enact/moonstone/IncrementSlider';
 
 const ContextualButton = ContextualPopupDecorator(Button);
 const Config = mergeComponentMetadata('ContextualButton', ContextualButton);
@@ -42,6 +43,12 @@ const renderSuperTallPopup = () => (
 		This is a super tall popup.
 		Note: this popup does not overflow in full screen mode.
 	</div>
+);
+
+const renderSliderPopup = () => (
+	<IncrementSlider
+		style={{width: ri.scaleToRem(500)}}
+	/>
 );
 
 class ContextualPopupWithActivator extends Component {
@@ -257,5 +264,19 @@ storiesOf('ContextualPopupDecorator', module)
 		'with arrow function',
 		() => (
 			<ContextualPopupWithArrowFunction />
+		)
+	)
+	.add(
+		'with increment slider',
+		() => (
+			<div style={{textAlign: 'center', marginTop: ri.unit(180, 'rem')}}>
+				<ContextualPopupWithActivator
+					direction={select('direction', ['up', 'down', 'left', 'right'], Config, 'down')}
+					popupComponent={renderSliderPopup}
+					spotlightRestrict={select('spotlightRestrict', ['none', 'self-first', 'self-only'], Config, 'self-only')}
+				>
+					Contextual Button
+				</ContextualPopupWithActivator>
+			</div>
 		)
 	);
