@@ -47,10 +47,7 @@ const renderSuperTallPopup = () => (
 
 const renderSliderPopup = () => (
 	<IncrementSlider
-		style={{width: '500px'}}
-		max={100}
-		min={0}
-		orientation="horizontal"
+		style={{width: ri.scaleToRem(500)}}
 	/>
 );
 
@@ -274,9 +271,9 @@ storiesOf('ContextualPopupDecorator', module)
 		() => (
 			<div style={{textAlign: 'center', marginTop: ri.unit(180, 'rem')}}>
 				<ContextualPopupWithActivator
-					direction="down"
+					direction={select('direction', ['up', 'down', 'left', 'right'], Config, 'down')}
 					popupComponent={renderSliderPopup}
-					spotlightRestrict="self-only"
+					spotlightRestrict={select('spotlightRestrict', ['none', 'self-first', 'self-only'], Config, 'self-only')}
 				>
 					Contextual Button
 				</ContextualPopupWithActivator>
