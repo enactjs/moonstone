@@ -1,5 +1,5 @@
 import kind from '@enact/core/kind';
-import {detect} from '@enact/core/platform';
+import platform from '@enact/core/platform';
 import Measurable from '@enact/ui/Measurable';
 import Slottable from '@enact/ui/Slottable';
 import IdProvider from '@enact/ui/internal/IdProvider';
@@ -205,7 +205,7 @@ const PanelsBase = kind({
 
 	computed: {
 		android:() => {
-			return detect().platformName.includes('android') && screen.availHeight < screen.availWidth;
+			return platform.platformName.includes('android') && screen.availHeight < screen.availWidth;
 		},
 		className: ({controls, noCloseButton, styler}) => styler.append({
 			'moon-panels-hasControls': (!noCloseButton || !!controls) // If there is a close button or controls were specified
