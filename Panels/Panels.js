@@ -242,7 +242,6 @@ const PanelsBase = kind({
 		const controlsId = getControlsId(id);
 		const panelsClassName = `${className} ${android ? css.panelsAndroid : ''}`;
 
-
 		return (
 			<div {...rest} className={panelsClassName} id={id}>
 				<Controls
