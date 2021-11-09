@@ -1,4 +1,5 @@
 import kind from '@enact/core/kind';
+import {detect} from '@enact/core/platform';
 import Measurable from '@enact/ui/Measurable';
 import Slottable from '@enact/ui/Slottable';
 import IdProvider from '@enact/ui/internal/IdProvider';
@@ -203,6 +204,9 @@ const PanelsBase = kind({
 	},
 
 	computed: {
+		android:() => {
+			return detect().platformName.includes('android') && screen.availHeight < screen.availWidth;
+		},
 		className: ({controls, noCloseButton, styler}) => styler.append({
 			'moon-panels-hasControls': (!noCloseButton || !!controls) // If there is a close button or controls were specified
 		}),
@@ -230,14 +234,10 @@ const PanelsBase = kind({
 		viewportId: ({id}) => id && `${id}-viewport`
 	},
 
-	render: ({arranger, childProps, children, className, closeButtonAriaLabel, closeButtonBackgroundOpacity, controls, controlsRef, generateId, id, index, noAnimation, noCloseButton, noSharedState, onApplicationClose, viewportId, ...rest}) => {
+	render: ({android, arranger, childProps, children, className, closeButtonAriaLabel, closeButtonBackgroundOpacity, controls, controlsRef, generateId, id, index, noAnimation, noCloseButton, noSharedState, onApplicationClose, viewportId, ...rest}) => {
 		delete rest.controlsMeasurements;
 		delete rest.onBack;
 
-		// eslint-disable-next-line
-		const android = /android/i.test(navigator.userAgent || navigator.vendor || window.opera) &&
-			// eslint-disable-next-line
-			screen.availHeight < screen.availWidth;
 		const controlsId = getControlsId(id);
 		const panelsClassName = `${className} ${android ? css.panelsAndroid : ''}`;
 
