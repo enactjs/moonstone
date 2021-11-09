@@ -242,6 +242,16 @@ const InputBase = kind({
 		},
 		className: ({invalid, size, styler}) => styler.append({invalid}, size),
 		dir: ({value, placeholder}) => isRtlText(value || placeholder) ? 'rtl' : 'ltr',
+		inputMode: ({type}) => {
+			// eslint-disable-next-line
+			const samsung = navigator.userAgent.includes('SM-');
+			return type === 'number' && samsung ? 'numeric' : '';
+		},
+		inputType: ({type}) => {
+			// eslint-disable-next-line
+			const samsung = navigator.userAgent.includes('SM-');
+			return type === 'number' && samsung ? 'text' : type;
+		},
 		invalidTooltip: ({css, invalid, invalidMessage = $L('Please enter a valid value.'), rtl}) => {
 			if (invalid && invalidMessage) {
 				const direction = rtl ? 'left' : 'right';
@@ -256,13 +266,14 @@ const InputBase = kind({
 		value: ({value}) => typeof value === 'number' ? value : (value || '')
 	},
 
-	render: ({css, dir, disabled, iconAfter, iconBefore, invalidTooltip, onChange, placeholder, size, type, value, ...rest}) => {
+	render: ({css, dir, disabled, iconAfter, iconBefore, inputMode, inputType, invalidTooltip, onChange, placeholder, size, value, ...rest}) => {
 		const inputProps = extractInputProps(rest);
 		const voiceProps = extractVoiceProps(rest);
 		delete rest.dismissOnEnter;
 		delete rest.invalid;
 		delete rest.invalidMessage;
 		delete rest.rtl;
+		delete rest.type;
 
 		return (
 			<div {...rest} disabled={disabled}>
@@ -275,10 +286,11 @@ const InputBase = kind({
 					className={css.input}
 					dir={dir}
 					disabled={disabled}
+					inputMode={inputMode}
 					onChange={onChange}
 					placeholder={placeholder}
 					tabIndex={-1}
-					type={type}
+					type={inputType}
 					value={value}
 				/>
 				<InputDecoratorIcon position="after" size={size}>{iconAfter}</InputDecoratorIcon>
