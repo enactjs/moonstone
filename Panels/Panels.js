@@ -204,7 +204,7 @@ const PanelsBase = kind({
 	},
 
 	computed: {
-		android:() => {
+		android: () => {
 			// eslint-disable-next-line
 			return platform.platformName.includes('android') && screen.availHeight < screen.availWidth;
 		},
