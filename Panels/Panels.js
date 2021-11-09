@@ -205,6 +205,7 @@ const PanelsBase = kind({
 
 	computed: {
 		android:() => {
+			// eslint-disable-next-line
 			return platform.platformName.includes('android') && screen.availHeight < screen.availWidth;
 		},
 		className: ({controls, noCloseButton, styler}) => styler.append({
