@@ -7,16 +7,16 @@ import ToggleButton from '@enact/moonstone/ToggleButton';
 const Option = (props) => {
 	const {handleDebug, isDebugMode} = props;
 	const {rtl, updateLocale} = useI18nContext();
-	const handleClick = useCallback(() => {
+	const handleToggle = useCallback(() => {
 		updateLocale(rtl ? 'en-US' : 'ar-SA');
 	}, [rtl, updateLocale]);
 
 	return (
 		<div>
 			<Heading showLine>Set a language direction</Heading>
-			<ToggleButton size="small" onClick={handleClick} selected={rtl}>RTL</ToggleButton>
+			<ToggleButton size="small" onToggle={handleToggle} selected={rtl}>RTL</ToggleButton>
 			<Heading showLine>Set an aria debug mode</Heading>
-			<ToggleButton size="small" onClick={handleDebug} selected={isDebugMode}>Debug aria</ToggleButton>
+			<ToggleButton size="small" onToggle={handleDebug} selected={isDebugMode}>Debug aria</ToggleButton>
 		</div>
 	);
 };
