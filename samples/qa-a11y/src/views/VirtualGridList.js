@@ -50,11 +50,11 @@ class VirtualGridListView extends Component {
 		};
 	}
 
-	onClickChangeAriaLabelButton = () => this.setState((state) => ({customAriaLabel: !state.customAriaLabel}));
+	onToggleChangeAriaLabelButton = () => this.setState((state) => ({customAriaLabel: !state.customAriaLabel}));
 
-	onClickChangeDirectionButton = () => this.setState((state) => ({isHorizontalList: !state.isHorizontalList}));
+	onToggleChangeDirectionButton = () => this.setState((state) => ({isHorizontalList: !state.isHorizontalList}));
 
-	onClickChangeJSNativeButton = () => this.setState((state) => ({isNative: !state.isNative}));
+	onToggleChangeJSNativeButton = () => this.setState((state) => ({isNative: !state.isNative}));
 
 	render () {
 		const
@@ -66,21 +66,21 @@ class VirtualGridListView extends Component {
 				<Cell shrink>
 					<ToggleButton
 						size="small"
-						onClick={this.onClickChangeAriaLabelButton}
+						onToggle={this.onToggleChangeAriaLabelButton}
 						selected={customAriaLabel}
 					>
 						Customizable aria-labels on ScrollButtons
 					</ToggleButton>
 					<ToggleButton
 						size="small"
-						onClick={this.onClickChangeDirectionButton}
+						onToggle={this.onToggleChangeDirectionButton}
 						selected={isHorizontalList}
 					>
 						Horizontal
 					</ToggleButton>
 					<ToggleButton
 						size="small"
-						onClick={this.onClickChangeJSNativeButton}
+						onToggle={this.onToggleChangeJSNativeButton}
 						selected={isNative}
 					>
 						Native
