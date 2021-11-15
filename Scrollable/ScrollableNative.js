@@ -849,8 +849,7 @@ class ScrollableBaseNative extends Component {
 
 	handleResizeWindow = () => {
 		const focusedItem = Spotlight.getCurrent();
-
-		if (focusedItem) {
+		if (focusedItem && focusedItem.nodeName !== 'INPUT') {
 			focusedItem.blur();
 		}
 	};
@@ -1024,6 +1023,7 @@ class ScrollableBaseNative extends Component {
 			upButtonAriaLabel = scrollUpAriaLabel == null ? $L('scroll up') : scrollUpAriaLabel,
 			rightButtonAriaLabel = scrollRightAriaLabel == null ? $L('scroll right') : scrollRightAriaLabel,
 			leftButtonAriaLabel = scrollLeftAriaLabel == null ? $L('scroll left') : scrollLeftAriaLabel;
+		console.log('scrollableNative');
 
 		return (
 			<UiScrollableBaseNative
