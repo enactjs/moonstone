@@ -9,7 +9,6 @@ The following is a curated list of changes in the Enact moonstone module, newest
 - `moonstone/Scrollable` handleResizeWindow method to not blur the focused item if its type is input
 - `moonstone/ScrollableNative` handleResizeWindow method to not blur the focused item if its type is input
 
-
 ## [4.0.3] - 2021-09-29
 
 ### Fixed
