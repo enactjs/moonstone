@@ -1023,7 +1023,6 @@ class ScrollableBaseNative extends Component {
 			upButtonAriaLabel = scrollUpAriaLabel == null ? $L('scroll up') : scrollUpAriaLabel,
 			rightButtonAriaLabel = scrollRightAriaLabel == null ? $L('scroll right') : scrollRightAriaLabel,
 			leftButtonAriaLabel = scrollLeftAriaLabel == null ? $L('scroll left') : scrollLeftAriaLabel;
-		console.log('scrollableNative');
 
 		return (
 			<UiScrollableBaseNative
