@@ -849,6 +849,7 @@ class ScrollableBaseNative extends Component {
 
 	handleResizeWindow = () => {
 		const focusedItem = Spotlight.getCurrent();
+
 		if (focusedItem && focusedItem.nodeName !== 'INPUT') {
 			focusedItem.blur();
 		}
