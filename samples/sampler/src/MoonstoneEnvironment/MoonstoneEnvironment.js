@@ -38,13 +38,14 @@ const PanelsBase = kind({
 	},
 
 	render: ({children, className, description, noHeader, noPanel, noPanels, title, ...rest}) => {
+		// eslint-disable-next-line
 		const android = platform.platformName.includes('android') && screen.availHeight < screen.availWidth;
 		const panelsClassName = `${className} ${android ? css.panelsAndroid : ''}`;
 
 		return (
 			!noPanels ? <Panels {...rest} className={panelsClassName} onApplicationClose={reloadPage}>
 				{!noPanel ? <Panel className={css.panel}>
-					{!noHeader ? [<Header type="compact" title={title} key="header"/>,
+					{!noHeader ? [<Header type="compact" title={title} key="header" />,
 						<Column key="body">
 							{description ? (
 								<Cell shrink component={BodyText} className={css.description}>{description}</Cell>
