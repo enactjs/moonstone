@@ -1,5 +1,4 @@
 import kind from '@enact/core/kind';
-import platform from '@enact/core/platform';
 import Measurable from '@enact/ui/Measurable';
 import Slottable from '@enact/ui/Slottable';
 import IdProvider from '@enact/ui/internal/IdProvider';
@@ -204,10 +203,6 @@ const PanelsBase = kind({
 	},
 
 	computed: {
-		android: () => {
-			// eslint-disable-next-line
-			return platform.platformName.includes('android') && screen.availHeight < screen.availWidth;
-		},
 		className: ({controls, noCloseButton, styler}) => styler.append({
 			'moon-panels-hasControls': (!noCloseButton || !!controls) // If there is a close button or controls were specified
 		}),
@@ -235,15 +230,14 @@ const PanelsBase = kind({
 		viewportId: ({id}) => id && `${id}-viewport`
 	},
 
-	render: ({android, arranger, childProps, children, className, closeButtonAriaLabel, closeButtonBackgroundOpacity, controls, controlsRef, generateId, id, index, noAnimation, noCloseButton, noSharedState, onApplicationClose, viewportId, ...rest}) => {
+	render: ({arranger, childProps, children, closeButtonAriaLabel, closeButtonBackgroundOpacity, controls, controlsRef, generateId, id, index, noAnimation, noCloseButton, noSharedState, onApplicationClose, viewportId, ...rest}) => {
 		delete rest.controlsMeasurements;
 		delete rest.onBack;
 
 		const controlsId = getControlsId(id);
-		const panelsClassName = `${className} ${android ? css.panelsAndroid : ''}`;
 
 		return (
-			<div {...rest} className={panelsClassName} id={id}>
+			<div {...rest} id={id}>
 				<Controls
 					closeButtonAriaLabel={closeButtonAriaLabel}
 					closeButtonBackgroundOpacity={closeButtonBackgroundOpacity}

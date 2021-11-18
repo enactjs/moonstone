@@ -2,6 +2,7 @@
 
 import classnames from 'classnames';
 import kind from '@enact/core/kind';
+import platform from '@enact/core/platform';
 import PropTypes from 'prop-types';
 import {Column, Cell} from '@enact/ui/Layout';
 import {boolean, select} from '@enact/storybook-utils/addons/knobs';
@@ -36,20 +37,25 @@ const PanelsBase = kind({
 		className: 'moonstoneEnvironmentPanels'
 	},
 
-	render: ({children, description, noHeader, noPanel, noPanels, title, ...rest}) => (
-		!noPanels ? <Panels {...rest} onApplicationClose={reloadPage}>
-			{!noPanel ? <Panel className={css.panel}>
-				{!noHeader ? [<Header type="compact" title={title} key="header" />,
-					<Column key="body">
-						{description ? (
-							<Cell shrink component={BodyText} className={css.description}>{description}</Cell>
-						) : null}
-						<Cell className={css.storyCell}>{children}</Cell>
-					</Column>] : children
-				}
-			</Panel> : children}
-		</Panels> : <div {...rest}>{children}</div>
-	)
+	render: ({children, className, description, noHeader, noPanel, noPanels, title, ...rest}) => {
+		const android = platform.platformName.includes('android') && screen.availHeight < screen.availWidth;
+		const panelsClassName = `${className} ${android ? css.panelsAndroid : ''}`;
+
+		return (
+			!noPanels ? <Panels {...rest} className={panelsClassName} onApplicationClose={reloadPage}>
+				{!noPanel ? <Panel className={css.panel}>
+					{!noHeader ? [<Header type="compact" title={title} key="header"/>,
+						<Column key="body">
+							{description ? (
+								<Cell shrink component={BodyText} className={css.description}>{description}</Cell>
+							) : null}
+							<Cell className={css.storyCell}>{children}</Cell>
+						</Column>] : children
+					}
+				</Panel> : children}
+			</Panels> : <div {...rest}>{children}</div>
+		);
+	}
 });
 
 const FullscreenBase = kind({
