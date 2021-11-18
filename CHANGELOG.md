@@ -2,6 +2,12 @@
 
 The following is a curated list of changes in the Enact moonstone module, newest changes on the top.
 
+## [unreleased] 
+
+### Fixed
+
+- `moonstone/TooltipDecorator` arrow position
+
 ## [4.0.3] - 2021-09-29
 
 ### Fixed
