@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import kind from '@enact/core/kind';
 
+import {onlyUpdateForProps} from '../internal/util';
+
 import {secondsToPeriod, secondsToTime} from './util';
 
 import css from './VideoPlayer.module.less';

@@ -2,6 +2,7 @@ import ForwardRef from '@enact/ui/ForwardRef';
 import kind from '@enact/core/kind';
 import PropTypes from 'prop-types';
 
+import {onlyUpdateForProps} from '../internal/util';
 import Marquee from '../Marquee';
 
 import css from './VideoPlayer.module.less';
