@@ -19,8 +19,6 @@ import kind from '@enact/core/kind';
 import Pure from '@enact/ui/internal/Pure';
 import PropTypes from 'prop-types';
 import compose from 'ramda/src/compose';
-import defaultProps from 'recompose/defaultProps';
-import setPropTypes from 'recompose/setPropTypes';
 import {HeadingBase as UiHeadingBase} from '@enact/ui/Heading';
 
 import {MarqueeDecorator} from '../Marquee';
@@ -99,12 +97,6 @@ const HeadingBase = kind({
  * @public
  */
 const HeadingDecorator = compose(
-	setPropTypes({
-		marqueeOn: PropTypes.oneOf(['hover', 'render'])
-	}),
-	defaultProps({
-		marqueeOn: 'render'
-	}),
 	Pure,
 	MarqueeDecorator,
 	Skinnable
@@ -143,12 +135,16 @@ const Heading = HeadingDecorator(HeadingBase);
  * * `'render'` - Marquee begins when the component is rendered
  *
  * @name marqueeOn
- * @type {String}
+ * @type {('hover'|'render')}
  * @default 'render'
  * @memberof moonstone/Heading.Heading.prototype
  * @see {@link moonstone/Marquee.Marquee}
  * @public
  */
+
+Heading.defaultProps = {
+	marqueeOn: 'render'
+};
 
 export default Heading;
 export {

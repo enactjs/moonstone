@@ -1,6 +1,5 @@
 import ForwardRef from '@enact/ui/ForwardRef';
 import kind from '@enact/core/kind';
-import onlyUpdateForKeys from 'recompose/onlyUpdateForKeys';
 import PropTypes from 'prop-types';
 
 import Marquee from '../Marquee';
@@ -120,9 +119,7 @@ const MediaTitleBase = kind({
 });
 
 const MediaTitle = ForwardRef(
-	onlyUpdateForKeys(['children', 'title', 'infoVisible', 'visible'])(
-		MediaTitleBase
-	)
+	onlyUpdateForProps(MediaTitleBase, ['children', 'title', 'infoVisible', 'visible'])
 );
 
 export default MediaTitle;
