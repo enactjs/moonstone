@@ -1,7 +1,8 @@
 import kind from '@enact/core/kind';
-import IconButton from '../IconButton';
-import onlyUpdateForKeys from 'recompose/onlyUpdateForKeys';
 import PropTypes from 'prop-types';
+
+import IconButton from '../IconButton';
+import {onlyUpdateForProps} from '../internal/util';
 
 /**
  * An [IconButton]{@link moonstone/IconButton.IconButton} customized for
@@ -35,8 +36,7 @@ const IncrementSliderButtonBase = kind({
 	}
 });
 
-const OnlyUpdate = onlyUpdateForKeys(['children', 'disabled', 'spotlightDisabled', 'aria-label']);
-const IncrementSliderButton = OnlyUpdate(IncrementSliderButtonBase);
+const IncrementSliderButton = onlyUpdateForProps(IncrementSliderButtonBase, ['children', 'disabled', 'spotlightDisabled', 'aria-label']);
 
 export default IncrementSliderButton;
 export {

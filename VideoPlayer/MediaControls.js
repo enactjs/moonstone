@@ -10,13 +10,12 @@ import Slottable from '@enact/ui/Slottable';
 import Spotlight from '@enact/spotlight';
 import {SpotlightContainerDecorator, spotlightDefaultClass} from '@enact/spotlight/SpotlightContainerDecorator';
 import {forward} from '@enact/core/handle';
-
-import onlyUpdateForKeys from 'recompose/onlyUpdateForKeys';
 import PropTypes from 'prop-types';
 import {Component} from 'react';
 import ReactDOM from 'react-dom';
 
 import $L from '../internal/$L';
+import {onlyUpdateForProps} from '../internal/util';
 import IconButton from '../IconButton';
 
 import {countReactChildren} from './util';
@@ -32,7 +31,7 @@ const OuterContainer = SpotlightContainerDecorator({
 	]
 }, 'div');
 const Container = SpotlightContainerDecorator({enterTo: ''}, 'div');
-const MediaButton = onlyUpdateForKeys([
+const MediaButton = onlyUpdateForProps(IconButton, [
 	'children',
 	'className',
 	'color',
@@ -40,7 +39,7 @@ const MediaButton = onlyUpdateForKeys([
 	'flip',
 	'onClick',
 	'spotlightDisabled'
-])(IconButton);
+]);
 
 const forwardToggleMore = forward('onToggleMore');
 

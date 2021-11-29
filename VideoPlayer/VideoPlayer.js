@@ -16,7 +16,7 @@ import {adaptEvent, call, forKey, forward, forwardWithPrevent, handle, preventDe
 import {is} from '@enact/core/keymap';
 import {platform} from '@enact/core/platform';
 import EnactPropTypes from '@enact/core/internal/prop-types';
-import {perfNow, Job} from '@enact/core/util';
+import {perfNow, Job, shallowEqual} from '@enact/core/util';
 import {I18nContextDecorator} from '@enact/i18n/I18nDecorator';
 import {toUpperCase} from '@enact/i18n/util';
 import Spotlight from '@enact/spotlight';
@@ -34,7 +34,6 @@ import equals from 'ramda/src/equals';
 import PropTypes from 'prop-types';
 import {isValidElement, cloneElement, Component} from 'react';
 import ReactDOM from 'react-dom';
-import shallowEqual from 'recompose/shallowEqual';
 
 import $L from '../internal/$L';
 import Skinnable from '../Skinnable';
