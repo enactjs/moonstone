@@ -30,7 +30,7 @@ const extractVoiceProps = function (props) {
 *  @param   {Array}  propKeys   Prop keys to compare
  *
  * @returns {any}               Conditionally memoized component
- * @memberof sandstone/internal/util
+ * @memberof moonstone/internal/util
  * @private
  */
 const onlyUpdateForProps = (wrapped, propKeys) => memo(wrapped, (prevProps, nextProps) => {
