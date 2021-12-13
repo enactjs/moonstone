@@ -1,9 +1,7 @@
 import {boolean, select, text} from '@enact/storybook-utils/addons/knobs';
 import {storiesOf} from '@storybook/react';
 
-import Button from '@enact/moonstone/Button';
 import Icon from '@enact/moonstone/Icon';
-import Image from '@enact/moonstone/Image';
 import Item from '@enact/moonstone/Item';
 
 import icons from '../default/icons';
@@ -43,20 +41,6 @@ storiesOf('Item', module)
 		() => (
 			<Item disabled={boolean('disabled', Item)}>
 				{text('Children', Item, inputData.extraSpaceText)}
-			</Item>
-		)
-	)
-	.add(
-		'integrated with other components',
-		() => (
-			<Item disabled={boolean('disabled', Item)}>
-				<Button>Click here</Button>
-				{text('Children', Item, 'Hello Item')}
-				<Button>Click here</Button>
-				<Image src="http://lorempixel.com/512/512/city/1/" sizing="fill" alt="lorempixel" />
-				<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</p>
-				<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</p>
-				<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</p>
 			</Item>
 		)
 	)
