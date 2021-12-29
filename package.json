@@ -1,6 +1,6 @@
 {
   "name": "@enact/moonstone",
-  "version": "4.0.3",
+  "version": "4.0.4",
   "description": "Large-screen/TV support library for Enact, containing a variety of UI components.",
   "main": "index.js",
   "scripts": {
