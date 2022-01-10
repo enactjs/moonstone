@@ -529,7 +529,6 @@ describe('ExpandableList', function () {
 				});
 				expect(expandable.isOpen).to.be.false();
 				expect(expandable.chevron).to.equal('󯿭');
-				expect(expandable.item(0).isDisplayed()).to.be.false();
 				expect(expandable.title.isFocused()).to.be.true();
 			});
 		});
@@ -541,7 +540,6 @@ describe('ExpandableList', function () {
 				});
 				expect(expandable.isOpen).to.be.false();
 				expect(expandable.chevron).to.equal('󯿭');
-				expect(expandable.item(0).isDisplayed()).to.be.false();
 			});
 
 			it('should open on title click when closed', function () {

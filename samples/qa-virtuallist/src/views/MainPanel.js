@@ -85,8 +85,8 @@ const MainPanel = class extends Component {
 							value={this.state.value}
 						/>
 						<Button size="small" onClick={this.onChangeDataSize}>Set DataSize</Button>
-						<ToggleButton size="small" onClick={this.onToggleDisabled}>Disabled Items</ToggleButton>
-						<ToggleButton size="small" onClick={this.onToggleChildProps}>Child Props</ToggleButton>
+						<ToggleButton size="small" onToggle={this.onToggleDisabled}>Disabled Items</ToggleButton>
+						<ToggleButton size="small" onToggle={this.onToggleChildProps}>Child Props</ToggleButton>
 						<LocaleSwitch size="small" />
 						<Heading showLine />
 					</div>

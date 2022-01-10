@@ -22,6 +22,7 @@ storiesOf('ToggleButton', module)
 		() => (
 			<ToggleButton
 				onClick={action('onClick')}
+				onToggle={action('onToggle')}
 				backgroundOpacity={select('backgroundOpacity', prop.backgroundOpacity, Config)}
 				disabled={boolean('disabled', Config)}
 				size={select('size', ['small', 'large'], Config)}
@@ -35,6 +36,7 @@ storiesOf('ToggleButton', module)
 		() => (
 			<ToggleButton
 				onClick={action('onClick')}
+				onToggle={action('onToggle')}
 				backgroundOpacity={select('backgroundOpacity', prop.backgroundOpacity, Config)}
 				disabled={boolean('disabled', Config)}
 				size={select('size', ['small', 'large'], Config)}
