@@ -2635,6 +2635,32 @@
             "escalade": "^3.1.1",
             "node-releases": "^2.0.1",
             "picocolors": "^1.0.0"
+          },
+          "dependencies": {
+            "caniuse-lite": {
+              "version": "1.0.30001296",
+              "resolved": "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001296.tgz",
+              "integrity": "sha512-WfrtPEoNSoeATDlf4y3QvkwiELl9GyPLISV5GejTbbQRtQx4LhsXmc9IQ6XCL2d7UxCyEzToEZNMeqR79OUw8Q==",
+              "dev": true
+            },
+            "electron-to-chromium": {
+              "version": "1.4.36",
+              "resolved": "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.4.36.tgz",
+              "integrity": "sha512-MbLlbF39vKrXWlFEFpCgDHwdlz4O3LmHM5W4tiLRHjSmEUXjJjz8sZkMgWgvYxlZw3N1iDTmCEtOkkESb5TMCg==",
+              "dev": true
+            },
+            "escalade": {
+              "version": "3.1.1",
+              "resolved": "https://registry.npmjs.org/escalade/-/escalade-3.1.1.tgz",
+              "integrity": "sha512-k0er2gUkLf8O0zKJiAhmkTnJlTvINGv7ygDNPbeIsX/TJjGJZHuh9B2UxbsaEkmlEo9MfhrSzmhIlhRlI2GXnw==",
+              "dev": true
+            },
+            "node-releases": {
+              "version": "2.0.1",
+              "resolved": "https://registry.npmjs.org/node-releases/-/node-releases-2.0.1.tgz",
+              "integrity": "sha512-CqyzN6z7Q6aMeF/ktcMVTzhAHCEpf8SOarwpzpf8pNBY2k5/oM34UHldUwp8VKI7uxct2HxSRdJjBaZeESzcxA==",
+              "dev": true
+            }
           }
         },
         "buffer": {
@@ -2755,8 +2781,7 @@
         "caniuse-lite": {
           "version": "1.0.30001094",
           "resolved": "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001094.tgz",
-          "integrity": "sha512-ufHZNtMaDEuRBpTbqD93tIQnngmJ+oBknjvr0IbFympSdtFpAUFmNv4mVKbb53qltxFx0nK3iy32S9AqkLzUNA==",
-          "dev": true
+          "integrity": "sha512-ufHZNtMaDEuRBpTbqD93tIQnngmJ+oBknjvr0IbFympSdtFpAUFmNv4mVKbb53qltxFx0nK3iy32S9AqkLzUNA=="
         },
         "chalk": {
           "version": "4.1.0",
@@ -3562,8 +3587,7 @@
         "escalade": {
           "version": "3.0.1",
           "resolved": "https://registry.npmjs.org/escalade/-/escalade-3.0.1.tgz",
-          "integrity": "sha512-DR6NO3h9niOT+MZs7bjxlj2a1k+POu5RN8CLTPX2+i78bRi9eLe7+0zXgUHMnGXWybYcL61E9hGhPKqedy8tQA==",
-          "dev": true
+          "integrity": "sha512-DR6NO3h9niOT+MZs7bjxlj2a1k+POu5RN8CLTPX2+i78bRi9eLe7+0zXgUHMnGXWybYcL61E9hGhPKqedy8tQA=="
         },
         "escape-html": {
           "version": "1.0.3",
@@ -5659,8 +5683,7 @@
         "node-releases": {
           "version": "1.1.58",
           "resolved": "https://registry.npmjs.org/node-releases/-/node-releases-1.1.58.tgz",
-          "integrity": "sha512-NxBudgVKiRh/2aPWMgPR7bPTX0VPmGx5QBwCtdHitnqFE5/O8DeBXuIMH1nwNnw/aMo6AjOrpsHzfY3UbUJ7yg==",
-          "dev": true
+          "integrity": "sha512-NxBudgVKiRh/2aPWMgPR7bPTX0VPmGx5QBwCtdHitnqFE5/O8DeBXuIMH1nwNnw/aMo6AjOrpsHzfY3UbUJ7yg=="
         },
         "normalize-package-data": {
           "version": "2.5.0",
