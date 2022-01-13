@@ -2,6 +2,12 @@
 
 The following is a curated list of changes in the Enact moonstone module, newest changes on the top.
 
+## [unreleased]
+
+### Fixed
+
+- `moonstone/Input` size 'small' line-height to center text vertically
+
 ## [4.0.4] - 2021-12-29
 
 ### Fixed
