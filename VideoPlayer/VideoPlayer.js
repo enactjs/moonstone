@@ -687,7 +687,7 @@ const VideoPlayerBase = class extends Component {
 
 	componentDidMount () {
 		on('mousemove', this.activityDetected);
-		if (platform.touch) {
+		if (platform.touchscreen) {
 			on('touchmove', this.activityDetected);
 		}
 		on('keydown', this.handleGlobalKeyDown);
@@ -793,7 +793,7 @@ const VideoPlayerBase = class extends Component {
 
 	componentWillUnmount () {
 		off('mousemove', this.activityDetected);
-		if (platform.touch) {
+		if (platform.touchscreen) {
 			off('touchmove', this.activityDetected);
 		}
 		off('keydown', this.handleGlobalKeyDown);
