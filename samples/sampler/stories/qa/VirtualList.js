@@ -5,7 +5,7 @@ import {mergeComponentMetadata} from '@enact/storybook-utils';
 import ri from '@enact/ui/resolution';
 import {ScrollableBase as UiScrollableBase} from '@enact/ui/Scrollable';
 import {VirtualListBase as UiVirtualListBase} from '@enact/ui/VirtualList';
-import {Component, useState} from 'react';
+import {Component, useCallback, useState} from 'react';
 import PropTypes from 'prop-types';
 
 import IconButton from '@enact/moonstone/IconButton';
@@ -145,13 +145,13 @@ const ContainerItemWithControls = SpotlightContainerDecorator(({children, index,
 // eslint-disable-next-line enact/prop-types
 const InPanels = ({className, title, ...rest}) => {
 	const [index, setIndex] = useState(0);
-	function handleSelectBreadcrumb (ev) {
+	const handleSelectBreadcrumb = useCallback((ev) => {
 		setIndex(ev.index);
-	}
+	}, []);
 
-	function handleSelectItem () {
+	const handleSelectItem = useCallback(() => {
 		setIndex(index === 0 ? 1 : 0);
-	}
+	}, [index]);
 
 	return (
 		<ActivityPanels className={className} index={index} onSelectBreadcrumb={handleSelectBreadcrumb} noCloseButton>
