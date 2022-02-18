@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useCallback, useState} from 'react';
 
 import ImageList from '../components/ImageList';
 import PanelHeader from '../components/PanelHeader';
@@ -9,13 +9,13 @@ const MainView = () => {
 	const [focusableScrollbar, setFocusableScrollbar] = useState(false);
 	const [horizontal, setHorizontal] = useState(false);
 
-	function onChangeDirection () {
+	const onChangeDirection = useCallback(() => {
 		setHorizontal(!horizontal);
-	}
+	}, [horizontal]);
 
-	function onChangeFocusableScrollbar () {
+	const onChangeFocusableScrollbar = useCallback(() => {
 		setFocusableScrollbar(!focusableScrollbar);
-	}
+	}, [focusableScrollbar]);
 
 	return (
 		<div className={css.mainView}>
