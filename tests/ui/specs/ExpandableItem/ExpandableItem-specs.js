@@ -46,7 +46,7 @@ describe('ExpandableItem', function () {
 			});
 
 			it('should allow 5-way navigation beyond the last item', async function () {
-await expandableItem.focus();
+				await expandableItem.focus();
 				await Page.waitTransitionEnd(3000, undefined, () => {
 					Page.spotlightSelect();
 				});
@@ -149,7 +149,7 @@ await expandableItem.focus();
 		const expandableItem = Page.components.expandableItemWithLockBottom;
 
 		it('should not allow 5-way navigation beyond the last item', async function () {
-await expandableItem.focus();
+			await expandableItem.focus();
 			await Page.waitTransitionEnd(3000, undefined, () => {
 				Page.spotlightSelect();
 			});

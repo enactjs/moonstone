@@ -49,8 +49,8 @@ class ExpandableInterface {
 		return this.self.$('.LabeledItem_LabeledItem_label').isDisplayed();
 	}
 	async isOpen () {
-		return !(! (await this.self.$('.enact_ui_Transition_Transition_transition').isExisting()) ||
-		! (await this.self.$('.enact_ui_Transition_Transition_shown').isExisting()) && await this.self.$('.enact_ui_Transition_Transition_hidden').isExisting());
+		return !(!(await this.self.$('.enact_ui_Transition_Transition_transition').isExisting()) ||
+		!(await this.self.$('.enact_ui_Transition_Transition_shown').isExisting()) && await this.self.$('.enact_ui_Transition_Transition_hidden').isExisting());
 	}
 	get iconBefore () {
 		return element('.Input_Input_iconBefore', this.self);

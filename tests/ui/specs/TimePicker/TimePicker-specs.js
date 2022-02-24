@@ -37,7 +37,6 @@ describe('TimePicker', function () {
 				expect(await timePicker.minute.isFocused()).to.be.true();
 				await Page.spotlightRight();
 				expect(await timePicker.meridiem.isFocused()).to.be.true();
-				
 			});
 
 			describe('5-way', function () {
