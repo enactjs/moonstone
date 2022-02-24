@@ -21,7 +21,7 @@ describe('Input', function () {
 
 	it('should have text-align equal to "right" when in ar-SA locale', async function () {
 		await Page.open('?locale=ar-SA');
-		expect(await Page.inputElement1.getCSSProperty('text-align').value).to.equal('right');
+		expect((await Page.inputElement1.getCSSProperty('text-align')).value).to.equal('right');
 	});
 
 	describe('disabled', function () {

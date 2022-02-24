@@ -9,11 +9,11 @@ function validateTitle (expandable, title) {
 
 // Expects are blocks of expects or other commands to be embedded in an 'it' statement
 async function expectClosed (expandable) {
-	expect(await expandable.isOpen).to.be.false();
+	expect(await expandable.isOpen()).to.be.false();
 }
 
 async function expectOpen (expandable) {
-	expect(await expandable.isOpen).to.be.true();
+	expect(await expandable.isOpen()).to.be.true();
 }
 
 module.exports = {

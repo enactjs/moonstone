@@ -10,13 +10,13 @@ function validateTitle (item, title) {
 
 // Expects are blocks of expects or other commands to be embedded in an 'it' statement
 async function expectClosed (item) {
-	expect(await item.isOpen).to.be.false();
-	expect(getChevronRotation(item)).to.equal('down');
+	expect(await item.isOpen()).to.be.false();
+	expect(await getChevronRotation(item)).to.equal('down');
 }
 
 async function expectOpen (item) {
-	expect(await item.isOpen).to.be.true();
-	expect(getChevronRotation(item)).to.equal('up');
+	expect(await item.isOpen()).to.be.true();
+	expect(await getChevronRotation(item)).to.equal('up');
 }
 
 // Other utility functions
