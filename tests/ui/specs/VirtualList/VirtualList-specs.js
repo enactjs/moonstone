@@ -19,7 +19,7 @@ describe('VirtualList', function () {
 		it('should focus first item on first focus', async function () {
 			await Page.spotlightDown();
 			await Page.spotlightRight();
-			expectFocusedItem(0);
+			await expectFocusedItem(0);
 		});
 
 		it('should focus and Scroll with Up/Down and 5-way [GT-24451]', async function () {
@@ -28,12 +28,12 @@ describe('VirtualList', function () {
 			// Step 3. 5-way Spot the second item 'Item 001'.
 			await Page.spotlightDown();
 			// Verify Step 3: Spotlight displays on the second item 'item 001'.
-			expectFocusedItem(1, 'step 3 focus');
+			await expectFocusedItem(1, 'step 3 focus');
 			// Step 4. Press Channel Down.
 			await Page.pageDown();
 			await Page.delay(1500);  // TODO: Need better way to detect scroll end
 			// Verify Step 4: Spotlight is on the *Item* closest to the previously focused Item's location.
-			expectFocusedItem(9, 'step 4 focus'); // this works in headless + tv  - must comment to run in debug
+			await expectFocusedItem(9, 'step 4 focus'); // this works in headless + tv  - must comment to run in debug
 			// Step 5. 5-way Down several times to the last visible item on the current viewport.
 			await Page.spotlightDown();
 			await Page.spotlightDown();
@@ -46,17 +46,17 @@ describe('VirtualList', function () {
 			await Page.spotlightDown();
 			await Page.spotlightDown();
 			// Verify Step 5: Spotlight is on the last visible item. *** it is not
-			expectFocusedItem(19, 'step 5 focus');
+			await expectFocusedItem(19, 'step 5 focus');
 			// Step 6. Press Channel Down.
 			await Page.pageDown();
 			await Page.delay(1500);
 			// Verify Step 6: Spotlight is on the *Item* closest to the previously focused Item's location  ?
-			expectFocusedItem(27, 'step 6 focus');
+			await expectFocusedItem(27, 'step 6 focus');
 			// Step 7. Press Channel Up.
 			await Page.pageUp();
 			await Page.delay(1500);
 			// Verify Step 7: Spotlight is on the *Item* closest to the previously focused Item's location.
-			expectFocusedItem(19, 'step 7 focus');
+			await expectFocusedItem(19, 'step 7 focus');
 			// Step 8. 5-way Up several times to the first visible item on the current viewport.
 			await Page.spotlightUp();
 			await Page.spotlightUp();
@@ -69,21 +69,21 @@ describe('VirtualList', function () {
 			await Page.spotlightUp();
 			await Page.spotlightUp();
 			// Verify Step 8: Spotlight is on the first visible item.
-			expectFocusedItem(9, 'step 8 focus');
+			await expectFocusedItem(9, 'step 8 focus');
 			// Step 9. Press Channel Up.
 			await Page.pageUp();
 			await Page.delay(1500);
 			// Verify Step 9: Spotlight is on the *Item* closest to the previously focused Item's location.
-			expectFocusedItem(0, 'step 9 focus');
+			await expectFocusedItem(0, 'step 9 focus');
 			// Step 10. Wave the pointer. Step 11. Hover on an item.
-			$('#item3').moveTo(302, 50);
+			await $('#item3').moveTo(302, 50);
 			// Verify Step 10, Step 11: Spotlight is on 'Item 003'
-			expectFocusedItem(3, 'step 11 focus');
+			await expectFocusedItem(3, 'step 11 focus');
 			// Step 12. Press Channel Down.
 			await Page.pageDown();
 			await Page.delay(1000);
 			// Verify Step 12: 1. Spotlight hides. 2. The list Scrolls Up by page with animation. 3. The list stops scrolling. 4. Spotlight still hides (for a few seconds).
-			expectNoFocusedItem();  // Check that Spotlight hides only.
+			await expectNoFocusedItem();  // Check that Spotlight hides only.
 		});
 
 		it('should focus back to Paging Controls with 5-way Right [GT-24811]', async function () {
@@ -95,7 +95,7 @@ describe('VirtualList', function () {
 			await Page.showPointerByKeycode();
 			await Page.item(1).moveTo();
 			// Verify Step 4: Spotlight displays on 'Item 001'.
-			expectFocusedItem(1, 'focus Item 1');
+			await expectFocusedItem(1, 'focus Item 1');
 			// Step 5. 5-way Down aznd 5-way Right.
 			await Page.spotlightDown();
 			await Page.spotlightRight();
@@ -104,7 +104,7 @@ describe('VirtualList', function () {
 			expect(await Page.buttonScrollUp.isFocused(), 'step 5 focus').to.be.true();
 			// Step 6.1. 5-way Left to go back to the list.
 			await Page.spotlightLeft();
-			expectFocusedItem(0, 'step 6.1 focus');
+			await expectFocusedItem(0, 'step 6.1 focus');
 			// Step 6.2. 5-way Down to item 005.
 			await Page.spotlightDown();
 			await Page.spotlightDown();
@@ -126,7 +126,7 @@ describe('VirtualList', function () {
 			// Step 5: 5-way Spot the first item.
 			await Page.spotlightRight();
 			// Verify Step 5: Spotlight displays on the first item.
-			expectFocusedItem(0, 'step 5 focus');
+			await expectFocusedItem(0, 'step 5 focus');
 			// Step 6: 5-way Up.
 			await Page.spotlightUp();
 			// Verify Step 6: 1. The list *does not* Scroll to the Bottom. 2. Spotlight is on the close button 'x'.
@@ -136,13 +136,13 @@ describe('VirtualList', function () {
 			// Wheeling will not be implemented - see ENYO-6178
 			for (let i = 0; i < 100; ++i) {
 				await Page.spotlightDown();
-				await waitUntilFocused(i);
+				await await waitUntilFocused(i);
 			}
 			// Step 7: 2. Click the last item.
 			await waitForScrollStop();
 			await Page.spotlightSelect();
 			// Verify Step 7: Spotlight is on the last item.
-			expectFocusedItem(99, 'step 7 focus');
+			await expectFocusedItem(99, 'step 7 focus');
 			// Step 8: 5-way Down
 			await Page.spotlightDown();
 			await Page.spotlightDown(); // 1 extra 5-way down to check Spotlight does not pass buttonBottom when wrap is off.
@@ -164,13 +164,13 @@ describe('VirtualList', function () {
 			// Step 4. 1. 5-way Spot 'Item 004'.
 			// Need to spot item 006 in ui-tests to spot Down Paging Control (∨).
 			await Page.spotlightDown();
-			// expectFocusedItem(1);
+			// await expectFocusedItem(1);
 			await Page.spotlightDown();
 			await Page.spotlightDown();
 			await Page.spotlightDown();
 			await Page.spotlightDown();
 			await Page.spotlightDown();
-			await expectFocusedItem(6, 'step 4.1 focus');
+			await await expectFocusedItem(6, 'step 4.1 focus');
 			// Step 4. 2. 5-way Right.
 			await Page.spotlightRight();
 			// Verify Item 4: Spotlight displays on the Down Paging Control (∨).
@@ -205,13 +205,13 @@ describe('VirtualList', function () {
 			// Step 4. 5-way Spot 'Item 004'.
 			// Need to spot item 006 in ui-tests to spot Down Paging Control (∨).
 			await Page.spotlightDown();
-			// expectFocusedItem(1);
+			// await expectFocusedItem(1);
 			await Page.spotlightDown();
 			await Page.spotlightDown();
 			await Page.spotlightDown();
 			await Page.spotlightDown();
 			await Page.spotlightDown();
-			await expectFocusedItem(6);  // Check that Spotlight is on an item
+			await await expectFocusedItem(6);  // Check that Spotlight is on an item
 			await Page.spotlightRight();
 			expect(await Page.buttonScrollDown.isFocused(), 'step 4 focus').to.be.true();
 			// Step 5. Press Channel Down two times.
@@ -240,7 +240,7 @@ describe('VirtualList', function () {
 			await Page.spotlightDown();
 			await Page.spotlightRight();
 			await Page.spotlightDown();
-			expectFocusedItem(1); // Check that Spotlight is on an item
+			await expectFocusedItem(1); // Check that Spotlight is on an item
 			await Page.spotlightRight();
 			expect(await Page.buttonScrollUp.isFocused(), 'step 2.2 focus').to.be.true();
 			await Page.spotlightDown();
@@ -254,9 +254,9 @@ describe('VirtualList', function () {
 			// Step 4.1. 5-way Spot the item below the last item on a current page.
 			for (let i = 0; i < 12; ++i) {
 				await Page.spotlightDown();
-				waitUntilFocused(i + 1);
+				await waitUntilFocused(i + 1);
 			}
-			expectFocusedItem(12);
+			await expectFocusedItem(12);
 			// Step 4.2. 5-way Right.
 			await Page.spotlightRight();
 			// Verify Step 4: Spotlight displays on the Down Paging Control (∨).
@@ -287,7 +287,7 @@ describe('VirtualList', function () {
 			// Step 5. Move focus to the first item ('Item 00').
 			await Page.spotlightRight();
 			// Verify Step 5: 1. Spotlight displays on the first item. 2. Up Paging Control (∧) is Disabled.
-			await expectFocusedItem(0, 'step 5.1 focus');
+			await await expectFocusedItem(0, 'step 5.1 focus');
 			expect(await Page.buttonScrollUp.getAttribute('disabled'), ' Step 5 Up disabled').to.be.equal('true');
 			// Step 6. 5-way Right.
 			await Page.spotlightRight();
@@ -296,13 +296,13 @@ describe('VirtualList', function () {
 			expect(await Page.buttonScrollUp.getAttribute('disabled'), ' Step 5 Up disabled').to.be.equal('true');
 			// Step 7. 5-way Spot the last item in the list.
 			await Page.spotlightLeft(); // to spot item 0 at the top of the list
-			expectFocusedItem(0);
+			await expectFocusedItem(0);
 			for (let i = 0; i < 99; ++i) {
 				await Page.spotlightDown();
-				await waitUntilFocused(i + 1);
+				await await waitUntilFocused(i + 1);
 			}
 			// Verify Step 7: 1. Spotlight displays on the last item.
-			await expectFocusedItem(99, 'step 7.1 focus');
+			await await expectFocusedItem(99, 'step 7.1 focus');
 			await Page.delay(1500); // needed to validate the buttonScrollDown is disabled
 			// Verify Step 7: 2. Down Paging Control (∨) is Disabled.
 			expect(await Page.buttonScrollDown.getAttribute('disabled'), ' Step 7 Down disabled').to.be.equal('true');
@@ -321,7 +321,7 @@ describe('VirtualList', function () {
 			// Step 4. Move focus to the first item ('Item 00').
 			await Page.spotlightRight();
 			// Verify Step 4: 1. Spotlight displays on the first item.
-			await expectFocusedItem(0, 'focus Item 0');
+			await await expectFocusedItem(0, 'focus Item 0');
 			// Verify Step 4: 2. Up Paging Control (∧) is Disabled.
 			expect(await Page.buttonScrollUp.getAttribute('disabled'), 'Up disabled').to.be.equal('true');
 			// Verify Step 4: 3. Down Paging Control (∨) is Enabled.
@@ -337,7 +337,7 @@ describe('VirtualList', function () {
 			expect(await Page.buttonScrollDown.getAttribute('disabled'), 'Down enabled').to.be.null();
 			// Verify Step 5: 5. Spotlight is on the item below the pointer when the list stops.
 			await Page.delay(1000);
-			await expectFocusedItem(8, 'focus Item 8');
+			await await expectFocusedItem(8, 'focus Item 8');
 			// Step 6. Press Channel Down.
 			await Page.pageDown();
 			// Verify Step 6: 1. Spotlight hides.
@@ -349,23 +349,23 @@ describe('VirtualList', function () {
 			expect(await Page.buttonScrollDown.getAttribute('disabled'), 'Down enabled').to.be.null();
 			// Verify Step 6: 5. Spotlight is on the item below the pointer when the list stops.
 			await Page.delay(1000);
-			await expectFocusedItem(16, 'focus Item 16');
+			await await expectFocusedItem(16, 'focus Item 16');
 			// Step 7. 5-way Down several times to scroll down the list.
 			for (let i = 16; i <= 29; ++i) {
 				await Page.spotlightDown();
-				await waitUntilFocused(i + 1);
+				await await waitUntilFocused(i + 1);
 			}
-			await expectFocusedItem(30, 'focus Item 30');
+			await await expectFocusedItem(30, 'focus Item 30');
 			// Verify Step 7: Up Paging Control (∧) is still Enabled.
 			expect(await Page.buttonScrollUp.getAttribute('disabled'), 'Up enabled').to.be.null();
 			// Step 8. 5-way Spot the last item.
 			for (let i = 30; i < 99; ++i) {
 				await Page.spotlightDown();
-				await waitUntilFocused(i + 1);
+				await await waitUntilFocused(i + 1);
 				await waitUntilVisible(i + 1);
 			}
 			// Verify Step 8: 1. Spotlight displays on the last item.
-			await expectFocusedItem(99, 'focus Item 99');
+			await await expectFocusedItem(99, 'focus Item 99');
 			// Verify Step 8: 2. Up Paging Control (∧) is still Enabled.
 			await Page.delay(1000);
 			expect(await Page.buttonScrollUp.getAttribute('disabled'), 'Up enabled').to.be.null();
@@ -375,11 +375,11 @@ describe('VirtualList', function () {
 			// Step 9: 5-way Spot the first item.
 			for (let i = 0; i < 99; ++i) {
 				await Page.spotlightUp();
-				await waitUntilFocused(98 - i);
+				await await waitUntilFocused(98 - i);
 				await waitUntilVisible(98 - i);
 			}
 			// Verify Step 9: 1. Spotlight displays on the first item.
-			await expectFocusedItem(0, 'focus Item 0');
+			await await expectFocusedItem(0, 'focus Item 0');
 			// Verify Step 9: 2. Up Paging Control (∧) is Disabled.
 			await Page.delay(1000);
 			expect(await Page.buttonScrollUp.getAttribute('disabled'), 'Up disabled').to.be.equal('true');
@@ -398,27 +398,27 @@ describe('VirtualList', function () {
 			await Page.item(bottomId).moveTo({yOffset:10}); // The upper part of the item, not the center
 			// Verify Step 3: Spotlight displays on the item.
 			await Page.delay(1000); // needed to run on mpc
-			await expectFocusedItem(Number(((await Page.bottomVisibleItemId()).slice(4))), 'focus bottomId');
+			await await expectFocusedItem(Number(((await Page.bottomVisibleItemId()).slice(4))), 'focus bottomId');
 			// Step 4. 5-way Down to the item below the last item on the current page.
 			await Page.spotlightDown();
 			// Verify Step 4: 1. The list Scrolled Up.  2 The Spotted item is placed on the Bottom.
 			await Page.delay(1000); // needed to run on mpc
-			await expectFocusedItem(Number(((await Page.bottomVisibleItemId()).slice(4))), 'focus bottomId');
+			await await expectFocusedItem(Number(((await Page.bottomVisibleItemId()).slice(4))), 'focus bottomId');
 			// Step 5: 5-way Up to the previous item.
 			await Page.spotlightUp();
 			// Verify Step 5: 1. The list *does not* Scroll Down.
 			// Check the bottomVisibleItem is still the same as the one before 5-way Up to check the list did not scroll Down
 			expect(Number(bottomId.slice(4)) === ((Number(((await Page.bottomVisibleItemId()).slice(4))))) - 1).to.be.true();
 			// Verify Step 5: 2. The Spotted item is placed above the item on the Bottom.
-			await expectFocusedItem(Number((bottomId.slice(4))), 'focus bottomId');
+			await await expectFocusedItem(Number((bottomId.slice(4))), 'focus bottomId');
 			// Step 6: 5-way Up to the first item ('*Item 000*').
 			for (let i = Number(bottomId.slice(4)); i > 0; i--) {
 				await Page.spotlightUp();
-				await waitUntilFocused(i - 1);
+				await await waitUntilFocused(i - 1);
 			}
 			await waitForScrollStop();	// Could trigger scrolling if partially visible
 			// Verify Step 6:  1. The list Scroll Down. 2. The Spotted item is placed on the Top.
-			expectFocusedItem(Number(((await Page.topVisibleItemId()).slice(4))), 'focus top visible');
+			await expectFocusedItem(Number(((await Page.topVisibleItemId()).slice(4))), 'focus top visible');
 		});
 
 		describe('onKeyDown event behavior [GT-27663]', function () {
@@ -426,11 +426,11 @@ describe('VirtualList', function () {
 				await Page.spotlightSelect();
 				await Page.spotlightDown();
 				await Page.spotlightRight();
-				await expectFocusedItem(0, 'focus 1');
+				await await expectFocusedItem(0, 'focus 1');
 				await Page.spotlightDown();
-				await expectFocusedItem(1, 'focus 2');
+				await await expectFocusedItem(1, 'focus 2');
 				await Page.spotlightUp();
-				await expectFocusedItem(0, 'focus 3');
+				await await expectFocusedItem(0, 'focus 3');
 				await Page.spotlightRight();
 				expect(await Page.buttonScrollUp.isFocused(), 'focus 4').to.be.true();
 				await Page.spotlightDown();
@@ -438,7 +438,7 @@ describe('VirtualList', function () {
 				await Page.spotlightUp();
 				expect(await Page.buttonScrollUp.isFocused(), 'focus 6').to.be.true();
 				await Page.spotlightLeft();
-				await expectFocusedItem(0, 'focus 7');
+				await await expectFocusedItem(0, 'focus 7');
 				expect(await Page.list.getAttribute('data-keydown-events')).to.be.null();
 			});
 
@@ -448,13 +448,13 @@ describe('VirtualList', function () {
 				await Page.spotlightSelect();
 				await Page.spotlightDown();
 				await Page.spotlightRight();
-				expectFocusedItem(0, 'focus 1');
+				await expectFocusedItem(0, 'focus 1');
 				await Page.spotlightUp();
 				await Page.delay(1500);  // TODO: Need better way to detect scroll end
-				expectFocusedItem(99, 'focus 2');
+				await expectFocusedItem(99, 'focus 2');
 				await Page.spotlightDown();
 				await Page.delay(1500);  // TODO: Need better way to detect scroll end
-				expectFocusedItem(0, 'focus 3');
+				await expectFocusedItem(0, 'focus 3');
 				expect(await Page.list.getAttribute('data-keydown-events')).to.be.null();
 			});
 
@@ -479,17 +479,17 @@ describe('VirtualList', function () {
 				await Page.spotlightSelect();
 				await Page.spotlightDown();
 				await Page.spotlightRight();
-				expectFocusedItem(0, 'focus 1');
+				await expectFocusedItem(0, 'focus 1');
 				await Page.spotlightUp();
 				await Page.spotlightDown();
 				await Page.spotlightLeft();
 				await Page.spotlightRight();
-				expectFocusedItem(0, 'focus 2');
+				await expectFocusedItem(0, 'focus 2');
 				for (let i = 0; i < 99; ++i) {
 					await Page.spotlightDown();
-					waitUntilFocused(i + 1);
+					await waitUntilFocused(i + 1);
 				}
-				expectFocusedItem(99, 'focus 3');
+				await expectFocusedItem(99, 'focus 3');
 				await Page.spotlightDown();
 				expect(await Page.list.getAttribute('data-keydown-events')).to.equal('3');
 			});
@@ -501,7 +501,7 @@ describe('VirtualList', function () {
 				await Page.spotlightSelect();
 				await Page.spotlightDown();
 				await Page.spotlightRight();
-				expectFocusedItem(0, 'focus 1');
+				await expectFocusedItem(0, 'focus 1');
 				await Page.spotlightUp();
 				expect(await Page.buttonTop.isFocused(), 'focus 2').to.be.true();
 				await Page.spotlightDown();
@@ -511,12 +511,12 @@ describe('VirtualList', function () {
 				await Page.spotlightRight();
 				expect(await Page.buttonRight.isFocused(), 'focus 4').to.be.true();
 				await Page.spotlightLeft();
-				expectFocusedItem(0, 'focus 5');
+				await expectFocusedItem(0, 'focus 5');
 				for (let i = 0; i < 99; ++i) {
 					await Page.spotlightDown();
-					waitUntilFocused(i + 1);
+					await waitUntilFocused(i + 1);
 				}
-				expectFocusedItem(99, 'focus 6');
+				await expectFocusedItem(99, 'focus 6');
 				await Page.delay(1500);
 				await Page.spotlightDown();
 				expect(await Page.buttonBottom.isFocused(), 'focus 7').to.be.true();
@@ -527,7 +527,7 @@ describe('VirtualList', function () {
 			it('should allow bubbling while navigating out of a list using non-focusableScrollbar via items', async function () {
 				await Page.spotlightDown();
 				await Page.spotlightRight();
-				expectFocusedItem(0, 'focus 1');
+				await expectFocusedItem(0, 'focus 1');
 				await Page.spotlightUp();
 				expect(await Page.buttonTop.isFocused(), 'focus 2').to.be.true();
 				await Page.spotlightDown();
@@ -537,12 +537,12 @@ describe('VirtualList', function () {
 				await Page.spotlightRight();
 				expect(await Page.buttonRight.isFocused(), 'focus 4').to.be.true();
 				await Page.spotlightLeft();
-				expectFocusedItem(0, 'focus 5');
+				await expectFocusedItem(0, 'focus 5');
 				for (let i = 0; i < 99; ++i) {
 					await Page.spotlightDown();
-					waitUntilFocused(i + 1);
+					await waitUntilFocused(i + 1);
 				}
-				expectFocusedItem(99, 'focus 6');
+				await expectFocusedItem(99, 'focus 6');
 				await Page.delay(1500);
 				await Page.spotlightDown();
 				expect(await Page.buttonBottom.isFocused(), 'focus 7').to.be.true();
@@ -553,7 +553,7 @@ describe('VirtualList', function () {
 		describe('VirtualList with Wheeling', function () {
 
 			it('Items Animate via Clicking on Page Controls [GT-21571]', async function () {
-				const scrollDistance = Math.round(Page.listSize.height * 0.66);
+				const scrollDistance = Math.round((await Page.listSize).height * 0.66);
 				let elementId, initialTop, newTop, travelDistance;
 				await Page.spotlightDown();
 				await Page.spotlightRight();
@@ -589,7 +589,6 @@ describe('VirtualList', function () {
 		});
 
 		describe('RTL locale', function () {
-
 			beforeEach(async function () {
 				await Page.open('?locale=ar-SA');
 			});
@@ -601,7 +600,7 @@ describe('VirtualList', function () {
 				await Page.spotlightLeft();
 				await Page.spotlightDown();
 				// Verify Step 3.1:  The list displays Right aligned.
-				expectFocusedItem(1);
+				await expectFocusedItem(1);
 				await Page.spotlightLeft();
 				// Verify Step 3.2: Paging Controls display left aligned.
 				expect(await Page.buttonScrollUp.isFocused(), 'step 3 focus').to.be.true();

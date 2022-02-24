@@ -16,7 +16,7 @@ function validateTitle (picker, title) {
 
 // Expects are blocks of expects or other commands to be embedded in an 'it' statement
 async function expectClosed (picker) {
-	expect(await picker.isOpen).to.be.false();
+	expect(await picker.isOpen()).to.be.false();
 }
 
 async function expectNoLabels (picker) {
@@ -26,7 +26,7 @@ async function expectNoLabels (picker) {
 }
 
 async function expectOpen (picker) {
-	expect(await picker.isOpen).to.be.true();
+	expect(await picker.isOpen()).to.be.true();
 }
 
 module.exports = {

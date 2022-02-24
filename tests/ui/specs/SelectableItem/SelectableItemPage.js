@@ -19,11 +19,11 @@ class SelectableItemInterface {
 	get valueText () {
 		return getText(getMarqueeText(this.self));
 	}
-	get isSelected () {
-		return !!element('.SelectableItem_SelectableIcon_selected', this.self).isExisting();
+	async isSelected () {
+		return !!await element('.SelectableItem_SelectableIcon_selected', this.self).isExisting();
 	}
-	get isToggled () {
-		return !!element('.enact_ui_ToggleIcon_ToggleIcon_selected', this.self).isExisting();
+	async isToggled () {
+		return !!await element('.enact_ui_ToggleIcon_ToggleIcon_selected', this.self).isExisting();
 	}
 	get isInline () {
 		return browser.$(`#${this.id}.Item_Item_inline`).isExisting();

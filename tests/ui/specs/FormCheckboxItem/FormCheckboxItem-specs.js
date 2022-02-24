@@ -19,7 +19,7 @@ describe('FormCheckboxItem', function () {
 		});
 
 		it('should not be checked', async function () {
-			expectUnchecked(FormCheckboxItem);
+			await expectUnchecked(FormCheckboxItem);
 		});
 
 		it('should display icon before the text', async function () {
@@ -29,13 +29,13 @@ describe('FormCheckboxItem', function () {
 		describe('5-way', function () {
 			it('should check the item when selected', async function () {
 				await Page.spotlightSelect();
-				expectChecked(FormCheckboxItem);
+				await expectChecked(FormCheckboxItem);
 			});
 
 			it('should re-uncheck the item when selected twice', async function () {
 				await Page.spotlightSelect();
 				await Page.spotlightSelect();
-				expectUnchecked(FormCheckboxItem);
+				await expectUnchecked(FormCheckboxItem);
 			});
 
 			it('should display check icon when selected', async function () {
@@ -57,14 +57,14 @@ describe('FormCheckboxItem', function () {
 
 		describe('pointer', function () {
 			it('should check the item when clicked', async function () {
-				FormCheckboxItem.self.click();
-				expectChecked(FormCheckboxItem);
+				await FormCheckboxItem.self.click();
+				await expectChecked(FormCheckboxItem);
 			});
 
 			it('should re-uncheck the item when clicked twice', async function () {
-				FormCheckboxItem.self.click();
-				FormCheckboxItem.self.click();
-				expectUnchecked(FormCheckboxItem);
+				await FormCheckboxItem.self.click();
+				await FormCheckboxItem.self.click();
+				await expectUnchecked(FormCheckboxItem);
 			});
 
 			it('should display check icon when clicked', async function () {
@@ -82,7 +82,7 @@ describe('FormCheckboxItem', function () {
 		});
 
 		it('should be checked', async function () {
-			expectChecked(FormCheckboxItem);
+			await expectChecked(FormCheckboxItem);
 		});
 
 		it('should display correct icon', async function () {
@@ -91,29 +91,29 @@ describe('FormCheckboxItem', function () {
 
 		describe('5-way', function () {
 			it('should uncheck the item when selected', async function () {
-				FormCheckboxItem.focus();
+				await FormCheckboxItem.focus();
 				await Page.spotlightSelect();
-				expectUnchecked(FormCheckboxItem);
+				await expectUnchecked(FormCheckboxItem);
 			});
 
 			it('should re-check the item when selected twice', async function () {
-				FormCheckboxItem.focus();
+				await FormCheckboxItem.focus();
 				await Page.spotlightSelect();
 				await Page.spotlightSelect();
-				expectChecked(FormCheckboxItem);
+				await expectChecked(FormCheckboxItem);
 			});
 		});
 
 		describe('pointer', function () {
 			it('should uncheck the item when clicked', async function () {
-				FormCheckboxItem.self.click();
-				expectUnchecked(FormCheckboxItem);
+				await FormCheckboxItem.self.click();
+				await expectUnchecked(FormCheckboxItem);
 			});
 
 			it('should re-check the item when clicked twice', async function () {
-				FormCheckboxItem.self.click();
-				FormCheckboxItem.self.click();
-				expectChecked(FormCheckboxItem);
+				await FormCheckboxItem.self.click();
+				await FormCheckboxItem.self.click();
+				await expectChecked(FormCheckboxItem);
 			});
 		});
 	});
@@ -125,8 +125,8 @@ describe('FormCheckboxItem', function () {
 			expect(await FormCheckboxItem.valueText).to.equal('FormCheckbox Item after');
 		});
 
-		it('should be checked', function () {
-			expectChecked(FormCheckboxItem);
+		it('should be checked', async function () {
+			await expectChecked(FormCheckboxItem);
 		});
 
 		it('should display icon after the text', async function () {
@@ -135,29 +135,29 @@ describe('FormCheckboxItem', function () {
 
 		describe('5-way', function () {
 			it('should uncheck the item when selected', async function () {
-				FormCheckboxItem.focus();
+				await FormCheckboxItem.focus();
 				await Page.spotlightSelect();
-				expectUnchecked(FormCheckboxItem);
+				await expectUnchecked(FormCheckboxItem);
 			});
 
 			it('should re-check the item when selected twice', async function () {
-				FormCheckboxItem.focus();
+				await FormCheckboxItem.focus();
 				await Page.spotlightSelect();
 				await Page.spotlightSelect();
-				expectChecked(FormCheckboxItem);
+				await expectChecked(FormCheckboxItem);
 			});
 		});
 
 		describe('pointer', function () {
 			it('should uncheck the item when clicked', async function () {
-				FormCheckboxItem.self.click();
-				expectUnchecked(FormCheckboxItem);
+				await FormCheckboxItem.self.click();
+				await expectUnchecked(FormCheckboxItem);
 			});
 
 			it('should re-check the item when clicked twice', async function () {
-				FormCheckboxItem.self.click();
-				FormCheckboxItem.self.click();
-				expectChecked(FormCheckboxItem);
+				await FormCheckboxItem.self.click();
+				await FormCheckboxItem.self.click();
+				await expectChecked(FormCheckboxItem);
 			});
 		});
 	});
@@ -169,8 +169,8 @@ describe('FormCheckboxItem', function () {
 			expect(await FormCheckboxItem.valueText).to.equal('FormCheckbox Item inline');
 		});
 
-		it('should be checked', function () {
-			expectChecked(FormCheckboxItem);
+		it('should be checked', async function () {
+			await expectChecked(FormCheckboxItem);
 		});
 
 		it('should display icon before the text', async function () {
@@ -183,29 +183,29 @@ describe('FormCheckboxItem', function () {
 
 		describe('5-way', function () {
 			it('should uncheck the item when selected', async function () {
-				FormCheckboxItem.focus();
+				await FormCheckboxItem.focus();
 				await Page.spotlightSelect();
-				expectUnchecked(FormCheckboxItem);
+				await expectUnchecked(FormCheckboxItem);
 			});
 
 			it('should re-check the item when selected twice', async function () {
-				FormCheckboxItem.focus();
+				await FormCheckboxItem.focus();
 				await Page.spotlightSelect();
 				await Page.spotlightSelect();
-				expectChecked(FormCheckboxItem);
+				await expectChecked(FormCheckboxItem);
 			});
 		});
 
 		describe('pointer', function () {
 			it('should uncheck the item when clicked', async function () {
-				FormCheckboxItem.self.click();
-				expectUnchecked(FormCheckboxItem);
+				await FormCheckboxItem.self.click();
+				await expectUnchecked(FormCheckboxItem);
 			});
 
 			it('should re-check the item when clicked twice', async function () {
-				FormCheckboxItem.self.click();
-				FormCheckboxItem.self.click();
-				expectChecked(FormCheckboxItem);
+				await FormCheckboxItem.self.click();
+				await FormCheckboxItem.self.click();
+				await expectChecked(FormCheckboxItem);
 			});
 		});
 	});
@@ -218,7 +218,7 @@ describe('FormCheckboxItem', function () {
 		});
 
 		it('should be checked', async function () {
-			expectChecked(FormCheckboxItem);
+			await expectChecked(FormCheckboxItem);
 		});
 
 		it('should display icon after the text', async function () {
@@ -231,29 +231,29 @@ describe('FormCheckboxItem', function () {
 
 		describe('5-way', function () {
 			it('should uncheck the item when selected', async function () {
-				FormCheckboxItem.focus();
+				await FormCheckboxItem.focus();
 				await Page.spotlightSelect();
-				expectUnchecked(FormCheckboxItem);
+				await expectUnchecked(FormCheckboxItem);
 			});
 
 			it('should re-check the item when selected twice', async function () {
-				FormCheckboxItem.focus();
+				await FormCheckboxItem.focus();
 				await Page.spotlightSelect();
 				await Page.spotlightSelect();
-				expectChecked(FormCheckboxItem);
+				await expectChecked(FormCheckboxItem);
 			});
 		});
 
 		describe('pointer', function () {
 			it('should uncheck the item when clicked', async function () {
-				FormCheckboxItem.self.click();
-				expectUnchecked(FormCheckboxItem);
+				await FormCheckboxItem.self.click();
+				await expectUnchecked(FormCheckboxItem);
 			});
 
 			it('should re-check the item when clicked twice', async function () {
-				FormCheckboxItem.self.click();
-				FormCheckboxItem.self.click();
-				expectChecked(FormCheckboxItem);
+				await FormCheckboxItem.self.click();
+				await FormCheckboxItem.self.click();
+				await expectChecked(FormCheckboxItem);
 			});
 		});
 	});
@@ -270,7 +270,7 @@ describe('FormCheckboxItem', function () {
 		});
 
 		it('should be checked', async function () {
-			expectChecked(FormCheckboxItem);
+			await expectChecked(FormCheckboxItem);
 		});
 
 		it('should display icon before the text', async function () {
@@ -285,16 +285,16 @@ describe('FormCheckboxItem', function () {
 			});
 
 			it('should not uncheck the item when selected', async function () {
-				FormCheckboxItem.focus();
+				await FormCheckboxItem.focus();
 				await Page.spotlightSelect();
-				expectChecked(FormCheckboxItem);
+				await expectChecked(FormCheckboxItem);
 			});
 		});
 
 		describe('pointer', function () {
 			it('should not uncheck the item when clicked', async function () {
-				FormCheckboxItem.self.click();
-				expectChecked(FormCheckboxItem);
+				await FormCheckboxItem.self.click();
+				await expectChecked(FormCheckboxItem);
 			});
 		});
 	});
@@ -311,7 +311,7 @@ describe('FormCheckboxItem', function () {
 		});
 
 		it('should be checked', async function () {
-			expectChecked(FormCheckboxItem);
+			await expectChecked(FormCheckboxItem);
 		});
 
 		it('should display item inline', async function () {
@@ -324,21 +324,21 @@ describe('FormCheckboxItem', function () {
 
 		describe('5-way', function () {
 			it('should be able to focus the item', async function () {
-				FormCheckboxItem.focus();
+				await FormCheckboxItem.focus();
 				await Page.spotlightDown();
 				expect( await formCheckboxInlineDisabled.self.isFocused()).to.be.true();
 			});
 			it('should not uncheck the item when selected', async function () {
-				FormCheckboxItem.focus();
+				await FormCheckboxItem.focus();
 				await Page.spotlightSelect();
-				expectChecked(FormCheckboxItem);
+				await expectChecked(FormCheckboxItem);
 			});
 		});
 
 		describe('pointer', function () {
 			it('should not uncheck the item when clicked', async function () {
-				FormCheckboxItem.self.click();
-				expectChecked(FormCheckboxItem);
+				await FormCheckboxItem.self.click();
+				await expectChecked(FormCheckboxItem);
 			});
 		});
 		// Note, the disabled test above requires the previous component to be known for 5-way

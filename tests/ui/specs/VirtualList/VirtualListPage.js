@@ -9,7 +9,6 @@ class VirtualListPage extends Page {
 	constructor () {
 		super();
 		this.title = 'VirtualList Test';
-
 	}
 
 	async open (urlExtra) {
@@ -107,7 +106,7 @@ class VirtualListPage extends Page {
 	async itemOffsetTopById (id) {
 		return await browser.execute(function (_element) {
 			return _element.getBoundingClientRect().top;
-		}, this.item(id));
+		}, await this.item(id));
 	}
 }
 
