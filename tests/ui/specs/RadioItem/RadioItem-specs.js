@@ -47,13 +47,13 @@ describe('RadioItem', function () {
 
 		describe('pointer', function () {
 			it('should select the item when clicked', async function () {
-				radioItem.self.click();
+				await radioItem.self.click();
 				expect(await radioItem.isSelected).to.be.true();
 			});
 
 			it('should re-unselect the item when clicked twice', async function () {
-				radioItem.self.click();
-				radioItem.self.click();
+				await radioItem.self.click();
+				await radioItem.self.click();
 				expect(await radioItem.isSelected).to.be.false();
 			});
 		});
@@ -72,13 +72,13 @@ describe('RadioItem', function () {
 
 		describe('5-way', function () {
 			it('should unselect the item when selected', async function () {
-				radioItem.focus();
+				await radioItem.focus();
 				await Page.spotlightSelect();
 				expect(await radioItem.isSelected).to.be.false();
 			});
 
 			it('should re-select the item when selected twice', async function () {
-				radioItem.focus();
+				await radioItem.focus();
 				await Page.spotlightSelect();
 				await Page.spotlightSelect();
 				expect(await radioItem.isSelected).to.be.true();
@@ -87,13 +87,13 @@ describe('RadioItem', function () {
 
 		describe('pointer', function () {
 			it('should unselect the item when clicked', async function () {
-				radioItem.self.click();
+				await radioItem.self.click();
 				expect(await radioItem.isSelected).to.be.false();
 			});
 
 			it('should re-select the item when clicked twice', async function () {
-				radioItem.self.click();
-				radioItem.self.click();
+				await radioItem.self.click();
+				await radioItem.self.click();
 				expect(await radioItem.isSelected).to.be.true();
 			});
 		});
@@ -116,13 +116,13 @@ describe('RadioItem', function () {
 
 		describe('5-way', function () {
 			it('should unselect the item when selected', async function () {
-				radioItem.focus();
+				await radioItem.focus();
 				await Page.spotlightSelect();
 				expect(await radioItem.isSelected).to.be.false();
 			});
 
 			it('should re-select the item when selected twice', async function () {
-				radioItem.focus();
+				await radioItem.focus();
 				await Page.spotlightSelect();
 				await Page.spotlightSelect();
 				expect(await radioItem.isSelected).to.be.true();
@@ -131,13 +131,13 @@ describe('RadioItem', function () {
 
 		describe('pointer', function () {
 			it('should unselect the item when clicked', async function () {
-				radioItem.self.click();
+				await radioItem.self.click();
 				expect(await radioItem.isSelected).to.be.false();
 			});
 
 			it('should re-select the item when clicked twice', async function () {
-				radioItem.self.click();
-				radioItem.self.click();
+				await radioItem.self.click();
+				await radioItem.self.click();
 				expect(await radioItem.isSelected).to.be.true();
 			});
 		});
@@ -160,7 +160,7 @@ describe('RadioItem', function () {
 
 		describe('5-way', function () {
 			it('should be able to focus the item', async function () {
-				prevRadioItem.focus();
+				await prevRadioItem.focus();
 				await Page.spotlightDown();
 				expect(await radioItem.self.isFocused()).to.be.true();
 			});
@@ -168,7 +168,7 @@ describe('RadioItem', function () {
 
 		describe('pointer', function () {
 			it('should not unselect the item when clicked', async function () {
-				radioItem.self.click();
+				await radioItem.self.click();
 				expect(await radioItem.isSelected).to.be.true();
 			});
 		});
@@ -195,12 +195,12 @@ describe('RadioItem', function () {
 
 		describe('5-way', function () {
 			it('should be able to focus the item', async function () {
-				radioDisabled.focus();
+				await radioDisabled.focus();
 				await Page.spotlightDown();
 				expect(await radioItem.self.isFocused()).to.be.true();
 			});
 			it('should not unselect the item when selected', async function () {
-				radioItem.focus();
+				await radioItem.focus();
 				await Page.spotlightSelect();
 				expect(await radioItem.isSelected).to.be.true();
 			});
@@ -208,7 +208,7 @@ describe('RadioItem', function () {
 
 		describe('pointer', function () {
 			it('should not unselect the item when clicked', async function () {
-				radioItem.self.click();
+				await radioItem.self.click();
 				expect(await radioItem.isSelected).to.be.true();
 			});
 		});

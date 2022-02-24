@@ -1,6 +1,6 @@
 async function focusedElement () {
-	return await browser.execute(async function () {
-		return await document.activeElement.id;
+	return await browser.execute(function () {
+		return document.activeElement.id;
 	});
 }
 
@@ -16,20 +16,20 @@ async function hitTest (_selector) {
 }
 
 async function expectFocusedItem (itemNum, comment = 'focused item') {
-	const focusedId = focusedElement();
+	const focusedId = await focusedElement();
 	expect(await focusedId, comment).to.equal(`item${itemNum}`);
 }
 
 async function expectNoFocusedItem () {
 	expect(await browser.execute(async function () {
-		return await document.activeElement === document.body;
+		return document.activeElement === document.body;
 	})).to.be.true();
 }
 
 async function waitUntilFocused (itemNum) {
 	const target = `item${itemNum}`;
 	await browser.waitUntil(async function () {
-		const focusedId = focusedElement();
+		const focusedId = await focusedElement();
 		return target === focusedId;
 	}, 1500, `timed out waiting to focus index ${itemNum}`);
 }

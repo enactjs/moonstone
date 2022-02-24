@@ -48,13 +48,13 @@ describe('SelectableItem', function () {
 
 		describe('pointer', function () {
 			it('should select the item when clicked', async function () {
-				selectableItem.self.click();
+				await selectableItem.self.click();
 				expectSelected(selectableItem);
 			});
 
 			it('should re-unselect the item when clicked twice', async function () {
-				selectableItem.self.click();
-				selectableItem.self.click();
+				await selectableItem.self.click();
+				await selectableItem.self.click();
 				expectUnselected(selectableItem);
 			});
 		});
@@ -73,13 +73,13 @@ describe('SelectableItem', function () {
 
 		describe('5-way', function () {
 			it('should unselect the item when selected', async function () {
-				selectableItem.focus();
+				await selectableItem.focus();
 				await Page.spotlightSelect();
 				expectUnselected(selectableItem);
 			});
 
 			it('should re-select the item when selected twice', async function () {
-				selectableItem.focus();
+				await selectableItem.focus();
 				await Page.spotlightSelect();
 				await Page.spotlightSelect();
 				expectSelected(selectableItem);
@@ -88,13 +88,13 @@ describe('SelectableItem', function () {
 
 		describe('pointer', function () {
 			it('should unselect the item when clicked', async function () {
-				selectableItem.self.click();
+				await selectableItem.self.click();
 				expectUnselected(selectableItem);
 			});
 
 			it('should re-select the item when clicked twice', async function () {
-				selectableItem.self.click();
-				selectableItem.self.click();
+				await selectableItem.self.click();
+				await selectableItem.self.click();
 				expectSelected(selectableItem);
 			});
 		});
@@ -117,13 +117,13 @@ describe('SelectableItem', function () {
 
 		describe('5-way', function () {
 			it('should unselect the item when selected', async function () {
-				selectableItem.focus();
+				await selectableItem.focus();
 				await Page.spotlightSelect();
 				expectUnselected(selectableItem);
 			});
 
 			it('should re-select the item when selected twice', async function () {
-				selectableItem.focus();
+				await selectableItem.focus();
 				await Page.spotlightSelect();
 				await Page.spotlightSelect();
 				expectSelected(selectableItem);
@@ -132,13 +132,13 @@ describe('SelectableItem', function () {
 
 		describe('pointer', function () {
 			it('should unselect the item when clicked', async function () {
-				selectableItem.self.click();
+				await selectableItem.self.click();
 				expectUnselected(selectableItem);
 			});
 
 			it('should re-select the item when clicked twice', async function () {
-				selectableItem.self.click();
-				selectableItem.self.click();
+				await selectableItem.self.click();
+				await selectableItem.self.click();
 				expectSelected(selectableItem);
 			});
 		});
@@ -161,7 +161,7 @@ describe('SelectableItem', function () {
 
 		describe('5-way', function () {
 			it('should be able to focus the item', async function () {
-				prevSelectableItem.focus();
+				await prevSelectableItem.focus();
 				await Page.spotlightDown();
 				expect(await selectableItem.self.isFocused()).to.be.true();
 			});
@@ -169,7 +169,7 @@ describe('SelectableItem', function () {
 
 		describe('pointer', function () {
 			it('should not unselect the item when clicked', async function () {
-				selectableItem.self.click();
+				await selectableItem.self.click();
 				expectSelected(selectableItem);
 			});
 		});
@@ -196,12 +196,12 @@ describe('SelectableItem', function () {
 
 		describe('5-way', function () {
 			it('should be able to focus the item', async function () {
-				selectableDisabled.focus();
+				await selectableDisabled.focus();
 				await Page.spotlightDown();
 				expect(await selectableItem.self.isFocused()).to.be.true();
 			});
 			it('should not unselect the item when selected', async function () {
-				selectableItem.focus();
+				await selectableItem.focus();
 				await Page.spotlightSelect();
 				expectSelected(selectableItem);
 			});
@@ -209,7 +209,7 @@ describe('SelectableItem', function () {
 
 		describe('pointer', function () {
 			it('should not unselect the item when clicked', async function () {
-				selectableItem.self.click();
+				await selectableItem.self.click();
 				expectSelected(selectableItem);
 			});
 		});

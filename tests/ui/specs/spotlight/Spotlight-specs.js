@@ -92,7 +92,7 @@ describe('Spotlight', function () {
 			await Page.open();
 			await Page.restoreButton.moveTo();
 			await Page.spotlightUp();
-			browser.pause(5000);
+			await browser.pause(5000);
 			expect(await Page.restoreButton.isFocused()).to.be.true();
 		});
 	});

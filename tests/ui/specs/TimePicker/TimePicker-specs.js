@@ -27,7 +27,7 @@ describe('TimePicker', function () {
 			});
 
 			it('should have hour-minute-meridiem order', async function () {
-				Page.waitTransitionEnd(3000, undefined, () => {
+				await Page.waitTransitionEnd(3000, undefined, () => {
 					Page.spotlightSelect();
 				});
 
@@ -42,7 +42,7 @@ describe('TimePicker', function () {
 
 			describe('5-way', function () {
 				it('should open, spot hour picker on select, and update value to current time', async function () {
-					Page.waitTransitionEnd(3000, undefined, () => {
+					await Page.waitTransitionEnd(3000, undefined, () => {
 						Page.spotlightSelect();
 					});
 
@@ -52,12 +52,12 @@ describe('TimePicker', function () {
 				});
 
 				it('should close when pressing select', async function () {
-					Page.waitTransitionEnd(3000, undefined, () => {
+					await Page.waitTransitionEnd(3000, undefined, () => {
 						Page.spotlightSelect();
 					});
 
 					expectOpen(timePicker);
-					Page.waitTransitionEnd(3000, undefined, () => {
+					await Page.waitTransitionEnd(3000, undefined, () => {
 						Page.spotlightSelect();
 					});
 
@@ -65,7 +65,7 @@ describe('TimePicker', function () {
 				});
 
 				it('should focus title when 5-way right from last picker - [GT-25237]', async function () {
-					Page.waitTransitionEnd(3000, undefined, () => {
+					await Page.waitTransitionEnd(3000, undefined, () => {
 						Page.spotlightSelect();
 					});
 
@@ -78,14 +78,14 @@ describe('TimePicker', function () {
 				});
 
 				it('should increase the hour when incrementing the picker', async function () {
-					Page.waitTransitionEnd(3000, undefined, () => {
+					await Page.waitTransitionEnd(3000, undefined, () => {
 						Page.spotlightSelect();
 					});
 
 					const {hour} = await extractValues(timePicker);
 					expectOpen(timePicker);
 					expect(await timePicker.hour.isFocused()).to.be.true();
-					Page.waitTransitionEnd(3000, undefined, () => {
+					await Page.waitTransitionEnd(3000, undefined, () => {
 						Page.spotlightUp();
 					});
 					const {hour: value} = await extractValues(timePicker);
@@ -94,14 +94,14 @@ describe('TimePicker', function () {
 				});
 
 				it('should decrease the hour when decrementing the picker', async function () {
-					Page.waitTransitionEnd(3000, undefined, () => {
+					await Page.waitTransitionEnd(3000, undefined, () => {
 						Page.spotlightSelect();
 					});
 
 					const {hour} = await extractValues(timePicker);
 					expectOpen(timePicker);
 					expect(await timePicker.hour.isFocused()).to.be.true();
-					Page.waitTransitionEnd(3000, undefined, () => {
+					await Page.waitTransitionEnd(3000, undefined, () => {
 						Page.spotlightDown();
 					});
 					const {hour: value} = await extractValues(timePicker);
@@ -110,7 +110,7 @@ describe('TimePicker', function () {
 				});
 
 				it('should increase the minute when incrementing the picker', async function () {
-					Page.waitTransitionEnd(3000, undefined, () => {
+					await Page.waitTransitionEnd(3000, undefined, () => {
 						Page.spotlightSelect();
 					});
 
@@ -118,7 +118,7 @@ describe('TimePicker', function () {
 					expectOpen(timePicker);
 					await Page.spotlightRight();
 					expect(await timePicker.minute.isFocused()).to.be.true();
-					Page.waitTransitionEnd(3000, undefined, () => {
+					await Page.waitTransitionEnd(3000, undefined, () => {
 						Page.spotlightUp();
 					});
 					const {minute: value} = await extractValues(timePicker);
@@ -127,7 +127,7 @@ describe('TimePicker', function () {
 				});
 
 				it('should decrease the minute when decrementing the picker', async function () {
-					Page.waitTransitionEnd(3000, undefined, () => {
+					await Page.waitTransitionEnd(3000, undefined, () => {
 						Page.spotlightSelect();
 					});
 
@@ -135,7 +135,7 @@ describe('TimePicker', function () {
 					expectOpen(timePicker);
 					await Page.spotlightRight();
 					expect(await timePicker.minute.isFocused()).to.be.true();
-					Page.waitTransitionEnd(3000, undefined, () => {
+					await Page.waitTransitionEnd(3000, undefined, () => {
 						Page.spotlightDown();
 					});
 					const {minute: value} = await extractValues(timePicker);
@@ -144,7 +144,7 @@ describe('TimePicker', function () {
 				});
 
 				it('should update value text when incrementing the meridiem picker', async function () {
-					Page.waitTransitionEnd(3000, undefined, () => {
+					await Page.waitTransitionEnd(3000, undefined, () => {
 						Page.spotlightSelect();
 					});
 
@@ -153,7 +153,7 @@ describe('TimePicker', function () {
 					await Page.spotlightRight();
 					await Page.spotlightRight();
 					expect(await timePicker.meridiem.isFocused()).to.be.true();
-					Page.waitTransitionEnd(3000, undefined, () => {
+					await Page.waitTransitionEnd(3000, undefined, () => {
 						Page.spotlightUp();
 					});
 					const newTime = await timePicker.valueText;
@@ -162,7 +162,7 @@ describe('TimePicker', function () {
 				});
 
 				it('should update value text when decrementing the meridiem picker', async function () {
-					Page.waitTransitionEnd(3000, undefined, () => {
+					await Page.waitTransitionEnd(3000, undefined, () => {
 						Page.spotlightSelect();
 					});
 
@@ -171,7 +171,7 @@ describe('TimePicker', function () {
 					await Page.spotlightRight();
 					await Page.spotlightRight();
 					expect(await timePicker.meridiem.isFocused()).to.be.true();
-					Page.waitTransitionEnd(3000, undefined, () => {
+					await Page.waitTransitionEnd(3000, undefined, () => {
 						Page.spotlightDown();
 					});
 					const newTime = await timePicker.valueText;
@@ -180,7 +180,7 @@ describe('TimePicker', function () {
 				});
 
 				it('should change the meridiem on hour boundaries', async function () {
-					Page.waitTransitionEnd(3000, undefined, () => {
+					await Page.waitTransitionEnd(3000, undefined, () => {
 						Page.spotlightSelect();
 					});
 
@@ -195,38 +195,38 @@ describe('TimePicker', function () {
 
 			describe('pointer', function () {
 				it('should open on title click when closed', async function () {
-					Page.waitTransitionEnd(3000, undefined, () => {
+					await Page.waitTransitionEnd(3000, undefined, () => {
 						timePicker.title.click();
 					});
 					expectOpen(timePicker);
 				});
 
 				it('should close on title click when open', async function () {
-					Page.waitTransitionEnd(3000, undefined, () => {
+					await Page.waitTransitionEnd(3000, undefined, () => {
 						timePicker.title.click();
 					});
 					expectOpen(timePicker);
-					Page.waitTransitionEnd(3000, undefined, () => {
+					await Page.waitTransitionEnd(3000, undefined, () => {
 						timePicker.title.click();
 					});
 					expectClosed(timePicker);
 				});
 
 				it('should select hour when opened', async function () {
-					Page.waitTransitionEnd(3000, undefined, () => {
+					await Page.waitTransitionEnd(3000, undefined, () => {
 						timePicker.title.click();
 					});
-					timePicker.hour.click();
+					await timePicker.hour.click();
 					expect(await timePicker.hour.isFocused()).to.be.true();
 				});
 
 				it('should increase the hour when incrementing the picker', async function () {
-					Page.waitTransitionEnd(3000, undefined, () => {
+					await Page.waitTransitionEnd(3000, undefined, () => {
 						timePicker.title.click();
 					});
 					const {hour} = await extractValues(timePicker);
 					expectOpen(timePicker);
-					Page.waitTransitionEnd(3000, undefined, () => {
+					await Page.waitTransitionEnd(3000, undefined, () => {
 						timePicker.incrementer(timePicker.hour).click();
 					});
 					const {hour: value} = await extractValues(timePicker);
@@ -235,12 +235,12 @@ describe('TimePicker', function () {
 				});
 
 				it('should decrease the hour when decrementing the picker - [GT-21531]', async function () {
-					Page.waitTransitionEnd(3000, undefined, () => {
+					await Page.waitTransitionEnd(3000, undefined, () => {
 						timePicker.title.click();
 					});
 					const {hour} = await extractValues(timePicker);
 					expectOpen(timePicker);
-					Page.waitTransitionEnd(3000, undefined, () => {
+					await Page.waitTransitionEnd(3000, undefined, () => {
 						timePicker.decrementer(timePicker.hour).click();
 					});
 					const {hour: value} = await extractValues(timePicker);
@@ -249,12 +249,12 @@ describe('TimePicker', function () {
 				});
 
 				it('should increase the minute when incrementing the picker - [GT-21531]', async function () {
-					Page.waitTransitionEnd(3000, undefined, () => {
+					await Page.waitTransitionEnd(3000, undefined, () => {
 						timePicker.title.click();
 					});
 					const {minute} = await extractValues(timePicker);
 					expectOpen(timePicker);
-					Page.waitTransitionEnd(3000, undefined, () => {
+					await Page.waitTransitionEnd(3000, undefined, () => {
 						timePicker.incrementer(timePicker.minute).click();
 					});
 					const {minute: value} = await extractValues(timePicker);
@@ -263,12 +263,12 @@ describe('TimePicker', function () {
 				});
 
 				it('should decrease the minute when decrementing the picker', async function () {
-					Page.waitTransitionEnd(3000, undefined, () => {
+					await Page.waitTransitionEnd(3000, undefined, () => {
 						timePicker.title.click();
 					});
 					const {minute} = await extractValues(timePicker);
 					expectOpen(timePicker);
-					Page.waitTransitionEnd(3000, undefined, () => {
+					await Page.waitTransitionEnd(3000, undefined, () => {
 						timePicker.decrementer(timePicker.minute).click();
 					});
 					const {minute: value} = await extractValues(timePicker);
@@ -277,12 +277,12 @@ describe('TimePicker', function () {
 				});
 
 				it('should update value text when incrementing the meridiem picker - [GT-21531]', async function () {
-					Page.waitTransitionEnd(3000, undefined, () => {
+					await Page.waitTransitionEnd(3000, undefined, () => {
 						timePicker.title.click();
 					});
 					const time = await timePicker.valueText;
 					expectOpen(timePicker);
-					Page.waitTransitionEnd(3000, undefined, () => {
+					await Page.waitTransitionEnd(3000, undefined, () => {
 						timePicker.incrementer(timePicker.meridiem).click();
 					});
 					const newTime = await timePicker.valueText;
@@ -291,12 +291,12 @@ describe('TimePicker', function () {
 				});
 
 				it('should update value text when decrementing the meridiem picker', async function () {
-					Page.waitTransitionEnd(3000, undefined, () => {
+					await Page.waitTransitionEnd(3000, undefined, () => {
 						timePicker.title.click();
 					});
 					const time = await timePicker.valueText;
 					expectOpen(timePicker);
-					Page.waitTransitionEnd(3000, undefined, () => {
+					await Page.waitTransitionEnd(3000, undefined, () => {
 						timePicker.decrementer(timePicker.meridiem).click();
 					});
 					const newTime = await timePicker.valueText;
@@ -305,7 +305,7 @@ describe('TimePicker', function () {
 				});
 
 				it('should change the meridiem on hour boundaries - [GT-21563]', async function () {
-					Page.waitTransitionEnd(3000, undefined, () => {
+					await Page.waitTransitionEnd(3000, undefined, () => {
 						timePicker.title.click();
 					});
 					const value = await timePicker.valueText;
@@ -337,7 +337,7 @@ describe('TimePicker', function () {
 			describe('5-way', function () {
 				it('should close when pressing select', async function () {
 					timePicker.focus();
-					Page.waitTransitionEnd(3000, undefined, () => {
+					await Page.waitTransitionEnd(3000, undefined, () => {
 						Page.spotlightSelect();
 					});
 
@@ -348,18 +348,18 @@ describe('TimePicker', function () {
 
 			describe('pointer', function () {
 				it('should close on title click when open', async function () {
-					Page.waitTransitionEnd(3000, undefined, () => {
+					await Page.waitTransitionEnd(3000, undefined, () => {
 						timePicker.title.click();
 					});
 					expectClosed(timePicker);
 				});
 
 				it('should open on title click when closed', async function () {
-					Page.waitTransitionEnd(3000, undefined, () => {
+					await Page.waitTransitionEnd(3000, undefined, () => {
 						timePicker.title.click();
 					});
 					expectClosed(timePicker);
-					Page.waitTransitionEnd(3000, undefined, () => {
+					await Page.waitTransitionEnd(3000, undefined, () => {
 						timePicker.title.click();
 					});
 					expectOpen(timePicker);
@@ -388,7 +388,7 @@ describe('TimePicker', function () {
 			describe('5-way', function () {
 				it('should not update on select', async function () {
 					await timePicker.focus();
-					Page.waitTransitionEnd(3000, undefined, () => {
+					await Page.waitTransitionEnd(3000, undefined, () => {
 						Page.spotlightSelect();
 					});
 
@@ -402,7 +402,7 @@ describe('TimePicker', function () {
 
 			describe('pointer', function () {
 				it('should not update on title click', async function () {
-					Page.waitTransitionEnd(3000, undefined, () => {
+					await Page.waitTransitionEnd(3000, undefined, () => {
 						timePicker.title.click();
 					});
 					const {hour, minute, meridiem} = await extractValues(timePicker);
@@ -510,7 +510,7 @@ describe('TimePicker', function () {
 		});
 
 		it('should focus middle picker (hour) when selected', async function () {
-			Page.waitTransitionEnd(3000, undefined, () => {
+			await Page.waitTransitionEnd(3000, undefined, () => {
 				Page.spotlightSelect();
 			});
 
@@ -519,7 +519,7 @@ describe('TimePicker', function () {
 		});
 
 		it('should have minute-hour-meridiem order', async function () {
-			Page.waitTransitionEnd(3000, undefined, () => {
+			await Page.waitTransitionEnd(3000, undefined, () => {
 				Page.spotlightSelect();
 			});
 
@@ -533,7 +533,7 @@ describe('TimePicker', function () {
 		});
 
 		it('should focus title when 5-way left from last picker - [GT-25247]', async function () {
-			Page.waitTransitionEnd(3000, undefined, () => {
+			await Page.waitTransitionEnd(3000, undefined, () => {
 				Page.spotlightSelect();
 			});
 
@@ -553,29 +553,29 @@ describe('TimePicker', function () {
 		});
 
 		it('should not have a meridiem picker', async function () {
-			timePicker.title.click();
+			await timePicker.title.click();
 			expect(await timePicker.meridiem.isExisting()).to.be.false();
 		});
 
 		it('should display hours in 24-hour format', async function () {
-			timePicker.title.click();
+			await timePicker.title.click();
 			expect(await extractValues(timePicker).hour).to.equal(0); // midnight hour
 		});
 
 		it('should increment hours from 23 to 0', async function () {
-			Page.waitTransitionEnd(3000, undefined, () => {
+			await Page.waitTransitionEnd(3000, undefined, () => {
 				timePicker.title.click();
 			});
 			// go to 23 first
-			timePicker.decrementer(timePicker.hour).click();
+			await timePicker.decrementer(timePicker.hour).click();
 			expect(await extractValues(timePicker).hour).to.equal(23);
 			// now increment
-			timePicker.incrementer(timePicker.hour).click();
+			await timePicker.incrementer(timePicker.hour).click();
 			expect(await extractValues(timePicker).hour).to.equal(0);
 		});
 
 		it('should decrement hours from 0 to 23', async function () {
-			Page.waitTransitionEnd(3000, undefined, () => {
+			await Page.waitTransitionEnd(3000, undefined, () => {
 				timePicker.title.click();
 			});
 			await timePicker.decrementer(timePicker.hour).click();

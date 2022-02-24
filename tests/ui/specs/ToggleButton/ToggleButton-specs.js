@@ -17,7 +17,7 @@ describe('ToggleButton', function () {
 		const nextButton = Page.components.toggleWithLabels;
 
 		it('should have correct text', async function () {
-			expect(await toggleButton.valueText.toLowerCase()).to.equal('MISSING TOGGLE LABEL'.toLowerCase());
+			expect((await toggleButton.valueText).toLowerCase()).to.equal('MISSING TOGGLE LABEL'.toLowerCase());
 		});
 
 		it('should be unselected', async function () {
@@ -71,7 +71,7 @@ describe('ToggleButton', function () {
 		const toggleButton = Page.components.toggleWithLabels;
 
 		it('should have correct text', async function () {
-			expect(await toggleButton.valueText.toLowerCase()).to.equal('OFF'.toLowerCase());
+			expect((await toggleButton.valueText).toLowerCase()).to.equal('OFF'.toLowerCase());
 		});
 
 		it('should be unselected', async function () {
@@ -82,27 +82,27 @@ describe('ToggleButton', function () {
 			it('should have correct text when selected', async function () {
 				await toggleButton.focus();
 				await Page.spotlightSelect();
-				expect(await toggleButton.valueText.toLowerCase()).to.equal('ON'.toLowerCase());
+				expect((await toggleButton.valueText).toLowerCase()).to.equal('ON'.toLowerCase());
 			});
 
 			it('should have correct text when un-selected', async function () {
 				await toggleButton.focus();
 				await Page.spotlightSelect();
 				await Page.spotlightSelect();
-				expect(await toggleButton.valueText.toLowerCase()).to.equal('OFF'.toLowerCase());
+				expect((await toggleButton.valueText).toLowerCase()).to.equal('OFF'.toLowerCase());
 			});
 		});
 
 		describe('pointer', function () {
 			it('should have correct text when selected', async function () {
 				await toggleButton.self.click();
-				expect(await toggleButton.valueText.toLowerCase()).to.equal('ON'.toLowerCase());
+				expect((await toggleButton.valueText).toLowerCase()).to.equal('ON'.toLowerCase());
 			});
 
 			it('should have correct text when un-selected', async function () {
 				await toggleButton.self.click();
 				await toggleButton.self.click();
-				expect(await toggleButton.valueText.toLowerCase()).to.equal('OFF'.toLowerCase());
+				expect((await toggleButton.valueText).toLowerCase()).to.equal('OFF'.toLowerCase());
 			});
 		});
 	});
@@ -111,7 +111,7 @@ describe('ToggleButton', function () {
 		const toggleButton = Page.components.toggleWithOnlyOnLabel;
 
 		it('should have correct text', async function () {
-			expect(await toggleButton.valueText.toLowerCase()).to.equal('MISSING TOGGLE OFF LABEL'.toLowerCase());
+			expect((await toggleButton.valueText).toLowerCase()).to.equal('MISSING TOGGLE OFF LABEL'.toLowerCase());
 		});
 
 		it('should be unselected', async function () {
@@ -122,27 +122,27 @@ describe('ToggleButton', function () {
 			it('should have correct text when selected - [GT-21950]', async function () {
 				await toggleButton.focus();
 				await Page.spotlightSelect();
-				expect(await toggleButton.valueText.toLowerCase()).to.equal('ON'.toLowerCase());
+				expect((await toggleButton.valueText).toLowerCase()).to.equal('ON'.toLowerCase());
 			});
 
 			it('should have correct text when un-selected', async function () {
 				await toggleButton.focus();
 				await Page.spotlightSelect();
 				await Page.spotlightSelect();
-				expect(await toggleButton.valueText.toLowerCase()).to.equal('MISSING TOGGLE OFF LABEL'.toLowerCase());
+				expect((await toggleButton.valueText).toLowerCase()).to.equal('MISSING TOGGLE OFF LABEL'.toLowerCase());
 			});
 		});
 
 		describe('pointer', function () {
 			it('should have correct text when selected', async function () {
 				await toggleButton.self.click();
-				expect(await toggleButton.valueText.toLowerCase()).to.equal('ON'.toLowerCase());
+				expect((await toggleButton.valueText).toLowerCase()).to.equal('ON'.toLowerCase());
 			});
 
 			it('should have correct text when un-selected', async function () {
 				await toggleButton.self.click();
 				await toggleButton.self.click();
-				expect(await toggleButton.valueText.toLowerCase()).to.equal('MISSING TOGGLE OFF LABEL'.toLowerCase());
+				expect((await toggleButton.valueText).toLowerCase()).to.equal('MISSING TOGGLE OFF LABEL'.toLowerCase());
 			});
 		});
 	});
@@ -151,7 +151,7 @@ describe('ToggleButton', function () {
 		const toggleButton = Page.components.toggleWithOnlyOffLabel;
 
 		it('should have correct text - [GT-21951]', async function () {
-			expect(await toggleButton.valueText.toLowerCase()).to.equal('OFF'.toLowerCase());
+			expect((await toggleButton.valueText).toLowerCase()).to.equal('OFF'.toLowerCase());
 		});
 
 		it('should be unselected', async function () {
@@ -162,27 +162,27 @@ describe('ToggleButton', function () {
 			it('should have correct text when selected', async function () {
 				await toggleButton.focus();
 				await Page.spotlightSelect();
-				expect(await toggleButton.valueText.toLowerCase()).to.equal('MISSING TOGGLE ON LABEL'.toLowerCase());
+				expect((await toggleButton.valueText).toLowerCase()).to.equal('MISSING TOGGLE ON LABEL'.toLowerCase());
 			});
 
 			it('should have correct text when un-selected', async function () {
 				await toggleButton.focus();
 				await Page.spotlightSelect();
 				await Page.spotlightSelect();
-				expect(await toggleButton.valueText.toLowerCase()).to.equal('OFF'.toLowerCase());
+				expect((await toggleButton.valueText).toLowerCase()).to.equal('OFF'.toLowerCase());
 			});
 		});
 
 		describe('pointer', function () {
 			it('should have correct text when selected', async function () {
 				await toggleButton.self.click();
-				expect(await toggleButton.valueText.toLowerCase()).to.equal('MISSING TOGGLE ON LABEL'.toLowerCase());
+				expect((await toggleButton.valueText).toLowerCase()).to.equal('MISSING TOGGLE ON LABEL'.toLowerCase());
 			});
 
 			it('should have correct text when un-selected', async function () {
 				await toggleButton.self.click();
 				await toggleButton.self.click();
-				expect(await toggleButton.valueText.toLowerCase()).to.equal('OFF'.toLowerCase());
+				expect((await toggleButton.valueText).toLowerCase()).to.equal('OFF'.toLowerCase());
 			});
 		});
 	});
@@ -191,7 +191,7 @@ describe('ToggleButton', function () {
 		const toggleButton = Page.components.toggleDefaultSelected;
 
 		it('should have correct text', async function () {
-			expect(await toggleButton.valueText.toLowerCase()).to.equal('ON'.toLowerCase());
+			expect((await toggleButton.valueText).toLowerCase()).to.equal('ON'.toLowerCase());
 		});
 
 		it('should be selected by default', async function () {
@@ -234,7 +234,7 @@ describe('ToggleButton', function () {
 		const previousToggle = Page.components.toggleDefaultSelected;
 
 		it('should have correct text', async function () {
-			expect(await toggleButton.valueText.toLowerCase()).to.equal('ON'.toLowerCase());
+			expect((await toggleButton.valueText).toLowerCase()).to.equal('ON'.toLowerCase());
 		});
 
 		it('should be selected by default', async function () {
@@ -268,7 +268,7 @@ describe('ToggleButton', function () {
 		const toggleButton = Page.components.toggleSmall;
 
 		it('should have correct text', async function () {
-			expect(await toggleButton.valueText.toLowerCase()).to.equal('SMALL OFF'.toLowerCase());
+			expect((await toggleButton.valueText).toLowerCase()).to.equal('SMALL OFF'.toLowerCase());
 		});
 
 		it('should be unselected by default', async function () {
