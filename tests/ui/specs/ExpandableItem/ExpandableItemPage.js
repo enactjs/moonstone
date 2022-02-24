@@ -12,8 +12,8 @@ class ExpandableItemInterface {
 		this.id = id;
 	}
 
-	focus () {
-		return browser.execute((el) => el.focus(), $(`#${this.id}>div`));
+	async focus () {
+		return await browser.execute((el) => el.focus(), await $(`#${this.id}>div`));
 	}
 
 	get      self () {
@@ -64,8 +64,8 @@ class ExpandableItemPage extends Page {
 		this.components.expandableItemDisabledWithNoneText = new ExpandableItemInterface('expandableItemDisabledWithNoneText');
 	}
 
-	open (urlExtra) {
-		super.open('ExpandableItem-View', urlExtra);
+	async open (urlExtra) {
+		await super.open('ExpandableItem-View', urlExtra);
 	}
 }
 

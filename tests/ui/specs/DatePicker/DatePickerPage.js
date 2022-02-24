@@ -13,8 +13,8 @@ class PickerInterface {
 		this.id = id;
 	}
 
-	focus () {
-		return browser.execute((el) => el.focus(), $(`#${this.id}>div`));
+	async focus () {
+		return await browser.execute((el) => el.focus(), await $(`#${this.id}>div`));
 	}
 
 	get      self () {
@@ -90,8 +90,8 @@ class DatePickerPage extends Page {
 		this.components.datePickerDefaultOpenWithDefaultValue = new PickerInterface('datePickerDefaultOpenWithDefaultValue');
 	}
 
-	open (urlExtra) {
-		super.open('DatePicker-View', urlExtra);
+	async open (urlExtra) {
+		await super.open('DatePicker-View', urlExtra);
 	}
 }
 

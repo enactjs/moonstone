@@ -12,8 +12,8 @@ class VirtualListPage extends Page {
 
 	}
 
-	open (urlExtra) {
-		super.open('VirtualList-View', urlExtra);
+	async open (urlExtra) {
+		await super.open('VirtualList-View', urlExtra);
 	}
 
 	get buttonFocusableScrollbar () {

@@ -2,12 +2,12 @@ const Page = require('./ToggleButtonPage');
 
 describe('ToggleButton', function () {
 
-	beforeEach(function () {
-		Page.open();
+	beforeEach(async function () {
+		await Page.open();
 	});
 
-	it('should have focus on first item at start', function () {
-		expect(Page.components.toggleDefault.self.isFocused()).to.be.true();
+	it('should have focus on first item at start', async function () {
+		expect(await Page.components.toggleDefault.self.isFocused()).to.be.true();
 	});
 
 	// Note, the 5-way up/down tests require the next component to be known.  If you add components
@@ -16,51 +16,51 @@ describe('ToggleButton', function () {
 		const toggleButton = Page.components.toggleDefault;
 		const nextButton = Page.components.toggleWithLabels;
 
-		it('should have correct text', function () {
-			expect(toggleButton.valueText.toLowerCase()).to.equal('MISSING TOGGLE LABEL'.toLowerCase());
+		it('should have correct text', async function () {
+			expect(await toggleButton.valueText.toLowerCase()).to.equal('MISSING TOGGLE LABEL'.toLowerCase());
 		});
 
-		it('should be unselected', function () {
-			expect(toggleButton.isSelected).to.be.false();
+		it('should be unselected', async function () {
+			expect(await toggleButton.isSelected).to.be.false();
 		});
 
 		describe('5-way', function () {
-			it('should select the button when selected', function () {
-				toggleButton.focus();
-				Page.spotlightSelect();
-				expect(toggleButton.isSelected).to.be.true();
+			it('should select the button when selected', async function () {
+				await toggleButton.focus();
+				await Page.spotlightSelect();
+				expect(await toggleButton.isSelected).to.be.true();
 			});
 
-			it('should deselect the button when selected and deselected', function () {
-				toggleButton.focus();
-				Page.spotlightSelect();
-				Page.spotlightSelect();
-				expect(toggleButton.isSelected).to.be.false();
+			it('should deselect the button when selected and deselected', async function () {
+				await toggleButton.focus();
+				await Page.spotlightSelect();
+				await Page.spotlightSelect();
+				expect(await toggleButton.isSelected).to.be.false();
 			});
 
-			it('should move focus down on SpotlightDown', function () {
-				Page.spotlightDown();
-				expect(nextButton.self.isFocused()).to.be.true();
+			it('should move focus down on SpotlightDown', async function () {
+				await Page.spotlightDown();
+				expect(await nextButton.self.isFocused()).to.be.true();
 			});
 
-			it('should move focus Up on SpotlightUp', function () {
-				nextButton.focus();
-				Page.spotlightUp();
-				expect(toggleButton.self.isFocused()).to.be.true();
+			it('should move focus Up on SpotlightUp', async function () {
+				await nextButton.focus();
+				await Page.spotlightUp();
+				expect(await toggleButton.self.isFocused()).to.be.true();
 			});
 
 		});
 
 		describe('pointer', function () {
-			it('should select the toggleButton when clicked', function () {
-				toggleButton.self.click();
-				expect(toggleButton.isSelected).to.be.true();
+			it('should select the toggleButton when clicked', async function () {
+				await toggleButton.self.click();
+				expect(await toggleButton.isSelected).to.be.true();
 			});
 
-			it('should re-unselect the item when clicked twice', function () {
-				toggleButton.self.click();
-				toggleButton.self.click();
-				expect(toggleButton.isSelected).to.be.false();
+			it('should re-unselect the item when clicked twice', async function () {
+				await toggleButton.self.click();
+				await toggleButton.self.click();
+				expect(await toggleButton.isSelected).to.be.false();
 			});
 		});
 	});
@@ -70,39 +70,39 @@ describe('ToggleButton', function () {
 	describe('labelled', function () {
 		const toggleButton = Page.components.toggleWithLabels;
 
-		it('should have correct text', function () {
-			expect(toggleButton.valueText.toLowerCase()).to.equal('OFF'.toLowerCase());
+		it('should have correct text', async function () {
+			expect(await toggleButton.valueText.toLowerCase()).to.equal('OFF'.toLowerCase());
 		});
 
-		it('should be unselected', function () {
-			expect(toggleButton.isSelected).to.be.false();
+		it('should be unselected', async function () {
+			expect(await toggleButton.isSelected).to.be.false();
 		});
 
 		describe('5-way', function () {
-			it('should have correct text when selected', function () {
-				toggleButton.focus();
-				Page.spotlightSelect();
-				expect(toggleButton.valueText.toLowerCase()).to.equal('ON'.toLowerCase());
+			it('should have correct text when selected', async function () {
+				await toggleButton.focus();
+				await Page.spotlightSelect();
+				expect(await toggleButton.valueText.toLowerCase()).to.equal('ON'.toLowerCase());
 			});
 
-			it('should have correct text when un-selected', function () {
-				toggleButton.focus();
-				Page.spotlightSelect();
-				Page.spotlightSelect();
-				expect(toggleButton.valueText.toLowerCase()).to.equal('OFF'.toLowerCase());
+			it('should have correct text when un-selected', async function () {
+				await toggleButton.focus();
+				await Page.spotlightSelect();
+				await Page.spotlightSelect();
+				expect(await toggleButton.valueText.toLowerCase()).to.equal('OFF'.toLowerCase());
 			});
 		});
 
 		describe('pointer', function () {
-			it('should have correct text when selected', function () {
-				toggleButton.self.click();
-				expect(toggleButton.valueText.toLowerCase()).to.equal('ON'.toLowerCase());
+			it('should have correct text when selected', async function () {
+				await toggleButton.self.click();
+				expect(await toggleButton.valueText.toLowerCase()).to.equal('ON'.toLowerCase());
 			});
 
-			it('should have correct text when un-selected', function () {
-				toggleButton.self.click();
-				toggleButton.self.click();
-				expect(toggleButton.valueText.toLowerCase()).to.equal('OFF'.toLowerCase());
+			it('should have correct text when un-selected', async function () {
+				await toggleButton.self.click();
+				await toggleButton.self.click();
+				expect(await toggleButton.valueText.toLowerCase()).to.equal('OFF'.toLowerCase());
 			});
 		});
 	});
@@ -110,39 +110,39 @@ describe('ToggleButton', function () {
 	describe('missed off label', function () {
 		const toggleButton = Page.components.toggleWithOnlyOnLabel;
 
-		it('should have correct text', function () {
-			expect(toggleButton.valueText.toLowerCase()).to.equal('MISSING TOGGLE OFF LABEL'.toLowerCase());
+		it('should have correct text', async function () {
+			expect(await toggleButton.valueText.toLowerCase()).to.equal('MISSING TOGGLE OFF LABEL'.toLowerCase());
 		});
 
-		it('should be unselected', function () {
-			expect(toggleButton.isSelected).to.be.false();
+		it('should be unselected', async function () {
+			expect(await toggleButton.isSelected).to.be.false();
 		});
 
 		describe('5-way', function () {
-			it('should have correct text when selected - [GT-21950]', function () {
-				toggleButton.focus();
-				Page.spotlightSelect();
-				expect(toggleButton.valueText.toLowerCase()).to.equal('ON'.toLowerCase());
+			it('should have correct text when selected - [GT-21950]', async function () {
+				await toggleButton.focus();
+				await Page.spotlightSelect();
+				expect(await toggleButton.valueText.toLowerCase()).to.equal('ON'.toLowerCase());
 			});
 
-			it('should have correct text when un-selected', function () {
-				toggleButton.focus();
-				Page.spotlightSelect();
-				Page.spotlightSelect();
-				expect(toggleButton.valueText.toLowerCase()).to.equal('MISSING TOGGLE OFF LABEL'.toLowerCase());
+			it('should have correct text when un-selected', async function () {
+				await toggleButton.focus();
+				await Page.spotlightSelect();
+				await Page.spotlightSelect();
+				expect(await toggleButton.valueText.toLowerCase()).to.equal('MISSING TOGGLE OFF LABEL'.toLowerCase());
 			});
 		});
 
 		describe('pointer', function () {
-			it('should have correct text when selected', function () {
-				toggleButton.self.click();
-				expect(toggleButton.valueText.toLowerCase()).to.equal('ON'.toLowerCase());
+			it('should have correct text when selected', async function () {
+				await toggleButton.self.click();
+				expect(await toggleButton.valueText.toLowerCase()).to.equal('ON'.toLowerCase());
 			});
 
-			it('should have correct text when un-selected', function () {
-				toggleButton.self.click();
-				toggleButton.self.click();
-				expect(toggleButton.valueText.toLowerCase()).to.equal('MISSING TOGGLE OFF LABEL'.toLowerCase());
+			it('should have correct text when un-selected', async function () {
+				await toggleButton.self.click();
+				await toggleButton.self.click();
+				expect(await toggleButton.valueText.toLowerCase()).to.equal('MISSING TOGGLE OFF LABEL'.toLowerCase());
 			});
 		});
 	});
@@ -150,39 +150,39 @@ describe('ToggleButton', function () {
 	describe('missed on label', function () {
 		const toggleButton = Page.components.toggleWithOnlyOffLabel;
 
-		it('should have correct text - [GT-21951]', function () {
-			expect(toggleButton.valueText.toLowerCase()).to.equal('OFF'.toLowerCase());
+		it('should have correct text - [GT-21951]', async function () {
+			expect(await toggleButton.valueText.toLowerCase()).to.equal('OFF'.toLowerCase());
 		});
 
-		it('should be unselected', function () {
-			expect(toggleButton.isSelected).to.be.false();
+		it('should be unselected', async function () {
+			expect(await toggleButton.isSelected).to.be.false();
 		});
 
 		describe('5-way', function () {
-			it('should have correct text when selected', function () {
-				toggleButton.focus();
-				Page.spotlightSelect();
-				expect(toggleButton.valueText.toLowerCase()).to.equal('MISSING TOGGLE ON LABEL'.toLowerCase());
+			it('should have correct text when selected', async function () {
+				await toggleButton.focus();
+				await Page.spotlightSelect();
+				expect(await toggleButton.valueText.toLowerCase()).to.equal('MISSING TOGGLE ON LABEL'.toLowerCase());
 			});
 
-			it('should have correct text when un-selected', function () {
-				toggleButton.focus();
-				Page.spotlightSelect();
-				Page.spotlightSelect();
-				expect(toggleButton.valueText.toLowerCase()).to.equal('OFF'.toLowerCase());
+			it('should have correct text when un-selected', async function () {
+				await toggleButton.focus();
+				await Page.spotlightSelect();
+				await Page.spotlightSelect();
+				expect(await toggleButton.valueText.toLowerCase()).to.equal('OFF'.toLowerCase());
 			});
 		});
 
 		describe('pointer', function () {
-			it('should have correct text when selected', function () {
-				toggleButton.self.click();
-				expect(toggleButton.valueText.toLowerCase()).to.equal('MISSING TOGGLE ON LABEL'.toLowerCase());
+			it('should have correct text when selected', async function () {
+				await toggleButton.self.click();
+				expect(await toggleButton.valueText.toLowerCase()).to.equal('MISSING TOGGLE ON LABEL'.toLowerCase());
 			});
 
-			it('should have correct text when un-selected', function () {
-				toggleButton.self.click();
-				toggleButton.self.click();
-				expect(toggleButton.valueText.toLowerCase()).to.equal('OFF'.toLowerCase());
+			it('should have correct text when un-selected', async function () {
+				await toggleButton.self.click();
+				await toggleButton.self.click();
+				expect(await toggleButton.valueText.toLowerCase()).to.equal('OFF'.toLowerCase());
 			});
 		});
 	});
@@ -190,39 +190,39 @@ describe('ToggleButton', function () {
 	describe('default selected', function () {
 		const toggleButton = Page.components.toggleDefaultSelected;
 
-		it('should have correct text', function () {
-			expect(toggleButton.valueText.toLowerCase()).to.equal('ON'.toLowerCase());
+		it('should have correct text', async function () {
+			expect(await toggleButton.valueText.toLowerCase()).to.equal('ON'.toLowerCase());
 		});
 
-		it('should be selected by default', function () {
-			expect(toggleButton.isSelected).to.be.true();
+		it('should be selected by default', async function () {
+			expect(await toggleButton.isSelected).to.be.true();
 		});
 
 		describe('5-way', function () {
-			it('should unselect the toggleButton when selected', function () {
-				toggleButton.focus();
-				Page.spotlightSelect();
-				expect(toggleButton.isSelected).to.be.false();
+			it('should unselect the toggleButton when selected', async function () {
+				await toggleButton.focus();
+				await Page.spotlightSelect();
+				expect(await toggleButton.isSelected).to.be.false();
 			});
 
-			it('should re-select the toggleButton when selected twice', function () {
-				toggleButton.focus();
-				Page.spotlightSelect();
-				Page.spotlightSelect();
-				expect(toggleButton.isSelected).to.be.true();
+			it('should re-select the toggleButton when selected twice', async function () {
+				await toggleButton.focus();
+				await Page.spotlightSelect();
+				await Page.spotlightSelect();
+				expect(await toggleButton.isSelected).to.be.true();
 			});
 		});
 
 		describe('pointer', function () {
-			it('should unselect the toggleButton when selected', function () {
-				toggleButton.self.click();
-				expect(toggleButton.isSelected).to.be.false();
+			it('should unselect the toggleButton when selected', async function () {
+				await toggleButton.self.click();
+				expect(await toggleButton.isSelected).to.be.false();
 			});
 
-			it('should re-select the toggleButton when selected twice', function () {
-				toggleButton.self.click();
-				toggleButton.self.click();
-				expect(toggleButton.isSelected).to.be.true();
+			it('should re-select the toggleButton when selected twice', async function () {
+				await toggleButton.self.click();
+				await toggleButton.self.click();
+				expect(await toggleButton.isSelected).to.be.true();
 			});
 		});
 	});
@@ -233,31 +233,31 @@ describe('ToggleButton', function () {
 		const toggleButton = Page.components.toggleDisabled;
 		const previousToggle = Page.components.toggleDefaultSelected;
 
-		it('should have correct text', function () {
-			expect(toggleButton.valueText.toLowerCase()).to.equal('ON'.toLowerCase());
+		it('should have correct text', async function () {
+			expect(await toggleButton.valueText.toLowerCase()).to.equal('ON'.toLowerCase());
 		});
 
-		it('should be selected by default', function () {
-			expect(toggleButton.isSelected).to.be.true();
+		it('should be selected by default', async function () {
+			expect(await toggleButton.isSelected).to.be.true();
 		});
 
 		describe('5-way', function () {
-			it('should be able to focus the toggleButton', function () {
-				previousToggle.focus();
-				Page.spotlightDown();
-				expect(toggleButton.self.isFocused()).to.be.true();
+			it('should be able to focus the toggleButton', async function () {
+				await previousToggle.focus();
+				await Page.spotlightDown();
+				expect(await toggleButton.self.isFocused()).to.be.true();
 			});
-			it('should not unselect the item when selected - [GT-21952]', function () {
-				toggleButton.focus();
-				Page.spotlightSelect();
-				expect(toggleButton.isSelected).to.be.true();
+			it('should not unselect the item when selected - [GT-21952]', async function () {
+				await toggleButton.focus();
+				await Page.spotlightSelect();
+				expect(await toggleButton.isSelected).to.be.true();
 			});
 		});
 
 		describe('pointer', function () {
-			it('should not unselect the item when clicked - [GT-21952]', function () {
-				toggleButton.self.click();
-				expect(toggleButton.isSelected).to.be.true();
+			it('should not unselect the item when clicked - [GT-21952]', async function () {
+				await toggleButton.self.click();
+				expect(await toggleButton.isSelected).to.be.true();
 			});
 		});
 	});
@@ -267,43 +267,43 @@ describe('ToggleButton', function () {
 	describe('small', function () {
 		const toggleButton = Page.components.toggleSmall;
 
-		it('should have correct text', function () {
-			expect(toggleButton.valueText.toLowerCase()).to.equal('SMALL OFF'.toLowerCase());
+		it('should have correct text', async function () {
+			expect(await toggleButton.valueText.toLowerCase()).to.equal('SMALL OFF'.toLowerCase());
 		});
 
-		it('should be unselected by default', function () {
-			expect(toggleButton.isSelected).to.be.false();
+		it('should be unselected by default', async function () {
+			expect(await toggleButton.isSelected).to.be.false();
 		});
 
-		it('should be small sized - [GT-22374]', function () {
-			expect(toggleButton.isSmall).to.be.true();
+		it('should be small sized - [GT-22374]', async function () {
+			expect(await toggleButton.isSmall).to.be.true();
 		});
 
 		describe('5-way', function () {
-			it('should select the toggleButton when selected', function () {
-				toggleButton.focus();
-				Page.spotlightSelect();
-				expect(toggleButton.isSelected).to.be.true();
+			it('should select the toggleButton when selected', async function () {
+				await toggleButton.focus();
+				await Page.spotlightSelect();
+				expect(await toggleButton.isSelected).to.be.true();
 			});
 
-			it('should un-select the toggleButton when selected twice', function () {
-				toggleButton.focus();
-				Page.spotlightSelect();
-				Page.spotlightSelect();
-				expect(toggleButton.isSelected).to.be.false();
+			it('should un-select the toggleButton when selected twice', async function () {
+				await toggleButton.focus();
+				await Page.spotlightSelect();
+				await Page.spotlightSelect();
+				expect(await toggleButton.isSelected).to.be.false();
 			});
 		});
 
 		describe('pointer', function () {
-			it('should select the toggleButton when selected', function () {
-				toggleButton.self.click();
-				expect(toggleButton.isSelected).to.be.true();
+			it('should select the toggleButton when selected', async function () {
+				await toggleButton.self.click();
+				expect(await toggleButton.isSelected).to.be.true();
 			});
 
-			it('should un-select the toggleButton when selected twice', function () {
-				toggleButton.self.click();
-				toggleButton.self.click();
-				expect(toggleButton.isSelected).to.be.false();
+			it('should un-select the toggleButton when selected twice', async function () {
+				await toggleButton.self.click();
+				await toggleButton.self.click();
+				expect(await toggleButton.isSelected).to.be.false();
 			});
 		});
 	});

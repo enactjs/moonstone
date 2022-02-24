@@ -2,18 +2,18 @@
 
 // Validations are self-contained 'it' statements
 function validateTitle (expandable, title) {
-	it('should have correct title', function () {
-		expect(expandable.titleText).to.equal(title);
+	it('should have correct title', async function () {
+		expect(await expandable.titleText).to.equal(title);
 	});
 }
 
 // Expects are blocks of expects or other commands to be embedded in an 'it' statement
-function expectClosed (expandable) {
-	expect(expandable.isOpen).to.be.false();
+async function expectClosed (expandable) {
+	expect(await expandable.isOpen).to.be.false();
 }
 
-function expectOpen (expandable) {
-	expect(expandable.isOpen).to.be.true();
+async function expectOpen (expandable) {
+	expect(await expandable.isOpen).to.be.true();
 }
 
 module.exports = {

@@ -12,8 +12,8 @@ class ExpandableInterface {
 		this.id = id;
 	}
 
-	focus () {
-		return browser.execute((el) => el.focus(), $(`#${this.id}>div`));
+	async focus () {
+		return await browser.execute((el) => el.focus(), await $(`#${this.id}>div`));
 	}
 
 	get      self () {
@@ -66,8 +66,8 @@ class SpotlightMultiplePage extends Page {
 		this.components.disabled.selectedClass = '.RadioItem_RadioItem_selected';
 	}
 
-	open (urlExtra) {
-		super.open('ExpandableList-View', urlExtra);
+	async open (urlExtra) {
+		await super.open('ExpandableList-View', urlExtra);
 	}
 
 }

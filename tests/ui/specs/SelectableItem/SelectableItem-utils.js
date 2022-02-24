@@ -5,12 +5,12 @@ module.exports = {
 };
 
 // Expect blocks
-function expectSelected (selectableItem) {
-	expect(selectableItem.isSelected).to.be.true();
-	expect(selectableItem.isToggled).to.be.true();
+async function expectSelected (selectableItem) {
+	expect(await selectableItem.isSelected).to.be.true();
+	expect(await selectableItem.isToggled).to.be.true();
 }
 
-function expectUnselected (selectableItem) {
-	expect(selectableItem.isSelected).to.be.false();
-	expect(selectableItem.isToggled).to.be.false();
+async function expectUnselected (selectableItem) {
+	expect(await selectableItem.isSelected).to.be.false();
+	expect(await selectableItem.isToggled).to.be.false();
 }
