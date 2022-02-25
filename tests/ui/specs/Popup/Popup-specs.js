@@ -41,7 +41,7 @@ describe('Popup', function () {
 			// 	expect((await popup.buttonOK).isFocused()).to.be.true();
 			// });
 
-			// it('should spot cancel button on 5-way right in popup container', async function () {
+			// it('should spot cancel button on 5-way right in popup container', async function () {
 			// 	await Page.waitTransitionEnd(3000, 'popup open', async () => {
 			// 		await Page.spotlightSelect();
 			// 	});
@@ -205,7 +205,7 @@ describe('Popup', function () {
 		// describe('5-way', function () {
 
 		// 	it('should spot default button in popup container', async function () {
-		// 		await Page.spotlightRight();	
+		// 		await Page.spotlightRight();
 		// 		// await Page.waitTransitionEnd(3000, 'popup open', async () => {
 		// 		// 	await Page.spotlightSelect();
 		// 		// });
@@ -520,7 +520,7 @@ describe('Popup', function () {
 			// 	expect(await popup.buttonOK.isFocused()).to.be.true();
 			// });
 
-			// it('should spot cancel button on 5-way right in popup container', async function () {
+			// it('should spot cancel button on 5-way right in popup container', async function () {
 			// 	await Page.spotlightRight();
 			// 	await Page.spotlightDown();
 			// 	await Page.waitTransitionEnd(3000, 'popup open', async () => {
@@ -682,7 +682,7 @@ describe('Popup', function () {
 			// 	expect(await popup.buttonOK.isFocused()).to.be.true();
 			// });
 
-			// it('should spot cancel button on 5-way right in popup container', async function () {
+			// it('should spot cancel button on 5-way right in popup container', async function () {
 			// 	await Page.spotlightRight();
 			// 	await Page.spotlightRight();
 			// 	await Page.spotlightDown();
@@ -917,7 +917,7 @@ describe('Popup', function () {
 			// 	expect((await popup.buttonOK).isFocused()).to.be.true();
 			// });
 
-			// it('should spot cancel button on 5-way right in popup container', async function () {
+			// it('should spot cancel button on 5-way right in popup container', async function () {
 			// 	await Page.spotlightDown();
 			// 	await Page.spotlightDown();
 			// 	await Page.waitTransitionEnd(3000, 'popup open', async () => {
@@ -1083,7 +1083,7 @@ describe('Popup', function () {
 			// 	expect(await popup.buttonOK.isFocused()).to.be.true();
 			// });
 
-			// it('should spot cancel button on 5-way right in popup container', async function () {
+			// it('should spot cancel button on 5-way right in popup container', async function () {
 			// 	await Page.spotlightRight();
 			// 	await Page.spotlightDown();
 			// 	await Page.spotlightDown();
@@ -1282,7 +1282,7 @@ describe('Popup', function () {
 			// 	expect(await popup.buttonOK.isFocused()).to.be.true();
 			// });
 
-			// it('should spot cancel button on 5-way right in popup container', async function () {
+			// it('should spot cancel button on 5-way right in popup container', async function () {
 			// 	await Page.spotlightRight();
 			// 	await Page.spotlightRight();
 			// 	await Page.spotlightDown();
