@@ -24,7 +24,7 @@ describe('ActivityPanels', function () {
 	describe('Transition', function () {
 		it('should move from first panel to the second', async function () {
 			await Page.waitTransitionEnd(5000, undefined, () => {
-				 Page.button1.click();
+				Page.button1.click();
 			}, []);
 
 			expect((await Page.panelTitle).toLowerCase()).to.equal('SECOND'.toLowerCase());
