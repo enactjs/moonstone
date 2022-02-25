@@ -7,8 +7,8 @@ class MoonstonePage extends Page {
 		this.title = 'Moonstone Test';
 	}
 
-	async open (urlExtra) {
-		await super.open('Moonstone-View', urlExtra);
+	open (urlExtra) {
+		super.open('Moonstone-View', urlExtra);
 	}
 
 	get component () {
