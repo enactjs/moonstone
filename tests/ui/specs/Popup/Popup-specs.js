@@ -203,11 +203,9 @@ describe('Popup', function () {
 		describe('5-way', function () {
 			it('should spot default button in popup container', async function () {
 				await Page.spotlightRight();
-				// await Page.waitTransitionEnd(3000, 'popup open', async () => {
-				// 	await Page.spotlightSelect();
-				// });
-				await Page.spotlightSelect();
-				await browser.pause(3000);
+				await Page.waitTransitionEnd(3000, 'popup open', async () => {
+					await Page.spotlightSelect();
+				});
 				await expectOpen(popupCommon);
 				expect(await popup.buttonOK.isFocused()).to.be.true();
 			});
