@@ -1,32 +1,32 @@
 // Utility methods for testing
-const extractValues = (picker) => {
-	const hour = parseInt(picker.item(picker.hour).getText());
-	const minute = parseInt(picker.item(picker.minute).getText());
-	const meridiem = picker.meridiem.isExisting() ? picker.item(picker.meridiem).getText() : null;
+const extractValues = async (picker) => {
+	const hour = parseInt(await picker.item(picker.hour).getText());
+	const minute = parseInt(await picker.item(picker.minute).getText());
+	const meridiem = await picker.meridiem.isExisting() ? await picker.item(picker.meridiem).getText() : null;
 
 	return {hour, minute, meridiem};
 };
 
 // Validations are self-contained 'it' statements
 function validateTitle (picker, title) {
-	it('should have correct title', function () {
-		expect(picker.titleText).to.equal(title);
+	it('should have correct title', async function () {
+		expect(await picker.titleText).to.equal(title);
 	});
 }
 
 // Expects are blocks of expects or other commands to be embedded in an 'it' statement
-function expectClosed (picker) {
-	expect(picker.isOpen).to.be.false();
+async function expectClosed (picker) {
+	expect(await picker.isOpen()).to.be.false();
 }
 
-function expectNoLabels (picker) {
-	expect(picker.hourLabel.isExisting()).to.be.false();
-	expect(picker.minuteLabel.isExisting()).to.be.false();
-	expect(picker.meridiemLabel.isExisting()).to.be.false();
+async function expectNoLabels (picker) {
+	expect(await picker.hourLabel.isExisting()).to.be.false();
+	expect(await picker.minuteLabel.isExisting()).to.be.false();
+	expect(await picker.meridiemLabel.isExisting()).to.be.false();
 }
 
-function expectOpen (picker) {
-	expect(picker.isOpen).to.be.true();
+async function expectOpen (picker) {
+	expect(await picker.isOpen()).to.be.true();
 }
 
 module.exports = {

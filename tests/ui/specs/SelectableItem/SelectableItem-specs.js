@@ -3,58 +3,58 @@ const Page = require('./SelectableItemPage'),
 
 describe('SelectableItem', function () {
 
-	beforeEach(function () {
-		Page.open();
+	beforeEach(async function () {
+		await Page.open();
 	});
 
-	it('should have focus on first item at start', function () {
-		expect(Page.components.selectableDefault.self.isFocused()).to.be.true();
+	it('should have focus on first item at start', async function () {
+		expect(await Page.components.selectableDefault.self.isFocused()).to.be.true();
 	});
 
 	describe('default', function () {
 		const selectableItem = Page.components.selectableDefault;
 
-		it('should have correct text', function () {
-			expect(selectableItem.valueText).to.equal('Selectable Item1');
+		it('should have correct text', async function () {
+			expect(await selectableItem.valueText).to.equal('Selectable Item1');
 		});
 
-		it('should not be selected', function () {
+		it('should not be selected', async function () {
 			expectUnselected(selectableItem);
 		});
 
 		describe('5-way', function () {
-			it('should select the item when selected', function () {
-				Page.spotlightSelect();
+			it('should select the item when selected', async function () {
+				await Page.spotlightSelect();
 				expectSelected(selectableItem);
 			});
 
-			it('should re-unselect the item when selected twice', function () {
-				Page.spotlightSelect();
-				Page.spotlightSelect();
+			it('should re-unselect the item when selected twice', async function () {
+				await Page.spotlightSelect();
+				await Page.spotlightSelect();
 				expectUnselected(selectableItem);
 			});
 
-			it('should move focus down on SpotlightDown', function () {
-				Page.spotlightDown();
-				expect(Page.components.selectableDefaultSelected.self.isFocused()).to.be.true();
+			it('should move focus down on SpotlightDown', async function () {
+				await Page.spotlightDown();
+				expect(await Page.components.selectableDefaultSelected.self.isFocused()).to.be.true();
 			});
 
-			it('should move focus up on SpotlightUp', function () {
-				Page.components.selectableDefaultSelected.focus();
-				Page.spotlightUp();
-				expect(selectableItem.self.isFocused()).to.be.true();
+			it('should move focus up on SpotlightUp', async function () {
+				await Page.components.selectableDefaultSelected.focus();
+				await Page.spotlightUp();
+				expect(await selectableItem.self.isFocused()).to.be.true();
 			});
 		});
 
 		describe('pointer', function () {
-			it('should select the item when clicked', function () {
-				selectableItem.self.click();
+			it('should select the item when clicked', async function () {
+				await selectableItem.self.click();
 				expectSelected(selectableItem);
 			});
 
-			it('should re-unselect the item when clicked twice', function () {
-				selectableItem.self.click();
-				selectableItem.self.click();
+			it('should re-unselect the item when clicked twice', async function () {
+				await selectableItem.self.click();
+				await selectableItem.self.click();
 				expectUnselected(selectableItem);
 			});
 		});
@@ -63,38 +63,38 @@ describe('SelectableItem', function () {
 	describe('default selected', function () {
 		const selectableItem = Page.components.selectableDefaultSelected;
 
-		it('should have correct text', function () {
-			expect(selectableItem.valueText).to.equal('Selectable Item selected');
+		it('should have correct text', async function () {
+			expect(await selectableItem.valueText).to.equal('Selectable Item selected');
 		});
 
-		it('should be selected', function () {
+		it('should be selected', async function () {
 			expectSelected(selectableItem);
 		});
 
 		describe('5-way', function () {
-			it('should unselect the item when selected', function () {
-				selectableItem.focus();
-				Page.spotlightSelect();
+			it('should unselect the item when selected', async function () {
+				await selectableItem.focus();
+				await Page.spotlightSelect();
 				expectUnselected(selectableItem);
 			});
 
-			it('should re-select the item when selected twice', function () {
-				selectableItem.focus();
-				Page.spotlightSelect();
-				Page.spotlightSelect();
+			it('should re-select the item when selected twice', async function () {
+				await selectableItem.focus();
+				await Page.spotlightSelect();
+				await Page.spotlightSelect();
 				expectSelected(selectableItem);
 			});
 		});
 
 		describe('pointer', function () {
-			it('should unselect the item when clicked', function () {
-				selectableItem.self.click();
+			it('should unselect the item when clicked', async function () {
+				await selectableItem.self.click();
 				expectUnselected(selectableItem);
 			});
 
-			it('should re-select the item when clicked twice', function () {
-				selectableItem.self.click();
-				selectableItem.self.click();
+			it('should re-select the item when clicked twice', async function () {
+				await selectableItem.self.click();
+				await selectableItem.self.click();
 				expectSelected(selectableItem);
 			});
 		});
@@ -103,42 +103,42 @@ describe('SelectableItem', function () {
 	describe('inline', function () {
 		const selectableItem = Page.components.selectableInline;
 
-		it('should have correct text', function () {
-			expect(selectableItem.valueText).to.equal('Selectable Item inline');
+		it('should have correct text', async function () {
+			expect(await selectableItem.valueText).to.equal('Selectable Item inline');
 		});
 
-		it('should be selected', function () {
+		it('should be selected', async function () {
 			expectSelected(selectableItem);
 		});
 
-		it('should display item inline', function () {
-			expect(selectableItem.isInline).to.be.true();
+		it('should display item inline', async function () {
+			expect(await selectableItem.isInline).to.be.true();
 		});
 
 		describe('5-way', function () {
-			it('should unselect the item when selected', function () {
-				selectableItem.focus();
-				Page.spotlightSelect();
+			it('should unselect the item when selected', async function () {
+				await selectableItem.focus();
+				await Page.spotlightSelect();
 				expectUnselected(selectableItem);
 			});
 
-			it('should re-select the item when selected twice', function () {
-				selectableItem.focus();
-				Page.spotlightSelect();
-				Page.spotlightSelect();
+			it('should re-select the item when selected twice', async function () {
+				await selectableItem.focus();
+				await Page.spotlightSelect();
+				await Page.spotlightSelect();
 				expectSelected(selectableItem);
 			});
 		});
 
 		describe('pointer', function () {
-			it('should unselect the item when clicked', function () {
-				selectableItem.self.click();
+			it('should unselect the item when clicked', async function () {
+				await selectableItem.self.click();
 				expectUnselected(selectableItem);
 			});
 
-			it('should re-select the item when clicked twice', function () {
-				selectableItem.self.click();
-				selectableItem.self.click();
+			it('should re-select the item when clicked twice', async function () {
+				await selectableItem.self.click();
+				await selectableItem.self.click();
 				expectSelected(selectableItem);
 			});
 		});
@@ -151,25 +151,25 @@ describe('SelectableItem', function () {
 		const selectableItem = Page.components.selectableDisabled;
 		const prevSelectableItem = Page.components.selectableInline;
 
-		it('should have correct text', function () {
-			expect(selectableItem.valueText).to.equal('Selectable Item disabled');
+		it('should have correct text', async function () {
+			expect(await selectableItem.valueText).to.equal('Selectable Item disabled');
 		});
 
-		it('should be selected', function () {
+		it('should be selected', async function () {
 			expectSelected(selectableItem);
 		});
 
 		describe('5-way', function () {
-			it('should be able to focus the item', function () {
-				prevSelectableItem.focus();
-				Page.spotlightDown();
-				expect(selectableItem.self.isFocused()).to.be.true();
+			it('should be able to focus the item', async function () {
+				await prevSelectableItem.focus();
+				await Page.spotlightDown();
+				expect(await selectableItem.self.isFocused()).to.be.true();
 			});
 		});
 
 		describe('pointer', function () {
-			it('should not unselect the item when clicked', function () {
-				selectableItem.self.click();
+			it('should not unselect the item when clicked', async function () {
+				await selectableItem.self.click();
 				expectSelected(selectableItem);
 			});
 		});
@@ -182,34 +182,34 @@ describe('SelectableItem', function () {
 		const selectableItem = Page.components.selectableInlineDisabled;
 		const selectableDisabled = Page.components.selectableDisabled;
 
-		it('should have correct text', function () {
-			expect(selectableItem.valueText).to.equal('Selectable Item inline disabled');
+		it('should have correct text', async function () {
+			expect(await selectableItem.valueText).to.equal('Selectable Item inline disabled');
 		});
 
-		it('should be selected', function () {
+		it('should be selected', async function () {
 			expectSelected(selectableItem);
 		});
 
-		it('should display item inline', function () {
-			expect(selectableItem.isInline).to.be.true();
+		it('should display item inline', async function () {
+			expect(await selectableItem.isInline).to.be.true();
 		});
 
 		describe('5-way', function () {
-			it('should be able to focus the item', function () {
-				selectableDisabled.focus();
-				Page.spotlightDown();
-				expect(selectableItem.self.isFocused()).to.be.true();
+			it('should be able to focus the item', async function () {
+				await selectableDisabled.focus();
+				await Page.spotlightDown();
+				expect(await selectableItem.self.isFocused()).to.be.true();
 			});
-			it('should not unselect the item when selected', function () {
-				selectableItem.focus();
-				Page.spotlightSelect();
+			it('should not unselect the item when selected', async function () {
+				await selectableItem.focus();
+				await Page.spotlightSelect();
 				expectSelected(selectableItem);
 			});
 		});
 
 		describe('pointer', function () {
-			it('should not unselect the item when clicked', function () {
-				selectableItem.self.click();
+			it('should not unselect the item when clicked', async function () {
+				await selectableItem.self.click();
 				expectSelected(selectableItem);
 			});
 		});
