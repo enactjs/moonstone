@@ -4,6 +4,10 @@ The following is a curated list of changes in the Enact moonstone module, newest
 
 ## [unreleased]
 
+### Added
+
+- `moonstone/VirtualList.VirtualList`, `moonstone/VirtualList.VirtualGridList` prop `data-webos-voice-focused`, `data-webos-voice-disabled`, and `data-webos-voice-group-label`
+
 ### Fixed
 
 - `moonstone/Input` size 'small' line-height to center text vertically

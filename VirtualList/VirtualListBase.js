@@ -52,6 +52,30 @@ const VirtualListBaseFactory = (type) => {
 
 		static propTypes = /** @lends moonstone/VirtualList.VirtualListBase.prototype */ {
 			/**
+			 * Disable voice control feature of component.
+			 *
+			 * @type {Boolean}
+			 * @public
+			 */
+			'data-webos-voice-disabled': PropTypes.bool,
+
+			/**
+			 * Activates the component for voice control.
+			 *
+			 * @type {Boolean}
+			 * @public
+			 */
+			'data-webos-voice-focused': PropTypes.bool,
+
+			/**
+			 * The voice control group label.
+			 *
+			 * @type {String}
+			 * @public
+			 */
+			'data-webos-voice-group-label': PropTypes.string,
+
+			/**
 			 * The `render` function called for each item in the list.
 			 *
 			 * > NOTE: The list does NOT always render a component whenever its render function is called
@@ -784,7 +808,16 @@ const VirtualListBaseFactory = (type) => {
 		};
 
 		render () {
-			const {itemRenderer, itemsRenderer, role, ...rest} = this.props;
+			const
+				{
+					'data-webos-voice-disabled': voiceDisabled,
+					'data-webos-voice-focused': voiceFocused,
+					'data-webos-voice-group-label': voiceGroupLabel,
+					itemRenderer,
+					itemsRenderer,
+					role,
+					...rest
+				} = this.props;
 
 			delete rest.initUiChildRef;
 			// not used by VirtualList
@@ -796,6 +829,11 @@ const VirtualListBaseFactory = (type) => {
 			return (
 				<UiBase
 					{...rest}
+					containerProps = {{
+						'data-webos-voice-focused': voiceFocused,
+						'data-webos-voice-group-label': voiceGroupLabel,
+						'data-webos-voice-disabled': voiceDisabled
+					}}
 					itemRenderer={({index, ...itemRest}) => ( // eslint-disable-line react/jsx-no-bind
 						itemRenderer({
 							...itemRest,
