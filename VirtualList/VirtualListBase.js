@@ -52,30 +52,6 @@ const VirtualListBaseFactory = (type) => {
 
 		static propTypes = /** @lends moonstone/VirtualList.VirtualListBase.prototype */ {
 			/**
-			 * Disable voice control feature of component.
-			 *
-			 * @type {Boolean}
-			 * @public
-			 */
-			'data-webos-voice-disabled': PropTypes.bool,
-
-			/**
-			 * Activates the component for voice control.
-			 *
-			 * @type {Boolean}
-			 * @public
-			 */
-			'data-webos-voice-focused': PropTypes.bool,
-
-			/**
-			 * The voice control group label.
-			 *
-			 * @type {String}
-			 * @public
-			 */
-			'data-webos-voice-group-label': PropTypes.string,
-
-			/**
 			 * The `render` function called for each item in the list.
 			 *
 			 * > NOTE: The list does NOT always render a component whenever its render function is called
@@ -118,6 +94,30 @@ const VirtualListBaseFactory = (type) => {
 			 * @private
 			 */
 			cbScrollTo: PropTypes.func,
+
+			/**
+			 * Disable voice control feature of component.
+			 *
+			 * @type {Boolean}
+			 * @public
+			 */
+			'data-webos-voice-disabled': PropTypes.bool,
+
+			/**
+			 * Activates the component for voice control.
+			 *
+			 * @type {Boolean}
+			 * @public
+			 */
+			'data-webos-voice-focused': PropTypes.bool,
+
+			/**
+			 * The voice control group label.
+			 *
+			 * @type {String}
+			 * @public
+			 */
+			'data-webos-voice-group-label': PropTypes.string,
 
 			/**
 			 * Size of the data.
@@ -829,7 +829,7 @@ const VirtualListBaseFactory = (type) => {
 			return (
 				<UiBase
 					{...rest}
-					containerProps = {{
+					containerProps={{
 						'data-webos-voice-focused': voiceFocused,
 						'data-webos-voice-group-label': voiceGroupLabel,
 						'data-webos-voice-disabled': voiceDisabled
