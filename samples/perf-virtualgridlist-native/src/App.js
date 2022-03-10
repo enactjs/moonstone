@@ -14,7 +14,7 @@ for (let i = 0; i < 1000; i++) {
 	items.push({
 		text: 'Item ' + count,
 		subText: 'SubItem ' + count,
-		url: 'http://placehold.it/193x150/' + color + '/ffffff&text=Image ' + i
+		url: 'http://via.placeholder.com/193x150/' + color + '/ffffff/png?text=Image ' + i
 	});
 }
 

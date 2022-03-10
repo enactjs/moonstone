@@ -26,7 +26,7 @@ const createRecords = () => {
 			caption: idx + caption,
 			selected: false,
 			selectionOverlayShowing: false,
-			source: 'http://placehold.it/300x300/' + color + '/ffffff&text=Image ' + idx,
+			source: 'http://via.placeholder.com/300x300/' + color + '/ffffff/png?text=Image ' + idx,
 			subCaption: subCaption
 		};
 	}
