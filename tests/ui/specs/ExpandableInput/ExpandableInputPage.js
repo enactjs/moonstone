@@ -14,8 +14,8 @@ class ExpandableInterface {
 		this.id = id;
 	}
 
-	focus () {
-		return browser.execute((el) => el.focus(), $(`#${this.id}>div`));
+	async focus () {
+		return await browser.execute((el) => el.focus(), await $(`#${this.id}>div`));
 	}
 
 	get self () {
@@ -48,9 +48,9 @@ class ExpandableInterface {
 	get isLabelExists () {
 		return this.self.$('.LabeledItem_LabeledItem_label').isDisplayed();
 	}
-	get isOpen () {
-		return !(!this.self.$('.enact_ui_Transition_Transition_transition').isExisting() ||
-		!this.self.$('.enact_ui_Transition_Transition_shown').isExisting() && this.self.$('.enact_ui_Transition_Transition_hidden').isExisting());
+	async isOpen () {
+		return !(!(await this.self.$('.enact_ui_Transition_Transition_transition').isExisting()) ||
+		!(await this.self.$('.enact_ui_Transition_Transition_shown').isExisting()) && await this.self.$('.enact_ui_Transition_Transition_hidden').isExisting());
 	}
 	get iconBefore () {
 		return element('.Input_Input_iconBefore', this.self);
@@ -92,16 +92,16 @@ class ExpandableInputPage extends Page {
 		this.components.disabled = new ExpandableInterface('expandable9');
 	}
 
-	open (urlExtra) {
-		super.open('ExpandableInput-View', urlExtra);
+	async open (urlExtra) {
+		await super.open('ExpandableInput-View', urlExtra);
 	}
 
-	escape () {
-		super.keyDelay('Escape');
+	async escape () {
+		await super.keyDelay('Escape');
 	}
 
-	hover () {
-		$('#expandable2').moveTo();
+	async hover () {
+		await $('#expandable2').moveTo();
 	}
 
 }

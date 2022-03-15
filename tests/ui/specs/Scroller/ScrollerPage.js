@@ -9,8 +9,8 @@ class ScrollerPage extends Page {
 		this.title = 'Scroller Test';
 	}
 
-	open (urlExtra) {
-		super.open('Scroller-View', urlExtra);
+	async open (urlExtra) {
+		await super.open('Scroller-View', urlExtra);
 	}
 
 	get button1 () {

@@ -69,8 +69,8 @@ class PopupInterface {
 	get         title () {
 		return getText(element(`#${this.id}>div>div`, browser));
 	}
-	get isCloseButton () {
-		return this.self.$('.IconButton_IconButton_iconButton').isExisting();
+	async isCloseButton () {
+		return (await this.self.$('.IconButton_IconButton_iconButton')).isExisting();
 	}
 }
 
@@ -93,16 +93,16 @@ class PopupPage extends Page {
 		this.components.popup9 = new PopupInterface('popup9');
 	}
 
-	open (urlExtra) {
-		super.open('Popup-View', urlExtra);
+	async open (urlExtra) {
+		await super.open('Popup-View', urlExtra);
 	}
 
-	clickPopupFloatLayer () {
-		$('#floatLayer > div').click();
+	async clickPopupFloatLayer () {
+		await $('#floatLayer > div').click();
 	}
 
-	clickPopupMain () {
-		$('#popupMain').click();
+	async clickPopupMain () {
+		await $('#popupMain').click();
 	}
 }
 
