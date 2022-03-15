@@ -12,8 +12,8 @@ class ExpandableItemInterface {
 		this.id = id;
 	}
 
-	focus () {
-		return browser.execute((el) => el.focus(), $(`#${this.id}>div`));
+	async focus () {
+		return await browser.execute((el) => el.focus(), await $(`#${this.id}>div`));
 	}
 
 	get      self () {
@@ -34,10 +34,12 @@ class ExpandableItemInterface {
 	get valueText () {
 		return getText(this.value);
 	}
-	get    isOpen () {
-		return !(!this.self.$('.enact_ui_Transition_Transition_transition').isExisting() ||
-		!this.self.$('.enact_ui_Transition_Transition_shown').isExisting() && this.self.$('.enact_ui_Transition_Transition_hidden').isExisting());
+
+	async isOpen () {
+		return !(!(await this.self.$('.enact_ui_Transition_Transition_transition').isExisting()) ||
+			!(await this.self.$('.enact_ui_Transition_Transition_shown').isExisting()) && await this.self.$('.enact_ui_Transition_Transition_hidden').isExisting());
 	}
+
 	get  hasLabel () {
 		return this.self.$('.LabeledItem_LabeledItem_label').isDisplayed();
 	}
@@ -64,8 +66,8 @@ class ExpandableItemPage extends Page {
 		this.components.expandableItemDisabledWithNoneText = new ExpandableItemInterface('expandableItemDisabledWithNoneText');
 	}
 
-	open (urlExtra) {
-		super.open('ExpandableItem-View', urlExtra);
+	async open (urlExtra) {
+		await super.open('ExpandableItem-View', urlExtra);
 	}
 }
 

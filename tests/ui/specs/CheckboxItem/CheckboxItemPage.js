@@ -8,8 +8,8 @@ class CheckboxItemInterface {
 		this.iconSelector = `#${this.id} > div .Icon_Icon_icon`;
 	}
 
-	focus () {
-		return browser.execute((el) => el.focus(), $(`#${this.id}`));
+	async focus () {
+		return await browser.execute((el) => el.focus(), await $(`#${this.id}`));
 	}
 
 	get self () {
@@ -56,8 +56,8 @@ class CheckboxItemPage extends Page {
 		this.components = {checkboxDefault, checkboxDefaultSelected, checkboxIconAfter, checkboxInline, checkboxInlineAfter, checkboxDisabled};
 	}
 
-	open (urlExtra) {
-		super.open('CheckboxItem-View', urlExtra);
+	async open (urlExtra) {
+		await super.open('CheckboxItem-View', urlExtra);
 	}
 }
 

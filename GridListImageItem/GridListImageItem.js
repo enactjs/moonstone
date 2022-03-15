@@ -4,7 +4,7 @@
  * @example
  * <GridListImageItem
  *   caption="image0"
- *   source="http://placehold.it/100x100/9037ab/ffffff&text=Image0"
+ *   source="http://via.placeholder.com/100x100/9037ab/ffffff/png?text=Image0"
  *   subCaption="sub-image0"
  * />
  *
@@ -174,7 +174,7 @@ const GridListImageItemDecorator = compose(
  * ```
  * <GridListImageItem
  * 	caption="image0"
- * 	source="http://placehold.it/300x300/9037ab/ffffff&text=Image0"
+ * 	source="http://via.placeholder.com/300x300/9037ab/ffffff/png?text=Image0"
  * 	subCaption="sub-image0"
  * />
  * ```

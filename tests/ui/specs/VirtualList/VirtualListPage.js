@@ -9,11 +9,10 @@ class VirtualListPage extends Page {
 	constructor () {
 		super();
 		this.title = 'VirtualList Test';
-
 	}
 
-	open (urlExtra) {
-		super.open('VirtualList-View', urlExtra);
+	async open (urlExtra) {
+		await super.open('VirtualList-View', urlExtra);
 	}
 
 	get buttonFocusableScrollbar () {
@@ -57,8 +56,8 @@ class VirtualListPage extends Page {
 		return element(`#${typeof id === 'number' ? `item${id}` : id}`, browser);
 	}
 
-	topVisibleItemId () {
-		return browser.execute(function (_scrollableSelector) {
+	async topVisibleItemId () {
+		return await browser.execute(function (_scrollableSelector) {
 			const scroller = document.querySelector(_scrollableSelector),
 				{top, left, width} = scroller.getBoundingClientRect();
 			let currentY = top + 1,
@@ -79,8 +78,8 @@ class VirtualListPage extends Page {
 		}, scrollableSelector);
 	}
 
-	bottomVisibleItemId () {
-		return browser.execute(function (_scrollableSelector) {
+	async bottomVisibleItemId () {
+		return await browser.execute(function (_scrollableSelector) {
 			const scroller = document.querySelector(_scrollableSelector),
 				{bottom, left, width} = scroller.getBoundingClientRect();
 
@@ -104,10 +103,10 @@ class VirtualListPage extends Page {
 		}, scrollableSelector);
 	}
 
-	itemOffsetTopById (id) {
-		return browser.execute(function (_element) {
+	async itemOffsetTopById (id) {
+		return await browser.execute(function (_element) {
 			return _element.getBoundingClientRect().top;
-		}, this.item(id));
+		}, await this.item(id));
 	}
 }
 
