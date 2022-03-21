@@ -16,6 +16,7 @@ describe('ToggleButton', () => {
 		const actual = button.children[2].children[0].children[0];
 
 		expect(actual).toHaveTextContent(expected);
+		expect(button).toHaveTextContent(expected);
 	});
 
 	test('should use \'toggleOnLabel\' if toggled on and label provided', () => {
@@ -26,6 +27,7 @@ describe('ToggleButton', () => {
 		const actual = button.children[2].children[0].children[0];
 
 		expect(actual).toHaveTextContent(expected);
+		expect(button).toHaveTextContent(expected);
 	});
 
 	test('should use child node for label when \'toggleOffLabel\' is missing', () => {

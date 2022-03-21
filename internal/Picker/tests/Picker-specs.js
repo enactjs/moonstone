@@ -355,7 +355,7 @@ describe('Picker Specs', () => {
 					<PickerItem>4</PickerItem>
 				</Picker>
 			);
-			const picker = screen.getByLabelText('2 change a value with left right button').children.item(1);
+			const picker = screen.getByRole('spinbutton', {hidden: true});
 
 			const expectedAttribute = 'aria-hidden';
 			const expectedValue = 'true';
@@ -372,7 +372,7 @@ describe('Picker Specs', () => {
 					<PickerItem>4</PickerItem>
 				</Picker>
 			);
-			const picker = screen.getByLabelText('2 change a value with left right button').children.item(1);
+			const picker = screen.getByRole('spinbutton', {hidden: true});
 
 			fireEvent.focus(picker);
 

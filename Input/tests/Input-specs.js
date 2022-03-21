@@ -56,7 +56,7 @@ describe('Input Specs', () => {
 
 	test('should be able to be disabled', () => {
 		render(<Input disabled />);
-		const input = screen.getByLabelText('Input field').lastElementChild;
+		const input = screen.getByLabelText('Input field');
 
 		const expectedAttribute = 'disabled';
 
@@ -65,11 +65,9 @@ describe('Input Specs', () => {
 
 	test('should reflect the value if specified', () => {
 		render(<Input value="hello" />);
-		const input = screen.getByText('hello').nextElementSibling;
+		const input = screen.queryByText('hello');
 
-		const expected = 'input';
-
-		expect(input).toHaveClass(expected);
+		expect(input).toBeInTheDocument();
 	});
 
 	test('should have dir equal to rtl when there is rtl text', () => {

@@ -7,16 +7,15 @@ describe('LabeledItem Specs', () => {
 	test('should render a label `div` by default', () => {
 		render(<LabeledItem label="The Label">I am a labeledItem</LabeledItem>);
 
-		const expected = 'label';
-		const actual = screen.getByText('The Label').parentElement.parentElement;
+		const actual = screen.queryByText('The Label');
 
-		expect(actual).toHaveClass(expected);
+		expect(actual).toBeInTheDocument();
 	});
 
 	test('should not render a label if there is no \'label\' prop', () => {
 		render(<LabeledItem>I am a labeledItem</LabeledItem>);
 
-		const actual = screen.queryByLabelText('The Label');
+		const actual = screen.queryByText('The Label');
 
 		expect(actual).toBeNull();
 	});

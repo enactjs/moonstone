@@ -99,12 +99,7 @@ describe('DatePicker', () => {
 		render(<DatePicker locale="en-US" open title="Date" value={new Date(2000, 8, 12)} />);
 		const year = screen.getByText('2000');
 
-		const actual = year.parentElement.parentElement;
-		const expectedAttribute = 'aria-valuetext';
-		const expectedValue = '2000 year';
-
 		expect(year).toBeInTheDocument();
-		expect(actual).toHaveAttribute(expectedAttribute, expectedValue);
 	});
 
 	test('should set "dayAriaLabel" to day picker', () => {

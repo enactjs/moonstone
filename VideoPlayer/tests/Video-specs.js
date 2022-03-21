@@ -53,6 +53,7 @@ describe('VideoPlayer.Video', () => {
 			const actual = screen.getByTestId('video-id').nextElementSibling;
 
 			expect(actual).not.toBeNull();
+			expect(actual.tagName).toBe('VIDEO');
 		});
 
 		test('should use the same node when adding `preloadSource` the same as source', () => {
@@ -71,7 +72,7 @@ describe('VideoPlayer.Video', () => {
 			expect(actual).toBe(expected);
 		});
 
-		test('should swaps nodes when swapping `source` and `preloadSource`', () => {
+		test('should swap nodes when swapping `source` and `preloadSource`', () => {
 			const {rerender} = render(
 				<Video data-testid="video-id" preloadSource="def.mp4" source="abc.mp4" />
 			);

@@ -10,8 +10,7 @@ describe('Spinner Specs', () => {
 		const children = spinner.children;
 
 		expect(children.length).toEqual(1);
-		expect(children.item(0)).toHaveClass('bg');
-		expect(children.item(1)).not.toBeInTheDocument();
+		expect(children.item(0)).not.toHaveClass('client');
 	});
 
 	test('should have a client node when Spinner has children', () => {

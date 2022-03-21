@@ -108,10 +108,10 @@ describe('VirtualList', () => {
 			/>
 		);
 
-		const expected = 'horizontalScrollbarVisible';
-		const actual = screen.getByTestId('list').parentElement.parentElement.parentElement;
+		const expected = 2; // One for the list and another for the horizontal scrollbar
+		const actual = screen.getByTestId('list').parentElement.parentElement.parentElement.parentElement.children.length;
 
-		expect(actual).toHaveClass(expected);
+		expect(actual).toBe(expected);
 	});
 
 	describe('ScrollTo', () => {

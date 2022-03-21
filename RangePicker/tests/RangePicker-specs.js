@@ -62,8 +62,8 @@ describe('RangePicker Specs', () => {
 	});
 
 	test('should be disabled when limited to a single value', () => {
-		render(<RangePickerBase min={0} max={0} value={0} />);
-		const rangePicker = screen.getAllByRole('button')[0].parentElement;
+		render(<RangePickerBase data-testid="rangePicker" min={0} max={0} value={0} />);
+		const rangePicker = screen.getByTestId('rangePicker');
 
 		const expectedAttribute = 'aria-disabled';
 		const expectedValue = 'true';

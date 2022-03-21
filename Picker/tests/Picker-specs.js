@@ -33,11 +33,11 @@ describe('Picker Specs', () => {
 
 	test('should be disabled when empty', () => {
 		render(
-			<PickerBase>
+			<PickerBase data-testid="picker">
 				{[]}
 			</PickerBase>
 		);
-		const picker = screen.getAllByRole('button')[0].parentElement;
+		const picker = screen.getByTestId('picker');
 
 		const expected = 'disabled';
 
@@ -50,11 +50,11 @@ describe('Picker Specs', () => {
 				{[1, 2, 3, 4]}
 			</PickerBase>
 		);
-		const picker = screen.getAllByRole('button')[1];
+		const decrementButton = screen.getAllByRole('button')[1];
 
 		const expected = 'data-webos-voice-disabled';
 
-		expect(picker).toHaveAttribute(expected);
+		expect(decrementButton).toHaveAttribute(expected);
 	});
 
 	test('should set "data-webos-voice-disabled" to increment button when voice control is disabled', () => {
@@ -63,10 +63,10 @@ describe('Picker Specs', () => {
 				{[1, 2, 3, 4]}
 			</PickerBase>
 		);
-		const picker = screen.getAllByRole('button')[0];
+		const incrementButton = screen.getAllByRole('button')[0];
 
 		const expected = 'data-webos-voice-disabled';
 
-		expect(picker).toHaveAttribute(expected);
+		expect(incrementButton).toHaveAttribute(expected);
 	});
 });

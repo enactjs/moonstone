@@ -1,18 +1,19 @@
 import '@testing-library/jest-dom';
 import {fireEvent, render, screen} from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 import DaySelector from '../DaySelector';
 
 const tap = (node) => {
 	fireEvent.mouseDown(node);
 	fireEvent.mouseUp(node);
-	fireEvent.click(node);
+	userEvent.click(node);
 };
 
 describe('DaySelector', () => {
 	test('should set selected prop to true for the item that is selected by default', () => {
 		render(<DaySelector defaultSelected={0} />);
-		const daySelector = screen.getAllByRole('checkbox')[0].children.item(0).children.item(0);
+		const daySelector = screen.getAllByRole('checkbox')[0];
 
 		const expectedAttribute = 'selected';
 

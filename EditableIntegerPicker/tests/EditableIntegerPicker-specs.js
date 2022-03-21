@@ -77,7 +77,7 @@ describe('EditableIntegerPicker', () => {
 
 		userEvent.click(screen.getByText('10'));
 
-		const inputField = screen.getByLabelText('undefined change a value with left right button').children.item(1);
+		const inputField = screen.getByRole('spinbutton');
 
 		const expected = 'input';
 		const actual = inputField.firstElementChild.firstElementChild;
@@ -90,7 +90,7 @@ describe('EditableIntegerPicker', () => {
 
 		userEvent.click(screen.getByText('10'));
 
-		const input = screen.getByLabelText('undefined change a value with left right button').children.item(1);
+		const input = screen.getByRole('spinbutton');
 		const inputField = input.children.item(0).children.item(0);
 
 		fireEvent.focus(inputField);
@@ -114,7 +114,7 @@ describe('EditableIntegerPicker', () => {
 
 		userEvent.click(screen.getByText('10'));
 
-		const input = screen.getByLabelText('undefined change a value with left right button').children.item(1);
+		const input = screen.getByRole('spinbutton');
 		const inputField = input.children.item(0).children.item(0);
 
 		fireEvent.focus(inputField);
@@ -141,7 +141,7 @@ describe('EditableIntegerPicker', () => {
 
 		userEvent.click(screen.getByText('10'));
 
-		const input = screen.getByLabelText('undefined change a value with left right button').children.item(1);
+		const input = screen.getByRole('spinbutton');
 		const inputField = input.children.item(0).children.item(0);
 
 		fireEvent.focus(inputField);
@@ -169,7 +169,7 @@ describe('EditableIntegerPicker', () => {
 
 		userEvent.click(screen.getByText('12'));
 
-		const input = screen.getByLabelText('undefined change a value with left right button').children.item(1);
+		const input = screen.getByRole('spinbutton');
 		const inputField = input.children.item(0).children.item(0);
 
 		fireEvent.focus(inputField);
@@ -194,7 +194,7 @@ describe('EditableIntegerPicker', () => {
 
 		userEvent.click(screen.getByText('15'));
 
-		const input = screen.getByLabelText('undefined change a value with left right button').children.item(1);
+		const input = screen.getByRole('spinbutton');
 		const inputField = input.children.item(0).children.item(0);
 
 		fireEvent.focus(inputField);
@@ -212,7 +212,7 @@ describe('EditableIntegerPicker', () => {
 
 		fireEvent.keyDown(input, {keyCode: 50});
 
-		const inputField = screen.getByLabelText('undefined change a value with left right button').children.item(1);
+		const inputField = screen.getByRole('spinbutton');
 
 		const expected = 'input';
 		const actual = inputField.firstElementChild.firstElementChild;
@@ -225,7 +225,7 @@ describe('EditableIntegerPicker', () => {
 
 		userEvent.click(screen.getByText('11'));
 
-		const input = screen.getByLabelText('undefined change a value with left right button').children.item(1);
+		const input = screen.getByRole('spinbutton');
 		const inputField = input.children.item(0).children.item(0);
 
 		fireEvent.focus(inputField);
@@ -243,7 +243,7 @@ describe('EditableIntegerPicker', () => {
 
 		userEvent.click(screen.getByText('13'));
 
-		const input = screen.getByLabelText('undefined change a value with left right button').children.item(1);
+		const input = screen.getByRole('spinbutton');
 		const inputField = input.children.item(0).children.item(0);
 
 		fireEvent.focus(inputField);
