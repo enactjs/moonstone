@@ -12,22 +12,14 @@ describe('ToggleButton', () => {
 		render(<ToggleButton toggleOffLabel={toggleOffLabel}>{textChild}</ToggleButton>);
 		const button = screen.getByRole('button');
 
-		const expected = toggleOffLabel;
-		const actual = button.children[2].children[0].children[0];
-
-		expect(actual).toHaveTextContent(expected);
-		expect(button).toHaveTextContent(expected);
+		expect(button).toHaveTextContent(toggleOffLabel);
 	});
 
 	test('should use \'toggleOnLabel\' if toggled on and label provided', () => {
 		render(<ToggleButton toggleOnLabel={toggleOnLabel} selected>{textChild}</ToggleButton>);
 		const button = screen.getByRole('button');
 
-		const expected = toggleOnLabel;
-		const actual = button.children[2].children[0].children[0];
-
-		expect(actual).toHaveTextContent(expected);
-		expect(button).toHaveTextContent(expected);
+		expect(button).toHaveTextContent(toggleOnLabel);
 	});
 
 	test('should use child node for label when \'toggleOffLabel\' is missing', () => {
