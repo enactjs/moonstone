@@ -1,5 +1,5 @@
 import Button from '@enact/moonstone/Button';
-import ExpandableList from '@enact/moonstone/ExpandableList';
+import Dropdown from '@enact/moonstone/Dropdown';
 import PropTypes from 'prop-types';
 import {Component} from 'react';
 import $L from '@enact/i18n/$L';
@@ -30,14 +30,16 @@ const AsyncILib = I18nContextDecorator(
 
 			return (
 				<div {...rest}>
-					<ExpandableList
-						title={$L('locales')}
-						noneText="none"
-						selected={locales.indexOf(locale)}
+					<Dropdown
+						direction="down"
 						onSelect={this.handleSelect}
+						selected={locales.indexOf(locale)}
+						size="large"
+						title={$L('locales')}
+						width="large"
 					>
 						{locales}
-					</ExpandableList>
+					</Dropdown>
 					<Button>
 						<Text>hi</Text>
 					</Button>
