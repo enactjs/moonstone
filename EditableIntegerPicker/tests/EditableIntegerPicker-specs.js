@@ -1,6 +1,6 @@
 import Spotlight from '@enact/spotlight';
 import '@testing-library/jest-dom';
-import {fireEvent, render, screen} from '@testing-library/react';
+import {act, fireEvent, render, screen} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import {EditableIntegerPicker, EditableIntegerPickerBase} from '../EditableIntegerPicker';
@@ -45,7 +45,7 @@ describe('EditableIntegerPicker', () => {
 			/>
 		);
 
-		increment();
+		act(() => increment());
 
 		const actual = screen.getByText('20');
 
@@ -65,7 +65,7 @@ describe('EditableIntegerPicker', () => {
 			/>
 		);
 
-		decrement();
+		act(() => decrement());
 
 		const actual = screen.getByText('0');
 
