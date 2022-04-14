@@ -35,7 +35,7 @@
     "@enact/moonstone": "../../",
     "@enact/spotlight": "^4.1.4",
     "@enact/ui": "^4.1.4",
-    "ilib": "^14.11.1",
+    "ilib": "^14.14.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
   }
