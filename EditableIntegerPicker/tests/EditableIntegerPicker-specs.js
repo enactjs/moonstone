@@ -16,6 +16,20 @@ const decrement = () => tap(screen.getByText('-'));
 const increment = () => tap(screen.getByText('+'));
 
 describe('EditableIntegerPicker', () => {
+	test('should enable input field when some number is typed on the picker', () => {
+		render(<EditableIntegerPicker defaultValue={10} max={100} min={0} step={1} />);
+		const input = screen.getByText('10');
+
+		fireEvent.keyDown(input, {keyCode: 50});
+
+		const inputField = screen.getByRole('spinbutton');
+
+		const expected = 'input';
+		const actual = inputField.firstElementChild.firstElementChild;
+
+		expect(actual).toHaveClass(expected);
+	});
+
 	test('should render a child with the current value', () => {
 		render(
 			<EditableIntegerPicker
@@ -204,20 +218,6 @@ describe('EditableIntegerPicker', () => {
 		const expected = 1;
 
 		expect(handleChange).toHaveBeenCalledTimes(expected);
-	});
-
-	test('should enable input field when some number is typed on the picker', () => {
-		render(<EditableIntegerPicker defaultValue={10} max={100} min={0} step={1} />);
-		const input = screen.getByText('10');
-
-		fireEvent.keyDown(input, {keyCode: 50});
-
-		const inputField = screen.getByRole('spinbutton');
-
-		const expected = 'input';
-		const actual = inputField.firstElementChild.firstElementChild;
-
-		expect(actual).toHaveClass(expected);
 	});
 
 	test('should pause the spotlight when input is focused', () => {
