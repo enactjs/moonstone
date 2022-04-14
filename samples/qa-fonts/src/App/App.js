@@ -1,17 +1,14 @@
-import {ActivityPanels} from '@enact/moonstone/Panels';
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
-import {Component} from 'react';
+import {ActivityPanels} from '@enact/moonstone/Panels';
 
 import MainPanel from '../views/MainPanel';
 
-class App extends Component {
-	render () {
-		return (
-			<ActivityPanels {...this.props}>
-				<MainPanel />
-			</ActivityPanels>
-		);
-	}
+const App = (props) => {
+	return (
+		<ActivityPanels {...props}>
+			<MainPanel />
+		</ActivityPanels>
+	);
 }
 
 export default MoonstoneDecorator(App);
