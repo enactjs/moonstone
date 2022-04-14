@@ -2,8 +2,7 @@ import $L from '@enact/i18n/$L';
 import {I18nContextDecorator} from '@enact/i18n/I18nDecorator';
 import Text, {TextDecorator} from '@enact/i18n/Text';
 import Button from '@enact/moonstone/Button';
-import ExpandableList from '@enact/moonstone/ExpandableList';
-import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
+import Dropdown from '@enact/moonstone/Dropdown';import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 import PropTypes from 'prop-types';
 import {useCallback} from 'react';
 
@@ -16,14 +15,16 @@ const Component = ({locale, updateLocale, ...rest}) => {
 
 	return (
 		<div {...rest}>
-			<ExpandableList
-				title={$L('locales')}
-				noneText="none"
-				selected={locales.indexOf(locale)}
+			<Dropdown
+				direction="down"
 				onSelect={handleSelect}
+				selected={locales.indexOf(locale)}
+				size="large"
+				title={$L('locales')}
+				width="large"
 			>
 				{locales}
-			</ExpandableList>
+			</Dropdown>
 			<Button>
 				<Text>hi</Text>
 			</Button>
