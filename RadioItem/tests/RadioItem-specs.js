@@ -1,32 +1,25 @@
-import {mount} from 'enzyme';
+import '@testing-library/jest-dom';
+import {render, screen} from '@testing-library/react';
+
 import RadioItem from '../RadioItem';
-import css from '../RadioItem.module.less';
 
 describe('RadioItem Specs', () => {
 	test('should render correct icon when not selected', () => {
-		const radioItem = mount(
-			<RadioItem>
-				Hello RadioItem
-			</RadioItem>
-		);
+		render(<RadioItem>Hello RadioItem</RadioItem>);
 
-		const expected = 0;
-		const actual = radioItem.find(`.${css.selected}`).length;
+		const expected = 'false';
+		const radioItem = screen.getByRole('checkbox');
 
-		expect(actual).toBe(expected);
+		expect(radioItem).toHaveAttribute('aria-checked', expected);
 	});
 
 	test('should render correct icon when selected', () => {
-		const radioItem = mount(
-			<RadioItem selected>
-				Hello RadioItem
-			</RadioItem>
-		);
+		render(<RadioItem selected>Hello RadioItem</RadioItem>);
 
-		const expected = 1;
-		const actual = radioItem.find(`.${css.selected}`).length;
+		const expected = 'true';
+		const radioItem = screen.getByRole('checkbox');
 
-		expect(actual).toBe(expected);
+		expect(radioItem).toHaveAttribute('aria-checked', expected);
 	});
 
 });
