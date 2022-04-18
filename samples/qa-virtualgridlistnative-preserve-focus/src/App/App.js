@@ -1,8 +1,8 @@
-import {ActivityPanels} from '@enact/moonstone/Panels';
-import {connect} from 'react-redux';
 import kind from '@enact/core/kind';
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
+import {ActivityPanels} from '@enact/moonstone/Panels';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 
 import {decreaseIndex, increaseIndex} from '../actions';
 import MainPanel from '../views/MainPanel';
