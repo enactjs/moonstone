@@ -1,44 +1,30 @@
-import IconButton from '@enact/moonstone/IconButton';
 import kind from '@enact/core/kind';
-import PropTypes from 'prop-types';
-import {Component} from 'react';
+import IconButton from '@enact/moonstone/IconButton';
 import VideoPlayer, {MediaControls} from '@enact/moonstone/VideoPlayer';
+import PropTypes from 'prop-types';
+import {useCallback, useRef, useState} from 'react';
 
 import componentCss from './MainPanel.module.less';
 
-const SelectableVideoPlayer = class extends Component {
+const SelectableVideoPlayer = ({css, ...props}) => {
+	const videoRef = useRef(null);
+	const [selecting, setSelecting] = useState(false);
+	const [selection, setSelection] = useState([]);
 
-	static displayName = 'SelectableVideoPlayer';
-
-	static propTypes = {
-		css: PropTypes.object
-	};
-
-	state = {
-		selection: null
-	};
-
-	handleToggleSelection = () => {
-		const {selection} = this.state;
-
-		const {currentTime} = this.video.getMediaState();
+	const handleToggleSelection = useCallback(() => {
+		const {currentTime} = videoRef.current.getMediaState();
 
 		if (selection == null || selection.length === 2) {
-			this.setState({
-				selection: [currentTime],
-				selecting: true
-			});
+			setSelecting(true);
+			setSelection([currentTime]);
 		} else {
-			this.setState({
-				selection: [selection[0], currentTime].sort((a, b) => a - b),
-				selecting: false
-			});
+			setSelecting(false);
+			setSelection([selection[0], currentTime].sort((a, b) => a - b));
 		}
-	};
+	}, [selection]);
 
-	handleTimeUpdate = () => {
-		const {selection} = this.state;
-		const {currentTime} = this.video.getMediaState();
+	const handleTimeUpdate = useCallback(() => {
+		const {currentTime} = videoRef.current.getMediaState();
 
 		if (selection != null) {
 			const [selectionEnd] = selection;
@@ -49,56 +35,53 @@ const SelectableVideoPlayer = class extends Component {
 				// this.video.seek(selectionStart);
 
 				// ... or pause() and lock at end
-				this.video.pause();
+				videoRef.current.pause();
 				// this.video.seek(selectionEnd);
 			}
 		}
-	};
+	}, [selection]);
 
-	handleSeekOutsideSelection = (ev) => {
-
+	const handleSeekOutsideSelection = useCallback((ev) => {
 		// prevent the action and seek to the beginning or end
-		const {selection} = this.state;
 		const [selectionStart, selectionEnd] = selection;
 		ev.preventDefault();
 
 		if (ev.time < selectionStart) {
-			this.video.seek(selectionStart);
+			videoRef.current.seek(selectionStart);
 		} else if (ev.time > selectionStart) {
 			// this.video.pause();
-			this.video.seek(selectionEnd);
+			videoRef.current.seek(selectionEnd);
 		}
 
 		// or remove the selection and allow the default behavior
 		// this.setState({
 		// 	selection: null
 		// });
+	}, [selection]);
+
+	const setVideo = (video) => {
+		videoRef.current = video;
 	};
 
-	setVideo = (video) => {
-		this.video = video;
-	};
+	return (
+		<VideoPlayer
+			{...props}
+			loop
+			onSeekOutsideSelection={handleSeekOutsideSelection}
+			onTimeUpdate={handleTimeUpdate}
+			selection={selection}
+			ref={setVideo}
+		>
+			<MediaControls>
+				<IconButton className={selecting ? css.selecting : ''} slot="rightComponents" onTap={handleToggleSelection}>repeat</IconButton>
+			</MediaControls>
+			<source src="http://media.w3.org/2010/05/video/movie_300.mp4" />
+		</VideoPlayer>
+	);
+};
 
-	render () {
-		const {css} = this.props;
-		const {selecting} = this.state;
-
-		return (
-			<VideoPlayer
-				{...this.props}
-				loop
-				onSeekOutsideSelection={this.handleSeekOutsideSelection}
-				onTimeUpdate={this.handleTimeUpdate}
-				selection={this.state.selection}
-				ref={this.setVideo}
-			>
-				<MediaControls>
-					<IconButton className={selecting ? css.selecting : ''} slot="rightComponents" onTap={this.handleToggleSelection}>repeat</IconButton>
-				</MediaControls>
-				<source src="http://media.w3.org/2010/05/video/movie_300.mp4" />
-			</VideoPlayer>
-		);
-	}
+SelectableVideoPlayer.propTypes = {
+	css: PropTypes.object
 };
 
 const MainPanel = kind({

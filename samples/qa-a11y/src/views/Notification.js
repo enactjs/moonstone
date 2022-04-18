@@ -1,61 +1,59 @@
 import Button from '@enact/moonstone/Button';
 import Notification from '@enact/moonstone/Notification';
-import {Component} from 'react';
+import {useCallback, useState} from 'react';
 
-class NotificationView extends Component {
-	constructor (props) {
-		super(props);
-		this.state = {
-			open1: false,
-			open2: false
-		};
+const NotificationView = () => {
+	const [openSmall, setOpenSmall] = useState(false);
+	const [openLarge, setOpenLarge] = useState(false);
 
-		this.handleOpen1 = this.handleOpen(1);
-		this.handleOpen2 = this.handleOpen(2);
+	const handleCloseLarge = useCallback(() => {
+		setOpenLarge(false);
+	}, []);
 
-		this.handleClose1 = this.handleClose(1);
-		this.handleClose2 = this.handleClose(2);
-	}
+	const handleCloseSmall = useCallback(() => {
+		setOpenSmall(false);
+	}, []);
 
-	handleOpen = (expNum) => () => this.setState({['open' + expNum]: true});
+	const handleOpenLarge = useCallback(() => {
+		setOpenLarge(true);
+	}, []);
 
-	handleClose = (expNum) => () => this.setState({['open' + expNum]: false});
+	const handleOpenSmall = useCallback(() => {
+		setOpenSmall(true);
+	}, []);
 
-	render () {
-		const {open1, open2} = this.state;
 
-		return (
-			<div>
-				<Button size="small" onClick={this.handleOpen1}>Small Notification</Button>
-				<Button size="small" onClick={this.handleOpen2}>Large Notification</Button>
+	return (
+		<div>
+			<Button size="small" onClick={handleOpenSmall}>Small Notification</Button>
+			<Button size="small" onClick={handleOpenLarge}>Large Notification</Button>
 
-				<Notification
-					open={open1}
-					onClose={this.handleClose1}
-				>
-					<span>Hello</span>
-					<buttons>
-						<Button size="small" onClick={this.handleClose1}>Howdy</Button>
-					</buttons>
-				</Notification>
+			<Notification
+				open={openSmall}
+				onClose={handleCloseSmall}
+			>
+				<span>Hello</span>
+				<buttons>
+					<Button size="small" onClick={handleCloseSmall}>Howdy</Button>
+				</buttons>
+			</Notification>
 
-				<Notification
-					open={open2}
-					onClose={this.handleClose2}
-				>
-					<span>{`Not to worry, this message isn't going to be very long.
-					It just has to be long enough to show what a long message looks like.
-					That's all; have a nice day.`}</span>
-					<buttons>
-						<Button size="small" onClick={this.handleClose2}>First Button!</Button>
-						<Button size="small" onClick={this.handleClose2}>Oh My Yes, Kitten</Button>
-						<Button size="small" onClick={this.handleClose2}>Hide And Show</Button>
-						<Button size="small" onClick={this.handleClose2}>Close</Button>
-					</buttons>
-				</Notification>
-			</div>
-		);
-	}
-}
+			<Notification
+				open={openLarge}
+				onClose={handleCloseLarge}
+			>
+				<span>{`Not to worry, this message isn't going to be very long.
+				It just has to be long enough to show what a long message looks like.
+				That's all; have a nice day.`}</span>
+				<buttons>
+					<Button size="small" onClick={handleCloseLarge}>First Button!</Button>
+					<Button size="small" onClick={handleCloseLarge}>Oh My Yes, Kitten</Button>
+					<Button size="small" onClick={handleCloseLarge}>Hide And Show</Button>
+					<Button size="small" onClick={handleCloseLarge}>Close</Button>
+				</buttons>
+			</Notification>
+		</div>
+	);
+};
 
 export default NotificationView;

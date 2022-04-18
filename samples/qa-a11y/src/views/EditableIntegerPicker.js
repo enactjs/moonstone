@@ -2,38 +2,24 @@ import EditableIntegerPicker from '@enact/moonstone/EditableIntegerPicker';
 import Heading from '@enact/moonstone/Heading';
 import Scroller from '@enact/moonstone/Scroller';
 import PropTypes from 'prop-types';
-import {Component} from 'react';
+import {useCallback, useState} from 'react';
 
-class EditableIntegerPickerWithAriaText extends Component {
-	static propTypes = {
-		defaultValue: PropTypes.number,
-		unit: PropTypes.string
-	};
+const EditableIntegerPickerWithAriaText = ({unit, ...props}) => {
+	const [value, setValue] = useState(0);
 
-	static defaultProps = {
-		defaultValue: 0,
-		unit: ''
-	};
+	const handleChange = useCallback((ev) => setValue(ev.value), []);
 
-	constructor (props) {
-		super(props);
-		this.state = {
-			value: props.defaultValue
-		};
-	}
+	const text = 'The current length is ' + value + unit;
 
-	handleChange = (ev) => this.setState({value: ev.value});
+	return (
+		<EditableIntegerPicker {...props} aria-valuetext={text} onChange={handleChange} />
+	);
+};
 
-	render () {
-		const
-			{value} = this.state,
-			text = 'The current length is ' + value + this.props.unit;
-
-		return (
-			<EditableIntegerPicker {...this.props} aria-valuetext={text} onChange={this.handleChange} />
-		);
-	}
-}
+EditableIntegerPickerWithAriaText.propTypes = {
+	defaultValue: PropTypes.number,
+	unit: PropTypes.string
+};
 
 const EditableIntegerPickerView = () => (
 	<Scroller focusableScrollbar>

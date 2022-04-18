@@ -1,11 +1,11 @@
 import DatePicker from '@enact/moonstone/DatePicker';
-import Heading from '@enact/moonstone/Heading';
 import ExpandablePicker from '@enact/moonstone/ExpandablePicker';
+import Heading from '@enact/moonstone/Heading';
 import Picker from '@enact/moonstone/Picker';
 import RangePicker from '@enact/moonstone/RangePicker';
-import {Component} from 'react';
 import Scroller from '@enact/moonstone/Scroller';
 import TimePicker from '@enact/moonstone/TimePicker';
+import {useCallback, useState} from 'react';
 
 const
 	airports = [
@@ -18,27 +18,17 @@ const
 	subjects = ['English', 'Maths', 'Korean', 'Science', 'History'],
 	subjectValue = ['80', '90', '100', '70', '50'];
 
-class CustomPicker extends Component {
-	constructor (props) {
-		super(props);
-		this.state = {
-			index: 0
-		};
-	}
+const CustomPicker = ({children, ...props}) => {
+	const [index, setIndex] = useState(0);
 
-	handleChange = (ev) => this.setState({index: ev.value});
+	const handleChange = useCallback((ev) => setIndex(ev.value), []);
 
-	render () {
-		const
-			{index} = this.state,
-			{children} = this.props,
-			valueText = `${children[index]} ${subjectValue[index]}`;
+	const valueText = `${children[index]} ${subjectValue[index]}`;
 
-		return (
-			<Picker aria-valuetext={valueText} onChange={this.handleChange} {...this.props}>{children}</Picker>
-		);
-	}
-}
+	return (
+		<Picker aria-valuetext={valueText} onChange={handleChange} {...props}>{children}</Picker>
+	);
+};
 
 const PickerView = () => (
 	<Scroller focusableScrollbar>

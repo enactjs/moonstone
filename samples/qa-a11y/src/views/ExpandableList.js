@@ -1,8 +1,8 @@
 import Heading from '@enact/moonstone/Heading';
 import ExpandableList from '@enact/moonstone/ExpandableList';
-import Layout, {Cell} from '@enact/ui/Layout';
-import {Component} from 'react';
 import Scroller from '@enact/moonstone/Scroller';
+import Layout, {Cell} from '@enact/ui/Layout';
+import {useCallback, useState} from 'react';
 
 const
 	data = [
@@ -22,40 +22,33 @@ const
 	noneText = 'nothing selected',
 	title = 'title';
 
-class CustomExpandableList extends Component {
-	constructor (props) {
-		super(props);
-		this.state = {
-			label: noneText
-		};
-	}
+const CustomExpandableList = () => {
+	const [label, setLabel] = useState(noneText);
 
-	onSelect = ({selected}) => {
+	const onSelect = useCallback(({selected}) => {
 		if (selected) { // case with 'multiple' select prop in ExpandableList
-			let label = '';
+			let newLabel = '';
 			for (let i = 0; i < selected.length; i++) {
-				label = label + data[selected[i]].ariaLabel + ', ';
+				newLabel = newLabel + data[selected[i]].ariaLabel + ', ';
 			}
-			this.setState({label: label});
+			setLabel(newLabel);
 		} else { // Nothing selected in ExpandableList
-			this.setState({label: noneText});
+			setLabel(noneText);
 		}
-	};
+	}, []);
 
-	render () {
-		return (
-			<ExpandableList
-				aria-label={title + ' ' + this.state.label}
-				noneText={noneText}
-				onSelect={this.onSelect}
-				select="multiple"
-				title={title}
-			>
-				{data.map((o, i) => ({key: i, children: o.value, 'aria-label': o.ariaLabel}))}
-			</ExpandableList>
-		);
-	}
-}
+	return (
+		<ExpandableList
+			aria-label={title + ' ' + label}
+			noneText={noneText}
+			onSelect={onSelect}
+			select="multiple"
+			title={title}
+		>
+			{data.map((o, i) => ({key: i, children: o.value, 'aria-label': o.ariaLabel}))}
+		</ExpandableList>
+	);
+};
 
 const ExpandableListView = () => (
 	<Layout orientation="vertical">

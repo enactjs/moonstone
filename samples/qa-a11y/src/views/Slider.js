@@ -1,31 +1,24 @@
 import Heading from '@enact/moonstone/Heading';
 import IncrementSlider from '@enact/moonstone/IncrementSlider';
-import PropTypes from 'prop-types';
-import {Component} from 'react';
 import Slider from '@enact/moonstone/Slider';
+import PropTypes from 'prop-types';
+import {useCallback, useState} from 'react';
 
-class CustomIncrementSlider extends Component {
-	static propTypes = {
-		customText: PropTypes.string
-	};
+const CustomIncrementSlider = ({customText}) => {
+	const [value, setValue] = useState(0);
 
-	constructor (props) {
-		super(props);
-		this.state = {
-			value: 0
-		};
-	}
+	const handleChange = useCallback((ev) => setValue(ev.value), []);
 
-	handleChange = (ev) => this.setState({value: ev.value});
+	const valueText = `${customText} ${value}`;
 
-	render () {
-		const valueText = `${this.props.customText} ${this.state.value}`;
+	return (
+		<IncrementSlider aria-valuetext={valueText} onChange={handleChange} value={value} />
+	);
+};
 
-		return (
-			<IncrementSlider aria-valuetext={valueText} onChange={this.handleChange} value={this.state.value} />
-		);
-	}
-}
+CustomIncrementSlider.propTypes = {
+	customText: PropTypes.string
+};
 
 const SliderView = () => (
 	<div>

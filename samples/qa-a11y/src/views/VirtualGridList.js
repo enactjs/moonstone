@@ -1,10 +1,10 @@
 import {GridListImageItem} from '@enact/moonstone/GridListImageItem';
 import Layout, {Cell} from '@enact/ui/Layout';
-import {Component} from 'react';
 import Region from '@enact/moonstone/Region';
-import ri from '@enact/ui/resolution';
 import ToggleButton from '@enact/moonstone/ToggleButton';
 import {VirtualGridList, VirtualGridListNative} from '@enact/moonstone/VirtualList';
+import ri from '@enact/ui/resolution';
+import {useCallback, useState} from 'react';
 
 import css from './VirtualGridList.module.less';
 
@@ -40,69 +40,60 @@ for (let i = 0; i < 100; i++) {
 	items.push({text, subText, source});
 }
 
-class VirtualGridListView extends Component {
-	constructor () {
-		super();
-		this.state = {
-			customAriaLabel: false,
-			isHorizontalList: false,
-			isNative: false
-		};
-	}
+const VirtualGridListView = () => {
+	const [customAriaLabel, setCustomAriaLabel] = useState(false);
+	const [isHorizontalList, setIsHorizontalList] = useState(false);
+	const [isNative, setIsNative] = useState(false);
 
-	onToggleChangeAriaLabelButton = () => this.setState((state) => ({customAriaLabel: !state.customAriaLabel}));
+	const onToggleChangeAriaLabelButton = useCallback(() => setCustomAriaLabel((ariaLabel) => setCustomAriaLabel(!ariaLabel)), []);
 
-	onToggleChangeDirectionButton = () => this.setState((state) => ({isHorizontalList: !state.isHorizontalList}));
+	const onToggleChangeDirectionButton = useCallback(() => setIsHorizontalList((direction) => setIsHorizontalList(!direction)), []);
 
-	onToggleChangeJSNativeButton = () => this.setState((state) => ({isNative: !state.isNative}));
+	const onToggleChangeJSNativeButton = useCallback(() => setIsNative((native) => setIsNative(!native)), []);
 
-	render () {
-		const
-			{customAriaLabel, isHorizontalList, isNative} = this.state,
-			List = isNative ? VirtualGridListNative : VirtualGridList;
+	const List = isNative ? VirtualGridListNative : VirtualGridList;
 
-		return (
-			<Layout orientation="vertical">
-				<Cell shrink>
-					<ToggleButton
-						size="small"
-						onToggle={this.onToggleChangeAriaLabelButton}
-						selected={customAriaLabel}
-					>
-						Customizable aria-labels on ScrollButtons
-					</ToggleButton>
-					<ToggleButton
-						size="small"
-						onToggle={this.onToggleChangeDirectionButton}
-						selected={isHorizontalList}
-					>
-						Horizontal
-					</ToggleButton>
-					<ToggleButton
-						size="small"
-						onToggle={this.onToggleChangeJSNativeButton}
-						selected={isNative}
-					>
-						Native
-					</ToggleButton>
-				</Cell>
-				<Cell className={css.region} component={Region} title="X of Y feature">
-					<List
-						dataSize={items.length}
-						direction={isHorizontalList ? 'horizontal' : 'vertical'}
-						focusableScrollbar
-						itemRenderer={renderItem}
-						itemSize={{
-							minWidth: ri.scale(200),
-							minHeight: ri.scale(200)
-						}}
-						scrollDownAriaLabel={customAriaLabel ? 'This is scroll down' : null}
-						scrollUpAriaLabel={customAriaLabel ? 'This is scroll up' : null}
-					/>
-				</Cell>
-			</Layout>
-		);
-	}
-}
+	return (
+		<Layout orientation="vertical">
+			<Cell shrink>
+				<ToggleButton
+					size="small"
+					onToggle={onToggleChangeAriaLabelButton}
+					selected={customAriaLabel}
+				>
+					Customizable aria-labels on ScrollButtons
+				</ToggleButton>
+				<ToggleButton
+					size="small"
+					onToggle={onToggleChangeDirectionButton}
+					selected={isHorizontalList}
+				>
+					Horizontal
+				</ToggleButton>
+				<ToggleButton
+					size="small"
+					onToggle={onToggleChangeJSNativeButton}
+					selected={isNative}
+				>
+					Native
+				</ToggleButton>
+			</Cell>
+			<Cell className={css.region} component={Region} title="X of Y feature">
+				<List
+					dataSize={items.length}
+					direction={isHorizontalList ? 'horizontal' : 'vertical'}
+					focusableScrollbar
+					itemRenderer={renderItem}
+					itemSize={{
+						minWidth: ri.scale(200),
+						minHeight: ri.scale(200)
+					}}
+					scrollDownAriaLabel={customAriaLabel ? 'This is scroll down' : null}
+					scrollUpAriaLabel={customAriaLabel ? 'This is scroll up' : null}
+				/>
+			</Cell>
+		</Layout>
+	);
+};
 
 export default VirtualGridListView;
