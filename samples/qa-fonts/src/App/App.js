@@ -9,6 +9,6 @@ const App = (props) => {
 			<MainPanel />
 		</ActivityPanels>
 	);
-}
+};
 
 export default MoonstoneDecorator(App);

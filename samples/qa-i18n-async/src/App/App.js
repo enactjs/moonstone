@@ -2,7 +2,8 @@ import $L from '@enact/i18n/$L';
 import {I18nContextDecorator} from '@enact/i18n/I18nDecorator';
 import Text, {TextDecorator} from '@enact/i18n/Text';
 import Button from '@enact/moonstone/Button';
-import Dropdown from '@enact/moonstone/Dropdown';import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
+import Dropdown from '@enact/moonstone/Dropdown';
+import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 import PropTypes from 'prop-types';
 import {useCallback} from 'react';
 

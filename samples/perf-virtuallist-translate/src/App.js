@@ -53,7 +53,6 @@ const VirtualListSample = (props) => {
 			/>
 		</div>
 	);
-
-}
+};
 
 export default MoonstoneDecorator(VirtualListSample);
