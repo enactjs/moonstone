@@ -2,7 +2,7 @@ import {action} from '@enact/storybook-utils/addons/actions';
 import {boolean, text, select} from '@enact/storybook-utils/addons/knobs';
 import {mergeComponentMetadata} from '@enact/storybook-utils';
 import {RadioControllerDecorator} from '@enact/ui/RadioDecorator';
-import {Component} from 'react';
+import {useCallback, useState} from 'react';
 import {storiesOf} from '@storybook/react';
 
 import Button from '@enact/moonstone/Button';
@@ -24,66 +24,46 @@ for (let i = 0; i < 21; i++) {
 	optionsArray.push(`Option ${i + 1}`);
 }
 
-class ExpandableListChildrenLengthUpdate extends Component {
-	constructor (props) {
-		super(props);
-		this.state = {
-			index: 0
-		};
-	}
+const ExpandableListChildrenLengthUpdate = ({...props}) => {
+	const [index, setIndex] = useState(0);
 
-	updateValue = () => {
-		this.setState(({index}) => ({
-			index: 1 - index
-		}));
-	};
+	const updateValue = useCallback(() => {
+		setIndex(1 - index);
+	}, [index]);
 
-	render () {
-		return (
-			<div>
-				<Button onClick={this.updateValue}>update value</Button>
-				<Heading showLine />
-				<ExpandableList {...this.props}>
-					{prop.listArray[this.state.index]}
-				</ExpandableList>
-			</div>
-		);
-	}
-}
+	return (
+		<div>
+			<Button onClick={updateValue}>update value</Button>
+			<Heading showLine />
+			<ExpandableList {...props}>
+				{prop.listArray[index]}
+			</ExpandableList>
+		</div>
+	);
+};
 
-class ExpandableListWithAddedChildren extends Component {
-	constructor (props) {
-		super(props);
-		this.state = {
-			list: []
-		};
-	}
+const ExpandableListWithAddedChildren = () => {
+	const [list, setList] = useState([]);
 
-	setZero = () => {
-		this.setState({
-			list: []
-		});
-	};
+	const setZero = useCallback(() => {
+		setList([]);
+	}, []);
 
-	setTen = () => {
-		this.setState({
-			list: ['a', 'b', 'c', 'd', 'e', 'a', 'b', 'c', 'd', 'e']
-		});
-	};
+	const setTen = useCallback(() => {
+		setList(['a', 'b', 'c', 'd', 'e', 'a', 'b', 'c', 'd', 'e']);
+	}, []);
 
-	render () {
-		return (
-			<Scroller>
-				<Heading showLine>Change the number of items in the list</Heading>
-				<Button onClick={this.setZero}>0</Button>
-				<Button onClick={this.setTen}>10</Button>
-				<ExpandableList title={'test'} defaultOpen>
-					{this.state.list}
-				</ExpandableList>
-			</Scroller>
-		);
-	}
-}
+	return (
+		<Scroller>
+			<Heading showLine>Change the number of items in the list</Heading>
+			<Button onClick={setZero}>0</Button>
+			<Button onClick={setTen}>10</Button>
+			<ExpandableList title={'test'} defaultOpen>
+				{list}
+			</ExpandableList>
+		</Scroller>
+	);
+};
 
 storiesOf('ExpandableList', module)
 	.add(

@@ -1,12 +1,11 @@
-import {action} from '@enact/storybook-utils/addons/actions';
-import {boolean, select, text} from '@enact/storybook-utils/addons/knobs';
-import ri from '@enact/ui/resolution';
-import {Component} from 'react';
-import {storiesOf} from '@storybook/react';
-
 import Button from '@enact/moonstone/Button';
 import Input from '@enact/moonstone/Input';
 import Spinner from '@enact/moonstone/Spinner';
+import {action} from '@enact/storybook-utils/addons/actions';
+import {boolean, select, text} from '@enact/storybook-utils/addons/knobs';
+import ri from '@enact/ui/resolution';
+import {storiesOf} from '@storybook/react';
+import {useCallback, useState} from 'react';
 
 Spinner.displayName = 'Spinner';
 
@@ -16,39 +15,24 @@ const
 		longText:'SpinnerWithLongText SpinnerWithLongText SpinnerWithLongText'
 	};
 
-class FocusOnSpinner extends Component {
-	constructor (props) {
-		super(props);
-		this.state = {
-			isLoading: false
-		};
-	}
+const FocusOnSpinner = () => {
+	const [isLoading, setIsLoading] = useState(false);
 
-	handleDeactivate = () => {
-		this.setState({
-			isLoading: true
-		});
-	};
+	const handleDeactivate = useCallback(() => setIsLoading(true), []);
 
-	hideSpinner = () => {
-		this.setState({
-			isLoading: false
-		});
-	};
+	const hideSpinner = useCallback(() => setIsLoading(false), []);
 
-	render () {
-		return (
-			<div>
-				<ol>
-					<li>Focus and Click on the Input field.</li>
-					<li>Click Enter key on the VKB.</li>
-				</ol>
-				<Input dismissOnEnter onDeactivate={this.handleDeactivate} />
-				{this.state.isLoading ? <Spinner blockClickOn="screen" onClick={this.hideSpinner} /> : null}
-			</div>
-		);
-	}
-}
+	return (
+		<div>
+			<ol>
+				<li>Focus and Click on the Input field.</li>
+				<li>Click Enter key on the VKB.</li>
+			</ol>
+			<Input dismissOnEnter onDeactivate={handleDeactivate} />
+			{isLoading ? <Spinner blockClickOn="screen" onClick={hideSpinner} /> : null}
+		</div>
+	);
+};
 
 storiesOf('Spinner', module)
 	.add(
