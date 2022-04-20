@@ -81,7 +81,6 @@ const MyVirtualList = ({closePopup, ...props}) => {
 
 	const componentClosePopup = useCallback((index) => {
 		lastIndex = index;
-		// eslint-disable-next-line enact/prop-types
 		closePopup();
 	}, [closePopup]);
 
