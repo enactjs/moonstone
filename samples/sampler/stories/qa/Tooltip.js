@@ -12,8 +12,6 @@ import ri from '@enact/ui/resolution';
 import {storiesOf} from '@storybook/react';
 import {useCallback, useState} from 'react';
 
-
-
 const Config = mergeComponentMetadata('TooltipDecorator', TooltipDecorator);
 const TooltipButton = TooltipDecorator({tooltipDestinationProp: 'decoration'}, Button);
 
