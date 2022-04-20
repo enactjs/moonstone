@@ -1,3 +1,9 @@
+import IconButton from '@enact/moonstone/IconButton';
+import Item from '@enact/moonstone/Item';
+import {ActivityPanels, Panel, Header} from '@enact/moonstone/Panels';
+import Scroller from '@enact/moonstone/Scroller';
+import SwitchItem from '@enact/moonstone/SwitchItem';
+import VirtualList, {VirtualListBase} from '@enact/moonstone/VirtualList';
 import SpotlightContainerDecorator from '@enact/spotlight/SpotlightContainerDecorator';
 import {action} from '@enact/storybook-utils/addons/actions';
 import {boolean, number, select} from '@enact/storybook-utils/addons/knobs';
@@ -5,17 +11,10 @@ import {mergeComponentMetadata} from '@enact/storybook-utils';
 import ri from '@enact/ui/resolution';
 import {ScrollableBase as UiScrollableBase} from '@enact/ui/Scrollable';
 import {VirtualListBase as UiVirtualListBase} from '@enact/ui/VirtualList';
-import {Component, useCallback, useState} from 'react';
-import PropTypes from 'prop-types';
-
-import IconButton from '@enact/moonstone/IconButton';
-import Item from '@enact/moonstone/Item';
-import {ActivityPanels, Panel, Header} from '@enact/moonstone/Panels';
-import Scroller from '@enact/moonstone/Scroller';
-import SwitchItem from '@enact/moonstone/SwitchItem';
-import VirtualList, {VirtualListBase} from '@enact/moonstone/VirtualList';
-
 import {storiesOf} from '@storybook/react';
+import PropTypes from 'prop-types';
+import {useCallback, useEffect, useRef, useState} from 'react';
+
 
 const Config = mergeComponentMetadata('VirtualList', UiVirtualListBase, UiScrollableBase, VirtualListBase);
 
@@ -76,48 +75,28 @@ updateDataSize(defaultDataSize);
 
 const updateItemSize = ({minSize, dataSize, size}) => ({minSize, size: new Array(dataSize).fill(size)});
 
-class StatefulSwitchItem extends Component {
-	static propTypes = {
-		index: PropTypes.number
-	};
+const StatefulSwitchItem = ({index, ...props}) => {
+	const [selected, setSelected] = useState(items[index].selected);
 
-	constructor (props) {
-		super(props);
-		this.state = {
-			prevIndex: props.index,
-			selected: items[props.index].selected
-		};
-	}
+	useEffect(() => {
+		setSelected(items[index].selected);
+	}, [index]);
 
-	static getDerivedStateFromProps (props, state) {
-		if (state.prevIndex !== props.index) {
-			return {
-				prevIndex: props.index,
-				selected: items[props.index].selected
-			};
-		}
+	const onToggle = useCallback(() => {
+		items[index].selected = !items[index].selected;
+		setSelected(!selected);
+	}, [index, selected]);
 
-		return null;
-	}
+	return (
+		<SwitchItem {...props} onToggle={onToggle} selected={selected}>
+			{props.children}
+		</SwitchItem>
+	);
+};
 
-	onToggle = () => {
-		items[this.props.index].selected = !items[this.props.index].selected;
-		this.setState(({selected}) => ({
-			selected: !selected
-		}));
-	};
-
-	render () {
-		const props = Object.assign({}, this.props);
-		delete props.index;
-
-		return (
-			<SwitchItem {...props} onToggle={this.onToggle} selected={this.state.selected}>
-				{this.props.children}
-			</SwitchItem>
-		);
-	}
-}
+StatefulSwitchItem.propTypes = {
+	index: PropTypes.number
+};
 
 const ContainerItemWithControls = SpotlightContainerDecorator(({children, index, style, ...rest}) => {
 	const itemHeight = ri.scaleToRem(78);
@@ -173,32 +152,29 @@ const InPanels = ({className, title, ...rest}) => {
 	);
 };
 
-class VirtualListWithCBScrollTo extends Component {
-	static propTypes = {
-		dataSize: PropTypes.number
-	};
+const VirtualListWithCBScrollTo = ({dataSize, ...props}) => {
+	const scrollTo = useRef();
 
-	componentDidUpdate (prevProps) {
-		if (this.props.dataSize !== prevProps.dataSize) {
-			this.scrollTo({animate: false, focus: false, index: 0});
-		}
-	}
+	useEffect(() => {
+		scrollTo.current({animate: false, focus: false, index: 0});
+	}, [dataSize]);
 
-	scrollTo = null;
+	const getScrollTo = useCallback((newScrollTo) => {
+		scrollTo.current = newScrollTo;
+	}, []);
 
-	getScrollTo = (scrollTo) => {
-		this.scrollTo = scrollTo;
-	};
+	return (
+		<VirtualList
+			{...props}
+			cbScrollTo={getScrollTo}
+			dataSize={dataSize}
+		/>
+	);
+};
 
-	render () {
-		return (
-			<VirtualList
-				{...this.props}
-				cbScrollTo={this.getScrollTo}
-			/>
-		);
-	}
-}
+VirtualListWithCBScrollTo.propTypes = {
+	dataSize: PropTypes.number
+};
 
 storiesOf('VirtualList', module)
 	.add(
