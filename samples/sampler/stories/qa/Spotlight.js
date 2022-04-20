@@ -1,14 +1,3 @@
-import Spotlight from '@enact/spotlight';
-import {action} from '@enact/storybook-utils/addons/actions';
-import {boolean, select} from '@enact/storybook-utils/addons/knobs';
-import {Row, Cell, Column} from '@enact/ui/Layout';
-import ri from '@enact/ui/resolution';
-import Pause from '@enact/spotlight/Pause';
-import SpotlightContainerDecorator from '@enact/spotlight/SpotlightContainerDecorator';
-import {Component, cloneElement} from 'react';
-import PropTypes from 'prop-types';
-import {storiesOf} from '@storybook/react';
-
 import Button from '@enact/moonstone/Button';
 import CheckboxItem from '@enact/moonstone/CheckboxItem';
 import DatePicker from '@enact/moonstone/DatePicker';
@@ -35,6 +24,16 @@ import ToggleButton from '@enact/moonstone/ToggleButton';
 import ToggleItem from '@enact/moonstone/ToggleItem';
 import Scroller from '@enact/moonstone/Scroller';
 import Slider from '@enact/moonstone/Slider';
+import Spotlight from '@enact/spotlight';
+import Pause from '@enact/spotlight/Pause';
+import SpotlightContainerDecorator from '@enact/spotlight/SpotlightContainerDecorator';
+import {action} from '@enact/storybook-utils/addons/actions';
+import {boolean, select} from '@enact/storybook-utils/addons/knobs';
+import {Row, Cell, Column} from '@enact/ui/Layout';
+import ri from '@enact/ui/resolution';
+import {storiesOf} from '@storybook/react';
+import PropTypes from 'prop-types';
+import {cloneElement, useState, useEffect, useCallback} from 'react';
 
 import docs from '../../images/icon-enact-docs.png';
 
@@ -59,254 +58,221 @@ const style = {
 
 const Items = ['First', 'Second', 'Third'];
 
-class DisappearTest extends Component {
-	constructor (props) {
-		super(props);
+const DisappearTest = () => {
+	const [showButton, setShowButton] = useState(true);
+	const [timer, setTimer] = useState(0);
 
-		this.state = {
-			showButton: true
-		};
-	}
+	const removeButton = useCallback(() => {
+		setShowButton(false);
+	}, []);
 
-	componentWillUnmount () {
-		this.stopTimer();
-	}
+	const restoreButton = useCallback(() => {
+		setShowButton(true);
+	}, []);
 
-	removeButton = () => {
-		this.setState({showButton: false});
-	};
-
-	restoreButton = () => {
-		this.setState({showButton: true});
-	};
-
-	resetFocus = () => {
+	const resetFocus = useCallback(() => {
 		Spotlight.focus('restoreButton');
-	};
+	}, []);
 
-	startTimer = () => {
-		this.timer = window.setTimeout(this.removeButton, 4000);
-	};
+	const startTimer = useCallback(() => {
+		setTimer(window.setTimeout(removeButton, 4000));
+	}, [removeButton]);
 
-	stopTimer = () => {
-		if (this.timer) {
-			window.clearTimeout(this.timer);
+	const stopTimer = useCallback(() => {
+		if (timer) {
+			window.clearTimeout(timer);
 		}
-	};
+	}, [timer]);
 
-	render () {
-		return (
-			<div>
-				5-way select to set focus to the Focus Me button and wait until 4s has elapsed, and observe the focused
-				button is removed and the remaining button gains focus.
-				{this.state.showButton ? (
-					<Button
-						onFocus={this.startTimer}
-						onSpotlightDisappear={this.resetFocus}
-					>
-						Focus me
-					</Button>
-				) : null}
+	useEffect(() => {
+		return stopTimer();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+
+	return (
+		<div>
+			5-way select to set focus to the Focus Me button and wait until 4s has elapsed, and observe the focused
+			button is removed and the remaining button gains focus.
+			{showButton ? (
 				<Button
-					spotlightId="restoreButton"
-					onClick={this.restoreButton}
+					onFocus={startTimer}
+					onSpotlightDisappear={resetFocus}
 				>
-					Restore Button
+					Focus me
 				</Button>
-			</div>
-		);
-	}
-}
+			) : null}
+			<Button
+				spotlightId="restoreButton"
+				onClick={restoreButton}
+			>
+				Restore Button
+			</Button>
+		</div>
+	);
+};
 
-class DisableOnClick extends Component {
-	constructor (props) {
-		super(props);
+const DisableOnClick = () => {
+	const [disabled, setDisabled] = useState(false);
 
-		this.state = {
-			disabled: false
-		};
-	}
+	const handleButtonDisable = useCallback(() => {
+		setDisabled(true);
+	}, []);
 
-	handleButtonDisable = () => {
-		this.setState({disabled: true});
-	};
+	const handleButtonEnable = useCallback(() => {
+		setDisabled(false);
+	}, []);
 
-	handleButtonEnable = () => {
-		this.setState({disabled: false});
-	};
+	return (
+		<div>
+			<p>Pressing the marqueeable button will disable it. The marquee should continue and restart while the button is focused and disabled.</p>
+			<Button disabled={disabled} onClick={handleButtonDisable}>
+				A very super ultra massive extensively long marquee Button
+			</Button>
+			<Button onClick={handleButtonEnable}>
+				Enable
+			</Button>
+		</div>
+	);
+};
 
-	render () {
-		return (
-			<div>
-				<p>Pressing the marqueeable button will disable it. The marquee should continue and restart while the button is focused and disabled.</p>
-				<Button disabled={this.state.disabled} onClick={this.handleButtonDisable}>
-					A very super ultra massive extensively long marquee Button
-				</Button>
-				<Button onClick={this.handleButtonEnable}>
-					Enable
-				</Button>
-			</div>
-		);
-	}
-}
+const DisableTest = () => {
+	const [disabled, setDisabled] = useState(false);
+	const [id, setId] = useState(0);
+	const paused = new Pause('Pause Test');
 
-class DisableTest extends Component {
-	constructor (props) {
-		super(props);
-
-		this.state = {
-			disabled: false
-		};
-	}
-
-	componentDidMount () {
+	useEffect(() => {
 		Spotlight.resume();
-		this.id = setInterval(() => this.setState(state => ({disabled: !state.disabled})), 5000);
-	}
+		setId(setInterval(() => setDisabled(state => setDisabled(!state)), 5000));
 
-	componentWillUnmount () {
-		clearInterval(this.id);
-		this.paused.resume();
-	}
-
-	paused = new Pause('Pause Test');
-
-	handleToggle = () => {
-		if (this.paused.isPaused()) {
-			this.paused.resume();
-		} else {
-			this.paused.pause();
-		}
-	};
-
-	render () {
-		return (
-			<div>
-				<p>Timed Button is alternately enabled and disabled every 5 seconds. Pressing the Active/Paused button will resume and pause Spotlight, respectively.</p>
-				<Button disabled={this.state.disabled}>
-					Timed Button
-				</Button>
-				<ToggleButton
-					defaultSelected
-					toggleOnLabel="Active"
-					toggleOffLabel="Paused"
-					onToggle={this.handleToggle}
-				/>
-			</div>
-		);
-	}
-}
-
-class PopupFocusTest extends Component {
-	static propTypes = {
-		noAnimation: PropTypes.bool,
-		noAutoDismiss: PropTypes.bool,
-		scrimType: PropTypes.oneOf(['transparent', 'translucent', 'none']),
-		showCloseButton: PropTypes.bool,
-		spotlightRestrict: PropTypes.oneOf(['self-first', 'self-only'])
-	};
-
-	static defaultProps = {
-		noAnimation: false,
-		noAutoDismiss: false,
-		scrimType: 'translucent',
-		showCloseButton: false,
-		spotlightRestrict: 'self-only'
-	};
-
-	constructor (props) {
-		super(props);
-		this.state = {
-			popupOpen: false
+		return () => {
+			clearInterval(id);
+			paused.resume();
 		};
-	}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
-	handleClosePopup = () => {
-		this.setState({popupOpen: false});
-	};
+	const handleToggle = useCallback(() => {
+		if (paused.isPaused()) {
+			paused.resume();
+		} else {
+			paused.pause();
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
-	handleOpenPopup = () => {
-		this.setState({popupOpen: true});
-	};
+	return (
+		<div>
+			<p>Timed Button is alternately enabled and disabled every 5 seconds. Pressing the Active/Paused button will resume and pause Spotlight, respectively.</p>
+			<Button disabled={disabled}>
+				Timed Button
+			</Button>
+			<ToggleButton
+				defaultSelected
+				toggleOnLabel="Active"
+				toggleOffLabel="Paused"
+				onToggle={handleToggle}
+			/>
+		</div>
+	);
+};
 
-	render () {
-		const {noAnimation, noAutoDismiss, scrimType, showCloseButton, spotlightRestrict} = this.props;
+const PopupFocusTest = ({noAnimation, noAutoDismiss, scrimType, showCloseButton, spotlightRestrict}) => {
+	const [popupOpen, setPopupOpen] = useState(false);
 
-		return (
-			<div>
-				<p>
-					Open the popup by using 5-way selection on the &quot;Open Popup&quot; buttons.
-					When the popup is visible, select the popup&apos;s close button to close the popup.
-					Focus should return to the button used to originally open the popup. Verify this
-					behavior for each of the buttons.
-				</p>
-				<p>
-					Use the knobs to verify 5-way behavior under different Popup configurations.
-				</p>
-				<Button onClick={this.handleOpenPopup}>Open Popup</Button>
-				<Button onClick={this.handleOpenPopup}>Open Popup</Button>
-				<Popup
-					noAnimation={noAnimation}
-					noAutoDismiss={noAutoDismiss}
-					onClose={this.handleClosePopup}
-					open={this.state.popupOpen}
-					scrimType={scrimType}
-					showCloseButton={showCloseButton}
-					spotlightRestrict={spotlightRestrict}
-				>
-					<div>This is a Popup</div>
-				</Popup>
-			</div>
-		);
-	}
-}
+	const handleClosePopup = useCallback(() => {
+		setPopupOpen(false);
+	}, []);
 
-class FocusedAndDisabled extends Component {
-	state = {
-		index: -1
-	};
+	const handleOpenPopup = useCallback(() => {
+		setPopupOpen(true);
+	}, []);
 
-	tests = [
+	return (
+		<div>
+			<p>
+				Open the popup by using 5-way selection on the &quot;Open Popup&quot; buttons.
+				When the popup is visible, select the popup&apos;s close button to close the popup.
+				Focus should return to the button used to originally open the popup. Verify this
+				behavior for each of the buttons.
+			</p>
+			<p>
+				Use the knobs to verify 5-way behavior under different Popup configurations.
+			</p>
+			<Button onClick={handleOpenPopup}>Open Popup</Button>
+			<Button onClick={handleOpenPopup}>Open Popup</Button>
+			<Popup
+				noAnimation={noAnimation}
+				noAutoDismiss={noAutoDismiss}
+				onClose={handleClosePopup}
+				open={popupOpen}
+				scrimType={scrimType}
+				showCloseButton={showCloseButton}
+				spotlightRestrict={spotlightRestrict}
+			>
+				<div>This is a Popup</div>
+			</Popup>
+		</div>
+	);
+};
+
+PopupFocusTest.propTypes = {
+	noAnimation: PropTypes.bool,
+	noAutoDismiss: PropTypes.bool,
+	scrimType: PropTypes.oneOf(['transparent', 'translucent', 'none']),
+	showCloseButton: PropTypes.bool,
+	spotlightRestrict: PropTypes.oneOf(['self-first', 'self-only'])
+};
+
+PopupFocusTest.defaultProps = {
+	noAnimation: false,
+	noAutoDismiss: false,
+	scrimType: 'translucent',
+	showCloseButton: false,
+	spotlightRestrict: 'self-only'
+};
+
+const FocusedAndDisabled = () => {
+	const [fixedIndex, setFixedIndex] = useState(-1);
+
+	const tests = [
 		<Button icon="star">Button</Button>,
 		<IconButton>star</IconButton>,
 		<Button icon={docs}>Button</Button>,
 		<IconButton>{docs}</IconButton>
 	];
 
-	handleClear = () => this.setState({index: -1});
+	const handleClear = useCallback(() => setFixedIndex(-1), []);
 
-	select = (index) => {
+	const selectButton = useCallback((index) => {
 		Spotlight.setPointerMode(false);
 		Spotlight.focus(`component-${index}`);
-		this.setState({index});
-	};
+		setFixedIndex(index);
+	}, []);
 
-	render () {
-		return (
-			<Scroller>
-				<p>Click or 5-way select the icon buttons to:</p>
-				<ol>
-					<li>Disable pointer mode</li>
-					<li>Set focus on the component next to the button</li>
-					<li>Disable the newly focused component</li>
-				</ol>
-				<Button onClick={this.handleClear}>Enable All</Button>
-				{this.tests.map((comp, index) => (
-					<div key={`row-${index}`}>
-						{/* eslint-disable-next-line react/jsx-no-bind */}
-						<IconButton onTap={() => this.select(index)}>
-							arrowlargeright
-						</IconButton>
-						{cloneElement(comp, {
-							disabled: this.state.index === index,
-							spotlightId: `component-${index}`
-						})}
-					</div>
-				))}
-			</Scroller>
-		);
-	}
-}
+	return (
+		<Scroller>
+			<p>Click or 5-way select the icon buttons to:</p>
+			<ol>
+				<li>Disable pointer mode</li>
+				<li>Set focus on the component next to the button</li>
+				<li>Disable the newly focused component</li>
+			</ol>
+			<Button onClick={handleClear}>Enable All</Button>
+			{tests.map((comp, index) => (
+				<div key={`row-${index}`}>
+					{/* eslint-disable-next-line react/jsx-no-bind */}
+					<IconButton onTap={() => selectButton(index)}>
+						arrowlargeright
+					</IconButton>
+					{cloneElement(comp, {
+						disabled: index === fixedIndex,
+						spotlightId: `component-${index}`
+					})}
+				</div>
+			))}
+		</Scroller>
+	);
+};
 
 storiesOf('Spotlight', module)
 	.add(

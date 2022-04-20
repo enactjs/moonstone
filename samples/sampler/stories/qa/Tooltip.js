@@ -1,17 +1,18 @@
 import kind from '@enact/core/kind';
-import {boolean, number, object, select, text} from '@enact/storybook-utils/addons/knobs';
-import {mergeComponentMetadata} from '@enact/storybook-utils';
-import Layout, {Cell} from '@enact/ui/Layout';
-import ri from '@enact/ui/resolution';
-import {Component} from 'react';
-import {storiesOf} from '@storybook/react';
-
 import BodyText from '@enact/moonstone/BodyText';
 import Button from '@enact/moonstone/Button';
 import TooltipDecorator from '@enact/moonstone/TooltipDecorator';
 import Input from '@enact/moonstone/Input';
 import IconButton from '@enact/moonstone/IconButton';
 import Scroller from '@enact/moonstone/Scroller';
+import {boolean, number, object, select, text} from '@enact/storybook-utils/addons/knobs';
+import {mergeComponentMetadata} from '@enact/storybook-utils';
+import Layout, {Cell} from '@enact/ui/Layout';
+import ri from '@enact/ui/resolution';
+import {storiesOf} from '@storybook/react';
+import {useCallback, useState} from 'react';
+
+
 
 const Config = mergeComponentMetadata('TooltipDecorator', TooltipDecorator);
 const TooltipButton = TooltipDecorator({tooltipDestinationProp: 'decoration'}, Button);
@@ -40,115 +41,86 @@ const prop = {
 	}
 };
 
-class TooltipTest extends Component {
-	constructor (props) {
-		super(props);
+const TooltipTest = () => {
+	const [showButton, setShowButton] = useState(true);
 
-		this.state = {
-			showButton: true
-		};
-	}
+	const handleClick = useCallback(() => {
+		setShowButton(false);
+	}, []);
 
-	handleClick = () => {
-		this.setState({showButton: false});
-	};
-
-	render () {
-		return (
-			<div>
-				Focus the button and click it before 5s has elapsed, and observe the console for errors
-				{this.state.showButton ? (
-					<TooltipButton
-						onClick={this.handleClick}
-						tooltipDelay={5000}
-						tooltipText="Tooltip position!"
-						tooltipRelative
-					>
-						Click me
-					</TooltipButton>
-				) : null}
-			</div>
-		);
-	}
-}
-
-class ChangeableTooltip extends Component {
-	constructor (props) {
-		super(props);
-		this.state = {
-			text: 'short',
-			position: {
-				top: 0,
-				left: 0
-			}
-		};
-	}
-
-	changeTooltipText = () => {
-		const {text: stringText} = this.state;
-		if (stringText === 'short') {
-			this.setState({text: 'long text'});
-		} else if (stringText === 'long text') {
-			this.setState({text: 'very loooooooooooong text'});
-		} else if (stringText === 'very loooooooooooong text') {
-			this.setState({text: ''});
-		} else {
-			this.setState({text: 'short'});
-		}
-	};
-
-	handleChangeLeft = ({value}) => {
-		this.setState(prevState => ({
-			position: {
-				...prevState.position,
-				left: value
-			}
-		}));
-	};
-
-	handleChangeTop = ({value}) => {
-		this.setState(prevState => ({
-			position: {
-				...prevState.position,
-				top: value
-			}
-		}));
-	};
-
-	render () {
-		const {left, top} = this.state.position;
-		const style = {
-			position: 'absolute',
-			width: ri.unit(390, 'rem'),
-			left: '50%',
-			transform: 'translateX(-50%)'
-		};
-
-		return (
-			<div>
-				<div style={style}>
-					<div>LEFT : </div>
-					<Input id="left" size="small" type="number" onChange={this.handleChangeLeft} value={left} />
-					<div>TOP : </div>
-					<Input id="top" size="small" type="number" onChange={this.handleChangeTop} value={top} />
-					<Button onClick={this.changeTooltipText}>Change Text</Button>
-				</div>
-				<IconButton
-					tooltipPosition={select('tooltipPosition', prop.tooltipPosition, Config, 'above')}
-					tooltipText={this.state.text}
-					onClick={this.changeTooltipText}
-					style={{
-						position: 'absolute',
-						left: parseInt(left || 0),
-						top: parseInt(top || 0)
-					}}
+	return (
+		<div>
+			Focus the button and click it before 5s has elapsed, and observe the console for errors
+			{showButton ? (
+				<TooltipButton
+					onClick={handleClick}
+					tooltipDelay={5000}
+					tooltipText="Tooltip position!"
+					tooltipRelative
 				>
-					drawer
-				</IconButton>
+					Click me
+				</TooltipButton>
+			) : null}
+		</div>
+	);
+};
+
+const ChangeableTooltip = () => {
+	const [left, setLeft] = useState(0);
+	const [changeableText, setChangeableText] = useState('short');
+	const [top, setTop] = useState(0);
+
+	const style = {
+		position: 'absolute',
+		width: ri.unit(390, 'rem'),
+		left: '50%',
+		transform: 'translateX(-50%)'
+	};
+
+	const changeTooltipText = useCallback(() => {
+		if (changeableText === 'short') {
+			setChangeableText('long text');
+		} else if (changeableText === 'long text') {
+			setChangeableText('very loooooooooooong text');
+		} else if (changeableText === 'very loooooooooooong text') {
+			setChangeableText( '');
+		} else {
+			setChangeableText('short');
+		}
+	}, [changeableText]);
+
+	const handleChangeLeft = useCallback(({value}) => {
+		setLeft(value);
+	}, []);
+
+	const handleChangeTop = useCallback(({value}) => {
+		setTop(value);
+	}, []);
+
+	return (
+		<div>
+			<div style={style}>
+				<div>LEFT : </div>
+				<Input id="left" size="small" type="number" onChange={handleChangeLeft} value={left} />
+				<div>TOP : </div>
+				<Input id="top" size="small" type="number" onChange={handleChangeTop} value={top} />
+				<Button onClick={changeTooltipText}>Change Text</Button>
 			</div>
-		);
-	}
-}
+			<IconButton
+				tooltipPosition={select('tooltipPosition', prop.tooltipPosition, Config, 'above')}
+				tooltipText={changeableText}
+				onClick={changeTooltipText}
+				style={{
+					position: 'absolute',
+					left: parseInt(left || 0),
+					top: parseInt(top || 0)
+				}}
+			>
+				drawer
+			</IconButton>
+		</div>
+	);
+};
 
 const IconButtonItem = kind({
 	name: 'IconButtonItem',
@@ -175,88 +147,75 @@ const IconButtonItem = kind({
 	}
 });
 
-class TooltipFollow extends Component {
-	constructor (props) {
-		super(props);
-		this.state = {
-			left: 0,
-			widthMinus: 180,
-			widthPlus: 30
-		};
-	}
+const TooltipFollow = () => {
+	const [left, setLeft] = useState(0);
+	const [widthMinus, setWidthMinus] = useState(180);
+	const [widthPlus, setWidthPlus] = useState(30);
 
-	handleWidthMinusClick = () => {
-		this.setState((prevState) => {
-			return {widthMinus: prevState.widthMinus - 30};
-		});
-	};
+	const handleWidthMinusClick = useCallback(() => {
+		setWidthMinus(widthMinus - 30);
+	}, [widthMinus]);
 
-	handleWidthPlusClick = () => {
-		this.setState((prevState) => {
-			return {widthPlus: prevState.widthPlus + 30};
-		});
-	};
+	const handleWidthPlusClick = useCallback(() => {
+		setWidthPlus(widthPlus + 30);
+	}, [widthPlus]);
 
-	handlePositionClick = () => {
-		this.setState((prevState) => {
-			return {left: prevState.left + 30};
-		});
-	};
+	const handlePositionClick = useCallback(() => {
+		setLeft(left + 30);
+	}, [left]);
 
-	render = () => {
-		return (
-			<Layout orientation="vertical">
-				<Cell shrink>
-					<BodyText>Click icon buttons to resize or move</BodyText>
-					<IconButton
-						size="small"
-						tooltipText="tooltip"
-						onClick={this.handleWidthMinusClick}
-						style={{width: `${this.state.widthMinus}px`}}
-					>
-						minus
-					</IconButton>
-					<IconButton
-						size="small"
-						tooltipText="tooltip"
-						onClick={this.handleWidthPlusClick}
-						style={{width: `${this.state.widthPlus}px`}}
-					>
-						plus
-					</IconButton>
-					<IconButton
-						size="small"
-						tooltipText="tooltip"
-						onClick={this.handlePositionClick}
-						style={{left: `${this.state.left}px`}}
-					>
-						plus
-					</IconButton>
-				</Cell>
-				<Cell component={Scroller}>
-					<IconButtonItem tooltipPosition="above" />
-					<IconButtonItem tooltipPosition="above center" />
-					<IconButtonItem tooltipPosition="above left" />
-					<IconButtonItem tooltipPosition="above right" />
-					<IconButtonItem tooltipPosition="below" />
-					<IconButtonItem tooltipPosition="below center" />
-					<IconButtonItem tooltipPosition="below left" />
-					<IconButtonItem tooltipPosition="below right" />
-					<IconButtonItem tooltipPosition="left bottom" />
-					<IconButtonItem tooltipPosition="left middle" />
-					<IconButtonItem tooltipPosition="left top" />
-					<IconButtonItem tooltipPosition="right bottom" />
-					<IconButtonItem tooltipPosition="right middle" />
-					<IconButtonItem tooltipPosition="right top" />
-					<IconButtonItem />
-				</Cell>
-				<Cell shrink component={BodyText} centered>
-					<em>This space left intentionally blank for bottom margin below scroller</em>
-				</Cell>
-			</Layout>
-		);
-	};
-}
+	return (
+		<Layout orientation="vertical">
+			<Cell shrink>
+				<BodyText>Click icon buttons to resize or move</BodyText>
+				<IconButton
+					size="small"
+					tooltipText="tooltip"
+					onClick={handleWidthMinusClick}
+					style={{width: `${widthMinus}px`}}
+				>
+					minus
+				</IconButton>
+				<IconButton
+					size="small"
+					tooltipText="tooltip"
+					onClick={handleWidthPlusClick}
+					style={{width: `${widthPlus}px`}}
+				>
+					plus
+				</IconButton>
+				<IconButton
+					size="small"
+					tooltipText="tooltip"
+					onClick={handlePositionClick}
+					style={{left: `${left}px`}}
+				>
+					plus
+				</IconButton>
+			</Cell>
+			<Cell component={Scroller}>
+				<IconButtonItem tooltipPosition="above" />
+				<IconButtonItem tooltipPosition="above center" />
+				<IconButtonItem tooltipPosition="above left" />
+				<IconButtonItem tooltipPosition="above right" />
+				<IconButtonItem tooltipPosition="below" />
+				<IconButtonItem tooltipPosition="below center" />
+				<IconButtonItem tooltipPosition="below left" />
+				<IconButtonItem tooltipPosition="below right" />
+				<IconButtonItem tooltipPosition="left bottom" />
+				<IconButtonItem tooltipPosition="left middle" />
+				<IconButtonItem tooltipPosition="left top" />
+				<IconButtonItem tooltipPosition="right bottom" />
+				<IconButtonItem tooltipPosition="right middle" />
+				<IconButtonItem tooltipPosition="right top" />
+				<IconButtonItem />
+			</Cell>
+			<Cell shrink component={BodyText} centered>
+				<em>This space left intentionally blank for bottom margin below scroller</em>
+			</Cell>
+		</Layout>
+	);
+};
 
 
 storiesOf('Tooltip', module)
