@@ -1,16 +1,15 @@
-import {select} from '@enact/storybook-utils/addons/knobs';
-import {mergeComponentMetadata} from '@enact/storybook-utils';
-import {Group} from '@enact/ui/Group';
-import ri from '@enact/ui/resolution';
-import {storiesOf} from '@storybook/react';
-import {useCallback, useEffect, useRef, useState} from 'react';
-
 import Button from '@enact/moonstone/Button';
 import CheckboxItem from '@enact/moonstone/CheckboxItem';
 import {ContextualPopupDecorator} from '@enact/moonstone/ContextualPopupDecorator';
 import Heading from '@enact/moonstone/Heading';
 import {IconButton} from '@enact/moonstone/IconButton';
 import {IncrementSlider} from '@enact/moonstone/IncrementSlider';
+import {select} from '@enact/storybook-utils/addons/knobs';
+import {mergeComponentMetadata} from '@enact/storybook-utils';
+import {Group} from '@enact/ui/Group';
+import ri from '@enact/ui/resolution';
+import {storiesOf} from '@storybook/react';
+import {useCallback, useEffect, useRef, useState} from 'react';
 
 const ContextualButton = ContextualPopupDecorator(Button);
 const Config = mergeComponentMetadata('ContextualButton', ContextualButton);
