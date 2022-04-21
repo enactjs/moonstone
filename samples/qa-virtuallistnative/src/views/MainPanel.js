@@ -8,9 +8,9 @@ import ri from '@enact/ui/resolution';
 import {useCallback, useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
-import {setData} from '../actions';
 import ListItem from '../components/ListItem';
 import LocaleSwitch from '../components/LocaleSwitch';
+import {setData} from '../store';
 
 import css from './MainPanel.module.less';
 
