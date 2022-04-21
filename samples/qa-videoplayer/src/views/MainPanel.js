@@ -52,11 +52,6 @@ const SelectableVideoPlayer = ({css, ...props}) => {
 			// this.video.pause();
 			videoRef.current.seek(selectionEnd);
 		}
-
-		// or remove the selection and allow the default behavior
-		// this.setState({
-		// 	selection: null
-		// });
 	}, [selection]);
 
 	const setVideo = (video) => {
