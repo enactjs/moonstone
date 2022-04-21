@@ -51,15 +51,15 @@ const ReadAlertView = () => {
 	return (
 		<div>
 			<ToggleButton
-				size="small"
 				disabled={toggleDisabled}
 				onToggle={onToggle}
 				selected={audioGuidance}
+				size="small"
 			>
 				Audio guidance
 			</ToggleButton>
-			<Button size="small" onClick={onClick1}>readAlert test(clear true)</Button>
-			<Button size="small" onClick={onClick2}>readAlert test(clear false)</Button>
+			<Button onClick={onClick1} size="small">readAlert test(clear true)</Button>
+			<Button onClick={onClick2} size="small">readAlert test(clear false)</Button>
 		</div>
 	);
 };

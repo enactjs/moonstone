@@ -25,8 +25,8 @@ const NotificationView = () => {
 
 	return (
 		<div>
-			<Button size="small" onClick={handleOpenSmall}>Small Notification</Button>
-			<Button size="small" onClick={handleOpenLarge}>Large Notification</Button>
+			<Button onClick={handleOpenSmall} size="small">Small Notification</Button>
+			<Button onClick={handleOpenLarge} size="small">Large Notification</Button>
 
 			<Notification
 				open={openSmall}
@@ -34,22 +34,22 @@ const NotificationView = () => {
 			>
 				<span>Hello</span>
 				<buttons>
-					<Button size="small" onClick={handleCloseSmall}>Howdy</Button>
+					<Button onClick={handleCloseSmall} size="small">Howdy</Button>
 				</buttons>
 			</Notification>
 
 			<Notification
-				open={openLarge}
 				onClose={handleCloseLarge}
+				open={openLarge}
 			>
 				<span>{`Not to worry, this message isn't going to be very long.
 				It just has to be long enough to show what a long message looks like.
 				That's all; have a nice day.`}</span>
 				<buttons>
-					<Button size="small" onClick={handleCloseLarge}>First Button!</Button>
-					<Button size="small" onClick={handleCloseLarge}>Oh My Yes, Kitten</Button>
-					<Button size="small" onClick={handleCloseLarge}>Hide And Show</Button>
-					<Button size="small" onClick={handleCloseLarge}>Close</Button>
+					<Button onClick={handleCloseLarge} size="small">First Button!</Button>
+					<Button onClick={handleCloseLarge} size="small">Oh My Yes, Kitten</Button>
+					<Button onClick={handleCloseLarge} size="large">Hide And Show</Button>
+					<Button onClick={handleCloseLarge} size="small">Close</Button>
 				</buttons>
 			</Notification>
 		</div>

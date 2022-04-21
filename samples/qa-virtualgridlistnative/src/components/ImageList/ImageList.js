@@ -12,6 +12,8 @@ const ImageList = ({imageitems, spacing, minHeight, minWidth, ...rest}) => {
 
 	const renderItem = useCallback(({...props}) => (<ImageItem {...props} />), []);
 
+	delete rest.dispatch;
+
 	return (
 		<VirtualGridList
 			{...rest}

@@ -7,6 +7,8 @@ import PropTypes from 'prop-types';
 import {forwardRef, useCallback, useEffect, useRef, useState} from 'react';
 
 const
+	fontSize = ri.scale(31),
+	initialItemSizes = [ri.scale(60), ri.scale(110), ri.scale(160)],
 	languages = [
 		'한국어 - 한국',
 		'English - United States',
@@ -20,20 +22,18 @@ const
 		'Suomi - Suomi'
 	],
 	numOfItems = 100,
-	fontSize = ri.scale(31),
 	oneLineSize = ri.scale(50),
 	lineHeight = `${oneLineSize}px`,
-	spacing = 40,
-	initialItemSizes = [ri.scale(60), ri.scale(110), ri.scale(160)];
+	spacing = 40;
 
 const itemStyleDefault = {
-	position: 'absolute',
-	width: '100%',
 	borderBottom: 'solid 10px gray',
 	boxSizing: 'border-box',
 	fontSize,
 	lineHeight,
-	whiteSpace: 'pre'
+	position: 'absolute',
+	whiteSpace: 'pre',
+	width: '100%'
 };
 
 const buttonStyleDefault = {
@@ -54,7 +54,7 @@ const iconButtonStyleDefault = {
 	right: 0
 };
 
-const ExpandableDifferentHeightItem = forwardRef(({index, 'data-index': dataIndex, items, style: itemStyleFromList, updateItemStatus, ...rest}, ref) => {
+const ExpandableDifferentHeightItem = forwardRef(({'data-index': dataIndex, index, items, style: itemStyleFromList, updateItemStatus, ...rest}, ref) => {
 	const {title: children, numOfLines, open} = items[index],
 		itemStyle = {...itemStyleDefault, ...itemStyleFromList};
 
@@ -65,7 +65,7 @@ const ExpandableDifferentHeightItem = forwardRef(({index, 'data-index': dataInde
 				<div style={{height: oneLineSize * 2, ...textStyleDefault}}>
 					{children}
 				</div>
-				<Button data-index={dataIndex} style={buttonStyleDefault} onClick={() => updateItemStatus(index, true)/* eslint-disable-line react/jsx-no-bind */}>
+				<Button data-index={dataIndex} onClick={() => updateItemStatus(index, true)/* eslint-disable-line react/jsx-no-bind */} style={buttonStyleDefault} >
 					Open<Icon>arrowsmalldown</Icon>
 				</Button>
 				<IconButton data-index={dataIndex} style={iconButtonStyleDefault}>closex</IconButton>
@@ -79,7 +79,7 @@ const ExpandableDifferentHeightItem = forwardRef(({index, 'data-index': dataInde
 				<div>
 					{children}
 				</div>
-				<Button data-index={dataIndex} style={buttonStyleDefault} onClick={() => updateItemStatus(index, false)/* eslint-disable-line react/jsx-no-bind */}>
+				<Button data-index={dataIndex} onClick={() => updateItemStatus(index, false)/* eslint-disable-line react/jsx-no-bind */} style={buttonStyleDefault}>
 					Close<Icon>arrowsmallup</Icon>
 				</Button>
 				<IconButton data-index={dataIndex} style={iconButtonStyleDefault}>closex</IconButton>

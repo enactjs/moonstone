@@ -18,16 +18,16 @@ const ScrollerView = () => {
 		<Layout orientation="vertical">
 			<Cell shrink>
 				<ToggleButton
-					size="small"
 					onToggle={onToggleChangeAriaLabelButton}
 					selected={customAriaLabel}
+					size="small"
 				>
 					Customizable aria-labels on ScrollButtons
 				</ToggleButton>
 				<ToggleButton
-					size="small"
 					onToggle={onToggleChangeJSNativeButton}
 					selected={isNative}
+					size="small"
 				>
 					Native
 				</ToggleButton>

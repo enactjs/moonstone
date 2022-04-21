@@ -6,7 +6,7 @@ import Toggleable from '@enact/ui/Toggleable';
 import {useCallback} from 'react';
 
 const ContextualButton = Toggleable(
-	{prop: 'open', toggle: 'onClick', deactivate: 'onClose'},
+	{deactivate: 'onClose', prop: 'open', toggle: 'onClick'},
 	ContextualPopupDecorator(
 		Button
 	)
@@ -47,21 +47,21 @@ const ContextualPopupDecoratorView = () => {
 
 	return (
 		<div>
-			<div style={{position: 'absolute', left: '0'}}>
+			<div style={{left: '0', position: 'absolute'}}>
 				<ContextualButton
-					size="small"
 					direction="right"
 					popupComponent={renderPopup1}
+					size="small"
 				>
 					Average
 				</ContextualButton>
 			</div>
-			<div style={{position: 'absolute', bottom: '0'}}>
+			<div style={{bottom: '0', position: 'absolute'}}>
 				<ContextualButton
-					size="small"
 					direction="up"
 					popupComponent={renderPopup2}
 					showCloseButton
+					size="small"
 					spotlightRestrict="self-only"
 				>
 					Spotlight Modal
@@ -70,9 +70,9 @@ const ContextualPopupDecoratorView = () => {
 
 			<div style={{position: 'absolute', right: '0'}}>
 				<ContextualButton
-					size="small"
 					direction="left"
 					popupComponent={renderPopup3}
+					size="small"
 				>
 					Nested Radio
 				</ContextualButton>

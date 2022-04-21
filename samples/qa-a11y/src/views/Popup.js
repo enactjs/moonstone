@@ -27,22 +27,22 @@ const PopupView = () => {
 
 	return (
 		<div>
-			<Button size="small" onClick={handleOpen1}>Basic Popup</Button>
-			<Button size="small" onClick={handleOpen2}>Long Popup</Button>
-			<Button size="small" onClick={handleOpen3}>Scroller Popup</Button>
-			<Button size="small" onClick={handleOpen4}>Button In Popup</Button>
-			<Button size="small" onClick={handleOpen5}>Customizable aria-label close button in popup</Button>
+			<Button onClick={handleOpen1} size="small">Basic Popup</Button>
+			<Button onClick={handleOpen2} size="small">Long Popup</Button>
+			<Button onClick={handleOpen3} size="small">Scroller Popup</Button>
+			<Button onClick={handleOpen4} size="small">Button In Popup</Button>
+			<Button onClick={handleOpen5} size="small">Customizable aria-label close button in popup</Button>
 
 			<Popup
-				open={open1}
 				onClose={handleClose1}
+				open={open1}
 			>
 				<span>Popup...</span>
 			</Popup>
 
 			<Popup
-				open={open2}
 				onClose={handleClose2}
+				open={open2}
 				showCloseButton
 			>
 				<span>
@@ -67,8 +67,8 @@ const PopupView = () => {
 			</Popup>
 
 			<Popup
-				open={open3}
 				onClose={handleClose3}
+				open={open3}
 				showCloseButton
 			>
 				<Button size="small">Button Outside Scroller</Button>
@@ -87,8 +87,8 @@ const PopupView = () => {
 			</Popup>
 
 			<Popup
-				open={open4}
 				onClose={handleClose4}
+				open={open4}
 				showCloseButton
 			>
 				<Heading showLine>Buttons In Popup Example</Heading>

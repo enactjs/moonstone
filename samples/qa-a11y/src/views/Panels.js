@@ -35,12 +35,12 @@ const PanelsView = () => {
 			<Panel>
 				<Header title="Panel 0" />
 				<VirtualList
-					spotlightId={'virtualList_$' + panelIndex}
 					dataSize={itemList.length}
 					direction="vertical"
 					focusableScrollbar
 					itemRenderer={customItem}
 					itemSize={ri.scale(72)}
+					spotlightId={'virtualList_$' + panelIndex}
 				/>
 			</Panel>
 			<Panel>
@@ -49,7 +49,7 @@ const PanelsView = () => {
 					{
 						itemList.map((item, key) => {
 							return (
-								<Item onClick={prevPanel} key={key}>{item}</Item>
+								<Item key={key} onClick={prevPanel}>{item}</Item>
 							);
 						})
 					}

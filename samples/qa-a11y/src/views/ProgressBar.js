@@ -21,10 +21,10 @@ const ProgressBarView = () => {
 	return (
 		<div>
 			<Heading showLine>Default</Heading>
-			<ProgressBar aria-live="assertive" aria-label={a11yValueText} progress={progressVal} />
+			<ProgressBar aria-label={a11yValueText} aria-live="assertive" progress={progressVal} />
 			<br />
-			<IconButton size="small" aria-label="Increase" onClick={onInc}>plus</IconButton>
-			<IconButton size="small" aria-label="Decrease" onClick={onDec}>minus</IconButton>
+			<IconButton aria-label="Increase" onClick={onInc} size="small">plus</IconButton>
+			<IconButton aria-label="Decrease" onClick={onDec} size="small">minus</IconButton>
 		</div>
 	);
 };
