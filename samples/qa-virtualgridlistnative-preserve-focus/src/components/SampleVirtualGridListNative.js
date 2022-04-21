@@ -24,14 +24,14 @@ const SampleVirtualGridListNative = ({index, onClick, ...rest}) => {
 		<VirtualGridListNative
 			{...rest}
 			cbScrollTo={getScrollTo}
-			spotlightId={id} // Set a unique ID to preserve last focus
 			dataSize={items.length}
 			id={id}
 			itemRenderer={renderItem}
 			itemSize={{
-				minWidth: ri.scale(180),
-				minHeight: ri.scale(270)
+				minHeight: ri.scale(270),
+				minWidth: ri.scale(180)
 			}}
+			spotlightId={id} // Set a unique ID to preserve last focus
 		/>
 	);
 };
