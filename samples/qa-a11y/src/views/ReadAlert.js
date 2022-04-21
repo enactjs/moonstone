@@ -28,8 +28,8 @@ const ReadAlertView = () => {
 	const onClick = (clear) => () => readAlert('Enact is a framework designed to be performant, customizable and well structured.', clear);
 
 
-	const onClick1 = useCallback(() => onClick(true), []);
-	const onClick2 = useCallback(() => onClick(false), []);
+	const onClick1 = onClick(true);
+	const onClick2 = onClick(false);
 
 
 	const onToggle = useCallback( () => {
