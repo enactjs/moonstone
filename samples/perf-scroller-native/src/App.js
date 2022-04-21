@@ -1,7 +1,7 @@
-import classNames from 'classnames';
 import Item from '@enact/moonstone/Item';
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 import {ScrollerNative as Scroller} from '@enact/moonstone/Scroller';
+import classNames from 'classnames';
 
 import css from './App.module.less';
 

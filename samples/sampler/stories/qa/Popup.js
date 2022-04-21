@@ -1,13 +1,12 @@
+import Button from '@enact/moonstone/Button';
+import Notification from '@enact/moonstone/Notification';
+import Popup from '@enact/moonstone/Popup';
 import SpotlightContainerDecorator from '@enact/spotlight/SpotlightContainerDecorator';
 import {boolean, select, text} from '@enact/storybook-utils/addons/knobs';
 import {action} from '@enact/storybook-utils/addons/actions';
 import Toggleable from '@enact/ui/Toggleable';
-import {Component} from 'react';
 import {storiesOf} from '@storybook/react';
-
-import Button from '@enact/moonstone/Button';
-import Notification from '@enact/moonstone/Notification';
-import Popup from '@enact/moonstone/Popup';
+import {useCallback, useState} from 'react';
 
 Popup.displayName = 'Popup';
 
@@ -30,38 +29,27 @@ const PopupFromSelfOnlyContainer = Toggleable(
 	)
 );
 
-class PopupResumeFocusAfterOpenState extends Component {
-	constructor (props) {
-		super(props);
-		this.state = {
-			isPopup: false
-		};
-	}
+const PopupResumeFocusAfterOpenState = () => {
+	const [isPopup, setIsPopup] = useState(false);
 
-	handlePopup = () => {
-		this.setState({
-			isPopup: true
-		});
+	const handlePopup = useCallback(() => {
+		setIsPopup(true);
 
 		setTimeout(() => {
-			this.setState({
-				isPopup: false
-			});
+			setIsPopup(false);
 		}, 200);
-	};
+	}, []);
 
-	render () {
-		return (
-			<div>
-				<div>Popup will open and dismiss immediately, ensure spotlight still functional.</div>
-				<Button onClick={this.handlePopup}>Open popup</Button>
-				<Popup open={this.state.isPopup}>
-					<Button>close</Button>
-				</Popup>
-			</div>
-		);
-	}
-}
+	return (
+		<div>
+			<div>Popup will open and dismiss immediately, ensure spotlight still functional.</div>
+			<Button onClick={handlePopup}>Open popup</Button>
+			<Popup open={isPopup}>
+				<Button>close</Button>
+			</Popup>
+		</div>
+	);
+};
 
 storiesOf('Popup', module)
 	.add(

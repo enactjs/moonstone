@@ -1,16 +1,15 @@
-import {select} from '@enact/storybook-utils/addons/knobs';
-import {mergeComponentMetadata} from '@enact/storybook-utils';
-import {Group} from '@enact/ui/Group';
-import ri from '@enact/ui/resolution';
-import {Component} from 'react';
-import {storiesOf} from '@storybook/react';
-
 import Button from '@enact/moonstone/Button';
 import CheckboxItem from '@enact/moonstone/CheckboxItem';
 import {ContextualPopupDecorator} from '@enact/moonstone/ContextualPopupDecorator';
 import Heading from '@enact/moonstone/Heading';
 import {IconButton} from '@enact/moonstone/IconButton';
 import {IncrementSlider} from '@enact/moonstone/IncrementSlider';
+import {select} from '@enact/storybook-utils/addons/knobs';
+import {mergeComponentMetadata} from '@enact/storybook-utils';
+import {Group} from '@enact/ui/Group';
+import ri from '@enact/ui/resolution';
+import {storiesOf} from '@storybook/react';
+import {useCallback, useEffect, useRef, useState} from 'react';
 
 const ContextualButton = ContextualPopupDecorator(Button);
 const Config = mergeComponentMetadata('ContextualButton', ContextualButton);
@@ -51,74 +50,60 @@ const renderSliderPopup = () => (
 	/>
 );
 
-class ContextualPopupWithActivator extends Component {
-	constructor (props) {
-		super(props);
+const ContextualPopupWithActivator = ({...props}) => {
+	const [open, setOpen] = useState(false);
 
-		this.state = {open: false};
-	}
+	const handleOpenToggle = useCallback(() => {
+		setOpen(!open);
+	}, [open]);
 
-	handleOpenToggle = () => {
-		this.setState(({open}) => ({open: !open}));
-	};
-
-	render () {
-		return (
-			<ContextualButton
-				{...this.props}
-				onClose={this.handleOpenToggle}
-				onClick={this.handleOpenToggle}
-				open={this.state.open}
-				showCloseButton
-			/>
-		);
-	}
-}
+	return (
+		<ContextualButton
+			{...props}
+			onClick={handleOpenToggle}
+			onClose={handleOpenToggle}
+			open={open}
+			showCloseButton
+		/>
+	);
+};
 
 // PLAT-77119
-class ContextualPopupWithArrowFunction extends Component {
-	constructor (props) {
-		super(props);
-		this.state = {
-			isOpen: false,
-			twoGroup: false
-		};
-	}
+const ContextualPopupWithArrowFunction = ({...rest}) => {
+	const [isOpen, setIsOpen] = useState(false);
+	const [twoGroup, setTwoGroup] = useState(false);
+	const ref = useRef();
 
-	componentDidUpdate (prevProps, prevState) {
-		if (this.ref && this.state.twoGroup !== prevState.twoGroup) {
-			this.ref.positionContextualPopup();
-		}
-	}
+	useEffect(() => {
+		ref.current.positionContextualPopup();
+	}, [twoGroup]);
 
-	handleOnClick = () => {
-		this.setState({isOpen: true});
+	const handleOnClick = useCallback(() => {
+		setIsOpen(!isOpen);
+	}, [isOpen]);
+
+	const handleItemClick = useCallback(() => {
+		setTwoGroup(!twoGroup);
+	}, [twoGroup]);
+
+	const setRef = (node) => {
+		ref.current = node;
 	};
 
-	handleItemClick = () => {
-		this.setState((state) => {
-			return {twoGroup: !state.twoGroup};
-		});
-	};
-
-	setRef = (node) => {
-		this.ref = node;
-	};
-
-	popupComponent = () => {
+	const popupComponent = useCallback(() => {
 		return (
 			<div style={{display: 'flex'}}>
 				<div style={{display: 'flex'}}>
 					<Group
 						childComponent={CheckboxItem}
+						onClick={handleItemClick}
 						select="multiple"
 						selectedProp="selected"
-						onClick={this.handleItemClick}
 					>
 						{['click to change layout']}
 					</Group>
 				</div>
-				{this.state.twoGroup ?
+				{twoGroup ?
 					<div style={{display: 'flex'}}>
 						<Group
 							childComponent={CheckboxItem}
@@ -131,22 +116,19 @@ class ContextualPopupWithArrowFunction extends Component {
 				}
 			</div>
 		);
-	};
-	render () {
-		const {...rest} = this.props;
+	}, [handleItemClick, twoGroup]);
 
-		return (
-			<div {...rest} style={{display: 'flex', justifyContent: 'flex-end'}}>
-				<ContextualPopup
-					ref={this.setRef}
-					popupComponent={this.popupComponent}
-					open={this.state.isOpen}
-					onClick={this.handleOnClick}
-				/>
-			</div>
-		);
-	}
-}
+	return (
+		<div {...rest} style={{display: 'flex', justifyContent: 'flex-end'}}>
+			<ContextualPopup
+				onClick={handleOnClick}
+				open={isOpen}
+				popupComponent={popupComponent}
+				ref={setRef}
+			/>
+		</div>
+	);
+};
 
 storiesOf('ContextualPopupDecorator', module)
 	.add(

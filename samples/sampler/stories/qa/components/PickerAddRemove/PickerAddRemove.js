@@ -1,127 +1,106 @@
-import {Component} from 'react';
 import PropTypes from 'prop-types';
+import {useCallback, useState} from 'react';
 
 import Button from '@enact/moonstone/Button';
 import Input from '@enact/moonstone/Input';
 import Picker from '@enact/moonstone/Picker';
 
-class PickerAddRemove extends Component {
-	static displayName = 'PickerAddRemove';
+const PickerAddRemove = ({...props}) => {
+	const [children, setChildren] = useState({0 : ''});
+	const [inputIndex, setInputIndex] = useState(0);
+	const [inputValue, setInputValue] = useState('');
+	const [value, setValue] = useState(0);
 
-	static propTypes = {
-		disabled: PropTypes.bool,
-		joined: PropTypes.bool,
-		noAnimation: PropTypes.bool,
-		orientation: PropTypes.string,
-		width: PropTypes.string,
-		wrap: PropTypes.bool
-	};
+	const handleAddReplace = useCallback(() => {
+		const newChild = {};
 
-	static defaultProps = {
-		disabled: false,
-		joined: false,
-		noAnimation: false,
-		orientation: 'horizontal',
-		width: 'medium',
-		wrap: false
-	};
-
-	constructor (props) {
-		super(props);
-
-		this.state = {
-			children: {
-				0 : ''
-			},
-			inputIndex: 0,
-			inputValue: '',
-			value: 0
-		};
-	}
-
-	handleAddReplace = () => {
-		const children = this.state.children,
-			index = this.state.inputIndex,
-			value = this.state.inputValue || 'sample ' + index,
-			newChild = {};
-
-		newChild[index] = value;
+		newChild[inputIndex] = inputValue || 'sample ' + inputIndex;
 		const newChildren = Object.assign({}, children, newChild);
 
-		this.setState(({inputIndex}) => ({
-			children: newChildren,
-			inputIndex: inputIndex + 1,
-			inputValue: ''
-		}));
-	};
+		setChildren(newChildren);
+		setInputIndex(inputIndex + 1);
+		setInputValue('');
+	}, [children, inputIndex, inputValue]);
 
-	handleRemove = () => {
-		this.setState(({children, inputIndex, value}) => {
-			children = Object.assign({}, children);
-			delete children[inputIndex];
+	const handleRemove = useCallback(() => {
+		const newChildren = Object.assign({}, children);
+		delete newChildren[inputIndex];
 
-			return ({
-				children: children,
-				value: Math.max(value - 1, 0)
-			});
-		});
-	};
+		setChildren(newChildren);
+		setValue(Math.max(value - 1, 0));
+	}, [children, inputIndex, value]);
 
-	handleValueUpdate = ({value}) => {
-		this.setState({value});
-	};
+	const handleValueUpdate = useCallback(({value: newValue}) => {
+		setValue(newValue);
+	}, []);
 
-	handleIndexChange = ({value}) => {
-		let index = parseInt(value);
+	const handleIndexChange = useCallback(({value: newValue}) => {
+		let index = parseInt(newValue);
 		if (isNaN(index)) {
 			index = 0;
 		}
-		this.setState({inputIndex: index});
-	};
+		setInputIndex(index);
+	}, []);
 
-	handleValueChange = ({value}) => {
-		this.setState({inputValue: value});
-	};
+	const handleValueChange = useCallback(({value: newValue}) => {
+		setInputValue(newValue);
+	}, []);
 
-	render () {
-		const pickerChildren = Object.values(this.state.children);
+	const pickerChildren = Object.values(children);
 
-		return (
+	return (
+		<div>
 			<div>
-				<div>
-					<Picker
-						onChange={this.handleValueUpdate}
-						value={this.state.value}
-						{...this.props}
-					>
-						{pickerChildren}
-					</Picker>
-				</div>
-				<div>
-					Value:
-					<Input
-						onChange={this.handleValueChange}
-						placeholder="value"
-						value={this.state.inputValue}
-					/>
-				</div>
-				<div>
-					Index:
-					<Input
-						onChange={this.handleIndexChange}
-						placeholder="index"
-						value={this.state.inputIndex}
-					/>
-				</div>
-				<Button onClick={this.handleAddReplace}>
-					Add/Replace
-				</Button>
-				<Button onClick={this.handleRemove}>
-					Remove
-				</Button>
+				<Picker
+					onChange={handleValueUpdate}
+					value={value}
+					{...props}
+				>
+					{pickerChildren}
+				</Picker>
 			</div>
-		);
-	}
-}
+			<div>
+				Value:
+				<Input
+					onChange={handleValueChange}
+					placeholder="value"
+					value={inputValue}
+				/>
+			</div>
+			<div>
+				Index:
+				<Input
+					onChange={handleIndexChange}
+					placeholder="index"
+					value={inputIndex}
+				/>
+			</div>
+			<Button onClick={handleAddReplace}>
+				Add/Replace
+			</Button>
+			<Button onClick={handleRemove}>
+				Remove
+			</Button>
+		</div>
+	);
+};
+
+PickerAddRemove.propTypes = {
+	disabled: PropTypes.bool,
+	joined: PropTypes.bool,
+	noAnimation: PropTypes.bool,
+	orientation: PropTypes.string,
+	width: PropTypes.string,
+	wrap: PropTypes.bool
+};
+
+PickerAddRemove.defaultProps = {
+	disabled: false,
+	joined: false,
+	noAnimation: false,
+	orientation: 'horizontal',
+	width: 'medium',
+	wrap: false
+};
 
 export default PickerAddRemove;

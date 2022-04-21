@@ -2,7 +2,7 @@ import Item from '@enact/moonstone/Item';
 import {VirtualListNative} from '@enact/moonstone/VirtualList';
 import ri from '@enact/ui/resolution';
 import PropTypes from 'prop-types';
-import {Component} from 'react';
+import {useCallback, useEffect, useState} from 'react';
 
 const
 	languages = [
@@ -23,95 +23,84 @@ const
 	lineHeight = `${oneLineSize - 10}px`,
 	spacing = 50;
 
-class DifferenctWidthItem extends Component {
-	static propTypes = {
-		index: PropTypes.number,
-		items: PropTypes.array
-	};
+const itemStyleDefault = {
+	position: 'absolute',
+	height: '100%',
+	borderRight: 'solid 10px gray',
+	boxSizing: 'border-box',
+	fontSize,
+	lineHeight,
+	whiteSpace: 'pre'
+};
 
-	itemStyleDefault = {
-		position: 'absolute',
-		height: '100%',
-		borderRight: 'solid 10px gray',
-		boxSizing: 'border-box',
-		fontSize,
-		lineHeight,
-		whiteSpace: 'pre'
-	};
+const innerItemStyleDefault = {
+	height: '100%',
+	writingMode: 'vertical-rl'
+};
 
-	innerItemStyleDefault = {
-		height: '100%',
-		writingMode: 'vertical-rl'
-	};
+const DifferentWidthItem = ({index, items, style: itemStyleFromList, ...rest}) => {
+	const {title: children, width} = items[index];
+	const itemStyle = {...itemStyleDefault, ...itemStyleFromList, width: width + 'px'};
 
-	render () {
-		const
-			{index, items, style: itemStyleFromList, ...rest} = this.props,
-			{title: children, width} = items[index],
-			itemStyle = {...this.itemStyleDefault, ...itemStyleFromList, width: width + 'px'};
+	return (
+		<Item {...rest} style={itemStyle}>
+			<div style={innerItemStyleDefault}>
+				{children}
+			</div>
+		</Item>
+	);
+};
 
+DifferentWidthItem.propTypes = {
+	index: PropTypes.number,
+	items: PropTypes.array
+};
 
-		return (
-			<Item {...rest} style={itemStyle}>
-				<div style={this.innerItemStyleDefault}>
-					{children}
-				</div>
-			</Item>
-		);
-	}
-}
+const HorizontalDifferentWidthItemList = (props) => {
+	const [items, setItems] = useState([]);
+	const [itemSize, setItemSize] = useState([]);
 
-class HorizontalDifferenctWidthItemList extends Component {
-	constructor (props) {
-		let
-			position = 0,
-			itemSize = [],
-			items = [];
-
-		super(props);
+	useEffect(() => {
+		let position = 0, arrayItemSize = [], arrayItems = [];
 
 		for (let i = 0; i < numOfItems; i++) {
 			const
 				numOfLines = Math.ceil(Math.random() * 6),
 				width = numOfLines * oneLineSize;
 
-			items.push({
+			arrayItems.push({
 				title: (`${('00' + i).slice(-3)} | ${position}px | ${languages[i % 10]}\n`).repeat(numOfLines),
 				width
 			});
-			itemSize.push(width);
+			arrayItemSize.push(width);
 			position += (width + spacing);
 		}
 
-		this.state = {
-			items,
-			itemSize
-		};
-	}
+		setItems(arrayItems);
+		setItemSize(arrayItemSize);
+	}, []);
 
-	renderItem = (props) => {
-		return <DifferenctWidthItem {...props} />;
-	};
+	const renderItem = useCallback((renderProps) => {
+		return <DifferentWidthItem {...renderProps} />;
+	}, []);
 
-	render () {
-		return (
-			<VirtualListNative
-				{...this.props}
-				childProps={{
-					items: this.state.items
-				}}
-				dataSize={this.state.items.length}
-				direction="horizontal"
-				focusableScrollbar
-				itemRenderer={this.renderItem}
-				itemSize={{
-					minSize: oneLineSize,
-					size: this.state.itemSize
-				}}
-				spacing={spacing}
-			/>
-		);
-	}
-}
+	return (
+		<VirtualListNative
+			{...props}
+			childProps={{
+				items: items
+			}}
+			dataSize={items.length}
+			direction="horizontal"
+			focusableScrollbar
+			itemRenderer={renderItem}
+			itemSize={{
+				minSize: oneLineSize,
+				size: itemSize
+			}}
+			spacing={spacing}
+		/>
+	);
+};
 
-export default HorizontalDifferenctWidthItemList;
+export default HorizontalDifferentWidthItemList;

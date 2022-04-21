@@ -3,13 +3,13 @@ import Heading from '@enact/moonstone/Heading';
 import Item from '@enact/moonstone/Item';
 import Icon from '@enact/moonstone/Icon';
 import LabeledItem from '@enact/moonstone/LabeledItem';
-import Layout, {Cell} from '@enact/ui/Layout';
 import {RadioItem as RadioItemBase} from '@enact/moonstone/RadioItem';
 import Scroller from '@enact/moonstone/Scroller';
 import {SelectableItem as SelectItemBase} from '@enact/moonstone/SelectableItem';
 import {SwitchItem as SwitchItemBase} from '@enact/moonstone/SwitchItem';
-import Toggleable from '@enact/ui/Toggleable';
 import {ToggleItem as ToggleItemBase} from '@enact/moonstone/ToggleItem';
+import Layout, {Cell} from '@enact/ui/Layout';
+import Toggleable from '@enact/ui/Toggleable';
 
 const CheckboxItem = Toggleable({prop: 'selected'}, CheckboxItemBase);
 const RadioItem = Toggleable({prop: 'selected'}, RadioItemBase);
