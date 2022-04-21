@@ -1,11 +1,11 @@
 import kind from '@enact/core/kind';
 import Button from '@enact/moonstone/Button';
 import Heading from '@enact/moonstone/Heading';
-import {Header} from '@enact/moonstone/Panels';
 import IconButton from '@enact/moonstone/IconButton';
 import Input from '@enact/moonstone/Input';
-import PropTypes from 'prop-types';
+import {Header} from '@enact/moonstone/Panels';
 import ToggleButton from '@enact/moonstone/ToggleButton';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
 import LocaleSwitch from '../LocaleSwitch';
