@@ -29,17 +29,17 @@ const MainView = () => {
 	return (
 		<div className={css.mainView}>
 			<PanelHeader
-				title="VirtualGridList"
-				type="compact"
 				onChangeDirection={onChangeDirection}
 				onChangeFocusableScrollbar={onChangeFocusableScrollbar}
+				title="VirtualGridList"
+				type="compact"
 			/>
 			<div className={css.content}>
 				<ImageList
 					cbScrollTo={getScrollTo}
 					className={css.list}
-					focusableScrollbar={focusableScrollbar}
 					direction={horizontal ? 'horizontal' : 'vertical'}
+					focusableScrollbar={focusableScrollbar}
 				/>
 			</div>
 		</div>

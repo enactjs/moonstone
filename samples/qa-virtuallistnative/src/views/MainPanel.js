@@ -70,9 +70,9 @@ const MainPanel = ({...rest}) => {
 						type="number"
 						value={value}
 					/>
-					<Button size="small" onClick={onChangeDataSize}>Set DataSize</Button>
-					<ToggleButton size="small" onToggle={onToggleDisabled}>Disabled Items</ToggleButton>
-					<ToggleButton size="small" onToggle={onToggleChildProps}>Child Props</ToggleButton>
+					<Button onClick={onChangeDataSize} size="small">Set DataSize</Button>
+					<ToggleButton onToggle={onToggleDisabled} size="small">Disabled Items</ToggleButton>
+					<ToggleButton onToggle={onToggleChildProps} size="small">Child Props</ToggleButton>
 					<LocaleSwitch size="small" />
 					<Heading showLine />
 				</div>

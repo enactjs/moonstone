@@ -60,8 +60,8 @@ const ContextualPopupWithActivator = ({...props}) => {
 	return (
 		<ContextualButton
 			{...props}
-			onClose={handleOpenToggle}
 			onClick={handleOpenToggle}
+			onClose={handleOpenToggle}
 			open={open}
 			showCloseButton
 		/>
@@ -96,9 +96,9 @@ const ContextualPopupWithArrowFunction = ({...rest}) => {
 				<div style={{display: 'flex'}}>
 					<Group
 						childComponent={CheckboxItem}
+						onClick={handleItemClick}
 						select="multiple"
 						selectedProp="selected"
-						onClick={handleItemClick}
 					>
 						{['click to change layout']}
 					</Group>
@@ -121,10 +121,10 @@ const ContextualPopupWithArrowFunction = ({...rest}) => {
 	return (
 		<div {...rest} style={{display: 'flex', justifyContent: 'flex-end'}}>
 			<ContextualPopup
-				ref={setRef}
-				popupComponent={popupComponent}
-				open={isOpen}
 				onClick={handleOnClick}
+				open={isOpen}
+				popupComponent={popupComponent}
+				ref={setRef}
 			/>
 		</div>
 	);

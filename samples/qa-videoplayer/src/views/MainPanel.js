@@ -64,11 +64,11 @@ const SelectableVideoPlayer = ({css, ...props}) => {
 			loop
 			onSeekOutsideSelection={handleSeekOutsideSelection}
 			onTimeUpdate={handleTimeUpdate}
-			selection={selection}
 			ref={setVideo}
+			selection={selection}
 		>
 			<MediaControls>
-				<IconButton className={selecting ? css.selecting : ''} slot="rightComponents" onTap={handleToggleSelection}>repeat</IconButton>
+				<IconButton className={selecting ? css.selecting : ''} onTap={handleToggleSelection} slot="rightComponents">repeat</IconButton>
 			</MediaControls>
 			<source src="http://media.w3.org/2010/05/video/movie_300.mp4" />
 		</VideoPlayer>
