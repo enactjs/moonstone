@@ -4,15 +4,15 @@ import Scroller from '@enact/moonstone/Scroller';
 import PropTypes from 'prop-types';
 import {useCallback, useState} from 'react';
 
-const EditableIntegerPickerWithAriaText = ({unit, ...props}) => {
-	const [value, setValue] = useState(0);
+const EditableIntegerPickerWithAriaText = ({defaultValue, unit, ...props}) => {
+	const [value, setValue] = useState(defaultValue);
 
 	const handleChange = useCallback((ev) => setValue(ev.value), []);
 
 	const text = 'The current length is ' + value + unit;
 
 	return (
-		<EditableIntegerPicker {...props} aria-valuetext={text} onChange={handleChange} />
+		<EditableIntegerPicker {...props} aria-valuetext={text} defaultValue={defaultValue} onChange={handleChange} unit={unit} />
 	);
 };
 
