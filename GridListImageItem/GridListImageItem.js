@@ -14,13 +14,13 @@
  * @exports GridListImageItemDecorator
  */
 
-import compose from 'ramda/src/compose';
-import {GridListImageItem as UiGridListImageItem} from '@enact/ui/GridListImageItem';
 import kind from '@enact/core/kind';
-import PropTypes from 'prop-types';
 import Spottable from '@enact/spotlight/Spottable';
+import PropTypes from 'prop-types';
+import compose from 'ramda/src/compose';
 
 import Icon from '../Icon';
+import {GridListImageItem as InternalGridListImageItem}  from '../internal/GridListImageItem';
 import {ImageBase as Image} from '../Image';
 import {Marquee, MarqueeController} from '../Marquee';
 import Skinnable from '../Skinnable';
@@ -41,7 +41,7 @@ const
  * A Moonstone styled base component for [GridListImageItem]{@link moonstone/GridListImageItem.GridListImageItem}.
  *
  * @class GridListImageItemBase
- * @extends ui/GridListImageItem.GridListImageItem
+ * @extends moonstone/internal/GridListImageItem.GridListImageItem
  * @memberof moonstone/GridListImageItem
  * @ui
  * @public
@@ -78,7 +78,7 @@ const GridListImageItemBase = kind({
 		'data-webos-voice-intent': PropTypes.string,
 
 		/**
-		 * Placeholder image used while [source]{@link ui/GridListImageItem.GridListImageItem#source}
+		 * Placeholder image used while [source]{@link moonstone/internal/GridListImageItem.GridListImageItem#source}
 		 * is loaded.
 		 *
 		 * @type {String}
@@ -138,7 +138,7 @@ const GridListImageItemBase = kind({
 		}
 
 		return (
-			<UiGridListImageItem
+			<InternalGridListImageItem
 				{...rest}
 				captionComponent={captionComponent}
 				css={css}
