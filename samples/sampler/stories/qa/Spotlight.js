@@ -29,7 +29,7 @@ import Pause from '@enact/spotlight/Pause';
 import SpotlightContainerDecorator from '@enact/spotlight/SpotlightContainerDecorator';
 import {action} from '@enact/storybook-utils/addons/actions';
 import {boolean, select} from '@enact/storybook-utils/addons/knobs';
-import {Row, Cell, Column} from '@enact/ui/Layout';
+import {Cell, Column, Row} from '@enact/ui/Layout';
 import ri from '@enact/ui/resolution';
 import {storiesOf} from '@storybook/react';
 import PropTypes from 'prop-types';
@@ -168,9 +168,9 @@ const DisableTest = () => {
 			</Button>
 			<ToggleButton
 				defaultSelected
+				onToggle={handleToggle}
 				toggleOnLabel="Active"
 				toggleOffLabel="Paused"
-				onToggle={handleToggle}
 			/>
 		</div>
 	);

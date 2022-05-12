@@ -13,9 +13,9 @@ const PanelHeader = ({handleFocusableScrollbar, handleHeight, handleWidth, heigh
 		<div>
 			<Header {...rest} />
 			<div style={{direction: 'ltr'}}>
-				height:<Input size="small" onChange={handleHeight} style={inputWidth} type="number" value={height} />
-				width:<Input size="small" onChange={handleWidth} style={inputWidth} type="number" value={width} />
-				<ToggleButton size="small" onToggle={handleFocusableScrollbar}>Focusable Scrollbar</ToggleButton>
+				height:<Input onChange={handleHeight} size="small" style={inputWidth} type="number" value={height} />
+				width:<Input onChange={handleWidth} size="small" style={inputWidth} type="number" value={width} />
+				<ToggleButton onToggle={handleFocusableScrollbar} size="small">Focusable Scrollbar</ToggleButton>
 				<LocaleSwitch size="small" />
 				<Heading showLine />
 			</div>

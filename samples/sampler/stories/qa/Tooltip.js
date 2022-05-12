@@ -99,15 +99,15 @@ const ChangeableTooltip = () => {
 		<div>
 			<div style={style}>
 				<div>LEFT : </div>
-				<Input id="left" size="small" type="number" onChange={handleChangeLeft} value={left} />
+				<Input id="left" onChange={handleChangeLeft} size="small" type="number" value={left} />
 				<div>TOP : </div>
-				<Input id="top" size="small" type="number" onChange={handleChangeTop} value={top} />
+				<Input id="top" onChange={handleChangeTop} size="small" type="number" value={top} />
 				<Button onClick={changeTooltipText}>Change Text</Button>
 			</div>
 			<IconButton
+				onClick={changeTooltipText}
 				tooltipPosition={select('tooltipPosition', prop.tooltipPosition, Config, 'above')}
 				tooltipText={changeableText}
-				onClick={changeTooltipText}
 				style={{
 					position: 'absolute',
 					left: parseInt(left || 0),
@@ -167,26 +167,26 @@ const TooltipFollow = () => {
 			<Cell shrink>
 				<BodyText>Click icon buttons to resize or move</BodyText>
 				<IconButton
-					size="small"
-					tooltipText="tooltip"
 					onClick={handleWidthMinusClick}
+					size="small"
 					style={{width: `${widthMinus}px`}}
+					tooltipText="tooltip"
 				>
 					minus
 				</IconButton>
 				<IconButton
-					size="small"
-					tooltipText="tooltip"
 					onClick={handleWidthPlusClick}
+					size="small"
 					style={{width: `${widthPlus}px`}}
+					tooltipText="tooltip"
 				>
 					plus
 				</IconButton>
 				<IconButton
-					size="small"
-					tooltipText="tooltip"
 					onClick={handlePositionClick}
+					size="small"
 					style={{left: `${left}px`}}
+					tooltipText="tooltip"
 				>
 					plus
 				</IconButton>

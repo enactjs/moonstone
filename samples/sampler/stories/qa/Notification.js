@@ -32,9 +32,9 @@ const StatefulNotification = () => {
 
 	return (
 		<Notification
-			open={boolean('open', Config, true)}
 			noAutoDismiss={boolean('noAutoDismiss', Config)}
 			onClose={action('onClose')}
+			open={boolean('open', Config, true)}
 		>
 			<span>{message}</span>
 			<buttons>

@@ -61,7 +61,7 @@ const VideoSourceSwap = () => {
 			>
 				<Video>
 					<source src={playlist[cursor]} />
-					<source src={playlist[preloadCursor]} slot="preloadSource" />
+					<source slot="preloadSource" src={playlist[preloadCursor]} />
 				</Video>
 				<infoComponents>A video about some things happening to and around some characters. Very exciting stuff.</infoComponents>
 			</VideoPlayer>

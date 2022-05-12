@@ -58,22 +58,22 @@ const VirtualGridListView = () => {
 			<Cell shrink>
 				<ToggleButton
 					onToggle={onToggleChangeAriaLabelButton}
-					size="small"
 					selected={customAriaLabel}
+					size="small"
 				>
 					Customizable aria-labels on ScrollButtons
 				</ToggleButton>
 				<ToggleButton
 					onToggle={onToggleChangeDirectionButton}
-					size="small"
 					selected={isHorizontalList}
+					size="small"
 				>
 					Horizontal
 				</ToggleButton>
 				<ToggleButton
 					onToggle={onToggleChangeJSNativeButton}
-					size="small"
 					selected={isNative}
+					size="small"
 				>
 					Native
 				</ToggleButton>

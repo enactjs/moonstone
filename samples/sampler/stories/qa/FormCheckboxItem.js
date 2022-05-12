@@ -14,7 +14,7 @@ const FormCheckboxItemView = () => {
 		<div>
 			You can change the state by clicking the Button or FormCheckboxItem.
 			<br />
-			<Button size="small" onClick={handleClick}>change state</Button>
+			<Button onClick={handleClick} size="small">change state</Button>
 			<FormCheckboxItem disabled={disabled} onClick={handleClick}>FormCheckbox Item</FormCheckboxItem>
 		</div>
 	);

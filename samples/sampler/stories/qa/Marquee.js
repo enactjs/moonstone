@@ -119,7 +119,7 @@ const MarqueeWithContentChanged = () => {
 			<Button onClick={handleClick}>
 				{'Click Me'}
 			</Button>
-			<Marquee style={{width: '400px'}} marqueeOn={'render'} >{texts[count]}</Marquee>
+			<Marquee marqueeOn={'render'} style={{width: '400px'}}>{texts[count]}</Marquee>
 		</div>
 	);
 };
@@ -132,7 +132,6 @@ storiesOf('Marquee', module)
 			return (
 				<section>
 					<Marquee
-						style={{width: ri.unit(399, 'rem')}}
 						disabled={disabled}
 						forceDirection={select('forceDirection', ['', 'ltr', 'rtl'], Marquee, '')}
 						marqueeDelay={number('marqueeDelay', Marquee, 1000)}
@@ -141,6 +140,7 @@ storiesOf('Marquee', module)
 						marqueeOnRenderDelay={number('marqueeOnRenderDelay', Marquee, 1000)}
 						marqueeResetDelay={number('marqueeResetDelay', Marquee, 1000)}
 						marqueeSpeed={number('marqueeSpeed', Marquee, 60)}
+						style={{width: ri.unit(399, 'rem')}}
 					>
 						{select('children', LTR, Marquee, LTR[0])}
 					</Marquee>
@@ -157,7 +157,6 @@ storiesOf('Marquee', module)
 			return (
 				<section>
 					<Marquee
-						style={{width: ri.unit(399, 'rem')}}
 						disabled={disabled}
 						forceDirection={select('forceDirection', ['', 'ltr', 'rtl'], Marquee, '')}
 						marqueeDelay={number('marqueeDelay', Marquee, 1000)}
@@ -166,6 +165,7 @@ storiesOf('Marquee', module)
 						marqueeOnRenderDelay={number('marqueeOnRenderDelay', Marquee, 1000)}
 						marqueeResetDelay={number('marqueeResetDelay', Marquee, 1000)}
 						marqueeSpeed={number('marqueeSpeed', Marquee, 60)}
+						style={{width: ri.unit(399, 'rem')}}
 					>
 						{select('children', RTL, Marquee, RTL[0])}
 					</Marquee>
@@ -239,7 +239,6 @@ storiesOf('Marquee', module)
 					{'The quick brown fox.'}
 				</Marquee>
 				<Marquee
-					style={{width: ri.unit(399, 'rem')}}
 					disabled={false}
 					marqueeDelay={1000}
 					marqueeDisabled={false}
@@ -247,6 +246,7 @@ storiesOf('Marquee', module)
 					marqueeOnRenderDelay={1000}
 					marqueeResetDelay={1000}
 					marqueeSpeed={60}
+					style={{width: ri.unit(399, 'rem')}}
 				>
 					{LTR[0]}
 				</Marquee>

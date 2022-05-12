@@ -57,12 +57,12 @@ const IncrementSliderWithContextualPopup = () => {
 		<div>
 			<ContextualPopupButton
 				direction="down"
-				spotlightRestrict="self-only"
 				onClick={handleClick}
 				onClose={handleClick}
 				open={open}
 				popupComponent={renderPopup}
 				size="small"
+				spotlightRestrict="self-only"
 			>
 				{'drawer'}
 			</ContextualPopupButton>

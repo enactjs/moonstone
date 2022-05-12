@@ -86,10 +86,10 @@ const ScrollerWithTwoExpandableList = () => (
 		</Scroller>
 		<Scroller
 			direction="vertical"
-			style={{height: ri.scale(200)}}
 			onKeyDown={action('onKeyDown (2nd Scroller)')}
 			onScrollStart={action('onScrollStart (2nd Scroller)')}
 			onScrollStop={action('onScrollStop (2nd Scroller)')}
+			style={{height: ri.scale(200)}}
 		>
 			<ExpandableList title="second">
 				{['a', 'b', 'c', 'd']}

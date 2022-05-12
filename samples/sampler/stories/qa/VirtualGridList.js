@@ -98,11 +98,11 @@ const MyVirtualList = ({closePopup, ...props}) => {
 	return (
 		<div {...props} style={{width: ri.scaleToRem(915), height: ri.scaleToRem(600)}}>
 			<VirtualGridList
+				cbScrollTo={getScrollTo}
 				dataSize={itemList.length}
+				direction="vertical"
 				itemRenderer={componentRenderItem}
 				itemSize={{minWidth: ri.scale(285), minHeight: ri.scale(60)}}
-				direction="vertical"
-				cbScrollTo={getScrollTo}
 			/>
 		</div>
 	);
@@ -132,13 +132,13 @@ const ButtonAndVirtualGridList = () => {
 	return (
 		<div>
 			<ContextualPopupButton
+				direction="right"
+				onClick={openPopup}
+				onClose={closePopup}
 				open={isPopup}
 				popupComponent={renderPopup}
-				onClick={openPopup}
-				direction="right"
 				showCloseButton
 				spotlightRestrict="self-only"
-				onClose={closePopup}
 			>
 				Focus here
 			</ContextualPopupButton>
