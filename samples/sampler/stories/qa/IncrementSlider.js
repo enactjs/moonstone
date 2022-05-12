@@ -1,63 +1,47 @@
-import {mergeComponentMetadata} from '@enact/storybook-utils';
-import {number} from '@enact/storybook-utils/addons/knobs';
-import ri from '@enact/ui/resolution';
-import PropTypes from 'prop-types';
-import {Component} from 'react';
-import {storiesOf} from '@storybook/react';
-
 import Button from '@enact/moonstone/Button';
 import ContextualPopupDecorator from '@enact/moonstone/ContextualPopupDecorator';
 import IconButton from '@enact/moonstone/IconButton';
 import IncrementSlider, {IncrementSliderBase} from '@enact/moonstone/IncrementSlider';
+import {mergeComponentMetadata} from '@enact/storybook-utils';
+import {number} from '@enact/storybook-utils/addons/knobs';
+import ri from '@enact/ui/resolution';
+import {storiesOf} from '@storybook/react';
+import PropTypes from 'prop-types';
+import {useCallback, useEffect, useState} from 'react';
 
 import IncrementSliderDelayValue from './components/IncrementSliderDelayValue';
 
 const ContextualPopupButton = ContextualPopupDecorator(IconButton);
 const IncrementSliderConfig = mergeComponentMetadata('IncrementSlider', IncrementSliderBase, IncrementSlider);
 
-class IncrementSliderView extends Component {
+const IncrementSliderView = () => {
+	const [value, setValue] = useState(0);
 
-	constructor (props) {
-		super(props);
-		this.state = {
-			value: 0
-		};
-	}
-
-	handleChange = (ev) => {
+	const handleChange = useCallback((ev) => {
 		setTimeout(() => {
-			this.setState({value: ev.value});
+			setValue(ev.value);
 		}, 200);
-	};
+	}, []);
 
-	render () {
-		return (
-			<div style={{display: 'flex', marginTop: ri.unit(180, 'rem')}}>
-				<div style={{width: '300px'}}>
-					<Button>button</Button>
-					<Button>button</Button>
-				</div>
-				<IncrementSlider style={{flex: 1, width: ri.unit(510, 'rem')}} onChange={this.handleChange} value={this.state.value} />
+	return (
+		<div style={{display: 'flex', marginTop: ri.unit(180, 'rem')}}>
+			<div style={{width: '300px'}}>
+				<Button>button</Button>
+				<Button>button</Button>
 			</div>
-		);
-	}
-}
+			<IncrementSlider style={{flex: 1, width: ri.unit(510, 'rem')}} onChange={handleChange} value={value} />
+		</div>
+	);
+};
 
-class IncrementSliderWithContextualPopup extends Component {
-	constructor (props) {
-		super(props);
-		this.state = {
-			open: false
-		};
-	}
+const IncrementSliderWithContextualPopup = () => {
+	const [open, setOpen] = useState(false);
 
-	handleClick = () => {
-		this.setState((prevState) => {
-			return {open: !prevState.open};
-		});
-	};
+	const handleClick = useCallback(() => {
+		setOpen(!open);
+	}, [open]);
 
-	renderPopup = () => (
+	const renderPopup = useCallback(() => (
 		<div style={{width: 400}}>
 			<IncrementSlider
 				// active
@@ -67,65 +51,49 @@ class IncrementSliderWithContextualPopup extends Component {
 				step={0.1}
 			/>
 		</div>
+	), []);
+
+	return (
+		<div>
+			<ContextualPopupButton
+				direction="down"
+				onClick={handleClick}
+				onClose={handleClick}
+				open={open}
+				popupComponent={renderPopup}
+				size="small"
+				spotlightRestrict="self-only"
+			>
+				{'drawer'}
+			</ContextualPopupButton>
+		</div>
 	);
+};
 
-	render () {
-		return (
-			<div>
-				<ContextualPopupButton
-					direction="down"
-					spotlightRestrict="self-only"
-					onClick={this.handleClick}
-					onClose={this.handleClick}
-					open={this.state.open}
-					popupComponent={this.renderPopup}
-					size="small"
-				>
-					{'drawer'}
-				</ContextualPopupButton>
-			</div>
-		);
-	}
-}
+const IncrementSliderWithMinValue = ({value: propValue}) => {
+	const [value, setValue] = useState(propValue);
 
-class IncrementSliderWithMinValue extends Component {
-	static propTypes = {
-		value: PropTypes.number
-	};
+	useEffect(() => {
+		setValue(propValue);
+	}, [propValue]);
 
-	constructor (props) {
-		super(props);
-		this.state = {
-			propValue: props.value,
-			value: 0
-		};
-	}
+	const handleChange = useCallback(({value: newValue}) => setValue(newValue), []);
 
-	static getDerivedStateFromProps (props, state) {
-		if (props.value !== state.propValue) {
-			return {
-				propValue: props.value,
-				value: props.value
-			};
-		}
-		return null;
-	}
+	return (
+		<div>
+			<IncrementSlider
+				max={number('max', IncrementSliderConfig)}
+				min={number('min', IncrementSliderConfig)}
+				onChange={handleChange}
+				value={value}
+			/>
+		</div>
+	);
+};
 
-	handleChange = ({value}) => this.setState({value});
-
-	render () {
-		return (
-			<div>
-				<IncrementSlider
-					max={number('max', IncrementSliderConfig)}
-					min={number('min', IncrementSliderConfig)}
-					onChange={this.handleChange}
-					value={this.state.value}
-				/>
-			</div>
-		);
-	}
-}
+IncrementSliderWithMinValue.propTypes = {
+	value: PropTypes.number
+};
 
 storiesOf('IncrementSlider', module)
 	.add(

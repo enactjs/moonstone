@@ -1,11 +1,11 @@
 import Button from '@enact/moonstone/Button';
 import Heading from '@enact/moonstone/Heading';
 import IconButton from '@enact/moonstone/IconButton';
-import Layout, {Cell} from '@enact/ui/Layout';
 import Scroller from '@enact/moonstone/Scroller';
-import Toggleable from '@enact/ui/Toggleable';
 import ToggleButton from '@enact/moonstone/ToggleButton';
 import TooltipDecorator from '@enact/moonstone/TooltipDecorator';
+import Layout, {Cell} from '@enact/ui/Layout';
+import Toggleable from '@enact/ui/Toggleable';
 
 const
 	StatefulButton = Toggleable({toggle: 'onClick', prop: 'selected'}, Button),

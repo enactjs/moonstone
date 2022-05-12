@@ -1,8 +1,8 @@
 import {useI18nContext} from '@enact/i18n/I18nDecorator';
 import Heading from '@enact/moonstone/Heading';
+import ToggleButton from '@enact/moonstone/ToggleButton';
 import PropTypes from 'prop-types';
 import {useCallback} from 'react';
-import ToggleButton from '@enact/moonstone/ToggleButton';
 
 const Option = (props) => {
 	const {handleDebug, isDebugMode} = props;

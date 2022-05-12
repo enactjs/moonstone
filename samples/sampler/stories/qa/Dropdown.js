@@ -1,13 +1,12 @@
+import Button, {ButtonBase} from '@enact/moonstone/Button';
+import Dropdown, {DropdownBase} from '@enact/moonstone/Dropdown';
+import Heading from '@enact/moonstone/Heading';
 import {boolean, select, text} from '@enact/storybook-utils/addons/knobs';
 import {action} from '@enact/storybook-utils/addons/actions';
 import {mergeComponentMetadata} from '@enact/storybook-utils';
 import UIButton, {ButtonBase as UIButtonBase} from '@enact/ui/Button';
-import {Component} from 'react';
 import {storiesOf} from '@storybook/react';
-
-import Button, {ButtonBase} from '@enact/moonstone/Button';
-import Dropdown, {DropdownBase} from '@enact/moonstone/Dropdown';
-import Heading from '@enact/moonstone/Heading';
+import {useCallback, useState} from 'react';
 
 const Config = mergeComponentMetadata('Dropdown', UIButtonBase, UIButton, ButtonBase, Button, DropdownBase, Dropdown);
 const items = (itemCount, optionText = 'Option') => (new Array(itemCount)).fill().map((i, index) => `${optionText} ${index + 1}`);
@@ -20,32 +19,25 @@ const list = [
 	{children: 'hello 3', 'key': 'key3', 'aria-label': 'aria 3'}
 ];
 
-class AutoDismissDropdown extends Component {
-	constructor (props) {
-		super(props);
-		this.state = {
-			open: true
-		};
-	}
+const AutoDismissDropdown = () => {
+	const [open, setOpen] = useState(true);
 
-	handleClose = () => {
-		this.setState({open: false});
-	};
+	const handleClose = useCallback(() => {
+		setOpen(false);
+	}, []);
 
-	render () {
-		return (
-			<div>
-				<Heading>Click in the blank area of the viewport to dismiss the Dropdown</Heading>
-				<Dropdown
-					onClose={this.handleClose}
-					open={this.state.open} // initial value is true
-				>
-					{['test1', 'test2', 'test3']}
-				</Dropdown>
-			</div>
-		);
-	}
-}
+	return (
+		<div>
+			<Heading>Click in the blank area of the viewport to dismiss the Dropdown</Heading>
+			<Dropdown
+				onClose={handleClose}
+				open={open} // initial value is true
+			>
+				{['test1', 'test2', 'test3']}
+			</Dropdown>
+		</div>
+	);
+};
 
 storiesOf('Dropdown', module)
 	.add(

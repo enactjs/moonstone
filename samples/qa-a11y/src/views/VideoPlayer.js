@@ -1,7 +1,7 @@
 import Button from '@enact/moonstone/Button';
 import IconButton from '@enact/moonstone/IconButton';
-import ri from '@enact/ui/resolution';
 import VideoPlayer, {MediaControls} from '@enact/moonstone/VideoPlayer';
+import ri from '@enact/ui/resolution';
 
 const VideoPlayerView = () => (
 	<div style={{width: ri.scale(1280) + 'px', height: ri.scale(800) + 'px'}}>

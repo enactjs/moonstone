@@ -2,8 +2,8 @@ import Heading from '@enact/moonstone/Heading';
 import ExpandableItem from '@enact/moonstone/ExpandableItem';
 import Icon from '@enact/moonstone/Icon';
 import Item from '@enact/moonstone/Item';
-import Layout, {Cell} from '@enact/ui/Layout';
 import Scroller from '@enact/moonstone/Scroller';
+import Layout, {Cell} from '@enact/ui/Layout';
 
 const ExpandableItemView = () => (
 	<Layout orientation="vertical">

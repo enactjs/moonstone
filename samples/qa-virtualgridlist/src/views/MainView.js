@@ -1,55 +1,49 @@
-import {Component} from 'react';
+import {useCallback, useEffect, useRef, useState} from 'react';
 
 import ImageList from '../components/ImageList';
 import PanelHeader from '../components/PanelHeader';
 
 import css from './MainView.module.less';
 
-class MainView extends Component {
-	constructor (props) {
-		super(props);
-		this.state = {
-			focusableScrollbar: false,
-			horizontal: false
-		};
-	}
+const MainView = () => {
+	const scrollTo = useRef();
+	const [focusableScrollbar, setFocusableScrollbar] = useState(false);
+	const [horizontal, setHorizontal] = useState(false);
 
-	componentDidUpdate () {
-		this.scrollTo({index: 0, animate: false, focus: true});
-	}
+	useEffect(() => {
+		scrollTo.current({index: 0, animate: false, focus: true});
+	}, []);
 
-	onChangeFocusableScrollbar = () => {
-		this.setState((state) => ({focusableScrollbar: !state.focusableScrollbar}));
-	};
+	const onChangeFocusableScrollbar = useCallback(() => {
+		setFocusableScrollbar((isFocusable) => setFocusableScrollbar(!isFocusable));
+	}, []);
 
-	onChangeDirection = () => {
-		this.setState((state) => ({horizontal: !state.horizontal}));
-	};
+	const onChangeDirection = useCallback(() => {
+		setHorizontal((isHorizontal) => setHorizontal(!isHorizontal));
+	}, []);
 
-	getScrollTo = (scrollTo) => {
-		this.scrollTo = scrollTo;
-	};
+	const getScrollTo = useCallback((newScrollTo) => {
+		scrollTo.current = newScrollTo;
+	}, []);
 
-	render = () => {
-		return (
-			<div className={css.mainView}>
-				<PanelHeader
-					title="VirtualGridList"
-					type="compact"
-					onChangeDirection={this.onChangeDirection}
-					onChangeFocusableScrollbar={this.onChangeFocusableScrollbar}
+	return (
+		<div className={css.mainView}>
+			<PanelHeader
+				onChangeDirection={onChangeDirection}
+				onChangeFocusableScrollbar={onChangeFocusableScrollbar}
+				title="VirtualGridList"
+				type="compact"
+			/>
+			<div className={css.content}>
+				<ImageList
+					cbScrollTo={getScrollTo}
+					className={css.list}
+					direction={horizontal ? 'horizontal' : 'vertical'}
+					focusableScrollbar={focusableScrollbar}
 				/>
-				<div className={css.content}>
-					<ImageList
-						cbScrollTo={this.getScrollTo}
-						className={css.list}
-						focusableScrollbar={this.state.focusableScrollbar}
-						direction={this.state.horizontal ? 'horizontal' : 'vertical'}
-					/>
-				</div>
 			</div>
-		);
-	};
-}
+		</div>
+	);
+};
 
 export default MainView;
