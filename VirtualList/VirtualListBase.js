@@ -47,6 +47,7 @@ const
 const VirtualListBaseFactory = (type) => {
 	const UiBase = (type === JS) ? UiVirtualListBase : UiVirtualListBaseNative;
 
+	/* eslint-disable react/no-this-in-sfc */
 	return class VirtualListCore extends Component {
 		/* No displayName here. We set displayName to returned components of this factory function. */
 
@@ -855,6 +856,7 @@ const VirtualListBaseFactory = (type) => {
 			);
 		}
 	};
+	/* eslint-enable react/no-this-in-sfc */
 };
 
 /**
