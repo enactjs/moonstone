@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 
-import Button from '@enact/moonstone/Button';
 import kind from '@enact/core/kind';
+import Button from '@enact/moonstone/Button';
 import Region from '@enact/moonstone/Region';
 import Scroller from '@enact/moonstone/Scroller';
 

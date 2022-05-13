@@ -1,3 +1,5 @@
+/* eslint-disable react/no-this-in-sfc */
+
 import {getTargetByDirectionFromElement} from '@enact/spotlight/src/target';
 import {is} from '@enact/core/keymap';
 import Spotlight, {getDirection} from '@enact/spotlight';

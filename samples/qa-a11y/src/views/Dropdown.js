@@ -2,7 +2,7 @@ import Dropdown from '@enact/moonstone/Dropdown';
 import Heading from '@enact/moonstone/Heading';
 import Scroller from '@enact/moonstone/Scroller';
 import Layout, {Cell} from '@enact/ui/Layout';
-import {Component} from 'react';
+import {useCallback, useState} from 'react';
 
 const list = [
 	{children: 'Option1', key: 'item1', 'aria-label': 'aria label 1'},
@@ -10,30 +10,23 @@ const list = [
 	{children: 'Option3', key: 'item3', 'aria-label': 'aria label 3'}
 ];
 
-class A11yDropdown extends Component {
-	constructor (props) {
-		super(props);
-		this.state = {
-			ariaLabel: null
-		};
-	}
+const A11yDropdown = () => {
+	const [ariaLabel, setAriaLabel] = useState(null);
 
-	onSelect = ({selected}) => {
-		this.setState({ariaLabel: list[selected]['aria-label']});
-	};
+	const onSelect = useCallback(({selected}) => {
+		setAriaLabel(list[selected]['aria-label']);
+	}, []);
 
-	render () {
-		return (
-			<Dropdown
-				aria-label={this.state.ariaLabel}
-				onSelect={this.onSelect}
-				title="Dropdown"
-			>
-				{list}
-			</Dropdown>
-		);
-	}
-}
+	return (
+		<Dropdown
+			aria-label={ariaLabel}
+			onSelect={onSelect}
+			title="Dropdown"
+		>
+			{list}
+		</Dropdown>
+	);
+};
 
 const DropdownView = () => (
 	<Layout orientation="vertical">
