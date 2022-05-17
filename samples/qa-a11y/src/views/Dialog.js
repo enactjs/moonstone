@@ -1,8 +1,8 @@
+import kind from '@enact/core/kind';
 import Button from '@enact/moonstone/Button';
 import Dialog from '@enact/moonstone/Dialog';
-import kind from '@enact/core/kind';
-import PropTypes from 'prop-types';
 import Toggleable from '@enact/ui/Toggleable';
+import PropTypes from 'prop-types';
 
 const DialogViewBase = kind({
 	name: 'DialogView',

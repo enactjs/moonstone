@@ -1,11 +1,9 @@
-import ri from '@enact/ui/resolution';
-import {Component} from 'react';
-import {storiesOf} from '@storybook/react';
-
 import ExpandableList from '@enact/moonstone/ExpandableList';
 import Item from '@enact/moonstone/Item';
 import Scroller from '@enact/moonstone/Scroller';
 import SelectableItem from '@enact/moonstone/SelectableItem';
+import ri from '@enact/ui/resolution';
+import {storiesOf} from '@storybook/react';
 
 const data = [
 	'a',
@@ -13,17 +11,11 @@ const data = [
 	'c'
 ];
 
-class NoUpdate extends Component {
-	shouldComponentUpdate () {
-		return false;
-	}
-
-	render () {
-		return (
-			<div>{this.props.children}</div>
-		);
-	}
-}
+const NoUpdate = ({...props}) => {
+	return (
+		<div>{props.children}</div>
+	);
+};
 
 storiesOf('Resizable', module)
 	.add(

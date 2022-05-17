@@ -2,125 +2,112 @@ import Button from '@enact/moonstone/Button';
 import Heading from '@enact/moonstone/Heading';
 import Item from '@enact/moonstone/Item';
 import Popup from '@enact/moonstone/Popup';
-import {Component} from 'react';
-import ri from '@enact/ui/resolution';
 import Scroller from '@enact/moonstone/Scroller';
+import ri from '@enact/ui/resolution';
+import {useCallback, useState} from 'react';
 
-class PopupView extends Component {
-	constructor (props) {
-		super(props);
-		this.state = {
-			open1: false,
-			open2: false,
-			open3: false,
-			open4: false,
-			open5: false
-		};
+const PopupView = () => {
+	const [open1, setOpen1] = useState(false);
+	const [open2, setOpen2] = useState(false);
+	const [open3, setOpen3] = useState(false);
+	const [open4, setOpen4] = useState(false);
+	const [open5, setOpen5] = useState(false);
 
-		this.handleOpen1 = this.handleOpen(1);
-		this.handleOpen2 = this.handleOpen(2);
-		this.handleOpen3 = this.handleOpen(3);
-		this.handleOpen4 = this.handleOpen(4);
-		this.handleOpen5 = this.handleOpen(5);
+	const handleOpen1 = useCallback(() => setOpen1(true), []);
+	const handleOpen2 = useCallback(() => setOpen2(true), []);
+	const handleOpen3 = useCallback(() => setOpen3(true), []);
+	const handleOpen4 = useCallback(() => setOpen4(true), []);
+	const handleOpen5 = useCallback(() => setOpen5(true), []);
 
-		this.handleClose1 = this.handleClose(1);
-		this.handleClose2 = this.handleClose(2);
-		this.handleClose3 = this.handleClose(3);
-		this.handleClose4 = this.handleClose(4);
-		this.handleClose5 = this.handleClose(5);
-	}
+	const handleClose1 = useCallback(() => setOpen1(false), []);
+	const handleClose2 = useCallback(() => setOpen2(false), []);
+	const handleClose3 = useCallback(() => setOpen3(false), []);
+	const handleClose4 = useCallback(() => setOpen4(false), []);
+	const handleClose5 = useCallback(() => setOpen5(false), []);
 
-	handleOpen = (expNum) => () => this.setState({['open' + expNum]: true});
+	return (
+		<div>
+			<Button onClick={handleOpen1} size="small">Basic Popup</Button>
+			<Button onClick={handleOpen2} size="small">Long Popup</Button>
+			<Button onClick={handleOpen3} size="small">Scroller Popup</Button>
+			<Button onClick={handleOpen4} size="small">Button In Popup</Button>
+			<Button onClick={handleOpen5} size="small">Customizable aria-label close button in popup</Button>
 
-	handleClose = (expNum) => () => this.setState({['open' + expNum]: false});
+			<Popup
+				onClose={handleClose1}
+				open={open1}
+			>
+				<span>Popup...</span>
+			</Popup>
 
-	render () {
-		const {open1, open2, open3, open4, open5} = this.state;
+			<Popup
+				onClose={handleClose2}
+				open={open2}
+				showCloseButton
+			>
+				<span>
+					Enact is a framework designed to be performant, customizable and well structured.
+					<br />
+					The goal in creating Enact was to build upon the experience gained in producing the Enyo JavaScript framework and to incorporate the latest advances in JavaScript and Web engine technology.
+					<br />
+					Enact is designed to be used by both novice and expert developers.
+					<br />
+					Why Enact?
+					<br />
+					Ease of Use
+					<br />
+					Enact builds atop the excellent React library, and provides a full framework to the developer.
+					<br />
+					The recent boom of web technologies and related tools has led to a plethora of options available.
+					<br />
+					In fact, getting started might be the most difficult part of building a modern web application.
+					<br />
+					Enact allows developers to avoid this pain by providing an opinionated collection of libraries and tools that have been thoroughly vetted to work well together.
+				</span>
+			</Popup>
 
-		return (
-			<div>
-				<Button size="small" onClick={this.handleOpen1}>Basic Popup</Button>
-				<Button size="small" onClick={this.handleOpen2}>Long Popup</Button>
-				<Button size="small" onClick={this.handleOpen3}>Scroller Popup</Button>
-				<Button size="small" onClick={this.handleOpen4}>Button In Popup</Button>
-				<Button size="small" onClick={this.handleOpen5}>Customizable aria-label close button in popup</Button>
+			<Popup
+				onClose={handleClose3}
+				open={open3}
+				showCloseButton
+			>
+				<Button size="small">Button Outside Scroller</Button>
+				<Scroller style={{height: ri.scale(170) + 'px', marginTop: ri.scale(10) + 'px'}}>
+					<Item>Test Item 1</Item>
+					<Item>Test Item 2</Item>
+					<Item>Test Item 3</Item>
+					<Item>Test Item 4</Item>
+					<Item>Test Item 5</Item>
+					<Item>Test Item 6</Item>
+					<Item>Test Item 7</Item>
+					<Item>Test Item 8</Item>
+					<Item>Test Item 9</Item>
+					<Item>Test Item 10</Item>
+				</Scroller>
+			</Popup>
 
-				<Popup
-					open={open1}
-					onClose={this.handleClose1}
-				>
-					<span>Popup...</span>
-				</Popup>
+			<Popup
+				onClose={handleClose4}
+				open={open4}
+				showCloseButton
+			>
+				<Heading showLine>Buttons In Popup Example</Heading>
+				<Button size="small">Hello</Button>
+				<Button size="small">Goodbye</Button>
+			</Popup>
 
-				<Popup
-					open={open2}
-					onClose={this.handleClose2}
-					showCloseButton
-				>
-					<span>
-						Enact is a framework designed to be performant, customizable and well structured.
-						<br />
-						The goal in creating Enact was to build upon the experience gained in producing the Enyo JavaScript framework and to incorporate the latest advances in JavaScript and Web engine technology.
-						<br />
-						Enact is designed to be used by both novice and expert developers.
-						<br />
-						Why Enact?
-						<br />
-						Ease of Use
-						<br />
-						Enact builds atop the excellent React library, and provides a full framework to the developer.
-						<br />
-						The recent boom of web technologies and related tools has led to a plethora of options available.
-						<br />
-						In fact, getting started might be the most difficult part of building a modern web application.
-						<br />
-						Enact allows developers to avoid this pain by providing an opinionated collection of libraries and tools that have been thoroughly vetted to work well together.
-					</span>
-				</Popup>
-
-				<Popup
-					open={open3}
-					onClose={this.handleClose3}
-					showCloseButton
-				>
-					<Button size="small">Button Outside Scroller</Button>
-					<Scroller style={{height: ri.scale(170) + 'px', marginTop: ri.scale(10) + 'px'}}>
-						<Item>Test Item 1</Item>
-						<Item>Test Item 2</Item>
-						<Item>Test Item 3</Item>
-						<Item>Test Item 4</Item>
-						<Item>Test Item 5</Item>
-						<Item>Test Item 6</Item>
-						<Item>Test Item 7</Item>
-						<Item>Test Item 8</Item>
-						<Item>Test Item 9</Item>
-						<Item>Test Item 10</Item>
-					</Scroller>
-				</Popup>
-
-				<Popup
-					open={open4}
-					onClose={this.handleClose4}
-					showCloseButton
-				>
-					<Heading showLine>Buttons In Popup Example</Heading>
-					<Button size="small">Hello</Button>
-					<Button size="small">Goodbye</Button>
-				</Popup>
-
-				<Popup
-					closeButtonAriaLabel="Close popup"
-					onClose={this.handleClose5}
-					open={open5}
-					showCloseButton
-				>
-					<Heading showLine>Customizable aria-label close button in popup Example</Heading>
-					<Button size="small">Hello</Button>
-					<Button size="small">Goodbye</Button>
-				</Popup>
-			</div>
-		);
-	}
-}
+			<Popup
+				closeButtonAriaLabel="Close popup"
+				onClose={handleClose5}
+				open={open5}
+				showCloseButton
+			>
+				<Heading showLine>Customizable aria-label close button in popup Example</Heading>
+				<Button size="small">Hello</Button>
+				<Button size="small">Goodbye</Button>
+			</Popup>
+		</div>
+	);
+};
 
 export default PopupView;

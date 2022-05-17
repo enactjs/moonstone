@@ -1,56 +1,43 @@
-import {Component} from 'react';
 import PropTypes from 'prop-types';
+import {useEffect, useState} from 'react';
 
 import {IncrementSlider} from '@enact/moonstone/IncrementSlider';
 
-class IncrementSliderDelayValue extends Component {
-	static displayName = 'IncrementSliderDelayValue';
+const IncrementSliderDelayValue = ({value: initialValue}) => {
+	const [value, setValue] = useState(initialValue);
 
-	static propTypes = {
-		backgroundPercent: PropTypes.number,
-		decrementIcon: PropTypes.string,
-		disabled: PropTypes.bool,
-		incrementIcon: PropTypes.string,
-		max: PropTypes.number,
-		min: PropTypes.number,
-		step: PropTypes.number,
-		value: PropTypes.number
-	};
-
-	static defaultProps = {
-		backgroundPercent: 0,
-		max: 100,
-		min: 0,
-		step: 1,
-		value: 0
-	};
-
-	constructor (props) {
-		super(props);
-		this.state = {
-			value: props.value
+	useEffect(() => {
+		const changeValue = () => {
+			if (value === 100) {
+				setValue(0);
+			} else {
+				setValue(100);
+			}
 		};
-	}
+		const intervalId = setInterval(changeValue, 5000);
+		return () => clearInterval(intervalId);
+	}, [value]);
 
-	componentDidMount () {
-		this.intervalId = setInterval(this.changeValue, 5000);
-	}
+	return <IncrementSlider value={value} />;
+};
 
-	componentWillUnmount () {
-		clearInterval(this.intervalId);
-	}
+IncrementSliderDelayValue.propTypes = {
+	backgroundPercent: PropTypes.number,
+	decrementIcon: PropTypes.string,
+	disabled: PropTypes.bool,
+	incrementIcon: PropTypes.string,
+	max: PropTypes.number,
+	min: PropTypes.number,
+	step: PropTypes.number,
+	value: PropTypes.number
+};
 
-	changeValue = () => {
-		if (this.state.value === 100) {
-			this.setState({value: 0});
-		} else {
-			this.setState({value: 100});
-		}
-	};
-
-	render () {
-		return <IncrementSlider value={this.state.value} />;
-	}
-}
+IncrementSliderDelayValue.defaultProps = {
+	backgroundPercent: 0,
+	max: 100,
+	min: 0,
+	step: 1,
+	value: 0
+};
 
 export default IncrementSliderDelayValue;

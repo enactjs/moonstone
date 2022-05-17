@@ -1,10 +1,10 @@
-import Group from '@enact/ui/Group';
 import Item from '@enact/moonstone/Item';
-import Layout, {Cell} from '@enact/ui/Layout';
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
-import {Component} from 'react';
 import ScrollerComponent from '@enact/moonstone/Scroller';
+import Group from '@enact/ui/Group';
+import Layout, {Cell} from '@enact/ui/Layout';
 import ViewManager from '@enact/ui/ViewManager';
+import {useCallback, useState} from 'react';
 
 import Button from '../views/Button';
 import ContextualPopupDecorator from '../views/ContextualPopupDecorator';
@@ -67,40 +67,33 @@ const views = [
 	{title: 'VirtualList', view: VirtualList}
 ];
 
-class AppBase extends Component {
-	constructor () {
-		super();
-		this.state = {
-			isDebugMode: false,
-			selected: 0
-		};
-	}
+const AppBase = ({...props}) => {
+	const [isDebugMode, setIsDebugMode] = useState(false);
+	const [selected, setSelected] = useState(0);
 
-	handleChangeView = (state) => this.setState(state);
+	const handleChangeView = useCallback((state) => {
+		setSelected(state.selected);
+	}, []);
 
-	handleDebug = () => this.setState((state) => ({isDebugMode: !state.isDebugMode}));
+	const handleDebug = useCallback(() => setIsDebugMode((isDebug) => setIsDebugMode(!isDebug)), []);
 
-	render () {
-		const
-			{isDebugMode, selected} = this.state,
-			debugAriaClass = isDebugMode ? 'aria debug' : null;
+	const debugAriaClass = isDebugMode ? 'aria debug' : null;
 
-		return (
-			<Layout {...this.props}>
-				<Cell component={ScrollerComponent} size="20%">
-					<Group childComponent={Item} itemProps={{className: css.navItem}} onSelect={this.handleChangeView} select="radio">
-						{views.map((view) => view.title)}
-					</Group>
-				</Cell>
-				<Cell className={debugAriaClass} component={ViewManager} index={selected}>
-					{views.map((view, i) => (
-						<View {...view} handleDebug={this.handleDebug} isDebugMode={isDebugMode} key={i} />
-					))}
-				</Cell>
-			</Layout>
-		);
-	}
-}
+	return (
+		<Layout {...props}>
+			<Cell component={ScrollerComponent} size="20%">
+				<Group childComponent={Item} itemProps={{className: css.navItem}} onSelect={handleChangeView} select="radio">
+					{views.map((view) => view.title)}
+				</Group>
+			</Cell>
+			<Cell className={debugAriaClass} component={ViewManager} index={selected}>
+				{views.map((view, i) => (
+					<View {...view} handleDebug={handleDebug} isDebugMode={isDebugMode} key={i} />
+				))}
+			</Cell>
+		</Layout>
+	);
+};
 
 const App = MoonstoneDecorator(AppBase);
 

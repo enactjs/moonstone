@@ -1,18 +1,17 @@
+import Button from '@enact/moonstone/Button';
+import ContextualPopupDecorator from '@enact/moonstone/ContextualPopupDecorator';
+import GridListImageItem from '@enact/moonstone/GridListImageItem';
+import Item from '@enact/moonstone/Item';
+import {VirtualGridList, VirtualListBase} from '@enact/moonstone/VirtualList';
 import {action} from '@enact/storybook-utils/addons/actions';
 import {boolean, number, select} from '@enact/storybook-utils/addons/knobs';
 import {mergeComponentMetadata} from '@enact/storybook-utils';
 import ri from '@enact/ui/resolution';
 import {ScrollableBase as UiScrollableBase} from '@enact/ui/Scrollable';
 import {VirtualListBase as UiVirtualListBase} from '@enact/ui/VirtualList/VirtualListBase';
-import {Component} from 'react';
-
-import Button from '@enact/moonstone/Button';
-import ContexturePopupDecorator from '@enact/moonstone/ContextualPopupDecorator';
-import GridListImageItem from '@enact/moonstone/GridListImageItem';
-import Item from '@enact/moonstone/Item';
-import {VirtualGridList, VirtualListBase} from '@enact/moonstone/VirtualList';
-
 import {storiesOf} from '@storybook/react';
+import PropTypes from 'prop-types';
+import {useCallback, useEffect, useRef, useState} from 'react';
 
 const Config = mergeComponentMetadata('VirtualGridList', UiVirtualListBase, UiScrollableBase, VirtualListBase);
 
@@ -69,90 +68,83 @@ for (let i = 0; i < 60; i++) {
 	itemList.push('item' + i);
 }
 
-const ContexturePopupButton = ContexturePopupDecorator(Button);
+const ContextualPopupButton = ContextualPopupDecorator(Button);
 
 let lastIndex = 0;
 
-class MyVirtualList extends Component {
-	componentDidMount () {
-		this.scrollTo({index: lastIndex, animate: false, focus: true});
-	}
+const MyVirtualList = ({closePopup, ...props}) => {
+	const scrollTo = useRef();
 
-	closePopup (index) {
+	useEffect(() => {
+		scrollTo.current({index: lastIndex, animate: false, focus: true});
+	}, []);
+
+	const componentClosePopup = useCallback((index) => {
 		lastIndex = index;
-		// eslint-disable-next-line enact/prop-types
-		this.props.closePopup();
-	}
+		closePopup();
+	}, [closePopup]);
 
-	renderItem = ({index, ...rest}) => {
+	const componentRenderItem = useCallback(({index, ...rest}) => {
 		return (
 			/* eslint-disable react/jsx-no-bind */
-			<Item key={index} onClick={() => this.closePopup(index)} {...rest}>{itemList[index]}</Item>
+			<Item key={index} onClick={() => componentClosePopup(index)} {...rest}>{itemList[index]}</Item>
 		);
-	};
+	}, [componentClosePopup]);
 
-	getScrollTo = (scrollTo) => {
-		this.scrollTo = scrollTo;
-	};
+	const getScrollTo = useCallback((newScrollTo) => {
+		scrollTo.current = newScrollTo;
+	}, []);
 
-	render () {
-		let props = {...this.props};
-		delete props.closePopup;
+	return (
+		<div {...props} style={{width: ri.scaleToRem(915), height: ri.scaleToRem(600)}}>
+			<VirtualGridList
+				cbScrollTo={getScrollTo}
+				dataSize={itemList.length}
+				direction="vertical"
+				itemRenderer={componentRenderItem}
+				itemSize={{minWidth: ri.scale(285), minHeight: ri.scale(60)}}
+			/>
+		</div>
+	);
+};
 
+MyVirtualList.propTypes = {
+	closePopup: PropTypes.func
+};
+
+const ButtonAndVirtualGridList = () => {
+	const [isPopup, setIsPopup] = useState(false);
+
+	const openPopup = useCallback(() => {
+		setIsPopup(true);
+	}, []);
+
+	const closePopup = useCallback(() => {
+		setIsPopup(false);
+	}, []);
+
+	const renderPopup = useCallback((rest) => {
 		return (
-			<div {...props} style={{width: ri.scaleToRem(915), height: ri.scaleToRem(600)}}>
-				<VirtualGridList
-					dataSize={itemList.length}
-					itemRenderer={this.renderItem}
-					itemSize={{minWidth: ri.scale(285), minHeight: ri.scale(60)}}
-					direction="vertical"
-					cbScrollTo={this.getScrollTo}
-				/>
-			</div>
+			<MyVirtualList {...rest} closePopup={closePopup} />
 		);
-	}
-}
+	}, [closePopup]);
 
-class ButtonAndVirtualGridList extends Component {
-	constructor (props) {
-		super(props);
-		this.state = {
-			isPopup: false
-		};
-	}
-
-	renderPopup = (rest) => {
-		return (
-			<MyVirtualList {...rest} closePopup={this.closePopup} />
-		);
-	};
-
-	openPopup = () => {
-		this.setState({isPopup: true});
-	};
-
-	closePopup = () => {
-		this.setState({isPopup: false});
-	};
-
-	render () {
-		return (
-			<div>
-				<ContexturePopupButton
-					open={this.state.isPopup}
-					popupComponent={this.renderPopup}
-					onClick={this.openPopup}
-					direction="right"
-					showCloseButton
-					spotlightRestrict="self-only"
-					onClose={this.closePopup}
-				>
-					Focus here
-				</ContexturePopupButton>
-			</div>
-		);
-	}
-}
+	return (
+		<div>
+			<ContextualPopupButton
+				direction="right"
+				onClick={openPopup}
+				onClose={closePopup}
+				open={isPopup}
+				popupComponent={renderPopup}
+				showCloseButton
+				spotlightRestrict="self-only"
+			>
+				Focus here
+			</ContextualPopupButton>
+		</div>
+	);
+};
 
 storiesOf('VirtualGridList', module)
 	.add(

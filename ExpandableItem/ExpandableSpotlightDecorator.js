@@ -118,7 +118,6 @@ const ExpandableSpotlightDecorator = hoc(defaultConfig, (config, Wrapped) => {
 
 		componentDidUpdate (prevProps, prevState) {
 			if (shouldRenderChildren(this.props, prevState)) {
-				// eslint-disable-next-line react/no-did-update-set-state
 				this.setState({open: true});
 			}
 		}
