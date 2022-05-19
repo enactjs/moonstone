@@ -1,89 +1,74 @@
+import VideoPlayer, {Video} from '@enact/moonstone/VideoPlayer';
 import {button} from '@storybook/addon-knobs';
 import {storiesOf} from '@storybook/react';
-import {Component} from 'react';
-
-import VideoPlayer, {Video} from '@enact/moonstone/VideoPlayer';
+import {useCallback, useState} from 'react';
 
 const videoTabLabel = 'VideoPlayer';
 
-class VideoSourceSwap extends Component {
-	constructor (props) {
-		super(props);
-		this.state = {
-			videoTitles: [
-				'Big Buck Bunny',
-				'Sintel',
-				'VideoTest'
-			],
-			playlist: [
-				'http://download.blender.org/peach/bigbuckbunny_movies/big_buck_bunny_480p_h264.mov',
-				'http://media.w3.org/2010/05/sintel/trailer.mp4',
-				'http://media.w3.org/2010/05/video/movie_300.mp4'
-			],
-			cursor: 0,
-			preloadCursor: 1
-		};
-		this.lastIndex = this.state.playlist.length - 1;
-	}
+const videoTitles = [
+	'Big Buck Bunny',
+	'Sintel',
+	'VideoTest'
+];
 
-	nextVideo = () => {
-		this.setState(({cursor, preloadCursor}) => ({
-			cursor: cursor === this.lastIndex ? 0 : cursor + 1,
-			preloadCursor: preloadCursor === this.lastIndex ? 0 : preloadCursor + 1
-		}));
-	};
+const playlist = [
+	'http://download.blender.org/peach/bigbuckbunny_movies/big_buck_bunny_480p_h264.mov',
+	'http://media.w3.org/2010/05/sintel/trailer.mp4',
+	'http://media.w3.org/2010/05/video/movie_300.mp4'
+];
 
-	differentVideo = () => {
-		this.setState(({cursor, playlist, preloadCursor}) => ({
-			cursor: (cursor + 2) % playlist.length,
-			preloadCursor: (preloadCursor + 2) % playlist.length
-		}));
-	};
+const lastIndex = playlist.length - 1;
 
-	nextVideoKeepPreload = () => {
-		this.setState(({cursor}) => ({
-			cursor: cursor === this.lastIndex ? 0 : cursor + 1
-		}));
-	};
+const VideoSourceSwap = () => {
+	const [cursor, setCursor] = useState(0);
+	const [preloadCursor, setPreloadCursor] = useState(1);
 
-	nextPreloadVideoKeepVideo = () => {
-		this.setState(({preloadCursor}) => ({
-			preloadCursor: preloadCursor ===  this.lastIndex ? 0 : preloadCursor + 1
-		}));
-	};
+	const nextVideo = useCallback(() => {
+		setCursor(cursor === lastIndex ? 0 : cursor + 1);
+		setPreloadCursor(preloadCursor === lastIndex ? 0 : preloadCursor + 1);
+	}, [cursor, preloadCursor]);
 
-	resetSources = () => {
-		this.setState({
-			cursor: 0,
-			preloadCursor: 1
-		});
-	};
+	const differentVideo = useCallback(() => {
+		setCursor((cursor + 2) % playlist.length);
+		setPreloadCursor((preloadCursor + 2) % playlist.length);
+	}, [cursor, preloadCursor]);
 
-	render () {
-		return (
-			<div>
-				{button('Next Preload Video', this.nextVideo, videoTabLabel)}
-				{button('Non Preload Video', this.differentVideo, videoTabLabel)}
-				{button('Next Preload Video without changing preload', this.nextVideoKeepPreload, videoTabLabel)}
-				{button('Change Preload without changing video', this.nextPreloadVideoKeepVideo, videoTabLabel)}
-				{button('Reset Sources', this.resetSources, videoTabLabel)}
-				<VideoPlayer
-					muted
-					onJumpBackward={this.differentVideo}
-					onJumpForward={this.nextVideo}
-					title={this.state.videoTitles[this.state.cursor]}
-				>
-					<Video>
-						<source src={this.state.playlist[this.state.cursor]} />
-						<source src={this.state.playlist[this.state.preloadCursor]} slot="preloadSource" />
-					</Video>
-					<infoComponents>A video about some things happening to and around some characters. Very exciting stuff.</infoComponents>
-				</VideoPlayer>
-			</div>
+	const nextVideoKeepPreload = useCallback(() => {
+		setCursor(cursor === lastIndex ? 0 : cursor + 1);
+	}, [cursor]);
 
-		);
-	}
-}
+	const nextPreloadVideoKeepVideo = useCallback(() => {
+		setPreloadCursor(preloadCursor ===  lastIndex ? 0 : preloadCursor + 1);
+	}, [preloadCursor]);
+
+	const resetSources = useCallback(() => {
+		setCursor(0);
+		setPreloadCursor(1);
+	}, []);
+
+	return (
+		<div>
+			{button('Next Preload Video', nextVideo, videoTabLabel)}
+			{button('Non Preload Video', differentVideo, videoTabLabel)}
+			{button('Next Preload Video without changing preload', nextVideoKeepPreload, videoTabLabel)}
+			{button('Change Preload without changing video', nextPreloadVideoKeepVideo, videoTabLabel)}
+			{button('Reset Sources', resetSources, videoTabLabel)}
+			<VideoPlayer
+				muted
+				onJumpBackward={differentVideo}
+				onJumpForward={nextVideo}
+				title={videoTitles[cursor]}
+			>
+				<Video>
+					<source src={playlist[cursor]} />
+					<source slot="preloadSource" src={playlist[preloadCursor]} />
+				</Video>
+				<infoComponents>A video about some things happening to and around some characters. Very exciting stuff.</infoComponents>
+			</VideoPlayer>
+		</div>
+
+	);
+};
 
 storiesOf('VideoPlayer', module)
 	.add(

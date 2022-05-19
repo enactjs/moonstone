@@ -1,8 +1,8 @@
-import Heading from '@enact/moonstone/Heading';
 import ExpandableInput from '@enact/moonstone/ExpandableInput';
+import Heading from '@enact/moonstone/Heading';
 import Input from '@enact/moonstone/Input';
-import Layout, {Cell} from '@enact/ui/Layout';
 import Scroller from '@enact/moonstone/Scroller';
+import Layout, {Cell} from '@enact/ui/Layout';
 
 const InputView = () => (
 	<Layout orientation="vertical">

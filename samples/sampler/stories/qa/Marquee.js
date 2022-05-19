@@ -1,16 +1,15 @@
 import kind from '@enact/core/kind';
 import {I18nContextDecorator} from '@enact/i18n/I18nDecorator';
-import {boolean, number, select} from '@enact/storybook-utils/addons/knobs';
-import Spottable from '@enact/spotlight/Spottable';
-import ri from '@enact/ui/resolution';
-import {Component} from 'react';
-import {storiesOf} from '@storybook/react';
-
 import Button from '@enact/moonstone/Button';
 import Heading from '@enact/moonstone/Heading';
 import Icon from '@enact/moonstone/Icon';
 import Item, {ItemBase} from '@enact/moonstone/Item';
 import Marquee, {MarqueeController} from '@enact/moonstone/Marquee';
+import {boolean, number, select} from '@enact/storybook-utils/addons/knobs';
+import Spottable from '@enact/spotlight/Spottable';
+import ri from '@enact/ui/resolution';
+import {storiesOf} from '@storybook/react';
+import {useCallback, useEffect, useState} from 'react';
 
 Marquee.displayName = 'Marquee';
 
@@ -76,77 +75,54 @@ const MarqueeItem = Spottable(
 	)
 );
 
-class MarqueeWithShortContent extends Component {
-	constructor (props) {
-		super(props);
+const MarqueeWithShortContent = () => {
+	const [long, setLong] = useState(false);
+	const [node, setNode] = useState(null);
+	const [scrollWidth, setScrollWidth] = useState(null);
+	const [width, setWidth] = useState(null);
 
-		this.state = {
-			long: false,
-			scrollWidth: null,
-			width: null
-		};
-	}
-
-	componentDidMount () {
-		this.node = document.querySelector('#marqueeText');
-		this.updateSizeInfo();
-	}
-
-	componentDidUpdate () {
-		this.updateSizeInfo();
-	}
-
-	updateSizeInfo = () => {
-		if (this.node.scrollWidth !== this.state.scrollWidth) {
-			this.setState({
-				scrollWidth: this.node.scrollWidth,
-				width: this.node.getBoundingClientRect().width
-			});
+	useEffect(() => {
+		setNode(document.querySelector('#marqueeText'));
+		if (!node) {
+			return;
 		}
-	};
+		if (node.scrollWidth !== scrollWidth) {
+			setScrollWidth(node.scrollWidth);
+			setWidth(node.getBoundingClientRect().width);
+		}
+	}, [node, scrollWidth]);
 
-	handleClick = () => {
-		this.setState(prevState => ({long: !prevState.long}));
-	};
+	const handleClick = useCallback(() => setLong(!long), [long]);
 
-	render () {
-		return (
-			<div>
-				scrollWidth: {this.state.scrollWidth} width: {this.state.width}
-				<CustomItem onClick={this.handleClick}>{this.state.long ? 'Very very very very very very very very very long text' : 'text'}</CustomItem>
-			</div>
-		);
-	}
-}
+	return (
+		<div>
+			scrollWidth: {scrollWidth} width: {width}
+			<CustomItem onClick={handleClick}>{long ? 'Very very very very very very very very very long text' : 'text'}</CustomItem>
+		</div>
+	);
+};
 
-class MarqueeWithContentChanged extends Component {
-	constructor (props) {
-		super(props);
-		this.state = {
-			count: 0
-		};
-	}
+const MarqueeWithContentChanged = () => {
+	const [count, setCount] = useState(0);
 
-	handleClick = () => {
-		this.setState(({count}) => ({count: ++count % 3}));
-	};
+	const handleClick = useCallback(() => {
+		setCount((count + 1) % 3);
+	}, [count]);
 
-	render () {
-		return (
-			<div>
-				<ol>
-					<li>Click once to show the ellipsis just before the text marquees the first time.</li>
-					<li>Click a second time to show the ellipsis just before the text marquees the first time</li>
-					<li>Click again to return to a short string without marquee.</li>
-				</ol>
-				<Button onClick={this.handleClick}>
-					{'Click Me'}
-				</Button>
-				<Marquee style={{width: '400px'}} marqueeOn={'render'} >{texts[this.state.count]}</Marquee>
-			</div>
-		);
-	}
-}
+	return (
+		<div>
+			<ol>
+				<li>Click once to show the ellipsis just before the text marquees the first time.</li>
+				<li>Click a second time to show the ellipsis just before the text marquees the first time</li>
+				<li>Click again to return to a short string without marquee.</li>
+			</ol>
+			<Button onClick={handleClick}>
+				{'Click Me'}
+			</Button>
+			<Marquee marqueeOn={'render'} style={{width: '400px'}}>{texts[count]}</Marquee>
+		</div>
+	);
+};
 
 storiesOf('Marquee', module)
 	.add(
@@ -156,7 +132,6 @@ storiesOf('Marquee', module)
 			return (
 				<section>
 					<Marquee
-						style={{width: ri.unit(399, 'rem')}}
 						disabled={disabled}
 						forceDirection={select('forceDirection', ['', 'ltr', 'rtl'], Marquee, '')}
 						marqueeDelay={number('marqueeDelay', Marquee, 1000)}
@@ -165,6 +140,7 @@ storiesOf('Marquee', module)
 						marqueeOnRenderDelay={number('marqueeOnRenderDelay', Marquee, 1000)}
 						marqueeResetDelay={number('marqueeResetDelay', Marquee, 1000)}
 						marqueeSpeed={number('marqueeSpeed', Marquee, 60)}
+						style={{width: ri.unit(399, 'rem')}}
 					>
 						{select('children', LTR, Marquee, LTR[0])}
 					</Marquee>
@@ -181,7 +157,6 @@ storiesOf('Marquee', module)
 			return (
 				<section>
 					<Marquee
-						style={{width: ri.unit(399, 'rem')}}
 						disabled={disabled}
 						forceDirection={select('forceDirection', ['', 'ltr', 'rtl'], Marquee, '')}
 						marqueeDelay={number('marqueeDelay', Marquee, 1000)}
@@ -190,6 +165,7 @@ storiesOf('Marquee', module)
 						marqueeOnRenderDelay={number('marqueeOnRenderDelay', Marquee, 1000)}
 						marqueeResetDelay={number('marqueeResetDelay', Marquee, 1000)}
 						marqueeSpeed={number('marqueeSpeed', Marquee, 60)}
+						style={{width: ri.unit(399, 'rem')}}
 					>
 						{select('children', RTL, Marquee, RTL[0])}
 					</Marquee>
@@ -263,7 +239,6 @@ storiesOf('Marquee', module)
 					{'The quick brown fox.'}
 				</Marquee>
 				<Marquee
-					style={{width: ri.unit(399, 'rem')}}
 					disabled={false}
 					marqueeDelay={1000}
 					marqueeDisabled={false}
@@ -271,6 +246,7 @@ storiesOf('Marquee', module)
 					marqueeOnRenderDelay={1000}
 					marqueeResetDelay={1000}
 					marqueeSpeed={60}
+					style={{width: ri.unit(399, 'rem')}}
 				>
 					{LTR[0]}
 				</Marquee>

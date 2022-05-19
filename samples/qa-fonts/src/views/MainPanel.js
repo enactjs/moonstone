@@ -1,7 +1,6 @@
 import Button from '@enact/moonstone/Button';
 import Heading from '@enact/moonstone/Heading';
 import {Header, Panel} from '@enact/moonstone/Panels';
-import {Component} from 'react';
 import Scroller from '@enact/moonstone/Scroller';
 
 import FontList from '../components/FontList';
@@ -108,32 +107,25 @@ const fonts = {
 	]
 };
 
-class MainPanel extends Component {
-	constructor (props) {
-		super(props);
-	}
+const MainPanel = (props) => (
+	<Panel {...props}>
+		<Header type="compact">
+			<title>Font Verification</title>
+			<Button>A Moonstone Button</Button>
+		</Header>
+		<Scroller focusableScrollbar>
+			<Heading showLine size="large">Current</Heading>
+			<FontList fonts={fonts.standard}>Moonstone Defined Fonts</FontList>
+			<FontList fonts={fonts.system}>System Fonts (Locally Installed)</FontList>
+			<FontList fonts={fonts.systemPs}>System Fonts PostScript Names (Locally Installed)</FontList>
+			<Heading showLine size="large">Regional</Heading>
+			<FontList fonts={fonts.locale}>Locale-specific Fonts</FontList>
+			<Heading showLine size="large">Legacy</Heading>
+			<FontList fonts={fonts.legacyWeb}>Legacy Moonstone Defined Fonts</FontList>
+			<FontList fonts={fonts.legacySystem}>Legacy System Fonts (Locally Installed)</FontList>
+		</Scroller>
+	</Panel>
+);
 
-	render () {
-		return (
-			<Panel {...this.props}>
-				<Header type="compact">
-					<title>Font Verification</title>
-					<Button>A Moonstone Button</Button>
-				</Header>
-				<Scroller focusableScrollbar>
-					<Heading size="large" showLine>Current</Heading>
-					<FontList fonts={fonts.standard}>Moonstone Defined Fonts</FontList>
-					<FontList fonts={fonts.system}>System Fonts (Locally Installed)</FontList>
-					<FontList fonts={fonts.systemPs}>System Fonts PostScript Names (Locally Installed)</FontList>
-					<Heading size="large" showLine>Regional</Heading>
-					<FontList fonts={fonts.locale}>Locale-specific Fonts</FontList>
-					<Heading size="large" showLine>Legacy</Heading>
-					<FontList fonts={fonts.legacyWeb}>Legacy Moonstone Defined Fonts</FontList>
-					<FontList fonts={fonts.legacySystem}>Legacy System Fonts (Locally Installed)</FontList>
-				</Scroller>
-			</Panel>
-		);
-	}
-}
 
 export default MainPanel;

@@ -8,7 +8,7 @@ import {DateComponentPicker, DateComponentRangePicker} from '../internal/DateCom
 import {ExpandableItemBase} from '../ExpandableItem';
 
 import css from './TimePicker.module.less';
-import {dateComponentPickers} from '../internal/DateComponentPicker/DateComponentPicker.module.less';
+import internalCss from '../internal/DateComponentPicker/DateComponentPicker.module.less';
 
 // values to use in hour picker for 24 and 12 hour locales
 const hours24 = [
@@ -346,7 +346,7 @@ const TimePickerBase = kind({
 				onSpotlightRight={onSpotlightRight}
 				spotlightDisabled={spotlightDisabled}
 			>
-				<div className={dateComponentPickers} onKeyDown={handlePickerKeyDown}>
+				<div className={internalCss.dateComponentPickers} onKeyDown={handlePickerKeyDown}>
 					<div className={css.timeComponents}>
 						{order.map((picker, index) => {
 							// although we create a component array based on the provided

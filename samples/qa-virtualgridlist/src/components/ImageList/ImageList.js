@@ -1,46 +1,36 @@
-import {connect} from 'react-redux';
-import PropTypes from 'prop-types';
-import {Component} from 'react';
-import ri from '@enact/ui/resolution';
 import {VirtualGridList} from '@enact/moonstone/VirtualList';
+import ri from '@enact/ui/resolution';
+import PropTypes from 'prop-types';
+import {useCallback} from 'react';
+import {connect} from 'react-redux';
 
 import ImageItem from '../ImageItem';
 
-class ImageList extends Component {
-	static propTypes = {
-		dispatch: PropTypes.func,
-		imageitems: PropTypes.array,
-		minHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-		minWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-		spacing: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
-	};
+const ImageList = ({imageitems, spacing, minHeight, minWidth, ...rest}) => {
+	const calculateOfSize = (size) => ri.scale(parseInt(size) || 0);
 
-	calculateOfSize = (size) => ri.scale(parseInt(size) || 0);
+	const renderItem = useCallback(({...props}) => (<ImageItem {...props} />), []);
 
-	renderItem = ({...rest}) => (<ImageItem {...rest} />);
+	delete rest.dispatch;
 
-	render = () => {
-		const
-			rest = Object.assign({}, this.props),
-			{imageitems, spacing, minHeight, minWidth} = this.props;
+	return (
+		<VirtualGridList
+			{...rest}
+			dataSize={imageitems.length}
+			itemRenderer={renderItem}
+			itemSize={{minHeight: calculateOfSize(minHeight), minWidth: calculateOfSize(minWidth)}}
+			spacing={calculateOfSize(spacing)}
+		/>
+	);
+};
 
-		delete rest.dispatch;
-		delete rest.imageitems;
-		delete rest.minHeight;
-		delete rest.minWidth;
-		delete rest.spacing;
-
-		return (
-			<VirtualGridList
-				{...rest}
-				dataSize={imageitems.length}
-				itemRenderer={this.renderItem}
-				itemSize={{minHeight: this.calculateOfSize(minHeight), minWidth: this.calculateOfSize(minWidth)}}
-				spacing={this.calculateOfSize(spacing)}
-			/>
-		);
-	};
-}
+ImageList.propTypes = {
+	dispatch: PropTypes.func,
+	imageitems: PropTypes.array,
+	minHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+	minWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+	spacing: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+};
 
 const mapStateToProps = ({data}) => ({
 	imageitems: data.dataOrder,

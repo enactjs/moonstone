@@ -4,10 +4,11 @@ import IconButton from '@enact/moonstone/IconButton';
 import {VirtualListNative} from '@enact/moonstone/VirtualList';
 import ri from '@enact/ui/resolution';
 import PropTypes from 'prop-types';
-import {createRef, Component} from 'react';
-import ReactDOM from 'react-dom';
+import {forwardRef, useCallback, useEffect, useRef, useState} from 'react';
 
 const
+	fontSize = ri.scale(31),
+	initialItemSizes = [ri.scale(60), ri.scale(110), ri.scale(160)],
 	languages = [
 		'한국어 - 한국',
 		'English - United States',
@@ -21,220 +22,197 @@ const
 		'Suomi - Suomi'
 	],
 	numOfItems = 100,
-	fontSize = ri.scale(31),
 	oneLineSize = ri.scale(50),
 	lineHeight = `${oneLineSize}px`,
-	spacing = 40,
-	initialItemSizes = [ri.scale(60), ri.scale(110), ri.scale(160)];
+	spacing = 40;
 
-class ExpandableDifferenctHeightItem extends Component {
-	static propTypes = {
-		'data-index': PropTypes.number,
-		index: PropTypes.number,
-		items: PropTypes.array,
-		updateItemStatus: PropTypes.func
-	};
+const itemStyleDefault = {
+	borderBottom: 'solid 10px gray',
+	boxSizing: 'border-box',
+	fontSize,
+	lineHeight,
+	position: 'absolute',
+	whiteSpace: 'pre',
+	width: '100%'
+};
 
-	itemStyleDefault = {
-		position: 'absolute',
-		width: '100%',
-		borderBottom: 'solid 10px gray',
-		boxSizing: 'border-box',
-		fontSize,
-		lineHeight,
-		whiteSpace: 'pre'
-	};
+const buttonStyleDefault = {
+	display: 'block',
+	height: '50px',
+	marginLeft: 'auto',
+	marginRight: 0
+};
 
-	buttonStyleDefault = {
-		display: 'block',
-		height: '50px',
-		marginLeft: 'auto',
-		marginRight: 0
-	};
+const textStyleDefault = {
+	overflow: 'hidden',
+	textOverflow: 'ellipsis'
+};
 
-	textStyleDefault = {
-		overflow: 'hidden',
-		textOverflow: 'ellipsis'
-	};
+const iconButtonStyleDefault = {
+	position: 'absolute',
+	top: 0,
+	right: 0
+};
 
-	iconButtonStyleDefault = {
-		position: 'absolute',
-		top: 0,
-		right: 0
-	};
+const ExpandableDifferentHeightItem = forwardRef(({'data-index': dataIndex, index, items, style: itemStyleFromList, updateItemStatus, ...rest}, ref) => {
+	const {title: children, numOfLines, open} = items[index],
+		itemStyle = {...itemStyleDefault, ...itemStyleFromList};
 
-	render () {
-		const
-			{index, 'data-index': dataIndex, items, style: itemStyleFromList, updateItemStatus, ...rest} = this.props,
-			{title: children, numOfLines, open} = items[index],
-			itemStyle = {...this.itemStyleDefault, ...itemStyleFromList};
-
-		// 1. Lone text and closed item
-		if (numOfLines > 2 && !open) {
-			return (
-				<div {...rest} data-index={dataIndex} style={itemStyle}>
-					<div style={{height: oneLineSize * 2, ...this.textStyleDefault}}>
-						{children}
-					</div>
-					<Button data-index={dataIndex} style={this.buttonStyleDefault} onClick={() => updateItemStatus(index, true)/* eslint-disable-line react/jsx-no-bind */}>
-						Open<Icon>arrowsmalldown</Icon>
-					</Button>
-					<IconButton data-index={dataIndex} style={this.iconButtonStyleDefault}>closex</IconButton>
+	// 1. Lone text and closed item
+	if (numOfLines > 2 && !open) {
+		return (
+			<div {...rest} data-index={dataIndex} ref={ref} style={itemStyle}>
+				<div style={{height: oneLineSize * 2, ...textStyleDefault}}>
+					{children}
 				</div>
-			);
+				<Button data-index={dataIndex} onClick={() => updateItemStatus(index, true)/* eslint-disable-line react/jsx-no-bind */} style={buttonStyleDefault} >
+					Open<Icon>arrowsmalldown</Icon>
+				</Button>
+				<IconButton data-index={dataIndex} style={iconButtonStyleDefault}>closex</IconButton>
+			</div>
+		);
 
 		// 2. Long text and opened item
-		} else if (numOfLines > 2 /* && open */) {
-			return (
-				<div {...rest} data-index={dataIndex} style={itemStyle}>
-					<div>
-						{children}
-					</div>
-					<Button data-index={dataIndex} style={this.buttonStyleDefault} onClick={() => updateItemStatus(index, false)/* eslint-disable-line react/jsx-no-bind */}>
-						Close<Icon>arrowsmallup</Icon>
-					</Button>
-					<IconButton data-index={dataIndex} style={this.iconButtonStyleDefault}>closex</IconButton>
+	} else if (numOfLines > 2 /* && open */) {
+		return (
+			<div {...rest} data-index={dataIndex} ref={ref} style={itemStyle}>
+				<div>
+					{children}
 				</div>
-			);
+				<Button data-index={dataIndex} onClick={() => updateItemStatus(index, false)/* eslint-disable-line react/jsx-no-bind */} style={buttonStyleDefault}>
+					Close<Icon>arrowsmallup</Icon>
+				</Button>
+				<IconButton data-index={dataIndex} style={iconButtonStyleDefault}>closex</IconButton>
+			</div>
+		);
 
 		// 3. Short text
-		} else { // if (numOfLines <= 2)
-			return (
-				<div {...rest} data-index={dataIndex} style={itemStyle}>
-					<div style={{height: oneLineSize * numOfLines}}>
-						{children}
-					</div>
-					<IconButton data-index={dataIndex} style={this.iconButtonStyleDefault}>closex</IconButton>
-				</div>
-			);
-		}
-	}
-}
-
-class ResizableItem extends Component {
-	static propTypes = {
-		updateItemSize: PropTypes.func
-	};
-
-	constructor (props) {
-		super(props);
-		this.itemRef = createRef();
-	}
-
-	componentDidMount () {
-		this.calculateMetrics();
-	}
-
-	componentDidUpdate () {
-		this.calculateMetrics();
-	}
-
-	calculateMetrics () {
-		if (this.itemRef.current) {
-			const
-				index = this.itemRef.current.props.index,
-				dom = ReactDOM.findDOMNode(this.itemRef.current); // eslint-disable-line react/no-find-dom-node
-
-			this.props.updateItemSize(index, dom.offsetHeight);
-		}
-	}
-
-	render () {
-		const props = {...this.props};
-
-		delete props.updateItemSize;
-
+	} else { // if (numOfLines <= 2)
 		return (
-			<ExpandableDifferenctHeightItem
-				{...props}
-				ref={this.itemRef}
-			/>
+			<div {...rest} data-index={dataIndex} ref={ref} style={itemStyle}>
+				<div style={{height: oneLineSize * numOfLines}}>
+					{children}
+				</div>
+				<IconButton data-index={dataIndex} style={iconButtonStyleDefault}>closex</IconButton>
+			</div>
 		);
 	}
-}
+});
 
-function randomGenerator (seed) {
+ExpandableDifferentHeightItem.propTypes = {
+	'data-index': PropTypes.number,
+	index: PropTypes.number,
+	items: PropTypes.array,
+	updateItemStatus: PropTypes.func
+};
+
+const ResizableItem = ({updateItemSize, ...rest}) => {
+	const indexRef = useRef(0);
+	const domRef = useRef({});
+
+	const calculateMetrics = () => {
+		if (domRef.current) {
+			const index = indexRef.current;
+			const offsetHeight = domRef.current.offsetHeight;
+
+			updateItemSize(index, offsetHeight);
+		}
+	};
+
+	indexRef.current = rest.index;
+
+	useEffect( () => {
+		calculateMetrics();
+	});
+
+	return (
+		<ExpandableDifferentHeightItem
+			{...rest}
+			ref={domRef}
+		/>
+	);
+};
+
+ResizableItem.propTypes = {
+	index: PropTypes.number,
+	updateItemSize: PropTypes.func
+};
+
+const randomGenerator = (seed) => {
 	let value = seed;
 	// simple random number generator
-	return function () {
+	return () => {
 		value = (value * Math.PI) % 1;
 		return value;
 	};
-}
+};
 
-class VerticalExpandableDifferentHeightItemList extends Component {
-	constructor (props) {
+const VerticalExpandableDifferentHeightItemList = (props) => {
+	const [items, setItems] = useState([]);
+	const [itemSize, setItemSize] = useState([]);
+
+	useEffect(() => {
+		let  position = 0, arrayItems = [], arrayItemsSize = [];
 		const random = randomGenerator(1);
-		let
-			position = 0,
-			itemSize = [],
-			items = [];
-
-		super(props);
 
 		for (let i = 0; i < numOfItems; i++) {
 			const
 				numOfLines = Math.ceil(random() * 6),
 				height = numOfLines * oneLineSize;
 
-			itemSize.push(initialItemSizes[numOfLines > 2 ? 2 : numOfLines - 1]);
+			arrayItemsSize.push(initialItemSizes[numOfLines > 2 ? 2 : numOfLines - 1]);
 
-			items.push({
+			arrayItems.push({
 				title: (`${('00' + i).slice(-3)} - ${position}px - ${languages[i % 10]}\n`).repeat(numOfLines),
 				numOfLines
 			});
 			position += (height + spacing);
 		}
+		setItems(arrayItems);
+		setItemSize(arrayItemsSize);
+	}, []);
 
-		this.state = {
-			items,
-			itemSize
-		};
-	}
-
-	updateItemSize = (index, size) => {
-		if (this.state.itemSize[index] !== size) {
-			this.setState(({itemSize}) => {
-				return {itemSize: [...itemSize.slice(0, index), size, ...itemSize.slice(index + 1)]};
+	const updateItemSize = (index, size) => {
+		if (itemSize[index] !== size) {
+			setItemSize((arrayItemSize) => {
+				return [...arrayItemSize.slice(0, index), size, ...arrayItemSize.slice(index + 1)];
 			});
 		}
 	};
 
-	updateItemStatus = (index, open) => {
-		this.setState(({itemSize, items}) => {
-			const {title, numOfLines} = items[index];
+	const updateItemStatus = (index, open) => {
+		setItemSize( (arrayItemSize) => {
+			return [...arrayItemSize.slice(0, index)];
+		});
 
-			return {
-				itemSize: [...itemSize.slice(0, index)],
-				items: [...items.slice(0, index), {title, numOfLines, open}, ...items.slice(index + 1)]
-			};
+		setItems( (arrayItems) => {
+			const {title, numOfLines} = arrayItems[index];
+			return  [...arrayItems.slice(0, index), {title, numOfLines, open}, ...arrayItems.slice(index + 1)];
 		});
 	};
 
-	renderItem = (props) => {
-		return <ResizableItem {...props} />;
-	};
+	const renderItem = useCallback((renderProps) => {
+		return <ResizableItem {...renderProps} />;
+	}, []);
 
-	render () {
-		return (
-			<VirtualListNative
-				{...this.props}
-				childProps={{
-					updateItemSize: this.updateItemSize,
-					updateItemStatus: this.updateItemStatus,
-					items: this.state.items
-				}}
-				dataSize={this.state.items.length}
-				focusableScrollbar
-				itemRenderer={this.renderItem}
-				itemSize={{
-					minSize: oneLineSize,
-					size: this.state.itemSize
-				}}
-				spacing={spacing}
-			/>
-		);
-	}
-}
+	return (
+		<VirtualListNative
+			{...props}
+			childProps={{
+				updateItemSize: updateItemSize,
+				updateItemStatus: updateItemStatus,
+				items: items
+			}}
+			dataSize={items.length}
+			focusableScrollbar
+			itemRenderer={renderItem}
+			itemSize={{
+				minSize: oneLineSize,
+				size: itemSize
+			}}
+			spacing={spacing}
+		/>
+	);
+};
 
 export default VerticalExpandableDifferentHeightItemList;

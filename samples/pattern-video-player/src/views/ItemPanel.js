@@ -1,6 +1,6 @@
-import {Header, Panel} from '@enact/moonstone/Panels';
-import Item from '@enact/moonstone/Item';
 import kind from '@enact/core/kind';
+import Item from '@enact/moonstone/Item';
+import {Header, Panel} from '@enact/moonstone/Panels';
 import PropTypes from 'prop-types';
 
 const ItemPanel = kind({
