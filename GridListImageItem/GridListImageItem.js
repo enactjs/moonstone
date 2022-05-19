@@ -20,7 +20,7 @@ import PropTypes from 'prop-types';
 import compose from 'ramda/src/compose';
 
 import Icon from '../Icon';
-import {GridListImageItem as InternalGridListImageItem}  from '../internal/GridListImageItem';
+import GridListImageItemCore from '../internal/GridListImageItem';
 import {ImageBase as Image} from '../Image';
 import {Marquee, MarqueeController} from '../Marquee';
 import Skinnable from '../Skinnable';
