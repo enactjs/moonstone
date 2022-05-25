@@ -32,6 +32,7 @@ const
 		overscrollTypeOnce,
 		scrollWheelPageMultiplierForMaxPixel
 	} = constants,
+	nop = () => {},
 	overscrollRatioPrefix = '--scrollable-overscroll-ratio-',
 	overscrollTimeout = 300,
 	paginationPageMultiplier = 0.66,
@@ -270,6 +271,7 @@ class ScrollableBaseNative extends Component {
 
 	static defaultProps = {
 		'data-spotlight-container-disabled': false,
+		childRenderer: nop, // eslint-disable-line react/default-props-match-prop-types
 		focusableScrollbar: false,
 		overscrollEffectOn: {
 			arrowKey: false,
