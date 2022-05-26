@@ -1,9 +1,9 @@
 import {action} from '@enact/storybook-utils/addons/actions';
 import {boolean} from '@enact/storybook-utils/addons/knobs';
 import {mergeComponentMetadata} from '@enact/storybook-utils';
-import UiToggleItem, {ToggleItemBase as UiToggleItemBase} from '@enact/ui/ToggleItem';
 import {storiesOf} from '@storybook/react';
 
+import UiToggleItem, {ToggleItemBase as UiToggleItemBase} from '@enact/moonstone/internal/ToggleItem';
 import Item, {ItemBase} from '@enact/moonstone/Item';
 import RadioItem from '@enact/moonstone/RadioItem';
 import ToggleItem from '@enact/moonstone/ToggleItem';

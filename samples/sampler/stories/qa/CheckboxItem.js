@@ -1,11 +1,11 @@
 import {boolean, select, text} from '@enact/storybook-utils/addons/knobs';
 import {action} from '@enact/storybook-utils/addons/actions';
 import {mergeComponentMetadata} from '@enact/storybook-utils';
-import UiToggleItem, {ToggleItemBase as UiToggleItemBase} from '@enact/ui/ToggleItem';
 import Group from '@enact/ui/Group';
 import {storiesOf} from '@storybook/react';
 
 import CheckboxItem from '@enact/moonstone/CheckboxItem';
+import UiToggleItem, {ToggleItemBase as UiToggleItemBase} from '@enact/moonstone/internal/ToggleItem';
 import Item, {ItemBase} from '@enact/moonstone/Item';
 import ToggleItem from '@enact/moonstone/ToggleItem';
 
