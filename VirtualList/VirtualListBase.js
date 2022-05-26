@@ -237,6 +237,7 @@ const VirtualListBaseFactory = (type) => {
 		static defaultProps = {
 			dataSize: 0,
 			focusableScrollbar: false,
+			itemsRenderer: nop, // eslint-disable-line react/default-props-match-prop-types
 			pageScroll: false,
 			spacing: 0,
 			wrap: false
