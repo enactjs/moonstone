@@ -19,10 +19,10 @@
 import {Spotlight} from '@enact/spotlight';
 import {getRect} from '@enact/spotlight/src/utils';
 import ri from '@enact/ui/resolution';
-import {ScrollerBase as UiScrollerBase} from '@enact/ui/Scroller';
 import PropTypes from 'prop-types';
 import {Component} from 'react';
 
+import {ScrollerBase as UiScrollerBase} from '../internal/Scroller/UiScrollerBase';
 import Scrollable from '../Scrollable';
 import ScrollableNative from '../Scrollable/ScrollableNative';
 
@@ -36,7 +36,7 @@ const dataContainerDisabledAttribute = 'data-spotlight-container-disabled';
  *
  * @class ScrollerBase
  * @memberof moonstone/Scroller
- * @extends ui/Scroller.ScrollerBase
+ * @extends moonstone.internal/Scroller/UiScrollerBase.ScrollerBase
  * @ui
  * @public
  */

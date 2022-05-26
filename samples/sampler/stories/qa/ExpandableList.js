@@ -1,12 +1,12 @@
 import {action} from '@enact/storybook-utils/addons/actions';
 import {boolean, text, select} from '@enact/storybook-utils/addons/knobs';
 import {mergeComponentMetadata} from '@enact/storybook-utils';
-import {RadioControllerDecorator} from '@enact/ui/RadioDecorator';
 import {useCallback, useState} from 'react';
 import {storiesOf} from '@storybook/react';
 
 import Button from '@enact/moonstone/Button';
 import Heading from '@enact/moonstone/Heading';
+import {RadioControllerDecorator} from '@enact/moonstone/internal/RadioDecorator';
 import ExpandableList, {ExpandableListBase} from '@enact/moonstone/ExpandableList';
 import Scroller from '@enact/moonstone/Scroller';
 

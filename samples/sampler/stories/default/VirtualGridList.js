@@ -2,11 +2,11 @@ import {action} from '@enact/storybook-utils/addons/actions';
 import {boolean, number, select} from '@enact/storybook-utils/addons/knobs';
 import {mergeComponentMetadata} from '@enact/storybook-utils';
 import ri from '@enact/ui/resolution';
-import {ScrollableBase as UiScrollableBase} from '@enact/ui/Scrollable';
 import {storiesOf} from '@storybook/react';
 import {VirtualListBase as UiVirtualListBase} from '@enact/ui/VirtualList';
 
 import {GridListImageItem} from '@enact/moonstone/GridListImageItem';
+import {ScrollableBase as UiScrollableBase} from '@enact/moonstone/internal/Scrollable';
 import {VirtualGridList, VirtualListBase} from '@enact/moonstone/VirtualList';
 
 const

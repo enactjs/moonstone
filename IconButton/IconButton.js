@@ -13,7 +13,6 @@
  */
 
 import kind from '@enact/core/kind';
-import {IconButtonBase as UiIconButtonBase, IconButtonDecorator as UiIconButtonDecorator} from '@enact/ui/IconButton';
 import Pure from '@enact/ui/internal/Pure';
 import Spottable from '@enact/spotlight/Spottable';
 import PropTypes from 'prop-types';
@@ -21,6 +20,7 @@ import compose from 'ramda/src/compose';
 
 import {ButtonBase} from '../Button';
 import Icon from '../Icon';
+import {IconButtonBase as UiIconButtonBase, IconButtonDecorator as UiIconButtonDecorator} from '../internal/IconButton';
 import Skinnable from '../Skinnable';
 import TooltipDecorator from '../TooltipDecorator';
 
@@ -32,7 +32,7 @@ import componentCss from './IconButton.module.less';
  * @class IconButtonBase
  * @memberof moonstone/IconButton
  * @extends moonstone/Button.ButtonBase
- * @extends ui/IconButton.IconButtonBase
+ * @extends moonstone/internal/IconButton.IconButtonBase
  * @omit buttonComponent
  * @omit iconComponent
  * @ui
@@ -116,7 +116,7 @@ const IconButtonBase = kind({
  * @hoc
  * @memberof moonstone/IconButton
  * @mixes moonstone/TooltipDecorator.TooltipDecorator
- * @mixes ui/IconButton.IconButtonDecorator
+ * @mixes moonstone/internal/IconButton.IconButtonDecorator
  * @mixes spotlight/Spottable.Spottable
  * @mixes moonstone/Skinnable.Skinnable
  * @public

@@ -6,6 +6,10 @@ The following is a curated list of changes in the Enact moonstone module, newest
 
 ### Added
 
+- `moonstone/internal/IconButton` component, transferred from `ui/IconButton`
+- `moonstone/internal/RadioDecorator` component, transferred from `ui/RadioDecorator`
+- `moonstone/internal/Scrollable` component, transferred from `ui/Scrollable`
+- `moonstone/internal/Scroller.UiScroller` component, transferred from `ui/Scroller.UiScroller`
 - `moonstone/VirtualList.VirtualList`, `moonstone/VirtualList.VirtualGridList` prop `data-webos-voice-focused`, `data-webos-voice-disabled`, and `data-webos-voice-group-label`
 
 ### Fixed

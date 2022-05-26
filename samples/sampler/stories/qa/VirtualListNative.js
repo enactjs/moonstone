@@ -3,9 +3,9 @@ import {boolean, number, select} from '@enact/storybook-utils/addons/knobs';
 import {mergeComponentMetadata} from '@enact/storybook-utils';
 import {Column, Cell} from '@enact/ui/Layout';
 import ri from '@enact/ui/resolution';
-import {ScrollableBaseNative as UiScrollableBaseNative} from '@enact/ui/Scrollable/ScrollableNative';
 import {VirtualListBaseNative as UiVirtualListBaseNative} from '@enact/ui/VirtualList/VirtualListBase';
 
+import {ScrollableBaseNative as UiScrollableBaseNative} from '@enact/moonstone/internal/Scrollable';
 import Item from '@enact/moonstone/Item';
 import {VirtualListNative, VirtualListBase} from '@enact/moonstone/VirtualList';
 

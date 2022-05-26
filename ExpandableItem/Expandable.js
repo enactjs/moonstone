@@ -1,9 +1,9 @@
 import Cancelable from '@enact/ui/Cancelable';
 import hoc from '@enact/core/hoc';
-import RadioDecorator from '@enact/ui/RadioDecorator';
 import Toggleable from '@enact/ui/Toggleable';
 
 import ExpandableSpotlightDecorator from './ExpandableSpotlightDecorator';
+import RadioDecorator from '../internal/RadioDecorator';
 
 // TODO: This module may not doc correctly but we'll need to wait until our doc parsing script is
 // ready
@@ -65,7 +65,7 @@ const defaultConfig = {
  * @class Expandable
  * @memberof moonstone/ExpandableItem
  * @mixes ui/Toggleable.Toggleable
- * @mixes ui/RadioDecorator.RadioDecorator
+ * @mixes moonstone/internal/RadioDecorator.RadioDecorator
  * @mixes ui/Cancelable.Cancelable
  * @hoc
  * @public
