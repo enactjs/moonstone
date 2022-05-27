@@ -149,7 +149,7 @@ const ToggleItemDecorator = hoc(defaultConfig, ({invalidateProps}, Wrapped) => {
 		Toggleable({toggleProp: 'onClick', eventProps: ['value']}),
 		Touchable,
 		Spottable,
-		MarqueeDecorator({className: componentCss.content, invalidateProps}),
+		MarqueeDecorator({css: componentCss, invalidateProps}),
 		Skinnable
 	)(Wrapped);
 });

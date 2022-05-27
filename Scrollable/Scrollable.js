@@ -40,6 +40,7 @@ const
 		overscrollTypeOnce,
 		paginationPageMultiplier
 	} = constants,
+	nop = () => {},
 	overscrollRatioPrefix = '--scrollable-overscroll-ratio-',
 	overscrollTimeout = 300,
 	reverseDirections = {
@@ -289,6 +290,7 @@ class ScrollableBase extends Component {
 
 	static defaultProps = {
 		'data-spotlight-container-disabled': false,
+		childRenderer: nop, // eslint-disable-line react/default-props-match-prop-types
 		focusableScrollbar: false,
 		overscrollEffectOn: {
 			arrowKey: false,

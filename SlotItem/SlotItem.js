@@ -101,7 +101,7 @@ const SlotItemDecorator = compose(
 	),
 	UiItemDecorator, // (Touchable)
 	Spottable,
-	MarqueeDecorator({className: componentCss.content, invalidateProps: ['inline', 'autoHide', 'remeasure']}),
+	MarqueeDecorator({css: componentCss, invalidateProps: ['inline', 'autoHide', 'remeasure']}),
 	Skinnable
 );
 

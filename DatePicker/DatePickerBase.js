@@ -7,7 +7,7 @@ import {DateComponentRangePicker} from '../internal/DateComponentPicker';
 import {ExpandableItemBase} from '../ExpandableItem';
 
 import css from './DatePicker.module.less';
-import {dateComponentPickers} from '../internal/DateComponentPicker/DateComponentPicker.module.less';
+import internalCss from '../internal/DateComponentPicker/DateComponentPicker.module.less';
 
 /**
  * A date selection component.
@@ -328,7 +328,7 @@ const DatePickerBase = kind({
 				onSpotlightRight={onSpotlightRight}
 				spotlightDisabled={spotlightDisabled}
 			>
-				<div className={dateComponentPickers} onKeyDown={handlePickerKeyDown}>
+				<div className={internalCss.dateComponentPickers} onKeyDown={handlePickerKeyDown}>
 					{order.map((picker, index) => {
 						const isFirst = index === 0;
 						const isLast = index === order.length - 1;
