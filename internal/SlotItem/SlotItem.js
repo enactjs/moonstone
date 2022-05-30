@@ -68,7 +68,7 @@ const SlotItemBase = kind({
 		/**
 		 * Called with a reference to the root component.
 		 *
-		 * When using {@link moonstone/internal/SlotItem.SlotItem}, the `ref` prop is forwarded to this component
+		 * When using {@link moonstone/SlotItem.SlotItem}, the `ref` prop is forwarded to this component
 		 * as `componentRef`.
 		 *
 		 * @type {Object|Function}
@@ -180,7 +180,7 @@ const SlotItemBase = kind({
 });
 
 /**
- * A ui-specific higher-order component (HOC) with slot behaviors to apply to [SlotItem]{@link moonstone/internal/SlotItem.SlotItemBase}.
+ * A ui-specific higher-order component (HOC) with slot behaviors to apply to [SlotItem]{@link moonstone/SlotItem.SlotItemBase}.
  *
  * @class SlotItemDecorator
  * @memberof moonstone/internal/SlotItem

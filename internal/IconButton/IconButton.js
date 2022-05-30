@@ -219,8 +219,8 @@ const IconButtonDecorator = compose(
  * ```
  *
  * @class IconButton
- * @extends moonstone/internal/IconButton.IconButtonBase
- * @mixes moonstone/internal/IconButton.IconButtonDecorator
+ * @extends moonstone/IconButton.IconButtonBase
+ * @mixes moonstone/IconButton.IconButtonDecorator
  * @omit componentRef
  * @memberof moonstone/internal/IconButton
  * @moonstone
