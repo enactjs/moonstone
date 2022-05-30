@@ -1,11 +1,12 @@
 import ApiDecorator from '@enact/core/internal/ApiDecorator';
-import {ScrollbarBase as UiScrollbarBase} from '../internal/Scrollable/Scrollbar';
 import PropTypes from 'prop-types';
 import {createRef, Component} from 'react';
 
+import {ScrollbarBase as UiScrollbarBase} from '../internal/Scrollable/Scrollbar';
+import Skinnable from '../Skinnable';
+
 import ScrollButtons from './ScrollButtons';
 import ScrollThumb from './ScrollThumb';
-import Skinnable from '../Skinnable';
 
 import componentCss from './Scrollbar.module.less';
 

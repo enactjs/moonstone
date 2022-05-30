@@ -12,7 +12,7 @@ The following is a curated list of changes in the Enact moonstone module, newest
 - `moonstone/internal/Scroller.UiScroller` component, transferred from `ui/Scroller.UiScroller`
 - `moonstone/internal/SlotItem` component, transferred from `ui/SlotItem`
 - `moonstone/internal/ToggleItem` component, transferred from `ui/ToggleItem`
-- `moonstone/internal/VirtualList.UiVirtalListBase` component, transferred from `ui/VirtualList.UiVirtalListBase`
+- `moonstone/internal/VirtualList.UiVirtualListBase` component, transferred from `ui/VirtualList.UiVirtualListBase`
 - `moonstone/VirtualList.VirtualList`, `moonstone/VirtualList.VirtualGridList` prop `data-webos-voice-focused`, `data-webos-voice-disabled`, and `data-webos-voice-group-label`
 
 ### Fixed

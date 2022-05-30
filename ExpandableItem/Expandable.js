@@ -2,8 +2,9 @@ import Cancelable from '@enact/ui/Cancelable';
 import hoc from '@enact/core/hoc';
 import Toggleable from '@enact/ui/Toggleable';
 
-import ExpandableSpotlightDecorator from './ExpandableSpotlightDecorator';
 import RadioDecorator from '../internal/RadioDecorator';
+
+import ExpandableSpotlightDecorator from './ExpandableSpotlightDecorator';
 
 // TODO: This module may not doc correctly but we'll need to wait until our doc parsing script is
 // ready

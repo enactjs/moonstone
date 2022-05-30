@@ -866,7 +866,6 @@ const VirtualListBaseFactory = (type) => {
  *
  * @class VirtualListBase
  * @memberof moonstone/VirtualList
- * @extends ui/VirtualList.VirtualListBase
  * @ui
  * @public
  */
@@ -879,7 +878,6 @@ VirtualListBase.displayName = 'VirtualListBase';
  *
  * @class VirtualListBaseNative
  * @memberof moonstone/VirtualList
- * @extends ui/VirtualList.VirtualListBaseNative
  * @ui
  * @private
  */
