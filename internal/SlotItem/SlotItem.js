@@ -30,12 +30,12 @@ import componentCss from './SlotItem.module.less';
 const SlotItemBase = kind({
 	name: 'SlotItem',
 
-	propTypes: /** @lends moonstone/internal/SlotItem.SlotItemBase.prototype */ {
+	propTypes: /** @lends moonstone/SlotItem.SlotItemBase.prototype */ {
 		/**
 		 * The type of component to use to render the item.
 		 *
 		 * This component will receive the `inline` prop and any additional unhandled props provided
-		 * to `SlotItem`. A derivative of [Item]{@link enact/packages/ui/Item.Item} is recommended.
+		 * to `SlotItem`. A derivative of [Item]{@link ui/Item.Item} is recommended.
 		 *
 		 * @type {Component}
 		 * @required
@@ -68,7 +68,7 @@ const SlotItemBase = kind({
 		/**
 		 * Called with a reference to the root component.
 		 *
-		 * When using {@link moonstone/internal/SlotItem.SlotItem}, the `ref` prop is forwarded to this component
+		 * When using {@link moonstone/SlotItem.SlotItem}, the `ref` prop is forwarded to this component
 		 * as `componentRef`.
 		 *
 		 * @type {Object|Function}
@@ -180,7 +180,7 @@ const SlotItemBase = kind({
 });
 
 /**
- * A ui-specific higher-order component (HOC) with slot behaviors to apply to [SlotItem]{@link moonstone/internal/SlotItem.SlotItemBase}.
+ * A ui-specific higher-order component (HOC) with slot behaviors to apply to [SlotItem]{@link moonstone/SlotItem.SlotItemBase}.
  *
  * @class SlotItemDecorator
  * @memberof moonstone/internal/SlotItem
