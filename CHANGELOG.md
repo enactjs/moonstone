@@ -6,6 +6,7 @@ The following is a curated list of changes in the Enact moonstone module, newest
 
 ### Added
 
+- `moonstone/internal/GridListImageItem` component, transferred from `ui/GridListImageItem`
 - `moonstone/VirtualList.VirtualList`, `moonstone/VirtualList.VirtualGridList` prop `data-webos-voice-focused`, `data-webos-voice-disabled`, and `data-webos-voice-group-label`
 
 ### Fixed

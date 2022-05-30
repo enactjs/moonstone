@@ -84,7 +84,7 @@ const DateComponentPickerBase = kind({
 		 */
 		reverse: PropTypes.bool,
 
-		/*
+		/**
 		 * When `true`, allow the picker to continue from the opposite end of the list of options.
 		 *
 		 * @type {Boolean}
