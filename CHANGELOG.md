@@ -6,6 +6,7 @@ The following is a curated list of changes in the Enact moonstone module, newest
 
 ### Added
 
+- `moonstone/internal/GridListImageItem` component, transferred from `ui/GridListImageItem`
 - `moonstone/internal/IconButton` component, transferred from `ui/IconButton`
 - `moonstone/internal/RadioDecorator` component, transferred from `ui/RadioDecorator`
 - `moonstone/internal/Scrollable` component, transferred from `ui/Scrollable`
