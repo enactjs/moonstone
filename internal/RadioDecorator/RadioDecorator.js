@@ -4,6 +4,7 @@
  * @module moonstone/internal/RadioDecorator
  * @exports RadioDecorator
  * @exports RadioControllerDecorator
+ * @private
  */
 
 import {forwardCustom} from '@enact/core/handle';
