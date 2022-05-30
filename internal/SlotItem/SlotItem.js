@@ -35,7 +35,7 @@ const SlotItemBase = kind({
 		 * The type of component to use to render the item.
 		 *
 		 * This component will receive the `inline` prop and any additional unhandled props provided
-		 * to `SlotItem`. A derivative of [Item]{@link moonstone/internal/Item.Item} is recommended.
+		 * to `SlotItem`. A derivative of [Item]{@link enact/packages/ui/Item.Item} is recommended.
 		 *
 		 * @type {Component}
 		 * @required
