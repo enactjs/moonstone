@@ -29,7 +29,7 @@ import componentCss from './IconButton.module.less';
  *
  * @class IconButtonBase
  * @memberof moonstone/internal/IconButton
- * @moonstone
+ * @ui
  * @private
  */
 const IconButtonBase = kind({
@@ -224,7 +224,7 @@ const IconButtonDecorator = compose(
  * @mixes moonstone/IconButton.IconButtonDecorator
  * @omit componentRef
  * @memberof moonstone/internal/IconButton
- * @moonstone
+ * @ui
  * @private
  */
 const IconButton = IconButtonDecorator(IconButtonBase);
