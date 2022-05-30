@@ -2,6 +2,7 @@ import Button from '@enact/moonstone/Button';
 import ContextualPopupDecorator from '@enact/moonstone/ContextualPopupDecorator';
 import GridListImageItem from '@enact/moonstone/GridListImageItem';
 import {ScrollableBase as UiScrollableBase} from '@enact/moonstone/internal/Scrollable';
+import {VirtualListBase as UiVirtualListBase} from '@enact/moonstone/internal/VirtualList';
 import Item from '@enact/moonstone/Item';
 import {VirtualGridList, VirtualListBase} from '@enact/moonstone/VirtualList';
 import {action} from '@enact/storybook-utils/addons/actions';
@@ -9,7 +10,6 @@ import {boolean, number, select} from '@enact/storybook-utils/addons/knobs';
 import {mergeComponentMetadata} from '@enact/storybook-utils';
 import ri from '@enact/ui/resolution';
 
-import {VirtualListBase as UiVirtualListBase} from '@enact/moonstone/internal/VirtualList';
 import {storiesOf} from '@storybook/react';
 import PropTypes from 'prop-types';
 import {useCallback, useEffect, useRef, useState} from 'react';
