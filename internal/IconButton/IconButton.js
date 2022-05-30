@@ -9,6 +9,7 @@
  * @exports IconButton
  * @exports IconButtonBase
  * @exports IconButtonDecorator
+ * @private
  */
 
 import EnactPropTypes from '@enact/core/internal/prop-types';
@@ -201,7 +202,7 @@ const IconButtonBase = kind({
  * @memberof ui/IconButton
  * @mixes ui/ForwardRef.ForwardRef
  * @mixes ui/Touchable.Touchable
- * @public
+ * @private
  */
 const IconButtonDecorator = compose(
 	ForwardRef({prop: 'componentRef'}),

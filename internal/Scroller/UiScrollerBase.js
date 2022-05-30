@@ -13,7 +13,7 @@ import css from './UiScroller.module.less';
  * @class ScrollerBase
  * @memberof moonstone/internal/Scroller
  * @ui
- * @public
+ * @private
  */
 class ScrollerBase extends Component {
 	static displayName = 'ui:ScrollerBase';

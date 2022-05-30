@@ -9,6 +9,7 @@
  * @exports ToggleItem
  * @exports ToggleItemBase
  * @exports ToggleItemDecorator
+ * @private
  */
 
 import EnactPropTypes from '@enact/core/internal/prop-types';

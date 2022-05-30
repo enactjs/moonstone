@@ -8,6 +8,7 @@
  * @exports SlotItem
  * @exports SlotItemBase
  * @exports SlotItemDecorator
+ * @private
  */
 
 import EnactPropTypes from '@enact/core/internal/prop-types';
@@ -25,7 +26,7 @@ import componentCss from './SlotItem.module.less';
  * @class SlotItemBase
  * @memberof moonstone/internal/SlotItem
  * @ui
- * @public
+ * @private
  */
 const SlotItemBase = kind({
 	name: 'SlotItem',
@@ -187,7 +188,7 @@ const SlotItemBase = kind({
  * @mixes ui/Slottable.Slottable
  * @mixes ui/ForwardRef.ForwardRef
  * @hoc
- * @public
+ * @private
  */
 const SlotItemDecorator = compose(
 	ForwardRef({prop: 'componentRef'}),
@@ -215,7 +216,7 @@ const SlotItemDecorator = compose(
  * @mixes moonstone/internal/SlotItem.SlotItemDecorator
  * @omit componentRef
  * @ui
- * @public
+ * @private
  */
 const SlotItem = SlotItemDecorator(SlotItemBase);
 
