@@ -81,7 +81,8 @@ const NotificationBase = kind({
 		css: PropTypes.object,
 
 		/**
-		 * Indicates that the notification will not trigger `onClose` on the *ESC* key press.
+		 * Indicates that the notification will not trigger `onClose` when the user presses the cancel/back (e.g. `ESC`) key or
+		 * taps outside the notification.
 		 *
 		 * @type {Boolean}
 		 * @default false
