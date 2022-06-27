@@ -109,8 +109,8 @@ const Decorator = hoc(defaultConfig, (config, Wrapped) => {
 			direction: PropTypes.oneOf(['up', 'down', 'left', 'right']),
 
 			/**
-			 * Disables closing the popup when the user presses the cancel key or taps outside the
-			 * popup.
+			 * Disables closing the popup when the user presses the cancel/back (e.g. `ESC`) key or
+			 * taps outside the popup.
 			 *
 			 * @type {Boolean}
 			 * @default false
