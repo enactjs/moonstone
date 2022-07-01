@@ -167,7 +167,7 @@ const ButtonBase = kind({
  */
 const ButtonDecorator = compose(
 	Pure,
-	MarqueeDecorator({className: componentCss.marquee}),
+	MarqueeDecorator({css: componentCss}),
 	UiButtonDecorator,
 	Spottable,
 	Skinnable

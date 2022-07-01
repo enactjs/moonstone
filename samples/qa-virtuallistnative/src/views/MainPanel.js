@@ -1,116 +1,93 @@
 import Button from '@enact/moonstone/Button';
-import {connect} from 'react-redux';
 import Heading from '@enact/moonstone/Heading';
-import {Header, Panel} from '@enact/moonstone/Panels';
 import Input from '@enact/moonstone/Input';
-import LocaleSwitch from '../components/LocaleSwitch';
-import PropTypes from 'prop-types';
-import {Component} from 'react';
-import ri from '@enact/ui/resolution';
+import {Header, Panel} from '@enact/moonstone/Panels';
 import ToggleButton from '@enact/moonstone/ToggleButton';
 import {VirtualListNative as VirtualList} from '@enact/moonstone/VirtualList';
+import ri from '@enact/ui/resolution';
+import {useCallback, useEffect, useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 
-import {setData} from '../actions';
 import ListItem from '../components/ListItem';
+import LocaleSwitch from '../components/LocaleSwitch';
+import {setData} from '../store';
 
 import css from './MainPanel.module.less';
 
 const childProps = {text: ' child props'};
 
-const MainPanel = class extends Component {
-	static displayName = 'MainPanel';
+const MainPanel = ({...rest}) => {
+	const dispatch = useDispatch();
+	const [hasChildProps, setHasChildProps] = useState(false);
+	const [isDisabled, setIsDisabled] = useState(false);
+	const [value, setValue] = useState('');
 
-	static propTypes = {
-		changeData: PropTypes.func.isRequired,
-		listItems: PropTypes.array.isRequired
-	};
+	const listItems = useSelector(({listItems:storeListItems}) => storeListItems);
+	const changeData = useCallback((dataSize, isDisabledData) => dispatch(setData(dataSize, isDisabledData)), [dispatch]);
 
-	constructor (props) {
-		super(props);
-		this.state = {
-			hasChildProps: false,
-			isDisabled: false,
-			value: ''
-		};
+	useEffect(() => {
+		changeData(200, false);
+	}, [changeData]);
 
-		this.props.changeData(200, false);
-	}
+	const handleChange = useCallback(({value: newValue}) => setValue(newValue), []);
 
-	handleChange = ({value}) => this.setState({value});
+	const onChangeDataSize = useCallback(() => {
+		const dataSize = parseInt(value) || 0;
+		changeData(dataSize, isDisabled);
+	}, [changeData, isDisabled, value]);
 
-	onChangeDataSize = () => {
-		const dataSize = parseInt(this.state.value) || 0;
-		this.props.changeData(dataSize, this.state.isDisabled);
-	};
+	const onToggleChildProps = useCallback(() => {
+		setHasChildProps(!hasChildProps);
+	}, [hasChildProps]);
 
-	onToggleChildProps = () => {
-		this.setState((state) => ({hasChildProps: !state.hasChildProps}));
-	};
+	const onToggleDisabled = useCallback(() => {
+		changeData(listItems.length, !isDisabled);
+		return setIsDisabled(!isDisabled);
+	}, [changeData, isDisabled, listItems.length]);
 
-	onToggleDisabled = () => {
-		this.setState((state, props) => {
-			this.props.changeData(props.listItems.length, !state.isDisabled);
-			return {isDisabled: !state.isDisabled};
-		});
-	};
-
-	renderItem = ({index, text, ...rest}) => {
+	const renderItem = useCallback(({index, text, ...props}) => {
 		return (
-			<ListItem {...rest} index={index}>
-				{this.props.listItems[index].content + (text || '')}
+			<ListItem {...props} index={index}>
+				{listItems[index].content + (text || '')}
 			</ListItem>
 		);
-	};
+	}, [listItems]);
 
-	render () {
-		const {listItems, ...rest} = this.props;
-
-		delete rest.changeData;
-
-		return (
-			<Panel {...rest}>
-				<Header
-					title="VirtualList Native"
-					type="compact"
-				/>
-				<div className={css.header}>
-					<div>
-						DataSize:
-						<Input
-							onChange={this.handleChange}
-							placeholder={`${listItems.length}`}
-							size="small"
-							style={{width: '5em'}}
-							type="number"
-							value={this.state.value}
-						/>
-						<Button size="small" onClick={this.onChangeDataSize}>Set DataSize</Button>
-						<ToggleButton size="small" onToggle={this.onToggleDisabled}>Disabled Items</ToggleButton>
-						<ToggleButton size="small" onToggle={this.onToggleChildProps}>Child Props</ToggleButton>
-						<LocaleSwitch size="small" />
-						<Heading showLine />
-					</div>
-					<div className={css.list}>
-						<VirtualList
-							childProps={this.state.hasChildProps ? childProps : null}
-							dataSize={listItems.length}
-							focusableScrollbar
-							itemRenderer={this.renderItem}
-							itemSize={ri.scale(60 + 3)}
-						/>
-					</div>
+	return (
+		<Panel {...rest}>
+			<Header
+				title="VirtualList Native"
+				type="compact"
+			/>
+			<div className={css.header}>
+				<div>
+					DataSize:
+					<Input
+						onChange={handleChange}
+						placeholder={`${listItems.length}`}
+						size="small"
+						style={{width: '5em'}}
+						type="number"
+						value={value}
+					/>
+					<Button onClick={onChangeDataSize} size="small">Set DataSize</Button>
+					<ToggleButton onToggle={onToggleDisabled} size="small">Disabled Items</ToggleButton>
+					<ToggleButton onToggle={onToggleChildProps} size="small">Child Props</ToggleButton>
+					<LocaleSwitch size="small" />
+					<Heading showLine />
 				</div>
-			</Panel>
-		);
-	}
+				<div className={css.list}>
+					<VirtualList
+						childProps={hasChildProps ? childProps : null}
+						dataSize={listItems.length}
+						focusableScrollbar
+						itemRenderer={renderItem}
+						itemSize={ri.scale(60 + 3)}
+					/>
+				</div>
+			</div>
+		</Panel>
+	);
 };
 
-const mapStateToProps = ({listItems}) => ({
-	listItems
-});
-
-const mapDispatchToProps = (dispatch) => ({
-	changeData: (dataSize, isDisabled) => dispatch(setData(dataSize, isDisabled))
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(MainPanel);
+export default MainPanel;

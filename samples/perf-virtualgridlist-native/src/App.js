@@ -1,8 +1,8 @@
 import GridListImageItem from '@enact/moonstone/GridListImageItem';
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
-import {Component} from 'react';
-import ri from '@enact/ui/resolution';
 import {VirtualGridListNative as VirtualGridList} from '@enact/moonstone/VirtualList';
+import ri from '@enact/ui/resolution';
+import {useCallback, useEffect, useRef} from 'react';
 
 import css from './App.module.less';
 
@@ -14,20 +14,18 @@ for (let i = 0; i < 1000; i++) {
 	items.push({
 		text: 'Item ' + count,
 		subText: 'SubItem ' + count,
-		url: 'http://placehold.it/193x150/' + color + '/ffffff&text=Image ' + i
+		url: 'http://via.placeholder.com/193x150/' + color + '/ffffff/png?text=Image ' + i
 	});
 }
 
-class VirtualGridListNativeSample extends Component {
-	componentDidMount () {
-		this.scrollTo({animate: false, focus: true, index: 19});
-	}
+const VirtualGridListNativeSample = (props) => {
+	const scrollTo = useRef();
 
-	getScrollTo = (scrollTo) => {
-		this.scrollTo = scrollTo;
-	};
+	const getScrollTo = useCallback((fn) => {
+		scrollTo.current = fn;
+	}, []);
 
-	renderItem = ({index, ...rest}) => {
+	const renderItem = useCallback(({index, ...rest}) => {
 		return (
 			<GridListImageItem
 				{...rest}
@@ -37,22 +35,24 @@ class VirtualGridListNativeSample extends Component {
 				subCaption={items[index].subText}
 			/>
 		);
-	};
+	}, []);
 
-	render () {
-		return (
-			<div {...this.props}>
-				<VirtualGridList
-					cbScrollTo={this.getScrollTo}
-					dataSize={items.length}
-					focusableScrollbar
-					itemRenderer={this.renderItem}
-					itemSize={{minWidth: ri.scale(316), minHeight: ri.scale(300)}}
-					spacing={ri.scale(67)}
-				/>
-			</div>
-		);
-	}
-}
+	useEffect(() => {
+		scrollTo.current({index: 0, animate: false, focus: true});
+	});
+
+	return (
+		<div {...props}>
+			<VirtualGridList
+				cbScrollTo={getScrollTo}
+				dataSize={items.length}
+				focusableScrollbar
+				itemRenderer={renderItem}
+				itemSize={{minWidth: ri.scale(316), minHeight: ri.scale(300)}}
+				spacing={ri.scale(67)}
+			/>
+		</div>
+	);
+};
 
 export default MoonstoneDecorator(VirtualGridListNativeSample);

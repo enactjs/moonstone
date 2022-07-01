@@ -1,8 +1,9 @@
-import {mount} from 'enzyme';
+import {render, screen} from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+
 import IndexedBreadcrumbs from '../IndexedBreadcrumbs';
 
 describe('IndexedBreadcrumbs', () => {
-
 	// Suite-wide setup
 
 	test('should generate {index} breadcrumbs when {index} <= {max}', () => {
@@ -37,23 +38,13 @@ describe('IndexedBreadcrumbs', () => {
 		expect(actual).toBe(expected);
 	});
 
-	test.skip(
-		'should call {onBreadcrumbClick} once when breadcrumb is clicked',
-		() => {
-			const handleClick = jest.fn();
-			const subject = mount(
-				<nav>
-					{IndexedBreadcrumbs('id', 1, 1, handleClick)}
-				</nav>
-			);
+	test.skip('should call {onBreadcrumbClick} once when breadcrumb is clicked', () => {
+		const handleClick = jest.fn();
+		render(<nav>{IndexedBreadcrumbs('id', 1, 1, handleClick)}</nav>);
+		const breadcrumb = screen.getByLabelText('GO TO PREVIOUS');
 
-			subject.find('Breadcrumb').simulate('click', {});
+		userEvent.click(breadcrumb);
 
-			const expected = 1;
-			const actual = handleClick.mock.calls.length;
-
-			expect(actual).toBe(expected);
-		}
-	);
-
+		expect(handleClick).toHaveBeenCalled();
+	});
 });

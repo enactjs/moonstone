@@ -1,7 +1,7 @@
 import DayPicker from '@enact/moonstone/DayPicker';
 import Heading from '@enact/moonstone/Heading';
-import Layout, {Cell} from '@enact/ui/Layout';
 import Scroller from '@enact/moonstone/Scroller';
+import Layout, {Cell} from '@enact/ui/Layout';
 
 const DayPickerView = () => (
 	<Layout orientation="vertical">

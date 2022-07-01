@@ -1,23 +1,21 @@
-import {action} from '@enact/storybook-utils/addons/actions';
-import {boolean, number, select} from '@enact/storybook-utils/addons/knobs';
-import {mergeComponentMetadata} from '@enact/storybook-utils';
-import Group from '@enact/ui/Group';
-import PropTypes from 'prop-types';
-import {Component} from 'react';
-import ri from '@enact/ui/resolution';
-import Spotlight from '@enact/spotlight';
-import SpotlightContainerDecorator from '@enact/spotlight/SpotlightContainerDecorator';
-import UiScroller from '@enact/ui/Scroller';
-import {ScrollableBase as UiScrollableBase} from '@enact/ui/Scrollable';
-
-import {storiesOf} from '@storybook/react';
-
 import Button from '@enact/moonstone/Button';
 import ExpandableList from '@enact/moonstone/ExpandableList';
 import Heading from '@enact/moonstone/Heading';
 import Item from '@enact/moonstone/Item';
 import {ScrollableBase} from '@enact/moonstone/Scrollable';
 import Scroller from '@enact/moonstone/Scroller';
+import {action} from '@enact/storybook-utils/addons/actions';
+import {boolean, number, select} from '@enact/storybook-utils/addons/knobs';
+import {mergeComponentMetadata} from '@enact/storybook-utils';
+import Group from '@enact/ui/Group';
+import ri from '@enact/ui/resolution';
+import Spotlight from '@enact/spotlight';
+import SpotlightContainerDecorator from '@enact/spotlight/SpotlightContainerDecorator';
+import UiScroller from '@enact/ui/Scroller';
+import {ScrollableBase as UiScrollableBase} from '@enact/ui/Scrollable';
+import {storiesOf} from '@storybook/react';
+import PropTypes from 'prop-types';
+import {useCallback, useEffect, useState} from 'react';
 
 const Config = mergeComponentMetadata('Scroller', UiScrollableBase, ScrollableBase, Scroller);
 
@@ -32,121 +30,107 @@ const
 		scrollbarOption: ['auto', 'hidden', 'visible']
 	};
 
-class ScrollerResizableItem extends Component {
-	static propTypes = {
-		more: PropTypes.bool,
-		toggleMore: PropTypes.func
+const ScrollerResizableItem = ({...props}) => {
+	const height = ri.unit(props.more ? 1500 : 400, 'rem');
+	const text = props.more ? 'less' : 'more';
+	const style = {
+		border: 'solid yellow',
+		position: 'relative',
+		width: '90%'
 	};
-	render () {
-		const height = ri.unit(this.props.more ? 1500 : 400, 'rem');
-		const text = this.props.more ? 'less' : 'more';
-		const style = {
-			border: 'solid yellow',
-			position: 'relative',
-			width: '90%'
-		};
-		return (
-			<div style={{...style, height}}>
-				<Button onClick={this.props.toggleMore} size="small" style={{position: 'absolute', bottom: 0}}>{text}</Button>
-			</div>
-		);
-	}
-}
+	return (
+		<div style={{...style, height}}>
+			<Button onClick={props.toggleMore} size="small" style={{position: 'absolute', bottom: 0}}>{text}</Button>
+		</div>
+	);
+};
 
-class ScrollerWithResizable extends Component {
-	constructor (props) {
-		super(props);
-		this.state = {
-			more: false
-		};
-	}
+ScrollerResizableItem.propTypes = {
+	more: PropTypes.bool,
+	toggleMore: PropTypes.func
+};
 
-	handleClick = () => {
-		this.setState(prevState => ({more: !prevState.more}));
-	};
+const ScrollerWithResizable = () => {
+	const [more, setMore] = useState(false);
 
-	render () {
-		return (
-			<Scroller
-				onKeyDown={action('onKeyDown')}
-				onScrollStart={action('onScrollStart')}
-				onScrollStop={action('onScrollStop')}
-				verticalScrollbar="visible"
-			>
-				<Item>Item</Item>
-				<Item>Item</Item>
-				<ScrollerResizableItem more={this.state.more} toggleMore={this.handleClick} />
-			</Scroller>
-		);
-	}
-}
+	const handleClick = useCallback(() => {
+		setMore(!more);
+	}, [more]);
 
-class ScrollerWithTwoExpandableList extends Component {
-	render () {
+	return (
+		<Scroller
+			onKeyDown={action('onKeyDown')}
+			onScrollStart={action('onScrollStart')}
+			onScrollStop={action('onScrollStop')}
+			verticalScrollbar="visible"
+		>
+			<Item>Item</Item>
+			<Item>Item</Item>
+			<ScrollerResizableItem more={more} toggleMore={handleClick} />
+		</Scroller>
+	);
+};
 
-		return (
-			<div>
-				<Scroller
-					direction="vertical"
-					onKeyDown={action('onKeyDown (1st Scroller)')}
-					onScrollStart={action('onScrollStart (1st Scroller)')}
-					onScrollStop={action('onScrollStop (1st Scroller)')}
-					style={{height: ri.scale(200)}}
-				>
-					<ExpandableList selected={0} title="first">
-						{['a', 'b', 'c', 'd', 'b', 'c', 'd', 'b', 'c', 'd', 'b', 'c', 'd', 'b', 'c', 'd']}
-					</ExpandableList>
-				</Scroller>
-				<Scroller
-					direction="vertical"
-					style={{height: ri.scale(200)}}
-					onKeyDown={action('onKeyDown (2nd Scroller)')}
-					onScrollStart={action('onScrollStart (2nd Scroller)')}
-					onScrollStop={action('onScrollStop (2nd Scroller)')}
-				>
-					<ExpandableList title="second">
-						{['a', 'b', 'c', 'd']}
-					</ExpandableList>
-				</Scroller>
-			</div>
-		);
-	}
-}
+const ScrollerWithTwoExpandableList = () => (
+	<div>
+		<Scroller
+			direction="vertical"
+			onKeyDown={action('onKeyDown (1st Scroller)')}
+			onScrollStart={action('onScrollStart (1st Scroller)')}
+			onScrollStop={action('onScrollStop (1st Scroller)')}
+			style={{height: ri.scale(200)}}
+		>
+			<ExpandableList selected={0} title="first">
+				{['a', 'b', 'c', 'd', 'b', 'c', 'd', 'b', 'c', 'd', 'b', 'c', 'd', 'b', 'c', 'd']}
+			</ExpandableList>
+		</Scroller>
+		<Scroller
+			direction="vertical"
+			onKeyDown={action('onKeyDown (2nd Scroller)')}
+			onScrollStart={action('onScrollStart (2nd Scroller)')}
+			onScrollStop={action('onScrollStop (2nd Scroller)')}
+			style={{height: ri.scale(200)}}
+		>
+			<ExpandableList title="second">
+				{['a', 'b', 'c', 'd']}
+			</ExpandableList>
+		</Scroller>
+	</div>
+);
+
 
 const Container = SpotlightContainerDecorator('div');
 
-class ScrollerWithLargeContainer extends Component {
-	componentDidMount () {
+const ScrollerWithLargeContainer = () => {
+	useEffect(() => {
 		setTimeout(() => {
 			Spotlight.focus('scroller');
 		}, 50);
-	}
+	});
 
-	render () {
-		return (
-			<Scroller
-				focusableScrollbar
-				onKeyDown={action('onKeyDown')}
-				onScrollStart={action('onScrollStart')}
-				onScrollStop={action('onScrollStop')}
-				spotlightId="scroller"
-				style={{height: 200}}
-			>
-				<Container>
-					<Item>Hello</Item>
-					<Item>Hello</Item>
-					<Item>Hello</Item>
-					<Item>Hello</Item>
-					<Item>Hello</Item>
-					<Item>Hello</Item>
-					<Item>Hello</Item>
-					<Item>Hello</Item>
-					<Item>Hello</Item>
-				</Container>
-			</Scroller>
-		);
-	}
-}
+	return (
+		<Scroller
+			focusableScrollbar
+			onKeyDown={action('onKeyDown')}
+			onScrollStart={action('onScrollStart')}
+			onScrollStop={action('onScrollStop')}
+			spotlightId="scroller"
+			style={{height: 200}}
+		>
+			<Container>
+				<Item>Hello</Item>
+				<Item>Hello</Item>
+				<Item>Hello</Item>
+				<Item>Hello</Item>
+				<Item>Hello</Item>
+				<Item>Hello</Item>
+				<Item>Hello</Item>
+				<Item>Hello</Item>
+				<Item>Hello</Item>
+			</Container>
+		</Scroller>
+	);
+};
 
 storiesOf('Scroller', module)
 	.add(

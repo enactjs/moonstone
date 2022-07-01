@@ -2,6 +2,19 @@
 
 The following is a curated list of changes in the Enact moonstone module, newest changes on the top.
 
+## [4.5.0] - 2022-07-01
+
+- Update dependencies including React 18.0.0
+
+### Added
+
+- `moonstone/internal/GridListImageItem` component, transferred from `ui/GridListImageItem`
+- `moonstone/VirtualList.VirtualList`, `moonstone/VirtualList.VirtualGridList` prop `data-webos-voice-focused`, `data-webos-voice-disabled`, and `data-webos-voice-group-label`
+
+### Fixed
+
+- `moonstone/Input` size 'small' line-height to center text vertically
+
 ## [4.0.4] - 2021-12-29
 
 ### Fixed

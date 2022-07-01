@@ -300,7 +300,8 @@ class Popup extends Component {
 		noAnimation: PropTypes.bool,
 
 		/**
-		 * Indicates that the popup will not trigger `onClose` on the *ESC* key press.
+		 * Indicates that the popup will not trigger `onClose` when the user presses the cancel/back (e.g. `ESC`) key or
+		 * taps outside of the popup.
 		 *
 		 * @type {Boolean}
 		 * @default false
@@ -519,7 +520,7 @@ class Popup extends Component {
 			activator: null
 		});
 
-		if (ev.currentTarget.getAttribute('data-spotlight-id') === this.state.containerId) {
+		if (!ev.currentTarget || ev.currentTarget.getAttribute('data-spotlight-id') === this.state.containerId) {
 			this.paused.resume();
 
 			if (!this.props.open) {
@@ -535,7 +536,7 @@ class Popup extends Component {
 			popupOpen: OpenState.OPEN
 		});
 
-		if (ev.currentTarget.getAttribute('data-spotlight-id') === this.state.containerId) {
+		if (!ev.currentTarget || ev.currentTarget.getAttribute('data-spotlight-id') === this.state.containerId) {
 			this.paused.resume();
 
 			if (this.props.open) {

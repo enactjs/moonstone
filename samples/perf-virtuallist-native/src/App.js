@@ -1,8 +1,8 @@
 import Item from '@enact/moonstone/Item';
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
-import {Component} from 'react';
-import ri from '@enact/ui/resolution';
 import {VirtualListNative as VirtualList} from '@enact/moonstone/VirtualList';
+import ri from '@enact/ui/resolution';
+import {useCallback, useEffect, useRef} from 'react';
 
 import css from './App.module.less';
 
@@ -25,34 +25,36 @@ for (let i = 0; i < 1000; i++) {
 	items.push({title: ('00' + i).slice(-3) + ' - ' + languages[i % 10]});
 }
 
-class VirtualListNativeSample extends Component {
-	componentDidMount () {
-		this.scrollTo({animate: false, focus: true, index: 10});
-	}
+const VirtualListNativeSample = (props) => {
+	const scrollTo = useRef();
 
-	getScrollTo = (scrollTo) => {
-		this.scrollTo = scrollTo;
-	};
+	const getScrollTo = useCallback((fn) => {
+		scrollTo.current = fn;
+	}, []);
 
-	renderItem = ({index, ...rest}) => (
-		<Item {...rest} className={css.item}>
-			{items[index].title}
-		</Item>
-	);
-
-	render () {
+	const renderItem = useCallback(({index, ...rest}) => {
 		return (
-			<div {...this.props}>
-				<VirtualList
-					cbScrollTo={this.getScrollTo}
-					dataSize={items.length}
-					focusableScrollbar
-					itemRenderer={this.renderItem}
-					itemSize={ri.scale(62)}
-				/>
-			</div>
+			<Item {...rest} className={css.item}>
+				{items[index].title}
+			</Item>
 		);
-	}
-}
+	}, []);
+
+	useEffect(() => {
+		scrollTo.current({index: 0, animate: false, focus: true});
+	});
+
+	return (
+		<div {...props}>
+			<VirtualList
+				cbScrollTo={getScrollTo}
+				dataSize={items.length}
+				focusableScrollbar
+				itemRenderer={renderItem}
+				itemSize={ri.scale(62)}
+			/>
+		</div>
+	);
+};
 
 export default MoonstoneDecorator(VirtualListNativeSample);

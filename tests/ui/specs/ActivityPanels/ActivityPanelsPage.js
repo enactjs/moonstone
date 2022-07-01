@@ -7,8 +7,8 @@ class SpotlightMultiplePage extends Page {
 		this.title = 'ActivityPanels Test';
 	}
 
-	open (urlExtra) {
-		super.open('ActivityPanels-View', urlExtra);
+	async open (urlExtra) {
+		await super.open('ActivityPanels-View', urlExtra);
 	}
 
 	get item1 () {

@@ -10,8 +10,8 @@ class SwitchItemInterface {
 		this.id = id;
 	}
 
-	focus () {
-		return browser.execute((el) => el.focus(), $(`#${this.id}`));
+	async focus () {
+		return await browser.execute((el) => el.focus(), await $(`#${this.id}`));
 	}
 
 	get self () {
@@ -20,8 +20,8 @@ class SwitchItemInterface {
 	get valueText () {
 		return getText(getMarqueeText(this.self));
 	}
-	get isSelected () {
-		return !!element('.Switch_Switch_selected', this.self).isExisting();
+	async isSelected () {
+		return !!await element('.Switch_Switch_selected', this.self).isExisting();
 	}
 	get isInline () {
 		return browser.$(`#${this.id}.Item_Item_inline`).isExisting();
@@ -41,8 +41,8 @@ class SwitchItemPage extends Page {
 		this.components = {switchDefault, switchDefaultSelected, switchInline, switchDisabled, switchInlineDisabled};
 	}
 
-	open (urlExtra) {
-		super.open('SwitchItem-View', urlExtra);
+	async open (urlExtra) {
+		await super.open('SwitchItem-View', urlExtra);
 	}
 }
 

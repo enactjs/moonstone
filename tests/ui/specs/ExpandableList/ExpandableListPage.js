@@ -12,8 +12,8 @@ class ExpandableInterface {
 		this.id = id;
 	}
 
-	focus () {
-		return browser.execute((el) => el.focus(), $(`#${this.id}>div`));
+	async focus () {
+		return await browser.execute((el) => el.focus(), await $(`#${this.id}>div`));
 	}
 
 	get      self () {
@@ -34,9 +34,10 @@ class ExpandableInterface {
 	get valueText () {
 		return getText(this.value);
 	}
-	get    isOpen () {
-		return !(!this.self.$('.enact_ui_Transition_Transition_transition').isExisting() ||
-		!this.self.$('.enact_ui_Transition_Transition_shown').isExisting() && this.self.$('.enact_ui_Transition_Transition_hidden').isExisting());
+
+	async isOpen () {
+		return !(!(await this.self.$('.enact_ui_Transition_Transition_transition').isExisting()) ||
+			!(await this.self.$('.enact_ui_Transition_Transition_shown').isExisting()) && await this.self.$('.enact_ui_Transition_Transition_hidden').isExisting());
 	}
 
 	item (n) {
@@ -66,8 +67,8 @@ class SpotlightMultiplePage extends Page {
 		this.components.disabled.selectedClass = '.RadioItem_RadioItem_selected';
 	}
 
-	open (urlExtra) {
-		super.open('ExpandableList-View', urlExtra);
+	async open (urlExtra) {
+		await super.open('ExpandableList-View', urlExtra);
 	}
 
 }
