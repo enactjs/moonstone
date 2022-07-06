@@ -2,7 +2,9 @@
 
 The following is a curated list of changes in the Enact moonstone module, newest changes on the top.
 
-## [unreleased]
+## [4.5.0] - 2022-07-01
+
+- Update dependencies including React 18.0.0
 
 ### Added
 
