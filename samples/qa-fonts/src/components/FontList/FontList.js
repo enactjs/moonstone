@@ -30,7 +30,7 @@ const FontList = kind({
 					return (
 						<SlotItem key={'item' + i}>
 							<slotBefore>
-								{typeof document !== 'undefined' && document.fonts.check(font) ?
+								{typeof window !== 'undefined' && document.fonts.check(font) ?
 									<Status loaded>Loaded</Status> :
 									<Status>Not Loaded</Status>
 								}
