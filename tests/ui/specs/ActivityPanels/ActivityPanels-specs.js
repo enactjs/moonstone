@@ -48,31 +48,32 @@ describe('ActivityPanels', function () {
 		});
 
 		it('should navigate back to the First panel from clicking on breadcrumb', async function () {
-			await Page.waitTransitionEnd(5000, undefined, () => {
-				Page.item1.click();
+			await Page.waitTransitionEnd(5000, undefined, async () => {
+				await Page.item1.click();
 			}, []);
-			await Page.waitTransitionEnd(5000, undefined, () => {
-				Page.item5.click();
+			await Page.waitTransitionEnd(5000, undefined, async () => {
+				await Page.item5.click();
 			}, []);
-			await Page.waitTransitionEnd(5000, undefined, () => {
-				Page.button4.click();
+			await Page.waitTransitionEnd(5000, undefined, async () => {
+				await Page.button4.click();
 			}, []);
-			await Page.waitTransitionEnd(5000, undefined, () => {
-				Page.item2.click();
+			await Page.waitTransitionEnd(5000, undefined, async () => {
+				await Page.item2.click();
 			}, []);
-			await Page.waitTransitionEnd(5000, undefined, () => {
-				Page.breadcrumbHeader.click();
+			await Page.waitTransitionEnd(5000, undefined, async () => {
+				await Page.breadcrumbHeader.click();
 			}, []);
-			await Page.waitTransitionEnd(5000, undefined, () => {
-				Page.breadcrumbHeader.click();
+			await Page.waitTransitionEnd(5000, undefined, async () => {
+				await Page.breadcrumbHeader.click();
 			}, []);
-			await Page.waitTransitionEnd(5000, undefined, () => {
-				Page.breadcrumbHeader.click();
+			await Page.waitTransitionEnd(5000, undefined, async () => {
+				await Page.breadcrumbHeader.click();
 			}, []);
-			await Page.waitTransitionEnd(5000, undefined, () => {
-				Page.breadcrumbHeader.click();
+			await Page.waitTransitionEnd(5000, undefined, async () => {
+				await Page.breadcrumbHeader.click();
 			}, []);
 
+			await browser.pause(500);
 			expect((await Page.panelTitle).toLowerCase()).to.equal('FIRST'.toLowerCase());
 		});
 
