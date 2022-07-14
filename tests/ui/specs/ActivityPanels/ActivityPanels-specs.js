@@ -32,19 +32,15 @@ describe('ActivityPanels', function () {
 			await Page.waitTransitionEnd(5000, undefined, () => {
 				Page.item1.click();
 			}, []);
-			console.log(await Page.panelTitle);
 			await Page.waitTransitionEnd(5000, undefined, () => {
 				Page.item5.click();
 			}, []);
-			console.log(await Page.panelTitle);
 			await Page.waitTransitionEnd(5000, undefined, () => {
 				Page.button4.click();
 			}, []);
-			console.log(await Page.panelTitle);
 			await Page.waitTransitionEnd(5000, undefined, () => {
 				Page.item2.click();
 			}, []);
-			console.log(await Page.panelTitle);
 			expect((await Page.panelTitle).toLowerCase()).to.equal('Last Focused'.toLowerCase());
 		});
 
