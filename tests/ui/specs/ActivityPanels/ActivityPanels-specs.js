@@ -16,8 +16,6 @@ describe('ActivityPanels', function () {
 			Page.button1.click();
 		}, []);
 
-		Page.button1.click();
-
 		expect(await Page.breadcrumbHeader.getText()).to.include('01');
 	});
 
@@ -48,52 +46,19 @@ describe('ActivityPanels', function () {
 		});
 
 		it('should navigate back to the First panel from clicking on breadcrumb', async function () {
-			await Page.waitTransitionEnd(2000, 'one', async () => {
-				console.log("click1");
-				await Page.item1.click();
+			await Page.waitTransitionEnd(2000, 'one', () => {
+				Page.item1.click();
 			}, []);
-			await browser.pause(200);
-			console.log(await Page.panelTitle)
-			await Page.waitTransitionEnd(2000, 'two', async () => {
-				console.log("click2");
-				await Page.item5.click();
+			await Page.waitTransitionEnd(2000, 'two', () => {
+				Page.item5.click();
 			}, []);
-			await browser.pause(200);
-			console.log(await Page.panelTitle)
-			await Page.waitTransitionEnd(2000, 'three', async () => {
-				console.log("click3");
-				await Page.button4.click();
+			await Page.waitTransitionEnd(2000, 'seven', () => {
+				Page.breadcrumbHeader.click();
 			}, []);
-			await browser.pause(200);
-			console.log(await Page.panelTitle)
-			await Page.waitTransitionEnd(2000, 'four', async () => {
-				console.log("click4");
-				await Page.item2.click();
+			await Page.waitTransitionEnd(2000, 'eight', () => {
+				Page.breadcrumbHeader.click();
 			}, []);
-			await browser.pause(200);
-			console.log(await Page.panelTitle)
-			await Page.waitTransitionEnd(2000, 'five', async () => {
-				console.log("click5");
-				await Page.breadcrumbHeader.click();
-			}, []);
-			await browser.pause(200);
-			console.log(await Page.panelTitle)
-			await Page.waitTransitionEnd(2000, 'six', async () => {
-				console.log("click6");
-				await Page.breadcrumbHeader.click();
-			}, []);
-			await browser.pause(200);
-			console.log(await Page.panelTitle);
-			await Page.waitTransitionEnd(2000, 'seven', async () => {
-				await Page.breadcrumbHeader.click();
-			}, []);
-			await browser.pause(200);
-			console.log(await Page.panelTitle)
-			await Page.waitTransitionEnd(2000, 'eight', async () => {
-				await Page.breadcrumbHeader.click();
-			}, []);
-			await browser.pause(200)
-			console.log(await Page.panelTitle);
+
 			expect((await Page.panelTitle).toLowerCase()).to.equal('FIRST'.toLowerCase());
 		});
 

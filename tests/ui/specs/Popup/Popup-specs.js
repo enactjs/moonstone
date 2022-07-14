@@ -22,7 +22,7 @@ describe('Popup', function () {
 		const popup = Page.components.popup1;
 
 		it('should have correct title', async function () {
-			await Page.waitTransitionEnd(3000, undefined, async () => {
+			await Page.waitTransitionEnd(3000, undefined, () => {
 				popupCommon.buttonPopup1.click();
 			});
 			await expectOpen(popupCommon);
@@ -31,8 +31,8 @@ describe('Popup', function () {
 
 		describe('5-way', function () {
 			it('should spot default button in popup container', async function () {
-				await Page.waitTransitionEnd(3000, 'popup open', async () => {
-					await Page.spotlightSelect();
+				await Page.waitTransitionEnd(3000, 'popup open', () => {
+					Page.spotlightSelect();
 				});
 
 				await expectOpen(popupCommon);
@@ -40,8 +40,8 @@ describe('Popup', function () {
 			});
 
 			it('should spot cancel button on 5-way right in popup container', async function () {
-				await Page.waitTransitionEnd(3000, 'popup open', async () => {
-					await Page.spotlightSelect();
+				await Page.waitTransitionEnd(3000, 'popup open', () => {
+					Page.spotlightSelect();
 				});
 				await expectOpen(popupCommon);
 				await Page.spotlightRight();
@@ -49,8 +49,8 @@ describe('Popup', function () {
 			});
 
 			it('should spot close button on two 5-way right in popup container', async function () {
-				await Page.waitTransitionEnd(3000, 'popup open', async () => {
-					await Page.spotlightSelect();
+				await Page.waitTransitionEnd(3000, 'popup open', () => {
+					Page.spotlightSelect();
 				});
 				await expectOpen(popupCommon);
 				await Page.spotlightRight();
@@ -59,8 +59,8 @@ describe('Popup', function () {
 			});
 
 			it('should not move spot from close button on 5-way up in popup container', async function () {
-				await Page.waitTransitionEnd(3000, 'popup open', async () => {
-					await Page.spotlightSelect();
+				await Page.waitTransitionEnd(3000, 'popup open', () => {
+					Page.spotlightSelect();
 				});
 				await expectOpen(popupCommon);
 				await Page.spotlightRight();
@@ -70,8 +70,8 @@ describe('Popup', function () {
 			});
 
 			it('should not move spot from close button on 5-way right in popup container', async function () {
-				await Page.waitTransitionEnd(3000, 'popup open', async () => {
-					await Page.spotlightSelect();
+				await Page.waitTransitionEnd(3000, 'popup open', () => {
+					Page.spotlightSelect();
 				});
 				await expectOpen(popupCommon);
 				await Page.spotlightRight();
@@ -81,8 +81,8 @@ describe('Popup', function () {
 			});
 
 			it('should spot back the ok button on 5-way right then left in popup container', async function () {
-				await Page.waitTransitionEnd(3000, 'popup open', async () => {
-					await Page.spotlightSelect();
+				await Page.waitTransitionEnd(3000, 'popup open', () => {
+					Page.spotlightSelect();
 				});
 				await expectOpen(popupCommon);
 				await Page.spotlightRight();
@@ -91,24 +91,24 @@ describe('Popup', function () {
 			});
 
 			it('should spot back the popup button on closing the popup', async function () {
-				await Page.waitTransitionEnd(3000, 'popup open', async () => {
-					await Page.spotlightSelect();
+				await Page.waitTransitionEnd(3000, 'popup open', () => {
+					Page.spotlightSelect();
 				});
 				await expectOpen(popupCommon);
-				await Page.waitTransitionEnd(3000, 'popup close', async () => {
-					await Page.spotlightSelect();
+				await Page.waitTransitionEnd(3000, 'popup close', () => {
+					Page.spotlightSelect();
 				});
 				await expectClosed(popupCommon);
 				expect(await popupCommon.buttonPopup1.isFocused()).to.be.true();
 			});
 
 			it('should spot back the popup button on auto dismiss the popup', async function () {
-				await Page.waitTransitionEnd(3000, 'popup open', async () => {
-					await Page.spotlightSelect();
+				await Page.waitTransitionEnd(3000, 'popup open', () => {
+					Page.spotlightSelect();
 				});
 				await expectOpen(popupCommon);
-				await Page.waitTransitionEnd(3000, 'popup close', async () => {
-					await Page.backKey();
+				await Page.waitTransitionEnd(3000, 'popup close', () => {
+					Page.backKey();
 				});
 				await expectClosed(popupCommon);
 				expect(await popupCommon.buttonPopup1.isFocused()).to.be.true();
@@ -117,36 +117,36 @@ describe('Popup', function () {
 
 		describe('pointer', function () {
 			it('should dismiss the popup on escape key', async function () {
-				await Page.waitTransitionEnd(3000, undefined, async () => {
+				await Page.waitTransitionEnd(3000, undefined, () => {
 					popupCommon.buttonPopup1.click();
 				});
 				await expectOpen(popupCommon);
-				await Page.waitTransitionEnd(3000, 'popup close', async () => {
+				await Page.waitTransitionEnd(3000, 'popup close', () => {
 					Page.backKey();
 				});
 				await expectClosed(popupCommon);
 			});
 
 			it('should dismiss the popup on click on outside the popup', async function () {
-				await Page.waitTransitionEnd(3000, undefined, async () => {
+				await Page.waitTransitionEnd(3000, undefined, () => {
 					popupCommon.buttonPopup1.click();
 				});
 				await expectOpen(popupCommon);
-				await Page.waitTransitionEnd(3000, undefined, async () => {
+				await Page.waitTransitionEnd(3000, undefined, () => {
 					Page.clickPopupFloatLayer();
 				});
 				await expectClosed(popupCommon);
 			});
 
 			it('should open the popup with scrim on click', async function () {
-				await Page.waitTransitionEnd(3000, undefined, async () => {
+				await Page.waitTransitionEnd(3000, undefined, () => {
 					popupCommon.buttonPopup1.click();
 				});
 				await expectOpen(popupCommon);
 			});
 
 			it('should show close button in the popup container on display', async function () {
-				await Page.waitTransitionEnd(3000, undefined, async () => {
+				await Page.waitTransitionEnd(3000, undefined, () => {
 					popupCommon.buttonPopup1.click();
 				});
 				await expectOpen(popupCommon);

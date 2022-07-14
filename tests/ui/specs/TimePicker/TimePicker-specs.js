@@ -418,8 +418,8 @@ describe('TimePicker', function () {
 			const timePicker = Page.components.timePickerNoLabels;
 
 			it('should not have labeled pickers', async function () {
-				timePicker.title.click();
-				expectNoLabels(timePicker);
+				await timePicker.title.click();
+				await expectNoLabels(timePicker);
 			});
 		});
 
@@ -442,19 +442,19 @@ describe('TimePicker', function () {
 					expect(await timePicker.title.isFocused()).to.be.true();
 				});
 				it('should not open when selected', async function () {
-					timePicker.focus();
+					await timePicker.focus();
 					await Page.spotlightSelect();
 					// it should never open, but wait and then check to be sure
-					browser.pause(500);
+					await browser.pause(500);
 					await expectClosed(timePicker);
 				});
 			});
 
 			describe('pointer', function () {
 				it('should not open when clicked', async function () {
-					timePicker.title.click();
+					await timePicker.title.click();
 					// it should never open, but wait and then check to be sure
-					browser.pause(500);
+					await browser.pause(500);
 					await expectClosed(timePicker);
 				});
 			});
