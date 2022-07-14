@@ -21,15 +21,15 @@ describe('CheckboxItem', function () {
 			});
 
 			it('should not be checked', async function () {
-				expectUnchecked(checkboxItem);
+				await expectUnchecked(checkboxItem);
 			});
 
 			it('should display icon before the text', async function () {
 				expect(await checkboxItem.isBefore).to.be.true();
 			});
 
-			it('should have icon to the left of marquee text', function () {
-				expectOrdering(checkboxItem.icon, checkboxItem.value);
+			it('should have icon to the left of marquee text', async function () {
+				await expectOrdering(checkboxItem.icon, checkboxItem.value);
 			});
 
 			describe('5-way', function () {
@@ -64,13 +64,13 @@ describe('CheckboxItem', function () {
 			describe('pointer', function () {
 				it('should check the item when clicked', async function () {
 					await checkboxItem.self.click();
-					expectChecked(checkboxItem);
+					await expectChecked(checkboxItem);
 				});
 
 				it('should re-uncheck the item when clicked twice', async function () {
 					await checkboxItem.self.click();
 					await checkboxItem.self.click();
-					expectUnchecked(checkboxItem);
+					await expectUnchecked(checkboxItem);
 				});
 
 				it('should display check icon when clicked', async  function () {
@@ -88,7 +88,7 @@ describe('CheckboxItem', function () {
 			});
 
 			it('should be checked', async function () {
-				expectChecked(checkboxItem);
+				await expectChecked(checkboxItem);
 			});
 
 			it('should display correct icon - [GT-21121]', async function () {
@@ -99,27 +99,27 @@ describe('CheckboxItem', function () {
 				it('should uncheck the item when selected', async function () {
 					await checkboxItem.focus();
 					await Page.spotlightSelect();
-					expectUnchecked(checkboxItem);
+					await expectUnchecked(checkboxItem);
 				});
 
 				it('should re-check the item when selected twice', async function () {
 					await checkboxItem.focus();
 					await Page.spotlightSelect();
 					await Page.spotlightSelect();
-					expectChecked(checkboxItem);
+					await expectChecked(checkboxItem);
 				});
 			});
 
 			describe('pointer', function () {
 				it('should uncheck the item when clicked', async function () {
 					await checkboxItem.self.click();
-					expectUnchecked(checkboxItem);
+					await expectUnchecked(checkboxItem);
 				});
 
 				it('should re-check the item when clicked twice', async function () {
 					await checkboxItem.self.click();
 					await checkboxItem.self.click();
-					expectChecked(checkboxItem);
+					await expectChecked(checkboxItem);
 				});
 			});
 		});
@@ -132,7 +132,7 @@ describe('CheckboxItem', function () {
 			});
 
 			it('should be checked', async function () {
-				expectChecked(checkboxItemIconAfter);
+				await expectChecked(checkboxItemIconAfter);
 			});
 
 			it('should display icon after the text', async function () {
@@ -143,27 +143,27 @@ describe('CheckboxItem', function () {
 				it('should uncheck the item when selected', async function () {
 					await checkboxItemIconAfter.focus();
 					await Page.spotlightSelect();
-					expectUnchecked(checkboxItemIconAfter);
+					await expectUnchecked(checkboxItemIconAfter);
 				});
 
 				it('should re-check the item when selected twice', async function () {
 					await checkboxItemIconAfter.focus();
 					await Page.spotlightSelect();
 					await Page.spotlightSelect();
-					expectChecked(checkboxItemIconAfter);
+					await expectChecked(checkboxItemIconAfter);
 				});
 			});
 
 			describe('pointer', function () {
 				it('should uncheck the item when clicked', async function () {
 					await checkboxItemIconAfter.self.click();
-					expectUnchecked(checkboxItemIconAfter);
+					await expectUnchecked(checkboxItemIconAfter);
 				});
 
 				it('should re-check the item when clicked twice', async function () {
 					await checkboxItemIconAfter.self.click();
 					await checkboxItemIconAfter.self.click();
-					expectChecked(checkboxItemIconAfter);
+					await expectChecked(checkboxItemIconAfter);
 				});
 			});
 		});
@@ -174,7 +174,7 @@ describe('CheckboxItem', function () {
 			it('should have two inlined checkboxes positioned inlined', async function () {
 				const checkboxItem2 = await Page.components.checkboxInlineAfter.self;
 
-				expectInline(await checkboxItem.self, checkboxItem2);
+				await expectInline(await checkboxItem.self, checkboxItem2);
 			});
 
 			it('should have correct text', async function () {
@@ -182,7 +182,7 @@ describe('CheckboxItem', function () {
 			});
 
 			it('should be checked', async function () {
-				expectChecked(checkboxItem);
+				await expectChecked(checkboxItem);
 			});
 
 			it('should display icon before the text', async function () {
@@ -197,27 +197,27 @@ describe('CheckboxItem', function () {
 				it('should uncheck the item when selected', async function () {
 					await checkboxItem.focus();
 					await Page.spotlightSelect();
-					expectUnchecked(checkboxItem);
+					await expectUnchecked(checkboxItem);
 				});
 
 				it('should re-check the item when selected twice', async function () {
 					await checkboxItem.focus();
 					await Page.spotlightSelect();
 					await Page.spotlightSelect();
-					expectChecked(checkboxItem);
+					await expectChecked(checkboxItem);
 				});
 			});
 
 			describe('pointer', function () {
 				it('should uncheck the item when clicked', async function () {
 					await checkboxItem.self.click();
-					expectUnchecked(checkboxItem);
+					await expectUnchecked(checkboxItem);
 				});
 
 				it('should re-check the item when clicked twice', async function () {
 					await checkboxItem.self.click();
 					await checkboxItem.self.click();
-					expectChecked(checkboxItem);
+					await expectChecked(checkboxItem);
 				});
 			});
 		});
@@ -230,7 +230,7 @@ describe('CheckboxItem', function () {
 			});
 
 			it('should be checked', async function () {
-				expectChecked(checkboxItem);
+				await expectChecked(checkboxItem);
 			});
 
 			it('should display icon after the text', async function () {
@@ -245,27 +245,27 @@ describe('CheckboxItem', function () {
 				it('should uncheck the item when selected', async function () {
 					await checkboxItem.focus();
 					await Page.spotlightSelect();
-					expectUnchecked(checkboxItem);
+					await expectUnchecked(checkboxItem);
 				});
 
 				it('should re-check the item when selected twice', async function () {
 					await checkboxItem.focus();
 					await Page.spotlightSelect();
 					await Page.spotlightSelect();
-					expectChecked(checkboxItem);
+					await expectChecked(checkboxItem);
 				});
 			});
 
 			describe('pointer', function () {
 				it('should uncheck the item when clicked', async function () {
 					await checkboxItem.self.click();
-					expectUnchecked(checkboxItem);
+					await expectUnchecked(checkboxItem);
 				});
 
 				it('should re-check the item when clicked twice', async function () {
 					await checkboxItem.self.click();
 					await checkboxItem.self.click();
-					expectChecked(checkboxItem);
+					await expectChecked(checkboxItem);
 				});
 			});
 		});
@@ -282,7 +282,7 @@ describe('CheckboxItem', function () {
 			});
 
 			it('should be checked', async function () {
-				expectChecked(checkboxItem);
+				await expectChecked(checkboxItem);
 			});
 
 			it('should display icon before the text', async function () {
@@ -297,14 +297,14 @@ describe('CheckboxItem', function () {
 				});
 				it('should not uncheck the item when selected', async function () {
 					await Page.spotlightDown();
-					expectChecked(checkboxItem);
+					await expectChecked(checkboxItem);
 				});
 			});
 
 			describe('pointer', function () {
 				it('should not uncheck the item when clicked', async function () {
 					await checkboxItem.self.click();
-					expectChecked(checkboxItem);
+					await expectChecked(checkboxItem);
 				});
 			});
 		});
@@ -325,14 +325,14 @@ describe('CheckboxItem', function () {
 		it('should have icon to the right of text when default', async function () {
 			const checkboxItem = await Page.components.checkboxDefault;
 
-			expectOrdering(checkboxItem.value, checkboxItem.icon);
+			await expectOrdering(checkboxItem.value, checkboxItem.icon);
 		});
 
 		it('should have two inlined checkboxes positioned inlined', async function () {
 			const checkboxItem1 = await Page.components.checkboxInline.self;
 			const checkboxItem2 = await Page.components.checkboxInlineAfter.self;
 
-			expectInline(checkboxItem1, checkboxItem2);
+			await expectInline(checkboxItem1, checkboxItem2);
 		});
 	});
 });
