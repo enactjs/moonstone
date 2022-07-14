@@ -22,7 +22,7 @@ describe('ExpandableItem', function () {
 
 		describe('5-way', function () {
 			it('should open and spot expanded item on select - [GT-21494]', async function () {
-				await Page.waitTransitionEnd(2000, undefined, () => {
+				await Page.waitTransitionEnd(3000, undefined, () => {
 					Page.spotlightSelect();
 				});
 
@@ -32,13 +32,13 @@ describe('ExpandableItem', function () {
 
 			it('should close when pressing select on label', async function () {
 				await Page.spotlightUp();
-				await Page.waitTransitionEnd(2000, undefined, () => {
+				await Page.waitTransitionEnd(3000, undefined, () => {
 					Page.spotlightSelect();
 				});
 
 				await expectOpen(expandableItem);
 				await Page.spotlightUp();
-				await Page.waitTransitionEnd(2000, undefined, () => {
+				await Page.waitTransitionEnd(3000, undefined, () => {
 					Page.spotlightSelect();
 				});
 
@@ -47,7 +47,7 @@ describe('ExpandableItem', function () {
 
 			it('should allow 5-way navigation beyond the last item', async function () {
 				await expandableItem.focus();
-				await Page.waitTransitionEnd(2000, undefined, () => {
+				await Page.waitTransitionEnd(3000, undefined, () => {
 					Page.spotlightSelect();
 				});
 
@@ -60,18 +60,18 @@ describe('ExpandableItem', function () {
 
 		describe('pointer', function () {
 			it('should open on title click when closed', async function () {
-				await Page.waitTransitionEnd(2000, undefined, () => {
+				await Page.waitTransitionEnd(3000, undefined, () => {
 					expandableItem.title.click();
 				});
 				await expectOpen(expandableItem);
 			});
 
 			it('should close on title click when open', async function () {
-				await Page.waitTransitionEnd(2000, undefined, () => {
+				await Page.waitTransitionEnd(3000, undefined, () => {
 					expandableItem.title.click();
 				});
 				await expectOpen(expandableItem);
-				await Page.waitTransitionEnd(2000, undefined, () => {
+				await Page.waitTransitionEnd(3000, undefined, () => {
 					expandableItem.title.click();
 				});
 				await expectClosed(expandableItem);
@@ -97,7 +97,7 @@ describe('ExpandableItem', function () {
 		describe('5-way', function () {
 			it('should close when pressing select', async function () {
 				await expandableItem.focus();
-				await Page.waitTransitionEnd(2000, undefined, () => {
+				await Page.waitTransitionEnd(3000, undefined, () => {
 					Page.spotlightSelect();
 				});
 
@@ -108,18 +108,18 @@ describe('ExpandableItem', function () {
 
 		describe('pointer', function () {
 			it('should close on title click when open', async function () {
-				await Page.waitTransitionEnd(2000, undefined, () => {
+				await Page.waitTransitionEnd(3000, undefined, () => {
 					expandableItem.title.click();
 				});
 				await expectClosed(expandableItem);
 			});
 
 			it('should open on title click when closed', async function () {
-				await Page.waitTransitionEnd(2000, undefined, () => {
+				await Page.waitTransitionEnd(3000, undefined, () => {
 					expandableItem.title.click();
 				});
 				await expectClosed(expandableItem);
-				await Page.waitTransitionEnd(2000, undefined, () => {
+				await Page.waitTransitionEnd(3000, undefined, () => {
 					expandableItem.title.click();
 				});
 				await expectOpen(expandableItem);
@@ -132,13 +132,13 @@ describe('ExpandableItem', function () {
 
 		it('should close when 5-way focus returns to title', async function () {
 			await expandableItem.focus();
-			await Page.waitTransitionEnd(2000, undefined, () => {
+			await Page.waitTransitionEnd(3000, undefined, () => {
 				Page.spotlightSelect();
 			});
 
 			await expectOpen(expandableItem);
 			expect(await expandableItem.item.isFocused()).to.be.true();
-			await Page.waitTransitionEnd(2000, undefined, () => {
+			await Page.waitTransitionEnd(3000, undefined, () => {
 				Page.spotlightUp();
 			});
 			await expectClosed(expandableItem);
@@ -150,7 +150,7 @@ describe('ExpandableItem', function () {
 
 		it('should not allow 5-way navigation beyond the last item', async function () {
 			await expandableItem.focus();
-			await Page.waitTransitionEnd(2000, undefined, () => {
+			await Page.waitTransitionEnd(3000, undefined, () => {
 				Page.spotlightSelect();
 			});
 
