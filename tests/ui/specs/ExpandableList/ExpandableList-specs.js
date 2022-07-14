@@ -269,7 +269,7 @@ describe('ExpandableList', function () {
 				await Page.waitTransitionEnd(2000, undefined, () => {
 					expandable.title.click();
 				});
-				expandable.item(0).click();
+				await expandable.item(0).click();
 				expect(await expandable.item(0).$(expandable.selectedClass).isExisting()).to.be.true();
 			});
 
@@ -277,7 +277,7 @@ describe('ExpandableList', function () {
 				await Page.waitTransitionEnd(2000, undefined, () => {
 					expandable.title.click();
 				});
-				expandable.item(0).click();
+				await expandable.item(0).click();
 				await Page.waitTransitionEnd(2000, undefined, () => {
 					expandable.title.click();
 				});
@@ -288,17 +288,17 @@ describe('ExpandableList', function () {
 				await Page.waitTransitionEnd(2000, undefined, () => {
 					expandable.title.click();
 				});
-				expandable.item(0).click();
-				expandable.item(0).click();
-				expect(await expandable.item(0).getAttribute('aria-checked')).to.equal('false');
+				await expandable.item(0).click();
+				await expandable.item(0).click();
+				expect(await expandable.item(0).$(expandable.selectedClass).isExisting()).to.be.false();
 			});
 
 			it('should allow multiple selected items', async function () {
 				await Page.waitTransitionEnd(2000, undefined, () => {
 					expandable.title.click();
 				});
-				expandable.item(0).click();
-				expandable.item(1).click();
+				await expandable.item(0).click();
+				await expandable.item(1).click();
 				expect(await expandable.item(0).$(expandable.selectedClass).isExisting()).to.be.true();
 				expect(await expandable.item(1).$(expandable.selectedClass).isExisting()).to.be.true();
 			});
