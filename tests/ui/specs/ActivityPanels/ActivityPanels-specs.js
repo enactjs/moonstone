@@ -58,9 +58,6 @@ describe('ActivityPanels', function () {
 			await Page.waitTransitionEnd(5000, undefined, () => {
 				Page.breadcrumbHeader.click();
 			}, []);
-			await Page.waitTransitionEnd(5000, undefined, () => {
-				Page.breadcrumbHeader.click();
-			}, []);
 
 			expect((await Page.panelTitle).toLowerCase()).to.equal('FIRST'.toLowerCase());
 		});

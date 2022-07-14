@@ -276,7 +276,7 @@ describe('ExpandableItem', function () {
 
 		describe('pointer', function () {
 			it('should not open when clicked', async function () {
-				expandableItem.title.click();
+				await expandableItem.title.click();
 				await expectClosed(expandableItem);
 			});
 		});
