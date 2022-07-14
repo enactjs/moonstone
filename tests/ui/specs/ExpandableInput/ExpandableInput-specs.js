@@ -676,7 +676,7 @@ describe('ExpandableInput', function () {
 			});
 
 			it('should have title icon be on the right side title label', async function () {
-				await expectOrdering(await expandable.titleIcon, await expandable.titleTextMarquee);
+				expectOrdering(await expandable.titleIcon, await expandable.titleTextMarquee);
 			});
 		});
 
@@ -684,7 +684,7 @@ describe('ExpandableInput', function () {
 			const expandable = Page.components.iconBeforeAfter;
 
 			it('should have beforeIcon positioned on the right side of the afterIcon', async function () {
-				await expectOrdering(await expandable.iconAfter, await expandable.iconBefore);
+				expectOrdering(await expandable.iconAfter, await expandable.iconBefore);
 			});
 		});
 	});

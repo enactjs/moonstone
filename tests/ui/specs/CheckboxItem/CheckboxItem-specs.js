@@ -28,20 +28,20 @@ describe('CheckboxItem', function () {
 				expect(await checkboxItem.isBefore).to.be.true();
 			});
 
-			it('should have icon to the left of marquee text', async function () {
-				await expectOrdering(checkboxItem.icon, checkboxItem.value);
+			it('should have icon to the left of marquee text', function () {
+				expectOrdering(checkboxItem.icon, checkboxItem.value);
 			});
 
 			describe('5-way', function () {
-				it('should check the item when selected - [GT-21124]', function () {
-					Page.spotlightSelect();
-					expectChecked(checkboxItem);
+				it('should check the item when selected - [GT-21124]', async function () {
+					await Page.spotlightSelect();
+					await expectChecked(checkboxItem);
 				});
 
-				it('should re-uncheck the item when selected twice', function () {
-					Page.spotlightSelect();
-					Page.spotlightSelect();
-					expectUnchecked(checkboxItem);
+				it('should re-uncheck the item when selected twice', async function () {
+					await Page.spotlightSelect();
+					await Page.spotlightSelect();
+					await expectUnchecked(checkboxItem);
 				});
 
 				it('should display check icon when selected', async function () {
@@ -174,7 +174,7 @@ describe('CheckboxItem', function () {
 			it('should have two inlined checkboxes positioned inlined', async function () {
 				const checkboxItem2 = await Page.components.checkboxInlineAfter.self;
 
-				await expectInline(await checkboxItem.self, checkboxItem2);
+				expectInline(await checkboxItem.self, checkboxItem2);
 			});
 
 			it('should have correct text', async function () {
@@ -325,14 +325,14 @@ describe('CheckboxItem', function () {
 		it('should have icon to the right of text when default', async function () {
 			const checkboxItem = await Page.components.checkboxDefault;
 
-			await expectOrdering(checkboxItem.value, checkboxItem.icon);
+			expectOrdering(checkboxItem.value, checkboxItem.icon);
 		});
 
 		it('should have two inlined checkboxes positioned inlined', async function () {
 			const checkboxItem1 = await Page.components.checkboxInline.self;
 			const checkboxItem2 = await Page.components.checkboxInlineAfter.self;
 
-			await expectInline(checkboxItem1, checkboxItem2);
+			expectInline(checkboxItem1, checkboxItem2);
 		});
 	});
 });
