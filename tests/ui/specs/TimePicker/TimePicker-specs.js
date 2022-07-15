@@ -22,7 +22,7 @@ describe('TimePicker', function () {
 			});
 
 			it('should be initially closed', async function () {
-				timePicker.self.waitForExist(500);
+				await timePicker.self.waitForExist(500);
 				await expectClosed(timePicker);
 			});
 
@@ -329,7 +329,7 @@ describe('TimePicker', function () {
 			const timePicker = Page.components.timePickerDefaultOpenWithNoneText;
 
 			it('should be initially open', async function () {
-				timePicker.self.waitForExist(500);
+				await timePicker.self.waitForExist(500);
 				await expectOpen(timePicker);
 			});
 
@@ -371,7 +371,7 @@ describe('TimePicker', function () {
 			const timePicker = Page.components.timePickerDefaultOpenWithDefaultValue;
 
 			it('should be initially open', async function () {
-				timePicker.self.waitForExist(500);
+				await timePicker.self.waitForExist(500);
 				await expectOpen(timePicker);
 			});
 
@@ -419,7 +419,7 @@ describe('TimePicker', function () {
 
 			it('should not have labeled pickers', async function () {
 				timePicker.title.click();
-				expectNoLabels(timePicker);
+				await expectNoLabels(timePicker);
 			});
 		});
 
@@ -427,7 +427,7 @@ describe('TimePicker', function () {
 			const timePicker = Page.components.timePickerDisabledWithNoneText;
 
 			it('should be initially closed', async function () {
-				timePicker.self.waitForExist(500);
+				await timePicker.self.waitForExist(500);
 				await expectClosed(timePicker);
 			});
 
@@ -442,7 +442,7 @@ describe('TimePicker', function () {
 					expect(await timePicker.title.isFocused()).to.be.true();
 				});
 				it('should not open when selected', async function () {
-					timePicker.focus();
+					await timePicker.focus();
 					await Page.spotlightSelect();
 					// it should never open, but wait and then check to be sure
 					browser.pause(500);
@@ -464,7 +464,7 @@ describe('TimePicker', function () {
 			const timePicker = Page.components.timePickerDisabledWithDefaultValue;
 
 			it('should be initially closed', async function () {
-				timePicker.self.waitForExist(500);
+				await timePicker.self.waitForExist(500);
 				await expectClosed(timePicker);
 			});
 
@@ -477,7 +477,7 @@ describe('TimePicker', function () {
 			const timePicker = Page.components.timePickerDisabledOpenWithNoneText;
 
 			it('should be initially closed', async function () {
-				timePicker.self.waitForExist(500);
+				await timePicker.self.waitForExist(500);
 				await expectClosed(timePicker);
 			});
 

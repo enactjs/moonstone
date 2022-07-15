@@ -46,7 +46,7 @@ describe('DatePicker', function () {
 					});
 
 					const month = new Date(await datePicker.valueText).getMonth();
-					expectOpen(await datePicker);
+					await expectOpen(await datePicker);
 					expect(await datePicker.month.isFocused()).to.be.true();
 					expect(month).to.be.within(0, 11);
 				});
@@ -56,10 +56,10 @@ describe('DatePicker', function () {
 						Page.spotlightSelect();
 					});
 
-					expectOpen(await datePicker);
+					await expectOpen(await datePicker);
 					expect(await datePicker.month.isFocused()).to.be.true();
 					await Page.spotlightSelect();
-					expectClosed(await datePicker);
+					await expectClosed(await datePicker);
 				});
 
 				it('should focus title when 5-way right from last picker - [GT-24986]', async function () {
@@ -67,7 +67,7 @@ describe('DatePicker', function () {
 						Page.spotlightSelect();
 					});
 
-					expectOpen(await datePicker);
+					await expectOpen(await datePicker);
 					expect(await datePicker.month.isFocused()).to.be.true();
 					await Page.spotlightRight();
 					await Page.spotlightRight();
@@ -81,7 +81,7 @@ describe('DatePicker', function () {
 					});
 
 					const {month} = await extractValues(datePicker);
-					expectOpen(await datePicker);
+					await expectOpen(await datePicker);
 					expect(await datePicker.month.isFocused()).to.be.true();
 					await Page.waitTransitionEnd(3000, undefined, () => {
 						Page.spotlightUp();
@@ -97,7 +97,7 @@ describe('DatePicker', function () {
 					});
 
 					const {month} = await extractValues(datePicker);
-					expectOpen(await datePicker);
+					await expectOpen(await datePicker);
 					expect(await datePicker.month.isFocused()).to.be.true();
 					await Page.waitTransitionEnd(3000, undefined, () => {
 						Page.spotlightDown();
@@ -114,7 +114,7 @@ describe('DatePicker', function () {
 
 					const {day, month, year} = await extractValues(datePicker);
 					const numDays = daysInMonth({month, year});
-					expectOpen(await datePicker);
+					await expectOpen(await datePicker);
 					await Page.spotlightRight();
 					expect(await datePicker.day.isFocused()).to.be.true();
 					await Page.waitTransitionEnd(3000, undefined, () => {
@@ -132,7 +132,7 @@ describe('DatePicker', function () {
 
 					const {day, month, year} = await extractValues(datePicker);
 					const numDays = daysInMonth({month, year});
-					expectOpen(await datePicker);
+					await expectOpen(await datePicker);
 					await Page.spotlightRight();
 					expect(await datePicker.day.isFocused()).to.be.true();
 					await Page.waitTransitionEnd(3000, undefined, () => {
@@ -149,7 +149,7 @@ describe('DatePicker', function () {
 					});
 
 					const {year} = await extractValues(datePicker);
-					expectOpen(await datePicker);
+					await expectOpen(await datePicker);
 					await Page.spotlightRight();
 					await Page.spotlightRight();
 					expect(await datePicker.year.isFocused()).to.be.true();
@@ -167,7 +167,7 @@ describe('DatePicker', function () {
 					});
 
 					const {year} = await extractValues(datePicker);
-					expectOpen(await datePicker);
+					await expectOpen(await datePicker);
 					await Page.spotlightRight();
 					await Page.spotlightRight();
 					expect(await datePicker.year.isFocused()).to.be.true();
@@ -185,18 +185,18 @@ describe('DatePicker', function () {
 					await Page.waitTransitionEnd(3000, undefined, () => {
 						datePicker.title.click();
 					});
-					expectOpen(await datePicker);
+					await expectOpen(await datePicker);
 				});
 
 				it('should close on title click when open', async function () {
 					await Page.waitTransitionEnd(3000, undefined, () => {
 						datePicker.title.click();
 					});
-					expectOpen(await datePicker);
+					await expectOpen(await datePicker);
 					await Page.waitTransitionEnd(3000, undefined, () => {
 						datePicker.title.click();
 					});
-					expectClosed(await datePicker);
+					await expectClosed(await datePicker);
 				});
 
 				it('should select item', async function () {
@@ -212,7 +212,7 @@ describe('DatePicker', function () {
 						datePicker.title.click();
 					});
 					const {month} = await extractValues(datePicker);
-					expectOpen(await datePicker);
+					await expectOpen(await datePicker);
 					await Page.waitTransitionEnd(3000, undefined, () => {
 						datePicker.incrementer(datePicker.month).click();
 					});
@@ -397,7 +397,7 @@ describe('DatePicker', function () {
 
 			it('should not have labeled pickers', async function () {
 				await datePicker.title.click();
-				expectNoLabels(datePicker);
+				await expectNoLabels(datePicker);
 			});
 		});
 
