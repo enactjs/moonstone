@@ -20,11 +20,11 @@
     "theme": "moonstone"
   },
   "dependencies": {
-    "@enact/core": "^4.5.0-rc.1",
-    "@enact/i18n": "^4.5.0-rc.1",
+    "@enact/core": "^4.5.0",
+    "@enact/i18n": "^4.5.0",
     "@enact/moonstone": "../../",
-    "@enact/spotlight": "^4.5.0-rc.1",
-    "@enact/ui": "^4.5.0-rc.1",
+    "@enact/spotlight": "^4.5.0",
+    "@enact/ui": "^4.5.0",
     "classnames": "^2.3.1",
     "ilib": "^14.14.0",
     "query-string": "^7.1.1",
@@ -36,6 +36,6 @@
     "@storybook/react": "5.3.5",
     "@storybook/theming": "5.3.5",
     "babel-loader": "^8.2.5",
-    "core-js": "^3.23.4"
+    "core-js": "^3.23.5"
   }
 }
