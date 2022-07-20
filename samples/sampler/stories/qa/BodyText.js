@@ -12,7 +12,7 @@ const stringsToChoose = [
 ];
 
 export default {
-	title: 'Agate/BodyText',
+	title: 'Moonstone/BodyText',
 	component: 'BodyText'
 };
 

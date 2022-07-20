@@ -24,31 +24,16 @@ const locales = {
 	'si-LK - Sinhala, external font family with different line metrics': 'si-LK'
 };
 
-// This mapping/remapping is necessary to support objects being used as select-knob values, since
-// they cannot be safely URL encoded during the knob saving/linking process.
-const backgroundLabels = {
-	'Default (Based on Skin)':  '',
-	'Strawberries (Red)':       'backgroundColorful1',
-	'Tunnel (Green)':           'backgroundColorful2',
-	'Mountains (Blue)':         'backgroundColorful3',
-	'Misty River':              'backgroundColorful4',
-	'Turbulent Tides':          'backgroundColorful5',
-	'Space Station':            'backgroundColorful6',
-	'Warm Pup':                 'backgroundColorful7',
-	'Random':                   'backgroundColorful8'
-};
-
-// Values of `backgroundLabels` must be kept in sync with keys of `backgroundLabelMap`.
-const backgroundLabelMap = {
-	'': '',
-	'backgroundColorful1': '#bb3352 url("http://picsum.photos/1280/720?image=1080") no-repeat center/cover',
-	'backgroundColorful2': '#4e6a40 url("http://picsum.photos/1280/720?image=1063") no-repeat center/cover',
-	'backgroundColorful3': '#5985a8 url("http://picsum.photos/1280/720?image=930") no-repeat center/cover',
-	'backgroundColorful4': '#71736d url("http://picsum.photos/1280/720?image=1044") no-repeat center/cover',
-	'backgroundColorful5': '#547460 url("http://picsum.photos/1280/720?image=1053") no-repeat center/cover',
-	'backgroundColorful6': '#7c4590 url("http://picsum.photos/1280/720?image=967") no-repeat center/cover',
-	'backgroundColorful7': '#5d6542 url("http://picsum.photos/1280/720?image=1025") no-repeat center/cover',
-	'backgroundColorful8': '#555 url("http://picsum.photos/1280/720") no-repeat center/cover'
+const backgrounds = {
+	'Default (Based on Skin)': 'default',
+	'Strawberries (Red)':      '#bb3352 url("http://picsum.photos/1280/720?image=1080") no-repeat center/cover',
+	'Tunnel (Green)':          '#4e6a40 url("http://picsum.photos/1280/720?image=1063") no-repeat center/cover',
+	'Mountains (Blue)':        '#5985a8 url("http://picsum.photos/1280/720?image=930") no-repeat center/cover',
+	'Misty River':             '#71736d url("http://picsum.photos/1280/720?image=1044") no-repeat center/cover',
+	'Turbulent Tides':         '#547460 url("http://picsum.photos/1280/720?image=1053") no-repeat center/cover',
+	'Space Station':           '#7c4590 url("http://picsum.photos/1280/720?image=967") no-repeat center/cover',
+	'Warm Pup':                '#5d6542 url("http://picsum.photos/1280/720?image=1025") no-repeat center/cover',
+	'Random':                  '#555 url("http://picsum.photos/1280/720") no-repeat center/cover'
 };
 
 const skins = {
@@ -76,8 +61,8 @@ export const globalTypes = {
 	'locale': getObjectType('locale', 'en-US', locales),
 	'large text': getBooleanType('large text'),
 	'high contrast': getBooleanType('high contrast'),
-	'skin': getObjectType('skin', 'neutral', skins),
-	'background': getObjectType('background', 'default', backgroundLabels),
+	'skin': getObjectType('skin', 'dark', skins),
+	'background': getObjectType('background', 'default', backgrounds),
 	'debug aria': getBooleanType('debug aria'),
 	'debug layout': getBooleanType('debug layout'),
 	'debug spotlight': getBooleanType('debug spotlight'),
