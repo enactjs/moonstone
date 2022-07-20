@@ -1,6 +1,4 @@
-import {boolean, select} from '@enact/storybook-utils/addons/knobs';
-import {storiesOf} from '@storybook/react';
-
+import {boolean, select} from '@enact/storybook-utils/addons/controls';
 import BodyText from '@enact/moonstone/BodyText';
 
 BodyText.displayName = 'BodyText';
@@ -13,15 +11,19 @@ const stringsToChoose = [
 	'a'
 ];
 
-storiesOf('BodyText', module)
-	.add(
-		'with long and short strings',
-		(() => (
-			<BodyText
-				centered={boolean('centered', BodyText)}
-				noWrap={boolean('noWrap', BodyText)}
-			>
-				{select('children', stringsToChoose, BodyText, stringsToChoose[0])}
-			</BodyText>
-		))
-	);
+export default {
+	title: 'Agate/BodyText',
+	component: 'BodyText'
+};
+
+export const WithLongAndShortStrings = (args) => (
+	<BodyText centered={args['centered']} noWrap={args['noWrap']}>
+		{args['children']}
+	</BodyText>
+);
+
+boolean('centered', WithLongAndShortStrings, BodyText);
+boolean('noWrap', WithLongAndShortStrings, BodyText);
+select('children', WithLongAndShortStrings, stringsToChoose, BodyText, stringsToChoose[0]);
+
+WithLongAndShortStrings.storyName = 'with long and short strings';
