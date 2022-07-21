@@ -3,8 +3,8 @@
 import classnames from 'classnames';
 import kind from '@enact/core/kind';
 import platform from '@enact/core/platform';
-import PropTypes from 'prop-types';
 import {Column, Cell} from '@enact/ui/Layout';
+import PropTypes from 'prop-types';
 
 import BodyText from '@enact/moonstone/BodyText';
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
@@ -41,10 +41,10 @@ const PanelsBase = kind({
 		return (
 			!noPanels ? <Panels {...rest} className={panelsClassName} onApplicationClose={reloadPage}>
 				{!noPanel ? <Panel className={css.panel}>
-					{!noHeader ? [<Header type="compact" title={title} key="header" />,
+					{!noHeader ? [<Header key="header" title={title} type="compact" />,
 						<Column key="body">
 							{description ? (
-								<Cell shrink component={BodyText} className={css.description}>{description}</Cell>
+								<Cell className={css.description} component={BodyText} shrink>{description}</Cell>
 							) : null}
 							<Cell className={css.storyCell}>{children}</Cell>
 						</Column>] : children
@@ -86,19 +86,19 @@ const StorybookDecorator = (story, config = {}) => {
 	return (
 		<Theme
 			className={classnames(classes)}
-			title={componentName === config.name ? `${config.kind}`.replace(/\//g, ' ').trim() : `${componentName} ${config.name}`}
 			description={hasInfoText ? config.parameters.info.text : null}
-			locale={globals.locale}
-			textSize={globals.largeText ? 'large' : 'normal'}
 			highContrast={globals.highContrast}
-			style={{
-				'--moon-env-background': globals.background === 'default' ? '' : globals.background
-			}}
-			skin={globals.skin}
-			{...hasProps ? config.parameters.props : null}
+			locale={globals.locale}
 			noHeader={config.noHeader}
 			noPanel={config.noPanel}
 			noPanels={config.noPanels}
+			skin={globals.skin}
+			style={{
+				'--moon-env-background': globals.background === 'default' ? '' : globals.background
+			}}
+			textSize={globals.largeText ? 'large' : 'normal'}
+			title={componentName === config.name ? `${config.kind}`.replace(/\//g, ' ').trim() : `${componentName} ${config.name}`}
+			{...hasProps ? config.parameters.props : null}
 		>
 			{sample}
 		</Theme>
