@@ -1,4 +1,4 @@
-// import {boolean, select, text} from '@enact/storybook-utils/addons/knobs';
+// import {boolean, select, text} from '@enact/storybook-utils/addons/controls';
 // import {storiesOf} from '@storybook/react';
 //
 // import Heading from '@enact/moonstone/Heading';

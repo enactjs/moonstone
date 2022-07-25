@@ -3,7 +3,7 @@
 // import IconButton from '@enact/moonstone/IconButton';
 // import IncrementSlider, {IncrementSliderBase} from '@enact/moonstone/IncrementSlider';
 // import {mergeComponentMetadata} from '@enact/storybook-utils';
-// import {number} from '@enact/storybook-utils/addons/knobs';
+// import {number} from '@enact/storybook-utils/addons/controls';
 // import ri from '@enact/ui/resolution';
 // import {storiesOf} from '@storybook/react';
 // import PropTypes from 'prop-types';

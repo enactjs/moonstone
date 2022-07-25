@@ -1,7 +1,7 @@
 // import Item from '@enact/moonstone/Item';
 // import Slider from '@enact/moonstone/Slider';
 // import VirtualList from '@enact/moonstone/VirtualList';
-// import {number} from '@enact/storybook-utils/addons/knobs';
+// import {number} from '@enact/storybook-utils/addons/controls';
 // import ri from '@enact/ui/resolution';
 // import {storiesOf} from '@storybook/react';
 // import PropTypes from 'prop-types';

@@ -1,4 +1,4 @@
-// import {boolean, number, select} from '@enact/storybook-utils/addons/knobs';
+// import {boolean, number, select} from '@enact/storybook-utils/addons/controls';
 // import {mergeComponentMetadata} from '@enact/storybook-utils';
 // import {storiesOf} from '@storybook/react';
 //

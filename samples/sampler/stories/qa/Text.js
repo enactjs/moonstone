@@ -1,4 +1,4 @@
-// import {select} from '@enact/storybook-utils/addons/knobs';
+// import {select} from '@enact/storybook-utils/addons/controls';
 // import {storiesOf} from '@storybook/react';
 //
 // import BodyText from '@enact/moonstone/BodyText';

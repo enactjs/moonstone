@@ -2,7 +2,7 @@
 // import Notification from '@enact/moonstone/Notification';
 // import Popup from '@enact/moonstone/Popup';
 // import {action} from '@enact/storybook-utils/addons/actions';
-// import {boolean} from '@enact/storybook-utils/addons/knobs';
+// import {boolean} from '@enact/storybook-utils/addons/controls';
 // import {mergeComponentMetadata} from '@enact/storybook-utils';
 // import {storiesOf} from '@storybook/react';
 // import {useCallback, useState} from 'react';

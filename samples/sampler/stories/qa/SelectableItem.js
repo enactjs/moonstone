@@ -1,4 +1,4 @@
-// import {boolean, select, text} from '@enact/storybook-utils/addons/knobs';
+// import {boolean, select, text} from '@enact/storybook-utils/addons/controls';
 // import {action} from '@enact/storybook-utils/addons/actions';
 // import Group from '@enact/ui/Group';
 // import {storiesOf} from '@storybook/react';

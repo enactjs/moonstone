@@ -28,7 +28,7 @@
 // import Pause from '@enact/spotlight/Pause';
 // import SpotlightContainerDecorator from '@enact/spotlight/SpotlightContainerDecorator';
 // import {action} from '@enact/storybook-utils/addons/actions';
-// import {boolean, select} from '@enact/storybook-utils/addons/knobs';
+// import {boolean, select} from '@enact/storybook-utils/addons/controls';
 // import {Cell, Column, Row} from '@enact/ui/Layout';
 // import ri from '@enact/ui/resolution';
 // import {storiesOf} from '@storybook/react';

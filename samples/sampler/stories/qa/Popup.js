@@ -2,7 +2,7 @@
 // import Notification from '@enact/moonstone/Notification';
 // import Popup from '@enact/moonstone/Popup';
 // import SpotlightContainerDecorator from '@enact/spotlight/SpotlightContainerDecorator';
-// import {boolean, select, text} from '@enact/storybook-utils/addons/knobs';
+// import {boolean, select, text} from '@enact/storybook-utils/addons/controls';
 // import {action} from '@enact/storybook-utils/addons/actions';
 // import Toggleable from '@enact/ui/Toggleable';
 // import {storiesOf} from '@storybook/react';

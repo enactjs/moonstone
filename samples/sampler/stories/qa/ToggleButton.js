@@ -1,5 +1,5 @@
 // import {action} from '@enact/storybook-utils/addons/actions';
-// import {boolean, select, text} from '@enact/storybook-utils/addons/knobs';
+// import {boolean, select, text} from '@enact/storybook-utils/addons/controls';
 // import {mergeComponentMetadata} from '@enact/storybook-utils';
 // import UiButton, {ButtonBase as UIButtonBase} from '@enact/ui/Button';
 // import {storiesOf} from '@storybook/react';

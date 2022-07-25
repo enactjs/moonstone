@@ -2,7 +2,7 @@
 // import Input from '@enact/moonstone/Input';
 // import Spinner from '@enact/moonstone/Spinner';
 // import {action} from '@enact/storybook-utils/addons/actions';
-// import {boolean, select, text} from '@enact/storybook-utils/addons/knobs';
+// import {boolean, select, text} from '@enact/storybook-utils/addons/controls';
 // import ri from '@enact/ui/resolution';
 // import {storiesOf} from '@storybook/react';
 // import {useCallback, useState} from 'react';

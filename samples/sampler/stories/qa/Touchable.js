@@ -1,6 +1,6 @@
 // import kind from '@enact/core/kind';
 // import {action} from '@enact/storybook-utils/addons/actions';
-// import {boolean, number} from '@enact/storybook-utils/addons/knobs';
+// import {boolean, number} from '@enact/storybook-utils/addons/controls';
 // import Touchable from '@enact/ui/Touchable';
 // import ri from '@enact/ui/resolution';
 // import PropTypes from 'prop-types';

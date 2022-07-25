@@ -1,12 +1,12 @@
 // import {action} from '@enact/storybook-utils/addons/actions';
-// import {boolean, select} from '@enact/storybook-utils/addons/knobs';
+// import {boolean, select} from '@enact/storybook-utils/addons/controls';
 // import PickerAddRemove from './components/PickerAddRemove';
 // import PickerRTL from './components/PickerRTL';
 // import {storiesOf} from '@storybook/react';
 //
 // import Picker from '@enact/moonstone/Picker';
 //
-// import iconNames from '../default/icons';
+// import iconNames from '../helper/icons';
 //
 // Picker.displayName = 'Picker';
 //

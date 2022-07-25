@@ -5,7 +5,7 @@
 // import {ScrollableBase} from '@enact/moonstone/Scrollable';
 // import Scroller from '@enact/moonstone/Scroller';
 // import {action} from '@enact/storybook-utils/addons/actions';
-// import {boolean, number, select} from '@enact/storybook-utils/addons/knobs';
+// import {boolean, number, select} from '@enact/storybook-utils/addons/controls';
 // import {mergeComponentMetadata} from '@enact/storybook-utils';
 // import Group from '@enact/ui/Group';
 // import ri from '@enact/ui/resolution';

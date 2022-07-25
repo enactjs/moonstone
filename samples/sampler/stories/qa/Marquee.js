@@ -5,7 +5,7 @@
 // import Icon from '@enact/moonstone/Icon';
 // import Item, {ItemBase} from '@enact/moonstone/Item';
 // import Marquee, {MarqueeController} from '@enact/moonstone/Marquee';
-// import {boolean, number, select} from '@enact/storybook-utils/addons/knobs';
+// import {boolean, number, select} from '@enact/storybook-utils/addons/controls';
 // import Spottable from '@enact/spotlight/Spottable';
 // import ri from '@enact/ui/resolution';
 // import {storiesOf} from '@storybook/react';

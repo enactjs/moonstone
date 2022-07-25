@@ -1,10 +1,10 @@
-// import {boolean, select, text} from '@enact/storybook-utils/addons/knobs';
+// import {boolean, select, text} from '@enact/storybook-utils/addons/controls';
 // import {storiesOf} from '@storybook/react';
 //
 // import Icon from '@enact/moonstone/Icon';
 // import Item from '@enact/moonstone/Item';
 //
-// import icons from '../default/icons';
+// import icons from '../helper/icons';
 //
 // const iconNames = ['', ...icons];
 //

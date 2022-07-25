@@ -5,7 +5,7 @@
 // import Input from '@enact/moonstone/Input';
 // import IconButton from '@enact/moonstone/IconButton';
 // import Scroller from '@enact/moonstone/Scroller';
-// import {boolean, number, object, select, text} from '@enact/storybook-utils/addons/knobs';
+// import {boolean, number, object, select, text} from '@enact/storybook-utils/addons/controls';
 // import {mergeComponentMetadata} from '@enact/storybook-utils';
 // import Layout, {Cell} from '@enact/ui/Layout';
 // import ri from '@enact/ui/resolution';

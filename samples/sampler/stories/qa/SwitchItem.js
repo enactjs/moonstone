@@ -1,5 +1,5 @@
 // import {action} from '@enact/storybook-utils/addons/actions';
-// import {boolean, text} from '@enact/storybook-utils/addons/knobs';
+// import {boolean, text} from '@enact/storybook-utils/addons/controls';
 // import Group from '@enact/ui/Group';
 // import {storiesOf} from '@storybook/react';
 //

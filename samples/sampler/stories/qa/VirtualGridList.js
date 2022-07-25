@@ -4,7 +4,7 @@
 // import Item from '@enact/moonstone/Item';
 // import {VirtualGridList, VirtualListBase} from '@enact/moonstone/VirtualList';
 // import {action} from '@enact/storybook-utils/addons/actions';
-// import {boolean, number, select} from '@enact/storybook-utils/addons/knobs';
+// import {boolean, number, select} from '@enact/storybook-utils/addons/controls';
 // import {mergeComponentMetadata} from '@enact/storybook-utils';
 // import ri from '@enact/ui/resolution';
 // import {ScrollableBase as UiScrollableBase} from '@enact/ui/Scrollable';

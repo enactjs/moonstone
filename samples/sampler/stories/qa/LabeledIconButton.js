@@ -1,5 +1,5 @@
 // import {mergeComponentMetadata} from '@enact/storybook-utils';
-// import {boolean, select} from '@enact/storybook-utils/addons/knobs';
+// import {boolean, select} from '@enact/storybook-utils/addons/controls';
 // import UIButton, {ButtonBase as UIButtonBase} from '@enact/ui/Button';
 // import {LabeledIconBase as UiLabeledIconBase, LabeledIcon as UiLabeledIcon} from '@enact/ui/LabeledIcon';
 // import {storiesOf} from '@storybook/react';
@@ -10,7 +10,7 @@
 // import {IconButtonBase} from '@enact/moonstone/IconButton';
 // import LabeledIconButton from '@enact/moonstone/LabeledIconButton';
 //
-// import iconNames from '../default/icons';
+// import iconNames from '../helper/icons';
 //
 // LabeledIconButton.displayName = 'LabeledIconButton';
 // const Config = mergeComponentMetadata('LabeledIconButton', UiLabeledIconBase, UiLabeledIcon, Button, ButtonBase, UIButton, UIButtonBase, IconButtonBase, LabeledIconButton);
