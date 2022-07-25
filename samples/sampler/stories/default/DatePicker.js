@@ -1,38 +1,51 @@
-// import {action} from '@enact/storybook-utils/addons/actions';
-// import {boolean, text} from '@enact/storybook-utils/addons/knobs';
-// import {mergeComponentMetadata, removeProps} from '@enact/storybook-utils';
-// import {storiesOf} from '@storybook/react';
-//
-// import DatePicker, {DatePickerBase} from '@enact/moonstone/DatePicker';
-//
-// const Config = mergeComponentMetadata('DatePicker', DatePickerBase, DatePicker);
-// removeProps(Config, 'year defaultOpen day maxDays maxMonths month onChangeDate onChangeMonth onChangeYear order');
-//
-// DatePicker.displayName = 'DatePicker';
-//
-// storiesOf('Moonstone', module)
-// 	.add(
-// 		'DatePicker',
-// 		() => (
-// 			<DatePicker
-// 				dayAriaLabel={text('dayAriaLabel', Config)}
-// 				dayLabel={text('dayLabel', Config)}
-// 				disabled={boolean('disabled', Config)}
-// 				monthAriaLabel={text('monthAriaLabel', Config)}
-// 				monthLabel={text('monthLabel', Config)}
-// 				noLabels={boolean('noLabels', Config)}
-// 				noneText={text('noneText', Config, 'Nothing Selected')}
-// 				onChange={action('onChange')}
-// 				onClose={action('onClose')}
-// 				onOpen={action('onOpen')}
-// 				title={text('title', Config, 'Date')}
-// 				yearAriaLabel={text('yearAriaLabel', Config)}
-// 				yearLabel={text('yearLabel', Config)}
-// 			/>
-// 		),
-// 		{
-// 			info: {
-// 				text: 'The basic DatePicker'
-// 			}
-// 		}
-// 	);
+import { action } from '@enact/storybook-utils/addons/actions';
+import { boolean, text } from '@enact/storybook-utils/addons/controls';
+import { mergeComponentMetadata, removeProps } from '@enact/storybook-utils';
+
+import DatePicker, { DatePickerBase } from '@enact/moonstone/DatePicker';
+
+const Config = mergeComponentMetadata('DatePicker', DatePickerBase, DatePicker);
+removeProps(Config, 'year defaultOpen day maxDays maxMonths month onChangeDate onChangeMonth onChangeYear order');
+
+DatePicker.displayName = 'DatePicker';
+
+export default {
+	title: 'Moonstone/DatePicker',
+	component: 'DatePicker'
+};
+
+export const _DatePicker = (args) => (
+	<DatePicker
+		dayAriaLabel={args['dayAriaLabel']}
+		dayLabel={args['dayLabel']}
+		disabled={args['disabled']}
+		monthAriaLabel={args['monthAriaLabel']}
+		monthLabel={args['monthLabel']}
+		noLabels={args['noLabels']}
+		noneText={args['noneText']}
+		onChange={action('onChange')}
+		onClose={action('onClose')}
+		onOpen={action('onOpen')}
+		title={args['title']}
+		yearAriaLabel={args['yearAriaLabel']}
+		yearLabel={args['yearLabel']}
+	/>
+);
+
+boolean('disabled', _DatePicker,  Config);
+boolean('noLabels', _DatePicker, Config);
+text('dayAriaLabel', _DatePicker, Config);
+text('dayLabel', _DatePicker, Config);
+text('monthAriaLabel', _DatePicker, Config);
+text('monthLabel', _DatePicker, Config);
+text('noneText', _DatePicker, Config, 'Nothing Selected');
+text('title', _DatePicker, Config, 'Date');
+text('yearAriaLabel', _DatePicker, Config);
+text('yearLabel', _DatePicker, Config);
+
+_DatePicker.storyName = 'DatePicker';
+_DatePicker.parameters = {
+	info: {
+		text: 'The basic DatePicker'
+	}
+};
