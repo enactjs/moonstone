@@ -1,6 +1,6 @@
-import { action } from '@enact/storybook-utils/addons/actions';
-import { boolean, text } from '@enact/storybook-utils/addons/controls';
-import { mergeComponentMetadata } from '@enact/storybook-utils';
+import {action} from '@enact/storybook-utils/addons/actions';
+import {boolean, text} from '@enact/storybook-utils/addons/controls';
+import {mergeComponentMetadata} from '@enact/storybook-utils';
 
 import Dialog from '@enact/moonstone/Dialog';
 import Popup from '@enact/moonstone/Popup';

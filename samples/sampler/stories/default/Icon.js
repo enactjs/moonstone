@@ -1,8 +1,8 @@
-import { select, text } from '@enact/storybook-utils/addons/controls';
-import { mergeComponentMetadata } from '@enact/storybook-utils';
+import {select, text} from '@enact/storybook-utils/addons/controls';
+import {mergeComponentMetadata} from '@enact/storybook-utils';
 import UiIcon from '@enact/ui/Icon';
 
-import Icon, { IconBase } from '@enact/moonstone/Icon';
+import Icon, {IconBase} from '@enact/moonstone/Icon';
 import Heading from '@enact/moonstone/Heading';
 import Scroller from '@enact/moonstone/Scroller';
 
@@ -32,7 +32,7 @@ export const _Icon = (args) => {
 		default: children = args['custom icon'];
 	}
 	return (
-		<Scroller style={{ height: '100%' }}>
+		<Scroller style={{height: '100%'}}>
 			<Icon flip={flip} size={size}>
 				{children}
 			</Icon>

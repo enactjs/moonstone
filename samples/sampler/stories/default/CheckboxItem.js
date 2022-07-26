@@ -1,13 +1,13 @@
-import { action } from '@enact/storybook-utils/addons/actions';
-import { boolean, select, text } from '@enact/storybook-utils/addons/controls';
-import { mergeComponentMetadata, nullify } from '@enact/storybook-utils';
-import UiToggleItem, { ToggleItemBase as UiToggleItemBase } from '@enact/ui/ToggleItem';
+import {action} from '@enact/storybook-utils/addons/actions';
+import {boolean, select, text} from '@enact/storybook-utils/addons/controls';
+import {mergeComponentMetadata, nullify} from '@enact/storybook-utils';
+import UiToggleItem, {ToggleItemBase as UiToggleItemBase} from '@enact/ui/ToggleItem';
 import UiItem from '@enact/ui/Item';
-import { listIcons } from '../util/icons';
+import {listIcons} from '../util/icons';
 
 import CheckboxItem from '@enact/moonstone/CheckboxItem';
 import ToggleItem from '@enact/moonstone/ToggleItem';
-import Item, { ItemBase } from '@enact/moonstone/Item';
+import Item, {ItemBase} from '@enact/moonstone/Item';
 import Icon from '@enact/moonstone/Icon';
 
 CheckboxItem.displayName = 'CheckboxItem';
@@ -34,12 +34,12 @@ export const _Checkbox = (args) => {
 			{args['children']}
 		</CheckboxItem>
 	);
-}
+};
 
 boolean('disabled', _Checkbox, Config);
 boolean('inline', _Checkbox, Config);
 select('iconPosition', _Checkbox, ['before', 'after'], Config);
-select('itemIcon', _Checkbox, ['', ...listIcons], Config)
+select('itemIcon', _Checkbox, ['', ...listIcons], Config);
 select('itemIconPosition', _Checkbox, [null, 'before', 'beforeChildren', 'afterChildren', 'after'], Config);
 text('children', _Checkbox, Config, 'Hello CheckboxItem');
 

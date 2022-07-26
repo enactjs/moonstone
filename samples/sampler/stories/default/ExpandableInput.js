@@ -1,8 +1,8 @@
-import { action } from '@enact/storybook-utils/addons/actions';
-import { boolean, select, text } from '@enact/storybook-utils/addons/controls';
-import { mergeComponentMetadata } from '@enact/storybook-utils';
+import {action} from '@enact/storybook-utils/addons/actions';
+import {boolean, select, text} from '@enact/storybook-utils/addons/controls';
+import {mergeComponentMetadata} from '@enact/storybook-utils';
 
-import ExpandableInput, { ExpandableInputBase } from '@enact/moonstone/ExpandableInput';
+import ExpandableInput, {ExpandableInputBase} from '@enact/moonstone/ExpandableInput';
 
 import icons from '../util/icons';
 
@@ -36,11 +36,11 @@ export const _ExpandableInput = (args) => (
 	/>
 );
 
-boolean('disabled',_ExpandableInput,  Config);
+boolean('disabled', _ExpandableInput,  Config);
 select('iconAfter', _ExpandableInput, iconNames, Config);
 select('iconBefore', _ExpandableInput, iconNames, Config);
 select('type', _ExpandableInput, prop.type, Config, prop.type[0]);
-text('noneText',_ExpandableInput,  Config, 'noneText');
+text('noneText', _ExpandableInput,  Config, 'noneText');
 text('placeholder', _ExpandableInput, Config, 'placeholder');
 text('title', _ExpandableInput, Config, 'title');
 

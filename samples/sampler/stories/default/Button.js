@@ -1,9 +1,9 @@
-import { action } from '@enact/storybook-utils/addons/actions';
-import { boolean, select, text } from '@enact/storybook-utils/addons/controls';
-import { mergeComponentMetadata } from '@enact/storybook-utils';
-import UIButton, { ButtonBase as UIButtonBase } from '@enact/ui/Button';
+import {action} from '@enact/storybook-utils/addons/actions';
+import {boolean, select, text} from '@enact/storybook-utils/addons/controls';
+import {mergeComponentMetadata} from '@enact/storybook-utils';
+import UIButton, {ButtonBase as UIButtonBase} from '@enact/ui/Button';
 
-import Button, { ButtonBase } from '@enact/moonstone/Button';
+import Button, {ButtonBase} from '@enact/moonstone/Button';
 
 import iconNames from '../util/icons';
 

@@ -1,9 +1,9 @@
-import { action } from '@enact/storybook-utils/addons/actions';
-import { boolean, select, text } from '@enact/storybook-utils/addons/controls';
-import { mergeComponentMetadata } from '@enact/storybook-utils';
+import {action} from '@enact/storybook-utils/addons/actions';
+import {boolean, select, text} from '@enact/storybook-utils/addons/controls';
+import {mergeComponentMetadata} from '@enact/storybook-utils';
 import ri from '@enact/ui/resolution';
 
-import { ContextualPopupDecorator } from '@enact/moonstone/ContextualPopupDecorator';
+import {ContextualPopupDecorator} from '@enact/moonstone/ContextualPopupDecorator';
 import BodyText from '@enact/moonstone/BodyText';
 import Button from '@enact/moonstone/Button';
 
@@ -28,26 +28,25 @@ export default {
 };
 
 export const _ContextualPopupDecorator = (args) => {
-	console.log(args)
 	const renderPopup = () => (
 		<div>{args['popup string']}</div>
 	);
 
-	return <div style={{ textAlign: 'center', marginTop: ri.unit(99, 'rem') }}>
+	return <div style={{textAlign: 'center', marginTop: ri.unit(99, 'rem')}}>
 		<ContextualButton
 			direction={args['direction']}
 			noAutoDismiss={args['noAutoDismiss']}
 			onClose={action('onClose')}
 			open={args['open']}
-			popupComponent={renderPopup}
+			popupComponent={renderPopup} // eslint-disable-line react/jsx-no-bind
 			showCloseButton={args['showCloseButton']}
 			spotlightRestrict={args['spotlightRestrict']}
 		>
 			{args['button string']}
 		</ContextualButton>
 		<BodyText centered>Use CONTROLS to interact with the ContextualPopup.</BodyText>
-	</div>
-}
+	</div>;
+};
 
 boolean('noAutoDismiss', _ContextualPopupDecorator, Config);
 boolean('open', _ContextualPopupDecorator, Config);
@@ -55,7 +54,7 @@ boolean('showCloseButton', _ContextualPopupDecorator, Config);
 select('direction', _ContextualPopupDecorator, ['up', 'down', 'left', 'right'], Config);
 select('spotlightRestrict', _ContextualPopupDecorator, ['none', 'self-first', 'self-only'], Config);
 text('button string', _ContextualPopupDecorator, Config, 'Hello Contextual Button');
-text('popup string', _ContextualPopupDecorator, { groupId: 'Popup' }, 'Hello Contextual Popup');
+text('popup string', _ContextualPopupDecorator, {groupId: 'Popup'}, 'Hello Contextual Popup');
 
 _ContextualPopupDecorator.storyName = 'ContextualPopupDecorator';
 _ContextualPopupDecorator.parameters = {

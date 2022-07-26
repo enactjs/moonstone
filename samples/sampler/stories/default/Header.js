@@ -1,8 +1,8 @@
-import { boolean, select, text } from '@enact/storybook-utils/addons/controls';
-import { mergeComponentMetadata } from '@enact/storybook-utils';
-import { Fragment } from 'react';
+import {boolean, select, text} from '@enact/storybook-utils/addons/controls';
+import {mergeComponentMetadata} from '@enact/storybook-utils';
+import {Fragment} from 'react';
 
-import { Header, HeaderBase } from '@enact/moonstone/Panels';
+import {Header, HeaderBase} from '@enact/moonstone/Panels';
 import Button from '@enact/moonstone/Button';
 import IconButton from '@enact/moonstone/IconButton';
 import Input from '@enact/moonstone/Input';
@@ -41,7 +41,7 @@ export const _Header = (args, context) => {
 	context.noHeader = true;
 
 	const headerInput = args['headerInput'] ? <Input placeholder="placeholder text" /> : null;
-	const childrenSelection = args['children']
+	const childrenSelection = args['children'];
 	const children = prop.children[childrenSelection];
 
 	const story = (
@@ -66,18 +66,18 @@ export const _Header = (args, context) => {
 	};
 
 	return story;
-}
+};
 
 boolean('centered', _Header, Config);
 boolean('fullBleed', _Header, Config);
 boolean('headerInput', _Header, Config);
 boolean('hideLine', _Header, Config);
-boolean('noCloseButton', _Header, { displayName: 'Panels' });
-select('controls', _Header, ['no buttons', '1 button', '2 buttons'], { displayName: 'Panels' });
+boolean('noCloseButton', _Header, {displayName: 'Panels'});
+select('controls', _Header, ['no buttons', '1 button', '2 buttons'], {displayName: 'Panels'});
 select('children', _Header, ['no buttons', '1 button', '2 buttons'], Config);
 select('marqueeOn', _Header, prop.marqueeOn, Config);
 select('type', _Header, prop.type, Config);
-text('subTitleBelow', _Header, Config, 'A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.')
+text('subTitleBelow', _Header, Config, 'A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.');
 text('title', _Header, Config, 'The Matrix');
 text('titleBelow', _Header, Config, 'Free your mind');
 

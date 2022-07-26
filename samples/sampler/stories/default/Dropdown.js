@@ -1,10 +1,10 @@
-import { action } from '@enact/storybook-utils/addons/actions';
-import { boolean, range, select, text } from '@enact/storybook-utils/addons/controls';
-import { mergeComponentMetadata } from '@enact/storybook-utils';
-import UIButton, { ButtonBase as UIButtonBase } from '@enact/ui/Button';
+import {action} from '@enact/storybook-utils/addons/actions';
+import {boolean, range, select, text} from '@enact/storybook-utils/addons/controls';
+import {mergeComponentMetadata} from '@enact/storybook-utils';
+import UIButton, {ButtonBase as UIButtonBase} from '@enact/ui/Button';
 
-import Dropdown, { DropdownBase } from '@enact/moonstone/Dropdown';
-import Button, { ButtonBase } from '@enact/moonstone/Button';
+import Dropdown, {DropdownBase} from '@enact/moonstone/Dropdown';
+import Button, {ButtonBase} from '@enact/moonstone/Button';
 
 Dropdown.displayName = 'Dropdown';
 const Config = mergeComponentMetadata('Dropdown', UIButtonBase, UIButton, ButtonBase, Button, DropdownBase, Dropdown);
@@ -31,10 +31,10 @@ export const _Dropdown = (args) => {
 			{items}
 		</Dropdown>
 	);
-}
+};
 
 boolean('disabled', _Dropdown, Config);
-range('items', _Dropdown, Config, { min: 0, max: 50 }, 5);
+range('items', _Dropdown, Config, {min: 0, max: 50}, 5);
 select('direction', _Dropdown, ['up', 'down'], Config);
 select('size', _Dropdown, ['small', 'large'], Config);
 select('width', _Dropdown, ['tiny', 'small', 'medium', 'large', 'x-large', 'huge'], Config);

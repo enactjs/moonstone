@@ -1,5 +1,5 @@
-import { action } from '@enact/storybook-utils/addons/actions';
-import { boolean, select, text } from '@enact/storybook-utils/addons/controls';
+import {action} from '@enact/storybook-utils/addons/actions';
+import {boolean, select, text} from '@enact/storybook-utils/addons/controls';
 
 import DayPicker from '@enact/moonstone/DayPicker';
 
@@ -33,7 +33,7 @@ text('everyDayText', _DayPicker, DayPicker);
 text('everyWeekdayText', _DayPicker, DayPicker);
 text('everyWeekendText', _DayPicker, DayPicker);
 text('noneText', _DayPicker, DayPicker, 'none');
-text('title', _DayPicker, DayPicker, 'Day Picker')
+text('title', _DayPicker, DayPicker, 'Day Picker');
 
 _DayPicker.storyName = 'DayPicker';
 _DayPicker.parameters = {

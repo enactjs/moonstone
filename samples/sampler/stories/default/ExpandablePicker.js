@@ -1,8 +1,8 @@
-import { action } from '@enact/storybook-utils/addons/actions';
-import { boolean, select, text } from '@enact/storybook-utils/addons/controls';
-import { mergeComponentMetadata } from '@enact/storybook-utils';
+import {action} from '@enact/storybook-utils/addons/actions';
+import {boolean, select, text} from '@enact/storybook-utils/addons/controls';
+import {mergeComponentMetadata} from '@enact/storybook-utils';
 
-import ExpandablePicker, { ExpandablePickerBase } from '@enact/moonstone/ExpandablePicker';
+import ExpandablePicker, {ExpandablePickerBase} from '@enact/moonstone/ExpandablePicker';
 
 const Config = mergeComponentMetadata('ExpandablePicker', ExpandablePicker, ExpandablePickerBase);
 ExpandablePicker.displayName = 'ExpandablePicker';

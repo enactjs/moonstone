@@ -1,8 +1,8 @@
-import { action } from '@enact/storybook-utils/addons/actions';
-import { select } from '@enact/storybook-utils/addons/controls';
-import { mergeComponentMetadata } from '@enact/storybook-utils';
+import {action} from '@enact/storybook-utils/addons/actions';
+import {select} from '@enact/storybook-utils/addons/controls';
+import {mergeComponentMetadata} from '@enact/storybook-utils';
 
-import Image, { ImageBase, ImageDecorator } from '@enact/moonstone/Image';
+import Image, {ImageBase, ImageDecorator} from '@enact/moonstone/Image';
 
 const src = {
 	'hd':  'http://via.placeholder.com/200x200',

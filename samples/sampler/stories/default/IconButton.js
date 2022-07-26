@@ -27,12 +27,12 @@ export default {
 };
 
 export const _IconButton = (args) => {
-	const iconType = args['icon type']
+	const iconType = args['icon type'];
 	let children;
 	switch (iconType) {
 		case 'glyph': children = args['icon']; break;
 		case 'url src': children = args['src']; break;
-		default: children = args['custom icon']
+		default: children = args['custom icon'];
 	}
 	return (
 		<IconButton
@@ -48,7 +48,7 @@ export const _IconButton = (args) => {
 			{children}
 		</IconButton>
 	);
-}
+};
 
 boolean('disabled', _IconButton, Config);
 boolean('selected', _IconButton, Config);
@@ -60,7 +60,7 @@ select('icon', _IconButton, icons, Config, 'plus');
 select('size', _IconButton, ['small', 'large'], Config);
 select('src', _IconButton, [docs, factory, logo], Config, logo);
 text('custom icon', _IconButton, Config);
-text('tooltipText', _IconButton, Config, '')
+text('tooltipText', _IconButton, Config, '');
 
 _IconButton.storyName = 'IconButton';
 _IconButton.parameters = {
