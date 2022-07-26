@@ -70,4 +70,3 @@ _TooltipDecorator.parameters = {
 		text: 'The basic TooltipDecorator'
 	}
 };
-

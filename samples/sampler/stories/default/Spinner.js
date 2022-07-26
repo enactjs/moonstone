@@ -34,7 +34,7 @@ export const _Spinner = (args) => (
 				height: '100%',
 				position: 'absolute',
 				top: 0,
-				width: '100%',
+				width: '100%'
 			}}
 			onClick={action('Outside container events')}
 		/>
@@ -56,7 +56,7 @@ export const _Spinner = (args) => (
 					outline: 'teal dashed 1px',
 					padding: '0.1em 1em',
 					position: 'absolute',
-					transform: 'translateY(-100%)',
+					transform: 'translateY(-100%)'
 				}}
 			>Container</label>
 			<div
