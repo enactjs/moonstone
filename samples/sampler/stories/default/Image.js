@@ -1,8 +1,7 @@
+import Image, {ImageBase, ImageDecorator} from '@enact/moonstone/Image';
 import {action} from '@enact/storybook-utils/addons/actions';
 import {select} from '@enact/storybook-utils/addons/controls';
 import {mergeComponentMetadata} from '@enact/storybook-utils';
-
-import Image, {ImageBase, ImageDecorator} from '@enact/moonstone/Image';
 
 const src = {
 	'hd':  'http://via.placeholder.com/200x200',
@@ -20,10 +19,10 @@ export default {
 
 export const _Image = (args) => (
 	<Image
-		src={args['src']}
-		sizing={args['sizing']}
 		onError={action('error')}
 		onLoad={action('loaded')}
+		sizing={args['sizing']}
+		src={args['src']}
 		style={{
 			border: '#ffa500 dashed 1px'
 		}}

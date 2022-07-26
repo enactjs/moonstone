@@ -1,10 +1,9 @@
+import Heading from '@enact/moonstone/Heading';
+import Icon, {IconBase} from '@enact/moonstone/Icon';
+import Scroller from '@enact/moonstone/Scroller';
 import {select, text} from '@enact/storybook-utils/addons/controls';
 import {mergeComponentMetadata} from '@enact/storybook-utils';
 import UiIcon from '@enact/ui/Icon';
-
-import Icon, {IconBase} from '@enact/moonstone/Icon';
-import Heading from '@enact/moonstone/Heading';
-import Scroller from '@enact/moonstone/Scroller';
 
 import iconNames from '../util/icons';
 
@@ -45,8 +44,8 @@ export const _Icon = (args) => {
 };
 
 select('flip', _Icon, ['', 'both', 'horizontal', 'vertical'], Config, '');
-select('icon type', _Icon, ['glyph', 'url src', 'custom'], Config, 'glyph');
 select('icon', ['', ...iconNames], Config, 'plus');
+select('icon type', _Icon, ['glyph', 'url src', 'custom'], Config, 'glyph');
 select('size', _Icon, ['small', 'large'], Config, 'large');
 select('src', _Icon, [docs, factory, logo], Config, logo);
 text('custom icon', _Icon, Config);

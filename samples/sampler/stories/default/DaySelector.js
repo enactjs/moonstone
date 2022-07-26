@@ -1,8 +1,7 @@
+import DaySelector, {DaySelectorBase} from '@enact/moonstone/DaySelector';
 import {action} from '@enact/storybook-utils/addons/actions';
 import {boolean, select} from '@enact/storybook-utils/addons/controls';
 import {mergeComponentMetadata} from '@enact/storybook-utils';
-
-import DaySelector, {DaySelectorBase} from '@enact/moonstone/DaySelector';
 
 DaySelector.displayName = 'DaySelector';
 const Config = mergeComponentMetadata('DaySelector', DaySelectorBase, DaySelector);
@@ -21,8 +20,8 @@ export default {
 
 export const _DaySelector = (args) => (
 	<DaySelector
-		disabled={args['disabled']}
 		dayNameLength={args['dayNameLength']}
+		disabled={args['disabled']}
 		onSelect={action('onSelect')}
 	/>
 );

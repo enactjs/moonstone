@@ -1,9 +1,8 @@
+import Button, {ButtonBase} from '@enact/moonstone/Button';
 import {action} from '@enact/storybook-utils/addons/actions';
 import {boolean, select, text} from '@enact/storybook-utils/addons/controls';
 import {mergeComponentMetadata} from '@enact/storybook-utils';
 import UIButton, {ButtonBase as UIButtonBase} from '@enact/ui/Button';
-
-import Button, {ButtonBase} from '@enact/moonstone/Button';
 
 import iconNames from '../util/icons';
 
@@ -24,13 +23,13 @@ export default {
 
 export const _Button = (args) => (
 	<Button
-		onClick={action('onClick')}
 		backgroundOpacity={args['backgroundOpacity']}
 		color={args['color']}
 		disabled={args['disabled']}
 		icon={args['icon']}
 		iconPosition={args['iconPosition']}
 		minWidth={args['minWidth'] ? void 0 : false}
+		onClick={action('onClick')}
 		selected={args['selected']}
 		size={args['size']}
 	>

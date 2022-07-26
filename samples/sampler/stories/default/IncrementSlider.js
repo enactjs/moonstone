@@ -1,9 +1,8 @@
+import IncrementSlider, {IncrementSliderBase, IncrementSliderTooltip} from '@enact/moonstone/IncrementSlider';
 import {action} from '@enact/storybook-utils/addons/actions';
 import {boolean, number, range, select} from '@enact/storybook-utils/addons/controls';
 import {mergeComponentMetadata} from '@enact/storybook-utils';
 import ri from '@enact/ui/resolution';
-
-import IncrementSlider, {IncrementSliderBase, IncrementSliderTooltip} from '@enact/moonstone/IncrementSlider';
 
 import {decrementIcons, incrementIcons} from '../util/icons';
 

@@ -1,9 +1,8 @@
+import DatePicker, {DatePickerBase} from '@enact/moonstone/DatePicker';
 import {action} from '@enact/storybook-utils/addons/actions';
 import {boolean, text} from '@enact/storybook-utils/addons/controls';
 import {mergeComponentMetadata, removeProps} from '@enact/storybook-utils';
-
-import DatePicker, {DatePickerBase} from '@enact/moonstone/DatePicker';
-
+ 
 const Config = mergeComponentMetadata('DatePicker', DatePickerBase, DatePicker);
 removeProps(Config, 'year defaultOpen day maxDays maxMonths month onChangeDate onChangeMonth onChangeYear order');
 

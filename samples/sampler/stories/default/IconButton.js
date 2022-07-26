@@ -1,10 +1,9 @@
+import Button, {ButtonBase} from '@enact/moonstone/Button';
+import IconButton, {IconButtonBase} from '@enact/moonstone/IconButton';
 import {action} from '@enact/storybook-utils/addons/actions';
 import {boolean, select, text} from '@enact/storybook-utils/addons/controls';
 import {mergeComponentMetadata} from '@enact/storybook-utils';
 import UIButton, {ButtonBase as UIButtonBase} from '@enact/ui/Button';
-
-import IconButton, {IconButtonBase} from '@enact/moonstone/IconButton';
-import Button, {ButtonBase} from '@enact/moonstone/Button';
 
 import icons from '../util/icons';
 
@@ -36,11 +35,11 @@ export const _IconButton = (args) => {
 	}
 	return (
 		<IconButton
-			onClick={action('onClick')}
 			backgroundOpacity={args['backgroundOpacity']}
 			color={args['color']}
 			disabled={args['disabled']}
 			flip={args['flip']}
+			onClick={action('onClick')}
 			selected={args['selected']}
 			size={args['size']}
 			tooltipText={args['tooltipText']}
@@ -55,8 +54,8 @@ boolean('selected', _IconButton, Config);
 select('backgroundOpacity', _IconButton, prop.backgroundOpacity, Config, '');
 select('color', _IconButton, ['', 'red', 'green', 'yellow', 'blue'], Config, '');
 select('flip', _IconButton, ['', 'both', 'horizontal', 'vertical'], Config, '');
-select('icon type', _IconButton, ['glyph', 'url src', 'custom'], Config, 'glyph');
 select('icon', _IconButton, icons, Config, 'plus');
+select('icon type', _IconButton, ['glyph', 'url src', 'custom'], Config, 'glyph');
 select('size', _IconButton, ['small', 'large'], Config);
 select('src', _IconButton, [docs, factory, logo], Config, logo);
 text('custom icon', _IconButton, Config);

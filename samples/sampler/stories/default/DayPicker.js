@@ -1,7 +1,6 @@
+import DayPicker from '@enact/moonstone/DayPicker';
 import {action} from '@enact/storybook-utils/addons/actions';
 import {boolean, select, text} from '@enact/storybook-utils/addons/controls';
-
-import DayPicker from '@enact/moonstone/DayPicker';
 
 DayPicker.displayName = 'DayPicker';
 

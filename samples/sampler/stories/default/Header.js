@@ -1,11 +1,10 @@
+import Button from '@enact/moonstone/Button';
+import {Header, HeaderBase} from '@enact/moonstone/Panels';
+import IconButton from '@enact/moonstone/IconButton';
+import Input from '@enact/moonstone/Input';
 import {boolean, select, text} from '@enact/storybook-utils/addons/controls';
 import {mergeComponentMetadata} from '@enact/storybook-utils';
 import {Fragment} from 'react';
-
-import {Header, HeaderBase} from '@enact/moonstone/Panels';
-import Button from '@enact/moonstone/Button';
-import IconButton from '@enact/moonstone/IconButton';
-import Input from '@enact/moonstone/Input';
 
 Header.displayName = 'Header';
 const Config = mergeComponentMetadata('Header', HeaderBase, Header);
@@ -73,8 +72,8 @@ boolean('fullBleed', _Header, Config);
 boolean('headerInput', _Header, Config);
 boolean('hideLine', _Header, Config);
 boolean('noCloseButton', _Header, {displayName: 'Panels'});
-select('controls', _Header, ['no buttons', '1 button', '2 buttons'], {displayName: 'Panels'});
 select('children', _Header, ['no buttons', '1 button', '2 buttons'], Config);
+select('controls', _Header, ['no buttons', '1 button', '2 buttons'], {displayName: 'Panels'});
 select('marqueeOn', _Header, prop.marqueeOn, Config);
 select('type', _Header, prop.type, Config);
 text('subTitleBelow', _Header, Config, 'A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.');

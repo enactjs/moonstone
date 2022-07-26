@@ -1,8 +1,7 @@
+import ExpandableInput, {ExpandableInputBase} from '@enact/moonstone/ExpandableInput';
 import {action} from '@enact/storybook-utils/addons/actions';
 import {boolean, select, text} from '@enact/storybook-utils/addons/controls';
 import {mergeComponentMetadata} from '@enact/storybook-utils';
-
-import ExpandableInput, {ExpandableInputBase} from '@enact/moonstone/ExpandableInput';
 
 import icons from '../util/icons';
 
@@ -30,8 +29,8 @@ export const _ExpandableInput = (args) => (
 		onChange={action('onChange')}
 		onClose={action('onClose')}
 		onOpen={action('onOpen')}
-		title={args['title']}
 		placeholder={args['placeholder']}
+		title={args['title']}
 		type={args['type']}
 	/>
 );

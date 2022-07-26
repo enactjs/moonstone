@@ -1,8 +1,7 @@
+import Input, {InputBase} from '@enact/moonstone/Input';
 import {action} from '@enact/storybook-utils/addons/actions';
 import {boolean, select, text} from '@enact/storybook-utils/addons/controls';
 import {mergeComponentMetadata} from '@enact/storybook-utils';
-
-import Input, {InputBase} from '@enact/moonstone/Input';
 
 import icons from '../util/icons';
 

@@ -1,12 +1,11 @@
 import kind from '@enact/core/kind';
-import {action} from '@enact/storybook-utils/addons/actions';
-import {boolean} from '@enact/storybook-utils/addons/controls';
-import PropTypes from 'prop-types';
-import ri from '@enact/ui/resolution';
-
 import BodyText from '@enact/moonstone/BodyText';
 import Button from '@enact/moonstone/Button';
 import Icon from '@enact/moonstone/Icon';
+import {action} from '@enact/storybook-utils/addons/actions';
+import {boolean} from '@enact/storybook-utils/addons/controls';
+import ri from '@enact/ui/resolution';
+import PropTypes from 'prop-types';
 
 import css from './About.module.less';
 
