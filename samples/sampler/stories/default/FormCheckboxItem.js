@@ -37,7 +37,7 @@ export const _FormCheckboxItem = (args) => {
 };
 
 boolean('disabled', _FormCheckboxItem, Config);
-boolean('inline', _FormCheckboxItem, Config)
+boolean('inline', _FormCheckboxItem, Config);
 select('iconPosition', _FormCheckboxItem, ['before', 'after'], Config);
 select('itemIcon', _FormCheckboxItem, ['', ...listIcons], Config);
 select('itemIconPosition', _FormCheckboxItem, [null, 'before', 'beforeChildren', 'afterChildren', 'after'], Config);
