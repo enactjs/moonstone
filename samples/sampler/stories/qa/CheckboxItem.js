@@ -12,7 +12,7 @@ const Config = mergeComponentMetadata('CheckboxItem', ItemBase, Item, UiToggleIt
 const prop = {
 	iconPosition: ['before', 'after'],
 	longText : 'Looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong Text',
-	tallText : ['नरेंद्र मोदी', ' ฟิ้  ไั  ஒ  து', 'ÃÑÕÂÊÎÔÛÄËÏÖÜŸ'],
+	tallText : ['नरेंद्र मोदी', 'ฟิ้ ไั ஒ து', 'ÃÑÕÂÊÎÔÛÄËÏÖÜŸ'],
 	extraSpaceText : 'This		Text 		has			extra 		space',
 	rtlText: 'هناك حقيقة مثبتة منذ زمن طويل وهي'
 };

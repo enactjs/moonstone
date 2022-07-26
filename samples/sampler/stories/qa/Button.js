@@ -19,7 +19,7 @@ const prop = {
 	backgroundOpacity: ['', 'translucent', 'lightTranslucent', 'transparent'],
 	color: ['', 'red', 'green', 'yellow', 'blue'],
 	longText: {'A Loooooooooooooooooong Button': 'A Loooooooooooooooooong Button', 'BUTTON   WITH   EXTRA   SPACES': 'BUTTON   WITH   EXTRA   SPACES'},
-	tallText: {' ฟิ้ ไั  ஒ  து': ' ฟิ้ ไั  ஒ  து', 'ÁÉÍÓÚÑÜ': 'ÁÉÍÓÚÑÜ', 'Bản văn': 'Bản văn'},
+	tallText: {'ฟิ้ ไั ஒ து': 'ฟิ้ ไั ஒ து', 'ÁÉÍÓÚÑÜ': 'ÁÉÍÓÚÑÜ', 'Bản văn': 'Bản văn'},
 	icons: ['', ...iconNames]
 };
 
@@ -72,7 +72,7 @@ select('icon', WithTallCharacters, prop.icons, Config);
 boolean('minWidth', WithTallCharacters, Config, true);
 boolean('selected', WithTallCharacters, Config);
 select('size', WithTallCharacters, ['small', 'large'], Config);
-select('value', WithTallCharacters, prop.tallText, Config, ' ฟิ้ ไั  ஒ  து');
+select('value', WithTallCharacters, prop.tallText, Config, 'ฟิ้ ไั ஒ து');
 
 WithTallCharacters.storyName = 'with tall characters';
 
