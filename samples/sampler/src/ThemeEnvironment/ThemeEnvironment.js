@@ -10,7 +10,7 @@ import BodyText from '@enact/moonstone/BodyText';
 import MoonstoneDecorator from '@enact/moonstone/MoonstoneDecorator';
 import {Panels, Panel, Header} from '@enact/moonstone/Panels';
 
-import css from './ThemeEnvironment.less';
+import css from './ThemeEnvironment.module.less';
 
 const reloadPage = () => {
 	const {protocol, host, pathname} = window.parent.location;
