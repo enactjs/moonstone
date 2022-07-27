@@ -1,9 +1,9 @@
 import EditableIntegerPicker, {EditableIntegerPickerBase} from '@enact/moonstone/EditableIntegerPicker';
+import {mergeComponentMetadata} from '@enact/storybook-utils';
 import {action} from '@enact/storybook-utils/addons/actions';
 import {boolean, number, select, text} from '@enact/storybook-utils/addons/controls';
-import {mergeComponentMetadata} from '@enact/storybook-utils';
 
-import {decrementIcons, incrementIcons} from '../util/icons';
+import {decrementIcons, incrementIcons} from '../helper/icons';
 
 const Config = mergeComponentMetadata('EditableIntegerPicker', EditableIntegerPickerBase, EditableIntegerPicker);
 EditableIntegerPicker.displayName = 'EditableIntegerPicker';

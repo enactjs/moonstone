@@ -1,7 +1,7 @@
 import BodyText from '@enact/moonstone/BodyText';
 import Heading, {HeadingBase} from '@enact/moonstone/Heading';
-import {boolean, select, text} from '@enact/storybook-utils/addons/controls';
 import {mergeComponentMetadata} from '@enact/storybook-utils';
+import {boolean, select, text} from '@enact/storybook-utils/addons/controls';
 import UiHeading from '@enact/ui/Heading';
 import {Fragment} from 'react';
 

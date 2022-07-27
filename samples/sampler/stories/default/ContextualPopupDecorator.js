@@ -1,9 +1,9 @@
 import BodyText from '@enact/moonstone/BodyText';
 import Button from '@enact/moonstone/Button';
 import {ContextualPopupDecorator} from '@enact/moonstone/ContextualPopupDecorator';
+import {mergeComponentMetadata} from '@enact/storybook-utils';
 import {action} from '@enact/storybook-utils/addons/actions';
 import {boolean, select, text} from '@enact/storybook-utils/addons/controls';
-import {mergeComponentMetadata} from '@enact/storybook-utils';
 import ri from '@enact/ui/resolution';
 
 const ContextualButton = ContextualPopupDecorator(Button);

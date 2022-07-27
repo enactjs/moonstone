@@ -2,13 +2,13 @@ import CheckboxItem from '@enact/moonstone/CheckboxItem';
 import Icon from '@enact/moonstone/Icon';
 import Item, {ItemBase} from '@enact/moonstone/Item';
 import ToggleItem from '@enact/moonstone/ToggleItem';
+import {mergeComponentMetadata, nullify} from '@enact/storybook-utils';
 import {action} from '@enact/storybook-utils/addons/actions';
 import {boolean, select, text} from '@enact/storybook-utils/addons/controls';
-import {mergeComponentMetadata, nullify} from '@enact/storybook-utils';
 import UiToggleItem, {ToggleItemBase as UiToggleItemBase} from '@enact/ui/ToggleItem';
 import UiItem from '@enact/ui/Item';
 
-import {listIcons} from '../util/icons';
+import {listIcons} from '../helper/icons';
 
 CheckboxItem.displayName = 'CheckboxItem';
 const Config = mergeComponentMetadata('CheckboxItem', UiItem, ItemBase, Item, UiToggleItemBase, UiToggleItem, ToggleItem, CheckboxItem);

@@ -1,7 +1,7 @@
 import DaySelector, {DaySelectorBase} from '@enact/moonstone/DaySelector';
+import {mergeComponentMetadata} from '@enact/storybook-utils';
 import {action} from '@enact/storybook-utils/addons/actions';
 import {boolean, select} from '@enact/storybook-utils/addons/controls';
-import {mergeComponentMetadata} from '@enact/storybook-utils';
 
 DaySelector.displayName = 'DaySelector';
 const Config = mergeComponentMetadata('DaySelector', DaySelectorBase, DaySelector);

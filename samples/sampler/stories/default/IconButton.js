@@ -1,16 +1,15 @@
 import Button, {ButtonBase} from '@enact/moonstone/Button';
 import IconButton, {IconButtonBase} from '@enact/moonstone/IconButton';
+import {mergeComponentMetadata} from '@enact/storybook-utils';
 import {action} from '@enact/storybook-utils/addons/actions';
 import {boolean, select, text} from '@enact/storybook-utils/addons/controls';
-import {mergeComponentMetadata} from '@enact/storybook-utils';
 import UIButton, {ButtonBase as UIButtonBase} from '@enact/ui/Button';
-
-import icons from '../util/icons';
 
 // import icons
 import docs from '../../images/icon-enact-docs.png';
 import factory from '../../images/icon-enact-factory.svg';
 import logo from '../../images/icon-enact-logo.svg';
+import icons from '../helper/icons';
 
 // Set up some defaults for info and controls
 const prop = {

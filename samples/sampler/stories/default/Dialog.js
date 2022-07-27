@@ -2,9 +2,9 @@ import BodyText from '@enact/moonstone/BodyText';
 import Button from '@enact/moonstone/Button';
 import Dialog from '@enact/moonstone/Dialog';
 import Popup from '@enact/moonstone/Popup';
+import {mergeComponentMetadata} from '@enact/storybook-utils';
 import {action} from '@enact/storybook-utils/addons/actions';
 import {boolean, text} from '@enact/storybook-utils/addons/controls';
-import {mergeComponentMetadata} from '@enact/storybook-utils';
 
 const Config = mergeComponentMetadata('Dialog', Popup, Dialog);
 Dialog.displayName = 'Dialog';
