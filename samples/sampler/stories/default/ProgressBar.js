@@ -1,6 +1,6 @@
 import ProgressBar, {ProgressBarTooltip} from '@enact/moonstone/ProgressBar';
 import {mergeComponentMetadata} from '@enact/storybook-utils';
-import {boolean, number, select} from '@enact/storybook-utils/addons/controls';
+import {boolean, range, select} from '@enact/storybook-utils/addons/controls';
 import ri from '@enact/ui/resolution';
 
 ProgressBar.displayName = 'ProgressBar';
@@ -49,8 +49,8 @@ export const _ProgressBar = (args) => {
 boolean('disabled', _ProgressBar, ProgressBarConfig);
 boolean('highlighted', _ProgressBar, ProgressBarConfig);
 boolean('tooltip', _ProgressBar, ProgressBarTooltipConfig);
-number('backgroundProgress', _ProgressBar, ProgressBarConfig, {range: true, min: 0, max: 1, step: 0.01}, 0.5);
-number('progress', _ProgressBar, ProgressBarConfig, {range: true, min: 0, max: 1, step: 0.01}, 0.4);
+range('backgroundProgress', _ProgressBar, ProgressBarConfig, {range: true, min: 0, max: 1, step: 0.01}, 0.5);
+range('progress', _ProgressBar, ProgressBarConfig, {range: true, min: 0, max: 1, step: 0.01}, 0.4);
 select('orientation', _ProgressBar, ['horizontal', 'vertical'], ProgressBarConfig, 'horizontal');
 select('position', _ProgressBar, ['', 'above', 'above left', 'above right', 'above before', 'above after', 'before', 'left', 'right', 'after', 'below', 'below left', 'below right', 'below before', 'below after'], ProgressBarTooltipConfig, '');
 

@@ -1,7 +1,7 @@
 import Slider, {SliderTooltip} from '@enact/moonstone/Slider';
 import {mergeComponentMetadata} from '@enact/storybook-utils';
 import {action} from '@enact/storybook-utils/addons/actions';
-import {boolean, number, select} from '@enact/storybook-utils/addons/controls';
+import {boolean, number, range, select} from '@enact/storybook-utils/addons/controls';
 import ri from '@enact/ui/resolution';
 
 Slider.displayName = 'Slider';
@@ -60,11 +60,11 @@ boolean('disabled', _Slider, SliderConfig);
 boolean('noFill', _Slider, SliderConfig);
 boolean('percent', _Slider, SliderTooltipConfig);
 boolean('tooltip', _Slider, SliderTooltipConfig);
-number('backgroundProgress', _Slider, SliderConfig, {range: true, min: 0, max: 1, step: 0.01}, 0.5);
 number('knobStep', _Slider, SliderConfig);
 number('max', _Slider, SliderConfig, 10);
 number('min', _Slider, SliderConfig, 0);
 number('step', _Slider, SliderConfig, 1);
+range('backgroundProgress', _Slider, SliderConfig, {range: true, min: 0, max: 1, step: 0.01}, 0.5);
 select('orientation', _Slider, ['horizontal', 'vertical'], SliderConfig, 'horizontal');
 select('position', _Slider, ['', 'above', 'above left', 'above right', 'above before', 'above after', 'before', 'left', 'right', 'after', 'below', 'below left', 'below right', 'below before', 'below after'], SliderTooltipConfig, '');
 

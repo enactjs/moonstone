@@ -17,7 +17,7 @@ export default {
 	component: 'RangePicker'
 };
 
-// Set up some defaults for info and knobs
+// Set up some defaults for info and controls
 const prop = {
 	orientation: ['horizontal', 'vertical'],
 	width: [null, 'small', 'medium', 'large', 1, 2, 3, 4, 5, 6]
@@ -36,11 +36,11 @@ export const _RangePicker = (args) => (
 		defaultValue={0}
 		disabled={args['disabled']}
 		incrementIcon={args['incrementIcon']}
-		onChange={action('onChange')}
 		joined={args['joined']}
 		max={args['max']}
 		min={args['min']}
 		noAnimation={args['noAnimation']}
+		onChange={action('onChange')}
 		orientation={args['orientation']}
 		step={args['step']}
 		width={parseIntOrNullify(args['width'])}
