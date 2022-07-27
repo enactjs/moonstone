@@ -27,17 +27,17 @@ import Slider from '@enact/moonstone/Slider';
 import Spotlight from '@enact/spotlight';
 import Pause from '@enact/spotlight/Pause';
 import SpotlightContainerDecorator from '@enact/spotlight/SpotlightContainerDecorator';
-import { action } from '@enact/storybook-utils/addons/actions';
-import { boolean, select } from '@enact/storybook-utils/addons/controls';
-import { Cell, Column, Row } from '@enact/ui/Layout';
+import {action} from '@enact/storybook-utils/addons/actions';
+import {boolean, select} from '@enact/storybook-utils/addons/controls';
+import {Cell, Column, Row} from '@enact/ui/Layout';
 import ri from '@enact/ui/resolution';
 import PropTypes from 'prop-types';
-import { cloneElement, useState, useEffect, useCallback } from 'react';
+import {cloneElement, useState, useEffect, useCallback} from 'react';
 
 import docs from '../../images/icon-enact-docs.png';
 
 const Container = SpotlightContainerDecorator(
-	{ enterTo: 'last-focused' },
+	{enterTo: 'last-focused'},
 	'div'
 );
 
@@ -175,7 +175,7 @@ const DisableTest = () => {
 	);
 };
 
-const PopupFocusTest = ({ noAnimation, noAutoDismiss, scrimType, showCloseButton, spotlightRestrict }) => {
+const PopupFocusTest = ({noAnimation, noAutoDismiss, scrimType, showCloseButton, spotlightRestrict}) => {
 	const [popupOpen, setPopupOpen] = useState(false);
 
 	const handleClosePopup = useCallback(() => {
@@ -296,7 +296,7 @@ export const MultipleButtons = () => (
 			</Button>
 		</Cell>
 	</Row>
-)
+);
 
 MultipleButtons.storyName = 'Multiple Buttons';
 
@@ -400,26 +400,26 @@ export const PopupNavigation = (args) => (
 		showCloseButton={args['showCloseButton']}
 		spotlightRestrict={args['spotlightRestrict']}
 	/>
-)
+);
 
 boolean('noAnimation', PopupNavigation, Popup, false);
 boolean('noAutoDismiss', PopupNavigation, Popup, false);
 boolean('showCloseButton', PopupNavigation, Popup, true);
 select('scrimType', ['none', 'transparent', 'translucent'], PopupNavigation, Popup, 'translucent');
-select('spotlightRestrict', ['self-first', 'self-only'], PopupNavigation, Popup, 'self-only')
+select('spotlightRestrict', ['self-first', 'self-only'], PopupNavigation, Popup, 'self-only');
 
 PopupNavigation.storyName = 'Popup Navigation';
 
 export const _FocusedAndDisabled = () => (
 	<FocusedAndDisabled />
-)
+);
 
-_FocusedAndDisabled.storyName = 'Focused and Disabled'
+_FocusedAndDisabled.storyName = 'Focused and Disabled';
 
 export const NavigatingIntoOverflowContainers = () => (
 	<div>
 		<Item>Before last-focused Container + Scroller</Item>
-		<Container style={{ outline: '1px dotted #ffffff80' }}>
+		<Container style={{outline: '1px dotted #ffffff80'}}>
 			<Scroller>
 				<ExpandableItem disabled title="Expandable Item">
 					<Button>Hiding!</Button>
@@ -434,7 +434,7 @@ export const NavigatingIntoOverflowContainers = () => (
 		</Container>
 		<Item>After last-focused Container + Scroller</Item>
 	</div>
-)
+);
 
 NavigatingIntoOverflowContainers.storyName = 'Navigating into overflow containers';
 
@@ -445,7 +445,7 @@ export const KitchenSink = (args) => (
 			below.
 		</Cell>
 		<Cell component={Container} spotlightMuted={args['spotlightMuted']} spotlightDisabled={args['Container spotlightDisabled']}>
-			<Row style={{ height: '100%' }}>
+			<Row style={{height: '100%'}}>
 				<Cell>
 					<Column>
 						<Cell component={Heading} showLine shrink>
@@ -701,9 +701,8 @@ export const KitchenSink = (args) => (
 	</Column>
 );
 
-boolean('Container spotlightDisabled', KitchenSink, Container, false)
+boolean('Container spotlightDisabled', KitchenSink, Container, false);
 boolean('spotlightMuted', KitchenSink, Container, false);
 boolean('Spottable spotlightDisabled', KitchenSink, Container, false);
 
 KitchenSink.storyName = 'Kitchen Sink';
-	
