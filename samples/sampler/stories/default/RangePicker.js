@@ -3,7 +3,7 @@ import {mergeComponentMetadata, nullify} from '@enact/storybook-utils';
 import {action} from '@enact/storybook-utils/addons/actions';
 import {boolean, number, select} from '@enact/storybook-utils/addons/controls';
 
-import {decrementIcons, incrementIcons} from '../util/icons';
+import {decrementIcons, incrementIcons} from '../helper/icons';
 
 RangePicker.displayName = 'RangePicker';
 const Config = mergeComponentMetadata(

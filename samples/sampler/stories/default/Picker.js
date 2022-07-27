@@ -2,7 +2,7 @@ import Picker from '@enact/moonstone/Picker';
 import {action} from '@enact/storybook-utils/addons/actions';
 import {boolean, select, text} from '@enact/storybook-utils/addons/controls';
 
-import {decrementIcons, incrementIcons} from '../util/icons';
+import {decrementIcons, incrementIcons} from '../helper/icons';
 
 // Set up some defaults for info and controls
 const prop = {

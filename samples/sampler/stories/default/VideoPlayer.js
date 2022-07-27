@@ -5,7 +5,7 @@ import {mergeComponentMetadata} from '@enact/storybook-utils';
 import {action} from '@enact/storybook-utils/addons/actions';
 import {boolean, number, select, text} from '@enact/storybook-utils/addons/controls';
 
-import icons from '../util/icons';
+import icons from '../helper/icons';
 
 // Set up some defaults for info and controls
 const prop = {

@@ -7,7 +7,7 @@ import {action} from '@enact/storybook-utils/addons/actions';
 import {boolean, select, text} from '@enact/storybook-utils/addons/controls';
 import UiToggleItem, {ToggleItemBase as UiToggleItemBase} from '@enact/ui/ToggleItem';
 
-import {listIcons} from '../util/icons';
+import {listIcons} from '../helper/icons';
 
 RadioItem.displayName = 'RadioItem';
 const Config = mergeComponentMetadata(

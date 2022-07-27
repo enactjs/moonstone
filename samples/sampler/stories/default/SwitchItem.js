@@ -7,7 +7,7 @@ import {action} from '@enact/storybook-utils/addons/actions';
 import {boolean, text, select} from '@enact/storybook-utils/addons/controls';
 import UiToggleItem, {ToggleItemBase as UiToggleItemBase} from '@enact/ui/ToggleItem';
 
-import {listIcons} from '../util/icons';
+import {listIcons} from '../helper/icons';
 
 SwitchItem.displayName = 'SwitchItem';
 const Config = mergeComponentMetadata(

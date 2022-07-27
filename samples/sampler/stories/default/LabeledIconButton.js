@@ -6,7 +6,7 @@ import {boolean, select, text} from '@enact/storybook-utils/addons/controls';
 import UIButton, {ButtonBase as UIButtonBase} from '@enact/ui/Button';
 import {LabeledIconBase as UiLabeledIconBase, LabeledIcon as UiLabeledIcon} from '@enact/ui/LabeledIcon';
 
-import iconNames from '../util/icons';
+import iconNames from '../helper/icons';
 
 LabeledIconButton.displayName = 'LabeledIconButton';
 const Config = mergeComponentMetadata(
