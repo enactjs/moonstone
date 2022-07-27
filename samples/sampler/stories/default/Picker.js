@@ -46,11 +46,11 @@ export const _Picker = (args) => (
 boolean('disabled', _Picker, Picker);
 boolean('joined', _Picker, Picker);
 boolean('noAnimation', _Picker, Picker);
-boolean('wrap', Picker);
+boolean('wrap', _Picker, Picker);
 select('decrementIcon', _Picker, ['', ...decrementIcons], Picker);
 select('incrementIcon', _Picker, ['', ...incrementIcons], Picker);
 select('orientation', _Picker, prop.orientation, Picker, prop.orientation[0]);
-select('width', prop.width, Picker, prop.width[3]);
+select('width', _Picker, prop.width, Picker, prop.width[3]);
 text('aria-label', _Picker, Picker, '');
 text('decrementAriaLabel', _Picker, Picker, '');
 text('incrementAriaLabel', _Picker, Picker, '');
