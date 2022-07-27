@@ -1,7 +1,7 @@
 import Image, {ImageBase, ImageDecorator} from '@enact/moonstone/Image';
 import {mergeComponentMetadata} from '@enact/storybook-utils';
 import {action} from '@enact/storybook-utils/addons/actions';
-import {select} from '@enact/storybook-utils/addons/controls';
+import {object, select} from '@enact/storybook-utils/addons/controls';
 
 const src = {
 	'hd':  'http://via.placeholder.com/200x200',
@@ -48,7 +48,7 @@ export const _Image = (args) => (
 );
 
 select('sizing', _Image, ['fill', 'fit', 'none'], Config, 'fill');
-select('src', _Image, src, Config);
+object('src', _Image, Config, src);
 
 _Image.storyName = 'Image';
 _Image.parameters = {
