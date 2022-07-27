@@ -146,7 +146,7 @@ export const With5WaySelectableActivator = (args) => (
 	</div>
 );
 
-select('direction',With5WaySelectableActivator, ['up', 'down', 'left', 'right'], Config, 'down');
+select('direction', With5WaySelectableActivator, ['up', 'down', 'left', 'right'], Config, 'down');
 select('spotlightRestrict', With5WaySelectableActivator, ['none', 'self-first', 'self-only'], Config, 'self-only');
 
 With5WaySelectableActivator.storyName = 'with 5-way selectable activator';
