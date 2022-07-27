@@ -1,37 +1,50 @@
-// import {action} from '@enact/storybook-utils/addons/actions';
-// import {boolean, select, text} from '@enact/storybook-utils/addons/knobs';
-// import {mergeComponentMetadata} from '@enact/storybook-utils';
-// import {storiesOf} from '@storybook/react';
-//
-// import Popup from '@enact/moonstone/Popup';
-// import BodyText from '@enact/moonstone/BodyText';
-//
-// const Config = mergeComponentMetadata('Popup', Popup);
-//
-// storiesOf('Moonstone', module)
-// 	.add(
-// 		'Popup',
-// 		() => (
-// 			<div>
-// 				<Popup
-// 					open={boolean('open', Config)}
-// 					noAnimation={boolean('noAnimation', Config)}
-// 					noAutoDismiss={boolean('noAutoDismiss', Config)}
-// 					onClose={action('onClose')}
-// 					onHide={action('onHide')}
-// 					onShow={action('onShow')}
-// 					scrimType={select('scrimType', ['none', 'translucent', 'transparent'], Config, 'translucent')}
-// 					showCloseButton={boolean('showCloseButton', Config)}
-// 					spotlightRestrict={select('spotlightRestrict', ['self-first', 'self-only'], Config, 'self-only')}
-// 				>
-// 					<div>{text('children', Config, 'Hello Popup')}</div>
-// 				</Popup>
-// 				<BodyText centered>Use KNOBS to interact with Popup.</BodyText>
-// 			</div>
-// 		),
-// 		{
-// 			info: {
-// 				text: 'Basic usage of Popup'
-// 			}
-// 		}
-// 	);
+import BodyText from '@enact/moonstone/BodyText';
+import Popup from '@enact/moonstone/Popup';
+import {mergeComponentMetadata} from '@enact/storybook-utils';
+import {action} from '@enact/storybook-utils/addons/actions';
+import {boolean, select, text} from '@enact/storybook-utils/addons/controls';
+
+Popup.displayName = 'Popup';
+const Config = mergeComponentMetadata(
+	'Popup',
+	Popup
+);
+
+export default {
+	title: 'Moonstone/Popup',
+	component: 'Popup'
+};
+
+export const _Popup = (args) => (
+	<div>
+		<Popup
+			noAnimation={args['noAnimation']}
+			noAutoDismiss={args['noAutoDismiss']}
+			onClose={action('onClose')}
+			onHide={action('onHide')}
+			onShow={action('onShow')}
+			open={args['open']}
+			scrimType={args['scrimType']}
+			showCloseButton={args['showCloseButton']}
+			spotlightRestrict={args['spotlightRestrict']}
+		>
+			<div>{args['children']}</div>
+		</Popup>
+		<BodyText centered>Use CONTROLS to interact with Popup.</BodyText>
+	</div>
+);
+
+boolean('noAnimation', _Popup, Config);
+boolean('noAutoDismiss', _Popup, Config);
+boolean('open', _Popup, Config);
+boolean('showCloseButton', _Popup, Config);
+select('scrimType', _Popup, ['none', 'translucent', 'transparent'], Config, 'translucent');
+select('spotlightRestrict', _Popup, ['self-first', 'self-only'], Config, 'self-only');
+text('children', _Popup, Config, 'Hello Popup');
+
+_Popup.storyName = 'Popup';
+_Popup.parameters = {
+	info: {
+		text: 'Basic usage of Popup'
+	}
+};
