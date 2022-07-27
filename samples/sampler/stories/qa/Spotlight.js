@@ -299,6 +299,11 @@ export const MultipleButtons = () => (
 );
 
 MultipleButtons.storyName = 'Multiple Buttons';
+MultipleButtons.parameters = {
+	controls: {
+		hideNoControlsWarning: true
+	}
+};
 
 export const MultipleContainers = () => (
 	<Scroller>
@@ -331,6 +336,11 @@ export const MultipleContainers = () => (
 );
 
 MultipleContainers.storyName = 'Multiple Containers';
+MultipleContainers.parameters = {
+	controls: {
+		hideNoControlsWarning: true
+	}
+};
 
 export const NestedContainers = () => (
 	<div>
@@ -352,6 +362,11 @@ export const NestedContainers = () => (
 );
 
 NestedContainers.storyName = 'Nested Containers';
+NestedContainers.parameters = {
+	controls: {
+		hideNoControlsWarning: true
+	}
+};
 
 export const DirectionalEvents = () => (
 	<div>
@@ -373,24 +388,44 @@ export const DirectionalEvents = () => (
 );
 
 DirectionalEvents.storyName = 'Directional Events';
+DirectionalEvents.parameters = {
+	controls: {
+		hideNoControlsWarning: true
+	}
+};
 
 export const DisappearingSpottable = () => (
 	<DisappearTest />
 );
 
 DisappearingSpottable.storyName = 'Disappearing Spottable';
+DisappearingSpottable.parameters = {
+	controls: {
+		hideNoControlsWarning: true
+	}
+};
 
 export const DisabledOnClick = () => (
 	<DisableOnClick />
 );
 
 DisabledOnClick.storyName = 'Disabled on Click';
+DisabledOnClick.parameters = {
+	controls: {
+		hideNoControlsWarning: true
+	}
+};
 
 export const DisabledWithPause = () => (
 	<DisableTest />
 );
 
 DisabledWithPause.storyName = 'Disabled with Pause';
+DisabledWithPause.parameters = {
+	controls: {
+		hideNoControlsWarning: true
+	}
+};
 
 export const PopupNavigation = (args) => (
 	<PopupFocusTest
@@ -415,6 +450,11 @@ export const _FocusedAndDisabled = () => (
 );
 
 _FocusedAndDisabled.storyName = 'Focused and Disabled';
+_FocusedAndDisabled.parameters = {
+	controls: {
+		hideNoControlsWarning: true
+	}
+};
 
 export const NavigatingIntoOverflowContainers = () => (
 	<div>
@@ -437,6 +477,11 @@ export const NavigatingIntoOverflowContainers = () => (
 );
 
 NavigatingIntoOverflowContainers.storyName = 'Navigating into overflow containers';
+NavigatingIntoOverflowContainers.parameters = {
+	controls: {
+		hideNoControlsWarning: true
+	}
+};
 
 export const KitchenSink = (args) => (
 	<Column>
