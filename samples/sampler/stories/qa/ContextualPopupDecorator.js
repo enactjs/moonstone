@@ -146,25 +146,8 @@ export const With5WaySelectableActivator = (args) => (
 	</div>
 );
 
-select(
-	'direction',
-	With5WaySelectableActivator,
-	[
-		'up',
-		'down',
-		'left',
-		'right'
-	],
-	Config,
-	'down'
-);
-select(
-	'spotlightRestrict',
-	With5WaySelectableActivator,
-	['none', 'self-first', 'self-only'],
-	Config,
-	'self-only'
-);
+select('direction',With5WaySelectableActivator, ['up', 'down', 'left', 'right'], Config, 'down');
+select('spotlightRestrict', With5WaySelectableActivator, ['none', 'self-first', 'self-only'], Config, 'self-only');
 
 With5WaySelectableActivator.storyName = 'with 5-way selectable activator';
 
@@ -300,24 +283,7 @@ WithIncrementSlider.parameters = {
 	}
 };
 
-select(
-	'direction',
-	WithIncrementSlider,
-	[
-		'up',
-		'down',
-		'left',
-		'right'
-	],
-	Config,
-	'down'
-);
-select(
-	'spotlightRestrict',
-	WithIncrementSlider,
-	['none', 'self-first', 'self-only'],
-	Config,
-	'self-only'
-);
+select('direction',	WithIncrementSlider, ['up', 'down', 'left', 'right'], Config, 'down');
+select('spotlightRestrict', WithIncrementSlider, ['none', 'self-first', 'self-only'], Config, 'self-only');
 
 WithIncrementSlider.storyName = 'with incrementSlider';

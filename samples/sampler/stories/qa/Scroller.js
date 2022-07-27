@@ -263,7 +263,7 @@ select('verticalScrollbar', WithSpottableComponents, prop.scrollbarOption, Confi
 
 WithSpottableComponents.storyName = 'With Spottable Components';
 
-export const WithManyExpandableLists = (args) => (
+export const WithManyExpandableList = (args) => (
 	<Scroller
 		focusableScrollbar={args['focusableScrollbar']}
 		horizontalScrollbar={args['horizontalScrollbar']}
@@ -339,13 +339,13 @@ export const WithManyExpandableLists = (args) => (
 	</Scroller>
 );
 
-boolean('focusableScrollbar', WithManyExpandableLists, Config);
-select('horizontalScrollbar', WithManyExpandableLists, prop.scrollbarOption, Config);
-boolean('noScrollByWheel', WithManyExpandableLists, Config);
-boolean('spotlightDisabled', WithManyExpandableLists, Config, false);
-select('verticalScrollbar', WithManyExpandableLists, prop.scrollbarOption, Config);
+boolean('focusableScrollbar', WithManyExpandableList, Config);
+select('horizontalScrollbar', WithManyExpandableList, prop.scrollbarOption, Config);
+boolean('noScrollByWheel', WithManyExpandableList, Config);
+boolean('spotlightDisabled', WithManyExpandableList, Config, false);
+select('verticalScrollbar', WithManyExpandableList, prop.scrollbarOption, Config);
 
-WithManyExpandableLists.storyName = 'With Many ExpandableList';
+WithManyExpandableList.storyName = 'With Many ExpandableList';
 
 export const WithResizable = () => {
 	return (

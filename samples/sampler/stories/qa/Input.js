@@ -32,12 +32,12 @@ export const WithLongText = (args) => {
 	return (
 		<Input
 			autoFocus={args['autoFocus']}
-			onChange={action('onChange')}
 			disabled={args['disabled']}
 			iconAfter={args['iconAfter']}
 			iconBefore={args['iconBefore']}
 			invalid={args['invalid']}
 			invalidMessage={args['invalidMessage']}
+			onChange={action('onChange')}
 			placeholder={args['placeholder']}
 			size={args['size']}
 			type={args['type']}

@@ -30,11 +30,11 @@ export default {
 
 export const WithLongText = (args) => (
 	<Button
-		onClick={action('onClick')}
 		backgroundOpacity={args['backgroundOpacity']}
 		disabled={args['disabled']}
 		icon={args['icon']}
 		minWidth={args['minWidth'] ? void 0 : false}
+		onClick={action('onClick')}
 		selected={args['selected']}
 		size={args['size']}
 	>
@@ -54,11 +54,11 @@ WithLongText.storyName = 'with long text';
 
 export const WithTallCharacters = (args) => (
 	<Button
-		onClick={action('onClick')}
 		backgroundOpacity={args['backgroundOpacity']}
 		disabled={args['disabled']}
 		icon={args['icon']}
 		minWidth={args['minWidth'] ? void 0 : false}
+		onClick={action('onClick')}
 		selected={args['selected']}
 		size={args['size']}
 	>
@@ -78,11 +78,11 @@ WithTallCharacters.storyName = 'with tall characters';
 
 export const WithSingleCharacter = (args) => (
 	<Button
-		onClick={action('onClick')}
 		backgroundOpacity={args['backgroundOpacity']}
 		disabled={args['disabled']}
 		icon={args['icon']}
 		minWidth={args['minWidth'] ? void 0 : false}
+		onClick={action('onClick')}
 		selected={args['selected']}
 		size={args['size']}
 	>
@@ -103,11 +103,11 @@ WithSingleCharacter.storyName = 'to validate minWidth with a single character';
 export const WithParent = (args) => (
 	<div className={css.bgColor}>
 		<Button
-			onClick={action('onClick')}
 			backgroundOpacity={args['backgroundOpacity']}
 			disabled={args['disabled']}
 			icon={args['icon']}
 			minWidth={args['minWidth'] ? void 0 : false}
+			onClick={action('onClick')}
 			selected={args['selected']}
 			size={args['size']}
 		>
@@ -130,16 +130,16 @@ export const WithTapAreaDisplayed = () => (
 		<Heading>Button</Heading>
 		<Button
 			className={css.tapArea}
-			onClick={action('onClick')}
 			disabled={boolean('disabled', Config)}
+			onClick={action('onClick')}
 			size="large"
 		>
 			Normal Button
 		</Button>
 		<Button
 			className={css.tapArea}
-			onClick={action('onClick')}
 			disabled={boolean('disabled', Config)}
+			onClick={action('onClick')}
 			size="small"
 		>
 			Small Button

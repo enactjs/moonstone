@@ -43,11 +43,10 @@ const IncrementSliderWithContextualPopup = () => {
 	const renderPopup = useCallback(() => (
 		<div style={{width: 400}}>
 			<IncrementSlider
-				// active
-				tooltip
-				min={-9.9}
 				max={9.9}
+				min={-9.9}
 				step={0.1}
+				tooltip
 			/>
 		</div>
 	), []);
@@ -110,7 +109,7 @@ export const WithDelayedValue = () => {
 	);
 };
 
-WithDelayedValue.storyName = 'PLAT-28221';
+WithDelayedValue.storyName = 'with delayed value (PLAT-28221)';
 WithDelayedValue.parameters = {
 	controls: {
 		hideNoControlsWarning: true

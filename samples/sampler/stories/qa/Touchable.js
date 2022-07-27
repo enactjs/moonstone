@@ -74,10 +74,10 @@ export default {
 
 export const WithDefaultHoldEvents = (args) => (
 	<Button
+		disabled={args['disabled']}
 		onHold={action('onHold')}
 		onHoldEnd={action('onHoldEnd')}
 		onHoldStart={action('onHoldStart')}
-		disabled={args['disabled']}
 	>
 		Touchable
 	</Button>
@@ -89,6 +89,7 @@ WithDefaultHoldEvents.storyName = 'with default hold events';
 
 export const WithCustomLongPress = (args) => (
 	<Button
+		disabled={args['disabled']}
 		holdConfig={{
 			events: [
 				{name: 'hold', time: 1000},
@@ -99,7 +100,6 @@ export const WithCustomLongPress = (args) => (
 		onHold={action('onHold')}
 		onHoldEnd={action('onHoldEnd')}
 		onHoldStart={action('onHoldStart')}
-		disabled={args['disabled']}
 	>
 		LongPress
 	</Button>
@@ -111,6 +111,7 @@ WithCustomLongPress.storyName = 'with a custom longpress event and 1 second freq
 
 export const WithACustomLongpressEventAnd1SecondFrequency = (args) => (
 	<Button
+		disabled={args['disabled']}
 		holdConfig={{
 			events: [
 				{name: 'hold', time: 1000},
@@ -121,7 +122,6 @@ export const WithACustomLongpressEventAnd1SecondFrequency = (args) => (
 		onHold={action('onHold')}
 		onHoldEnd={action('onHoldEnd')}
 		onHoldStart={action('onHoldStart')}
-		disabled={args['disabled']}
 	>
 		LongPress
 	</Button>
@@ -136,6 +136,7 @@ export const ThatPausesTheHoldWhenMovingBeyondTolerance16Px = (args) => {
 	const cancelOnMove = args['holdConfig cancelOnMove'] || false;
 	return (
 		<TouchArea
+			disabled={args['disabled']}
 			holdConfig={{
 				moveTolerance,
 				cancelOnMove
@@ -145,7 +146,6 @@ export const ThatPausesTheHoldWhenMovingBeyondTolerance16Px = (args) => {
 			onHold={action('onHold', {depth: 0})}
 			onHoldEnd={action('onHoldEnd')}
 			onHoldStart={action('onHoldStart')}
-			disabled={args['disabled']}
 			style={{
 				marginLeft: 'auto',
 				marginRight: 'auto',
@@ -169,11 +169,11 @@ ThatPausesTheHoldWhenMovingBeyondTolerance16Px.storyName = 'that pauses the hold
 
 export const ThatDoesNotResumeWhenReEnteringComponent = (args) => (
 	<Button
+		disabled={args['disabled']}
 		noResume={args['noResume']}
 		onHold={action('onHold')}
 		onHoldEnd={action('onHoldEnd')}
 		onHoldStart={action('onHoldStart')}
-		disabled={args['disabled']}
 	>
 		Not Resumable
 	</Button>
@@ -204,6 +204,7 @@ WithOnFlickHandler.storyName = 'with onFlick handler';
 
 export const WithDragHandlers = (args) => (
 	<TouchableDiv
+		disabled={args['disabled']}
 		dragConfig={{
 			global: args['dragConfig global'] || false,
 			moveTolerance: args['dragConfig moveTolerance']
@@ -212,7 +213,6 @@ export const WithDragHandlers = (args) => (
 		onDragStart={action('onDragStart')}
 		onDrag={action('onDrag')}
 		onDragEnd={action('onDragEnd')}
-		disabled={args['disabled']}
 		style={{
 			border: '2px dashed #888',
 			width: ri.unit(ri.scale(500), 'rem'),

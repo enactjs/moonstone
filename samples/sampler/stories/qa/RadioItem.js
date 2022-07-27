@@ -120,18 +120,18 @@ WithRTLText.storyName = 'with right to left text';
 export const SelectedByDefault = (args) => (
 	<div>
 		<RadioItem
+			defaultSelected
 			disabled={args['disabled']}
 			inline={args['inline']}
 			onToggle={action('onToggle')}
-			defaultSelected
 		>
 			RadioItem1
 		</RadioItem>
 		<RadioItem
+			defaultSelected
 			disabled={args['disabled']}
 			inline={args['inline']}
 			onToggle={action('onToggle')}
-			defaultSelected
 		>
 			RadioItem2
 		</RadioItem>

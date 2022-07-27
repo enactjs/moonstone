@@ -13,11 +13,11 @@ export const BasicProgressBar = (args) => {
 	return (
 		<ProgressBar
 			backgroundProgress={args['backgroundProgress']}
-			tooltip={args['tooltip']}
-			highlighted={args['highlighted']}
-			progress={args['progress']}
-			orientation={args['orientation']}
 			disabled={args['disabled']}
+			highlighted={args['highlighted']}
+			orientation={args['orientation']}
+			progress={args['progress']}
+			tooltip={args['tooltip']}
 		/>
 	);
 };

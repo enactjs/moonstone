@@ -1,9 +1,9 @@
 import CheckboxItem from '@enact/moonstone/CheckboxItem';
 import Item, {ItemBase} from '@enact/moonstone/Item';
 import ToggleItem from '@enact/moonstone/ToggleItem';
+import {mergeComponentMetadata} from '@enact/storybook-utils';
 import {action} from '@enact/storybook-utils/addons/actions';
 import {boolean, select, text} from '@enact/storybook-utils/addons/controls';
-import {mergeComponentMetadata} from '@enact/storybook-utils';
 import Group from '@enact/ui/Group';
 import UiToggleItem, {ToggleItemBase as UiToggleItemBase} from '@enact/ui/ToggleItem';
 
@@ -52,7 +52,7 @@ export const WithTallCharacters = (args) => (
 );
 
 boolean('disabled', WithTallCharacters, Config, false);
-select('iconPosition', WithLongText, prop.iconPosition, Config, prop.tallText[0]);
+select('iconPosition', WithTallCharacters, prop.iconPosition, Config, prop.tallText[0]);
 boolean('inline', WithTallCharacters, Config);
 select('children', WithTallCharacters, prop.tallText, Config, prop.tallText[0]);
 
@@ -70,7 +70,7 @@ export const WithExtraSpacing = (args) => (
 );
 
 boolean('disabled', WithExtraSpacing, Config, false);
-select('iconPosition', WithLongText, prop.iconPosition, Config, prop.tallText[0]);
+select('iconPosition', WithExtraSpacing, prop.iconPosition, Config, prop.tallText[0]);
 boolean('inline', WithExtraSpacing, Config);
 text('children', WithExtraSpacing, Config, prop.extraSpaceText);
 
@@ -88,7 +88,7 @@ export const WithRightToLeftText = (args) => (
 );
 
 boolean('disabled', WithRightToLeftText, Config, false);
-select('iconPosition', WithLongText, prop.iconPosition, Config, prop.tallText[0]);
+select('iconPosition', WithRightToLeftText, prop.iconPosition, Config, prop.tallText[0]);
 boolean('inline', WithRightToLeftText, Config);
 text('children', WithRightToLeftText, Config, prop.rtlText);
 
@@ -98,13 +98,13 @@ export const Grouped = (args) => (
 	<Group
 		childComponent={CheckboxItem}
 		childSelect="onToggle"
+		defaultSelected={0}
 		itemProps={{
 			inline: args['itemProps-inline']
 		}}
+		onSelect={action('onSelect')}
 		select={args['select']}
 		selectedProp="selected"
-		defaultSelected={0}
-		onSelect={action('onSelect')}
 	>
 		{['Checkbox Item 1', 'Checkbox Item 2', 'Checkbox Item 3']}
 	</Group>
