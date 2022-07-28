@@ -2,7 +2,7 @@ import Button from '@enact/moonstone/Button';
 import Input from '@enact/moonstone/Input';
 import {Header, HeaderBase} from '@enact/moonstone/Panels';
 import {mergeComponentMetadata} from '@enact/storybook-utils';
-import {boolean, text, select} from '@enact/storybook-utils/addons/controls';
+import {boolean, select, text} from '@enact/storybook-utils/addons/controls';
 import {Fragment} from 'react';
 
 Header.displayName = 'Header';

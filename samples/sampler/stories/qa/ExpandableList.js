@@ -4,7 +4,7 @@ import ExpandableList, {ExpandableListBase} from '@enact/moonstone/ExpandableLis
 import Scroller from '@enact/moonstone/Scroller';
 import {mergeComponentMetadata} from '@enact/storybook-utils';
 import {action} from '@enact/storybook-utils/addons/actions';
-import {boolean, text, select} from '@enact/storybook-utils/addons/controls';
+import {boolean, select, text} from '@enact/storybook-utils/addons/controls';
 import {RadioControllerDecorator} from '@enact/ui/RadioDecorator';
 import {useCallback, useState} from 'react';
 
