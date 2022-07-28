@@ -51,9 +51,9 @@ export const JustTitle = (args) => {
 	);
 };
 
+boolean('add headerComponents', JustTitle, Config);
 select('marqueeOn', JustTitle, prop.marqueeOn, Config);
 text('title', JustTitle, Config, inputData.shortTitle);
-boolean('add headerComponents', JustTitle, Config);
 
 JustTitle.storyName = 'just title';
 
@@ -72,9 +72,9 @@ export const JustTitleCompact = (args) => {
 	);
 };
 
+boolean('add headerComponents', JustTitleCompact, Config);
 select('marqueeOn', JustTitleCompact, prop.marqueeOn, Config);
 text('title', JustTitleCompact, Config, inputData.shortTitle);
-boolean('add headerComponents', JustTitleCompact, Config);
 
 JustTitleCompact.storyName = 'just title, Compact';
 
@@ -94,11 +94,11 @@ export const ShortTitles = (args) => {
 	);
 };
 
+boolean('add headerComponents', ShortTitles, Config);
 select('marqueeOn', ShortTitles, prop.marqueeOn, Config);
 text('subTitleBelow', ShortTitles, Config, inputData.shortSubTitleBelow);
 text('title', ShortTitles, Config, inputData.shortTitle);
 text('titleBelow', ShortTitles, Config, inputData.shortTitleBelow);
-boolean('add headerComponents', ShortTitles, Config);
 
 ShortTitles.storyName = 'short titles';
 
@@ -119,11 +119,11 @@ export const ShortTitlesCompact = (args) => {
 	);
 };
 
+boolean('add headerComponents', ShortTitlesCompact, Config);
 select('marqueeOn', ShortTitlesCompact, prop.marqueeOn, Config);
 text('subTitleBelow', ShortTitlesCompact, Config, inputData.shortSubTitleBelow);
 text('title', ShortTitlesCompact, Config, inputData.shortTitle);
 text('titleBelow', ShortTitlesCompact, Config, inputData.shortTitleBelow);
-boolean('add headerComponents', ShortTitlesCompact, Config);
 
 ShortTitlesCompact.storyName = 'short titles, Compact';
 
@@ -143,11 +143,11 @@ export const LongTitles = (args) => {
 	);
 };
 
+boolean('add headerComponents', LongTitles, Config);
 select('marqueeOn', LongTitles, prop.marqueeOn, Config);
 text('subTitleBelow', LongTitles, Config, inputData.longSubTitleBelow);
 text('title', LongTitles, Config, inputData.longTitle);
 text('titleBelow', LongTitles, Config, inputData.longTitleBelow);
-boolean('add headerComponents', LongTitles, Config);
 
 LongTitles.storyName = 'long titles';
 
@@ -168,11 +168,11 @@ export const LongTitlesCompact = (args) => {
 	);
 };
 
+boolean('add headerComponents', LongTitlesCompact, Config);
 select('marqueeOn', LongTitlesCompact, prop.marqueeOn, Config);
 text('subTitleBelow', LongTitlesCompact, Config, inputData.longSubTitleBelow);
 text('title', LongTitlesCompact, Config, inputData.longTitle);
 text('titleBelow', LongTitlesCompact, Config, inputData.longTitleBelow);
-boolean('add headerComponents', LongTitlesCompact, Config);
 
 LongTitlesCompact.storyName = 'long titles, Compact';
 
@@ -192,11 +192,11 @@ export const RtlText = (args) => {
 	);
 };
 
+boolean('add headerComponents', RtlText, Config);
 select('marqueeOn', RtlText, prop.marqueeOn, Config);
 text('subTitleBelow', RtlText, Config, inputData.shortRtlTitleBelow);
 text('title', RtlText, Config, inputData.shortRtlTitle);
 text('titleBelow', RtlText, Config, inputData.shortRtlTitleBelow);
-boolean('add headerComponents', RtlText, Config);
 
 RtlText.storyName = 'RTL text';
 
@@ -217,11 +217,11 @@ export const RtlTextCompact = (args) => {
 	);
 };
 
+boolean('add headerComponents', RtlTextCompact, Config);
 select('marqueeOn', RtlTextCompact, prop.marqueeOn, Config);
 text('subTitleBelow', RtlTextCompact, Config, inputData.shortRtlTitleBelow);
 text('title', RtlTextCompact, Config, inputData.shortRtlTitle);
 text('titleBelow', RtlTextCompact, Config, inputData.shortRtlTitleBelow);
-boolean('add headerComponents', RtlTextCompact, Config);
 
 RtlTextCompact.storyName = 'RTL text, Compact';
 
@@ -241,11 +241,11 @@ export const LongRtlText = (args) => {
 	);
 };
 
+boolean('add headerComponents', LongRtlText, Config);
 select('marqueeOn', LongRtlText, prop.marqueeOn, Config);
 text('subTitleBelow', LongRtlText, Config, inputData.shortRtlTitleBelow);
 text('title', LongRtlText, Config, inputData.longRtlTitle);
 text('titleBelow', LongRtlText, Config, inputData.shortRtlTitleBelow);
-boolean('add headerComponents', LongRtlText, Config);
 
 LongRtlText.storyName = 'RTL text, long title';
 
@@ -266,11 +266,11 @@ export const LongRtlTextCompact = (args) => {
 	);
 };
 
+boolean('add headerComponents', LongRtlTextCompact, Config);
 select('marqueeOn', LongRtlTextCompact, prop.marqueeOn, Config);
 text('subTitleBelow', LongRtlTextCompact, Config, inputData.shortRtlTitleBelow);
 text('title', LongRtlTextCompact, Config, inputData.longRtlTitle);
 text('titleBelow', LongRtlTextCompact, Config, inputData.shortRtlTitleBelow);
-boolean('add headerComponents', LongRtlTextCompact, Config);
 
 LongRtlTextCompact.storyName = 'RTL text, long title, Compact';
 
@@ -290,11 +290,11 @@ export const TallGlyphs = (args) => {
 	);
 };
 
+boolean('add headerComponents', TallGlyphs, Config);
 select('marqueeOn', TallGlyphs, prop.marqueeOn, Config);
 text('subTitleBelow', TallGlyphs, Config, inputData.tallText);
 text('title', TallGlyphs, Config, inputData.tallText);
 text('titleBelow', TallGlyphs, Config, inputData.tallText);
-boolean('add headerComponents', TallGlyphs, Config);
 
 TallGlyphs.storyName = 'tall-glyphs';
 
@@ -315,10 +315,10 @@ export const TallGlyphsCompact = (args) => {
 	);
 };
 
+boolean('add headerComponents', TallGlyphsCompact, Config);
 select('marqueeOn', TallGlyphsCompact, prop.marqueeOn, Config);
 text('subTitleBelow', TallGlyphsCompact, Config, inputData.tallText);
 text('title', TallGlyphsCompact, Config, inputData.tallText);
 text('titleBelow', TallGlyphsCompact, Config, inputData.tallText);
-boolean('add headerComponents', TallGlyphsCompact, Config);
 
 TallGlyphsCompact.storyName = 'tall-glyphs, Compact';

@@ -48,6 +48,7 @@ export const TallGlyphs = (args) => {
 	);
 };
 
+boolean('add headerComponents', TallGlyphs, Config);
 boolean('Input dismissOnEnter', TallGlyphs, Config, true);
 boolean('Input Mode', TallGlyphs, Config, true);
 select('marqueeOn', TallGlyphs, prop.marqueeOn, Config);
@@ -55,7 +56,6 @@ text('placeholder', TallGlyphs, Config, inputData.longTitle);
 text('subTitleBelow', TallGlyphs, Config, inputData.longSubTitleBelow);
 text('title', TallGlyphs, Config, inputData.tallText);
 text('titleBelow', TallGlyphs, Config, inputData.longTitleBelow);
-boolean('add headerComponents', TallGlyphs, Config);
 
 TallGlyphs.storyName = 'tall-glyphs';
 
@@ -77,6 +77,7 @@ export const LongText = (args) => {
 	);
 };
 
+boolean('add headerComponents', LongText, Config);
 boolean('Input dismissOnEnter', LongText, Config, true);
 boolean('Input Mode', LongText, Config, true);
 select('marqueeOn', LongText, prop.marqueeOn, Config);
@@ -84,6 +85,5 @@ text('placeholder', LongText, Config, inputData.longTitle);
 text('subTitleBelow', LongText, Config, inputData.longSubTitleBelow);
 text('title', LongText, Config, inputData.longTitle);
 text('titleBelow', LongText, Config, inputData.longTitleBelow);
-boolean('add headerComponents', LongText, Config);
 
 LongText.storyName = 'long text';
