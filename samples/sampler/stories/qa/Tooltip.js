@@ -262,7 +262,7 @@ export const TooltipOverflow = (args) => {
 	const tooltipProps = args['tooltipProps'];
 	const tooltipRelative = args['tooltipRelative'];
 	return (
-		<Layout orientation="vertical" align={buttonAlignment + ' space-between'} className="enact-fit" style={{position: 'fixed', padding: `${ri.unit(ri.scale(18), 'rem')} ${ri.unit(ri.scale(12), 'rem')}`}}>
+		<Layout align={buttonAlignment + ' space-between'} className="enact-fit" orientation="vertical" style={{position: 'fixed', padding: `${ri.unit(ri.scale(18), 'rem')} ${ri.unit(ri.scale(12), 'rem')}`}}>
 			<Cell shrink>
 				<Layout align="center space-between">
 					<Cell shrink>

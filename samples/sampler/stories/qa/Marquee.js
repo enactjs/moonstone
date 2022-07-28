@@ -152,7 +152,7 @@ export const WithLTR = (args) => {
 
 select('children', WithLTR, LTR, Marquee, LTR[0]);
 boolean('disabled', WithLTR, Marquee, false);
-select('marqueeOn', WithLTR, ['hover', 'render'], Marquee, 'render');
+select('forceDirection', WithLTR, ['', 'ltr', 'rtl'], Marquee, '');
 boolean('marqueeDisabled', WithLTR, Marquee, false);
 select('marqueeOn', WithLTR, ['hover', 'render'], Marquee, 'render');
 number('marqueeOnRenderDelay', WithLTR, Marquee, 1000);
@@ -185,7 +185,7 @@ export const WithRTL = (args) => {
 
 select('children', WithRTL, RTL, Marquee, RTL[0]);
 boolean('disabled', WithRTL, Marquee, false);
-select('marqueeOn', WithRTL, ['hover', 'render'], Marquee, 'render');
+select('forceDirection', WithLTR, ['', 'ltr', 'rtl'], Marquee, '');
 boolean('marqueeDisabled', WithRTL, Marquee, false);
 select('marqueeOn', WithRTL, ['hover', 'render'], Marquee, 'render');
 number('marqueeOnRenderDelay', WithRTL, Marquee, 1000);
@@ -220,7 +220,7 @@ export const Synchronized = (args) => {
 
 select('children', Synchronized, RTL, Marquee, RTL[0]);
 boolean('disabled', Synchronized, Marquee, false);
-select('marqueeOn', Synchronized, ['hover', 'render'], Marquee, 'render');
+select('forceDirection', WithLTR, ['', 'ltr', 'rtl'], Marquee, '');
 boolean('marqueeDisabled', Synchronized, Marquee, false);
 select('marqueeOn', Synchronized, ['hover', 'render'], Marquee, 'render');
 number('marqueeOnRenderDelay', Synchronized, Marquee, 1000);

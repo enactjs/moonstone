@@ -24,9 +24,9 @@ export const AlignedGrid = (args) => {
 
 	return (
 		<Scroller>
-			<Layout wrap align="center space-between">
+			<Layout align="center space-between" wrap>
 				{iconNames.map((icon) =>
-					<Cell size={200} key={'icon' + icon}>
+					<Cell key={'icon' + icon} size={200}>
 						<LabeledIconButton
 							disabled={disabled}
 							flip={args['flip']}
@@ -59,9 +59,9 @@ export const Inline = (args) => {
 				<LabeledIconButton
 					disabled={disabled}
 					flip={args['flip']}
-					key={'icon' + icon}
 					icon={icon}
 					inline
+					key={'icon' + icon}
 					labelPosition={labelPosition}
 					size={args['size']}
 				>{icon}</LabeledIconButton>

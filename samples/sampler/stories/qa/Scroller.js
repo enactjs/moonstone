@@ -11,8 +11,8 @@ import Group from '@enact/ui/Group';
 import ri from '@enact/ui/resolution';
 import Spotlight from '@enact/spotlight';
 import SpotlightContainerDecorator from '@enact/spotlight/SpotlightContainerDecorator';
-import UiScroller from '@enact/ui/Scroller';
 import {ScrollableBase as UiScrollableBase} from '@enact/ui/Scrollable';
+import UiScroller from '@enact/ui/Scroller';
 import PropTypes from 'prop-types';
 import {useCallback, useEffect, useState} from 'react';
 

@@ -1,10 +1,9 @@
+import Picker from '@enact/moonstone/Picker';
 import {action} from '@enact/storybook-utils/addons/actions';
 import {boolean, select} from '@enact/storybook-utils/addons/controls';
 
 import PickerAddRemove from './components/PickerAddRemove';
 import PickerRTL from './components/PickerRTL';
-
-import Picker from '@enact/moonstone/Picker';
 
 import iconNames from '../helper/icons';
 

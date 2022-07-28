@@ -66,10 +66,10 @@ export const WithSpotlightRestrict = (args) => {
 			</p>
 			<Button>Button</Button>
 			<Popup
-				open={args['open']}
 				noAnimation={args['noAnimation']}
 				noAutoDismiss={args['noAutoDismiss']}
 				onClose={action('onClose')}
+				open={args['open']}
 				showCloseButton={args['showCloseButton']}
 				spotlightRestrict={args['spotlightRestrict']}
 			>
