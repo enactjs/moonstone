@@ -106,13 +106,13 @@ const ChangeableTooltip = ({tooltipPosition}) => {
 			</div>
 			<IconButton
 				onClick={changeTooltipText}
-				tooltipPosition={tooltipPosition}
-				tooltipText={changeableText}
 				style={{
 					position: 'absolute',
 					left: parseInt(left || 0),
 					top: parseInt(top || 0)
 				}}
+				tooltipPosition={tooltipPosition}
+				tooltipText={changeableText}
 			>
 				drawer
 			</IconButton>
@@ -137,8 +137,8 @@ const IconButtonItem = kind({
 					plus
 				</IconButton>
 				<IconButton
-					style={{marginLeft: '450px'}}
 					size="small"
+					style={{marginLeft: '450px'}}
 					tooltipText="tooltip"
 					{...rest}
 				>
@@ -268,10 +268,10 @@ export const TooltipOverflow = (args) => {
 					<Cell shrink>
 						<TooltipButton
 							tooltipDelay={tooltipDelay}
-							tooltipText={tooltipText}
 							tooltipPosition={tooltipPosition}
 							tooltipProps={tooltipProps}
 							tooltipRelative={tooltipRelative}
+							tooltipText={tooltipText}
 						>
 							Top Left
 						</TooltipButton>
@@ -279,10 +279,10 @@ export const TooltipOverflow = (args) => {
 					<Cell shrink>
 						<TooltipButton
 							tooltipDelay={tooltipDelay}
-							tooltipText={tooltipText}
 							tooltipPosition={tooltipPosition}
 							tooltipProps={tooltipProps}
 							tooltipRelative={tooltipRelative}
+							tooltipText={tooltipText}
 						>
 							Top
 						</TooltipButton>
@@ -290,10 +290,10 @@ export const TooltipOverflow = (args) => {
 					<Cell shrink>
 						<TooltipButton
 							tooltipDelay={tooltipDelay}
-							tooltipText={tooltipText}
 							tooltipPosition={tooltipPosition}
 							tooltipProps={tooltipProps}
 							tooltipRelative={tooltipRelative}
+							tooltipText={tooltipText}
 						>
 							Top Right
 						</TooltipButton>
@@ -305,10 +305,10 @@ export const TooltipOverflow = (args) => {
 					<Cell shrink>
 						<TooltipButton
 							tooltipDelay={tooltipDelay}
-							tooltipText={tooltipText}
 							tooltipPosition={tooltipPosition}
 							tooltipProps={tooltipProps}
 							tooltipRelative={tooltipRelative}
+							tooltipText={tooltipText}
 						>
 							Left
 						</TooltipButton>
@@ -316,10 +316,10 @@ export const TooltipOverflow = (args) => {
 					<Cell shrink>
 						<TooltipButton
 							tooltipDelay={tooltipDelay}
-							tooltipText={tooltipText}
 							tooltipPosition={tooltipPosition}
 							tooltipProps={tooltipProps}
 							tooltipRelative={tooltipRelative}
+							tooltipText={tooltipText}
 						>
 							Center
 						</TooltipButton>
@@ -327,10 +327,10 @@ export const TooltipOverflow = (args) => {
 					<Cell shrink>
 						<TooltipButton
 							tooltipDelay={tooltipDelay}
-							tooltipText={tooltipText}
 							tooltipPosition={tooltipPosition}
 							tooltipProps={tooltipProps}
 							tooltipRelative={tooltipRelative}
+							tooltipText={tooltipText}
 						>
 							Right
 						</TooltipButton>
@@ -342,10 +342,10 @@ export const TooltipOverflow = (args) => {
 					<Cell shrink>
 						<TooltipButton
 							tooltipDelay={tooltipDelay}
-							tooltipText={tooltipText}
 							tooltipPosition={tooltipPosition}
 							tooltipProps={tooltipProps}
 							tooltipRelative={tooltipRelative}
+							tooltipText={tooltipText}
 						>
 							Bottom Left
 						</TooltipButton>
@@ -353,10 +353,10 @@ export const TooltipOverflow = (args) => {
 					<Cell shrink>
 						<TooltipButton
 							tooltipDelay={tooltipDelay}
-							tooltipText={tooltipText}
 							tooltipPosition={tooltipPosition}
 							tooltipProps={tooltipProps}
 							tooltipRelative={tooltipRelative}
+							tooltipText={tooltipText}
 						>
 							Bottom
 						</TooltipButton>
@@ -364,10 +364,10 @@ export const TooltipOverflow = (args) => {
 					<Cell shrink>
 						<TooltipButton
 							tooltipDelay={tooltipDelay}
-							tooltipText={tooltipText}
 							tooltipPosition={tooltipPosition}
 							tooltipProps={tooltipProps}
 							tooltipRelative={tooltipRelative}
+							tooltipText={tooltipText}
 						>
 							Bottom Right
 						</TooltipButton>

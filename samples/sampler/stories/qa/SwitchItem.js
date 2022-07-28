@@ -53,13 +53,13 @@ export const GroupedSwitchItems = (args) => {
 			</Heading>
 			<Group
 				childComponent={SwitchItem}
+				defaultSelected={1}
 				itemProps={{
 					inline: args['ItemProps-Inline'],
 					disabled: args['disabled']
 				}}
-				selectedProp="selected"
-				defaultSelected={1}
 				onSelect={action('onSelect')}
+				selectedProp="selected"
 			>
 				{[args['Normal Text 1'], args['Normal Text 2'], args['Normal Text 3']]}
 			</Group>
@@ -68,15 +68,15 @@ export const GroupedSwitchItems = (args) => {
 			</Heading>
 			<Group
 				childComponent={SwitchItem}
+				childSelect="onToggle"
+				defaultSelected={1}
+				disabled={args['disabled']}
 				itemProps={{
 					inline: args['ItemProps-Inline'],
 					disabled: args['disabled']
 				}}
-				childSelect="onToggle"
-				selectedProp="selected"
-				disabled={args['disabled']}
-				defaultSelected={1}
 				onSelect={action('onSelect')}
+				selectedProp="selected"
 			>
 				{[args['Long Text 1'], args['Long Text 2'], args['Long Text 3']]}
 			</Group>

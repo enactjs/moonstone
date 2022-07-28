@@ -32,6 +32,7 @@ export const WithLongText = (args) => {
 	return (
 		<Input
 			autoFocus={args['autoFocus']}
+			defaultValue={inputData.longText}
 			disabled={args['disabled']}
 			iconAfter={args['iconAfter']}
 			iconBefore={args['iconBefore']}
@@ -41,7 +42,6 @@ export const WithLongText = (args) => {
 			placeholder={args['placeholder']}
 			size={args['size']}
 			type={args['type']}
-			defaultValue={inputData.longText}
 		/>
 	);
 };
@@ -62,12 +62,12 @@ export const WithLongPlaceholder = (args) => {
 	return (
 		<Input
 			autoFocus={args['autoFocus']}
-			onChange={action('onChange')}
 			disabled={args['disabled']}
 			iconAfter={args['iconAfter']}
 			iconBefore={args['iconBefore']}
 			invalid={args['invalid']}
 			invalidMessage={args['invalidMessage']}
+			onChange={action('onChange')}
 			placeholder={args['placeholder']}
 			size={args['size']}
 			type={args['type']}
@@ -92,42 +92,42 @@ export const WithTallCharacters = (args) => {
 		<div>
 			<Input
 				autoFocus={args['autoFocus']}
-				onChange={action('onChange')}
-				disabled={args['disabled']}
-				iconAfter={args['iconAfter']}
-				iconBefore={args['iconBefore']}
-				invalid={args['invalid']}
-				invalidMessage={args['invalidMessage']}
-				placeholder={args['placeholder']}
-				size={args['size']}
-				type={args['type']}
 				defaultValue={inputData.tallText[0]}
-			/>
-			<Input
-				autoFocus={args['autoFocus']}
-				onChange={action('onChange')}
 				disabled={args['disabled']}
 				iconAfter={args['iconAfter']}
 				iconBefore={args['iconBefore']}
 				invalid={args['invalid']}
 				invalidMessage={args['invalidMessage']}
+				onChange={action('onChange')}
 				placeholder={args['placeholder']}
 				size={args['size']}
 				type={args['type']}
+			/>
+			<Input
+				autoFocus={args['autoFocus']}
 				defaultValue={inputData.tallText[1]}
-			/>
-			<Input
-				autoFocus={args['autoFocus']}
-				onChange={action('onChange')}
 				disabled={args['disabled']}
 				iconAfter={args['iconAfter']}
 				iconBefore={args['iconBefore']}
 				invalid={args['invalid']}
 				invalidMessage={args['invalidMessage']}
+				onChange={action('onChange')}
 				placeholder={args['placeholder']}
 				size={args['size']}
 				type={args['type']}
+			/>
+			<Input
+				autoFocus={args['autoFocus']}
 				defaultValue={inputData.tallText[2]}
+				disabled={args['disabled']}
+				iconAfter={args['iconAfter']}
+				iconBefore={args['iconBefore']}
+				invalid={args['invalid']}
+				invalidMessage={args['invalidMessage']}
+				onChange={action('onChange')}
+				placeholder={args['placeholder']}
+				size={args['size']}
+				type={args['type']}
 			/>
 		</div>
 	);
@@ -149,16 +149,16 @@ export const WithExtraSpacing = (args) => {
 	return (
 		<Input
 			autoFocus={args['autoFocus']}
-			onChange={action('onChange')}
+			defaultValue={inputData.extraSpaceText}
 			disabled={args['disabled']}
 			iconAfter={args['iconAfter']}
 			iconBefore={args['iconBefore']}
 			invalid={args['invalid']}
 			invalidMessage={args['invalidMessage']}
+			onChange={action('onChange')}
 			placeholder={args['placeholder']}
 			size={args['size']}
 			type={args['type']}
-			defaultValue={inputData.extraSpaceText}
 		/>
 	);
 };
@@ -179,16 +179,16 @@ export const WithRTLAndLTRTextTogether = (args) => {
 	return (
 		<Input
 			autoFocus={args['autoFocus']}
-			onChange={action('onChange')}
+			defaultValue={inputData.rtlAndLtr}
 			disabled={args['disabled']}
 			iconAfter={args['iconAfter']}
 			iconBefore={args['iconBefore']}
 			invalid={args['invalid']}
 			invalidMessage={args['invalidMessage']}
+			onChange={action('onChange')}
 			placeholder={args['placeholder']}
 			size={args['size']}
 			type={args['type']}
-			defaultValue={inputData.rtlAndLtr}
 		/>
 	);
 };
@@ -211,57 +211,58 @@ export const FiveWayTest = (args) => {
 			<div style={divMargin()}>
 				<Input
 					autoFocus={args['autoFocus']}
-					onChange={action('onChange')}
+					defaultValue={inputData.initialValue + ' one'}
 					disabled={args['disabled']}
 					iconAfter={args['iconAfter']}
 					iconBefore={args['iconBefore']}
 					invalid={args['invalid']}
 					invalidMessage={args['invalidMessage']}
+					onChange={action('onChange')}
 					placeholder={args['placeholder']}
 					size={args['size']}
 					type={args['type']}
-					defaultValue={inputData.initialValue + ' one'}
 				/>
 				<Input
 					autoFocus={args['autoFocus']}
-					onChange={action('onChange')}
+					defaultValue={inputData.initialValue + ' two'}
 					disabled={args['disabled']}
 					iconAfter={args['iconAfter']}
 					iconBefore={args['iconBefore']}
 					invalid={args['invalid']}
 					invalidMessage={args['invalidMessage']}
+					onChange={action('onChange')}
 					placeholder={args['placeholder']}
 					size={args['size']}
 					type={args['type']}
-					defaultValue={inputData.initialValue + ' two'}
 				/>
 			</div>
 			<div style={divMargin()}>
 				<Input
 					autoFocus={args['autoFocus']}
-					onChange={action('onChange')}
+					defaultValue={inputData.initialValue + ' three'}
 					disabled={args['disabled']}
 					iconAfter={args['iconAfter']}
 					iconBefore={args['iconBefore']}
 					invalid={args['invalid']}
 					invalidMessage={args['invalidMessage']}
+					onChange={action('onChange')}
 					placeholder={args['placeholder']}
 					size={args['size']}
 					type={args['type']}
-					defaultValue={inputData.initialValue + ' three'}
+
 				/>
 				<Input
 					autoFocus={args['autoFocus']}
-					onChange={action('onChange')}
+					defaultValue={inputData.initialValue + ' four'}
 					disabled={args['disabled']}
 					iconAfter={args['iconAfter']}
 					iconBefore={args['iconBefore']}
 					invalid={args['invalid']}
 					invalidMessage={args['invalidMessage']}
+					onChange={action('onChange')}
 					placeholder={args['placeholder']}
 					size={args['size']}
 					type={args['type']}
-					defaultValue={inputData.initialValue + ' four'}
 				/>
 			</div>
 		</div>
@@ -284,16 +285,16 @@ export const WithRange = (args) => {
 	return (
 		<Input
 			autoFocus={args['autoFocus']}
-			onChange={action('onChange')}
+			defaultValue={inputData.initialNumericValue}
 			disabled={args['disabled']}
 			iconAfter={args['iconAfter']}
 			iconBefore={args['iconBefore']}
 			invalid={args['invalid']}
 			invalidMessage={args['invalidMessage']}
+			onChange={action('onChange')}
 			placeholder={args['placeholder']}
 			size={args['size']}
 			type={inputData.type[1]}
-			defaultValue={inputData.initialNumericValue}
 		/>
 	);
 };

@@ -97,14 +97,14 @@ WithDefaultSelected.storyName = 'with default selected';
 export const Grouped = (args) => (
 	<Group
 		childComponent={SelectableItem}
+		childSelect="onToggle"
+		disabled={args['disabled']}
 		itemProps={{
 			inline: args['inline'],
 			disabled:  args['disabled']
 		}}
-		childSelect="onToggle"
-		selectedProp="selected"
-		disabled={args['disabled']}
 		onSelect={action('onSelect')}
+		selectedProp="selected"
 	>
 
 		{[
@@ -127,8 +127,8 @@ export const GroupedDisabledItems = () => (
 	<Group
 		childComponent={SelectableItem}
 		childSelect="onToggle"
-		selectedProp="selected"
 		onSelect={action('onSelect')}
+		selectedProp="selected"
 	>
 		{[
 			{key: 'item1', children: '1', disabled: true},

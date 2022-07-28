@@ -125,48 +125,49 @@ select('size', WithParent, ['small', 'large'], Config);
 
 WithParent.storyName = 'to test if the parent element\'s background causes occlusion';
 
-export const WithTapAreaDisplayed = () => (
-	<div>
-		<Heading>Button</Heading>
-		<Button
-			className={css.tapArea}
-			disabled={boolean('disabled', Config)}
-			onClick={action('onClick')}
-			size="large"
-		>
-			Normal Button
-		</Button>
-		<Button
-			className={css.tapArea}
-			disabled={boolean('disabled', Config)}
-			onClick={action('onClick')}
-			size="small"
-		>
-			Small Button
-		</Button>
-		<Heading>IconButton</Heading>
-		<IconButton
-			className={css.tapArea}
-			disabled={boolean('disabled', Config)}
-			onClick={action('onClick')}
-			size="large"
-		>
-			star
-		</IconButton>
-		<IconButton
-			className={css.tapArea}
-			disabled={boolean('disabled', Config)}
-			onClick={action('onClick')}
-			size="small"
-		>
-			star
-		</IconButton>
-	</div>
-);
+export const WithTapAreaDisplayed = (args) => {
+	const disabled = args['disabled'];
+
+	return (
+		<div>
+			<Heading>Button</Heading>
+			<Button
+				className={css.tapArea}
+				disabled={disabled}
+				onClick={action('onClick')}
+				size="large"
+			>
+				Normal Button
+			</Button>
+			<Button
+				className={css.tapArea}
+				disabled={disabled}
+				onClick={action('onClick')}
+				size="small"
+			>
+				Small Button
+			</Button>
+			<Heading>IconButton</Heading>
+			<IconButton
+				className={css.tapArea}
+				disabled={disabled}
+				onClick={action('onClick')}
+				size="large"
+			>
+				star
+			</IconButton>
+			<IconButton
+				className={css.tapArea}
+				disabled={disabled}
+				onClick={action('onClick')}
+				size="small"
+			>
+				star
+			</IconButton>
+		</div>
+	);
+};
+
+boolean('disabled', WithTapAreaDisplayed, Config);
 
 WithTapAreaDisplayed.storyName = 'with tap area displayed';
-WithTapAreaDisplayed.parameters = {
-	controls: {
-		hideNoControlsWarning: true
-	}
-};

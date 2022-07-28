@@ -23,8 +23,8 @@ export const WithLongPlaceholder = (args) => (
 		onClose={action('onClose')}
 		onOpen={action('onOpen')}
 		open={args['open']}
-		title={args['title']}
 		placeholder={args['placeholder']}
+		title={args['title']}
 		type={args['type']}
 	/>
 );
@@ -43,12 +43,13 @@ WithLongPlaceholder.storyName = 'with 2 options for testing direction';
 export const MultipleExpandableInputs = () => (
 	<div>
 		<ExpandableInput
-			title="ExpandableInput 1"
 			placeholder="ExpandableInput 1"
+			title="ExpandableInput 1"
+
 		/>
 		<ExpandableInput
-			title="ExpandableInput 2"
 			placeholder="ExpandableInput 2"
+			title="ExpandableInput 2"
 		/>
 	</div>
 );

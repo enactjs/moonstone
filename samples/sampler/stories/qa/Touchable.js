@@ -45,8 +45,8 @@ const TouchArea = kind({
 			onHoldEnd={onHoldEnd}
 			onMouseDown={onInteractionStart}
 			onMouseUp={onInteractionEnd}
-			onTouchStart={onInteractionStart}
 			onTouchEnd={onInteractionEnd}
+			onTouchStart={onInteractionStart}
 		>
 			{children}
 		</TouchableDiv>

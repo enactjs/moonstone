@@ -101,8 +101,8 @@ const DisappearTest = () => {
 				</Button>
 			) : null}
 			<Button
-				spotlightId="restoreButton"
 				onClick={restoreButton}
+				spotlightId="restoreButton"
 			>
 				Restore Button
 			</Button>

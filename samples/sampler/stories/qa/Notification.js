@@ -79,7 +79,10 @@ export default {
 
 export const WithDynamicContent = (args) => {
 	return (
-		<StatefulNotification noAutoDismiss={args['noAutoDismiss']} open={args['open']} />
+		<StatefulNotification
+			noAutoDismiss={args['noAutoDismiss']}
+			open={args['open']}
+		/>
 	);
 };
 

@@ -75,9 +75,9 @@ export const WithChildrenLengthUpdate = (args) => (
 		noAutoClose={args['noAutoClose']}
 		noLockBottom={args['noLockBottom']}
 		noneText={args['noneText']}
-		onSelect={action('onSelect')}
 		onClose={action('onClose')}
 		onOpen={action('onOpen')}
+		onSelect={action('onSelect')}
 		select={args['select']}
 		title="with children length update"
 	/>

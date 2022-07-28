@@ -233,14 +233,14 @@ export const OnFocus = () => {
 	return (
 		<div>
 			<Item
-				style={{width: ri.unit(399, 'rem')}}
 				marqueeOn="focus"
+				style={{width: ri.unit(399, 'rem')}}
 			>
 				{LTR[0]}
 			</Item>
 			<SpottableMarquee
-				style={{width: ri.unit(399, 'rem')}}
 				marqueeOn="focus"
+				style={{width: ri.unit(399, 'rem')}}
 			>
 				{LTR[0]}
 			</SpottableMarquee>
@@ -258,7 +258,6 @@ OnFocus.parameters = {
 export const RestartMarqueeWhenMarqueeCompletes = () => (
 	<SpottableDiv>
 		<Marquee
-			style={{width: ri.scaleToRem(399)}}
 			disabled={false}
 			marqueeDelay={1000}
 			marqueeDisabled={false}
@@ -266,11 +265,11 @@ export const RestartMarqueeWhenMarqueeCompletes = () => (
 			marqueeOnRenderDelay={1000}
 			marqueeResetDelay={1000}
 			marqueeSpeed={60}
+			style={{width: ri.scaleToRem(399)}}
 		>
 			{'The quick brown fox.'}
 		</Marquee>
 		<Marquee
-			style={{width: ri.scaleToRem(399)}}
 			disabled={false}
 			marqueeDelay={1000}
 			marqueeDisabled={false}
@@ -278,6 +277,7 @@ export const RestartMarqueeWhenMarqueeCompletes = () => (
 			marqueeOnRenderDelay={1000}
 			marqueeResetDelay={1000}
 			marqueeSpeed={60}
+			style={{width: ri.scaleToRem(399)}}
 		>
 			{LTR[0]}
 		</Marquee>

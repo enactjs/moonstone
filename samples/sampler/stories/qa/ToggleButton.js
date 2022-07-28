@@ -22,10 +22,10 @@ export default {
 export const WithLongText = (args) => {
 	return (
 		<ToggleButton
-			onClick={action('onClick')}
-			onToggle={action('onToggle')}
 			backgroundOpacity={args['backgroundOpacity']}
 			disabled={args['disabled']}
+			onClick={action('onClick')}
+			onToggle={action('onToggle')}
 			size={args['size']}
 			toggleOnLabel={args['toggleOnLabel']}
 			toggleOffLabel={args['toggleOffLabel']}
@@ -44,10 +44,10 @@ WithLongText.storyName = 'with long text';
 export const WithTallText = (args) => {
 	return (
 		<ToggleButton
-			onClick={action('onClick')}
-			onToggle={action('onToggle')}
 			backgroundOpacity={args['backgroundOpacity']}
 			disabled={args['disabled']}
+			onClick={action('onClick')}
+			onToggle={action('onToggle')}
 			size={args['size']}
 			toggleOnLabel={args['toggleOnLabel']}
 			toggleOffLabel={args['toggleOffLabel']}

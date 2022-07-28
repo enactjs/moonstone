@@ -143,7 +143,7 @@ const InPanels = ({className, title, ...rest}) => {
 				/>
 			</Panel>
 			<Panel title={`${title} Panel 1`}>
-				<Header type="compact" title={`${title} Panel 1`} key="header" />
+				<Header key="header" title={`${title} Panel 1`} type="compact" />
 				<Item onClick={handleSelectItem}>Go Back</Item>
 			</Panel>
 		</ActivityPanels>

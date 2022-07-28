@@ -62,9 +62,9 @@ export const WithSpotlightDisabled = (args) => {
 	return (
 		<div>
 			<LabeledItem
-				spotlightDisabled={args['spotlightDisabled']}
-				marqueeOn={args['marqueeOn']}
 				label={args['label']}
+				marqueeOn={args['marqueeOn']}
+				spotlightDisabled={args['spotlightDisabled']}
 			>
 				{args['children']}
 			</LabeledItem>
