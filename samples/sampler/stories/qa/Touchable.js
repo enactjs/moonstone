@@ -2,8 +2,8 @@ import kind from '@enact/core/kind';
 import Button from '@enact/moonstone/Button';
 import {action} from '@enact/storybook-utils/addons/actions';
 import {boolean, number, range} from '@enact/storybook-utils/addons/controls';
-import Touchable from '@enact/ui/Touchable';
 import ri from '@enact/ui/resolution';
+import Touchable from '@enact/ui/Touchable';
 import PropTypes from 'prop-types';
 import {Fragment} from 'react';
 
@@ -186,8 +186,8 @@ ThatDoesNotResumeWhenReEnteringComponent.storyName = 'that does not resume when 
 
 export const WithOnFlickHandler = (args) => (
 	<TouchableDiv
-		onFlick={action('onFlick')}
 		disabled={args['disabled']}
+		onFlick={action('onFlick')}
 		style={{
 			border: '2px dashed #888',
 			width: ri.unit(ri.scale(500), 'rem'),
@@ -210,9 +210,9 @@ export const WithDragHandlers = (args) => (
 			moveTolerance: args['dragConfig moveTolerance']
 		}}
 		noResume={args['noResume']}
-		onDragStart={action('onDragStart')}
 		onDrag={action('onDrag')}
 		onDragEnd={action('onDragEnd')}
+		onDragStart={action('onDragStart')}
 		style={{
 			border: '2px dashed #888',
 			width: ri.unit(ri.scale(500), 'rem'),

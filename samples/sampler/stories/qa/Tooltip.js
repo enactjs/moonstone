@@ -1,10 +1,10 @@
 import kind from '@enact/core/kind';
 import BodyText from '@enact/moonstone/BodyText';
 import Button from '@enact/moonstone/Button';
-import TooltipDecorator from '@enact/moonstone/TooltipDecorator';
 import Input from '@enact/moonstone/Input';
 import IconButton from '@enact/moonstone/IconButton';
 import Scroller from '@enact/moonstone/Scroller';
+import TooltipDecorator from '@enact/moonstone/TooltipDecorator';
 import {mergeComponentMetadata} from '@enact/storybook-utils';
 import {boolean, number, object, select, text} from '@enact/storybook-utils/addons/controls';
 import Layout, {Cell} from '@enact/ui/Layout';
