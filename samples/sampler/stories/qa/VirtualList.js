@@ -131,7 +131,7 @@ const InPanels = ({className, title, ...rest}) => {
 	}, [index]);
 
 	return (
-		<ActivityPanels className={className} index={index} onSelectBreadcrumb={handleSelectBreadcrumb} noCloseButton>
+		<ActivityPanels className={className} index={index} noCloseButton onSelectBreadcrumb={handleSelectBreadcrumb}>
 			<Panel>
 				<Header type="compact" title={`${title} Panel 0`} key="header" />
 				<VirtualList
