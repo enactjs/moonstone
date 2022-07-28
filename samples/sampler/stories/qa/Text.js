@@ -84,9 +84,9 @@ export const TallGlyphsNonLatin = (args) => {
 			<SwitchItem>{children}</SwitchItem>
 
 			<Heading showLine>Headers (Standard, Compact, Input)</Heading>
-			<Header type="standard" subTitleBelow={children} title={children} titleBelow={children} />
+			<Header subTitleBelow={children} title={children} titleBelow={children} type="standard" />
 			<br />
-			<Header type="compact" subTitleBelow={children} title={children} titleBelow={children} />
+			<Header subTitleBelow={children} title={children} titleBelow={children} type="compact" />
 			<br />
 			<Header subTitleBelow={children} title={children} titleBelow={children} >
 				<Input value={children} slot="headerInput" />
