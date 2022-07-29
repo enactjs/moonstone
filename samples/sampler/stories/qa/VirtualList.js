@@ -194,7 +194,7 @@ export const HorizontalScrollInScroller = (args) => {
 		spacing: ri.scale(args['spacing']),
 		style: listStyle,
 		verticalScrollbar: args['verticalScrollbar'],
-		wrap: wrapOption[args['wrap']]
+		wrap: [args['wrap']]
 	};
 
 	return (
@@ -213,7 +213,7 @@ number('itemSize', HorizontalScrollInScroller, Config, 72);
 number('spacing', HorizontalScrollInScroller, Config);
 select('horizontalScrollbar', HorizontalScrollInScroller, prop.scrollbarOption, Config);
 select('verticalScrollbar', HorizontalScrollInScroller, prop.scrollbarOption, Config);
-select('wrap', HorizontalScrollInScroller, ['false', 'true', '"noAnimation"'], Config);
+select('wrap', HorizontalScrollInScroller, wrapOption, Config);
 
 HorizontalScrollInScroller.storyName = 'horizontal scroll in Scroller';
 HorizontalScrollInScroller.parameters = {
@@ -235,7 +235,7 @@ export const WithMoreItems = (args) => {
 			spacing={ri.scale(args['spacing'])}
 			spotlightDisabled={args['spotlightDisabled']}
 			verticalScrollbar={args['verticalScrollbar']}
-			wrap={wrapOption[args['wrap']]}
+			wrap={args['wrap']}
 		/>
 	);
 };
@@ -248,7 +248,7 @@ select('horizontalScrollbar', WithMoreItems, prop.scrollbarOption, Config);
 select('verticalScrollbar', WithMoreItems, prop.scrollbarOption, Config);
 number('itemSize', WithMoreItems, Config, 72);
 number('spacing', WithMoreItems, Config);
-select('wrap', WithMoreItems, ['false', 'true', '"noAnimation"'], Config);
+select('wrap', WithMoreItems, wrapOption, Config);
 
 WithMoreItems.storyName = 'with more items';
 WithMoreItems.parameters = {
@@ -300,7 +300,7 @@ export const _InPanels = (args, context) => {
 			spotlightDisabled={args['spotlightDisabled']}
 			title={title}
 			verticalScrollbar={args['verticalScrollbar']}
-			wrap={wrapOption[args['wrap']]}
+			wrap={args['wrap']}
 		/>
 	);
 };
@@ -313,7 +313,7 @@ number('itemSize', _InPanels, Config, 72);
 number('spacing', _InPanels, Config);
 select('horizontalScrollbar', _InPanels, prop.scrollbarOption, Config);
 select('verticalScrollbar', _InPanels, prop.scrollbarOption, Config);
-select('wrap', _InPanels, ['false', 'true', '"noAnimation"'], Config);
+select('wrap', _InPanels, wrapOption, Config);
 
 _InPanels.storyName = 'in Panels';
 _InPanels.parameters = {
@@ -374,7 +374,7 @@ export const WithContainerItemsHaveSpottableControls = (args) => {
 			focusableScrollbar={args['focusableScrollbar']}
 			itemRenderer={renderItem(ContainerItemWithControls, ri.scale(args['itemSize']), true)}
 			itemSize={ri.scale(args['itemSize'])}
-			wrap={wrapOption[args['wrap']]}
+			wrap={args['wrap']}
 		/>
 	);
 };
@@ -382,7 +382,7 @@ export const WithContainerItemsHaveSpottableControls = (args) => {
 boolean('focusableScrollbar', WithContainerItemsHaveSpottableControls, Config);
 number('dataSize', WithContainerItemsHaveSpottableControls, Config, defaultDataSize);
 number('itemSize', WithContainerItemsHaveSpottableControls, Config, 78);
-select('wrap', WithContainerItemsHaveSpottableControls, ['false', 'true', '"noAnimation"'], Config);
+select('wrap', WithContainerItemsHaveSpottableControls, wrapOption, Config);
 
 WithContainerItemsHaveSpottableControls.storyName = 'with container items have spottable controls';
 WithContainerItemsHaveSpottableControls.parameters = {

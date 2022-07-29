@@ -87,28 +87,6 @@ boolean('disabled', WithDefaultHoldEvents, Button);
 
 WithDefaultHoldEvents.storyName = 'with default hold events';
 
-export const WithCustomLongPress = (args) => (
-	<Button
-		disabled={args['disabled']}
-		holdConfig={{
-			events: [
-				{name: 'hold', time: 1000},
-				{name: 'longpress', time: 2000}
-			],
-			frequency: 1000
-		}}
-		onHold={action('onHold')}
-		onHoldEnd={action('onHoldEnd')}
-		onHoldStart={action('onHoldStart')}
-	>
-		LongPress
-	</Button>
-);
-
-boolean('disabled', WithCustomLongPress, Button);
-
-WithCustomLongPress.storyName = 'with a custom longpress event and 1 second frequency';
-
 export const WithACustomLongpressEventAnd1SecondFrequency = (args) => (
 	<Button
 		disabled={args['disabled']}

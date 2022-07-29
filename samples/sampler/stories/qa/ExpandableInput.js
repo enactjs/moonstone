@@ -8,6 +8,10 @@ ExpandableInput.displayName = 'ExpandableInput';
 
 const iconNames = ['', ...icons];
 
+const inputData = {
+	type: ['text', 'number', 'password']
+};
+
 export default {
 	title: 'Moonstone/ExpandableInput',
 	component: 'ExpandableInput'
@@ -36,7 +40,7 @@ text('noneText', WithLongPlaceholder, ExpandableInput, 'noneText');
 boolean('open', WithLongPlaceholder, ExpandableInput, true);
 text('title', WithLongPlaceholder, ExpandableInput, 'title');
 text('placeholder', WithLongPlaceholder, ExpandableInput, 'Looooooooooooooooooooooong');
-text('type', WithLongPlaceholder, ExpandableInput, 'text');
+select('type', WithLongPlaceholder, inputData.type, ExpandableInput, inputData.type[0]);
 
 WithLongPlaceholder.storyName = 'with 2 options for testing direction';
 

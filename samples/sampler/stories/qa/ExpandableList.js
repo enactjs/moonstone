@@ -147,23 +147,17 @@ WithMultipleLists.parameters = {
 };
 
 export const WithDefaultSelected = () => (
-	<div>
-		<ExpandableList title="First">
-			{['One', 'Two', 'Three']}
+	<Scroller>
+		<ExpandableList title="Default Selected" defaultSelected={2}>
+			{['Option 1', 'Option 2', 'Option 3']}
 		</ExpandableList>
-		<ExpandableList title="Second (with disabled items)">
-			{[
-				{key: 1, children: 'a', disabled: true},
-				{key: 2, children: 'b'},
-				{key: 3, children: 'c', disabled: true},
-				{key: 4, children: 'd'},
-				{key: 5, children: 'e', disabled: true}
-			]}
+		<ExpandableList title="Multiple Selected" select="multiple" defaultSelected={[1, 2]}>
+			{['Option 1', 'Option 2', 'Option 3']}
 		</ExpandableList>
-		<ExpandableList title="Third">
-			{['Seventh', 'Eighth', 'Ninth']}
+		<ExpandableList title="Long Contents Selected" select="multiple" defaultSelected={[17, 18, 19]}>
+			{optionsArray}
 		</ExpandableList>
-	</div>
+	</Scroller>
 );
 
 WithDefaultSelected.storyName = 'with default selected';

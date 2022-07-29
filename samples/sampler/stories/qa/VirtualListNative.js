@@ -61,7 +61,7 @@ export const WithExtraItems = (args) => (
 			spacing={ri.scale(args['spacing'])}
 			spotlightDisabled={args['spotlightDisabled(for all items)']}
 			verticalScrollbar={args['verticalScrollbar']}
-			wrap={wrapOption[args['wrap']]}
+			wrap={args['wrap']}
 		/>
 		<Cell shrink component={Item}>extra item1</Cell>
 		<Cell shrink component={Item}>extra item2</Cell>
@@ -77,6 +77,6 @@ number('itemSize', WithExtraItems, Config, 60);
 number('spacing', WithExtraItems, Config, 20);
 select('horizontalScrollbar', WithExtraItems, prop.scrollbarOption, Config);
 select('verticalScrollbar', WithExtraItems, prop.scrollbarOption, Config);
-select('wrap', WithExtraItems, ['false', 'true', '"noAnimation"'], Config);
+select('wrap', WithExtraItems, wrapOption, Config);
 
 WithExtraItems.storyName = 'with extra items';

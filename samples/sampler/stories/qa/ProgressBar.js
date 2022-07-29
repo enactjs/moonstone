@@ -1,6 +1,6 @@
 import ProgressBar, {ProgressBarBase} from '@enact/moonstone/ProgressBar';
 import {mergeComponentMetadata} from '@enact/storybook-utils';
-import {boolean, number, select} from '@enact/storybook-utils/addons/controls';
+import {boolean, range, select} from '@enact/storybook-utils/addons/controls';
 
 const Config = mergeComponentMetadata('ProgressBar', ProgressBarBase, ProgressBar);
 
@@ -22,11 +22,11 @@ export const BasicProgressBar = (args) => {
 	);
 };
 
-number('backgroundProgress', BasicProgressBar, Config, 0.5, {range: true, min: 0, max: 1, step: 0.01});
+range('backgroundProgress', BasicProgressBar, Config, {max: 1, min: 0, step: 0.01}, 0.5);
 boolean('disabled', BasicProgressBar, Config, false);
 boolean('highlighted', BasicProgressBar, Config, false);
 select('orientation', BasicProgressBar, ['horizontal', 'vertical'], Config, 'horizontal');
-number('progress', BasicProgressBar, Config, 0.4, {range: true, min: 0, max: 1, step: 0.01});
+range('progress', BasicProgressBar, Config, {range: true, min: 0, max: 1, step: 0.01}, 0.4);
 boolean('tooltip', BasicProgressBar, Config, false);
 
 BasicProgressBar.storyName = 'The basic ProgressBar';
