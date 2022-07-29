@@ -1,65 +1,78 @@
-// import {mergeComponentMetadata} from '@enact/storybook-utils';
-// import {boolean, select} from '@enact/storybook-utils/addons/knobs';
-// import UIButton, {ButtonBase as UIButtonBase} from '@enact/ui/Button';
-// import {LabeledIconBase as UiLabeledIconBase, LabeledIcon as UiLabeledIcon} from '@enact/ui/LabeledIcon';
-// import {storiesOf} from '@storybook/react';
-// import Scroller from '@enact/ui/Scroller';
-// import Layout, {Cell} from '@enact/ui/Layout';
-//
-// import Button, {ButtonBase} from '@enact/moonstone/Button';
-// import {IconButtonBase} from '@enact/moonstone/IconButton';
-// import LabeledIconButton from '@enact/moonstone/LabeledIconButton';
-//
-// import iconNames from '../default/icons';
-//
-// LabeledIconButton.displayName = 'LabeledIconButton';
-// const Config = mergeComponentMetadata('LabeledIconButton', UiLabeledIconBase, UiLabeledIcon, Button, ButtonBase, UIButton, UIButtonBase, IconButtonBase, LabeledIconButton);
-//
-// storiesOf('LabeledIconButton', module)
-// 	.add(
-// 		'aligned grid',
-// 		() => {
-// 			const disabled = boolean('disabled', Config);
-// 			const labelPosition = select('labelPosition', ['above', 'after', 'before', 'below', 'left', 'right'], Config);
-// 			return (
-// 				<Scroller>
-// 					<Layout wrap align="center space-between">
-// 						{iconNames.map((icon) =>
-// 							<Cell size={200} key={'icon' + icon}>
-// 								<LabeledIconButton
-// 									style={{marginLeft: 0, marginRight: 0}}
-// 									icon={icon}
-// 									disabled={disabled}
-// 									flip={select('flip', ['', 'both', 'horizontal', 'vertical'], Config, '')}
-// 									labelPosition={labelPosition}
-// 									size={select('size', ['small', 'large'], Config)}
-// 								>{icon}</LabeledIconButton>
-// 							</Cell>
-// 						)}
-// 					</Layout>
-// 				</Scroller>
-// 			);
-// 		}
-// 	)
-// 	.add(
-// 		'inline',
-// 		() => {
-// 			const disabled = boolean('disabled', Config);
-// 			const labelPosition = select('labelPosition', ['above', 'after', 'before', 'below', 'left', 'right'], Config);
-// 			return (
-// 				<Scroller>
-// 					{iconNames.map((icon) =>
-// 						<LabeledIconButton
-// 							key={'icon' + icon}
-// 							icon={icon}
-// 							inline
-// 							disabled={disabled}
-// 							flip={select('flip', ['', 'both', 'horizontal', 'vertical'], Config, '')}
-// 							labelPosition={labelPosition}
-// 							size={select('size', ['small', 'large'], Config)}
-// 						>{icon}</LabeledIconButton>
-// 					)}
-// 				</Scroller>
-// 			);
-// 		}
-// 	);
+import Button, {ButtonBase} from '@enact/moonstone/Button';
+import {IconButtonBase} from '@enact/moonstone/IconButton';
+import LabeledIconButton from '@enact/moonstone/LabeledIconButton';
+import {mergeComponentMetadata} from '@enact/storybook-utils';
+import {boolean, select} from '@enact/storybook-utils/addons/controls';
+import UIButton, {ButtonBase as UIButtonBase} from '@enact/ui/Button';
+import {LabeledIconBase as UiLabeledIconBase, LabeledIcon as UiLabeledIcon} from '@enact/ui/LabeledIcon';
+import Layout, {Cell} from '@enact/ui/Layout';
+import Scroller from '@enact/ui/Scroller';
+
+import iconNames from '../helper/icons';
+
+LabeledIconButton.displayName = 'LabeledIconButton';
+const Config = mergeComponentMetadata('LabeledIconButton', UiLabeledIconBase, UiLabeledIcon, Button, ButtonBase, UIButton, UIButtonBase, IconButtonBase, LabeledIconButton);
+
+export default {
+	title: 'Moonstone/LabeledIconButton',
+	component: 'LabeledIconButton'
+};
+
+export const AlignedGrid = (args) => {
+	const disabled = args['disabled'];
+	const labelPosition = args['labelPosition'];
+
+	return (
+		<Scroller>
+			<Layout align="center space-between" wrap>
+				{iconNames.map((icon) =>
+					<Cell key={'icon' + icon} size={200}>
+						<LabeledIconButton
+							disabled={disabled}
+							flip={args['flip']}
+							icon={icon}
+							labelPosition={labelPosition}
+							size={args['size']}
+							style={{marginLeft: 0, marginRight: 0}}
+						>{icon}</LabeledIconButton>
+					</Cell>
+				)}
+			</Layout>
+		</Scroller>
+	);
+};
+
+boolean('disabled', AlignedGrid, Config);
+select('flip', AlignedGrid, ['', 'both', 'horizontal', 'vertical'], Config, '');
+select('labelPosition', AlignedGrid, ['above', 'after', 'before', 'below', 'left', 'right'], Config);
+select('size', AlignedGrid, ['small', 'large'], Config);
+
+AlignedGrid.storyName = 'aligned grid';
+
+export const Inline = (args) => {
+	const disabled = args['disabled'];
+	const labelPosition = args['labelPosition'];
+
+	return (
+		<Scroller>
+			{iconNames.map((icon) =>
+				<LabeledIconButton
+					disabled={disabled}
+					flip={args['flip']}
+					icon={icon}
+					inline
+					key={'icon' + icon}
+					labelPosition={labelPosition}
+					size={args['size']}
+				>{icon}</LabeledIconButton>
+			)}
+		</Scroller>
+	);
+};
+
+boolean('disabled', Inline, Config);
+select('flip', Inline, ['', 'both', 'horizontal', 'vertical'], Config, '');
+select('labelPosition', Inline, ['above', 'after', 'before', 'below', 'left', 'right'], Config);
+select('size', Inline, ['small', 'large'], Config);
+
+Inline.storyName = 'inline';

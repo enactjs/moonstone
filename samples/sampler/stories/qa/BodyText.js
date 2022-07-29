@@ -1,5 +1,5 @@
-import {boolean, select} from '@enact/storybook-utils/addons/controls';
 import BodyText from '@enact/moonstone/BodyText';
+import {boolean, select} from '@enact/storybook-utils/addons/controls';
 
 BodyText.displayName = 'BodyText';
 
@@ -17,13 +17,16 @@ export default {
 };
 
 export const WithLongAndShortStrings = (args) => (
-	<BodyText centered={args['centered']} noWrap={args['noWrap']}>
+	<BodyText
+		centered={args['centered']}
+		noWrap={args['noWrap']}
+	>
 		{args['children']}
 	</BodyText>
 );
 
 boolean('centered', WithLongAndShortStrings, BodyText);
-boolean('noWrap', WithLongAndShortStrings, BodyText);
 select('children', WithLongAndShortStrings, stringsToChoose, BodyText, stringsToChoose[0]);
+boolean('noWrap', WithLongAndShortStrings, BodyText);
 
 WithLongAndShortStrings.storyName = 'with long and short strings';
