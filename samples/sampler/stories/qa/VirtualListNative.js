@@ -19,7 +19,7 @@ const
 	wrapOption = {
 		false: false,
 		true: true,
-		'&quot;noAnimation&quot;': 'noAnimation'
+		'"noAnimation"': 'noAnimation'
 	};
 
 const updateDataSize = (dataSize) => {

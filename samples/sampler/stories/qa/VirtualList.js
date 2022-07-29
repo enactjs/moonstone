@@ -36,7 +36,7 @@ const
 	wrapOption = {
 		false: false,
 		true: true,
-		'&quot;noAnimation&quot;': 'noAnimation'
+		'"noAnimation"': 'noAnimation'
 	},
 	// eslint-disable-next-line enact/prop-types, enact/display-name
 	renderItem = (ItemComponent, size, vertical, onClick) => ({index, ...rest}) => {

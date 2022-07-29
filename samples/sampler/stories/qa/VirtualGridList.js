@@ -22,7 +22,7 @@ const
 	wrapOption = {
 		false: false,
 		true: true,
-		'&quot;noAnimation&quot;': 'noAnimation'
+		'"noAnimation"': 'noAnimation'
 	},
 	items = [],
 	// eslint-disable-next-line enact/prop-types
