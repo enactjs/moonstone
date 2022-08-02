@@ -87,7 +87,7 @@ const StorybookDecorator = (story, config = {}) => {
 		<Theme
 			className={classnames(classes)}
 			description={hasInfoText ? config.parameters.info.text : null}
-			highContrast={globals.highContrast}
+			highContrast={JSON.parse(globals['high contrast'])}
 			locale={globals.locale}
 			noHeader={config.noHeader}
 			noPanel={config.noPanel}
@@ -96,7 +96,7 @@ const StorybookDecorator = (story, config = {}) => {
 			style={{
 				'--moon-env-background': globals.background === 'default' ? '' : globals.background
 			}}
-			textSize={globals.largeText ? 'large' : 'normal'}
+			textSize={JSON.parse(globals['large text']) ? 'large' : 'normal'}
 			title={componentName === config.name ? `${config.kind}`.replace(/\//g, ' ').trim() : `${componentName} ${config.name}`}
 			{...hasProps ? config.parameters.props : null}
 		>
