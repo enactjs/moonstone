@@ -1,15 +1,15 @@
 import kind from '@enact/core/kind';
 import BodyText from '@enact/moonstone/BodyText';
 import Button from '@enact/moonstone/Button';
-import TooltipDecorator from '@enact/moonstone/TooltipDecorator';
 import Input from '@enact/moonstone/Input';
 import IconButton from '@enact/moonstone/IconButton';
 import Scroller from '@enact/moonstone/Scroller';
-import {boolean, number, object, select, text} from '@enact/storybook-utils/addons/knobs';
+import TooltipDecorator from '@enact/moonstone/TooltipDecorator';
 import {mergeComponentMetadata} from '@enact/storybook-utils';
+import {boolean, number, object, select, text} from '@enact/storybook-utils/addons/controls';
 import Layout, {Cell} from '@enact/ui/Layout';
 import ri from '@enact/ui/resolution';
-import {storiesOf} from '@storybook/react';
+import PropTypes from 'prop-types';
 import {useCallback, useState} from 'react';
 
 const Config = mergeComponentMetadata('TooltipDecorator', TooltipDecorator);
@@ -63,7 +63,7 @@ const TooltipTest = () => {
 	);
 };
 
-const ChangeableTooltip = () => {
+const ChangeableTooltip = ({tooltipPosition}) => {
 	const [left, setLeft] = useState(0);
 	const [changeableText, setChangeableText] = useState('short');
 	const [top, setTop] = useState(0);
@@ -106,18 +106,22 @@ const ChangeableTooltip = () => {
 			</div>
 			<IconButton
 				onClick={changeTooltipText}
-				tooltipPosition={select('tooltipPosition', prop.tooltipPosition, Config, 'above')}
-				tooltipText={changeableText}
 				style={{
 					position: 'absolute',
 					left: parseInt(left || 0),
 					top: parseInt(top || 0)
 				}}
+				tooltipPosition={tooltipPosition}
+				tooltipText={changeableText}
 			>
 				drawer
 			</IconButton>
 		</div>
 	);
+};
+
+ChangeableTooltip.propTypes = {
+	tooltipPosition: PropTypes.text
 };
 
 const IconButtonItem = kind({
@@ -133,8 +137,8 @@ const IconButtonItem = kind({
 					plus
 				</IconButton>
 				<IconButton
-					style={{marginLeft: '450px'}}
 					size="small"
+					style={{marginLeft: '450px'}}
 					tooltipText="tooltip"
 					{...rest}
 				>
@@ -215,147 +219,170 @@ const TooltipFollow = () => {
 	);
 };
 
+export default {
+	title: 'Moonstone/Tooltip',
+	component: 'Tooltip'
+};
 
-storiesOf('Tooltip', module)
-	.add(
-		'that shows after Button is unmounted (ENYO-3809)',
-		() => (
-			<TooltipTest />
-		)
-	)
-	.add(
-		'tooltipDecorator with changeable tooltipText',
-		() => (
-			<ChangeableTooltip />
-		)
-	).add(
-		'tooltip to follow component when changed',
-		() => (
-			<TooltipFollow />
-		)
-	).add(
-		'tooltip overflows',
-		() => {
-			const buttonAlignment = select('button alignment', {'': null, start: 'start', end: 'end'}, Config);
-			const tooltipDelay = number('tooltipDelay', Config, 500);
-			const tooltipText = text('tooltipText', Config, 'tooltip position!');
-			const tooltipPosition = select('tooltipPosition', prop.tooltipPosition, Config, 'above');
-			const tooltipProps = object('tooltipProps', Config, prop.ariaObject);
-			const tooltipRelative = boolean('tooltipRelative', Config);
-			return (
-				<Layout orientation="vertical" align={buttonAlignment + ' space-between'} className="enact-fit" style={{position: 'fixed', padding: `${ri.unit(ri.scale(18), 'rem')} ${ri.unit(ri.scale(12), 'rem')}`}}>
+export const ShowAfterButtonUnmounted = () => (
+	<TooltipTest />
+);
+
+ShowAfterButtonUnmounted.storyName = 'that shows after Button is unmounted (ENYO-3809)';
+ShowAfterButtonUnmounted.parameters = {
+	controls: {
+		hideNoControlsWarning: true
+	}
+};
+
+export const ChangeableTooltipText = (args) => (
+	<ChangeableTooltip tooltipPosition={args['tooltipPosition']} />
+);
+
+select('tooltipPosition', ChangeableTooltipText, prop.tooltipPosition, Config, 'above');
+
+ChangeableTooltipText.storyName = 'tooltipDecorator with changeable tooltipText';
+
+export const FollowComponent = () => (
+	<TooltipFollow />
+);
+
+FollowComponent.storyName = 'tooltip to follow component when changed';
+FollowComponent.parameters = {
+	controls: {
+		hideNoControlsWarning: true
+	}
+};
+
+export const TooltipOverflow = (args) => {
+	const buttonAlignment = args['button alignment'];
+	const tooltipDelay = args['tooltipDelay'];
+	const tooltipText = args['tooltipText'];
+	const tooltipPosition = args['tooltipPosition'];
+	const tooltipProps = args['tooltipProps'];
+	const tooltipRelative = args['tooltipRelative'];
+	return (
+		<Layout align={buttonAlignment + ' space-between'} className="enact-fit" orientation="vertical" style={{position: 'fixed', padding: `${ri.unit(ri.scale(18), 'rem')} ${ri.unit(ri.scale(12), 'rem')}`}}>
+			<Cell shrink>
+				<Layout align="center space-between">
 					<Cell shrink>
-						<Layout align="center space-between">
-							<Cell shrink>
-								<TooltipButton
-									tooltipDelay={tooltipDelay}
-									tooltipText={tooltipText}
-									tooltipPosition={tooltipPosition}
-									tooltipProps={tooltipProps}
-									tooltipRelative={tooltipRelative}
-								>
-									Top Left
-								</TooltipButton>
-							</Cell>
-							<Cell shrink>
-								<TooltipButton
-									tooltipDelay={tooltipDelay}
-									tooltipText={tooltipText}
-									tooltipPosition={tooltipPosition}
-									tooltipProps={tooltipProps}
-									tooltipRelative={tooltipRelative}
-								>
-									Top
-								</TooltipButton>
-							</Cell>
-							<Cell shrink>
-								<TooltipButton
-									tooltipDelay={tooltipDelay}
-									tooltipText={tooltipText}
-									tooltipPosition={tooltipPosition}
-									tooltipProps={tooltipProps}
-									tooltipRelative={tooltipRelative}
-								>
-									Top Right
-								</TooltipButton>
-							</Cell>
-						</Layout>
+						<TooltipButton
+							tooltipDelay={tooltipDelay}
+							tooltipPosition={tooltipPosition}
+							tooltipProps={tooltipProps}
+							tooltipRelative={tooltipRelative}
+							tooltipText={tooltipText}
+						>
+							Top Left
+						</TooltipButton>
 					</Cell>
 					<Cell shrink>
-						<Layout align="center space-between">
-							<Cell shrink>
-								<TooltipButton
-									tooltipDelay={tooltipDelay}
-									tooltipText={tooltipText}
-									tooltipPosition={tooltipPosition}
-									tooltipProps={tooltipProps}
-									tooltipRelative={tooltipRelative}
-								>
-									Left
-								</TooltipButton>
-							</Cell>
-							<Cell shrink>
-								<TooltipButton
-									tooltipDelay={tooltipDelay}
-									tooltipText={tooltipText}
-									tooltipPosition={tooltipPosition}
-									tooltipProps={tooltipProps}
-									tooltipRelative={tooltipRelative}
-								>
-									Center
-								</TooltipButton>
-							</Cell>
-							<Cell shrink>
-								<TooltipButton
-									tooltipDelay={tooltipDelay}
-									tooltipText={tooltipText}
-									tooltipPosition={tooltipPosition}
-									tooltipProps={tooltipProps}
-									tooltipRelative={tooltipRelative}
-								>
-									Right
-								</TooltipButton>
-							</Cell>
-						</Layout>
+						<TooltipButton
+							tooltipDelay={tooltipDelay}
+							tooltipPosition={tooltipPosition}
+							tooltipProps={tooltipProps}
+							tooltipRelative={tooltipRelative}
+							tooltipText={tooltipText}
+						>
+							Top
+						</TooltipButton>
 					</Cell>
 					<Cell shrink>
-						<Layout align="center space-between">
-							<Cell shrink>
-								<TooltipButton
-									tooltipDelay={tooltipDelay}
-									tooltipText={tooltipText}
-									tooltipPosition={tooltipPosition}
-									tooltipProps={tooltipProps}
-									tooltipRelative={tooltipRelative}
-								>
-									Bottom Left
-								</TooltipButton>
-							</Cell>
-							<Cell shrink>
-								<TooltipButton
-									tooltipDelay={tooltipDelay}
-									tooltipText={tooltipText}
-									tooltipPosition={tooltipPosition}
-									tooltipProps={tooltipProps}
-									tooltipRelative={tooltipRelative}
-								>
-									Bottom
-								</TooltipButton>
-							</Cell>
-							<Cell shrink>
-								<TooltipButton
-									tooltipDelay={tooltipDelay}
-									tooltipText={tooltipText}
-									tooltipPosition={tooltipPosition}
-									tooltipProps={tooltipProps}
-									tooltipRelative={tooltipRelative}
-								>
-									Bottom Right
-								</TooltipButton>
-							</Cell>
-						</Layout>
+						<TooltipButton
+							tooltipDelay={tooltipDelay}
+							tooltipPosition={tooltipPosition}
+							tooltipProps={tooltipProps}
+							tooltipRelative={tooltipRelative}
+							tooltipText={tooltipText}
+						>
+							Top Right
+						</TooltipButton>
 					</Cell>
 				</Layout>
-			);
-		}
+			</Cell>
+			<Cell shrink>
+				<Layout align="center space-between">
+					<Cell shrink>
+						<TooltipButton
+							tooltipDelay={tooltipDelay}
+							tooltipPosition={tooltipPosition}
+							tooltipProps={tooltipProps}
+							tooltipRelative={tooltipRelative}
+							tooltipText={tooltipText}
+						>
+							Left
+						</TooltipButton>
+					</Cell>
+					<Cell shrink>
+						<TooltipButton
+							tooltipDelay={tooltipDelay}
+							tooltipPosition={tooltipPosition}
+							tooltipProps={tooltipProps}
+							tooltipRelative={tooltipRelative}
+							tooltipText={tooltipText}
+						>
+							Center
+						</TooltipButton>
+					</Cell>
+					<Cell shrink>
+						<TooltipButton
+							tooltipDelay={tooltipDelay}
+							tooltipPosition={tooltipPosition}
+							tooltipProps={tooltipProps}
+							tooltipRelative={tooltipRelative}
+							tooltipText={tooltipText}
+						>
+							Right
+						</TooltipButton>
+					</Cell>
+				</Layout>
+			</Cell>
+			<Cell shrink>
+				<Layout align="center space-between">
+					<Cell shrink>
+						<TooltipButton
+							tooltipDelay={tooltipDelay}
+							tooltipPosition={tooltipPosition}
+							tooltipProps={tooltipProps}
+							tooltipRelative={tooltipRelative}
+							tooltipText={tooltipText}
+						>
+							Bottom Left
+						</TooltipButton>
+					</Cell>
+					<Cell shrink>
+						<TooltipButton
+							tooltipDelay={tooltipDelay}
+							tooltipPosition={tooltipPosition}
+							tooltipProps={tooltipProps}
+							tooltipRelative={tooltipRelative}
+							tooltipText={tooltipText}
+						>
+							Bottom
+						</TooltipButton>
+					</Cell>
+					<Cell shrink>
+						<TooltipButton
+							tooltipDelay={tooltipDelay}
+							tooltipPosition={tooltipPosition}
+							tooltipProps={tooltipProps}
+							tooltipRelative={tooltipRelative}
+							tooltipText={tooltipText}
+						>
+							Bottom Right
+						</TooltipButton>
+					</Cell>
+				</Layout>
+			</Cell>
+		</Layout>
 	);
+};
+
+select('button alignment', TooltipOverflow, {'': null, start: 'start', end: 'end'}, Config);
+number('tooltipDelay', TooltipOverflow, Config, 500);
+select('tooltipPosition', TooltipOverflow, prop.tooltipPosition, Config, 'above');
+object('tooltipProps', TooltipOverflow, Config, prop.ariaObject);
+boolean('tooltipRelative', TooltipOverflow, Config);
+text('tooltipText', TooltipOverflow, Config, 'tooltip position!');
+
+TooltipOverflow.storyName = 'tooltip overflows';

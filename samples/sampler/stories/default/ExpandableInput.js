@@ -1,42 +1,51 @@
-import {action} from '@enact/storybook-utils/addons/actions';
-import {boolean, select, text} from '@enact/storybook-utils/addons/knobs';
-import {mergeComponentMetadata} from '@enact/storybook-utils';
-import {storiesOf} from '@storybook/react';
-
 import ExpandableInput, {ExpandableInputBase} from '@enact/moonstone/ExpandableInput';
+import {mergeComponentMetadata} from '@enact/storybook-utils';
+import {action} from '@enact/storybook-utils/addons/actions';
+import {boolean, select, text} from '@enact/storybook-utils/addons/controls';
 
-import icons from './icons';
+import icons from '../helper/icons';
 
 const iconNames = ['', ...icons];
 
 const Config = mergeComponentMetadata('ExpandableInput', ExpandableInputBase, ExpandableInput);
 ExpandableInput.displayName = 'ExpandableInput';
 
-// Set up some defaults for info and knobs
+// Set up some defaults for info and controls
 const prop = {
 	type: ['text', 'number', 'password']
 };
 
-storiesOf('Moonstone', module)
-	.add(
-		'ExpandableInput',
-		() => (
-			<ExpandableInput
-				disabled={boolean('disabled', Config)}
-				iconAfter={select('iconAfter', iconNames, Config)}
-				iconBefore={select('iconBefore', iconNames, Config)}
-				noneText={text('noneText', Config, 'noneText')}
-				onChange={action('onChange')}
-				onClose={action('onClose')}
-				onOpen={action('onOpen')}
-				title={text('title', Config, 'title')}
-				placeholder={text('placeholder', Config, 'placeholder')}
-				type={select('type', prop.type, Config, prop.type[0])}
-			/>
-		),
-		{
-			info: {
-				text: 'Basic usage of ExpandableInput'
-			}
-		}
-	);
+export default {
+	title: 'Moonstone/ExpandableInput',
+	component: 'ExpandableInput'
+};
+
+export const _ExpandableInput = (args) => (
+	<ExpandableInput
+		disabled={args['disabled']}
+		iconAfter={args['iconAfter']}
+		iconBefore={args['iconBefore']}
+		noneText={args['noneText']}
+		onChange={action('onChange')}
+		onClose={action('onClose')}
+		onOpen={action('onOpen')}
+		placeholder={args['placeholder']}
+		title={args['title']}
+		type={args['type']}
+	/>
+);
+
+boolean('disabled', _ExpandableInput,  Config);
+select('iconAfter', _ExpandableInput, iconNames, Config);
+select('iconBefore', _ExpandableInput, iconNames, Config);
+select('type', _ExpandableInput, prop.type, Config, prop.type[0]);
+text('noneText', _ExpandableInput,  Config, 'noneText');
+text('placeholder', _ExpandableInput, Config, 'placeholder');
+text('title', _ExpandableInput, Config, 'title');
+
+_ExpandableInput.storyName = 'ExpandableInput';
+_ExpandableInput.parameters = {
+	info: {
+		text: 'Basic usage of ExpandableInput'
+	}
+};

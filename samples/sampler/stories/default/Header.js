@@ -1,17 +1,15 @@
-import {boolean, select, text} from '@enact/storybook-utils/addons/knobs';
-import {mergeComponentMetadata} from '@enact/storybook-utils';
-import {Fragment} from 'react';
-import {storiesOf} from '@storybook/react';
-
-import {Header, HeaderBase} from '@enact/moonstone/Panels';
 import Button from '@enact/moonstone/Button';
+import {Header, HeaderBase} from '@enact/moonstone/Panels';
 import IconButton from '@enact/moonstone/IconButton';
 import Input from '@enact/moonstone/Input';
+import {mergeComponentMetadata} from '@enact/storybook-utils';
+import {boolean, select, text} from '@enact/storybook-utils/addons/controls';
+import {Fragment} from 'react';
 
 Header.displayName = 'Header';
 const Config = mergeComponentMetadata('Header', HeaderBase, Header);
 
-// Set up some defaults for info and knobs
+// Set up some defaults for info and controls
 const prop = {
 	children: {
 		'no buttons': null,
@@ -33,42 +31,58 @@ const prop = {
 	type: ['compact', 'dense', 'standard']
 };
 
-storiesOf('Moonstone', module)
-	.add(
-		'Header',
-		context => {
-			context.noHeader = true;
+export default {
+	title: 'Moonstone/Header',
+	component: 'Header'
+};
 
-			const headerInput = boolean('headerInput', Config) ? <Input placeholder="placeholder text" /> : null;
-			const childrenSelection = select('children', ['no buttons', '1 button', '2 buttons'], Config);
-			const children = prop.children[childrenSelection];
+export const _Header = (args, context) => {
+	context.noHeader = true;
 
-			const story = (
-				<Header
-					title={text('title', Config, 'The Matrix')}
-					titleBelow={text('titleBelow', Config, 'Free your mind')}
-					subTitleBelow={text('subTitleBelow', Config, 'A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.')}
-					type={select('type', prop.type, Config)}
-					centered={boolean('centered', Config)}
-					fullBleed={boolean('fullBleed', Config)}
-					headerInput={headerInput}
-					hideLine={boolean('hideLine', Config)}
-					marqueeOn={select('marqueeOn', prop.marqueeOn, Config)}
-				>
-					{children}
-				</Header>
-			);
+	const headerInput = args['headerInput'] ? <Input placeholder="placeholder text" /> : null;
+	const childrenSelection = args['children'];
+	const children = prop.children[childrenSelection];
 
-			context.panelsProps = {
-				controls: prop.controls[select('controls', ['no buttons', '1 button', '2 buttons'], {displayName: 'Panels'})],
-				noCloseButton: boolean('noCloseButton', {displayName: 'Panels'}) || false
-			};
-
-			return story;
-		},
-		{
-			info: {
-				text: 'A block to use as a screen\'s title and description. Supports additional buttons and up to two subtitles.'
-			}
-		}
+	const story = (
+		<Header
+			title={args['title']}
+			titleBelow={args['titleBelow']}
+			subTitleBelow={args['subTitleBelow']}
+			type={args['type']}
+			centered={args['centered']}
+			fullBleed={args['fullBleed']}
+			headerInput={headerInput}
+			hideLine={args['hideLine']}
+			marqueeOn={args['marqueeOn']}
+		>
+			{children}
+		</Header>
 	);
+
+	context.panelsProps = {
+		controls: prop.controls[args['controls']],
+		noCloseButton: args['noCloseButton'] || false
+	};
+
+	return story;
+};
+
+boolean('centered', _Header, Config);
+boolean('fullBleed', _Header, Config);
+boolean('headerInput', _Header, Config);
+boolean('hideLine', _Header, Config);
+boolean('noCloseButton', _Header, {displayName: 'Panels'});
+select('children', _Header, ['no buttons', '1 button', '2 buttons'], Config);
+select('controls', _Header, ['no buttons', '1 button', '2 buttons'], {displayName: 'Panels'});
+select('marqueeOn', _Header, prop.marqueeOn, Config);
+select('type', _Header, prop.type, Config);
+text('subTitleBelow', _Header, Config, 'A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.');
+text('title', _Header, Config, 'The Matrix');
+text('titleBelow', _Header, Config, 'Free your mind');
+
+_Header.storyName = 'Header';
+_Header.parameters = {
+	info: {
+		text: 'A block to use as a screen\'s title and description. Supports additional buttons and up to two subtitles.'
+	}
+};

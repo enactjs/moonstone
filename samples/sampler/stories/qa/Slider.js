@@ -1,9 +1,8 @@
 import Item from '@enact/moonstone/Item';
 import Slider from '@enact/moonstone/Slider';
 import VirtualList from '@enact/moonstone/VirtualList';
-import {number} from '@enact/storybook-utils/addons/knobs';
+import {number} from '@enact/storybook-utils/addons/controls';
 import ri from '@enact/ui/resolution';
-import {storiesOf} from '@storybook/react';
 import PropTypes from 'prop-types';
 import {useCallback, useEffect, useState} from 'react';
 
@@ -86,13 +85,19 @@ SliderList.propTypes = {
 	itemSize: PropTypes.number
 };
 
-storiesOf('Slider', module)
-	.add(
-		'Add and Remove ',
-		() => {
-			const itemSize = ri.scale(number('itemSize', Slider, 72));
-			return (
-				<SliderList itemSize={itemSize} />
-			);
-		}
+export default {
+	title: 'Moonstone/Slider',
+	component: 'Slider'
+};
+
+export const AddAndRemove = (args) => {
+	const itemSize = ri.scale(args['itemSize']);
+
+	return (
+		<SliderList itemSize={itemSize} />
 	);
+};
+
+number('itemSize', AddAndRemove, Slider, 72);
+
+AddAndRemove.storyName = 'Add and Remove';
