@@ -2,7 +2,10 @@
   "name": "@enact/moonstone",
   "version": "4.5.0",
   "description": "Large-screen/TV support library for Enact, containing a variety of UI components.",
-  "repository": "https://github.com/enactjs/moonstone",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/enactjs/moonstone.git"
+  },
   "homepage": "https://enactjs.com",
   "main": "index.js",
   "scripts": {
