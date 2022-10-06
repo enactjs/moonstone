@@ -20,22 +20,24 @@
     "theme": "moonstone"
   },
   "dependencies": {
-    "@enact/core": "^4.5.0",
-    "@enact/i18n": "^4.5.0",
+    "@enact/core": "^4.5.2",
+    "@enact/i18n": "^4.5.2",
     "@enact/moonstone": "../../",
-    "@enact/spotlight": "^4.5.0",
-    "@enact/ui": "^4.5.0",
+    "@enact/spotlight": "^4.5.2",
+    "@enact/ui": "^4.5.2",
     "classnames": "^2.3.1",
     "ilib": "14.14.0",
-    "query-string": "^7.1.1"
+    "query-string": "^7.1.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@enact/storybook-utils": "^5.0.0",
-    "@storybook/addons": "^6.5.10",
-    "@storybook/builder-webpack5": "^6.5.10",
-    "@storybook/manager-webpack5": "^6.5.10",
-    "@storybook/react": "6.5.10",
-    "@storybook/theming": "^6.5.10",
+    "@storybook/addons": "^6.5.12",
+    "@storybook/builder-webpack5": "^6.5.12",
+    "@storybook/manager-webpack5": "^6.5.12",
+    "@storybook/react": "6.5.12",
+    "@storybook/theming": "^6.5.12",
     "babel-loader": "^8.2.5",
     "core-js": "^3.23.5"
   }
