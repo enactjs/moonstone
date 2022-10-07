@@ -257,7 +257,7 @@ const InputBase = kind({
 	},
 
 	render: ({css, dir, disabled, iconAfter, iconBefore, invalidTooltip, onChange, placeholder, size, type, value, ...rest}) => {
-		const inputProps = extractInputProps(rest);
+		const inputProps = type === 'password' ? Object.assign({}, {spellCheck: false}, extractInputProps(rest)) : extractInputProps(rest);
 		const voiceProps = extractVoiceProps(rest);
 		delete rest.dismissOnEnter;
 		delete rest.invalid;

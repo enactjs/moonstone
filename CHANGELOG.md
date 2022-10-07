@@ -4,6 +4,10 @@ The following is a curated list of changes in the Enact moonstone module, newest
 
 ## [unreleased]
 
+### Added
+
+- `moonstone/Input` spellCheck attribute 'false' for input type password
+
 ### Fixed
 
 - `moonstone/Slider` to have proper padding
