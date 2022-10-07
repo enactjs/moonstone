@@ -116,11 +116,6 @@ Languages.storyName = 'Languages';
 Languages.parameters = {
 	controls: {
 		hideNoControlsWarning: true
-	},
-	docs: {
-		source: {
-			code: '() => <Languages />'
-		}
 	}
 };
 
