@@ -220,7 +220,7 @@ const SpinnerSpotlightDecorator = hoc((config, Wrapped) => {
 });
 
 /**
- * Moonstone-specific Spinner behaviors to apply to [Spinner]{@link moonstone/Spinner.Spinner}.
+ * Moonstone-specific Spinner behaviors to apply to {@link moonstone/Spinner.Spinner|Spinner}.
  *
  * @hoc
  * @memberof moonstone/Spinner

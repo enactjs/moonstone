@@ -36,8 +36,8 @@ const
 	nop = () => {};
 
 /**
- * The base version of [VirtualListBase]{@link moonstone/VirtualList.VirtualListBase} and
- * [VirtualListBaseNative]{@link moonstone/VirtualList.VirtualListBaseNative}.
+ * The base version of {@link moonstone/VirtualList.VirtualListBase|VirtualListBase} and
+ * {@link moonstone/VirtualList.VirtualListBaseNative|VirtualListBaseNative}.
  *
  * @class VirtualListCore
  * @memberof moonstone/VirtualList
@@ -88,7 +88,7 @@ const VirtualListBaseFactory = (type) => {
 
 			/**
 			 * Callback method of scrollTo.
-			 * Normally, [Scrollable]{@link ui/Scrollable.Scrollable} should set this value.
+			 * Normally, {@link ui/Scrollable.Scrollable|Scrollable} should set this value.
 			 *
 			 * @type {Function}
 			 * @private
@@ -139,7 +139,7 @@ const VirtualListBaseFactory = (type) => {
 			focusableScrollbar: PropTypes.bool,
 
 			/**
-			 * Passes the instance of [VirtualList]{@link ui/VirtualList.VirtualList}.
+			 * Passes the instance of {@link ui/VirtualList.VirtualList|VirtualList}.
 			 *
 			 * @type {Object}
 			 * @param {Object} ref
@@ -191,7 +191,7 @@ const VirtualListBaseFactory = (type) => {
 
 			/**
 			 * `true` if rtl, `false` if ltr.
-			 * Normally, [Scrollable]{@link ui/Scrollable.Scrollable} should set this value.
+			 * Normally, {@link ui/Scrollable.Scrollable|Scrollable} should set this value.
 			 *
 			 * @type {Boolean}
 			 * @private
@@ -208,7 +208,7 @@ const VirtualListBaseFactory = (type) => {
 			spacing: PropTypes.number,
 
 			/**
-			 * Spotlight Id. It would be the same with [Scrollable]{@link ui/Scrollable.Scrollable}'s.
+			 * Spotlight Id. It would be the same with {@link ui/Scrollable.Scrollable|Scrollable}'s.
 			 *
 			 * @type {String}
 			 * @private
@@ -859,8 +859,8 @@ const VirtualListBaseFactory = (type) => {
 };
 
 /**
- * A Moonstone-styled base component for [VirtualList]{@link moonstone/VirtualList.VirtualList} and
- * [VirtualGridList]{@link moonstone/VirtualList.VirtualGridList}.
+ * A Moonstone-styled base component for {@link moonstone/VirtualList.VirtualList|VirtualList} and
+ * {@link moonstone/VirtualList.VirtualGridList|VirtualGridList}.
  *
  * @class VirtualListBase
  * @memberof moonstone/VirtualList
@@ -872,8 +872,8 @@ const VirtualListBase = VirtualListBaseFactory(JS);
 VirtualListBase.displayName = 'VirtualListBase';
 
 /**
- * A Moonstone-styled base component for [VirtualListNative]{@link moonstone/VirtualList.VirtualListNative} and
- * [VirtualGridListNative]{@link moonstone/VirtualList.VirtualGridListNative}.
+ * A Moonstone-styled base component for {@link moonstone/VirtualList.VirtualListNative|VirtualListNative} and
+ * {@link moonstone/VirtualList.VirtualGridListNative|VirtualGridListNative}.
  *
  * @class VirtualListBaseNative
  * @memberof moonstone/VirtualList
@@ -898,7 +898,7 @@ VirtualListBaseNative.displayName = 'VirtualListBaseNative';
 /**
  * Unique identifier for the component.
  *
- * When defined and when the `VirtualList` is within a [Panel]{@link moonstone/Panels.Panel},
+ * When defined and when the `VirtualList` is within a {@link moonstone/Panels.Panel|Panel},
  * the `VirtualList` will store its scroll position and restore that position when returning to
  * the `Panel`.
  *

@@ -31,7 +31,7 @@ const Icon = Skinnable(IconBase);
  * A button component.
  *
  * This component is most often not used directly but may be composed within another component as it
- * is within [Button]{@link moonstone/Button.Button}.
+ * is within {@link moonstone/Button.Button|Button}.
  *
  * @class ButtonBase
  * @memberof moonstone/Button
@@ -155,7 +155,7 @@ const ButtonBase = kind({
 
 
 /**
- * Applies Moonstone specific behaviors to [Button]{@link moonstone/Button.ButtonBase} components.
+ * Applies Moonstone specific behaviors to {@link moonstone/Button.ButtonBase|Button} components.
  *
  * @hoc
  * @memberof moonstone/Button

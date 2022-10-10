@@ -23,7 +23,7 @@ class ScrollbarBase extends Component {
 
 	static propTypes = /** @lends moonstone/Scrollable.Scrollbar.prototype */ {
 		/**
-		 * Called when [ScrollThumb]{@link moonstone/Scrollable.ScrollThumb} is updated.
+		 * Called when {@link moonstone/Scrollable.ScrollThumb|ScrollThumb} is updated.
 		 *
 		 * @type {Function}
 		 * @private
@@ -54,7 +54,7 @@ class ScrollbarBase extends Component {
 
 		/**
 		 * `true` if rtl, `false` if ltr.
-		 * Normally, [Scrollable]{@link ui/Scrollable.Scrollable} should set this value.
+		 * Normally, {@link ui/Scrollable.Scrollable|Scrollable} should set this value.
 		 *
 		 * @type {Boolean}
 		 * @private
@@ -145,7 +145,7 @@ class ScrollbarBase extends Component {
 }
 
 /**
- * A Moonstone-styled scroll bar. It is used in [Scrollable]{@link moonstone/Scrollable.Scrollable}.
+ * A Moonstone-styled scroll bar. It is used in {@link moonstone/Scrollable.Scrollable|Scrollable}.
  *
  * @class Scrollbar
  * @memberof moonstone/Scrollable
