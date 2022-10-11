@@ -53,7 +53,7 @@ const forwardWithType = (type, props) => forward(type, {type}, props);
 
 /**
  * A stateless Slider with IconButtons to increment and decrement the value. In most circumstances,
- * you will want to use the stateful version: {@link moonstone/IncrementSlider.IncrementSlider}.
+ * you will want to use the stateful version: {@link moonstone/IncrementSlider.IncrementSlider|IncrementSlider}.
  *
  * @class IncrementSliderBase
  * @memberof moonstone/IncrementSlider
@@ -604,7 +604,7 @@ const IncrementSliderDecorator = compose(
 const IncrementSlider = IncrementSliderDecorator(IncrementSliderBase);
 
 /**
- * A []{@link moonstone/TooltipDecorator.Tooltip|Tooltip} specifically adapted for use with
+ * A {@link moonstone/TooltipDecorator.Tooltip|Tooltip} specifically adapted for use with
  * {@link moonstone/IncrementSlider.IncrementSlider|IncrementSlider},
  * {@link moonstone/ProgressBar.ProgressBar|ProgressBar}, or
  * {@link moonstone/Slider.Slider|Slider}.
