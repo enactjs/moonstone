@@ -12,6 +12,8 @@ import {VirtualListBase as UiVirtualListBase} from '@enact/ui/VirtualList/Virtua
 import PropTypes from 'prop-types';
 import {useCallback, useEffect, useRef, useState} from 'react';
 
+import {svgGenerator} from '../helper/svg';
+
 const Config = mergeComponentMetadata('VirtualGridList', UiVirtualListBase, UiScrollableBase, VirtualListBase);
 
 const
@@ -52,7 +54,7 @@ const updateDataSize = (dataSize) => {
 			text = `Item ${count}`,
 			subText = `SubItem ${count}`,
 			color = Math.floor((Math.random() * (0x1000000 - 0x101010)) + 0x101010).toString(16),
-			source = `http://via.placeholder.com/300x300/${color}/ffffff/png?text=Image+${i}`;
+			source = svgGenerator(600, 600, color, 'ffffff', `Image ${i}`);
 
 		items.push({text, subText, source});
 	}
