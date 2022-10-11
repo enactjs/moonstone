@@ -609,7 +609,7 @@ const IncrementSlider = IncrementSliderDecorator(IncrementSliderBase);
  * {@link moonstone/ProgressBar.ProgressBar|ProgressBar}, or
  * {@link moonstone/Slider.Slider|Slider}.
  *
- * See {@link moonstone/ProgressBar.ProgressBarTooltip}
+ * See {@link moonstone/ProgressBar.ProgressBarTooltip|ProgressBarTooltip}
  *
  * @class IncrementSliderTooltip
  * @memberof moonstone/IncrementSlider

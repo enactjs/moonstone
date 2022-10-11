@@ -31,7 +31,7 @@ import {calcAriaLabel, extractInputProps} from './util';
  *
  * It supports start and end icons. Note that this base component is not stateless as many other
  * base components are. However, it does not support Spotlight. Apps will want to use
- * {@link moonstone/Input.Input}.
+ * {@link moonstone/Input.Input|Input}.
  *
  * @class InputBase
  * @memberof moonstone/Input

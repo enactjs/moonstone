@@ -266,7 +266,7 @@ const MediaControlsBase = kind({
 
 		/**
 		 * A string which is sent to the `play` icon of the player controls. This can be
-		 * anything that is accepted by {@link moonstone/Icon.Icon}. This will be temporarily replaced by
+		 * anything that is accepted by {@link moonstone/Icon.Icon|Icon}. This will be temporarily replaced by
 		 * the {@link moonstone/VideoPlayer.MediaControls.pauseIcon|pauseIcon} when the
 		 * {@link moonstone/VideoPlayer.MediaControls.paused|paused} boolean is `true`.
 		 *

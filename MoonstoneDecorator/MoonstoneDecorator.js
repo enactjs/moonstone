@@ -1,5 +1,5 @@
 /**
- * Exports the {@link moonstone/MoonstoneDecorator.MoonstoneDecorator} HOC
+ * Exports the {@link moonstone/MoonstoneDecorator.MoonstoneDecorator|MoonstoneDecorator} HOC
  *
  * @module moonstone/MoonstoneDecorator
  * @exports MoonstoneDecorator

@@ -1,5 +1,5 @@
 /**
- * Exports the {@link moonstone/Skinnable.Skinnable} higher-order component (HOC).
+ * Exports the {@link moonstone/Skinnable.Skinnable|Skinnable} higher-order component (HOC).
  *
  * @module moonstone/Skinnable
  * @exports Skinnable
