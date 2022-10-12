@@ -2,7 +2,6 @@ import Image, {ImageBase, ImageDecorator} from '@enact/moonstone/Image';
 import {mergeComponentMetadata} from '@enact/storybook-utils';
 import {action} from '@enact/storybook-utils/addons/actions';
 import {object, select} from '@enact/storybook-utils/addons/controls';
-import {ImageBase as UiImageBase} from '@enact/ui/Image';
 
 import {svgGenerator} from '../helper/svg';
 
@@ -12,7 +11,7 @@ const src = {
 	uhd: svgGenerator(600, 600, '7ed31d', 'ffffff', '600 X 600')
 };
 
-const Config = mergeComponentMetadata('Image', UiImageBase, ImageBase, Image, ImageDecorator);
+const Config = mergeComponentMetadata('Image', Image, ImageBase, ImageDecorator);
 Image.displayName = 'Image';
 
 export default {
