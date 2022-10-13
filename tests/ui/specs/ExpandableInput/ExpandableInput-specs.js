@@ -32,7 +32,7 @@ describe('ExpandableInput', function () {
 
 			describe('5-way', function () {
 				it('should open and spot input on select', async function () {
-					await Page.waitTransitionEnd(3000, undefined, async () => {
+					await Page.waitTransitionEnd(5000, undefined, async () => {
 						await Page.spotlightSelect();
 					});
 
@@ -41,7 +41,7 @@ describe('ExpandableInput', function () {
 				});
 
 				it('should have correct input value', async function () {
-					await Page.waitTransitionEnd(3000, undefined, async () => {
+					await Page.waitTransitionEnd(5000, undefined, async () => {
 						await Page.spotlightSelect();
 					});
 
@@ -50,12 +50,12 @@ describe('ExpandableInput', function () {
 				});
 
 				it('should close when moving up to title', async function () {
-					await Page.waitTransitionEnd(3000, undefined, async () => {
+					await Page.waitTransitionEnd(5000, undefined, async () => {
 						await Page.spotlightSelect();
 					});
 
 					await expectOpen(expandable);
-					await Page.waitTransitionEnd(3000, undefined, async () => {
+					await Page.waitTransitionEnd(5000, undefined, async () => {
 						await Page.spotlightUp();
 					});
 					await expectClosed(expandable);
@@ -63,12 +63,12 @@ describe('ExpandableInput', function () {
 				});
 
 				it('should close and move focus to title on SpotlightDown', async function () {
-					await Page.waitTransitionEnd(3000, undefined, async () => {
+					await Page.waitTransitionEnd(5000, undefined, async () => {
 						await Page.spotlightSelect();
 					});
 
 					await expectOpen(expandable);
-					await Page.waitTransitionEnd(3000, undefined, async () => {
+					await Page.waitTransitionEnd(5000, undefined, async () => {
 						await Page.spotlightDown();
 					});
 					await expectClosed(expandable);
@@ -82,12 +82,12 @@ describe('ExpandableInput', function () {
 				});
 
 				it('should close on escape', async function () {
-					await Page.waitTransitionEnd(3000, undefined, async () => {
+					await Page.waitTransitionEnd(5000, undefined, async () => {
 						await Page.spotlightSelect();
 					});
 
 					await expectOpen(expandable);
-					await Page.waitTransitionEnd(3000, undefined, async () => {
+					await Page.waitTransitionEnd(5000, undefined, async () => {
 						await Page.escape();
 					});
 					await expectClosed(expandable);
@@ -95,13 +95,13 @@ describe('ExpandableInput', function () {
 
 				describe('input value', function () {
 					it('should update value text on input and then closed by moving up to title', async function () {
-						await Page.waitTransitionEnd(3000, undefined, async () => {
+						await Page.waitTransitionEnd(5000, undefined, async () => {
 							await Page.spotlightSelect();
 						});
 
 						await expectOpen(expandable);
 						await expandable.input.setValue('New Value');
-						await Page.waitTransitionEnd(3000, undefined, async () => {
+						await Page.waitTransitionEnd(5000, undefined, async () => {
 							await Page.spotlightUp();
 						});
 						await expectClosed(expandable);
@@ -109,13 +109,13 @@ describe('ExpandableInput', function () {
 					});
 
 					it('should update value text on input and then closed by SpotlightDown', async function () {
-						await Page.waitTransitionEnd(3000, undefined, async () => {
+						await Page.waitTransitionEnd(5000, undefined, async () => {
 							await Page.spotlightSelect();
 						});
 
 						await expectOpen(expandable);
 						await expandable.input.setValue('New Value');
-						await Page.waitTransitionEnd(3000, undefined, async () => {
+						await Page.waitTransitionEnd(5000, undefined, async () => {
 							await Page.spotlightDown();
 						});
 						await expectClosed(expandable);
@@ -123,13 +123,13 @@ describe('ExpandableInput', function () {
 					});
 
 					it('should not update value text on input and then closed by escape key', async function () {
-						await Page.waitTransitionEnd(3000, undefined, async () => {
+						await Page.waitTransitionEnd(5000, undefined, async () => {
 							await Page.spotlightSelect();
 						});
 
 						await expectOpen(expandable);
 						await expandable.input.setValue('New Value');
-						await Page.waitTransitionEnd(3000, undefined, async () => {
+						await Page.waitTransitionEnd(5000, undefined, async () => {
 							await Page.escape();
 						});
 						await expectClosed(expandable);
@@ -140,7 +140,7 @@ describe('ExpandableInput', function () {
 
 			describe('pointer', function () {
 				it('should open and focus input on title click when closed', async function () {
-					await Page.waitTransitionEnd(3000, undefined, async () => {
+					await Page.waitTransitionEnd(5000, undefined, async () => {
 						await expandable.title.click();
 					});
 					await expectOpen(expandable);
@@ -148,18 +148,18 @@ describe('ExpandableInput', function () {
 				});
 
 				it('should close on title click when open', async function () {
-					await Page.waitTransitionEnd(3000, undefined, async () => {
+					await Page.waitTransitionEnd(5000, undefined, async () => {
 						await expandable.title.click();
 					});
 					await expectOpen(expandable);
-					await Page.waitTransitionEnd(3000, undefined, async () => {
+					await Page.waitTransitionEnd(5000, undefined, async () => {
 						await expandable.title.click();
 					});
 					await expectClosed(expandable);
 				});
 
 				it('should not close on input click', async function () {
-					await Page.waitTransitionEnd(3000, undefined, async () => {
+					await Page.waitTransitionEnd(5000, undefined, async () => {
 						await expandable.title.click();
 					});
 					await expandable.input.click();
@@ -167,17 +167,17 @@ describe('ExpandableInput', function () {
 				});
 
 				it('should close on two title clicks', async function () {
-					await Page.waitTransitionEnd(3000, undefined, async () => {
+					await Page.waitTransitionEnd(5000, undefined, async () => {
 						await expandable.title.click();
 					});
-					await Page.waitTransitionEnd(3000, undefined, async () => {
+					await Page.waitTransitionEnd(5000, undefined, async () => {
 						await expandable.title.click();
 					});
 					await expectClosed(expandable);
 				});
 
 				it('should retain the focus on input when hovered on other expandable', async function () {
-					await Page.waitTransitionEnd(3000, undefined, async () => {
+					await Page.waitTransitionEnd(5000, undefined, async () => {
 						await expandable.title.click();
 					});
 					await expectOpen(expandable);
@@ -187,12 +187,12 @@ describe('ExpandableInput', function () {
 
 				describe('input value', function () {
 					it('should update value text on input and then closed by title click', async function () {
-						await Page.waitTransitionEnd(3000, undefined, async () => {
+						await Page.waitTransitionEnd(5000, undefined, async () => {
 							await expandable.title.click();
 						});
 						await expectOpen(expandable);
 						await expandable.input.setValue('New Value');
-						await Page.waitTransitionEnd(3000, undefined, async () => {
+						await Page.waitTransitionEnd(5000, undefined, async () => {
 							await expandable.title.click();
 						});
 						await expectClosed(expandable);
@@ -221,7 +221,7 @@ describe('ExpandableInput', function () {
 				});
 
 				it('should open and spot input on select', async function () {
-					await Page.waitTransitionEnd(3000, undefined, async () => {
+					await Page.waitTransitionEnd(5000, undefined, async () => {
 						await Page.spotlightSelect();
 					});
 
@@ -230,7 +230,7 @@ describe('ExpandableInput', function () {
 				});
 
 				it('should have correct input value', async function () {
-					await Page.waitTransitionEnd(3000, undefined, async () => {
+					await Page.waitTransitionEnd(5000, undefined, async () => {
 						await Page.spotlightSelect();
 					});
 
@@ -239,12 +239,12 @@ describe('ExpandableInput', function () {
 				});
 
 				it('should close when moving up to title', async function () {
-					await Page.waitTransitionEnd(3000, undefined, async () => {
+					await Page.waitTransitionEnd(5000, undefined, async () => {
 						await Page.spotlightSelect();
 					});
 
 					await expectOpen(expandable);
-					await Page.waitTransitionEnd(3000, undefined, async () => {
+					await Page.waitTransitionEnd(5000, undefined, async () => {
 						await Page.spotlightUp();
 					});
 					await expectClosed(expandable);
@@ -260,7 +260,7 @@ describe('ExpandableInput', function () {
 
 			describe('pointer', function () {
 				it('should open and focus input on title click when closed', async function () {
-					await Page.waitTransitionEnd(3000, undefined, async () => {
+					await Page.waitTransitionEnd(5000, undefined, async () => {
 						await expandable.title.click();
 					});
 					await expectOpen(expandable);
@@ -268,18 +268,18 @@ describe('ExpandableInput', function () {
 				});
 
 				it('should close on title click when open', async function () {
-					await Page.waitTransitionEnd(3000, undefined, async () => {
+					await Page.waitTransitionEnd(5000, undefined, async () => {
 						await expandable.title.click();
 					});
 					await expectOpen(expandable);
-					await Page.waitTransitionEnd(3000, undefined, async () => {
+					await Page.waitTransitionEnd(5000, undefined, async () => {
 						await expandable.title.click();
 					});
 					await expectClosed(expandable);
 				});
 
 				it('should not close on input click', async function () {
-					await Page.waitTransitionEnd(3000, undefined, async () => {
+					await Page.waitTransitionEnd(5000, undefined, async () => {
 						await expandable.title.click();
 					});
 					await expandable.input.click();
@@ -287,10 +287,10 @@ describe('ExpandableInput', function () {
 				});
 
 				it('should close on two title clicks', async function () {
-					await Page.waitTransitionEnd(3000, undefined, async () => {
+					await Page.waitTransitionEnd(5000, undefined, async () => {
 						await expandable.title.click();
 					});
-					await Page.waitTransitionEnd(3000, undefined, async () => {
+					await Page.waitTransitionEnd(5000, undefined, async () => {
 						await expandable.title.click();
 					});
 					await expectClosed(expandable);
@@ -317,7 +317,7 @@ describe('ExpandableInput', function () {
 				});
 
 				it('should close on select', async function () {
-					await Page.waitTransitionEnd(3000, undefined, async () => {
+					await Page.waitTransitionEnd(5000, undefined, async () => {
 						await Page.spotlightSelect();
 					});
 
@@ -340,28 +340,28 @@ describe('ExpandableInput', function () {
 
 			describe('pointer', function () {
 				it('should close on title click', async function () {
-					await Page.waitTransitionEnd(3000, undefined, async () => {
+					await Page.waitTransitionEnd(5000, undefined, async () => {
 						await expandable.title.click();
 					});
 					await expectClosed(expandable);
 				});
 
 				it('should open on title click when closed', async function () {
-					await Page.waitTransitionEnd(3000, undefined, async () => {
+					await Page.waitTransitionEnd(5000, undefined, async () => {
 						await expandable.title.click();
 					});
 					await expectClosed(expandable);
-					await Page.waitTransitionEnd(3000, undefined, async () => {
+					await Page.waitTransitionEnd(5000, undefined, async () => {
 						await expandable.title.click();
 					});
 					await expectOpen(expandable);
 				});
 
 				it('should open on two title clicks', async function () {
-					await Page.waitTransitionEnd(3000, undefined, async () => {
+					await Page.waitTransitionEnd(5000, undefined, async () => {
 						await expandable.title.click();
 					});
-					await Page.waitTransitionEnd(3000, undefined, async () => {
+					await Page.waitTransitionEnd(5000, undefined, async () => {
 						await expandable.title.click();
 					});
 					await expectOpen(expandable);
@@ -381,12 +381,12 @@ describe('ExpandableInput', function () {
 			describe('5-way', function () {
 				it('should not have value text on open and close', async function () {
 					await expandable.focus();
-					await Page.waitTransitionEnd(3000, undefined, async () => {
+					await Page.waitTransitionEnd(5000, undefined, async () => {
 						await Page.spotlightSelect();
 					});
 
 					await expectOpen(expandable);
-					await Page.waitTransitionEnd(3000, undefined, async () => {
+					await Page.waitTransitionEnd(5000, undefined, async () => {
 						await Page.spotlightUp();
 					});
 					await expectClosed(expandable);
@@ -397,11 +397,11 @@ describe('ExpandableInput', function () {
 
 			describe('pointer', function () {
 				it('should not have value text on open and close', async function () {
-					await Page.waitTransitionEnd(3000, undefined, async () => {
+					await Page.waitTransitionEnd(5000, undefined, async () => {
 						await expandable.title.click();
 					});
 					await expectOpen(expandable);
-					await Page.waitTransitionEnd(3000, undefined, async () => {
+					await Page.waitTransitionEnd(5000, undefined, async () => {
 						await expandable.title.click();
 					});
 					await expectClosed(expandable);
@@ -429,7 +429,7 @@ describe('ExpandableInput', function () {
 				});
 
 				it('should close on select', async function () {
-					await Page.waitTransitionEnd(3000, undefined, async () => {
+					await Page.waitTransitionEnd(5000, undefined, async () => {
 						await Page.spotlightSelect();
 					});
 
@@ -446,7 +446,7 @@ describe('ExpandableInput', function () {
 
 			describe('pointer', function () {
 				it('should close on title click', async function () {
-					await Page.waitTransitionEnd(3000, undefined, async () => {
+					await Page.waitTransitionEnd(5000, undefined, async () => {
 						await expandable.title.click();
 					});
 					await expectClosed(expandable);
@@ -478,7 +478,7 @@ describe('ExpandableInput', function () {
 				});
 
 				it('should close on select', async function () {
-					await Page.waitTransitionEnd(3000, undefined, async () => {
+					await Page.waitTransitionEnd(5000, undefined, async () => {
 						await Page.spotlightSelect();
 					});
 
@@ -495,7 +495,7 @@ describe('ExpandableInput', function () {
 
 			describe('pointer', function () {
 				it('should close on title click', async function () {
-					await Page.waitTransitionEnd(3000, undefined, async () => {
+					await Page.waitTransitionEnd(5000, undefined, async () => {
 						await expandable.title.click();
 					});
 					await expectClosed(expandable);
@@ -526,7 +526,7 @@ describe('ExpandableInput', function () {
 				});
 
 				it('should close on select', async function () {
-					await Page.waitTransitionEnd(3000, undefined, async () => {
+					await Page.waitTransitionEnd(5000, undefined, async () => {
 						await Page.spotlightSelect();
 					});
 
@@ -543,7 +543,7 @@ describe('ExpandableInput', function () {
 
 			describe('pointer', function () {
 				it('should close on title click', async function () {
-					await Page.waitTransitionEnd(3000, undefined, async () => {
+					await Page.waitTransitionEnd(5000, undefined, async () => {
 						await expandable.title.click();
 					});
 					await expectClosed(expandable);
@@ -583,7 +583,7 @@ describe('ExpandableInput', function () {
 				});
 
 				it('should close on select', async function () {
-					await Page.waitTransitionEnd(3000, undefined, async () => {
+					await Page.waitTransitionEnd(5000, undefined, async () => {
 						await Page.spotlightSelect();
 					});
 
@@ -600,7 +600,7 @@ describe('ExpandableInput', function () {
 
 			describe('pointer', function () {
 				it('should close on title click', async function () {
-					await Page.waitTransitionEnd(3000, undefined, async () => {
+					await Page.waitTransitionEnd(5000, undefined, async () => {
 						await expandable.title.click();
 					});
 					await expectClosed(expandable);
@@ -651,10 +651,10 @@ describe('ExpandableInput', function () {
 
 		describe('general pointer operation', function () {
 			it('should prevent selecting other controls when open', async function () {
-				await Page.waitTransitionEnd(3000, undefined, async () => {
+				await Page.waitTransitionEnd(5000, undefined, async () => {
 					await Page.components.default.title.click();
 				});
-				await Page.waitTransitionEnd(3000, undefined, async () => {
+				await Page.waitTransitionEnd(5000, undefined, async () => {
 					await Page.components.defaultValue.title.click();
 				});
 				await expectClosed(Page.components.default);
