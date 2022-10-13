@@ -9,7 +9,6 @@ import {VirtualListBase as UiVirtualListBase} from '@enact/ui/VirtualList';
 
 import {svgGenerator} from "../helper/svg";
 
-
 const
 	defaultDataSize = 1000,
 	items = [],
