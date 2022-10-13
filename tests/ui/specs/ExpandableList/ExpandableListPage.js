@@ -45,7 +45,7 @@ class ExpandableInterface {
 	}
 }
 
-class SpotlightMultiplePage extends Page {
+class ExpandableListPage extends Page {
 	constructor () {
 		super();
 		this.title = 'ExpandableList Test';
@@ -73,4 +73,4 @@ class SpotlightMultiplePage extends Page {
 
 }
 
-module.exports = new SpotlightMultiplePage();
+module.exports = new ExpandableListPage();
