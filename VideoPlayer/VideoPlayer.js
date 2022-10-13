@@ -145,7 +145,7 @@ const AnnounceState = {
  */
 
 /**
- * A player for video {@link moonstone/VideoPlayer.VideoPlayerBase|VideoPlayerBase}.
+ * A player for video {@link moonstone/VideoPlayer.VideoPlayerBase}.
  *
  * @class VideoPlayerBase
  * @memberof moonstone/VideoPlayer
