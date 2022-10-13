@@ -52,11 +52,7 @@ const updateDataSize = (dataSize) => {
 		const
 			color = Math.floor((Math.random() * (0x1000000 - 0x101010)) + 0x101010).toString(16),
 			count = (headingZeros + i).slice(-itemNumberDigits),
-			source = {
-				hd: svgGenerator(200, 200, color, 'ffffff', `Image ${i}`),
-				fhd: svgGenerator(300, 300, color, 'ffffff', `Image ${i}`),
-				uhd: svgGenerator(600, 600, color, 'ffffff', `Image ${i}`)
-			},
+			source = svgGenerator(300, 300, color, 'ffffff', `Image ${i}`),
 			subText = `SubItem ${count}${shouldAddLongContent({index: i, modIndex: 3})}`,
 			text = `Item ${count}${shouldAddLongContent({index: i, modIndex: 2})}`;
 
