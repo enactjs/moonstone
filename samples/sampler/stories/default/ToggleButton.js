@@ -1,39 +1,53 @@
-import {action} from '@enact/storybook-utils/addons/actions';
-import {boolean, select, text} from '@enact/storybook-utils/addons/knobs';
-import {mergeComponentMetadata} from '@enact/storybook-utils';
-import UiButton, {ButtonBase as UIButtonBase} from '@enact/ui/Button';
-import {storiesOf} from '@storybook/react';
-
 import Button, {ButtonBase} from '@enact/moonstone/Button';
 import ToggleButton from '@enact/moonstone/ToggleButton';
+import {mergeComponentMetadata} from '@enact/storybook-utils';
+import {action} from '@enact/storybook-utils/addons/actions';
+import {boolean, select, text} from '@enact/storybook-utils/addons/controls';
+import UiButton, {ButtonBase as UIButtonBase} from '@enact/ui/Button';
 
-// Set up some defaults for info and knobs
+// Set up some defaults for info and controls
 const prop = {
 	backgroundOpacity: ['', 'translucent', 'lightTranslucent', 'transparent']
 };
 
 ToggleButton.displayName = 'ToggleButton';
-const Config = mergeComponentMetadata('ToggleButton', UIButtonBase, UiButton, ButtonBase, Button, ToggleButton);
+const Config = mergeComponentMetadata(
+	'ToggleButton',
+	Button,
+	ButtonBase,
+	ToggleButton,
+	UiButton,
+	UIButtonBase
+);
 
-storiesOf('Moonstone', module)
-	.add(
-		'ToggleButton',
-		() => (
-			<ToggleButton
-				aria-label="toggle button"
-				backgroundOpacity={select('backgroundOpacity', prop.backgroundOpacity, Config)}
-				disabled={boolean('disabled', Config)}
-				onToggle={action('onToggle')}
-				size={select('size', ['small', 'large'], Config)}
-				toggleOffLabel={text('toggleOffLabel', Config, 'Off')}
-				toggleOnLabel={text('toggleOnLabel', Config, 'On')}
-			>
-				Missing Toggle Label
-			</ToggleButton>
-		),
-		{
-			info: {
-				text: 'The basic ToggleButton'
-			}
-		}
-	);
+export default {
+	title: 'Moonstone/ToggleButton',
+	component: 'ToggleButton'
+};
+
+export const _ToggleButton = (args) => (
+	<ToggleButton
+		aria-label="toggle button"
+		backgroundOpacity={args['backgroundOpacity']}
+		disabled={args['disabled']}
+		onToggle={action('onToggle')}
+		size={args['size']}
+		toggleOffLabel={args['toggleOffLabel']}
+		toggleOnLabel={args['toggleOnLabel']}
+	>
+		Missing Toggle Label
+	</ToggleButton>
+);
+
+boolean('disabled', _ToggleButton, Config);
+select('backgroundOpacity', _ToggleButton, prop.backgroundOpacity, Config);
+select('size', _ToggleButton, ['small', 'large'], Config);
+text('toggleOffLabel', _ToggleButton, Config, 'Off');
+text('toggleOnLabel', _ToggleButton, Config, 'On');
+
+_ToggleButton.storyName = 'ToggleButton';
+_ToggleButton.parameters = {
+	info: {
+		text: 'The basic ToggleButton'
+	}
+};

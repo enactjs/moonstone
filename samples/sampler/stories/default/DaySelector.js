@@ -1,9 +1,7 @@
-import {action} from '@enact/storybook-utils/addons/actions';
-import {boolean, select} from '@enact/storybook-utils/addons/knobs';
-import {mergeComponentMetadata} from '@enact/storybook-utils';
-import {storiesOf} from '@storybook/react';
-
 import DaySelector, {DaySelectorBase} from '@enact/moonstone/DaySelector';
+import {mergeComponentMetadata} from '@enact/storybook-utils';
+import {action} from '@enact/storybook-utils/addons/actions';
+import {boolean, select} from '@enact/storybook-utils/addons/controls';
 
 DaySelector.displayName = 'DaySelector';
 const Config = mergeComponentMetadata('DaySelector', DaySelectorBase, DaySelector);
@@ -15,19 +13,25 @@ Config.defaultProps = {
 	disabled: false
 };
 
-storiesOf('Moonstone', module)
-	.add(
-		'DaySelector',
-		() => (
-			<DaySelector
-				disabled={boolean('disabled', Config)}
-				dayNameLength={select('dayNameLength', ['short', 'medium', 'long', 'full'], Config)}
-				onSelect={action('onSelect')}
-			/>
-		),
-		{
-			info: {
-				text: 'Basic usage of DaySelector'
-			}
-		}
-	);
+export default {
+	title: 'Moonstone/DaySelector',
+	component: 'DaySelector'
+};
+
+export const _DaySelector = (args) => (
+	<DaySelector
+		dayNameLength={args['dayNameLength']}
+		disabled={args['disabled']}
+		onSelect={action('onSelect')}
+	/>
+);
+
+boolean('disabled', _DaySelector, Config);
+select('dayNameLength', _DaySelector, ['short', 'medium', 'long', 'full'], Config);
+
+_DaySelector.storyName = 'DaySelector';
+_DaySelector.parameters = {
+	info: {
+		text: 'Basic usage of DaySelector'
+	}
+};

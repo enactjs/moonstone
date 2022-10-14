@@ -1,6 +1,5 @@
-import FormCheckboxItem from '@enact/moonstone/FormCheckboxItem';
 import Button from '@enact/moonstone/Button';
-import {storiesOf} from '@storybook/react';
+import FormCheckboxItem from '@enact/moonstone/FormCheckboxItem';
 import {useCallback, useState} from 'react';
 
 const FormCheckboxItemView = () => {
@@ -20,10 +19,18 @@ const FormCheckboxItemView = () => {
 	);
 };
 
-storiesOf('FormCheckboxItem', module)
-	.add(
-		'that is focused and disabled',
-		() => (
-			<FormCheckboxItemView />
-		)
-	);
+export default {
+	title: 'Moonstone/FormCheckboxItem',
+	component: 'FormCheckboxItem'
+};
+
+export const WithFocusAndDisabled = () => (
+	<FormCheckboxItemView />
+);
+
+WithFocusAndDisabled.storyName = 'that is focused and disabled';
+WithFocusAndDisabled.parameters = {
+	controls: {
+		hideNoControlsWarning: true
+	}
+};

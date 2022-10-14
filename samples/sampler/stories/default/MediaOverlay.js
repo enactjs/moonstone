@@ -1,8 +1,6 @@
-import {boolean, select} from '@enact/storybook-utils/addons/knobs';
-import {mergeComponentMetadata} from '@enact/storybook-utils';
-import {storiesOf} from '@storybook/react';
-
 import MediaOverlay, {MediaOverlayBase, MediaOverlayDecorator} from '@enact/moonstone/MediaOverlay';
+import {mergeComponentMetadata} from '@enact/storybook-utils';
+import {boolean, select} from '@enact/storybook-utils/addons/controls';
 
 const prop = {
 	videoTitles: [
@@ -57,35 +55,50 @@ const prop = {
 	}
 };
 
-const Config = mergeComponentMetadata('MediaOverlay', MediaOverlay, MediaOverlayBase, MediaOverlayDecorator);
-Config.groupId = 'MediaOverlay';
 MediaOverlay.displayName = 'MediaOverlay';
+const Config = mergeComponentMetadata(
+	'MediaOverlay',
+	MediaOverlay,
+	MediaOverlayBase,
+	MediaOverlayDecorator
+);
+Config.groupId = 'MediaOverlay';
 
-storiesOf('Moonstone', module)
-	.add(
-		'MediaOverlay',
-		() => {
-			const videoTitle = select('source', prop.videoTitles, Config, 'Sintel');
-			const videoSource = prop.videos[videoTitle];
-			const imageName = select('imageOverlay', prop.imageNames, Config);
-			const imageSource = prop.images[imageName];
-			const placeholderName = select('placeholder', prop.placeholderNames, Config, 'None');
-			const placeholder = prop.placeholder[placeholderName];
-			return (
-				<MediaOverlay
-					disabled={boolean('disabled', Config)}
-					imageOverlay={imageSource}
-					placeholder={placeholder}
-					text={select('text', prop.text, Config, prop.text[0])}
-					textAlign={select('textAlign', ['start', 'center', 'end'], Config, 'center')}
-				>
-					<source src={videoSource} />
-				</MediaOverlay>
-			);
-		},
-		{
-			info: {
-				text: 'The basic MediaOverlay'
-			}
-		}
+export default {
+	title: 'Moonstone/MediaOverlay',
+	component: 'MediaOverlay'
+};
+
+export const _MediaOverlay = (args) => {
+	const videoTitle = args['source'];
+	const videoSource = prop.videos[videoTitle];
+	const imageName = args['imageOverlay'];
+	const imageSource = prop.images[imageName];
+	const placeholderName = args['placeholder'];
+	const placeholder = prop.placeholder[placeholderName];
+	return (
+		<MediaOverlay
+			disabled={args['disabled']}
+			imageOverlay={imageSource}
+			placeholder={placeholder}
+			text={args['text']}
+			textAlign={args['textAlign']}
+		>
+			<source src={videoSource} />
+		</MediaOverlay>
 	);
+};
+
+boolean('disabled', _MediaOverlay, Config);
+select('imageOverlay', _MediaOverlay, prop.imageNames, Config);
+select('placeholder', _MediaOverlay, prop.placeholderNames, Config, 'None');
+select('source', _MediaOverlay, prop.videoTitles, Config, 'Sintel');
+select('text', _MediaOverlay, prop.text, Config, prop.text[0]);
+select('textAlign', _MediaOverlay, ['start', 'center', 'end'], Config, 'center');
+
+_MediaOverlay.storyName = 'MediaOverlay';
+_MediaOverlay.parameters = {
+	info: {
+		text: 'The basic MediaOverlay'
+	}
+};

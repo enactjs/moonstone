@@ -1,7 +1,7 @@
 import VideoPlayer, {Video} from '@enact/moonstone/VideoPlayer';
-import {button} from '@storybook/addon-knobs';
-import {storiesOf} from '@storybook/react';
-import {useCallback, useState} from 'react';
+import {select} from '@enact/storybook-utils/addons/controls';
+import PropTypes from 'prop-types';
+import {useCallback, useEffect, useRef, useState} from 'react';
 
 const videoTabLabel = 'VideoPlayer';
 
@@ -17,9 +17,18 @@ const playlist = [
 	'http://media.w3.org/2010/05/video/movie_300.mp4'
 ];
 
+const videoPlayerOption =  [
+	'',
+	'Next Preload Video',
+	'Non Preload Video',
+	'Next Preload Video without changing preload',
+	'Change Preload without changing video',
+	'Reset Sources'
+];
+
 const lastIndex = playlist.length - 1;
 
-const VideoSourceSwap = () => {
+const VideoSourceSwap = (props) => {
 	const [cursor, setCursor] = useState(0);
 	const [preloadCursor, setPreloadCursor] = useState(1);
 
@@ -46,13 +55,36 @@ const VideoSourceSwap = () => {
 		setPreloadCursor(1);
 	}, []);
 
+	function usePrevious (value) {
+		const ref = useRef();
+		useEffect(() => {
+			ref.current = value;
+		});
+		return ref.current;
+	}
+
+	const prevOption = usePrevious(props.args['videoPlayerOption']);
+
+	useEffect(() => {
+		const option = props.args['videoPlayerOption'];
+
+		if (option !== prevOption) {
+			if (option === 'Next Preload Video') {
+				nextVideo();
+			} else if (option === 'Non Preload Video') {
+				differentVideo();
+			} else if (option === 'Next Preload Video without changing preload') {
+				nextVideoKeepPreload();
+			} else if (option === 'Change Preload without changing video') {
+				nextPreloadVideoKeepVideo();
+			} else if (option === 'Reset Sources') {
+				resetSources();
+			}
+		}
+	});
+
 	return (
 		<div>
-			{button('Next Preload Video', nextVideo, videoTabLabel)}
-			{button('Non Preload Video', differentVideo, videoTabLabel)}
-			{button('Next Preload Video without changing preload', nextVideoKeepPreload, videoTabLabel)}
-			{button('Change Preload without changing video', nextPreloadVideoKeepVideo, videoTabLabel)}
-			{button('Reset Sources', resetSources, videoTabLabel)}
 			<VideoPlayer
 				muted
 				onJumpBackward={differentVideo}
@@ -70,10 +102,21 @@ const VideoSourceSwap = () => {
 	);
 };
 
-storiesOf('VideoPlayer', module)
-	.add(
-		'Preload Videos',
-		() => (
-			<VideoSourceSwap />
-		)
+VideoSourceSwap.propTypes = {
+	args: PropTypes.object
+};
+
+export default {
+	title: 'Moonstone/VideoPlayer',
+	component: 'VideoPlayer'
+};
+
+export const PreloadVideos = (args) => {
+	return (
+		<VideoSourceSwap args={args} />
 	);
+};
+
+select('videoPlayerOption', PreloadVideos, videoPlayerOption, videoTabLabel, '');
+
+PreloadVideos.storyName = 'Preload Videos';

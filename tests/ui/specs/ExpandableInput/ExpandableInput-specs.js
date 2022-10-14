@@ -162,13 +162,17 @@ describe('ExpandableInput', function () {
 					await Page.waitTransitionEnd(3000, undefined, () => {
 						expandable.title.click();
 					});
-					expandable.input.click();
+					await expandable.input.click();
 					await expectOpen(expandable);
 				});
 
 				it('should close on two title clicks', async function () {
-					expandable.title.click();
-					expandable.title.click();
+					await Page.waitTransitionEnd(3000, undefined, () => {
+						expandable.title.click();
+					});
+					await Page.waitTransitionEnd(3000, undefined, () => {
+						expandable.title.click();
+					});
 					await expectClosed(expandable);
 				});
 
@@ -278,13 +282,17 @@ describe('ExpandableInput', function () {
 					await Page.waitTransitionEnd(3000, undefined, () => {
 						expandable.title.click();
 					});
-					expandable.input.click();
+					await expandable.input.click();
 					await expectOpen(expandable);
 				});
 
 				it('should close on two title clicks', async function () {
-					expandable.title.click();
-					expandable.title.click();
+					await Page.waitTransitionEnd(3000, undefined, () => {
+						expandable.title.click();
+					});
+					await Page.waitTransitionEnd(3000, undefined, () => {
+						expandable.title.click();
+					});
 					await expectClosed(expandable);
 				});
 			});
@@ -353,7 +361,9 @@ describe('ExpandableInput', function () {
 					await Page.waitTransitionEnd(3000, undefined, () => {
 						expandable.title.click();
 					});
-					expandable.title.click();
+					await Page.waitTransitionEnd(3000, undefined, () => {
+						expandable.title.click();
+					});
 					await expectOpen(expandable);
 				});
 			});
@@ -609,7 +619,7 @@ describe('ExpandableInput', function () {
 
 			describe('5-way', function () {
 				it('should be spottable', async function () {
-					expandable.focus();
+					await expandable.focus();
 					// Page.spotlightDown();
 					expect(await expandable.title.isFocused()).to.be.true();
 				});
@@ -622,7 +632,7 @@ describe('ExpandableInput', function () {
 
 			describe('pointer', function () {
 				it('should stay closed on title click', async function () {
-					expandable.title.click();
+					await expandable.title.click();
 					browser.pause(500);
 					await expectClosed(expandable);
 				});

@@ -4,11 +4,10 @@ import {ContextualPopupDecorator} from '@enact/moonstone/ContextualPopupDecorato
 import Heading from '@enact/moonstone/Heading';
 import {IconButton} from '@enact/moonstone/IconButton';
 import {IncrementSlider} from '@enact/moonstone/IncrementSlider';
-import {select} from '@enact/storybook-utils/addons/knobs';
 import {mergeComponentMetadata} from '@enact/storybook-utils';
+import {select} from '@enact/storybook-utils/addons/controls';
 import {Group} from '@enact/ui/Group';
 import ri from '@enact/ui/resolution';
-import {storiesOf} from '@storybook/react';
 import {useCallback, useEffect, useRef, useState} from 'react';
 
 const ContextualButton = ContextualPopupDecorator(Button);
@@ -130,135 +129,161 @@ const ContextualPopupWithArrowFunction = ({...rest}) => {
 	);
 };
 
-storiesOf('ContextualPopupDecorator', module)
-	.add(
-		'with 5-way selectable activator',
-		() => (
-			<div style={{textAlign: 'center', marginTop: ri.unit(180, 'rem')}}>
+export default {
+	title: 'Moonstone/ContextualPopupDecorator',
+	component: 'ContextualPopupDecorator'
+};
+
+export const With5WaySelectableActivator = (args) => (
+	<div style={{textAlign: 'center', marginTop: ri.unit(180, 'rem')}}>
+		<ContextualPopupWithActivator
+			direction={args['direction']}
+			popupComponent={renderPopup}
+			spotlightRestrict={args['spotlightRestrict']}
+		>
+			Hello Contextual Button
+		</ContextualPopupWithActivator>
+	</div>
+);
+
+select('direction', With5WaySelectableActivator, ['up', 'down', 'left', 'right'], Config, 'down');
+select('spotlightRestrict', With5WaySelectableActivator, ['none', 'self-first', 'self-only'], Config, 'self-only');
+
+With5WaySelectableActivator.storyName = 'with 5-way selectable activator';
+
+export const WithOverflows = () => (
+	<div style={{position: 'relative', width: '100%', height: '100%'}}>
+		<Heading showLine>direction Up</Heading>
+		<div style={{display: 'flex', justifyContent: 'space-between', marginBottom: ri.unit(12, 'rem')}}>
+			<ContextualPopupWithActivator
+				direction="up"
+				popupComponent={renderWidePopup}
+			>
+				Overflows Left
+			</ContextualPopupWithActivator>
+			<ContextualPopupWithActivator
+				direction="up"
+				popupComponent={renderTallPopup}
+			>
+				Overflows Top
+			</ContextualPopupWithActivator>
+			<ContextualPopupWithActivator
+				direction="up"
+				popupComponent={renderWidePopup}
+			>
+				Overflows Right
+			</ContextualPopupWithActivator>
+		</div>
+		<div style={{display: 'flex'}}>
+			<Heading showLine style={{flexGrow: '1'}}>direction left </Heading>
+			<Heading showLine style={{flexGrow: '1'}}>direction right</Heading>
+		</div>
+		<div style={{display: 'flex', marginBottom: ri.unit(24, 'rem')}}>
+			<div style={{flexGrow: '1', display: 'flex', justifyContent: 'space-between'}}>
 				<ContextualPopupWithActivator
-					direction={select('direction', ['up', 'down', 'left', 'right'], Config, 'down')}
-					popupComponent={renderPopup}
-					spotlightRestrict={select('spotlightRestrict', ['none', 'self-first', 'self-only'], Config, 'self-only')}
+					direction="left"
+					popupComponent={renderWidePopup}
 				>
-					Hello Contextual Button
+					Overflows Left
+				</ContextualPopupWithActivator>
+				<ContextualPopupWithActivator
+					direction="left"
+					popupComponent={renderSuperTallPopup}
+				>
+					Overflows Top
 				</ContextualPopupWithActivator>
 			</div>
-		)
-	)
-	.add(
-		'with overflows',
-		() => (
-			<div style={{position: 'relative', width: '100%', height: '100%'}}>
-				<Heading showLine>direction Up</Heading>
-				<div style={{display: 'flex', justifyContent: 'space-between', marginBottom: ri.unit(12, 'rem')}}>
-					<ContextualPopupWithActivator
-						direction="up"
-						popupComponent={renderWidePopup}
-					>
-						Overflows Left
-					</ContextualPopupWithActivator>
-					<ContextualPopupWithActivator
-						direction="up"
-						popupComponent={renderTallPopup}
-					>
-						Overflows Top
-					</ContextualPopupWithActivator>
-					<ContextualPopupWithActivator
-						direction="up"
-						popupComponent={renderWidePopup}
-					>
-						Overflows Right
-					</ContextualPopupWithActivator>
-				</div>
-				<div style={{display: 'flex'}}>
-					<Heading showLine style={{flexGrow: '1'}}>direction left </Heading>
-					<Heading showLine style={{flexGrow: '1'}}>direction right</Heading>
-				</div>
-				<div style={{display: 'flex', marginBottom: ri.unit(24, 'rem')}}>
-					<div style={{flexGrow: '1', display: 'flex', justifyContent: 'space-between'}}>
-						<ContextualPopupWithActivator
-							direction="left"
-							popupComponent={renderWidePopup}
-						>
-							Overflows Left
-						</ContextualPopupWithActivator>
-						<ContextualPopupWithActivator
-							direction="left"
-							popupComponent={renderSuperTallPopup}
-						>
-							Overflows Top
-						</ContextualPopupWithActivator>
-					</div>
-					<div style={{flexGrow: '1', display: 'flex', justifyContent: 'space-between'}}>
-						<ContextualPopupWithActivator
-							direction="right"
-							popupComponent={renderSuperTallPopup}
-						>
-							Overflows Top
-						</ContextualPopupWithActivator>
-						<ContextualPopupWithActivator
-							direction="right"
-							popupComponent={renderWidePopup}
-						>
-							Overflows Right
-						</ContextualPopupWithActivator>
-					</div>
-				</div>
-				<div style={{display: 'flex', justifyContent: 'center', marginBottom: ri.unit(24, 'rem')}}>
-					<ContextualPopupWithActivator
-						direction="left"
-						popupComponent={renderSuperTallPopup}
-					>
-						Overflows Bottom
-					</ContextualPopupWithActivator>
-					<ContextualPopupWithActivator
-						direction="right"
-						popupComponent={renderSuperTallPopup}
-					>
-						Overflows Bottom
-					</ContextualPopupWithActivator>
-				</div>
-				<Heading showLine>direction down</Heading>
-				<div style={{display: 'flex', justifyContent: 'space-between'}}>
-					<ContextualPopupWithActivator
-						direction="down"
-						popupComponent={renderWidePopup}
-					>
-						Overflows Left
-					</ContextualPopupWithActivator>
-					<ContextualPopupWithActivator
-						direction="down"
-						popupComponent={renderTallPopup}
-					>
-						Overflows Bottom
-					</ContextualPopupWithActivator>
-					<ContextualPopupWithActivator
-						direction="down"
-						popupComponent={renderWidePopup}
-					>
-						Overflows Right
-					</ContextualPopupWithActivator>
-				</div>
-			</div>
-		)
-	)
-	.add(
-		'with arrow function',
-		() => (
-			<ContextualPopupWithArrowFunction />
-		)
-	)
-	.add(
-		'with increment slider',
-		() => (
-			<div style={{textAlign: 'center', marginTop: ri.unit(180, 'rem')}}>
+			<div style={{flexGrow: '1', display: 'flex', justifyContent: 'space-between'}}>
 				<ContextualPopupWithActivator
-					direction={select('direction', ['up', 'down', 'left', 'right'], Config, 'down')}
-					popupComponent={renderSliderPopup}
-					spotlightRestrict={select('spotlightRestrict', ['none', 'self-first', 'self-only'], Config, 'self-only')}
+					direction="right"
+					popupComponent={renderSuperTallPopup}
 				>
-					Contextual Button
+					Overflows Top
+				</ContextualPopupWithActivator>
+				<ContextualPopupWithActivator
+					direction="right"
+					popupComponent={renderWidePopup}
+				>
+					Overflows Right
 				</ContextualPopupWithActivator>
 			</div>
-		)
-	);
+		</div>
+		<div style={{display: 'flex', justifyContent: 'center', marginBottom: ri.unit(24, 'rem')}}>
+			<ContextualPopupWithActivator
+				direction="left"
+				popupComponent={renderSuperTallPopup}
+			>
+				Overflows Bottom
+			</ContextualPopupWithActivator>
+			<ContextualPopupWithActivator
+				direction="right"
+				popupComponent={renderSuperTallPopup}
+			>
+				Overflows Bottom
+			</ContextualPopupWithActivator>
+		</div>
+		<Heading showLine>direction down</Heading>
+		<div style={{display: 'flex', justifyContent: 'space-between'}}>
+			<ContextualPopupWithActivator
+				direction="down"
+				popupComponent={renderWidePopup}
+			>
+				Overflows Left
+			</ContextualPopupWithActivator>
+			<ContextualPopupWithActivator
+				direction="down"
+				popupComponent={renderTallPopup}
+			>
+				Overflows Bottom
+			</ContextualPopupWithActivator>
+			<ContextualPopupWithActivator
+				direction="down"
+				popupComponent={renderWidePopup}
+			>
+				Overflows Right
+			</ContextualPopupWithActivator>
+		</div>
+	</div>
+);
+
+WithOverflows.storyName = 'with overflows';
+WithOverflows.parameters = {
+	controls: {
+		hideNoControlsWarning: true
+	}
+};
+
+export const WithArrowFunction = () => (
+	<ContextualPopupWithArrowFunction />
+);
+
+WithArrowFunction.storyName = 'with arrow function';
+WithArrowFunction.parameters = {
+	controls: {
+		hideNoControlsWarning: true
+	}
+};
+
+export const WithIncrementSlider = (args) => (
+	<div style={{textAlign: 'center', marginTop: ri.unit(180, 'rem')}}>
+		<ContextualPopupWithActivator
+			direction={args['direction']}
+			popupComponent={renderSliderPopup}
+			spotlightRestrict={args['spotlightRestrict']}
+		>
+			Contextual Button
+		</ContextualPopupWithActivator>
+	</div>
+);
+
+WithIncrementSlider.storyName = 'with incrementSlider';
+WithIncrementSlider.parameters = {
+	controls: {
+		hideNoControlsWarning: true
+	}
+};
+
+select('direction',	WithIncrementSlider, ['up', 'down', 'left', 'right'], Config, 'down');
+select('spotlightRestrict', WithIncrementSlider, ['none', 'self-first', 'self-only'], Config, 'self-only');
+
+WithIncrementSlider.storyName = 'with incrementSlider';
