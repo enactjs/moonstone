@@ -1,6 +1,6 @@
 {
   "name": "moonstone-sampler",
-  "version": "4.5.0",
+  "version": "4.5.1",
   "description": "Component and QA samples for Moonstone",
   "private": true,
   "main": "index.js",
