@@ -105,45 +105,45 @@ describe('ExpandableList', function () {
 
 		describe('pointer', function () {
 			it('should open on title click when closed', async function () {
-				await Page.waitTransitionEnd(5000, undefined, async () => {
-					await expandable.title.click();
+				await Page.waitTransitionEnd(5000, undefined, () => {
+					expandable.title.click();
 				});
 				await expectOpen(expandable);
 			});
 
 			it('should close on title click when open', async function () {
-				await Page.waitTransitionEnd(5000, undefined, async () => {
-					await expandable.title.click();
+				await Page.waitTransitionEnd(5000, undefined, () => {
+					expandable.title.click();
 				});
 				expect(await expandable.isOpen()).to.be.true();
-				await Page.waitTransitionEnd(5000, undefined, async () => {
-					await expandable.title.click();
+				await Page.waitTransitionEnd(5000, undefined, () => {
+					expandable.title.click();
 				});
 				expect(await expandable.isOpen()).to.be.false();
 			});
 
 			it('should select item', async function () {
-				await Page.waitTransitionEnd(5000, undefined, async () => {
-					await expandable.title.click();
+				await Page.waitTransitionEnd(5000, undefined, () => {
+					expandable.title.click();
 				});
 				await expandable.item(0).click();
 				expect(await expandable.item(0).$(expandable.selectedClass).isExisting()).to.be.true();
 			});
 
 			it('should update value text', async function () {
-				await Page.waitTransitionEnd(5000, undefined, async () => {
-					await expandable.title.click();
+				await Page.waitTransitionEnd(5000, undefined, () => {
+					expandable.title.click();
 				});
 				await expandable.item(0).click();
-				await Page.waitTransitionEnd(5000, undefined, async () => {
-					await expandable.title.click();
+				await Page.waitTransitionEnd(5000, undefined, () => {
+					expandable.title.click();
 				});
 				expect(await expandable.valueText).to.equal('option1');
 			});
 
 			it('should not unselect item', async function () {
-				await Page.waitTransitionEnd(5000, undefined, async () => {
-					await expandable.title.click();
+				await Page.waitTransitionEnd(5000, undefined, () => {
+					expandable.title.click();
 				});
 				await expandable.item(0).click();
 				await expandable.item(0).click();
@@ -151,8 +151,8 @@ describe('ExpandableList', function () {
 			});
 
 			it('should only allow one selected item', async function () {
-				await Page.waitTransitionEnd(5000, undefined, async () => {
-					await expandable.title.click();
+				await Page.waitTransitionEnd(5000, undefined, () => {
+					expandable.title.click();
 				});
 				await expandable.item(0).click();
 				await expandable.item(1).click();
@@ -248,19 +248,19 @@ describe('ExpandableList', function () {
 
 		describe('pointer', function () {
 			it('should open on title click when closed', async function () {
-				await Page.waitTransitionEnd(5000, undefined, async () => {
-					await expandable.title.click();
+				await Page.waitTransitionEnd(5000, undefined, () => {
+					expandable.title.click();
 				});
 				await expectOpen(expandable);
 			});
 
 			it('should close on title click when open', async function () {
-				await Page.waitTransitionEnd(5000, undefined, async () => {
-					await expandable.title.click();
+				await Page.waitTransitionEnd(5000, undefined, () => {
+					expandable.title.click();
 				});
 				expect(await expandable.isOpen()).to.be.true();
-				await Page.waitTransitionEnd(5000, undefined, async () => {
-					await expandable.title.click();
+				await Page.waitTransitionEnd(5000, undefined, () => {
+					expandable.title.click();
 				});
 				expect(await expandable.isOpen()).to.be.false();
 			});
@@ -274,19 +274,19 @@ describe('ExpandableList', function () {
 			});
 
 			it('should update value text', async function () {
-				await Page.waitTransitionEnd(5000, undefined, async () => {
-					await expandable.title.click();
+				await Page.waitTransitionEnd(5000, undefined, () => {
+					expandable.title.click();
 				});
 				await expandable.item(0).click();
-				await Page.waitTransitionEnd(5000, undefined, async () => {
-					await expandable.title.click();
+				await Page.waitTransitionEnd(5000, undefined, () => {
+					expandable.title.click();
 				});
 				expect(await expandable.valueText).to.equal('option1');
 			});
 
 			it('should allow unselecting item', async function () {
-				await Page.waitTransitionEnd(5000, undefined, async () => {
-					await expandable.title.click();
+				await Page.waitTransitionEnd(5000, undefined, () => {
+					expandable.title.click();
 				});
 				await expandable.item(0).click();
 				await expandable.item(0).click();
@@ -294,8 +294,8 @@ describe('ExpandableList', function () {
 			});
 
 			it('should allow multiple selected items', async function () {
-				await Page.waitTransitionEnd(5000, undefined, async () => {
-					await expandable.title.click();
+				await Page.waitTransitionEnd(5000, undefined, () => {
+					expandable.title.click();
 				});
 				await expandable.item(0).click();
 				await expandable.item(1).click();
@@ -389,45 +389,45 @@ describe('ExpandableList', function () {
 
 		describe('pointer', function () {
 			it('should open on title click when closed', async function () {
-				await Page.waitTransitionEnd(5000, undefined, async () => {
-					await expandable.title.click();
+				await Page.waitTransitionEnd(5000, undefined, () => {
+					expandable.title.click();
 				});
 				await expectOpen(expandable);
 			});
 
 			it('should close on title click when open', async function () {
-				await Page.waitTransitionEnd(5000, undefined, async () => {
-					await expandable.title.click();
+				await Page.waitTransitionEnd(5000, undefined, () => {
+					expandable.title.click();
 				});
 				expect(await expandable.isOpen()).to.be.true();
-				await Page.waitTransitionEnd(5000, undefined, async () => {
-					await expandable.title.click();
+				await Page.waitTransitionEnd(5000, undefined, () => {
+					expandable.title.click();
 				});
 				expect(await expandable.isOpen()).to.be.false();
 			});
 
 			it('should select item', async function () {
-				await Page.waitTransitionEnd(5000, undefined, async () => {
-					await expandable.title.click();
+				await Page.waitTransitionEnd(5000, undefined, () => {
+					expandable.title.click();
 				});
 				await expandable.item(0).click();
 				expect(await expandable.item(0).$(expandable.selectedClass).isExisting()).to.be.true();
 			});
 
 			it('should update value text', async function () {
-				await Page.waitTransitionEnd(5000, undefined, async () => {
-					await expandable.title.click();
+				await Page.waitTransitionEnd(5000, undefined, () => {
+					expandable.title.click();
 				});
 				await expandable.item(0).click();
-				await Page.waitTransitionEnd(5000, undefined, async () => {
-					await expandable.title.click();
+				await Page.waitTransitionEnd(5000, undefined, () => {
+					expandable.title.click();
 				});
 				expect(await expandable.valueText).to.equal('option1');
 			});
 
 			it('should unselect item', async function () {
-				await Page.waitTransitionEnd(5000, undefined, async () => {
-					await expandable.title.click();
+				await Page.waitTransitionEnd(5000, undefined, () => {
+					expandable.title.click();
 				});
 				await expandable.item(0).click();
 				await expandable.item(0).click();
@@ -435,8 +435,8 @@ describe('ExpandableList', function () {
 			});
 
 			it('should only allow one selected item', async function () {
-				await Page.waitTransitionEnd(5000, undefined, async () => {
-					await expandable.title.click();
+				await Page.waitTransitionEnd(5000, undefined, () => {
+					expandable.title.click();
 				});
 				await expandable.item(0).click();
 				await expandable.item(1).click();
@@ -535,20 +535,20 @@ describe('ExpandableList', function () {
 
 		describe('pointer', function () {
 			it('should close on title click', async function () {
-				await Page.waitTransitionEnd(5000, undefined, async () => {
-					await expandable.title.click();
+				await Page.waitTransitionEnd(5000, undefined, () => {
+					expandable.title.click();
 				});
 				expect(await expandable.isOpen()).to.be.false();
 				expect(await expandable.chevron).to.equal('󯿭');
 			});
 
 			it('should open on title click when closed', async function () {
-				await Page.waitTransitionEnd(5000, undefined, async () => {
-					await expandable.title.click();
+				await Page.waitTransitionEnd(5000, undefined, () => {
+					expandable.title.click();
 				});
 				expect(await expandable.isOpen()).to.be.false();
-				await Page.waitTransitionEnd(5000, undefined, async () => {
-					await expandable.title.click();
+				await Page.waitTransitionEnd(5000, undefined, () => {
+					expandable.title.click();
 				});
 				expect(await expandable.isOpen()).to.be.true();
 			});
@@ -600,11 +600,11 @@ describe('ExpandableList', function () {
 
 	describe('general pointer operation', function () {
 		it('should not close other expandable when opening', async function () {
-			await Page.waitTransitionEnd(5000, undefined, async () => {
-				await Page.components.radioSelect.title.click();
+			await Page.waitTransitionEnd(5000, undefined, () => {
+				Page.components.radioSelect.title.click();
 			});
-			await Page.waitTransitionEnd(5000, undefined, async () => {
-				await Page.components.multiSelect.title.click();
+			await Page.waitTransitionEnd(5000, undefined, () => {
+				Page.components.multiSelect.title.click();
 			});
 			expect(await Page.components.radioSelect.isOpen()).to.be.true();
 			expect(await Page.components.multiSelect.isOpen()).to.be.true();

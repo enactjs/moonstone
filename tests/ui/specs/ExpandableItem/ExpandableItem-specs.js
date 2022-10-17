@@ -60,19 +60,19 @@ describe('ExpandableItem', function () {
 
 		describe('pointer', function () {
 			it('should open on title click when closed', async function () {
-				await Page.waitTransitionEnd(5000, undefined, async () => {
-					await expandableItem.title.click();
+				await Page.waitTransitionEnd(5000, undefined, () => {
+					expandableItem.title.click();
 				});
 				await expectOpen(expandableItem);
 			});
 
 			it('should close on title click when open', async function () {
-				await Page.waitTransitionEnd(5000, undefined, async () => {
-					await expandableItem.title.click();
+				await Page.waitTransitionEnd(5000, undefined, () => {
+					expandableItem.title.click();
 				});
 				await expectOpen(expandableItem);
-				await Page.waitTransitionEnd(5000, undefined, async () => {
-					await expandableItem.title.click();
+				await Page.waitTransitionEnd(5000, undefined, () => {
+					expandableItem.title.click();
 				});
 				await expectClosed(expandableItem);
 			});
@@ -108,19 +108,19 @@ describe('ExpandableItem', function () {
 
 		describe('pointer', function () {
 			it('should close on title click when open', async function () {
-				await Page.waitTransitionEnd(5000, undefined, async () => {
-					await expandableItem.title.click();
+				await Page.waitTransitionEnd(5000, undefined, () => {
+					expandableItem.title.click();
 				});
 				await expectClosed(expandableItem);
 			});
 
 			it('should open on title click when closed', async function () {
-				await Page.waitTransitionEnd(5000, undefined, async () => {
-					await expandableItem.title.click();
+				await Page.waitTransitionEnd(5000, undefined, () => {
+					expandableItem.title.click();
 				});
 				await expectClosed(expandableItem);
-				await Page.waitTransitionEnd(5000, undefined, async () => {
-					await expandableItem.title.click();
+				await Page.waitTransitionEnd(5000, undefined, () => {
+					expandableItem.title.click();
 				});
 				await expectOpen(expandableItem);
 			});
