@@ -30,7 +30,7 @@ import componentCss from './Heading.module.less';
  * A labeled Heading component.
  *
  * This component is most often not used directly but may be composed within another component as it
- * is within [Heading]{@link moonstone/Heading.Heading}.
+ * is within {@link moonstone/Heading.Heading|Heading}.
  *
  * @class HeadingBase
  * @memberof moonstone/Heading
@@ -88,7 +88,7 @@ const HeadingBase = kind({
 });
 
 /**
- * Applies Moonstone specific behaviors to [HeadingBase]{@link moonstone/Heading.HeadingBase}.
+ * Applies Moonstone specific behaviors to {@link moonstone/Heading.HeadingBase|HeadingBase}.
  *
  * @hoc
  * @memberof moonstone/Heading

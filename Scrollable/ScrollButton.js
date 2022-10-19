@@ -8,8 +8,8 @@ import IconButton from '../IconButton';
 import css from './Scrollbar.module.less';
 
 /**
- * An [IconButton]{@link moonstone/IconButton.IconButton} used within
- * a [Scrollbar]{@link moonstone/Scrollable.Scrollbar}.
+ * An {@link moonstone/IconButton.IconButton|IconButton} used within
+ * a {@link moonstone/Scrollable.Scrollbar|Scrollbar}.
  *
  * @class ScrollButton
  * @memberof moonstone/Scrollable

@@ -1,5 +1,5 @@
 /**
- * Exports the {@link moonstone/Skinnable.Skinnable} higher-order component (HOC).
+ * Exports the {@link moonstone/Skinnable.Skinnable|Skinnable} higher-order component (HOC).
  *
  * @module moonstone/Skinnable
  * @exports Skinnable
@@ -19,7 +19,7 @@ const defaultConfig = {
 };
 
 /**
- * This higher-order component is based on [ui/Skinnable]{@link ui/Skinnable.Skinnable}.
+ * This higher-order component is based on {@link ui/Skinnable.Skinnable|ui/Skinnable}.
  *
  * `Skinnable` comes pre-configured for Moonstone's supported skins: "dark" (default) and "light".
  * It is used to apply the relevant skinning classes to each component and has been used to

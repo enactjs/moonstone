@@ -54,7 +54,7 @@ const EditableIntegerPickerDecorator = hoc((config, Wrapped) => {
 
 			/**
 			 * Disables EditableIntegerPicker and does not generate `onChange`
-			 * [events]{@link /docs/developer-guide/glossary/#event}.
+			 * {@link /docs/developer-guide/glossary/#event|events}.
 			 *
 			 * @type {Boolean}
 			 * @public

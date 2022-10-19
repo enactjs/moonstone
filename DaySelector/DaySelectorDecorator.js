@@ -71,7 +71,7 @@ function getLocaleState (dayNameLength, locale) {
 
 /**
  * Applies Moonstone specific behaviors to
- * [DaySelector]{@link moonstone/DaySelector.DaySelectorBase}.
+ * {@link moonstone/DaySelector.DaySelectorBase|DaySelector}.
  *
  * @hoc
  * @memberof moonstone/DaySelector

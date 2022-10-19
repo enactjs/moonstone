@@ -8,7 +8,7 @@ import DaySelectorCheckbox from './DaySelectorCheckbox';
 import css from './DaySelectorItem.module.less';
 
 /**
- * An extension of [Item]{@link moonstone/Item.Item} that can be toggled between two states via its
+ * An extension of {@link moonstone/Item.Item|Item} that can be toggled between two states via its
  * `selected` prop.
  *
  * By default, `DaySelectorItem` maintains the state of its `selected` property. Supply the
