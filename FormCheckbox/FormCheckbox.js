@@ -1,7 +1,7 @@
 /**
  * Moonstone styled checkmark icon inside a circle, primarily used inside the
- * [FormCheckboxItem]{@link moonstone/FormCheckboxItem.FormCheckboxItem}. This also has built-in
- * `Spotlight` support since `FormCheckboxItem` is a specialized [Item]{@link moonstone/Item} that
+ * {@link moonstone/FormCheckboxItem.FormCheckboxItem|FormCheckboxItem}. This also has built-in
+ * `Spotlight` support since `FormCheckboxItem` is a specialized {@link moonstone/Item|Item} that
  * does not visually respond to focus; this child component shows focus instead.
  *
  * @example
@@ -37,7 +37,7 @@ const FormCheckboxBase = kind({
 		 *
 		 * May be specified as either:
 		 *
-		 * * A string that represents an icon from the [iconList]{@link ui/Icon.Icon.iconList},
+		 * * A string that represents an icon from the {@link ui/Icon.Icon.iconList|iconList},
 		 * * An HTML entity string, Unicode reference or hex value (in the form '0x...'),
 		 * * A URL specifying path to an icon image, or
 		 * * An object representing a resolution independent resource (See {@link ui/resolution}).

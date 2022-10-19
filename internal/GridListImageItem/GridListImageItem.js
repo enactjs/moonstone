@@ -81,7 +81,7 @@ const GridListImageItem = kind({
 		imageComponent: EnactPropTypes.component,
 
 		/**
-		 * Placeholder image used while [source]{@link moonstone/internal/GridListImageItem.GridListImageItem#source}
+		 * Placeholder image used while {@link moonstone/internal/GridListImageItem.GridListImageItem#source|source}
 		 * is loaded.
 		 *
 		 * @type {String}

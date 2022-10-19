@@ -144,8 +144,8 @@ const PopupBase = kind({
 		/**
 		 * Tells the body element to shrink to the size of the content.
 		 *
-		 * Popup is composed of a [Layout]{@link ui/Layout.Layout} and [Cells]{@link ui/Layout.Cell}.
-		 * This informs the body cell to use the [shrink]{@link ui/Layout.Cell#shrink} property so
+		 * Popup is composed of a {@link ui/Layout.Layout|Layout} and {@link ui/Layout.Cell|Cells}.
+		 * This informs the body cell to use the {@link ui/Layout.Cell#shrink|shrink} property so
 		 * it will match the dimensions of its contents rather than expand to the width of the
 		 * Popup's assigned dimensions.
 		 *
@@ -169,7 +169,7 @@ const PopupBase = kind({
 		 *
 		 * It can be either `'none'`, `'self-first'`, or `'self-only'`.
 		 *
-		 * Note: The ready-to-use [Popup]{@link moonstone/Popup.Popup} component only supports
+		 * Note: The ready-to-use {@link moonstone/Popup.Popup|Popup} component only supports
 		 * `'self-first'` and `'self-only'`.
 		 *
 		 * @type {String}
@@ -270,7 +270,7 @@ const OpenState = {
 
 /**
  * A stateful component that renders a popup in a
- * [FloatingLayer]{@link ui/FloatingLayer.FloatingLayer}.
+ * {@link ui/FloatingLayer.FloatingLayer|FloatingLayer}.
  *
  * @class Popup
  * @memberof moonstone/Popup
@@ -344,7 +344,7 @@ class Popup extends Component {
 		 * Called after show transition has completed, and immediately with no transition.
 		 *
 		 * Note: The function does not run if Popup is initially opened and
-		 * [noAnimation]{@link moonstone/Popup.PopupBase#noAnimation} is `true`.
+		 * {@link moonstone/Popup.PopupBase#noAnimation|noAnimation} is `true`.
 		 *
 		 * @type {Function}
 		 * @public

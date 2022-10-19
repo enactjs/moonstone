@@ -53,7 +53,7 @@ const EditableIntegerPickerBase = kind({
 		 * The maximum value selectable by the picker (inclusive).
 		 *
 		 * The range between `min` and `max` should be evenly divisible by
-		 * [step]{@link moonstone/EditableIntegerPicker.EditableIntegerPickerBase.step}.
+		 * {@link moonstone/EditableIntegerPicker.EditableIntegerPickerBase.step|step}.
 		 *
 		 * @type {Number}
 		 * @required
@@ -65,7 +65,7 @@ const EditableIntegerPickerBase = kind({
 		 * The minimum value selectable by the picker (inclusive).
 		 *
 		 * The range between `min` and `max` should be evenly divisible by
-		 * [step]{@link moonstone/EditableIntegerPicker.EditableIntegerPickerBase.step}.
+		 * {@link moonstone/EditableIntegerPicker.EditableIntegerPickerBase.step|step}.
 		 *
 		 * @type {Number}
 		 * @required
@@ -87,7 +87,7 @@ const EditableIntegerPickerBase = kind({
 		/**
 		 * The icon for the decrementer.
 		 *
-		 * All strings supported by [Icon]{@link moonstone/Icon.Icon} are supported. Without a
+		 * All strings supported by {@link moonstone/Icon.Icon|Icon} are supported. Without a
 		 * custom icon, the default is used.
 		 *
 		 * @type {String}
@@ -96,7 +96,7 @@ const EditableIntegerPickerBase = kind({
 		decrementIcon: PropTypes.string,
 
 		/**
-		 * Disables the picker and prevents [events]{@link /docs/developer-guide/glossary/#event}
+		 * Disables the picker and prevents {@link /docs/developer-guide/glossary/#event|events}
 		 * from firing.
 		 *
 		 * @type {Boolean}
@@ -115,7 +115,7 @@ const EditableIntegerPickerBase = kind({
 		/**
 		 * The icon for the incrementer.
 		 *
-		 * All strings supported by [Icon]{@link moonstone/Icon.Icon} are supported. Without a
+		 * All strings supported by {@link moonstone/Icon.Icon|Icon} are supported. Without a
 		 * custom icon, the default is used.
 		 *
 		 * @type {String}
@@ -163,8 +163,8 @@ const EditableIntegerPickerBase = kind({
 		 * Pads the display value with zeros.
 		 *
 		 * The number of zeros used is the number of digits of the value of
-		 * [min]{@link moonstone/EditableIntegerPicker.EditableIntegerPickerBase.min} or
-		 * [max]{@link moonstone/EditableIntegerPicker.EditableIntegerPickerBase.max}, whichever is
+		 * {@link moonstone/EditableIntegerPicker.EditableIntegerPickerBase.min|min} or
+		 * {@link moonstone/EditableIntegerPicker.EditableIntegerPickerBase.max|max}, whichever is
 		 * greater.
 		 *
 		 * @type {Boolean}

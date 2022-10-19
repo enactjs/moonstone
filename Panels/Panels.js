@@ -17,7 +17,7 @@ import css from './Panels.module.less';
 const getControlsId = (id) => id && `${id}-controls`;
 
 /**
- * Basic Panels component without breadcrumbs or default [arranger]{@link ui/ViewManager.Arranger}
+ * Basic Panels component without breadcrumbs or default {@link ui/ViewManager.Arranger|arranger}
  *
  * @class Panels
  * @memberof moonstone/Panels
@@ -59,7 +59,7 @@ const PanelsBase = kind({
 		childProps: PropTypes.object,
 
 		/**
-		 * [`Panels`]{@link moonstone/Panels.Panel} to be rendered
+		 * {@link moonstone/Panels.Panel|Panels} to be rendered
 		 *
 		 * @type {Node}
 		 * @public
@@ -119,7 +119,7 @@ const PanelsBase = kind({
 		 *
 		 * When defined, `Panels` will manage the presentation state of `Panel` instances in order
 		 * to restore it when returning to the `Panel`. See
-		 * [noSharedState]{@link moonstone/Panels.Panels.noSharedState} for more details on shared
+		 * {@link moonstone/Panels.Panels.noSharedState|noSharedState} for more details on shared
 		 * state.
 		 *
 		 * @type {String}

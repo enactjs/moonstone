@@ -92,9 +92,9 @@ const ExpandablePickerBase = kind({
 		/**
 		 * A custom icon for the decrementer.
 		 *
-		 * All strings supported by [Icon]{@link moonstone/Icon.Icon} are supported. Without a
+		 * All strings supported by {@link moonstone/Icon.Icon|Icon} are supported. Without a
 		 * custom icon, the default is used, and is automatically changed when the
-		 * [orientation]{@link moonstone/Picker.Picker#orientation} is changed.
+		 * {@link moonstone/Picker.Picker#orientation|orientation} is changed.
 		 *
 		 * @type {string}
 		 * @public
@@ -121,9 +121,9 @@ const ExpandablePickerBase = kind({
 		/**
 		 * A custom icon for the incrementer.
 		 *
-		 * All strings supported by [Icon]{@link moonstone/Icon.Icon} are supported. Without a
+		 * All strings supported by {@link moonstone/Icon.Icon|Icon} are supported. Without a
 		 * custom icon, the default is used, and is automatically changed when the
-		 * [orientation]{@link moonstone/Picker.Picker#orientation} is changed.
+		 * {@link moonstone/Picker.Picker#orientation|orientation} is changed.
 		 *
 		 * @type {String}
 		 * @public

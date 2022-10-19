@@ -88,9 +88,9 @@ const HeaderBase = kind({
 		fullBleed: PropTypes.bool,
 
 		/**
-		 * [`Input`]{@link moonstone/Input} element that will replace the `title`.
+		 * {@link moonstone/Input|Input} element that will replace the `title`.
 		 *
-		 * This is also a [slot]{@link ui/Slottable.Slottable}, so it can be referred
+		 * This is also a {@link ui/Slottable.Slottable|slot}, so it can be referred
 		 * to as if it were JSX.
 		 *
 		 * Note: Only applies to `type="standard"` headers.
@@ -131,7 +131,7 @@ const HeaderBase = kind({
 		/**
 		 * Sub-title displayed at the bottom of the panel.
 		 *
-		 * This is a [`slot`]{@link ui/Slottable.Slottable}, so it can be used as a tag-name inside
+		 * This is a {@link ui/Slottable.Slottable|slot}, so it can be used as a tag-name inside
 		 * this component.
 		 *
 		 * @type {String}
@@ -141,7 +141,7 @@ const HeaderBase = kind({
 		/**
 		 * Title of the header.
 		 *
-		 * This is a [`slot`]{@link ui/Slottable.Slottable}, so it can be used as a tag-name inside
+		 * This is a {@link ui/Slottable.Slottable|slot}, so it can be used as a tag-name inside
 		 * this component.
 		 *
 		 * Example:
@@ -160,7 +160,7 @@ const HeaderBase = kind({
 		/**
 		 * Text displayed below the title.
 		 *
-		 * This is a [`slot`]{@link ui/Slottable.Slottable}, so it can be used as a tag-name inside
+		 * This is a {@link ui/Slottable.Slottable|slot}, so it can be used as a tag-name inside
 		 * this component.
 		 *
 		 * @type {String}
