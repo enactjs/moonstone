@@ -20,7 +20,7 @@ for (let i = 0; i < 1000; i++) {
 	items.push({
 		text: 'Item ' + count,
 		subText: 'SubItem ' + count,
-		url: svgGenerator(300, 300, color, 'ffffff', `Image ${i}`)
+		url: svgGenerator(193, 150, color, 'ffffff', `Image ${i}`)
 	});
 }
 
