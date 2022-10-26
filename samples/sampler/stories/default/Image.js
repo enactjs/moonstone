@@ -7,7 +7,7 @@ import {svgGenerator} from '../helper/svg';
 
 const src = {
 	hd: svgGenerator(200, 200, '7ed31d', 'ffffff', '200 X 200'),
-	fhd: svgGenerator(300, 300, '7ed31d', 'ffffff', '300 X 300'),
+	fhd: svgGenerator(400, 400, '7ed31d', 'ffffff', '300 X 300'),
 	uhd: svgGenerator(600, 600, '7ed31d', 'ffffff', '600 X 600')
 };
 
