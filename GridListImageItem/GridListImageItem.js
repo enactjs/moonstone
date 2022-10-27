@@ -38,7 +38,7 @@ const
 	);
 
 /**
- * A Moonstone styled base component for [GridListImageItem]{@link moonstone/GridListImageItem.GridListImageItem}.
+ * A Moonstone styled base component for {@link moonstone/GridListImageItem.GridListImageItem|GridListImageItem}.
  *
  * @class GridListImageItemBase
  * @memberof moonstone/GridListImageItem
@@ -77,7 +77,7 @@ const GridListImageItemBase = kind({
 		'data-webos-voice-intent': PropTypes.string,
 
 		/**
-		 * Placeholder image used while [source]{@link moonstone/GridListImageItem.GridListImageItem#source}
+		 * Placeholder image used while {@link moonstone/GridListImageItem.GridListImageItem#source|source}
 		 * is loaded.
 		 *
 		 * @type {String}
@@ -151,7 +151,7 @@ const GridListImageItemBase = kind({
 
 /**
  * Moonstone-specific GridListImageItem behaviors to apply to
- * [GridListImageItem]{@link moonstone/GridListImageItem.GridListImageItem}.
+ * {@link moonstone/GridListImageItem.GridListImageItem|GridListImageItem}.
  *
  * @hoc
  * @memberof moonstone/GridListImageItem

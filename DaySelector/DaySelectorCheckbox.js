@@ -9,7 +9,7 @@ import css from './DaySelectorCheckbox.module.less';
 /**
  * A component that represents the selected state of a day within a
  * {@link moonstone/DaySelector.DaySelector}. It has built-in spotlight support and is intended for
- * use in a specialized [Item]{@link moonstone/Item} that does not visually respond to focus, so
+ * use in a specialized {@link moonstone/Item|Item} that does not visually respond to focus, so
  * this can show focus instead.
  *
  * @class DaySelectorCheckbox
