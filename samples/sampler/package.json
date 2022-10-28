@@ -1,6 +1,6 @@
 {
   "name": "moonstone-sampler",
-  "version": "4.5.0",
+  "version": "4.5.1",
   "description": "Component and QA samples for Moonstone",
   "private": true,
   "main": "index.js",
@@ -26,7 +26,7 @@
     "@enact/spotlight": "^4.5.0",
     "@enact/ui": "^4.5.0",
     "classnames": "^2.3.1",
-    "ilib": "^14.14.0",
+    "ilib": "14.14.0",
     "query-string": "^7.1.1",
     "react": "^18.2.0"
   },

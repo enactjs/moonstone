@@ -43,7 +43,7 @@ const handleUpDown = handle(
 );
 
 /**
- * A stateless component that expands to render a {@link moonstone/Input.Input}.
+ * A stateless component that expands to render a {@link moonstone/Input.Input|Input}.
  *
  * @class ExpandableInputBase
  * @memberof moonstone/ExpandableInput
@@ -325,7 +325,7 @@ class ExpandableInputBase extends Component {
 }
 
 /**
- * A stateful component that expands to render a {@link moonstone/Input.Input}.
+ * A stateful component that expands to render a {@link moonstone/Input.Input|Input}.
  *
  * By default, `ExpandableInput` maintains the state of its `value` property. Supply the
  * `defaultValue` property to control its initial value. If you wish to directly control updates

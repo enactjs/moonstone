@@ -37,7 +37,7 @@ const AlwaysViewingPanelsDecorator = compose(
 );
 
 /**
- * An instance of [`Panels`]{@link moonstone/Panels.Panels} which restricts the `Panel` to the right
+ * An instance of {@link moonstone/Panels.Panels|Panels} which restricts the `Panel` to the right
  * half of the screen with the left half used for breadcrumbs that allow navigating to previous
  * panels. Typically used for overlaying panels over a screen.
  *

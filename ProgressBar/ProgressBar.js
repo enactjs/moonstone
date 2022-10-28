@@ -81,7 +81,7 @@ const ProgressBarBase = kind({
 		 * Enables the built-in tooltip.
 		 *
 		 * To customize the tooltip, pass either a custom tooltip component or an instance of
-		 * [ProgressBarTooltip]{@link moonstone/ProgressBar.ProgressBarTooltip} with additional
+		 * {@link moonstone/ProgressBar.ProgressBarTooltip|ProgressBarTooltip} with additional
 		 * props configured.
 		 *
 		 * The provided component will receive the following props from `ProgressBar`:
@@ -102,7 +102,7 @@ const ProgressBarBase = kind({
 		 * ```
 		 *
 		 * The tooltip may also be passed as a child via the `"tooltip"` slot. See
-		 * [Slottable]{@link ui/Slottable} for more information on how slots can be used.
+		 * {@link ui/Slottable|Slottable} for more information on how slots can be used.
 		 *
 		 * Usage:
 		 * ```
@@ -156,7 +156,7 @@ const ProgressBarBase = kind({
 });
 
 /**
- * Moonstone-specific behaviors to apply to [ProgressBar]{@link moonstone/ProgressBar.ProgressBarBase}.
+ * Moonstone-specific behaviors to apply to {@link moonstone/ProgressBar.ProgressBarBase|ProgressBar}.
  *
  * @hoc
  * @memberof moonstone/ProgressBar

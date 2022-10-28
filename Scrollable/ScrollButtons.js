@@ -34,7 +34,7 @@ const
 	};
 
 /**
- * A Moonstone-styled scroll buttons. It is used in [Scrollbar]{@link moonstone/Scrollable.Scrollbar}.
+ * A Moonstone-styled scroll buttons. It is used in {@link moonstone/Scrollable.Scrollbar|Scrollbar}.
  *
  * @class ScrollButtons
  * @memberof moonstone/Scrollable

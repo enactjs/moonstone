@@ -55,7 +55,7 @@ function wouldDirectionLeaveContainer (dir, srcNode) {
 }
 
 /**
- * A stateless component that renders a {@link moonstone/LabeledItem.LabeledItem} that can be
+ * A stateless component that renders a {@link moonstone/LabeledItem.LabeledItem|LabeledItem} that can be
  * expanded to show additional contents.
  *
  * @class ExpandableItemBase
@@ -158,7 +158,7 @@ const ExpandableItemBase = kind({
 		label: PropTypes.node,
 
 		/**
-		 * Prevents the user from moving [Spotlight] {@link /docs/developer-guide/glossary/#spotlight} past the bottom
+		 * Prevents the user from moving {@link /docs/developer-guide/glossary/#spotlight|Spotlight} past the bottom
 		 * of the expandable (when open) using 5-way controls.
 		 *
 		 * @type {Boolean}
@@ -433,7 +433,7 @@ const ExpandableItemBase = kind({
 });
 
 /**
- * A component that renders a {@link moonstone/LabeledItem.LabeledItem} that can be expanded to
+ * A component that renders a {@link moonstone/LabeledItem.LabeledItem|LabeledItem} that can be expanded to
  * show additional contents.
  *
  * `ExpandableItem` maintains its open/closed state by default. The initial state can be supplied
