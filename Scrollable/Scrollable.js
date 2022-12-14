@@ -50,8 +50,8 @@ const
 
 /**
  * The name of a custom attribute which indicates the index of an item in
- * [VirtualList]{@link moonstone/VirtualList.VirtualList} or
- * [VirtualGridList]{@link moonstone/VirtualList.VirtualGridList}.
+ * {@link moonstone/VirtualList.VirtualList|VirtualList} or
+ * {@link moonstone/VirtualList.VirtualGridList|VirtualGridList}.
  *
  * @constant dataIndexAttribute
  * @memberof moonstone/Scrollable
@@ -182,7 +182,7 @@ class ScrollableBase extends Component {
 
 		/**
 		 * Direction of the list or the scroller.
-		 * `'both'` could be only used for[Scroller]{@link moonstone/Scroller.Scroller}.
+		 * `'both'` could be only used for {@link moonstone/Scroller.Scroller|Scroller}.
 		 *
 		 * Valid values are:
 		 * * `'both'`,

@@ -20,7 +20,7 @@ import Skinnable from '../Skinnable';
 import css from './ToggleButton.module.less';
 
 /**
- * A stateless [Button]{@link moonstone/Button.Button} that can be toggled by changing its
+ * A stateless {@link moonstone/Button.Button|Button} that can be toggled by changing its
  * `selected` property.
  *
  * @class ToggleButtonBase

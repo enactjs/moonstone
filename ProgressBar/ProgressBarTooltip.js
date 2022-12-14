@@ -95,10 +95,10 @@ const getSide = (orientation, side, position) => {
 };
 
 /**
- * A [Tooltip]{@link moonstone/TooltipDecorator.Tooltip} specifically adapted for use with
- * [IncrementSlider]{@link moonstone/IncrementSlider.IncrementSlider},
- * [ProgressBar]{@link moonstone/ProgressBar.ProgressBar}, or
- * [Slider]{@link moonstone/Slider.Slider}.
+ * A {@link moonstone/TooltipDecorator.Tooltip|Tooltip} specifically adapted for use with
+ * {@link moonstone/IncrementSlider.IncrementSlider|IncrementSlider},
+ * {@link moonstone/ProgressBar.ProgressBar|ProgressBar}, or
+ * {@link moonstone/Slider.Slider|Slider}.
  *
  * @class ProgressBarTooltip
  * @memberof moonstone/ProgressBar

@@ -31,7 +31,7 @@ import Skinnable from '../Skinnable';
  * A day of the week selection component.
  *
  * This component is most often not used directly but may be composed within another component as it
- * is within [DayPicker]{@link moonstone/DayPicker.DayPicker}.
+ * is within {@link moonstone/DayPicker.DayPicker|DayPicker}.
  *
  * @class DayPickerBase
  * @memberof moonstone/DayPicker
@@ -131,10 +131,10 @@ const DayPickerDecorator = compose(
  * An expandable day of the week selection component, ready to use in Moonstone applications.
  *
  * `DayPicker` may be used to select one or more days of the week. Upon selection, it will display
- * the short names of each day selected or customizable strings when selecting [every
- * day]{@link moonstone/DayPicker.DayPicker.everyDayText}), [every
- * weekday]{@link moonstone/DayPicker.DayPicker.everyWeekdayText}, and [every weekend
- * day]{@link moonstone/DayPicker.DayPicker.everyWeekendText}.
+ * the short names of each day selected or customizable strings when selecting
+ * {@link moonstone/DayPicker.DayPicker.everyDayText|every day},
+ * {@link moonstone/DayPicker.DayPicker.everyWeekdayText|every weekday}, and
+ * {@link moonstone/DayPicker.DayPicker.everyWeekendText|every weekend day}.
  *
  * By default, `DayPicker` maintains the state of its `selected` property. Supply the
  * `defaultSelected` property to control its initial value. If you wish to directly control updates

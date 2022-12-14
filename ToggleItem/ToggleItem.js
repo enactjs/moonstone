@@ -1,10 +1,10 @@
 /**
- * A Moonstone-themed [Item]{@link moonstone/Item} used as the basis for other stylized toggle item
+ * A Moonstone-themed {@link moonstone/Item|Item} used as the basis for other stylized toggle item
  * components.
  *
  * Note: This is not intended to be used directly, but should be extended by a component that will
  * customize this component's appearance by supplying an
- * [iconComponent prop]{@link moonstone/ToggleItem.ToggleItemBase#iconComponent}.
+ * {@link moonstone/ToggleItem.ToggleItemBase#iconComponent|iconComponent prop}.
  *
  * @example
  * <ToggleItem
@@ -38,7 +38,7 @@ import {SlotItemBase} from '../SlotItem';
 import componentCss from './ToggleItem.module.less';
 
 /**
- * A Moonstone-styled toggle [Item]{@link moonstone/Item} without any behavior.
+ * A Moonstone-styled toggle {@link moonstone/Item|Item} without any behavior.
  *
  * @class ToggleItemBase
  * @memberof moonstone/ToggleItem
@@ -62,7 +62,7 @@ const ToggleItemBase = kind({
 		 * The icon component to render in this item.
 		 *
 		 * This component receives the `selected` prop and value, and must therefore respond to it in some
-		 * way. It is recommended to use [ToggleIcon]{@link moonstone/ToggleIcon} for this.
+		 * way. It is recommended to use {@link moonstone/ToggleIcon|ToggleIcon} for this.
 		 *
 		 * @type {Component|Element}
 		 * @required
@@ -86,7 +86,7 @@ const ToggleItemBase = kind({
 		/**
 		 * Overrides the icon of the `iconComponent` component.
 		 *
-		 * This accepts any string that the [Icon]{@link moonstone/Icon.Icon} component supports,
+		 * This accepts any string that the {@link moonstone/Icon.Icon|Icon} component supports,
 		 * provided the recommendations of `iconComponent` are followed.
 		 *
 		 * @type {String}
@@ -173,7 +173,7 @@ const ToggleItem = ToggleItemDecorator(ToggleItemBase);
  * The Icon to render in this item.
  *
  * This component receives the `selected` prop and value, and must therefore respond to it in some
- * way. It is recommended to use [ToggleIcon]{@link moonstone/ToggleIcon} for this.
+ * way. It is recommended to use {@link moonstone/ToggleIcon|ToggleIcon} for this.
  *
  * @name iconComponent
  * @memberof moonstone/ToggleItem.ToggleItem.prototype

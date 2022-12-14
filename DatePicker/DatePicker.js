@@ -102,7 +102,7 @@ const dateTimeConfig = {
  *
  * `DatePicker` may be used to select the year, month, and day. It uses a standard `Date` object for
  * its `value` which can be shared as the `value` for a
- * [TimePicker]{@link moonstone/TimePicker.TimePicker} to select both a date and time.
+ * {@link moonstone/TimePicker.TimePicker|TimePicker} to select both a date and time.
  *
  * By default, `DatePicker` maintains the state of its `value` property. Supply the
  * `defaultValue` property to control its initial value. If you wish to directly control updates

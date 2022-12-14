@@ -1,8 +1,8 @@
 /**
- * An [Icon]{@link moonstone/Icon.Icon} ecorated with a label.
+ * An {@link moonstone/Icon.Icon|Icon} ecorated with a label.
  *
  * You may specify an image or a font-based icon by setting the `icon` to either the path
- * to the image or a string from an [iconList]{@link moonstone/Icon.IconBase.iconList}.
+ * to the image or a string from an {@link moonstone/Icon.IconBase.iconList|iconList}.
  *
  * @example
  * <LabeledIcon icon="star" labelPosition="after">
@@ -74,7 +74,7 @@ const LabeledIconBase = kind({
 });
 
 /**
- * Adds Moonstone specific behaviors to [LabeledIconBase]{@link moonstone/LabeledIcon.LabeledIconBase}.
+ * Adds Moonstone specific behaviors to {@link moonstone/LabeledIcon.LabeledIconBase|LabeledIconBase}.
  *
  * @hoc
  * @memberof moonstone/LabeledIcon

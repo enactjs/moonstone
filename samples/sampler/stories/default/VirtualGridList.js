@@ -7,6 +7,8 @@ import ri from '@enact/ui/resolution';
 import {ScrollableBase as UiScrollableBase} from '@enact/ui/Scrollable';
 import {VirtualListBase as UiVirtualListBase} from '@enact/ui/VirtualList';
 
+import {svgGenerator} from "../helper/svg";
+
 const
 	defaultDataSize = 1000,
 	items = [],
@@ -49,7 +51,7 @@ const updateDataSize = (dataSize) => {
 		const
 			color = Math.floor((Math.random() * (0x1000000 - 0x101010)) + 0x101010).toString(16),
 			count = (headingZeros + i).slice(-itemNumberDigits),
-			source = `http://via.placeholder.com/300x300/${color}/ffffff/png?text=Image+${i}`,
+			source = svgGenerator(300, 300, color, 'ffffff', `Image ${i}`),
 			subText = `SubItem ${count}${shouldAddLongContent({index: i, modIndex: 3})}`,
 			text = `Item ${count}${shouldAddLongContent({index: i, modIndex: 2})}`;
 

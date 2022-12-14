@@ -57,8 +57,8 @@ const MediaControlsBase = kind({
 	// intentionally assigning these props to MediaControls instead of Base (which is private)
 	propTypes: /** @lends moonstone/VideoPlayer.MediaControls.prototype */ {
 		/**
-		 * Reverse-playback [icon]{@link moonstone/Icon.Icon} name. Accepts any
-		 * [icon]{@link moonstone/Icon.Icon} component type.
+		 * Reverse-playback {@link moonstone/Icon.Icon|icon} name. Accepts any
+		 * {@link moonstone/Icon.Icon|icon} component type.
 		 *
 		 * @type {String}
 		 * @default 'backward'
@@ -67,8 +67,8 @@ const MediaControlsBase = kind({
 		backwardIcon: PropTypes.string,
 
 		/**
-		 * Forward [icon]{@link moonstone/Icon.Icon} name. Accepts any
-		 * [icon]{@link moonstone/Icon.Icon} component type.
+		 * Forward {@link moonstone/Icon.Icon|icon} name. Accepts any
+		 * {@link moonstone/Icon.Icon|icon} component type.
 		 *
 		 * @type {String}
 		 * @default 'forward'
@@ -77,8 +77,8 @@ const MediaControlsBase = kind({
 		forwardIcon: PropTypes.string,
 
 		/**
-		 * Jump backward [icon]{@link moonstone/Icon.Icon} name. Accepts any
-		 * [icon]{@link moonstone/Icon.Icon} component type.
+		 * Jump backward {@link moonstone/Icon.Icon|icon} name. Accepts any
+		 * {@link moonstone/Icon.Icon|icon} component type.
 		 *
 		 * @type {String}
 		 * @default 'jumpbackward'
@@ -95,8 +95,8 @@ const MediaControlsBase = kind({
 		jumpButtonsDisabled: PropTypes.bool,
 
 		/**
-		 * Jump forward [icon]{@link moonstone/Icon.Icon} name. Accepts any
-		 * [icon]{@link moonstone/Icon.Icon} component type.
+		 * Jump forward {@link moonstone/Icon.Icon|icon} name. Accepts any
+		 * {@link moonstone/Icon.Icon|icon} component type.
 		 *
 		 * @type {String}
 		 * @default 'jumpforward'
@@ -254,9 +254,9 @@ const MediaControlsBase = kind({
 
 		/**
 		 * A string which is sent to the `pause` icon of the player controls. This can be
-		 * anything that is accepted by [Icon]{@link moonstone/Icon.Icon}. This will be temporarily replaced by
-		 * the [playIcon]{@link moonstone/VideoPlayer.MediaControls.playIcon} when the
-		 * [paused]{@link moonstone/VideoPlayer.MediaControls.paused} boolean is `false`.
+		 * anything that is accepted by {@link moonstone/Icon.Icon|Icon}. This will be temporarily replaced by
+		 * the {@link moonstone/VideoPlayer.MediaControls.playIcon|playIcon} when the
+		 * {@link moonstone/VideoPlayer.MediaControls.paused|paused} boolean is `false`.
 		 *
 		 * @type {String}
 		 * @default 'pause'
@@ -266,9 +266,9 @@ const MediaControlsBase = kind({
 
 		/**
 		 * A string which is sent to the `play` icon of the player controls. This can be
-		 * anything that is accepted by {@link moonstone/Icon.Icon}. This will be temporarily replaced by
-		 * the [pauseIcon]{@link moonstone/VideoPlayer.MediaControls.pauseIcon} when the
-		 * [paused]{@link moonstone/VideoPlayer.MediaControls.paused} boolean is `true`.
+		 * anything that is accepted by {@link moonstone/Icon.Icon|Icon}. This will be temporarily replaced by
+		 * the {@link moonstone/VideoPlayer.MediaControls.pauseIcon|pauseIcon} when the
+		 * {@link moonstone/VideoPlayer.MediaControls.paused|paused} boolean is `true`.
 		 *
 		 * @type {String}
 		 * @default 'play'
@@ -456,7 +456,7 @@ const MediaControlsBase = kind({
 });
 
 /**
- * Media control behaviors to apply to [MediaControlsBase]{@link moonstone/VideoPlayer.MediaControlsBase}.
+ * Media control behaviors to apply to {@link moonstone/VideoPlayer.MediaControlsBase|MediaControlsBase}.
  * Provides built-in support for showing more components and key handling for basic playback
  * controls.
  *
@@ -639,7 +639,7 @@ const MediaControlsDecorator = hoc((config, Wrapped) => {
 
 			/**
 			 * Registers the MediaControls component with an
-			 * [ApiDecorator]{@link core/internal/ApiDecorator.ApiDecorator}.
+			 * {@link core/internal/ApiDecorator.ApiDecorator|ApiDecorator}.
 			 *
 			 * @type {Function}
 			 * @private
@@ -917,7 +917,7 @@ const handleCancel = (ev, {onClose}) => {
 /**
  * A set of components for controlling media playback and rendering additional components.
  *
- * This uses [Slottable]{@link ui/Slottable} to accept the custom tags, `<leftComponents>`
+ * This uses {@link ui/Slottable|Slottable} to accept the custom tags, `<leftComponents>`
  * and `<rightComponents>`, to add components to the left and right of the media
  * controls. Any additional children will be rendered into the "more" controls area causing the
  * "more" button to appear. Showing the additional components is handled by `MediaControls` when the
