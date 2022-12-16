@@ -66,7 +66,7 @@ const ItemBase = kind({
 });
 
 /**
- * Moonstone specific item behaviors to apply to [Item]{@link moonstone/Item.ItemBase}.
+ * Moonstone specific item behaviors to apply to {@link moonstone/Item.ItemBase|Item}.
  *
  * @class ItemDecorator
  * @hoc

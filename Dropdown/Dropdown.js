@@ -278,7 +278,7 @@ const DropdownBase = kind({
 
 /**
  * Applies Moonstone specific behaviors and functionality to
- * [DropdownBase]{@link moonstone/Dropdown.DropdownBase}.
+ * {@link moonstone/Dropdown.DropdownBase|DropdownBase}.
  *
  * @hoc
  * @memberof moonstone/Dropdown

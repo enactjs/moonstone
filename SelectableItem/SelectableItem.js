@@ -1,5 +1,5 @@
 /**
- * Provides a Moonstone-themed [Item]{@link moonstone/Item} with an icon that toggles on and off.
+ * Provides a Moonstone-themed {@link moonstone/Item|Item} with an icon that toggles on and off.
  *
  * @example
  * <SelectableItem>Click Me</SelectableItem>
@@ -20,7 +20,7 @@ import SelectableIcon from './SelectableIcon';
 import componentCss from './SelectableItem.module.less';
 
 /**
- * Renders an [Item]{@link moonstone/Item} with a circle icon, by default.
+ * Renders an {@link moonstone/Item|Item} with a circle icon, by default.
  *
  * @class SelectableItemBase
  * @memberof moonstone/SelectableItem

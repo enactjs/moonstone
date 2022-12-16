@@ -5,8 +5,8 @@ import IconButton from '../IconButton';
 import {onlyUpdateForProps} from '../internal/util';
 
 /**
- * An [IconButton]{@link moonstone/IconButton.IconButton} customized for
- * [IncrementSlider]{@link moonstone/IncrementSlider.IncrementSlider}. It is optimized to only
+ * An {@link moonstone/IconButton.IconButton|IconButton} customized for
+ * {@link moonstone/IncrementSlider.IncrementSlider|IncrementSlider}. It is optimized to only
  * update when `disabled` is changed to minimize unnecessary render cycles.
  *
  * @class IncrementSliderButton

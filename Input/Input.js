@@ -31,7 +31,7 @@ import {calcAriaLabel, extractInputProps} from './util';
  *
  * It supports start and end icons. Note that this base component is not stateless as many other
  * base components are. However, it does not support Spotlight. Apps will want to use
- * {@link moonstone/Input.Input}.
+ * {@link moonstone/Input.Input|Input}.
  *
  * @class InputBase
  * @memberof moonstone/Input
@@ -99,8 +99,8 @@ const InputBase = kind({
 		iconBefore: PropTypes.string,
 
 		/**
-		 * Indicates [value]{@link moonstone/Input.InputBase.value} is invalid and shows
-		 * [invalidMessage]{@link moonstone/Input.InputBase.invalidMessage}, if set.
+		 * Indicates {@link moonstone/Input.InputBase.value|value} is invalid and shows
+		 * {@link moonstone/Input.InputBase.invalidMessage|invalidMessage}, if set.
 		 *
 		 * @type {Boolean}
 		 * @default false
@@ -110,7 +110,7 @@ const InputBase = kind({
 
 		/**
 		 * The tooltip text to be displayed when the input is
-		 * [invalid]{@link moonstone/Input.InputBase.invalid}.
+		 * {@link moonstone/Input.InputBase.invalid|invalid}.
 		 *
 		 * If this value is *falsy*, the tooltip will be shown with the default message.
 		 *
@@ -166,7 +166,7 @@ const InputBase = kind({
 		onKeyDown: PropTypes.func,
 
 		/**
-		 * Text to display when [value]{@link moonstone/Input.InputBase.value} is not set.
+		 * Text to display when {@link moonstone/Input.InputBase.value|value} is not set.
 		 *
 		 * @type {String}
 		 * @default ''
@@ -197,7 +197,7 @@ const InputBase = kind({
 		 * Accepted values correspond to the standard HTML5 input types.
 		 *
 		 * @type {String}
-		 * @see [MDN input types doc]{@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Form_%3Cinput%3E_types}
+		 * @see {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Form_%3Cinput%3E_types|MDN input types doc}
 		 * @default 'text'
 		 * @public
 		 */
@@ -259,6 +259,11 @@ const InputBase = kind({
 	render: ({css, dir, disabled, iconAfter, iconBefore, invalidTooltip, onChange, placeholder, size, type, value, ...rest}) => {
 		const inputProps = extractInputProps(rest);
 		const voiceProps = extractVoiceProps(rest);
+
+		if (type === 'password') {
+			inputProps.spellCheck = false;
+		}
+
 		delete rest.dismissOnEnter;
 		delete rest.invalid;
 		delete rest.invalidMessage;

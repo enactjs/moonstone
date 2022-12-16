@@ -22,7 +22,7 @@ import ToggleItem from '../ToggleItem';
 import componentCss from './SwitchItem.module.less';
 
 /**
- * Renders an item with a [Switch]{@link moonstone/Switch}.
+ * Renders an item with a {@link moonstone/Switch|Switch}.
  *
  * @class SwitchItem
  * @memberof moonstone/SwitchItem

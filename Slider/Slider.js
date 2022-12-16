@@ -110,7 +110,7 @@ const SliderBase = kind({
 		 * The maximum value of the slider.
 		 *
 		 * The range between `min` and `max` should be evenly divisible by
-		 * [step]{@link moonstone/Slider.SliderBase.step}.
+		 * {@link moonstone/Slider.SliderBase.step|step}.
 		 *
 		 * @type {Number}
 		 * @default 100
@@ -122,7 +122,7 @@ const SliderBase = kind({
 		 * The minimum value of the slider.
 		 *
 		 * The range between `min` and `max` should be evenly divisible by
-		 * [step]{@link moonstone/Slider.SliderBase.step}.
+		 * {@link moonstone/Slider.SliderBase.step|step}.
 		 *
 		 * @type {Number}
 		 * @default 0
@@ -179,7 +179,7 @@ const SliderBase = kind({
 		 * Enables the built-in tooltip
 		 *
 		 * To customize the tooltip, pass either a custom tooltip component or an instance of
-		 * [SliderTooltip]{@link moonstone/Slider.SliderTooltip} with additional props configured.
+		 * {@link moonstone/Slider.SliderTooltip|SliderTooltip} with additional props configured.
 		 *
 		 * ```
 		 * <Slider
@@ -190,7 +190,7 @@ const SliderBase = kind({
 		 * ```
 		 *
 		 * The tooltip may also be passed as a child via the `"tooltip"` slot. See
-		 * [Slottable]{@link ui/Slottable} for more information on how slots can be used.
+		 * {@link ui/Slottable|Slottable} for more information on how slots can be used.
 		 *
 		 * ```
 		 * <Slider>
@@ -302,7 +302,7 @@ const SliderBase = kind({
 });
 
 /**
- * Moonstone-specific slider behaviors to apply to [SliderBase]{@link moonstone/Slider.SliderBase}.
+ * Moonstone-specific slider behaviors to apply to {@link moonstone/Slider.SliderBase|SliderBase}.
  *
  * @hoc
  * @memberof moonstone/Slider
@@ -323,8 +323,8 @@ const SliderDecorator = compose(
 );
 
 /**
- * Slider input with Moonstone styling, [`Spottable`]{@link spotlight/Spottable.Spottable},
- * [Touchable]{@link ui/Touchable} and [`SliderDecorator`]{@link moonstone/Slider.SliderDecorator}
+ * Slider input with Moonstone styling, {@link spotlight/Spottable.Spottable|Spottable},
+ * {@link ui/Touchable|Touchable} and {@link moonstone/Slider.SliderDecorator|SliderDecorator}
  * applied.
  *
  * By default, `Slider` maintains the state of its `value` property. Supply the `defaultValue`
@@ -354,10 +354,10 @@ const SliderDecorator = compose(
 const Slider = SliderDecorator(SliderBase);
 
 /**
- * A [Tooltip]{@link moonstone/TooltipDecorator.Tooltip} specifically adapted for use with
- * [IncrementSlider]{@link moonstone/IncrementSlider.IncrementSlider},
- * [ProgressBar]{@link moonstone/ProgressBar.ProgressBar}, or
- * [Slider]{@link moonstone/Slider.Slider}.
+ * A {@link moonstone/TooltipDecorator.Tooltip|Tooltip} specifically adapted for use with
+ * {@link moonstone/IncrementSlider.IncrementSlider|IncrementSlider},
+ * {@link moonstone/ProgressBar.ProgressBar|ProgressBar}, or
+ * {@link moonstone/Slider.Slider|Slider}.
  *
  * @see {@link moonstone/ProgressBar.ProgressBarTooltip}
  * @class SliderTooltip

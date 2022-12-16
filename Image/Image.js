@@ -118,7 +118,7 @@ const ResponsiveImageDecorator = hoc((config, Wrapped) => {
 });
 
 /**
- * Moonstone-specific behaviors to apply to [Image]{@link moonstone/Image.ImageBase}.
+ * Moonstone-specific behaviors to apply to {@link moonstone/Image.ImageBase|Image}.
  *
  * @hoc
  * @memberof moonstone/Image
