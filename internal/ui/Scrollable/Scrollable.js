@@ -71,7 +71,7 @@ const TouchableDiv = ForwardRef({prop: 'ref'}, Touchable('div'));
 class ScrollableBase extends Component {
 	static displayName = 'ui:ScrollableBase';
 
-	static propTypes = /** @lends moonstone/ui/internal/Scrollable.Scrollable.prototype */ {
+	static propTypes = /** @lends moonstone/internal/ui/Scrollable.Scrollable.prototype */ {
 		/**
 		 * Render function.
 		 *
