@@ -3,8 +3,8 @@ import {fireEvent, render, screen} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import {forwardRef} from 'react';
 
-import Icon from '@enact/ui/Icon';
-import Item from '@enact/ui/Item';
+import Icon from '../../Icon';
+import Item from '../../Item';
 import SlotItem from '../../SlotItem';
 import ToggleItem, {ToggleItemBase} from '../ToggleItem';
 

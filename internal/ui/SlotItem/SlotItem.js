@@ -21,10 +21,10 @@ import compose from 'ramda/src/compose';
 import componentCss from './SlotItem.module.less';
 
 /**
- * A ui-styled `SlotItem` without any behavior.
+ * An ui-styled `SlotItem` without any behavior.
  *
  * @class SlotItemBase
- * @memberof moonstone/internal/SlotItem
+ * @memberof moonstone/internal/ui/SlotItem
  * @ui
  * @private
  */
@@ -196,7 +196,7 @@ const SlotItemDecorator = compose(
 );
 
 /**
- * A ui-styled item with built-in support for slots.
+ * An ui-styled item with built-in support for slots.
  *
  * Example:
  * ```

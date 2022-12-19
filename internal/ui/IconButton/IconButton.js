@@ -196,10 +196,10 @@ const IconButtonBase = kind({
 });
 
 /**
- * A higher-order component that adds universal button behaviors to an [IconButtonBase]{@link ui/IconButton.IconButtonBase}.
+ * A higher-order component that adds universal button behaviors to an [IconButtonBase]{@link moonstone/internal/ui/IconButton.IconButtonBase}.
  *
  * @hoc
- * @memberof ui/IconButton
+ * @memberof moonstone/internal/ui/IconButton
  * @mixes ui/ForwardRef.ForwardRef
  * @mixes ui/Touchable.Touchable
  * @private

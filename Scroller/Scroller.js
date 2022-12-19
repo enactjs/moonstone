@@ -36,6 +36,7 @@ const dataContainerDisabledAttribute = 'data-spotlight-container-disabled';
  *
  * @class ScrollerBase
  * @memberof moonstone/Scroller
+ * @extends moonstone/internal/ui/Scroller.ScrollerBase
  * @ui
  * @public
  */
