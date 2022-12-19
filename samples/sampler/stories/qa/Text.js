@@ -1,6 +1,3 @@
-import {select} from '@enact/storybook-utils/addons/knobs';
-import {storiesOf} from '@storybook/react';
-
 import BodyText from '@enact/moonstone/BodyText';
 import Button from '@enact/moonstone/Button';
 import CheckboxItem from '@enact/moonstone/CheckboxItem';
@@ -10,16 +7,17 @@ import ExpandableList from '@enact/moonstone/ExpandableList';
 import ExpandablePicker from '@enact/moonstone/ExpandablePicker';
 import FormCheckboxItem from '@enact/moonstone/FormCheckboxItem';
 import GridListImageItem from '@enact/moonstone/GridListImageItem';
-import {Header} from '@enact/moonstone/Panels';
 import Input from '@enact/moonstone/Input';
 import Item from '@enact/moonstone/Item';
 import LabeledItem from '@enact/moonstone/LabeledItem';
 import Marquee from '@enact/moonstone/Marquee';
+import {Header} from '@enact/moonstone/Panels';
 import RadioItem from '@enact/moonstone/RadioItem';
 import Scroller from '@enact/moonstone/Scroller';
 import SelectableItem from '@enact/moonstone/SelectableItem';
 import SlotItem from '@enact/moonstone/SlotItem';
 import SwitchItem from '@enact/moonstone/SwitchItem';
+import {select} from '@enact/storybook-utils/addons/controls';
 
 const inputData = {
 	english: 'We name themes after gemstones',
@@ -42,62 +40,68 @@ Heading.displayName = 'Heading';
 const prop = {
 	tallText: [
 		'नरेंद्र मोदी',
-		'ฟิ้  ไั  ஒ  து',
+		'ฟิ้ ไั ஒ து',
 		'ÃÑÕÂÊÎÔÛÄËÏÖÜŸ'
 	]
 };
 
-storiesOf('Text', module)
-	.add(
-		'Tall Glyphs as Non-Latin components',
-		() => {
-			const children = select('children', prop.tallText, {groupId: 'Text'}, 'नरेंद्र मोदी');
+export default {
+	title: 'Moonstone/Text',
+	component: 'Text'
+};
 
-			return (
-				<Scroller style={{height: '100%'}}>
-					<Heading showLine>Text controls (div, Heading, BodyText, Marquee)</Heading>
-					<div>{children}</div>
-					<Heading showLine>{children}</Heading>
-					<BodyText>{children}</BodyText>
-					<Marquee>{children}</Marquee>
+export const TallGlyphsNonLatin = (args) => {
+	const children = args['children'];
 
-					<Heading showLine>Basic Form controls (Button, Input)</Heading>
-					<Button>{children}</Button>
-					<Input placeholder={children} />
-					<Input value={children} />
+	return (
+		<Scroller style={{height: '100%'}}>
+			<Heading showLine>Text controls (div, Heading, BodyText, Marquee)</Heading>
+			<div>{children}</div>
+			<Heading showLine>{children}</Heading>
+			<BodyText>{children}</BodyText>
+			<Marquee>{children}</Marquee>
 
-					<Heading showLine>Simple Items (Item, LabeledItem, GridListImageItem)</Heading>
-					<Item>{children}</Item>
-					<LabeledItem label={children}>{children}</LabeledItem>
-					<GridListImageItem caption={children} style={{height: 200}} />
+			<Heading showLine>Basic Form controls (Button, Input)</Heading>
+			<Button>{children}</Button>
+			<Input placeholder={children} />
+			<Input value={children} />
 
-					<Heading showLine>Expandables (Input, List, Picker)</Heading>
-					<ExpandableInput title={children} value={children} />
-					<ExpandableList title={children}>{[children, children, children]}</ExpandableList>
-					<ExpandablePicker title={children}>{[children, children, children]}</ExpandablePicker>
+			<Heading showLine>Simple Items (Item, LabeledItem, GridListImageItem)</Heading>
+			<Item>{children}</Item>
+			<LabeledItem label={children}>{children}</LabeledItem>
+			<GridListImageItem caption={children} style={{height: 200}} />
 
-					<Heading showLine>ToggleItems</Heading>
-					<CheckboxItem>{children}</CheckboxItem>
-					<FormCheckboxItem>{children}</FormCheckboxItem>
-					<RadioItem>{children}</RadioItem>
-					<SelectableItem>{children}</SelectableItem>
-					<SwitchItem>{children}</SwitchItem>
+			<Heading showLine>Expandables (Input, List, Picker)</Heading>
+			<ExpandableInput title={children} value={children} />
+			<ExpandableList title={children}>{[children, children, children]}</ExpandableList>
+			<ExpandablePicker title={children}>{[children, children, children]}</ExpandablePicker>
 
-					<Heading showLine>Headers (Standard, Compact, Input)</Heading>
-					<Header type="standard" title={children} titleBelow={children} subTitleBelow={children} />
-					<br />
-					<Header type="compact" title={children} titleBelow={children} subTitleBelow={children} />
-					<br />
-					<Header title={children} titleBelow={children} subTitleBelow={children}>
-						<Input value={children} slot="headerInput" />
-					</Header>
-				</Scroller>
-			);
-		}
-	)
-	.add(
-		'Languages',
-		() => Object.keys(inputData).map(key =>
+			<Heading showLine>ToggleItems</Heading>
+			<CheckboxItem>{children}</CheckboxItem>
+			<FormCheckboxItem>{children}</FormCheckboxItem>
+			<RadioItem>{children}</RadioItem>
+			<SelectableItem>{children}</SelectableItem>
+			<SwitchItem>{children}</SwitchItem>
+
+			<Heading showLine>Headers (Standard, Compact, Input)</Heading>
+			<Header subTitleBelow={children} title={children} titleBelow={children} type="standard" />
+			<br />
+			<Header subTitleBelow={children} title={children} titleBelow={children} type="compact" />
+			<br />
+			<Header subTitleBelow={children} title={children} titleBelow={children} >
+				<Input value={children} slot="headerInput" />
+			</Header>
+		</Scroller>
+	);
+};
+
+select('children', TallGlyphsNonLatin, prop.tallText, {groupId: 'Text'}, 'नरेंद्र मोदी');
+
+TallGlyphsNonLatin.storyName = 'Tall Glyphs as Non-Latin components';
+
+export const Languages = () => {
+	return (
+		Object.keys(inputData).map(key =>
 			<SlotItem key={key}>
 				<slotBefore>
 					<span style={{minWidth: '10ex', display: 'inline-block'}}>[ {key} ]</span>
@@ -105,10 +109,19 @@ storiesOf('Text', module)
 				{inputData[key]}
 			</SlotItem>
 		)
-	)
-	.add(
-		'Mixed Scripts',
-		() => <div>
+	);
+};
+
+Languages.storyName = 'Languages';
+Languages.parameters = {
+	controls: {
+		hideNoControlsWarning: true
+	}
+};
+
+export const MixedScripts = () => {
+	return (
+		<div>
 			<SlotItem style={{fontWeight: 300}}>
 				<slotBefore>
 					<span style={{minWidth: '10ex', display: 'inline-block'}}>light</span>
@@ -135,3 +148,11 @@ storiesOf('Text', module)
 			</SlotItem>
 		</div>
 	);
+};
+
+MixedScripts.storyName = 'Mixed Scripts';
+MixedScripts.parameters = {
+	controls: {
+		hideNoControlsWarning: true
+	}
+};

@@ -34,7 +34,7 @@ const fixTransform = (node) => {
  * A Moonstone styled notification component.
  *
  * It provides a notification modal which can be opened and closed, overlaying an app. Apps will
- * want to use {@link moonstone/Notification.Notification}.
+ * want to use {@link moonstone/Notification.Notification|Notification}.
  *
  * @class NotificationBase
  * @memberof moonstone/Notification
@@ -81,7 +81,8 @@ const NotificationBase = kind({
 		css: PropTypes.object,
 
 		/**
-		 * Indicates that the notification will not trigger `onClose` on the *ESC* key press.
+		 * Indicates that the notification will not trigger `onClose` when the user presses the cancel/back (e.g. `ESC`) key or
+		 * taps outside the notification.
 		 *
 		 * @type {Boolean}
 		 * @default false

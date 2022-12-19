@@ -62,7 +62,7 @@ const PureGroup = Pure(
 );
 
 /**
- * A stateless component that renders a {@link moonstone/LabeledItem.LabeledItem} that can be
+ * A stateless component that renders a {@link moonstone/LabeledItem.LabeledItem|LabeledItem} that can be
  * expanded to show a selectable list of items.
  *
  * @class ExpandableListBase
@@ -155,7 +155,7 @@ const ExpandableListBase = kind({
 		noAutoClose: PropTypes.bool,
 
 		/**
-		 * Allows the user to move [Spotlight] {@link /docs/developer-guide/glossary/#spotlight} past the bottom of the expandable
+		 * Allows the user to move {@link /docs/developer-guide/glossary/#spotlight|Spotlight} past the bottom of the expandable
 		 * (when open) using 5-way controls.
 		 *
 		 * @type {Boolean}
@@ -375,7 +375,7 @@ const ExpandableListBase = kind({
 });
 
 /**
- * A component that renders a {@link moonstone/LabeledItem.LabeledItem} that can be expanded to
+ * A component that renders a {@link moonstone/LabeledItem.LabeledItem|LabeledItem} that can be expanded to
  * show a selectable list of items.
  *
  * By default, `ExpandableList` maintains the state of its `selected` property. Supply the

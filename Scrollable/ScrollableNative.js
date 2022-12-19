@@ -163,7 +163,7 @@ class ScrollableBaseNative extends Component {
 
 		/**
 		 * Direction of the list or the scroller.
-		 * `'both'` could be only used for[Scroller]{@link moonstone/Scroller.Scroller}.
+		 * `'both'` could be only used for {@link moonstone/Scroller.Scroller|Scroller}.
 		 *
 		 * Valid values are:
 		 * * `'both'`,

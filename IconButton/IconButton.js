@@ -1,7 +1,7 @@
 /**
- * An [Icon]{@link moonstone/Icon.Icon} that acts like a [Button]{@link moonstone/Button.Button}.
+ * An {@link moonstone/Icon.Icon|Icon} that acts like a {@link moonstone/Button.Button|Button}.
  * You may specify an image or a font-based icon by setting the `children` to either the path
- * to the image or a string from an [iconList]{@link moonstone/Icon.IconBase.iconList}.
+ * to the image or a string from an {@link moonstone/Icon.IconBase.iconList|iconList}.
  *
  * @example
  * <IconButton size="small">plus</IconButton>
@@ -110,7 +110,7 @@ const IconButtonBase = kind({
 
 /**
  * Moonstone-specific button behaviors to apply to
- * [IconButton]{@link moonstone/IconButton.IconButtonBase}.
+ * {@link moonstone/IconButton.IconButtonBase|IconButton}.
  *
  * @hoc
  * @memberof moonstone/IconButton

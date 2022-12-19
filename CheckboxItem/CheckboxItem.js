@@ -23,7 +23,7 @@ import componentCss from './CheckboxItem.module.less';
  * An item with a checkbox component, ready to use in Moonstone applications.
  *
  * `CheckboxItem` may be used to allow the user to select a single option or used as part of a
- * [Group]{@link ui/Group} when multiple [selections]{@link ui/Group.Group.select} are possible.
+ * {@link ui/Group|Group} when multiple {@link ui/Group.Group.select|selections} are possible.
  *
  * Usage:
  * ```

@@ -70,9 +70,9 @@ class HourPicker extends Component {
 }
 
 /**
-* {@link moonstone/TimePicker.TimePickerBase} is the stateless functional time picker
+* {@link moonstone/TimePicker.TimePickerBase|TimePickerBase} is the stateless functional time picker
 * component. Should not be used directly but may be composed within another component as it is
-* within {@link moonstone/TimePicker.TimePicker}.
+* within {@link moonstone/TimePicker.TimePicker|TimePicker}.
 *
 * @class TimePickerBase
 * @memberof moonstone/TimePicker
@@ -304,7 +304,7 @@ const TimePickerBase = kind({
 
 	computed: {
 		hasMeridiem: ({order}) => order.indexOf('a') >= 0,
-		meridiemPickerWidth: ({meridiem, meridiems}) => meridiems[meridiem].length * 2
+		meridiemPickerWidth: ({meridiem, meridiems}) => meridiems?.[meridiem].length * 2
 	},
 
 	render: ({

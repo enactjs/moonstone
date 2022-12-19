@@ -53,7 +53,7 @@ const forwardWithType = (type, props) => forward(type, {type}, props);
 
 /**
  * A stateless Slider with IconButtons to increment and decrement the value. In most circumstances,
- * you will want to use the stateful version: {@link moonstone/IncrementSlider.IncrementSlider}.
+ * you will want to use the stateful version: {@link moonstone/IncrementSlider.IncrementSlider|IncrementSlider}.
  *
  * @class IncrementSliderBase
  * @memberof moonstone/IncrementSlider
@@ -142,9 +142,9 @@ const IncrementSliderBase = kind({
 		decrementAriaLabel: PropTypes.string,
 
 		/**
-		 * Assign a custom icon for the decrementer. All strings supported by [Icon]{@link moonstone/Icon.Icon} are
+		 * Assign a custom icon for the decrementer. All strings supported by {@link moonstone/Icon.Icon|Icon} are
 		 * supported. Without a custom icon, the default is used, and is automatically changed when
-		 * [vertical]{@link moonstone/IncrementSlider.IncrementSlider#vertical} is changed.
+		 * {@link moonstone/IncrementSlider.IncrementSlider#vertical|vertical} is changed.
 		 *
 		 * @type {String}
 		 * @public
@@ -184,9 +184,9 @@ const IncrementSliderBase = kind({
 		incrementAriaLabel: PropTypes.string,
 
 		/**
-		 * Assign a custom icon for the incrementer. All strings supported by [Icon]{@link moonstone/Icon.Icon} are
+		 * Assign a custom icon for the incrementer. All strings supported by {@link moonstone/Icon.Icon|Icon} are
 		 * supported. Without a custom icon, the default is used, and is automatically changed when
-		 * [vertical]{@link moonstone/IncrementSlider.IncrementSlider#vertical} is changed.
+		 * {@link moonstone/IncrementSlider.IncrementSlider#vertical|vertical} is changed.
 		 *
 		 * @type {String}
 		 * @public
@@ -208,7 +208,7 @@ const IncrementSliderBase = kind({
 		 * The maximum value of the increment slider.
 		 *
 		 * The range between `min` and `max` should be evenly divisible by
-		 * [step]{@link moonstone/IncrementSlider.IncrementSliderBase.step}.
+		 * {@link moonstone/IncrementSlider.IncrementSliderBase.step|step}.
 		 *
 		 * @type {Number}
 		 * @default 100
@@ -220,7 +220,7 @@ const IncrementSliderBase = kind({
 		 * The minimum value of the increment slider.
 		 *
 		 * The range between `min` and `max` should be evenly divisible by
-		 * [step]{@link moonstone/IncrementSlider.IncrementSliderBase.step}.
+		 * {@link moonstone/IncrementSlider.IncrementSliderBase.step|step}.
 		 *
 		 * @type {Number}
 		 * @default 0
@@ -372,7 +372,7 @@ const IncrementSliderBase = kind({
 		 * Enables the built-in tooltip
 		 *
 		 * To customize the tooltip, pass either a custom Tooltip component or an instance of
-		 * [IncrementSliderTooltip]{@link moonstone/IncrementSlider.IncrementSliderTooltip} with
+		 * {@link moonstone/IncrementSlider.IncrementSliderTooltip|IncrementSliderTooltip} with
 		 * additional props configured.
 		 *
 		 * ```
@@ -384,7 +384,7 @@ const IncrementSliderBase = kind({
 		 * ```
 		 *
 		 * The tooltip may also be passed as a child via the `"tooltip"` slot. See
-		 * [Slottable]{@link ui/Slottable} for more information on how slots can be used.
+		 * {@link ui/Slottable|Slottable} for more information on how slots can be used.
 		 *
 		 * ```
 		 * <IncrementSlider>
@@ -604,12 +604,12 @@ const IncrementSliderDecorator = compose(
 const IncrementSlider = IncrementSliderDecorator(IncrementSliderBase);
 
 /**
- * A [Tooltip]{@link moonstone/TooltipDecorator.Tooltip} specifically adapted for use with
- * [IncrementSlider]{@link moonstone/IncrementSlider.IncrementSlider},
- * [ProgressBar]{@link moonstone/ProgressBar.ProgressBar}, or
- * [Slider]{@link moonstone/Slider.Slider}.
+ * A {@link moonstone/TooltipDecorator.Tooltip|Tooltip} specifically adapted for use with
+ * {@link moonstone/IncrementSlider.IncrementSlider|IncrementSlider},
+ * {@link moonstone/ProgressBar.ProgressBar|ProgressBar}, or
+ * {@link moonstone/Slider.Slider|Slider}.
  *
- * See {@link moonstone/ProgressBar.ProgressBarTooltip}
+ * See {@link moonstone/ProgressBar.ProgressBarTooltip|ProgressBarTooltip}
  *
  * @class IncrementSliderTooltip
  * @memberof moonstone/IncrementSlider

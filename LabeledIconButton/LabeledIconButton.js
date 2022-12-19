@@ -1,9 +1,9 @@
 /**
- * An [Icon]{@link moonstone/Icon.Icon} that acts like a [Button]{@link moonstone/Button.Button}
+ * An {@link moonstone/Icon.Icon|Icon} that acts like a {@link moonstone/Button.Button|Button}
  * decorated with a label.
  *
  * You may specify an image or a font-based icon by setting the `icon` to either the path
- * to the image or a string from an [iconList]{@link moonstone/Icon.IconBase.iconList}.
+ * to the image or a string from an {@link moonstone/Icon.IconBase.iconList|iconList}.
  *
  * @example
  * <LabeledIconButton icon="star" labelPosition="after">
@@ -119,7 +119,7 @@ const LabeledIconButtonBase = kind({
 		 *
 		 * Setting `selected` may be useful when the component represents a toggleable option. The
 		 * visual effect may be customized using the
-		 * [css]{@link moonstone/LabeledIconButton.LabeledIconButtonBase.css} prop.
+		 * {@link moonstone/LabeledIconButton.LabeledIconButtonBase.css|css} prop.
 		 *
 		 * @type {Boolean}
 		 * @public
@@ -154,7 +154,7 @@ const LabeledIconButtonBase = kind({
 });
 
 /**
- * Adds Moonstone specific behaviors to [LabeledIconButtonBase]{@link moonstone/LabeledIconButton.LabeledIconButtonBase}.
+ * Adds Moonstone specific behaviors to {@link moonstone/LabeledIconButton.LabeledIconButtonBase|LabeledIconButtonBase}.
  *
  * @hoc
  * @memberof moonstone/LabeledIconButton

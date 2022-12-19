@@ -1,43 +1,55 @@
-import {action} from '@enact/storybook-utils/addons/actions';
-import {boolean, select, text} from '@enact/storybook-utils/addons/knobs';
-import {mergeComponentMetadata} from '@enact/storybook-utils';
-import {storiesOf} from '@storybook/react';
-
 import Input, {InputBase} from '@enact/moonstone/Input';
+import {mergeComponentMetadata} from '@enact/storybook-utils';
+import {action} from '@enact/storybook-utils/addons/actions';
+import {boolean, select, text} from '@enact/storybook-utils/addons/controls';
 
-import icons from './icons';
+import icons from '../helper/icons';
 
 const iconNames = ['', ...icons];
 
 const Config = mergeComponentMetadata('Input', InputBase, Input);
 Input.displayName = 'Input';
 
-// Set up some defaults for info and knobs
+// Set up some defaults for info and kncontrolsobs
 const prop = {
 	type: ['text', 'number', 'password']
 };
 
-storiesOf('Moonstone', module)
-	.add(
-		'Input',
-		() => (
-			<Input
-				autoFocus={boolean('autoFocus', Config)}
-				onChange={action('onChange')}
-				disabled={boolean('disabled', Config)}
-				dismissOnEnter={boolean('dismissOnEnter', Config)}
-				iconAfter={select('iconAfter', iconNames, Config)}
-				iconBefore={select('iconBefore', iconNames, Config)}
-				invalid={boolean('invalid', Config)}
-				invalidMessage={text('invalidMessage', Config)}
-				placeholder={text('placeholder', Config)}
-				size={select('size', ['small', 'large'], Config)}
-				type={select('type', prop.type, Config, prop.type[0])}
-			/>
-		),
-		{
-			info: {
-				text: 'The basic Input'
-			}
-		}
-	);
+export default {
+	title: 'Moonstone/Input',
+	component: 'Input'
+};
+
+export const _Input = (args) => (
+	<Input
+		autoFocus={args['autoFocus']}
+		onChange={action('onChange')}
+		disabled={args['disabled']}
+		dismissOnEnter={args['dismissOnEnter']}
+		iconAfter={args['iconAfter']}
+		iconBefore={args['iconBefore']}
+		invalid={args['invalid']}
+		invalidMessage={args['invalidMessage']}
+		placeholder={args['placeholder']}
+		size={args['size']}
+		type={args['type']}
+	/>
+);
+
+boolean('autoFocus', _Input, Config);
+boolean('disabled', _Input, Config);
+boolean('dismissOnEnter', _Input, Config);
+boolean('invalid', _Input, Config);
+select('iconAfter', _Input, iconNames, Config);
+select('iconBefore', _Input, iconNames, Config);
+select('size', _Input, ['small', 'large'], Config);
+select('type', _Input, prop.type, Config, prop.type[0]);
+text('invalidMessage', _Input, Config);
+text('placeholder', _Input, Config);
+
+_Input.storyName = 'Input';
+_Input.parameters = {
+	info: {
+		text: 'The basic Input'
+	}
+};

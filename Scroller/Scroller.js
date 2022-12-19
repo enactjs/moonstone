@@ -29,10 +29,10 @@ import ScrollableNative from '../Scrollable/ScrollableNative';
 const dataContainerDisabledAttribute = 'data-spotlight-container-disabled';
 
 /**
- * A Moonstone-styled base component for [Scroller]{@link moonstone/Scroller.Scroller}.
+ * A Moonstone-styled base component for {@link moonstone/Scroller.Scroller|Scroller}.
  * In most circumstances, you will want to use the
- * [SpotlightContainerDecorator]{@link spotlight/SpotlightContainerDecorator.SpotlightContainerDecorator}
- * and the Scrollable version, [Scroller]{@link moonstone/Scroller.Scroller}.
+ * {@link spotlight/SpotlightContainerDecorator.SpotlightContainerDecorator|SpotlightContainerDecorator}
+ * and the Scrollable version, {@link moonstone/Scroller.Scroller|Scroller}.
  *
  * @class ScrollerBase
  * @memberof moonstone/Scroller
@@ -44,7 +44,7 @@ class ScrollerBase extends Component {
 
 	static propTypes = /** @lends moonstone/Scroller.ScrollerBase.prototype */ {
 		/**
-		 * Passes the instance of [Scroller]{@link ui/Scroller.Scroller}.
+		 * Passes the instance of {@link ui/Scroller.Scroller|Scroller}.
 		 *
 		 * @type {Object}
 		 * @param {Object} ref
@@ -53,7 +53,7 @@ class ScrollerBase extends Component {
 		initUiChildRef: PropTypes.func,
 
 		/**
-		 * Called when [Scroller]{@link moonstone/Scroller.Scroller} updates.
+		 * Called when {@link moonstone/Scroller.Scroller|Scroller} updates.
 		 *
 		 * @type {function}
 		 * @private
@@ -69,7 +69,7 @@ class ScrollerBase extends Component {
 		rtl: PropTypes.bool,
 
 		/**
-		 * Called when [Scroller]{@link moonstone/Scroller.Scroller} should be scrolled
+		 * Called when {@link moonstone/Scroller.Scroller|Scroller} should be scrolled
 		 * and the focus should be moved to a scrollbar button.
 		 *
 		 * @type {function}
@@ -385,7 +385,7 @@ class ScrollerBase extends Component {
 /**
  * Unique identifier for the component.
  *
- * When defined and when the `Scroller` is within a [Panel]{@link moonstone/Panels.Panel}, the
+ * When defined and when the `Scroller` is within a {@link moonstone/Panels.Panel|Panel}, the
  * `Scroller` will store its scroll position and restore that position when returning to the
  * `Panel`.
  *

@@ -16,8 +16,6 @@ describe('ActivityPanels', function () {
 			Page.button1.click();
 		}, []);
 
-		Page.button1.click();
-
 		expect(await Page.breadcrumbHeader.getText()).to.include('01');
 	});
 
@@ -53,18 +51,6 @@ describe('ActivityPanels', function () {
 			}, []);
 			await Page.waitTransitionEnd(5000, undefined, () => {
 				Page.item5.click();
-			}, []);
-			await Page.waitTransitionEnd(5000, undefined, () => {
-				Page.button4.click();
-			}, []);
-			await Page.waitTransitionEnd(5000, undefined, () => {
-				Page.item2.click();
-			}, []);
-			await Page.waitTransitionEnd(5000, undefined, () => {
-				Page.breadcrumbHeader.click();
-			}, []);
-			await Page.waitTransitionEnd(5000, undefined, () => {
-				Page.breadcrumbHeader.click();
 			}, []);
 			await Page.waitTransitionEnd(5000, undefined, () => {
 				Page.breadcrumbHeader.click();

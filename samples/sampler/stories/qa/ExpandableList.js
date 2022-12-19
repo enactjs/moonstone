@@ -1,14 +1,12 @@
-import {action} from '@enact/storybook-utils/addons/actions';
-import {boolean, text, select} from '@enact/storybook-utils/addons/knobs';
-import {mergeComponentMetadata} from '@enact/storybook-utils';
-import {useCallback, useState} from 'react';
-import {storiesOf} from '@storybook/react';
-
 import Button from '@enact/moonstone/Button';
 import Heading from '@enact/moonstone/Heading';
-import {RadioControllerDecorator} from '@enact/moonstone/internal/RadioDecorator';
 import ExpandableList, {ExpandableListBase} from '@enact/moonstone/ExpandableList';
+import {RadioControllerDecorator} from '@enact/moonstone/internal/RadioDecorator';
 import Scroller from '@enact/moonstone/Scroller';
+import {mergeComponentMetadata} from '@enact/storybook-utils';
+import {action} from '@enact/storybook-utils/addons/actions';
+import {boolean, select, text} from '@enact/storybook-utils/addons/controls';
+import {useCallback, useState} from 'react';
 
 const Config = mergeComponentMetadata('ExpandableList', ExpandableList, ExpandableListBase);
 
@@ -65,90 +63,117 @@ const ExpandableListWithAddedChildren = () => {
 	);
 };
 
-storiesOf('ExpandableList', module)
-	.add(
-		'with children length update',
-		() => (
-			<ExpandableListChildrenLengthUpdate
-				closeOnSelect={boolean('closeOnSelect', Config)}
-				disabled={boolean('disabled', Config)}
-				noAutoClose={boolean('noAutoClose', Config)}
-				noLockBottom={boolean('noLockBottom', Config)}
-				noneText={text('noneText', Config, 'nothing selected')}
-				onSelect={action('onSelect')}
-				onClose={action('onClose')}
-				onOpen={action('onOpen')}
-				select={select('select', ['radio', 'multiple', 'single'], Config, 'radio')}
-				title="with children length update"
-			/>
-		)
-	)
-	.add(
-		'grouped',
-		() => (
-			<ExpandableGroup>
-				<ExpandableList
-					closeOnSelect={boolean('closeOnSelect', Config)}
-					title="First"
-				>
-					{['One', 'Two', 'Three']}
-				</ExpandableList>
-				<ExpandableList
-					closeOnSelect={boolean('closeOnSelect', Config)}
-					title="Second"
-				>
-					{['Fourth', 'Fifth', 'Sixth']}
-				</ExpandableList>
-				<ExpandableList
-					closeOnSelect={boolean('closeOnSelect', Config)}
-					title="Third"
-				>
-					{['Seventh', 'Eighth', 'Ninth']}
-				</ExpandableList>
-			</ExpandableGroup>
-		)
-	)
-	.add(
-		'with multiples (to test "lockBottom" prop)',
-		() => (
-			<div>
-				<ExpandableList title="First">
-					{['One', 'Two', 'Three']}
-				</ExpandableList>
-				<ExpandableList title="Second (with disabled items)">
-					{[
-						{key: 1, children: 'a', disabled: true},
-						{key: 2, children: 'b'},
-						{key: 3, children: 'c', disabled: true},
-						{key: 4, children: 'd'},
-						{key: 5, children: 'e', disabled: true}
-					]}
-				</ExpandableList>
-				<ExpandableList title="Third">
-					{['Seventh', 'Eighth', 'Ninth']}
-				</ExpandableList>
-			</div>
-		)
-	)
-	.add(
-		'with default selected',
-		() => (
-			<Scroller>
-				<ExpandableList title="Default Selected" defaultSelected={2}>
-					{['Option 1', 'Option 2', 'Option 3']}
-				</ExpandableList>
-				<ExpandableList title="Multiple Selected" select="multiple" defaultSelected={[1, 2]}>
-					{['Option 1', 'Option 2', 'Option 3']}
-				</ExpandableList>
-				<ExpandableList title="Long Contents Selected" select="multiple" defaultSelected={[17, 18, 19]}>
-					{optionsArray}
-				</ExpandableList>
-			</Scroller>
-		)
-	)
-	.add(
-		'with added children',
-		() => (
-			<ExpandableListWithAddedChildren />
-		)
-	);
+export default {
+	title: 'Moonstone/ExpandableList',
+	component: 'ExpandableList'
+};
+
+export const WithChildrenLengthUpdate = (args) => (
+	<ExpandableListChildrenLengthUpdate
+		closeOnSelect={args['closeOnSelect']}
+		disabled={args['disabled']}
+		noAutoClose={args['noAutoClose']}
+		noLockBottom={args['noLockBottom']}
+		noneText={args['noneText']}
+		onClose={action('onClose')}
+		onOpen={action('onOpen')}
+		onSelect={action('onSelect')}
+		select={args['select']}
+		title="with children length update"
+	/>
+);
+
+boolean('closeOnSelect', WithChildrenLengthUpdate, Config);
+boolean('disabled', WithChildrenLengthUpdate, Config);
+boolean('noAutoClose', WithChildrenLengthUpdate, Config);
+boolean('noLockBottom', WithChildrenLengthUpdate, Config);
+text('noneText', WithChildrenLengthUpdate, Config, 'nothing selected');
+select('select', WithChildrenLengthUpdate, ['radio', 'multiple', 'single'], Config, 'radio');
+
+WithChildrenLengthUpdate.storyName = 'with children length update';
+
+export const Grouped = (args) => (
+	<ExpandableGroup>
+		<ExpandableList
+			closeOnSelect={args['closeOnSelect']}
+			title="First"
+		>
+			{['One', 'Two', 'Three']}
+		</ExpandableList>
+		<ExpandableList
+			closeOnSelect={args['closeOnSelect']}
+			title="Second"
+		>
+			{['Fourth', 'Fifth', 'Sixth']}
+		</ExpandableList>
+		<ExpandableList
+			closeOnSelect={args['closeOnSelect']}
+			title="Third"
+		>
+			{['Seventh', 'Eighth', 'Ninth']}
+		</ExpandableList>
+	</ExpandableGroup>
+);
+
+boolean('closeOnSelect', Grouped, Config);
+
+Grouped.storyName = 'grouped';
+
+export const WithMultipleLists = () => (
+	<div>
+		<ExpandableList title="First">
+			{['One', 'Two', 'Three']}
+		</ExpandableList>
+		<ExpandableList title="Second (with disabled items)">
+			{[
+				{key: 1, children: 'a', disabled: true},
+				{key: 2, children: 'b'},
+				{key: 3, children: 'c', disabled: true},
+				{key: 4, children: 'd'},
+				{key: 5, children: 'e', disabled: true}
+			]}
+		</ExpandableList>
+		<ExpandableList title="Third">
+			{['Seventh', 'Eighth', 'Ninth']}
+		</ExpandableList>
+	</div>
+);
+
+WithMultipleLists.storyName = 'with multiples (to test "lockBottom" prop)';
+WithMultipleLists.parameters = {
+	controls: {
+		hideNoControlsWarning: true
+	}
+};
+
+export const WithDefaultSelected = () => (
+	<Scroller>
+		<ExpandableList title="Default Selected" defaultSelected={2}>
+			{['Option 1', 'Option 2', 'Option 3']}
+		</ExpandableList>
+		<ExpandableList title="Multiple Selected" select="multiple" defaultSelected={[1, 2]}>
+			{['Option 1', 'Option 2', 'Option 3']}
+		</ExpandableList>
+		<ExpandableList title="Long Contents Selected" select="multiple" defaultSelected={[17, 18, 19]}>
+			{optionsArray}
+		</ExpandableList>
+	</Scroller>
+);
+
+WithDefaultSelected.storyName = 'with default selected';
+WithDefaultSelected.parameters = {
+	controls: {
+		hideNoControlsWarning: true
+	}
+};
+
+export const WithAddedChildren = () => (
+	<ExpandableListWithAddedChildren />
+);
+
+WithAddedChildren.storyName = 'with added children';
+WithAddedChildren.parameters = {
+	controls: {
+		hideNoControlsWarning: true
+	}
+};

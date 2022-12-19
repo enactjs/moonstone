@@ -1,17 +1,17 @@
 import Button from '@enact/moonstone/Button';
 import Notification from '@enact/moonstone/Notification';
 import Popup from '@enact/moonstone/Popup';
-import {action} from '@enact/storybook-utils/addons/actions';
-import {boolean} from '@enact/storybook-utils/addons/knobs';
 import {mergeComponentMetadata} from '@enact/storybook-utils';
-import {storiesOf} from '@storybook/react';
+import {action} from '@enact/storybook-utils/addons/actions';
+import {boolean} from '@enact/storybook-utils/addons/controls';
+import PropTypes from 'prop-types';
 import {useCallback, useState} from 'react';
 
 const Config = mergeComponentMetadata('Notification', Notification, Popup);
 
 Notification.displayName = 'Notification';
 
-const StatefulNotification = () => {
+const StatefulNotification = ({noAutoDismiss, open}) => {
 	const messageFiller = '0123456789abcdefghijklmnopqrstuvwxyz';
 	const [messageArray, setMessageArray] = useState([messageFiller]);
 	const [message, setMessage] = useState(messageFiller);
@@ -32,9 +32,9 @@ const StatefulNotification = () => {
 
 	return (
 		<Notification
-			noAutoDismiss={boolean('noAutoDismiss', Config)}
+			noAutoDismiss={noAutoDismiss}
 			onClose={action('onClose')}
-			open={boolean('open', Config, true)}
+			open={open}
 		>
 			<span>{message}</span>
 			<buttons>
@@ -44,6 +44,12 @@ const StatefulNotification = () => {
 		</Notification>
 	);
 };
+
+StatefulNotification.propTypes = {
+	noAutoDismiss: PropTypes.bool,
+	open: PropTypes.bool
+};
+
 // si-LK - sinhala language
 const sinhala = 'සේවය නඩත්තු කිරීම හෝ වැඩි දියුණු කිරීම සඳහා කලා ගැලරිය සේවයට එකතු කිරීම, නවීකරණය කිරීම, පිවිසීම අක්‍රිය කිරීම හෝ අවසන් කිරීම යනාදිය තම පූර්ණ අභිමතය පරිදි සිදු කිරීමට LG Electronics Inc. හට හිමිකම් ඇත.කලා ගැලරිය සේවාව ලද හැකි වන්නේ ඔබ ඉහත නියමයන්ට එකඟ වුවහොත් පමණි.';
 
@@ -66,17 +72,34 @@ const LongButtonsSinhala = () => {
 	);
 };
 
+export default {
+	title: 'Moonstone/Notification',
+	component: 'Notification'
+};
 
-storiesOf('Notification', module)
-	.add(
-		'with dynamic content',
-		() => (
-			<StatefulNotification />
-		)
-	)
-	.add(
-		'with long buttons and Sinhala',
-		() => (
-			<LongButtonsSinhala />
-		)
+export const WithDynamicContent = (args) => {
+	return (
+		<StatefulNotification
+			noAutoDismiss={args['noAutoDismiss']}
+			open={args['open']}
+		/>
 	);
+};
+
+boolean('noAutoDismiss', WithDynamicContent, Config);
+boolean('open', WithDynamicContent, Config, true);
+
+WithDynamicContent.storyName = 'with dynamic content';
+
+export const WithLongButtonsSinhala = () => {
+	return (
+		<LongButtonsSinhala />
+	);
+};
+
+WithLongButtonsSinhala.storyName = 'with long buttons and Sinhala';
+WithLongButtonsSinhala.parameters = {
+	controls: {
+		hideNoControlsWarning: true
+	}
+};

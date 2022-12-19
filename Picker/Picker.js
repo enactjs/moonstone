@@ -26,7 +26,7 @@ import PickerCore, {PickerItem} from '../internal/Picker';
 /**
  * The base `Picker` component.
  *
- * This version is not [`spottable`]{@link spotlight/Spottable.Spottable}.
+ * This version is not {@link spotlight/Spottable.Spottable|spottable}.
  *
  * @class PickerBase
  * @memberof moonstone/Picker
@@ -73,9 +73,9 @@ const PickerBase = kind({
 		/**
 		 * A custom icon for the decrementer.
 		 *
-		 * All strings supported by [Icon]{@link moonstone/Icon.Icon} are supported. Without a
+		 * All strings supported by {@link moonstone/Icon.Icon|Icon} are supported. Without a
 		 * custom icon, the default is used, and is automatically changed when the
-		 * [orientation]{@link moonstone/Picker.Picker#orientation} is changed.
+		 * {@link moonstone/Picker.Picker#orientation|orientation} is changed.
 		 *
 		 * @type {String}
 		 * @public
@@ -93,9 +93,9 @@ const PickerBase = kind({
 		/**
 		 * A custom icon for the incrementer.
 		 *
-		 * All strings supported by [Icon]{@link moonstone/Icon.Icon} are supported. Without a
+		 * All strings supported by {@link moonstone/Icon.Icon|Icon} are supported. Without a
 		 * custom icon, the default is used, and is automatically changed when the
-		 * [orientation]{@link moonstone/Picker.Picker#orientation} is changed.
+		 * {@link moonstone/Picker.Picker#orientation|orientation} is changed.
 		 *
 		 * @type {String}
 		 * @public
@@ -119,7 +119,7 @@ const PickerBase = kind({
 		 * Disables marqueeing of items.
 		 *
 		 * By default, each picker item is wrapped by a
-		 * [`Marquee`]{@link moonstone/Marquee.Marquee}. When this is set, the items will
+		 * {@link moonstone/Marquee.Marquee|Marquee}. When this is set, the items will
 		 * not be wrapped.
 		 *
 		 * @type {Boolean}

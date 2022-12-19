@@ -1,23 +1,35 @@
-import {boolean, number, select} from '@enact/storybook-utils/addons/knobs';
-import {mergeComponentMetadata} from '@enact/storybook-utils';
-import {storiesOf} from '@storybook/react';
-
 import ProgressBar, {ProgressBarBase} from '@enact/moonstone/ProgressBar';
+import {mergeComponentMetadata} from '@enact/storybook-utils';
+import {boolean, range, select} from '@enact/storybook-utils/addons/controls';
 
 const Config = mergeComponentMetadata('ProgressBar', ProgressBarBase, ProgressBar);
 
-storiesOf('ProgressBar', module)
-	.add(
-		'The basic ProgressBar',
-		() => (
-			<ProgressBar
-				backgroundProgress={number('backgroundProgress', Config, 0.5, {range: true, min: 0, max: 1, step: 0.01})}
-				tooltip={boolean('tooltip', Config, false)}
-				highlighted={boolean('highlighted', Config, false)}
-				progress={number('progress', Config, 0.4, {range: true, min: 0, max: 1, step: 0.01})}
-				orientation={select('orientation', ['horizontal', 'vertical'], Config, 'horizontal')}
-				disabled={boolean('disabled', Config, false)}
-			/>
-		),
-		{propTables: [Config]}
+export default {
+	title: 'Moonstone/ProgressBar',
+	component: 'ProgressBar'
+};
+
+export const BasicProgressBar = (args) => {
+	return (
+		<ProgressBar
+			backgroundProgress={args['backgroundProgress']}
+			disabled={args['disabled']}
+			highlighted={args['highlighted']}
+			orientation={args['orientation']}
+			progress={args['progress']}
+			tooltip={args['tooltip']}
+		/>
 	);
+};
+
+range('backgroundProgress', BasicProgressBar, Config, {max: 1, min: 0, step: 0.01}, 0.5);
+boolean('disabled', BasicProgressBar, Config, false);
+boolean('highlighted', BasicProgressBar, Config, false);
+select('orientation', BasicProgressBar, ['horizontal', 'vertical'], Config, 'horizontal');
+range('progress', BasicProgressBar, Config, {range: true, min: 0, max: 1, step: 0.01}, 0.4);
+boolean('tooltip', BasicProgressBar, Config, false);
+
+BasicProgressBar.storyName = 'The basic ProgressBar';
+BasicProgressBar.parameters = {
+	propTables: [Config]
+};

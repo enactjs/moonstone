@@ -17,7 +17,7 @@ const nop = () => {};
 class ScrollThumb extends Component {
 	static propTypes = /** @lends moonstone/Scrollable.ScrollThumb.prototype */ {
 		/**
-		 * Called when [ScrollThumb]{@link moonstone/Scrollable.ScrollThumb} is updated.
+		 * Called when {@link moonstone/Scrollable.ScrollThumb|ScrollThumb} is updated.
 		 *
 		 * @type {Function}
 		 * @private
