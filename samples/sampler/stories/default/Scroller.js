@@ -1,4 +1,4 @@
-import {ScrollableBase as UiScrollableBase} from '@enact/moonstone/internal/Scrollable';
+import {ScrollableBase as UiScrollableBase} from '@enact/moonstone/internal/ui/Scrollable';
 import {ScrollableBase} from '@enact/moonstone/Scrollable';
 import Scroller from '@enact/moonstone/Scroller';
 import {mergeComponentMetadata} from '@enact/storybook-utils';

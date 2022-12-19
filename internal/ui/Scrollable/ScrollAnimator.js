@@ -39,7 +39,7 @@ const
  * The class to scroll a list or a scroller with animation.
  *
  * @class ScrollAnimator
- * @memberof moonstone/internal/Scrollable
+ * @memberof moonstone/internal/ui/Scrollable
  * @private
  */
 class ScrollAnimator {
@@ -51,7 +51,7 @@ class ScrollAnimator {
 	 *	`'linear'`, `'ease-in'`, `'ease-out'`, or `'ease-in-out'`, or null. If `null`, defaults to
 	 *	`'ease-out'`.
 	 * @constructor
-	 * @memberof moonstone/internal/Scrollable.ScrollAnimator
+	 * @memberof moonstone/internalui/Scrollable.ScrollAnimator
 	 */
 	constructor (type) {
 		this.timingFunction = timingFunctions[type || this.type];

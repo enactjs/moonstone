@@ -83,7 +83,7 @@ const VirtualListBaseFactory = (type) => {
 
 			/**
 			 * Callback method of scrollTo.
-			 * Normally, [Scrollable]{@link moonstone/internal/Scrollable.Scrollable} should set this value.
+			 * Normally, [Scrollable]{@link moonstone/internal/ui/Scrollable.Scrollable} should set this value.
 			 *
 			 * @type {Function}
 			 * @private
@@ -288,7 +288,7 @@ const VirtualListBaseFactory = (type) => {
 
 			this.shouldUpdateBounds = false;
 
-			// TODO: remove `this.hasDataSizeChanged` and fix ui/Scrollable*
+			// TODO: remove `this.hasDataSizeChanged` and fix moonstone/internal/ui/Scrollable*
 			this.hasDataSizeChanged = (prevProps.dataSize !== this.props.dataSize);
 
 			if (prevState.firstIndex !== firstIndex || prevState.numOfItems !== numOfItems) {

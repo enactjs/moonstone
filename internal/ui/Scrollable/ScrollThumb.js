@@ -7,14 +7,14 @@ import css from './ScrollThumb.module.less';
  * An unstyled scroll thumb without any behavior.
  *
  * @class ScrollThumb
- * @memberof moonstone/internal/Scrollable
+ * @memberof moonstone/internal/ui/Scrollable
  * @ui
  * @private
  */
 const ScrollThumb = kind({
 	name: 'ui:ScrollThumb',
 
-	propTypes: /** @lends moonstone/internal/Scrollable.ScrollThumb.prototype */ {
+	propTypes: /** @lends moonstone/internal/ui/Scrollable.ScrollThumb.prototype */ {
 		/**
 		 * If `true`, the scrollbar will be oriented vertically.
 		 *

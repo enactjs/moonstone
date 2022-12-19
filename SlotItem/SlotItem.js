@@ -28,7 +28,7 @@ import Toggleable from '@enact/ui/Toggleable';
 import PropTypes from 'prop-types';
 import compose from 'ramda/src/compose';
 
-import {SlotItemBase as UiSlotItemBase, SlotItemDecorator as UiSlotItemDecorator} from '../internal/SlotItem';
+import {SlotItemBase as UiSlotItemBase, SlotItemDecorator as UiSlotItemDecorator} from '../internal/ui/SlotItem';
 import {ItemBase} from '../Item';
 import {MarqueeDecorator} from '../Marquee';
 import Skinnable from '../Skinnable';
@@ -84,7 +84,7 @@ const SlotItemBase = kind({
  *
  * @class SlotItemDecorator
  * @memberof moonstone/SlotItem
- * @mixes ui/SlotItem.SlotItemDecorator
+ * @mixes moonstone/internal/ui/SlotItem.SlotItemDecorator
  * @mixes ui/Toggleable.Toggleable
  * @mixes spotlight/Spottable.Spottable
  * @mixes moonstone/Marquee.MarqueeDecorator

@@ -9,7 +9,7 @@ import clamp from 'ramda/src/clamp';
 import {Fragment, Component} from 'react';
 import warning from 'warning';
 
-import {VirtualListBase as UiVirtualListBase, VirtualListBaseNative as UiVirtualListBaseNative} from '../internal/VirtualList';
+import {VirtualListBase as UiVirtualListBase, VirtualListBaseNative as UiVirtualListBaseNative} from '../internal/ui/VirtualList';
 import {Scrollable, dataIndexAttribute} from '../Scrollable';
 import ScrollableNative from '../Scrollable/ScrollableNative';
 
@@ -88,7 +88,7 @@ const VirtualListBaseFactory = (type) => {
 
 			/**
 			 * Callback method of scrollTo.
-			 * Normally, {@link ui/Scrollable.Scrollable|Scrollable} should set this value.
+			 * Normally, {@link moonstone/internal/ui/Scrollable.Scrollable|Scrollable} should set this value.
 			 *
 			 * @type {Function}
 			 * @private
@@ -191,7 +191,7 @@ const VirtualListBaseFactory = (type) => {
 
 			/**
 			 * `true` if rtl, `false` if ltr.
-			 * Normally, {@link ui/Scrollable.Scrollable|Scrollable} should set this value.
+			 * Normally, {@link moonstone/internal/ui/Scrollable.Scrollable|Scrollable} should set this value.
 			 *
 			 * @type {Boolean}
 			 * @private
@@ -208,7 +208,7 @@ const VirtualListBaseFactory = (type) => {
 			spacing: PropTypes.number,
 
 			/**
-			 * Spotlight Id. It would be the same with {@link ui/Scrollable.Scrollable|Scrollable}'s.
+			 * Spotlight Id. It would be the same with {@link moonstone/internal/ui/Scrollable.Scrollable|Scrollable}'s.
 			 *
 			 * @type {String}
 			 * @private

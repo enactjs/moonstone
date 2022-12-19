@@ -1,7 +1,7 @@
 /**
  * A higher-order component that manages activation of components.
  *
- * @module moonstone/internal/RadioDecorator
+ * @module moonstone/internal/ui/RadioDecorator
  * @exports RadioDecorator
  * @exports RadioControllerDecorator
  * @private
@@ -16,7 +16,7 @@ import {RadioContext, RadioControllerDecorator} from './RadioControllerDecorator
 /**
  * Default config for `RadioDecorator`.
  *
- * @memberof moonstone/internal/RadioDecorator.RadioDecorator
+ * @memberof moonstone/internal/ui/RadioDecorator.RadioDecorator
  * @hocconfig
  */
 const defaultConfig = {
@@ -25,7 +25,7 @@ const defaultConfig = {
 	 *
 	 * @type {String}
 	 * @default null
-	 * @memberof moonstone/internal/RadioDecorator.RadioDecorator.defaultConfig
+	 * @memberof moonstone/internal/ui/RadioDecorator.RadioDecorator.defaultConfig
 	 */
 	activate: null,
 
@@ -34,7 +34,7 @@ const defaultConfig = {
 	 *
 	 * @type {String}
 	 * @default null
-	 * @memberof moonstone/internal/RadioDecorator.RadioDecorator.defaultConfig
+	 * @memberof moonstone/internal/ui/RadioDecorator.RadioDecorator.defaultConfig
 	 */
 	deactivate: null,
 
@@ -43,20 +43,20 @@ const defaultConfig = {
 	 *
 	 * @type {String}
 	 * @default 'active'
-	 * @memberof moonstone/internal/RadioDecorator.RadioDecorator.defaultConfig
+	 * @memberof moonstone/internal/ui/RadioDecorator.RadioDecorator.defaultConfig
 	 */
 	prop: 'active'
 };
 
 /**
  * A higher-order component (HOC) that allows another component to have a mutually exclusive
- * relationship with other descendants of the same {@link moonstone/internal/RadioDecorator.RadioControllerDecorator}.
+ * relationship with other descendants of the same {@link moonstone/internal/ui/RadioDecorator.RadioControllerDecorator}.
  *
  * When the `activate` event for the wrapped component is called, the component is activated and the
  * previously activated component, if any, is deactivated by invoking the `deactivate` event.
  *
  * @class RadioDecorator
- * @memberof moonstone/internal/RadioDecorator
+ * @memberof moonstone/internal/ui/RadioDecorator
  * @hoc
  * @private
  */

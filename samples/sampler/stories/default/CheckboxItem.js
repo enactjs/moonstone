@@ -1,6 +1,6 @@
 import CheckboxItem from '@enact/moonstone/CheckboxItem';
 import Icon from '@enact/moonstone/Icon';
-import UiToggleItem, {ToggleItemBase as UiToggleItemBase} from '@enact/moonstone/internal/ToggleItem';
+import UiToggleItem, {ToggleItemBase as UiToggleItemBase} from '@enact/moonstone/internal/ui/ToggleItem';
 import Item, {ItemBase} from '@enact/moonstone/Item';
 import ToggleItem from '@enact/moonstone/ToggleItem';
 import {mergeComponentMetadata, nullify} from '@enact/storybook-utils';

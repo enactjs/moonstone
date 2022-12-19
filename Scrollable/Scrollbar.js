@@ -2,7 +2,7 @@ import ApiDecorator from '@enact/core/internal/ApiDecorator';
 import PropTypes from 'prop-types';
 import {createRef, Component} from 'react';
 
-import {ScrollbarBase as UiScrollbarBase} from '../internal/Scrollable/Scrollbar';
+import {ScrollbarBase as UiScrollbarBase} from '../internal/ui/Scrollable/Scrollbar';
 import Skinnable from '../Skinnable';
 
 import ScrollButtons from './ScrollButtons';
@@ -55,7 +55,7 @@ class ScrollbarBase extends Component {
 
 		/**
 		 * `true` if rtl, `false` if ltr.
-		 * Normally, {@link moonstone/internal/Scrollable.Scrollable|Scrollable} should set this value.
+		 * Normally, {@link moonstone/internal/ui/Scrollable.Scrollable|Scrollable} should set this value.
 		 *
 		 * @type {Boolean}
 		 * @private

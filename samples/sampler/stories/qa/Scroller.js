@@ -1,7 +1,7 @@
 import Button from '@enact/moonstone/Button';
 import ExpandableList from '@enact/moonstone/ExpandableList';
 import Heading from '@enact/moonstone/Heading';
-import {ScrollableBase as UiScrollableBase} from '@enact/moonstone/internal/Scrollable';
+import {ScrollableBase as UiScrollableBase} from '@enact/moonstone/internal/ui/Scrollable';
 import Item from '@enact/moonstone/Item';
 import {ScrollableBase} from '@enact/moonstone/Scrollable';
 import Scroller from '@enact/moonstone/Scroller';

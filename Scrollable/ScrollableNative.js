@@ -13,7 +13,7 @@ import PropTypes from 'prop-types';
 import {createRef, Component} from 'react';
 
 import $L from '../internal/$L';
-import {constants, ScrollableBaseNative as UiScrollableBaseNative} from '../internal/Scrollable/ScrollableNative';
+import {constants, ScrollableBaseNative as UiScrollableBaseNative} from '../internal/ui/Scrollable/ScrollableNative';
 import {SharedState} from '../internal/SharedStateDecorator';
 
 import Scrollbar from './Scrollbar';
@@ -116,7 +116,7 @@ const getTargetInViewByDirectionFromPosition = (direction, position, container) 
  *
  * @class ScrollableBaseNative
  * @memberof moonstone/ScrollableNative
- * @extends moonstone/internal/Scrollable.ScrollableBaseNative
+ * @extends moonstone/internal/ui/Scrollable.ScrollableBaseNative
  * @ui
  * @private
  */
