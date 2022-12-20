@@ -1,8 +1,8 @@
 import FormCheckboxItem from '@enact/moonstone/FormCheckboxItem';
 import Icon from '@enact/moonstone/Icon';
-import UiToggleItem, {ToggleItemBase as UiToggleItemBase} from '@enact/moonstone/ui/ToggleItem';
 import Item, {ItemBase} from '@enact/moonstone/Item';
 import ToggleItem from '@enact/moonstone/ToggleItem';
+import UiToggleItem, {ToggleItemBase as UiToggleItemBase} from '@enact/moonstone/ui/ToggleItem';
 import {mergeComponentMetadata, nullify} from '@enact/storybook-utils';
 import {action} from '@enact/storybook-utils/addons/actions';
 import {boolean, select, text} from '@enact/storybook-utils/addons/controls';

@@ -1,10 +1,10 @@
 import Button from '@enact/moonstone/Button';
 import ExpandableList from '@enact/moonstone/ExpandableList';
 import Heading from '@enact/moonstone/Heading';
-import {ScrollableBase as UiScrollableBase} from '@enact/moonstone/ui/Scrollable';
 import Item from '@enact/moonstone/Item';
 import {ScrollableBase} from '@enact/moonstone/Scrollable';
 import Scroller from '@enact/moonstone/Scroller';
+import {ScrollableBase as UiScrollableBase} from '@enact/moonstone/ui/Scrollable';
 import {mergeComponentMetadata} from '@enact/storybook-utils';
 import {action} from '@enact/storybook-utils/addons/actions';
 import {boolean, range, select} from '@enact/storybook-utils/addons/controls';
