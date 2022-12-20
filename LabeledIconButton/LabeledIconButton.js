@@ -24,8 +24,8 @@ import PropTypes from 'prop-types';
 import compose from 'ramda/src/compose';
 
 import {IconButtonBase} from '../IconButton';
-import {IconButtonDecorator as UiIconButtonDecorator} from '../ui/IconButton';
 import Skinnable from '../Skinnable';
+import {IconButtonDecorator as UiIconButtonDecorator} from '../ui/IconButton';
 
 import componentCss from './LabeledIconButton.module.less';
 

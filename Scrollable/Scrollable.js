@@ -21,8 +21,8 @@ import PropTypes from 'prop-types';
 import {createRef, Component} from 'react';
 
 import $L from '../internal/$L';
-import {constants, ScrollableBase as UiScrollableBase} from '../ui/Scrollable';
 import {SharedState} from '../internal/SharedStateDecorator';
+import {constants, ScrollableBase as UiScrollableBase} from '../ui/Scrollable';
 
 import Scrollbar from './Scrollbar';
 import Skinnable from '../Skinnable';

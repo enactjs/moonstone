@@ -30,10 +30,10 @@ import Touchable from '@enact/ui/Touchable';
 import Spottable from '@enact/spotlight/Spottable';
 import compose from 'ramda/src/compose';
 
-import {ToggleItemBase as UiToggleItem} from '../ui/ToggleItem';
 import {MarqueeDecorator} from '../Marquee';
 import Skinnable from '../Skinnable';
 import {SlotItemBase} from '../SlotItem';
+import {ToggleItemBase as UiToggleItem} from '../ui/ToggleItem';
 
 import componentCss from './ToggleItem.module.less';
 

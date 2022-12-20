@@ -22,9 +22,9 @@ import ri from '@enact/ui/resolution';
 import PropTypes from 'prop-types';
 import {Component} from 'react';
 
-import {ScrollerBase as UiScrollerBase} from '../ui/Scroller/UiScrollerBase';
 import Scrollable from '../Scrollable';
 import ScrollableNative from '../Scrollable/ScrollableNative';
+import {ScrollerBase as UiScrollerBase} from '../ui/Scroller/UiScrollerBase';
 
 const dataContainerDisabledAttribute = 'data-spotlight-container-disabled';
 

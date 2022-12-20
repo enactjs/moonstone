@@ -28,10 +28,10 @@ import Toggleable from '@enact/ui/Toggleable';
 import PropTypes from 'prop-types';
 import compose from 'ramda/src/compose';
 
-import {SlotItemBase as UiSlotItemBase, SlotItemDecorator as UiSlotItemDecorator} from '../ui/SlotItem';
 import {ItemBase} from '../Item';
 import {MarqueeDecorator} from '../Marquee';
 import Skinnable from '../Skinnable';
+import {SlotItemBase as UiSlotItemBase, SlotItemDecorator as UiSlotItemDecorator} from '../ui/SlotItem';
 
 import componentCss from './SlotItem.module.less';
 

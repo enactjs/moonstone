@@ -20,9 +20,9 @@ import compose from 'ramda/src/compose';
 
 import {ButtonBase} from '../Button';
 import Icon from '../Icon';
-import {IconButtonBase as UiIconButtonBase, IconButtonDecorator as UiIconButtonDecorator} from '../ui/IconButton';
 import Skinnable from '../Skinnable';
 import TooltipDecorator from '../TooltipDecorator';
+import {IconButtonBase as UiIconButtonBase, IconButtonDecorator as UiIconButtonDecorator} from '../ui/IconButton';
 
 import componentCss from './IconButton.module.less';
 
