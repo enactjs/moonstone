@@ -1,6 +1,6 @@
 import IconButton from '@enact/moonstone/IconButton';
-import {ScrollableBase as UiScrollableBase} from '@enact/moonstone/internal/ui/Scrollable';
-import {VirtualListBase as UiVirtualListBase} from '@enact/moonstone/internal/ui/VirtualList';
+import {ScrollableBase as UiScrollableBase} from '@enact/moonstone/ui/Scrollable';
+import {VirtualListBase as UiVirtualListBase} from '@enact/moonstone/ui/VirtualList';
 import Item from '@enact/moonstone/Item';
 import {ActivityPanels, Panel, Header} from '@enact/moonstone/Panels';
 import Scroller from '@enact/moonstone/Scroller';

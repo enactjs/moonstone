@@ -1,7 +1,7 @@
 /**
  * Unstyled scrollable components and behaviors to be customized by a theme or application.
  *
- * @module moonstone/internal/ui/Scrollable
+ * @module moonstone/ui/Scrollable
  * @exports constants
  * @exports Scrollable
  * @exports ScrollableBase
@@ -64,14 +64,14 @@ const TouchableDiv = ForwardRef({prop: 'ref'}, Touchable('div'));
  * An unstyled component that passes scrollable behavior information as its render prop's arguments.
  *
  * @class ScrollableBase
- * @memberof moonstone/internal/ui/Scrollable
+ * @memberof moonstone/ui/Scrollable
  * @ui
  * @private
  */
 class ScrollableBase extends Component {
 	static displayName = 'ui:ScrollableBase';
 
-	static propTypes = /** @lends moonstone/internal/ui/Scrollable.Scrollable.prototype */ {
+	static propTypes = /** @lends moonstone/ui/Scrollable.Scrollable.prototype */ {
 		/**
 		 * Render function.
 		 *
@@ -1387,15 +1387,15 @@ class ScrollableBase extends Component {
  * An unstyled component that provides horizontal and vertical scrollbars and makes a render prop element scrollable.
  *
  * @class Scrollable
- * @memberof moonstone/internal/ui/Scrollable
- * @extends moonstone/internal/ui/Scrollable.ScrollableBase
+ * @memberof moonstone/ui/Scrollable
+ * @extends moonstone/ui/Scrollable.ScrollableBase
  * @ui
  * @private
  */
 class Scrollable extends Component {
 	static displayName = 'ui:Scrollable';
 
-	static propTypes = /** @lends moonstone/internal/ui/Scrollable.Scrollable.prototype */ {
+	static propTypes = /** @lends moonstone/ui/Scrollable.Scrollable.prototype */ {
 		/**
 		 * Render function.
 		 *

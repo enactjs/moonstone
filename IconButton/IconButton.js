@@ -20,7 +20,7 @@ import compose from 'ramda/src/compose';
 
 import {ButtonBase} from '../Button';
 import Icon from '../Icon';
-import {IconButtonBase as UiIconButtonBase, IconButtonDecorator as UiIconButtonDecorator} from '../internal/ui/IconButton';
+import {IconButtonBase as UiIconButtonBase, IconButtonDecorator as UiIconButtonDecorator} from '../ui/IconButton';
 import Skinnable from '../Skinnable';
 import TooltipDecorator from '../TooltipDecorator';
 
@@ -32,7 +32,7 @@ import componentCss from './IconButton.module.less';
  * @class IconButtonBase
  * @memberof moonstone/IconButton
  * @extends moonstone/Button.ButtonBase
- * @extends moonstone/internal/ui/IconButton.IconButtonBase
+ * @extends moonstone/ui/IconButton.IconButtonBase
  * @omit buttonComponent
  * @omit iconComponent
  * @ui
@@ -116,7 +116,7 @@ const IconButtonBase = kind({
  * @hoc
  * @memberof moonstone/IconButton
  * @mixes moonstone/TooltipDecorator.TooltipDecorator
- * @mixes moonstone/internal/ui/IconButton.IconButtonDecorator
+ * @mixes moonstone/ui/IconButton.IconButtonDecorator
  * @mixes spotlight/Spottable.Spottable
  * @mixes moonstone/Skinnable.Skinnable
  * @public

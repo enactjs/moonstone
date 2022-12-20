@@ -7,10 +7,10 @@ const RadioContext = createContext();
 /**
  * A higher-order component that establishes a radio group context for its descendants.
  *
- * Any descendants that are wrapped by {@link moonstone/internal/ui/RadioDecorator.RadioDecorator} will be mutually exclusive.
+ * Any descendants that are wrapped by {@link moonstone/ui/RadioDecorator.RadioDecorator} will be mutually exclusive.
  *
  * @class RadioControllerDecorator
- * @memberof moonstone/internal/ui/RadioDecorator
+ * @memberof moonstone/ui/RadioDecorator
  * @hoc
  * @private
  */

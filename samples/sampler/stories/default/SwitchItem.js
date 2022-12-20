@@ -1,5 +1,5 @@
 import Icon from '@enact/moonstone/Icon';
-import UiToggleItem, {ToggleItemBase as UiToggleItemBase} from '@enact/moonstone/internal/ui/ToggleItem';
+import UiToggleItem, {ToggleItemBase as UiToggleItemBase} from '@enact/moonstone/ui/ToggleItem';
 import Item, {ItemBase} from '@enact/moonstone/Item';
 import SwitchItem from '@enact/moonstone/SwitchItem';
 import ToggleItem from '@enact/moonstone/ToggleItem';

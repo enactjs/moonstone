@@ -1,5 +1,5 @@
-import {ScrollableBaseNative as UiScrollableBaseNative} from '@enact/moonstone/internal/ui/Scrollable/ScrollableNative';
-import {VirtualListBaseNative as UiVirtualListBaseNative} from '@enact/moonstone/internal/ui/VirtualList';
+import {ScrollableBaseNative as UiScrollableBaseNative} from '@enact/moonstone/ui/Scrollable/ScrollableNative';
+import {VirtualListBaseNative as UiVirtualListBaseNative} from '@enact/moonstone/ui/VirtualList';
 import Item from '@enact/moonstone/Item';
 import {VirtualListNative, VirtualListBase} from '@enact/moonstone/VirtualList';
 import {mergeComponentMetadata} from '@enact/storybook-utils';

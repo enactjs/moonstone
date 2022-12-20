@@ -50,14 +50,14 @@ const TouchableDiv = Touchable('div');
  * An unstyled native component that passes scrollable behavior information as its render prop's arguments.
  *
  * @class ScrollableBaseNative
- * @memberof moonstone/internal/ui/ScrollableNative
+ * @memberof moonstone/ui/ScrollableNative
  * @ui
  * @private
  */
 class ScrollableBaseNative extends Component {
 	static displayName = 'ui:ScrollableBaseNative';
 
-	static propTypes = /** @lends moonstone/internal/ui/ScrollableNative.ScrollableNative.prototype */ {
+	static propTypes = /** @lends moonstone/ui/ScrollableNative.ScrollableNative.prototype */ {
 		/**
 		 * Render function.
 		 *
@@ -1391,15 +1391,15 @@ class ScrollableBaseNative extends Component {
  * An unstyled native component that provides horizontal and vertical scrollbars and makes a render prop element scrollable.
  *
  * @class ScrollableNative
- * @memberof moonstone/internal/ui/ScrollableNative
- * @extends moonstone/internal/ui/Scrollable.ScrollableBaseNative
+ * @memberof moonstone/ui/ScrollableNative
+ * @extends moonstone/ui/Scrollable.ScrollableBaseNative
  * @ui
  * @private
  */
 class ScrollableNative extends Component {
 	static displayName = 'ui:ScrollableNative';
 
-	static propTypes = /** @lends moonstone/internal/ui/ScrollableNative.ScrollableNative.prototype */ {
+	static propTypes = /** @lends moonstone/ui/ScrollableNative.ScrollableNative.prototype */ {
 		/**
 		 * Render function.
 		 *

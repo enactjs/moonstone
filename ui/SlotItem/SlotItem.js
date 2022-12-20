@@ -4,7 +4,7 @@
  * Using the usual `children` prop, as well as two additional props: `slotBefore`, and `slotAfter`.
  * It is able to be customized by a theme or application.
  *
- * @module moonstone/internal/ui/SlotItem
+ * @module moonstone/ui/SlotItem
  * @exports SlotItem
  * @exports SlotItemBase
  * @exports SlotItemDecorator
@@ -24,14 +24,14 @@ import componentCss from './SlotItem.module.less';
  * An ui-styled `SlotItem` without any behavior.
  *
  * @class SlotItemBase
- * @memberof moonstone/internal/ui/SlotItem
+ * @memberof moonstone/ui/SlotItem
  * @ui
  * @private
  */
 const SlotItemBase = kind({
 	name: 'SlotItem',
 
-	propTypes: /** @lends moonstone/internal/ui/SlotItem.SlotItemBase.prototype */ {
+	propTypes: /** @lends moonstone/ui/SlotItem.SlotItemBase.prototype */ {
 		/**
 		 * The type of component to use to render the item.
 		 *
@@ -184,7 +184,7 @@ const SlotItemBase = kind({
  * An ui-specific higher-order component (HOC) with slot behaviors to apply to [SlotItem]{@link moonstone/SlotItem.SlotItemBase}.
  *
  * @class SlotItemDecorator
- * @memberof moonstone/internal/ui/SlotItem
+ * @memberof moonstone/ui/SlotItem
  * @mixes ui/Slottable.Slottable
  * @mixes ui/ForwardRef.ForwardRef
  * @hoc
@@ -211,9 +211,9 @@ const SlotItemDecorator = compose(
  * ```
  *
  * @class SlotItem
- * @memberof moonstone/internal/ui/SlotItem
- * @extends moonstone/internal/ui/SlotItem.SlotItemBase
- * @mixes moonstone/internal/ui/SlotItem.SlotItemDecorator
+ * @memberof moonstone/ui/SlotItem
+ * @extends moonstone/ui/SlotItem.SlotItemBase
+ * @mixes moonstone/ui/SlotItem.SlotItemDecorator
  * @omit componentRef
  * @ui
  * @private

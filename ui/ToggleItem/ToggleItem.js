@@ -5,7 +5,7 @@
  * customize this component's appearance by supplying an
  * [iconComponent prop]{@link moonstone/ToggleItem.ToggleItemBase#iconComponent}.
  *
- * @module moonstone/internal/ui/ToggleItem
+ * @module moonstone/ui/ToggleItem
  * @exports ToggleItem
  * @exports ToggleItemBase
  * @exports ToggleItemDecorator
@@ -67,14 +67,14 @@ const iconCreator = (position) => ({disabled, icon, iconComponent, iconPosition,
  * A minimally styled toggle item without any behavior, ripe for extension.
  *
  * @class ToggleItemBase
- * @memberof moonstone/internal/ui/ToggleItem
+ * @memberof moonstone/ui/ToggleItem
  * @ui
  * @private
  */
 const ToggleItemBase = kind({
 	name: 'ui:ToggleItem',
 
-	propTypes: /** @lends moonstone/internal/ui/ToggleItem.ToggleItemBase.prototype */ {
+	propTypes: /** @lends moonstone/ui/ToggleItem.ToggleItemBase.prototype */ {
 		/**
 		 * The main content of the toggle item.
 		 *
@@ -273,7 +273,7 @@ const ToggleItemBase = kind({
  * Adds interactive functionality to `ToggleItemBase`.
  *
  * @class ToggleItemDecorator
- * @memberof moonstone/internal/ui/ToggleItem
+ * @memberof moonstone/ui/ToggleItem
  * @mixes ui/ForwardRef.ForwardRef
  * @mixes ui/Touchable.Touchable
  * @mixes ui/Toggleable.Toggleable
@@ -295,9 +295,9 @@ const ToggleItemDecorator = compose(
  * ```
  *
  * @class ToggleItem
- * @memberof moonstone/internal/ui/ToggleItem
- * @extends moonstone/internal/ui/ToggleItem.ToggleItemBase
- * @mixes moonstone/internal/ui/ToggleItem.ToggleItemDecorator
+ * @memberof moonstone/ui/ToggleItem
+ * @extends moonstone/ui/ToggleItem.ToggleItemBase
+ * @mixes moonstone/ui/ToggleItem.ToggleItemDecorator
  * @omit componentRef
  * @ui
  * @private
