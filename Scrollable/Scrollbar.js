@@ -15,7 +15,7 @@ import componentCss from './Scrollbar.module.less';
  *
  * @class ScrollbarBase
  * @memberof moonstone/Scrollable
- * @extends moonstone/internal/ScrollbarBase
+ * @extends moonstone/ui/ScrollbarBase
  * @ui
  * @private
  */

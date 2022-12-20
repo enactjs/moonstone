@@ -5,7 +5,7 @@
  * to the image or a string from an [iconList]{@link ui/Icon.Icon.iconList}. This is unstyled,
  * but can easily be extended and customized by a theme or application.
  *
- * @module moonstone/internal/IconButton
+ * @module moonstone/ui/IconButton
  * @exports IconButton
  * @exports IconButtonBase
  * @exports IconButtonDecorator
@@ -28,14 +28,14 @@ import componentCss from './IconButton.module.less';
  * A ui-styled button without any behavior.
  *
  * @class IconButtonBase
- * @memberof moonstone/internal/IconButton
+ * @memberof moonstone/ui/IconButton
  * @ui
  * @private
  */
 const IconButtonBase = kind({
 	name: 'ui:IconButton',
 
-	propTypes: /** @lends moonstone/internal/IconButton.IconButtonBase.prototype */ {
+	propTypes: /** @lends moonstone/ui/IconButton.IconButtonBase.prototype */ {
 		/**
 		 * This is the root component used to render the button and will receive all props except
 		 * `icon`.
@@ -47,7 +47,7 @@ const IconButtonBase = kind({
 		buttonComponent: EnactPropTypes.componentOverride.isRequired,
 
 		/**
-		 * The component used to render the [icon]{@link moonstone/internal/IconButton.IconButtonBase.icon}.
+		 * The component used to render the [icon]{@link moonstone/ui/IconButton.IconButtonBase.icon}.
 		 *
 		 * This component will receive the `flip` and `size` property set on the `IconButton` as well as the
 		 * `icon` class to customize its styling.
@@ -72,7 +72,7 @@ const IconButtonBase = kind({
 		/**
 		 * Called with a reference to the root component.
 		 *
-		 * When using {@link moonstone/internal/IconButton.IconButton}, the `ref` prop is forwarded to this
+		 * When using {@link moonstone/ui/IconButton.IconButton}, the `ref` prop is forwarded to this
 		 * component as `componentRef`.
 		 *
 		 * @type {Object|Function}
@@ -87,7 +87,7 @@ const IconButtonBase = kind({
 		 * The following classes are supported:
 		 *
 		 * * `iconButton` - The root component class
-		 * * `icon` - The [icon component]{@link moonstone/internal/IconButton.IconButtonBase.iconComponent} class
+		 * * `icon` - The [icon component]{@link moonstone/ui/IconButton.IconButtonBase.iconComponent} class
 		 * * `large` - Applied when `size` prop is `'large'`
 		 * * `small` - Applied when `size` prop is `'small'`
 		 * * `pressed` - Applied when `pressed` prop is `true`
@@ -223,7 +223,7 @@ const IconButtonDecorator = compose(
  * @extends moonstone/IconButton.IconButtonBase
  * @mixes moonstone/IconButton.IconButtonDecorator
  * @omit componentRef
- * @memberof moonstone/internal/IconButton
+ * @memberof moonstone/ui/IconButton
  * @ui
  * @private
  */
