@@ -44,7 +44,7 @@ export const _Icon = (args) => {
 };
 
 select('flip', _Icon, ['', 'both', 'horizontal', 'vertical'], Config, '');
-select('icon', ['', ...iconNames], Config, 'plus');
+select('icon', _Icon, ['', ...iconNames], Config, 'plus');
 select('icon type', _Icon, ['glyph', 'url src', 'custom'], Config, 'glyph');
 select('size', _Icon, ['small', 'large'], Config, 'large');
 select('src', _Icon, [docs, factory, logo], Config, logo);
