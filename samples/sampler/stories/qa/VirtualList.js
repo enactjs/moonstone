@@ -3,6 +3,8 @@ import Item from '@enact/moonstone/Item';
 import {ActivityPanels, Panel, Header} from '@enact/moonstone/Panels';
 import Scroller from '@enact/moonstone/Scroller';
 import SwitchItem from '@enact/moonstone/SwitchItem';
+import {ScrollableBase as UiScrollableBase} from '@enact/moonstone/ui/Scrollable';
+import {VirtualListBase as UiVirtualListBase} from '@enact/moonstone/ui/VirtualList';
 import VirtualList, {VirtualListBase} from '@enact/moonstone/VirtualList';
 import SpotlightContainerDecorator from '@enact/spotlight/SpotlightContainerDecorator';
 import {mergeComponentMetadata} from '@enact/storybook-utils';
