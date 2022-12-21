@@ -9,7 +9,6 @@
  * @exports ToggleItem
  * @exports ToggleItemBase
  * @exports ToggleItemDecorator
- * @private
  */
 
 import EnactPropTypes from '@enact/core/internal/prop-types';
@@ -69,7 +68,7 @@ const iconCreator = (position) => ({disabled, icon, iconComponent, iconPosition,
  * @class ToggleItemBase
  * @memberof moonstone/ui/ToggleItem
  * @ui
- * @private
+ * @public
  */
 const ToggleItemBase = kind({
 	name: 'ui:ToggleItem',
@@ -278,7 +277,7 @@ const ToggleItemBase = kind({
  * @mixes ui/Touchable.Touchable
  * @mixes ui/Toggleable.Toggleable
  * @hoc
- * @private
+ * @public
  */
 const ToggleItemDecorator = compose(
 	ForwardRef({prop: 'componentRef'}),
@@ -300,7 +299,7 @@ const ToggleItemDecorator = compose(
  * @mixes moonstone/ui/ToggleItem.ToggleItemDecorator
  * @omit componentRef
  * @ui
- * @private
+ * @public
  */
 const ToggleItem = ToggleItemDecorator(ToggleItemBase);
 

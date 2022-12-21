@@ -4,7 +4,6 @@
  * @module moonstone/ui/RadioDecorator
  * @exports RadioDecorator
  * @exports RadioControllerDecorator
- * @private
  */
 
 import {forwardCustom} from '@enact/core/handle';
@@ -58,7 +57,7 @@ const defaultConfig = {
  * @class RadioDecorator
  * @memberof moonstone/ui/RadioDecorator
  * @hoc
- * @private
+ * @public
  */
 const RadioDecorator = hoc(defaultConfig, (config, Wrapped) => {
 	const {activate, deactivate, prop} = config;

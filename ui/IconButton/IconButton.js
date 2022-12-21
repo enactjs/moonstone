@@ -9,7 +9,6 @@
  * @exports IconButton
  * @exports IconButtonBase
  * @exports IconButtonDecorator
- * @private
  */
 
 import EnactPropTypes from '@enact/core/internal/prop-types';
@@ -25,12 +24,12 @@ import Touchable from '@enact/ui/Touchable';
 import componentCss from './IconButton.module.less';
 
 /**
- * A ui-styled button without any behavior.
+ * An ui-styled button without any behavior.
  *
  * @class IconButtonBase
  * @memberof moonstone/ui/IconButton
  * @ui
- * @private
+ * @public
  */
 const IconButtonBase = kind({
 	name: 'ui:IconButton',
@@ -202,7 +201,7 @@ const IconButtonBase = kind({
  * @memberof moonstone/ui/IconButton
  * @mixes ui/ForwardRef.ForwardRef
  * @mixes ui/Touchable.Touchable
- * @private
+ * @public
  */
 const IconButtonDecorator = compose(
 	ForwardRef({prop: 'componentRef'}),
@@ -225,7 +224,7 @@ const IconButtonDecorator = compose(
  * @omit componentRef
  * @memberof moonstone/ui/IconButton
  * @ui
- * @private
+ * @public
  */
 const IconButton = IconButtonDecorator(IconButtonBase);
 

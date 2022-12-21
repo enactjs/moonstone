@@ -8,7 +8,6 @@ The following is a curated list of changes in the Enact moonstone module, newest
 
 - `moonstone/ui/IconButton` component, transferred from `ui/IconButton`
 - `moonstone/ui/RadioDecorator` component, transferred from `ui/RadioDecorator`
-- `moonstone/ui/Scrollable` component, transferred from `ui/Scrollable`
 - `moonstone/ui/Scroller.UiScrollerBase` component, transferred from `ui/Scroller.UiScrollerBase`
 - `moonstone/ui/SlotItem` component, transferred from `ui/SlotItem`
 - `moonstone/ui/ToggleItem` component, transferred from `ui/ToggleItem`

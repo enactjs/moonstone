@@ -12,7 +12,7 @@ const RadioContext = createContext();
  * @class RadioControllerDecorator
  * @memberof moonstone/ui/RadioDecorator
  * @hoc
- * @private
+ * @public
  */
 const RadioControllerDecorator = hoc((config, Wrapped) => {
 
