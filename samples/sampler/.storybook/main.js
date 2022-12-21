@@ -3,6 +3,10 @@
 const webpack = require('@enact/storybook-utils/configs/webpack');
 
 module.exports = {
+	core: {
+		builder: 'webpack5',
+		disableTelemetry: true
+	},
 	features: {
 		postcss: false,
 		warnOnLegacyHierarchySeparator: false
