@@ -108,7 +108,7 @@ const SpinnerBase = kind({
 		 * Customize the size of this component.
 		 *
 		 * Recommended usage is "medium" (default) for standalone and popup scenarios, while "small"
-		 * is best suited for use inside other elements, like {@link moonstone/SlotItem.SlotItem}.
+		 * is best suited for use inside other elements, like {@link moonstone/SlotItem.SlotItem|SlotItem}.
 		 *
 		 * @type {('medium'|'small')}
 		 * @default 'medium'
@@ -220,7 +220,7 @@ const SpinnerSpotlightDecorator = hoc((config, Wrapped) => {
 });
 
 /**
- * Moonstone-specific Spinner behaviors to apply to [Spinner]{@link moonstone/Spinner.Spinner}.
+ * Moonstone-specific Spinner behaviors to apply to {@link moonstone/Spinner.Spinner|Spinner}.
  *
  * @hoc
  * @memberof moonstone/Spinner

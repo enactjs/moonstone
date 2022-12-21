@@ -9,8 +9,8 @@ import MediaSliderDecorator from './MediaSliderDecorator';
 import css from './VideoPlayer.module.less';
 
 /**
- * The base component to render a customized [Slider]{@link moonstone/Slider.Slider} for use in
- * [VideoPlayer]{@link moonstone/VideoPlayer.VideoPlayer}.
+ * The base component to render a customized {@link moonstone/Slider.Slider|Slider} for use in
+ * {@link moonstone/VideoPlayer.VideoPlayer|VideoPlayer}.
  *
  * @class MediaSliderBase
  * @memberof moonstone/VideoPlayer
@@ -102,7 +102,7 @@ const MediaSliderBase = kind({
 
 /**
  * A customized slider suitable for use within
- * [VideoPlayer]{@link moonstone/VideoPlayer.VideoPlayer}.
+ * {@link moonstone/VideoPlayer.VideoPlayer|VideoPlayer}.
  *
  * @class MediaSlider
  * @memberof moonstone/VideoPlayer

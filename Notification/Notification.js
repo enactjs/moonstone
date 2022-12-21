@@ -34,7 +34,7 @@ const fixTransform = (node) => {
  * A Moonstone styled notification component.
  *
  * It provides a notification modal which can be opened and closed, overlaying an app. Apps will
- * want to use {@link moonstone/Notification.Notification}.
+ * want to use {@link moonstone/Notification.Notification|Notification}.
  *
  * @class NotificationBase
  * @memberof moonstone/Notification

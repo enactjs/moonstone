@@ -87,7 +87,7 @@ const PickerBase = class extends ReactComponent {
 		 * The maximum value selectable by the picker (inclusive).
 		 *
 		 * The range between `min` and `max` should be evenly divisible by
-		 * [step]{@link moonstone/internal/Picker.PickerBase.step}.
+		 * {@link moonstone/internal/Picker.PickerBase.step|step}.
 		 *
 		 * @type {Number}
 		 * @required
@@ -99,7 +99,7 @@ const PickerBase = class extends ReactComponent {
 		 * The minimum value selectable by the picker (inclusive).
 		 *
 		 * The range between `min` and `max` should be evenly divisible by
-		 * [step]{@link moonstone/internal/Picker.PickerBase.step}.
+		 * {@link moonstone/internal/Picker.PickerBase.step|step}.
 		 *
 		 * @type {Number}
 		 * @required
@@ -194,9 +194,9 @@ const PickerBase = class extends ReactComponent {
 		decrementAriaLabel: PropTypes.string,
 
 		/**
-		 * Assign a custom icon for the decrementer. All strings supported by [Icon]{@link moonstone/Icon.Icon} are
+		 * Assign a custom icon for the decrementer. All strings supported by {@link moonstone/Icon.Icon|Icon} are
 		 * supported. Without a custom icon, the default is used, and is automatically changed when
-		 * the [orientation]{@link moonstone/Icon.Icon#orientation} is changed.
+		 * the {@link moonstone/Icon.Icon#orientation|orientation} is changed.
 		 *
 		 * @type {String}
 		 * @public
@@ -205,7 +205,7 @@ const PickerBase = class extends ReactComponent {
 
 		/**
 		 * When `true`, the Picker is shown as disabled and does not generate `onChange`
-		 * [events]{@link /docs/developer-guide/glossary/#event}.
+		 * {@link /docs/developer-guide/glossary/#event|events}.
 		 *
 		 * @type {Boolean}
 		 * @public
@@ -230,9 +230,9 @@ const PickerBase = class extends ReactComponent {
 		incrementAriaLabel: PropTypes.string,
 
 		/**
-		 * Assign a custom icon for the incrementer. All strings supported by [Icon]{@link moonstone/Icon.Icon} are
+		 * Assign a custom icon for the incrementer. All strings supported by {@link moonstone/Icon.Icon|Icon} are
 		 * supported. Without a custom icon, the default is used, and is automatically changed when
-		 * the [orientation]{@link moonstone/Icon.Icon#orientation} is changed.
+		 * the {@link moonstone/Icon.Icon#orientation|orientation} is changed.
 		 *
 		 * @type {String}
 		 * @public

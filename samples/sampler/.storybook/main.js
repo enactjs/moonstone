@@ -3,13 +3,8 @@
 const webpack = require('@enact/storybook-utils/configs/webpack');
 
 module.exports = {
-	core: {
-		builder: 'webpack5',
-		disableTelemetry: true
-	},
 	features: {
 		postcss: false,
-		storyStoreV7: true,
 		warnOnLegacyHierarchySeparator: false
 	},
 	framework: '@storybook/react',

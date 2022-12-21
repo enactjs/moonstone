@@ -42,7 +42,7 @@ const RangePickerBase = kind({
 		 * The maximum value selectable by the picker (inclusive).
 		 *
 		 * The range between `min` and `max` should be evenly divisible by
-		 * [step]{@link moonstone/RangePicker.RangePickerBase.step}.
+		 * {@link moonstone/RangePicker.RangePickerBase.step|step}.
 		 *
 		 * @type {Number}
 		 * @required
@@ -54,7 +54,7 @@ const RangePickerBase = kind({
 		 * The minimum value selectable by the picker (inclusive).
 		 *
 		 * The range between `min` and `max` should be evenly divisible by
-		 * [step]{@link moonstone/RangePicker.RangePickerBase.step}.
+		 * {@link moonstone/RangePicker.RangePickerBase.step|step}.
 		 *
 		 * @type {Number}
 		 * @required
@@ -101,9 +101,9 @@ const RangePickerBase = kind({
 		/**
 		 * A custom icon for the decrementer.
 		 *
-		 * All strings supported by [Icon]{@link moonstone/Icon.Icon} are supported. Without a
+		 * All strings supported by {@link moonstone/Icon.Icon|Icon} are supported. Without a
 		 * custom icon, the default is used, and is automatically changed when the
-		 * [orientation]{@link moonstone/RangePicker.RangePicker#orientation} is changed.
+		 * {@link moonstone/RangePicker.RangePicker#orientation|orientation} is changed.
 		 *
 		 * @type {string}
 		 * @public
@@ -121,9 +121,9 @@ const RangePickerBase = kind({
 		/**
 		 * A custom icon for the incrementer.
 		 *
-		 * All strings supported by [Icon]{@link moonstone/Icon.Icon} are supported. Without a
+		 * All strings supported by {@link moonstone/Icon.Icon|Icon} are supported. Without a
 		 * custom icon, the default is used, and is automatically changed when the
-		 * [orientation]{@link moonstone/RangePicker.RangePicker#orientation} is changed.
+		 * {@link moonstone/RangePicker.RangePicker#orientation|orientation} is changed.
 		 *
 		 * @type {String}
 		 * @public
