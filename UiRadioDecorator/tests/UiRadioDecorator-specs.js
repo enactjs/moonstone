@@ -3,7 +3,7 @@ import {render, screen} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import {createRef} from 'react';
 
-import {RadioControllerDecorator, RadioDecorator} from './.';
+import {RadioControllerDecorator, RadioDecorator} from '../UiRadioDecorator.js';
 
 describe('RadioDecorator', () => {
 	const Item = ({onClick, active}) => (

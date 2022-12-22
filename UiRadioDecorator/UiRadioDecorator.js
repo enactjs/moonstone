@@ -1,7 +1,7 @@
 /**
  * A higher-order component that manages activation of components.
  *
- * @module moonstone/ui/RadioDecorator
+ * @module moonstone/UiRadioDecorator
  * @exports RadioDecorator
  * @exports RadioControllerDecorator
  */
@@ -10,12 +10,12 @@ import {forwardCustom} from '@enact/core/handle';
 import hoc from '@enact/core/hoc';
 import {Component} from 'react';
 
-import {RadioContext, RadioControllerDecorator} from './RadioControllerDecorator';
+import {RadioContext, RadioControllerDecorator} from './UiRadioControllerDecorator';
 
 /**
  * Default config for `RadioDecorator`.
  *
- * @memberof moonstone/ui/RadioDecorator.RadioDecorator
+ * @memberof moonstone/UiRadioDecorator.RadioDecorator
  * @hocconfig
  */
 const defaultConfig = {
@@ -24,7 +24,7 @@ const defaultConfig = {
 	 *
 	 * @type {String}
 	 * @default null
-	 * @memberof moonstone/ui/RadioDecorator.RadioDecorator.defaultConfig
+	 * @memberof moonstone/UiRadioDecorator.RadioDecorator.defaultConfig
 	 */
 	activate: null,
 
@@ -33,7 +33,7 @@ const defaultConfig = {
 	 *
 	 * @type {String}
 	 * @default null
-	 * @memberof moonstone/ui/RadioDecorator.RadioDecorator.defaultConfig
+	 * @memberof moonstone/UiRadioDecorator.RadioDecorator.defaultConfig
 	 */
 	deactivate: null,
 
@@ -42,20 +42,20 @@ const defaultConfig = {
 	 *
 	 * @type {String}
 	 * @default 'active'
-	 * @memberof moonstone/ui/RadioDecorator.RadioDecorator.defaultConfig
+	 * @memberof moonstone/UiRadioDecorator.RadioDecorator.defaultConfig
 	 */
 	prop: 'active'
 };
 
 /**
  * A higher-order component (HOC) that allows another component to have a mutually exclusive
- * relationship with other descendants of the same {@link moonstone/ui/RadioDecorator.RadioControllerDecorator}.
+ * relationship with other descendants of the same {@link moonstone/UiRadioDecorator.RadioControllerDecorator}.
  *
  * When the `activate` event for the wrapped component is called, the component is activated and the
  * previously activated component, if any, is deactivated by invoking the `deactivate` event.
  *
  * @class RadioDecorator
- * @memberof moonstone/ui/RadioDecorator
+ * @memberof moonstone/UiRadioDecorator
  * @hoc
  * @public
  */

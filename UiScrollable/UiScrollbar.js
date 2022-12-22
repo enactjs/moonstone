@@ -27,17 +27,17 @@ const setCSSVariable = (element, variable, value) => {
 };
 
 /**
- * An unstyled base component for a scroll bar. It is used in {@link moonstone/ui/Scrollable.Scrollable|Scrollable}.
+ * An unstyled base component for a scroll bar. It is used in {@link moonstone/UiScrollable.Scrollable|Scrollable}.
  *
  * @class ScrollbarBase
- * @memberof moonstone/ui/Scrollable
+ * @memberof moonstone/UiScrollable
  * @ui
  * @private
  */
 class ScrollbarBase extends PureComponent {
 	static displayName = 'ui:Scrollbar';
 
-	static propTypes = /** @lends moonstone/ui/Scrollable.Scrollbar.prototype */ {
+	static propTypes = /** @lends moonstone/UiScrollable.Scrollbar.prototype */ {
 		/**
 		 * The render function for child.
 		 *
@@ -191,15 +191,15 @@ class ScrollbarBase extends PureComponent {
 }
 
 /**
- * An unstyled scroll bar. It is used in {@link moonstone/ui/Scrollable.Scrollable|Scrollable}.
+ * An unstyled scroll bar. It is used in {@link moonstone/UiScrollable.Scrollable|Scrollable}.
  *
  * @class Scrollbar
- * @memberof moonstone/ui/Scrollable
+ * @memberof moonstone/UiScrollable
  * @ui
  * @private
  */
 class Scrollbar extends Component {
-	static propTypes = /** @lends moonstone/ui/Scrollable.Scrollbar.prototype */ {
+	static propTypes = /** @lends moonstone/UiScrollable.Scrollbar.prototype */ {
 		/**
 		 * If `true`, the scrollbar will be oriented vertically.
 		 *
