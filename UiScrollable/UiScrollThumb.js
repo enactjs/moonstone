@@ -1,7 +1,7 @@
 import kind from '@enact/core/kind';
 import PropTypes from 'prop-types';
 
-import css from './ScrollThumb.module.less';
+import css from './UiScrollThumb.module.less';
 
 /**
  * An unstyled scroll thumb without any behavior.

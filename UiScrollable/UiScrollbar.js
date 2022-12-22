@@ -5,9 +5,9 @@ import PropTypes from 'prop-types';
 import {createRef, PureComponent, Component} from 'react';
 import ReactDOM from 'react-dom';
 
-import ScrollThumb from './ScrollThumb';
+import ScrollThumb from './UiScrollThumb';
 
-import componentCss from './Scrollbar.module.less';
+import componentCss from './UiScrollbar.module.less';
 
 const
 	minThumbSize = 18, // Size in pixels
