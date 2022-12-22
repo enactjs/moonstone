@@ -4,6 +4,7 @@
  * Using the usual `children` prop, as well as two additional props: `slotBefore`, and `slotAfter`.
  * It is able to be customized by a theme or application.
  *
+ * @module moonstone/ui/SlotItem
  * @exports SlotItem
  * @exports SlotItemBase
  * @exports SlotItemDecorator
