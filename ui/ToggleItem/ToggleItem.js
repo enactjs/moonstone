@@ -5,7 +5,6 @@
  * customize this component's appearance by supplying an
  * [iconComponent prop]{@link moonstone/ui/ToggleItem.ToggleItemBase#iconComponent}.
  *
- * @module moonstone/ui/ToggleItem
  * @exports ToggleItem
  * @exports ToggleItemBase
  * @exports ToggleItemDecorator

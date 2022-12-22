@@ -1,7 +1,6 @@
 /**
  * A higher-order component that manages activation of components.
  *
- * @module moonstone/ui/RadioDecorator
  * @exports RadioDecorator
  * @exports RadioControllerDecorator
  */

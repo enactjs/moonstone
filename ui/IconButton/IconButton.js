@@ -5,7 +5,6 @@
  * to the image or a string from an [iconList]{@link ui/Icon.Icon.iconList}. This is unstyled,
  * but can easily be extended and customized by a theme or application.
  *
- * @module moonstone/ui/IconButton
  * @exports IconButton
  * @exports IconButtonBase
  * @exports IconButtonDecorator
