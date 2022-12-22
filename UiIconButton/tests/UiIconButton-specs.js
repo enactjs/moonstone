@@ -1,7 +1,7 @@
 import {forwardRef} from 'react';
 import {render} from '@testing-library/react';
 
-import IconButton from '../IconButton';
+import IconButton from '../UiIconButton';
 
 describe('IconButton', () => {
 	const Button = forwardRef((props, fn) => <div ref={fn} />);

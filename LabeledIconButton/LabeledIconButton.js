@@ -25,7 +25,7 @@ import compose from 'ramda/src/compose';
 
 import {IconButtonBase} from '../IconButton';
 import Skinnable from '../Skinnable';
-import {IconButtonDecorator as UiIconButtonDecorator} from '../ui/IconButton';
+import {IconButtonDecorator as UiIconButtonDecorator} from '../UiIconButton';
 
 import componentCss from './LabeledIconButton.module.less';
 

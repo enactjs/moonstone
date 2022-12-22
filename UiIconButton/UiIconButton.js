@@ -21,7 +21,7 @@ import ComponentOverride from '@enact/ui/ComponentOverride';
 import ForwardRef from '@enact/ui/ForwardRef';
 import Touchable from '@enact/ui/Touchable';
 
-import componentCss from './IconButton.module.less';
+import componentCss from './UiIconButton.module.less';
 
 /**
  * An ui-styled button without any behavior.

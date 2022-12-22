@@ -22,7 +22,7 @@ import {ButtonBase} from '../Button';
 import Icon from '../Icon';
 import Skinnable from '../Skinnable';
 import TooltipDecorator from '../TooltipDecorator';
-import {IconButtonBase as UiIconButtonBase, IconButtonDecorator as UiIconButtonDecorator} from '../ui/IconButton';
+import {IconButtonBase as UiIconButtonBase, IconButtonDecorator as UiIconButtonDecorator} from '../UiIconButton';
 
 import componentCss from './IconButton.module.less';
 
