@@ -35,7 +35,7 @@ const SlotItemBase = kind({
 		 * The type of component to use to render the item.
 		 *
 		 * This component will receive the `inline` prop and any additional unhandled props provided
-		 * to `SlotItem`. A derivative of [Item]{@link ui/Item.Item} is recommended.
+		 * to `SlotItem`. A derivative of {@link ui/Item.Item|Item} is recommended.
 		 *
 		 * @type {Component}
 		 * @required
@@ -180,7 +180,7 @@ const SlotItemBase = kind({
 });
 
 /**
- * An ui-specific higher-order component (HOC) with slot behaviors to apply to [SlotItem]{@link moonstone/SlotItem.SlotItemBase}.
+ * An ui-specific higher-order component (HOC) with slot behaviors to apply to {@link moonstone/SlotItem.SlotItemBase|SlotItem}.
  *
  * @class SlotItemDecorator
  * @memberof moonstone/ui/SlotItem

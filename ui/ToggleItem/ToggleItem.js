@@ -3,7 +3,7 @@
  *
  * This is not intended to be used directly, but should be extended by a component that will
  * customize this component's appearance by supplying an
- * [iconComponent prop]{@link moonstone/ui/ToggleItem.ToggleItemBase#iconComponent}.
+ * {@link moonstone/ui/ToggleItem.ToggleItemBase#iconComponent|iconComponent prop}.
  *
  * @module moonstone/ui/ToggleItem
  * @exports ToggleItem
@@ -88,7 +88,7 @@ const ToggleItemBase = kind({
 		 *
 		 * This receives the `css` prop for theme extension and therefore must be a custom
 		 * component and not a simple HTML DOM node. Recommended component or themed
-		 * derivative: [SlotItem]{@link moonstone/SlotItem.SlotItem}
+		 * derivative: {@link moonstone/SlotItem.SlotItem|SlotItem}
 		 *
 		 * @type {Component}
 		 * @required
@@ -101,7 +101,7 @@ const ToggleItemBase = kind({
 		 *
 		 * This component receives the `selected` prop and value,
 		 * and must therefore respond to it in some way. It is recommended to use
-		 * [ToggleIcon]{@link moonstone/ToggleIcon} for this.
+		 * {@link moonstone/ToggleIcon|ToggleIcon} for this.
 		 *
 		 * @type {Component|Element}
 		 * @required
@@ -145,7 +145,7 @@ const ToggleItemBase = kind({
 		/**
 		 * An optional prop that lets you override the icon of the `iconComponent` component.
 		 *
-		 * This accepts any string that the [Icon]{@link moonstone/Icon.Icon} component supports, provided
+		 * This accepts any string that the {@link moonstone/Icon.Icon|Icon} component supports, provided
 		 * the recommendations of `iconComponent` are followed.
 		 *
 		 * @type {String|Object}

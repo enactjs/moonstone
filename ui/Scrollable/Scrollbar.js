@@ -27,7 +27,7 @@ const setCSSVariable = (element, variable, value) => {
 };
 
 /**
- * An unstyled base component for a scroll bar. It is used in [Scrollable]{@link moonstone/ui/Scrollable.Scrollable}.
+ * An unstyled base component for a scroll bar. It is used in {@link moonstone/ui/Scrollable.Scrollable|Scrollable}.
  *
  * @class ScrollbarBase
  * @memberof moonstone/ui/Scrollable
@@ -191,7 +191,7 @@ class ScrollbarBase extends PureComponent {
 }
 
 /**
- * An unstyled scroll bar. It is used in [Scrollable]{@link moonstone/ui/Scrollable.Scrollable}.
+ * An unstyled scroll bar. It is used in {@link moonstone/ui/Scrollable.Scrollable|Scrollable}.
  *
  * @class Scrollbar
  * @memberof moonstone/ui/Scrollable

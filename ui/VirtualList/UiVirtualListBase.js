@@ -82,7 +82,7 @@ const VirtualListBaseFactory = (type) => {
 
 			/**
 			 * Callback method of scrollTo.
-			 * Normally, [Scrollable]{@link moonstone/ui/Scrollable.Scrollable} should set this value.
+			 * Normally, {@link moonstone/ui/Scrollable.Scrollable|Scrollable} should set this value.
 			 *
 			 * @type {Function}
 			 * @private
@@ -1163,7 +1163,7 @@ const VirtualListBaseFactory = (type) => {
 
 /**
  * A basic base component for
- * [VirtualList]{@link moonstone/ui/VirtualList.VirtualList} and [VirtualGridList]{@link moonstone/ui/VirtualList.VirtualGridList}.
+ * {@link moonstone/ui/VirtualList.VirtualList|VirtualList} and {@link moonstone/ui/VirtualList.VirtualGridList|VirtualGridList}.
  *
  * @class VirtualListBase
  * @memberof moonstone/ui/VirtualList
@@ -1175,7 +1175,7 @@ VirtualListBase.displayName = 'ui:VirtualListBase';
 
 /**
  * A basic base component for
- * [VirtualListNative]{@link moonstone/ui/VirtualList.VirtualListNative} and [VirtualGridListNative]{@link moonstone/ui/VirtualList.VirtualGridListNative}.
+ * {@link moonstone/ui/VirtualList.VirtualListNative|VirtualListNative} and {@link moonstone/ui/VirtualList.VirtualGridListNative|VirtualGridListNative}.
  *
  * @class VirtualListBaseNative
  * @memberof moonstone/ui/VirtualList

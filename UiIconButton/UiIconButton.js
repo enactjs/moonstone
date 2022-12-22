@@ -1,11 +1,11 @@
 /**
- * An [Icon]{@link ui/Icon.Icon} that acts like a [Button]{@link ui/Button.Button}.
+ * An {@link ui/Icon.Icon|Icon} that acts like a {@link ui/Button.Button|Button}.
  *
  * You may specify an image or a font-based icon by setting the `children` to either the path
- * to the image or a string from an [iconList]{@link ui/Icon.Icon.iconList}. This is unstyled,
+ * to the image or a string from an {@link ui/Icon.Icon.iconList|iconList}. This is unstyled,
  * but can easily be extended and customized by a theme or application.
  *
- * @module moonstone/ui/IconButton
+ * @module moonstone/UiIconButton
  * @exports IconButton
  * @exports IconButtonBase
  * @exports IconButtonDecorator
@@ -27,14 +27,14 @@ import componentCss from './UiIconButton.module.less';
  * An ui-styled button without any behavior.
  *
  * @class IconButtonBase
- * @memberof moonstone/ui/IconButton
+ * @memberof moonstone/UiIconButton
  * @ui
  * @public
  */
 const IconButtonBase = kind({
 	name: 'ui:IconButton',
 
-	propTypes: /** @lends moonstone/ui/IconButton.IconButtonBase.prototype */ {
+	propTypes: /** @lends moonstone/UiIconButton.IconButtonBase.prototype */ {
 		/**
 		 * This is the root component used to render the button and will receive all props except
 		 * `icon`.
@@ -46,7 +46,7 @@ const IconButtonBase = kind({
 		buttonComponent: EnactPropTypes.componentOverride.isRequired,
 
 		/**
-		 * The component used to render the [icon]{@link moonstone/ui/IconButton.IconButtonBase.icon}.
+		 * The component used to render the {@link moonstone/UiIconButton.IconButtonBase.icon|icon}.
 		 *
 		 * This component will receive the `flip` and `size` property set on the `IconButton` as well as the
 		 * `icon` class to customize its styling.
@@ -71,7 +71,7 @@ const IconButtonBase = kind({
 		/**
 		 * Called with a reference to the root component.
 		 *
-		 * When using {@link moonstone/ui/IconButton.IconButton}, the `ref` prop is forwarded to this
+		 * When using {@link moonstone/UiIconButton.IconButton}, the `ref` prop is forwarded to this
 		 * component as `componentRef`.
 		 *
 		 * @type {Object|Function}
@@ -86,7 +86,7 @@ const IconButtonBase = kind({
 		 * The following classes are supported:
 		 *
 		 * * `iconButton` - The root component class
-		 * * `icon` - The [icon component]{@link moonstone/ui/IconButton.IconButtonBase.iconComponent} class
+		 * * `icon` - The {@link moonstone/UiIconButton.IconButtonBase.iconComponent|icon component} class
 		 * * `large` - Applied when `size` prop is `'large'`
 		 * * `small` - Applied when `size` prop is `'small'`
 		 * * `pressed` - Applied when `pressed` prop is `true`
@@ -100,7 +100,7 @@ const IconButtonBase = kind({
 		 * Disables IconButton.
 		 *
 		 * When `true`, the button is shown as disabled and does not generate
-		 * `onClick` [events]{@link /docs/developer-guide/glossary/#event}.
+		 * `onClick` {@link /docs/developer-guide/glossary/#event|events}.
 		 *
 		 * @type {Boolean}
 		 * @default false
@@ -148,7 +148,7 @@ const IconButtonBase = kind({
 		 * The size of the button.
 		 *
 		 * Applies the CSS class which can be customized by
-		 * [theming]{@link /docs/developer-guide/theming/}.
+		 * {@link /docs/developer-guide/theming/|theming}.
 		 *
 		 * @type {String}
 		 * @public
@@ -195,10 +195,10 @@ const IconButtonBase = kind({
 });
 
 /**
- * A higher-order component that adds universal button behaviors to an [IconButtonBase]{@link moonstone/ui/IconButton.IconButtonBase}.
+ * A higher-order component that adds universal button behaviors to an {@link moonstone/UiIconButton.IconButtonBase|IconButtonBase}.
  *
  * @hoc
- * @memberof moonstone/ui/IconButton
+ * @memberof moonstone/UiIconButton
  * @mixes ui/ForwardRef.ForwardRef
  * @mixes ui/Touchable.Touchable
  * @public
@@ -222,7 +222,7 @@ const IconButtonDecorator = compose(
  * @extends moonstone/IconButton.IconButtonBase
  * @mixes moonstone/IconButton.IconButtonDecorator
  * @omit componentRef
- * @memberof moonstone/ui/IconButton
+ * @memberof moonstone/UiIconButton
  * @ui
  * @public
  */
