@@ -116,7 +116,7 @@ const getTargetInViewByDirectionFromPosition = (direction, position, container) 
  *
  * @class ScrollableBaseNative
  * @memberof moonstone/ScrollableNative
- * @extends moonstone/ui/Scrollable.ScrollableBaseNative
+ * @extends moonstone/UiScrollable.ScrollableBaseNative
  * @ui
  * @private
  */

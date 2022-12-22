@@ -15,7 +15,7 @@ import componentCss from './Scrollbar.module.less';
  *
  * @class ScrollbarBase
  * @memberof moonstone/Scrollable
- * @extends moonstone/ui/ScrollbarBase
+ * @extends moonstone/UiScrollbarBase
  * @ui
  * @private
  */
@@ -55,7 +55,7 @@ class ScrollbarBase extends Component {
 
 		/**
 		 * `true` if rtl, `false` if ltr.
-		 * Normally, {@link moonstone/ui/Scrollable.Scrollable|Scrollable} should set this value.
+		 * Normally, {@link moonstone/UiScrollable.Scrollable|Scrollable} should set this value.
 		 *
 		 * @type {Boolean}
 		 * @private

@@ -88,7 +88,7 @@ const VirtualListBaseFactory = (type) => {
 
 			/**
 			 * Callback method of scrollTo.
-			 * Normally, {@link moonstone/ui/Scrollable.Scrollable|Scrollable} should set this value.
+			 * Normally, {@link moonstone/UiScrollable.Scrollable|Scrollable} should set this value.
 			 *
 			 * @type {Function}
 			 * @private
@@ -191,7 +191,7 @@ const VirtualListBaseFactory = (type) => {
 
 			/**
 			 * `true` if rtl, `false` if ltr.
-			 * Normally, {@link moonstone/ui/Scrollable.Scrollable|Scrollable} should set this value.
+			 * Normally, {@link moonstone/UiScrollable.Scrollable|Scrollable} should set this value.
 			 *
 			 * @type {Boolean}
 			 * @private
@@ -208,7 +208,7 @@ const VirtualListBaseFactory = (type) => {
 			spacing: PropTypes.number,
 
 			/**
-			 * Spotlight Id. It would be the same with {@link moonstone/ui/Scrollable.Scrollable|Scrollable}'s.
+			 * Spotlight Id. It would be the same with {@link moonstone/UiScrollable.Scrollable|Scrollable}'s.
 			 *
 			 * @type {String}
 			 * @private
@@ -864,7 +864,7 @@ const VirtualListBaseFactory = (type) => {
  *
  * @class VirtualListBase
  * @memberof moonstone/VirtualList
- * @extends moonstone/ui/VirtualList.VirtualListBase
+ * @extends moonstone/UiVirtualList.VirtualListBase
  * @ui
  * @public
  */
@@ -877,7 +877,7 @@ VirtualListBase.displayName = 'VirtualListBase';
  *
  * @class VirtualListBaseNative
  * @memberof moonstone/VirtualList
- * @extends moonstone/ui/VirtualList.VirtualListBaseNative
+ * @extends moonstone/UiVirtualList.VirtualListBaseNative
  * @ui
  * @private
  */

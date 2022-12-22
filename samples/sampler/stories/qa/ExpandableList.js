@@ -2,7 +2,7 @@ import Button from '@enact/moonstone/Button';
 import Heading from '@enact/moonstone/Heading';
 import ExpandableList, {ExpandableListBase} from '@enact/moonstone/ExpandableList';
 import Scroller from '@enact/moonstone/Scroller';
-import {RadioControllerDecorator} from '@enact/moonstone/ui/RadioDecorator';
+import {RadioControllerDecorator} from '@enact/moonstone/UiRadioDecorator';
 import {mergeComponentMetadata} from '@enact/storybook-utils';
 import {action} from '@enact/storybook-utils/addons/actions';
 import {boolean, select, text} from '@enact/storybook-utils/addons/controls';
