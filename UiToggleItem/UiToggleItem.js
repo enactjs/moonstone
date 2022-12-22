@@ -88,7 +88,7 @@ const ToggleItemBase = kind({
 		 *
 		 * This receives the `css` prop for theme extension and therefore must be a custom
 		 * component and not a simple HTML DOM node. Recommended component or themed
-		 * derivative: {@link moonstone/SlotItem.SlotItem|SlotItem}
+		 * derivative: {@link moonstone/UiSlotItem.SlotItem|SlotItem}
 		 *
 		 * @type {Component}
 		 * @required
@@ -101,7 +101,7 @@ const ToggleItemBase = kind({
 		 *
 		 * This component receives the `selected` prop and value,
 		 * and must therefore respond to it in some way. It is recommended to use
-		 * {@link moonstone/ToggleIcon|ToggleIcon} for this.
+		 * {@link moonstone/UiToggleIcon|ToggleIcon} for this.
 		 *
 		 * @type {Component|Element}
 		 * @required
