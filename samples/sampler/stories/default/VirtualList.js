@@ -1,6 +1,6 @@
 import Item from '@enact/moonstone/Item';
 import {ScrollableBase as UiScrollableBase} from '@enact/moonstone/ui/Scrollable';
-import {VirtualListBase as UiVirtualListBase} from '@enact/moonstone/ui/VirtualList';
+import {VirtualListBase as UiVirtualListBase} from '@enact/moonstone/UiVirtualList';
 import VirtualList, {VirtualListBase} from '@enact/moonstone/VirtualList';
 import {mergeComponentMetadata} from '@enact/storybook-utils';
 import {action} from '@enact/storybook-utils/addons/actions';

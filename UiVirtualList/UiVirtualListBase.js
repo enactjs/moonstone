@@ -21,7 +21,7 @@ const gridListItemSizeShape = PropTypes.shape({
  * The base version of the virtual list component.
  *
  * @class VirtualListCore
- * @memberof moonstone/ui/VirtualList
+ * @memberof moonstone/UiVirtualList
  * @ui
  * @private
  */
@@ -29,7 +29,7 @@ const VirtualListBaseFactory = (type) => {
 	return class VirtualListCore extends Component {
 		/* No displayName here. We set displayName to returned components of this factory function. */
 
-		static propTypes = /** @lends moonstone/ui/VirtualList.VirtualListBase.prototype */ {
+		static propTypes = /** @lends moonstone/UiVirtualList.VirtualListBase.prototype */ {
 			/**
 			 * The rendering function called for each item in the list.
 			 *
@@ -62,7 +62,7 @@ const VirtualListBaseFactory = (type) => {
 			 * The size of an item for the list; valid values are either a number for `VirtualList`
 			 * or an object that has `minWidth` and `minHeight` for `VirtualGridList`.
 			 *
-			 * @type {Number|moonstone/ui/VirtualList.gridListItemSizeShape}
+			 * @type {Number|moonstone/UiVirtualList.gridListItemSizeShape}
 			 * @required
 			 * @private
 			 */
@@ -1163,10 +1163,10 @@ const VirtualListBaseFactory = (type) => {
 
 /**
  * A basic base component for
- * {@link moonstone/ui/VirtualList.VirtualList|VirtualList} and {@link moonstone/ui/VirtualList.VirtualGridList|VirtualGridList}.
+ * {@link moonstone/UiVirtualList.VirtualList|VirtualList} and {@link moonstone/UiVirtualList.VirtualGridList|VirtualGridList}.
  *
  * @class VirtualListBase
- * @memberof moonstone/ui/VirtualList
+ * @memberof moonstone/UiVirtualList
  * @ui
  * @public
  */
@@ -1175,10 +1175,10 @@ VirtualListBase.displayName = 'ui:VirtualListBase';
 
 /**
  * A basic base component for
- * {@link moonstone/ui/VirtualList.VirtualListNative|VirtualListNative} and {@link moonstone/ui/VirtualList.VirtualGridListNative|VirtualGridListNative}.
+ * {@link moonstone/UiVirtualList.VirtualListNative|VirtualListNative} and {@link moonstone/UiVirtualList.VirtualGridListNative|VirtualGridListNative}.
  *
  * @class VirtualListBaseNative
- * @memberof moonstone/ui/VirtualList
+ * @memberof moonstone/UiVirtualList
  * @ui
  * @private
  */
@@ -1213,7 +1213,7 @@ VirtualListBaseNative.displayName = 'ui:VirtualListBaseNative';
  * ```
  *
  * @name cbScrollTo
- * @memberof moonstone/ui/VirtualList.VirtualListBase.prototype
+ * @memberof moonstone/UiVirtualList.VirtualListBase.prototype
  * @type {Function}
  * @public
  */
@@ -1227,7 +1227,7 @@ VirtualListBaseNative.displayName = 'ui:VirtualListBaseNative';
  * * `'hidden'`.
  *
  * @name horizontalScrollbar
- * @memberof moonstone/ui/VirtualList.VirtualListBase.prototype
+ * @memberof moonstone/UiVirtualList.VirtualListBase.prototype
  * @type {String}
  * @default 'auto'
  * @public
@@ -1237,7 +1237,7 @@ VirtualListBaseNative.displayName = 'ui:VirtualListBaseNative';
  * Prevents scroll by wheeling on the list.
  *
  * @name noScrollByWheel
- * @memberof moonstone/ui/VirtualList.VirtualListBase.prototype
+ * @memberof moonstone/UiVirtualList.VirtualListBase.prototype
  * @type {Boolean}
  * @default false
  * @public
@@ -1251,7 +1251,7 @@ VirtualListBaseNative.displayName = 'ui:VirtualListBaseNative';
  * Use `onScrollStart` or `onScrollStop` instead.
  *
  * @name onScroll
- * @memberof moonstone/ui/VirtualList.VirtualListBase.prototype
+ * @memberof moonstone/UiVirtualList.VirtualListBase.prototype
  * @type {Function}
  * @param {Object} event
  * @param {Number} event.scrollLeft Scroll left value.
@@ -1283,7 +1283,7 @@ VirtualListBaseNative.displayName = 'ui:VirtualListBaseNative';
  * ```
  *
  * @name onScrollStart
- * @memberof moonstone/ui/VirtualList.VirtualListBase.prototype
+ * @memberof moonstone/UiVirtualList.VirtualListBase.prototype
  * @type {Function}
  * @param {Object} event
  * @param {Number} event.scrollLeft Scroll left value.
@@ -1315,7 +1315,7 @@ VirtualListBaseNative.displayName = 'ui:VirtualListBaseNative';
  * ```
  *
  * @name onScrollStop
- * @memberof moonstone/ui/VirtualList.VirtualListBase.prototype
+ * @memberof moonstone/UiVirtualList.VirtualListBase.prototype
  * @type {Function}
  * @param {Object} event
  * @param {Number} event.scrollLeft Scroll left value.
@@ -1333,7 +1333,7 @@ VirtualListBaseNative.displayName = 'ui:VirtualListBaseNative';
  * * `'hidden'`.
  *
  * @name verticalScrollbar
- * @memberof moonstone/ui/VirtualList.VirtualListBase.prototype
+ * @memberof moonstone/UiVirtualList.VirtualListBase.prototype
  * @type {String}
  * @default 'auto'
  * @public
