@@ -10,7 +10,7 @@ const nop = () => {};
  *
  * @class ScrollThumb
  * @memberof moonstone/Scrollable
- * @extends moonstone/Scrollable/ScrollThumb
+ * @extends moonstone/UiScrollable/ScrollThumb
  * @ui
  * @private
  */

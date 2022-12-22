@@ -1,7 +1,7 @@
 'use strict';
 const {element, Page} = require('@enact/ui-test-utils/utils');
 
-const scrollableSelector = '.ui_Scrollable_Scrollable_scrollable';
+const scrollableSelector = '.UiScrollable_UiScrollable_scrollable';
 const scrollbarSelector = '.Scrollable_Scrollbar_scrollbar';
 
 class VirtualListPage extends Page {
