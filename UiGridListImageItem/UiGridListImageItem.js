@@ -1,9 +1,8 @@
 /**
  * Unstyled grid list image item components and behaviors to be customized by a theme or application.
  *
- * @module moonstone/internal/GridListImageItem
+ * @module moonstone/UiGridListImageItem
  * @exports GridListImageItem
- * @private
  */
 
 import EnactPropTypes from '@enact/core/internal/prop-types';
@@ -14,20 +13,20 @@ import Image from '@enact/ui/Image';
 import PropTypes from 'prop-types';
 import {Fragment} from 'react';
 
-import componentCss from './GridListImageItem.module.less';
+import componentCss from './UiGridListImageItem.module.less';
 
 /**
  * A basic grid list image item without any behavior.
  *
  * @class GridListImageItem
- * @memberof moonstone/internal/GridListImageItem
+ * @memberof moonstone/UiGridListImageItem
  * @ui
- * @private
+ * @public
  */
 const GridListImageItem = kind({
 	name: 'internal:GridListImageItem',
 
-	propTypes: /** @lends moonstone/internal/GridListImageItem.GridListImageItem.prototype */ {
+	propTypes: /** @lends moonstone/UiGridListImageItem.GridListImageItem.prototype */ {
 		/**
 		 * The primary caption to be displayed with the image.
 		 *
@@ -81,7 +80,7 @@ const GridListImageItem = kind({
 		imageComponent: EnactPropTypes.component,
 
 		/**
-		 * Placeholder image used while {@link moonstone/internal/GridListImageItem.GridListImageItem#source|source}
+		 * Placeholder image used while {@link moonstone/UiGridListImageItem.GridListImageItem#source|source}
 		 * is loaded.
 		 *
 		 * @type {String}
