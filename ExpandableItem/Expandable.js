@@ -66,7 +66,7 @@ const defaultConfig = {
  * @class Expandable
  * @memberof moonstone/ExpandableItem
  * @mixes ui/Toggleable.Toggleable
- * @mixes moonstone/ui/RadioDecorator.RadioDecorator
+ * @mixes moonstone/UiRadioDecorator.RadioDecorator
  * @mixes ui/Cancelable.Cancelable
  * @hoc
  * @public

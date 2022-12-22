@@ -24,7 +24,7 @@ import {Component} from 'react';
 
 import Scrollable from '../Scrollable';
 import ScrollableNative from '../Scrollable/ScrollableNative';
-import {ScrollerBase as UiScrollerBase} from '../ui/Scroller/UiScrollerBase';
+import {ScrollerBase as UiScrollerBase} from '../UiScroller/UiScrollerBase';
 
 const dataContainerDisabledAttribute = 'data-spotlight-container-disabled';
 
@@ -36,7 +36,7 @@ const dataContainerDisabledAttribute = 'data-spotlight-container-disabled';
  *
  * @class ScrollerBase
  * @memberof moonstone/Scroller
- * @extends moonstone/ui/Scroller.ScrollerBase
+ * @extends moonstone/UiScroller.ScrollerBase
  * @ui
  * @public
  */

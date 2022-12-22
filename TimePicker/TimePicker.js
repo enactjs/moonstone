@@ -214,7 +214,7 @@ const dateTimeConfig = {
  * @class TimePicker
  * @memberof moonstone/TimePicker
  * @mixes ui/Toggleable.Toggleable
- * @mixes moonstone/ui/UiRadioDecorator.UiRadioDecorator
+ * @mixes moonstone/UiRadioDecorator.RadioDecorator
  * @mixes ui/Changeable.Changeable
  * @ui
  * @public

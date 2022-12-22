@@ -3,9 +3,9 @@
  *
  * This is not intended to be used directly, but should be extended by a component that will
  * customize this component's appearance by supplying an
- * {@link moonstone/ui/ToggleItem.ToggleItemBase#iconComponent|iconComponent prop}.
+ * {@link moonstone/UiToggleItem.ToggleItemBase#iconComponent|iconComponent prop}.
  *
- * @module moonstone/ui/ToggleItem
+ * @module moonstone/UiToggleItem
  * @exports ToggleItem
  * @exports ToggleItemBase
  * @exports ToggleItemDecorator
@@ -22,7 +22,7 @@ import ForwardRef from '@enact/ui/ForwardRef';
 import Toggleable from '@enact/ui/Toggleable';
 import Touchable from '@enact/ui/Touchable';
 
-import componentCss from './ToggleItem.module.less';
+import componentCss from './UiToggleItem.module.less';
 
 // eslint-disable-next-line enact/display-name,enact/prop-types
 const iconCreator = (position) => ({disabled, icon, iconComponent, iconPosition, itemIcon, itemIconPosition, selected}) => {
@@ -66,14 +66,14 @@ const iconCreator = (position) => ({disabled, icon, iconComponent, iconPosition,
  * A minimally styled toggle item without any behavior, ripe for extension.
  *
  * @class ToggleItemBase
- * @memberof moonstone/ui/ToggleItem
+ * @memberof moonstone/UiToggleItem
  * @ui
  * @public
  */
 const ToggleItemBase = kind({
 	name: 'ui:ToggleItem',
 
-	propTypes: /** @lends moonstone/ui/ToggleItem.ToggleItemBase.prototype */ {
+	propTypes: /** @lends moonstone/UiToggleItem.ToggleItemBase.prototype */ {
 		/**
 		 * The main content of the toggle item.
 		 *
@@ -112,7 +112,7 @@ const ToggleItemBase = kind({
 		/**
 		 * Called with a reference to the root component.
 		 *
-		 * When using {@link moonstone/ToggleItem.ToggleItem}, the `ref` prop is forwarded to this
+		 * When using {@link moonstone/UiToggleItem.ToggleItem}, the `ref` prop is forwarded to this
 		 * component as `componentRef`.
 		 *
 		 * @type {Object|Function}
@@ -145,7 +145,7 @@ const ToggleItemBase = kind({
 		/**
 		 * An optional prop that lets you override the icon of the `iconComponent` component.
 		 *
-		 * This accepts any string that the {@link moonstone/Icon.Icon|Icon} component supports, provided
+		 * This accepts any string that the {@link ui/Icon.Icon|Icon} component supports, provided
 		 * the recommendations of `iconComponent` are followed.
 		 *
 		 * @type {String|Object}
@@ -272,7 +272,7 @@ const ToggleItemBase = kind({
  * Adds interactive functionality to `ToggleItemBase`.
  *
  * @class ToggleItemDecorator
- * @memberof moonstone/ui/ToggleItem
+ * @memberof moonstone/UiToggleItem
  * @mixes ui/ForwardRef.ForwardRef
  * @mixes ui/Touchable.Touchable
  * @mixes ui/Toggleable.Toggleable
@@ -294,9 +294,9 @@ const ToggleItemDecorator = compose(
  * ```
  *
  * @class ToggleItem
- * @memberof moonstone/ui/ToggleItem
- * @extends moonstone/ui/ToggleItem.ToggleItemBase
- * @mixes moonstone/ui/ToggleItem.ToggleItemDecorator
+ * @memberof moonstone/UiToggleItem
+ * @extends moonstone/UiToggleItem.ToggleItemBase
+ * @mixes moonstone/UiToggleItem.ToggleItemDecorator
  * @omit componentRef
  * @ui
  * @public

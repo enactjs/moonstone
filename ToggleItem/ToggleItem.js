@@ -33,7 +33,7 @@ import compose from 'ramda/src/compose';
 import {MarqueeDecorator} from '../Marquee';
 import Skinnable from '../Skinnable';
 import {SlotItemBase} from '../SlotItem';
-import {ToggleItemBase as UiToggleItem} from '../ui/ToggleItem';
+import {ToggleItemBase as UiToggleItem} from '../UiToggleItem';
 
 import componentCss from './ToggleItem.module.less';
 
@@ -135,7 +135,7 @@ const defaultConfig = {
  *
  * @class ToggleItemDecorator
  * @memberof moonstone/ToggleItem
- * @mixes moonstone/ui/ToggleItem.ToggleItemDecorator
+ * @mixes moonstone/UiToggleItem.ToggleItemDecorator
  * @mixes spotlight/Spottable.Spottable
  * @mixes moonstone/Marquee.MarqueeDecorator
  * @mixes moonstone/Skinnable.Skinnable

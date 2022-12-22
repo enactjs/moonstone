@@ -5,8 +5,8 @@ import {forwardRef} from 'react';
 
 import Icon from '@enact/ui/Icon';
 import Item from '@enact/ui/Item';
-import SlotItem from '../../SlotItem';
-import ToggleItem, {ToggleItemBase} from '../ToggleItem';
+import SlotItem from '../../UiSlotItem';
+import ToggleItem, {ToggleItemBase} from '../UiToggleItem';
 
 const SlottedItem = forwardRef((props, ref) => (
 	<SlotItem {...props} component={Item} ref={ref} />
