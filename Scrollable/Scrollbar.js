@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {createRef, Component} from 'react';
 
 import Skinnable from '../Skinnable';
-import {ScrollbarBase as UiScrollbarBase} from '../UiScrollable/Scrollbar';
+import {ScrollbarBase as UiScrollbarBase} from '../UiScrollable/UiScrollbar';
 
 import ScrollButtons from './ScrollButtons';
 import ScrollThumb from './ScrollThumb';
