@@ -31,7 +31,7 @@ import compose from 'ramda/src/compose';
 import {ItemBase} from '../Item';
 import {MarqueeDecorator} from '../Marquee';
 import Skinnable from '../Skinnable';
-import {SlotItemBase as UiSlotItemBase, SlotItemDecorator as UiSlotItemDecorator} from '../ui/SlotItem';
+import {SlotItemBase as UiSlotItemBase, SlotItemDecorator as UiSlotItemDecorator} from '../UiSlotItem';
 
 import componentCss from './SlotItem.module.less';
 

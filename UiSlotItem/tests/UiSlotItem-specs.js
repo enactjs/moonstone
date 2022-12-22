@@ -1,7 +1,7 @@
 import {render} from '@testing-library/react';
 import {forwardRef} from 'react';
 
-import SlotItem from '../SlotItem';
+import SlotItem from '../UiSlotItem';
 
 describe('SlotItem', () => {
 	test('should return a DOM node reference for `componentRef`', () => {

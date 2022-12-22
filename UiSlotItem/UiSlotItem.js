@@ -4,7 +4,7 @@
  * Using the usual `children` prop, as well as two additional props: `slotBefore`, and `slotAfter`.
  * It is able to be customized by a theme or application.
  *
- * @module moonstone/ui/SlotItem
+ * @module moonstone/UiSlotItem
  * @exports SlotItem
  * @exports SlotItemBase
  * @exports SlotItemDecorator
@@ -17,20 +17,20 @@ import Slottable from '@enact/ui/Slottable';
 import PropTypes from 'prop-types';
 import compose from 'ramda/src/compose';
 
-import componentCss from './SlotItem.module.less';
+import componentCss from './UiSlotItem.module.less';
 
 /**
  * An ui-styled `SlotItem` without any behavior.
  *
  * @class SlotItemBase
- * @memberof moonstone/ui/SlotItem
+ * @memberof moonstone/UiSlotItem
  * @ui
  * @public
  */
 const SlotItemBase = kind({
 	name: 'SlotItem',
 
-	propTypes: /** @lends moonstone/ui/SlotItem.SlotItemBase.prototype */ {
+	propTypes: /** @lends moonstone/UiSlotItem.SlotItemBase.prototype */ {
 		/**
 		 * The type of component to use to render the item.
 		 *
@@ -68,7 +68,7 @@ const SlotItemBase = kind({
 		/**
 		 * Called with a reference to the root component.
 		 *
-		 * When using {@link moonstone/SlotItem.SlotItem}, the `ref` prop is forwarded to this component
+		 * When using {@link moonstone/UiSlotItem.SlotItem}, the `ref` prop is forwarded to this component
 		 * as `componentRef`.
 		 *
 		 * @type {Object|Function}
@@ -180,10 +180,10 @@ const SlotItemBase = kind({
 });
 
 /**
- * An ui-specific higher-order component (HOC) with slot behaviors to apply to {@link moonstone/SlotItem.SlotItemBase|SlotItem}.
+ * An ui-specific higher-order component (HOC) with slot behaviors to apply to {@link moonstone/UiSlotItem.SlotItemBase|SlotItem}.
  *
  * @class SlotItemDecorator
- * @memberof moonstone/ui/SlotItem
+ * @memberof moonstone/UiSlotItem
  * @mixes ui/Slottable.Slottable
  * @mixes ui/ForwardRef.ForwardRef
  * @hoc
@@ -210,9 +210,9 @@ const SlotItemDecorator = compose(
  * ```
  *
  * @class SlotItem
- * @memberof moonstone/ui/SlotItem
- * @extends moonstone/ui/SlotItem.SlotItemBase
- * @mixes moonstone/ui/SlotItem.SlotItemDecorator
+ * @memberof moonstone/UiSlotItem
+ * @extends moonstone/UiSlotItem.SlotItemBase
+ * @mixes moonstone/UiSlotItem.SlotItemDecorator
  * @omit componentRef
  * @ui
  * @public
