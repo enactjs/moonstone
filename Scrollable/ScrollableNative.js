@@ -14,7 +14,7 @@ import {createRef, Component} from 'react';
 
 import $L from '../internal/$L';
 import {SharedState} from '../internal/SharedStateDecorator';
-import {constants, ScrollableBaseNative as UiScrollableBaseNative} from '../ui/Scrollable/ScrollableNative';
+import {constants, ScrollableBaseNative as UiScrollableBaseNative} from '../UiScrollable/UiScrollableNative';
 
 import Scrollbar from './Scrollbar';
 import Skinnable from '../Skinnable';

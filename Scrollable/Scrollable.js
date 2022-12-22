@@ -22,7 +22,7 @@ import {createRef, Component} from 'react';
 
 import $L from '../internal/$L';
 import {SharedState} from '../internal/SharedStateDecorator';
-import {constants, ScrollableBase as UiScrollableBase} from '../ui/Scrollable';
+import {constants, ScrollableBase as UiScrollableBase} from '../UiScrollable';
 
 import Scrollbar from './Scrollbar';
 import Skinnable from '../Skinnable';

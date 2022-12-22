@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import {Component} from 'react';
 
-import {ScrollThumb as UiScrollThumb} from '../ui/Scrollable/Scrollbar';
+import {ScrollThumb as UiScrollThumb} from '../UiScrollable/Scrollbar';
 
 const nop = () => {};
 
