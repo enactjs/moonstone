@@ -34,7 +34,7 @@ const toTime = (date) => {
  * @class DateTimeDecorator
  * @memberof moonstone/internal/DateTimeDecorator
  * @mixes ui/Toggleable.Toggleable
- * @mixes moonstone/ui/RadioDecorator.RadioDecorator
+ * @mixes moonstone/UiRadioDecorator.RadioDecorator
  * @mixes ui/Changeable.Changeable
  * @hoc
  * @private

@@ -6,12 +6,12 @@ The following is a curated list of changes in the Enact moonstone module, newest
 
 ### Added
 
-- `UiIconButton` component, transferred from `ui/IconButton`
-- `moonstone/ui/RadioDecorator` component, transferred from `ui/RadioDecorator`
-- `moonstone/ui/Scroller.UiScrollerBase` component, transferred from `ui/Scroller.UiScrollerBase`
-- `moonstone/ui/SlotItem` component, transferred from `ui/SlotItem`
-- `moonstone/ui/ToggleItem` component, transferred from `ui/ToggleItem`
-- `moonstone/ui/VirtualList.UiVirtualListBase` component, transferred from `ui/VirtualList.UiVirtualListBase`
+- `moonstone/UiIconButton` component, transferred from `ui/IconButton`
+- `moonstone/UiRadioDecorator` component, transferred from `ui/RadioDecorator`
+- `moonstone/UiScroller.UiScrollerBase` component, transferred from `ui/Scroller.UiScrollerBase`
+- `moonstone/UiSlotItem` component, transferred from `ui/SlotItem`
+- `moonstone/UiToggleItem` component, transferred from `ui/ToggleItem`
+- `moonstone/UiVirtualList.UiVirtualListBase` component, transferred from `ui/VirtualList.UiVirtualListBase`
 
 ## [4.5.2] - 2022-12-14
 

@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import {platform} from '@enact/core/platform';
+import {platform} from '../enact/packages/core/platform';
 import PropTypes from 'prop-types';
 import {createRef, Component} from 'react';
 
@@ -11,14 +11,14 @@ import css from './UiScroller.module.less';
  * In most circumstances, you will want to use the Scrollable version.
  *
  * @class ScrollerBase
- * @memberof moonstone/ui/Scroller
+ * @memberof moonstone/UiScroller
  * @ui
  * @public
  */
 class ScrollerBase extends Component {
 	static displayName = 'ui:ScrollerBase';
 
-	static propTypes = /** @lends moonstone/ui/Scroller.ScrollerBase.prototype */ {
+	static propTypes = /** @lends moonstone/UiScroller.ScrollerBase.prototype */ {
 		children: PropTypes.node.isRequired,
 
 		/**
@@ -217,7 +217,7 @@ class ScrollerBase extends Component {
  * ```
  *
  * @name cbScrollTo
- * @memberof moonstone/ui/Scroller.ScrollerBase.prototype
+ * @memberof moonstone/UiScroller.ScrollerBase.prototype
  * @type {Function}
  * @public
  */
@@ -231,7 +231,7 @@ class ScrollerBase extends Component {
  * * `'hidden'`.
  *
  * @name horizontalScrollbar
- * @memberof moonstone/ui/Scroller.ScrollerBase.prototype
+ * @memberof moonstone/UiScroller.ScrollerBase.prototype
  * @type {String}
  * @default 'auto'
  * @public
@@ -241,7 +241,7 @@ class ScrollerBase extends Component {
  * Prevents scroll by wheeling on the scroller.
  *
  * @name noScrollByWheel
- * @memberof moonstone/ui/Scroller.ScrollerBase.prototype
+ * @memberof moonstone/UiScroller.ScrollerBase.prototype
  * @type {Boolean}
  * @default false
  * @public
@@ -255,7 +255,7 @@ class ScrollerBase extends Component {
  * Use `onScrollStart` or `onScrollStop` instead.
  *
  * @name onScroll
- * @memberof moonstone/ui/Scroller.ScrollerBase.prototype
+ * @memberof moonstone/UiScroller.ScrollerBase.prototype
  * @type {Function}
  * @param {Object} event
  * @param {Number} event.scrollLeft Scroll left value.
@@ -285,7 +285,7 @@ class ScrollerBase extends Component {
  * ```
  *
  * @name onScrollStart
- * @memberof moonstone/ui/Scroller.ScrollerBase.prototype
+ * @memberof moonstone/UiScroller.ScrollerBase.prototype
  * @type {Function}
  * @param {Object} event
  * @param {Number} event.scrollLeft Scroll left value.
@@ -315,7 +315,7 @@ class ScrollerBase extends Component {
  * ```
  *
  * @name onScrollStop
- * @memberof moonstone/ui/Scroller.ScrollerBase.prototype
+ * @memberof moonstone/UiScroller.ScrollerBase.prototype
  * @type {Function}
  * @param {Object} event
  * @param {Number} event.scrollLeft Scroll left value.
@@ -333,7 +333,7 @@ class ScrollerBase extends Component {
  * * `'hidden'`.
  *
  * @name verticalScrollbar
- * @memberof moonstone/ui/Scroller.ScrollerBase.prototype
+ * @memberof moonstone/UiScroller.ScrollerBase.prototype
  * @type {String}
  * @default 'auto'
  * @public

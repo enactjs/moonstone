@@ -40,7 +40,7 @@ import componentCss from './SlotItem.module.less';
  *
  * @class SlotItemBase
  * @memberof moonstone/SlotItem
- * @extends moonstone/ui/SlotItem.SlotItemBase
+ * @extends moonstone/UiSlotItem.SlotItemBase
  * @omit component
  * @mixes moonstone/Item.ItemBase
  * @ui
@@ -85,7 +85,7 @@ const SlotItemBase = kind({
  *
  * @class SlotItemDecorator
  * @memberof moonstone/SlotItem
- * @mixes moonstone/ui/SlotItem.SlotItemDecorator
+ * @mixes moonstone/UiSlotItem.SlotItemDecorator
  * @mixes ui/Toggleable.Toggleable
  * @mixes spotlight/Spottable.Spottable
  * @mixes moonstone/Marquee.MarqueeDecorator
