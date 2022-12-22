@@ -2,7 +2,7 @@ import Cancelable from '@enact/ui/Cancelable';
 import hoc from '@enact/core/hoc';
 import Toggleable from '@enact/ui/Toggleable';
 
-import RadioDecorator from '../ui/RadioDecorator';
+import RadioDecorator from '../UiRadioDecorator';
 
 import ExpandableSpotlightDecorator from './ExpandableSpotlightDecorator';
 
