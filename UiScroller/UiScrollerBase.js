@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import {platform} from '../enact/packages/core/platform';
+import {platform} from '@enact/core/platform';
 import PropTypes from 'prop-types';
 import {createRef, Component} from 'react';
 
