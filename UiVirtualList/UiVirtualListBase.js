@@ -1,3 +1,10 @@
+/**
+ * Unstyled virtual list components and behaviors to be customized by a theme or application.
+ *
+ * @module moonstone/UiVirtualList
+ * @exports VirtualListBase
+ */
+
 import classNames from 'classnames';
 import {forward} from '@enact/core/handle';
 import {platform} from '@enact/core/platform';
