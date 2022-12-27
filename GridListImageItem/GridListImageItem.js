@@ -42,6 +42,7 @@ const
  *
  * @class GridListImageItemBase
  * @memberof moonstone/GridListImageItem
+ * @extends moonstone/UiGridListImageItem.GridListImageItem
  * @ui
  * @public
  */

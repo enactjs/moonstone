@@ -24,7 +24,7 @@ import componentCss from './UiGridListImageItem.module.less';
  * @public
  */
 const GridListImageItem = kind({
-	name: 'internal:GridListImageItem',
+	name: 'ui:GridListImageItem',
 
 	propTypes: /** @lends moonstone/UiGridListImageItem.GridListImageItem.prototype */ {
 		/**
