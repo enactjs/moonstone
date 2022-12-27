@@ -1,3 +1,10 @@
+/**
+ * Unstyled scroller components and behaviors to be customized by a theme or application.
+ *
+ * @module moonstone/UiScroller
+ * @exports ScrollerBase
+ */
+
 import classNames from 'classnames';
 import {platform} from '@enact/core/platform';
 import PropTypes from 'prop-types';
