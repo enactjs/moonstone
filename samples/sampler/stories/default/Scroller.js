@@ -1,10 +1,10 @@
 import {ScrollableBase} from '@enact/moonstone/Scrollable';
 import Scroller from '@enact/moonstone/Scroller';
+import {ScrollableBase as UiScrollableBase} from '@enact/moonstone/UiScrollable';
 import {mergeComponentMetadata} from '@enact/storybook-utils';
 import {action} from '@enact/storybook-utils/addons/actions';
 import {boolean, select} from '@enact/storybook-utils/addons/controls';
 import ri from '@enact/ui/resolution';
-import {ScrollableBase as UiScrollableBase} from '@enact/ui/Scrollable';
 
 const
 	prop = {

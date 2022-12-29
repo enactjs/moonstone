@@ -127,7 +127,7 @@ const dateTimeConfig = {
  * @memberof moonstone/DatePicker
  * @extends moonstone/DatePicker.DatePickerBase
  * @mixes ui/Toggleable.Toggleable
- * @mixes ui/RadioDecorator.RadioDecorator
+ * @mixes moonstone/UiRadioDecorator.RadioDecorator
  * @mixes ui/Changeable.Changeable
  * @omit day
  * @omit maxDays

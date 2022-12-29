@@ -4,7 +4,6 @@ import Spotlight, {getDirection} from '@enact/spotlight';
 import Accelerator from '@enact/spotlight/Accelerator';
 import Pause from '@enact/spotlight/Pause';
 import {Spottable} from '@enact/spotlight/Spottable';
-import {VirtualListBase as UiVirtualListBase, VirtualListBaseNative as UiVirtualListBaseNative} from '@enact/ui/VirtualList';
 import PropTypes from 'prop-types';
 import clamp from 'ramda/src/clamp';
 import {Fragment, Component} from 'react';
@@ -12,6 +11,7 @@ import warning from 'warning';
 
 import {Scrollable, dataIndexAttribute} from '../Scrollable';
 import ScrollableNative from '../Scrollable/ScrollableNative';
+import {VirtualListBase as UiVirtualListBase, VirtualListBaseNative as UiVirtualListBaseNative} from '../UiVirtualList';
 
 const SpotlightAccelerator = new Accelerator();
 const SpotlightPlaceholder = Spottable('div');
@@ -88,7 +88,7 @@ const VirtualListBaseFactory = (type) => {
 
 			/**
 			 * Callback method of scrollTo.
-			 * Normally, {@link ui/Scrollable.Scrollable|Scrollable} should set this value.
+			 * Normally, {@link moonstone/UiScrollable.Scrollable|Scrollable} should set this value.
 			 *
 			 * @type {Function}
 			 * @private
@@ -191,7 +191,7 @@ const VirtualListBaseFactory = (type) => {
 
 			/**
 			 * `true` if rtl, `false` if ltr.
-			 * Normally, {@link ui/Scrollable.Scrollable|Scrollable} should set this value.
+			 * Normally, {@link moonstone/UiScrollable.Scrollable|Scrollable} should set this value.
 			 *
 			 * @type {Boolean}
 			 * @private
@@ -208,7 +208,7 @@ const VirtualListBaseFactory = (type) => {
 			spacing: PropTypes.number,
 
 			/**
-			 * Spotlight Id. It would be the same with {@link ui/Scrollable.Scrollable|Scrollable}'s.
+			 * Spotlight Id. It would be the same with {@link moonstone/UiScrollable.Scrollable|Scrollable}'s.
 			 *
 			 * @type {String}
 			 * @private
@@ -864,7 +864,7 @@ const VirtualListBaseFactory = (type) => {
  *
  * @class VirtualListBase
  * @memberof moonstone/VirtualList
- * @extends ui/VirtualList.VirtualListBase
+ * @extends moonstone/UiVirtualList.VirtualListBase
  * @ui
  * @public
  */
@@ -877,7 +877,7 @@ VirtualListBase.displayName = 'VirtualListBase';
  *
  * @class VirtualListBaseNative
  * @memberof moonstone/VirtualList
- * @extends ui/VirtualList.VirtualListBaseNative
+ * @extends moonstone/UiVirtualList.VirtualListBaseNative
  * @ui
  * @private
  */

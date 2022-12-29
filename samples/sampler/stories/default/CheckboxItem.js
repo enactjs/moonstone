@@ -2,10 +2,10 @@ import CheckboxItem from '@enact/moonstone/CheckboxItem';
 import Icon from '@enact/moonstone/Icon';
 import Item, {ItemBase} from '@enact/moonstone/Item';
 import ToggleItem from '@enact/moonstone/ToggleItem';
+import UiToggleItem, {ToggleItemBase as UiToggleItemBase} from '@enact/moonstone/UiToggleItem';
 import {mergeComponentMetadata, nullify} from '@enact/storybook-utils';
 import {action} from '@enact/storybook-utils/addons/actions';
 import {boolean, select, text} from '@enact/storybook-utils/addons/controls';
-import UiToggleItem, {ToggleItemBase as UiToggleItemBase} from '@enact/ui/ToggleItem';
 import UiItem from '@enact/ui/Item';
 
 import {listIcons} from '../helper/icons';
