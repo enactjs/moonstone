@@ -38,10 +38,11 @@ const SlotItemBase = kind({
 		 * to `SlotItem`. A derivative of {@link ui/Item.Item|Item} is recommended.
 		 *
 		 * @type {String|Component}
+		 * @default 'div'
 		 * @required
 		 * @public
 		 */
-		component: EnactPropTypes.renderable.isRequired,
+		component: EnactPropTypes.component.isRequired,
 
 		/**
 		 * Controls the visibility state of the slots.
@@ -137,6 +138,7 @@ const SlotItemBase = kind({
 	},
 
 	defaultProps: {
+		component: 'div',
 		inline: false,
 		layout: 'flex'
 	},

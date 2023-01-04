@@ -91,10 +91,11 @@ const ToggleItemBase = kind({
 		 * derivative: {@link moonstone/UiSlotItem.SlotItem|SlotItem}
 		 *
 		 * @type {String|Component}
+		 * @default 'div'
 		 * @required
 		 * @public
 		 */
-		component: EnactPropTypes.renderable.isRequired,
+		component: EnactPropTypes.component.isRequired,
 
 		/**
 		 * The `Icon` to render in this item.
@@ -229,6 +230,7 @@ const ToggleItemBase = kind({
 	},
 
 	defaultProps: {
+		component: 'div',
 		disabled: false,
 		iconPosition: 'before',
 		itemIconPosition: 'afterChildren',
