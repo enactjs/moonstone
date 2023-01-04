@@ -37,11 +37,11 @@ const SlotItemBase = kind({
 		 * This component will receive the `inline` prop and any additional unhandled props provided
 		 * to `SlotItem`. A derivative of {@link ui/Item.Item|Item} is recommended.
 		 *
-		 * @type {Component}
+		 * @type {String|Component}
 		 * @required
 		 * @public
 		 */
-		component: EnactPropTypes.component.isRequired,
+		component: EnactPropTypes.renderable.isRequired,
 
 		/**
 		 * Controls the visibility state of the slots.

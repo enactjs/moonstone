@@ -90,11 +90,11 @@ const ToggleItemBase = kind({
 		 * component and not a simple HTML DOM node. Recommended component or themed
 		 * derivative: {@link moonstone/UiSlotItem.SlotItem|SlotItem}
 		 *
-		 * @type {Component}
+		 * @type {String|Component}
 		 * @required
 		 * @public
 		 */
-		component: EnactPropTypes.component.isRequired,
+		component: EnactPropTypes.renderable.isRequired,
 
 		/**
 		 * The `Icon` to render in this item.
