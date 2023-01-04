@@ -1436,14 +1436,16 @@ class Scrollable extends Component {
 					>
 						<div className={componentCss.container}>
 							<ChildWrapper {...childWrapperProps}>
-								{childRenderer({
-									...childComponentProps,
-									cbScrollTo: scrollTo,
-									className: componentCss.scrollableFill,
-									initChildRef,
-									onScroll: handleScroll,
-									rtl
-								})}
+								{typeof childRenderer === 'function'
+									? childRenderer({
+										...childComponentProps,
+										cbScrollTo: scrollTo,
+										className: componentCss.scrollableFill,
+										initChildRef,
+										onScroll: handleScroll,
+										rtl
+									}) : null
+								}
 							</ChildWrapper>
 							{isVerticalScrollbarVisible ? <Scrollbar {...verticalScrollbarProps} disabled={!isVerticalScrollbarVisible} /> : null}
 						</div>
