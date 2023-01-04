@@ -1361,23 +1361,26 @@ class ScrollableBase extends Component {
 
 		return (
 			<ResizeContext.Provider value={this.resizeRegistry.register}>
-				{containerRenderer({
-					childComponentProps: rest,
-					childWrapper,
-					childWrapperProps,
-					className: scrollableClasses,
-					componentCss: css,
-					containerRef: this.containerRef,
-					handleScroll: this.handleScroll,
-					horizontalScrollbarProps: this.horizontalScrollbarProps,
-					initChildRef: this.initChildRef,
-					isHorizontalScrollbarVisible,
-					isVerticalScrollbarVisible,
-					rtl,
-					scrollTo: this.scrollTo,
-					style,
-					verticalScrollbarProps: this.verticalScrollbarProps
-				})}
+				{typeof containerRenderer === 'function'
+					? containerRenderer({
+						childComponentProps: rest,
+						childWrapper,
+						childWrapperProps,
+						className: scrollableClasses,
+						componentCss: css,
+						containerRef: this.containerRef,
+						handleScroll: this.handleScroll,
+						horizontalScrollbarProps: this.horizontalScrollbarProps,
+						initChildRef: this.initChildRef,
+						isHorizontalScrollbarVisible,
+						isVerticalScrollbarVisible,
+						rtl,
+						scrollTo: this.scrollTo,
+						style,
+						verticalScrollbarProps: this.verticalScrollbarProps
+					})
+					: null
+				}
 			</ResizeContext.Provider>
 		);
 	}

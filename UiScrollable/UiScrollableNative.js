@@ -1366,22 +1366,25 @@ class ScrollableBaseNative extends Component {
 
 		return (
 			<ResizeContext.Provider value={this.resizeRegistry.register}>
-				{containerRenderer({
-					childComponentProps: rest,
-					childWrapper,
-					childWrapperProps,
-					className: scrollableClasses,
-					componentCss: css,
-					containerRef: this.containerRef,
-					horizontalScrollbarProps: this.horizontalScrollbarProps,
-					initChildRef: this.initChildRef,
-					isHorizontalScrollbarVisible,
-					isVerticalScrollbarVisible,
-					rtl,
-					scrollTo: this.scrollTo,
-					style,
-					verticalScrollbarProps: this.verticalScrollbarProps
-				})}
+				{typeof containerRenderer === 'function'
+					? containerRenderer({
+						childComponentProps: rest,
+						childWrapper,
+						childWrapperProps,
+						className: scrollableClasses,
+						componentCss: css,
+						containerRef: this.containerRef,
+						horizontalScrollbarProps: this.horizontalScrollbarProps,
+						initChildRef: this.initChildRef,
+						isHorizontalScrollbarVisible,
+						isVerticalScrollbarVisible,
+						rtl,
+						scrollTo: this.scrollTo,
+						style,
+						verticalScrollbarProps: this.verticalScrollbarProps
+					})
+					: null
+				}
 			</ResizeContext.Provider>
 		);
 	}
@@ -1438,13 +1441,16 @@ class ScrollableNative extends Component {
 					>
 						<div className={componentCss.container}>
 							<ChildWrapper {...childWrapperProps}>
-								{childRenderer({
-									...childComponentProps,
-									cbScrollTo: scrollTo,
-									className: componentCss.scrollableFill,
-									initChildRef,
-									rtl
-								})}
+								{typeof childRenderer === 'function'
+									? childRenderer({
+										...childComponentProps,
+										cbScrollTo: scrollTo,
+										className: componentCss.scrollableFill,
+										initChildRef,
+										rtl
+									})
+									: null
+								}
 							</ChildWrapper>
 							{isVerticalScrollbarVisible ? <Scrollbar {...verticalScrollbarProps} disabled={!isVerticalScrollbarVisible} /> : null}
 						</div>
