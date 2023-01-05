@@ -1,6 +1,7 @@
-import {ScrollThumb as UiScrollThumb} from '@enact/ui/Scrollable/Scrollbar';
 import PropTypes from 'prop-types';
 import {Component} from 'react';
+
+import {ScrollThumb as UiScrollThumb} from '../UiScrollable/UiScrollbar';
 
 const nop = () => {};
 
@@ -9,7 +10,7 @@ const nop = () => {};
  *
  * @class ScrollThumb
  * @memberof moonstone/Scrollable
- * @extends ui/Scrollable/ScrollThumb
+ * @extends moonstone/UiScrollable/ScrollThumb
  * @ui
  * @private
  */

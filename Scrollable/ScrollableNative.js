@@ -4,7 +4,6 @@ import platform from '@enact/core/platform';
 import {onWindowReady} from '@enact/core/snapshot';
 import {clamp, Job} from '@enact/core/util';
 import {I18nContextDecorator} from '@enact/i18n/I18nDecorator';
-import {constants, ScrollableBaseNative as UiScrollableBaseNative} from '@enact/ui/Scrollable/ScrollableNative';
 import Spotlight, {getDirection} from '@enact/spotlight';
 import {spottableClass} from '@enact/spotlight/Spottable';
 import {getTargetByDirectionFromElement, getTargetByDirectionFromPosition} from '@enact/spotlight/src/target';
@@ -15,6 +14,7 @@ import {createRef, Component} from 'react';
 
 import $L from '../internal/$L';
 import {SharedState} from '../internal/SharedStateDecorator';
+import {constants, ScrollableBaseNative as UiScrollableBaseNative} from '../UiScrollable/UiScrollableNative';
 
 import Scrollbar from './Scrollbar';
 import Skinnable from '../Skinnable';
@@ -116,7 +116,7 @@ const getTargetInViewByDirectionFromPosition = (direction, position, container) 
  *
  * @class ScrollableBaseNative
  * @memberof moonstone/ScrollableNative
- * @extends ui/Scrollable.ScrollableBaseNative
+ * @extends moonstone/UiScrollable.ScrollableBaseNative
  * @ui
  * @private
  */

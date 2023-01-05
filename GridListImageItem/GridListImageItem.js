@@ -20,10 +20,10 @@ import PropTypes from 'prop-types';
 import compose from 'ramda/src/compose';
 
 import Icon from '../Icon';
-import GridListImageItemCore from '../internal/GridListImageItem';
 import {ImageBase as Image} from '../Image';
 import {Marquee, MarqueeController} from '../Marquee';
 import Skinnable from '../Skinnable';
+import GridListImageItemCore from '../UiGridListImageItem';
 
 import componentCss from './GridListImageItem.module.less';
 
@@ -42,6 +42,7 @@ const
  *
  * @class GridListImageItemBase
  * @memberof moonstone/GridListImageItem
+ * @extends moonstone/UiGridListImageItem.GridListImageItem
  * @ui
  * @public
  */

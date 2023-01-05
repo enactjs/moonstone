@@ -1,11 +1,11 @@
 import Item from '@enact/moonstone/Item';
+import {ScrollableBase as UiScrollableBase} from '@enact/moonstone/UiScrollable';
+import {VirtualListBase as UiVirtualListBase} from '@enact/moonstone/UiVirtualList';
 import VirtualList, {VirtualListBase} from '@enact/moonstone/VirtualList';
 import {mergeComponentMetadata} from '@enact/storybook-utils';
 import {action} from '@enact/storybook-utils/addons/actions';
 import {boolean, number, select} from '@enact/storybook-utils/addons/controls';
 import ri from '@enact/ui/resolution';
-import {ScrollableBase as UiScrollableBase} from '@enact/ui/Scrollable';
-import {VirtualListBase as UiVirtualListBase} from '@enact/ui/VirtualList';
 
 const
 	defaultDataSize = 1000,
