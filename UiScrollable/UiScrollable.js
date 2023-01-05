@@ -1361,8 +1361,8 @@ class ScrollableBase extends Component {
 
 		return (
 			<ResizeContext.Provider value={this.resizeRegistry.register}>
-				{typeof containerRenderer === 'function'
-					? containerRenderer({
+				{typeof containerRenderer === 'function' ?
+					containerRenderer({
 						childComponentProps: rest,
 						childWrapper,
 						childWrapperProps,
@@ -1378,8 +1378,7 @@ class ScrollableBase extends Component {
 						scrollTo: this.scrollTo,
 						style,
 						verticalScrollbarProps: this.verticalScrollbarProps
-					})
-					: null
+					}) : null
 				}
 			</ResizeContext.Provider>
 		);
@@ -1439,8 +1438,8 @@ class Scrollable extends Component {
 					>
 						<div className={componentCss.container}>
 							<ChildWrapper {...childWrapperProps}>
-								{typeof childRenderer === 'function'
-									? childRenderer({
+								{typeof childRenderer === 'function' ?
+									childRenderer({
 										...childComponentProps,
 										cbScrollTo: scrollTo,
 										className: componentCss.scrollableFill,

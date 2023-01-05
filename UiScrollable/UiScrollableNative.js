@@ -1366,8 +1366,8 @@ class ScrollableBaseNative extends Component {
 
 		return (
 			<ResizeContext.Provider value={this.resizeRegistry.register}>
-				{typeof containerRenderer === 'function'
-					? containerRenderer({
+				{typeof containerRenderer === 'function' ?
+					containerRenderer({
 						childComponentProps: rest,
 						childWrapper,
 						childWrapperProps,
@@ -1382,8 +1382,7 @@ class ScrollableBaseNative extends Component {
 						scrollTo: this.scrollTo,
 						style,
 						verticalScrollbarProps: this.verticalScrollbarProps
-					})
-					: null
+					}) : null
 				}
 			</ResizeContext.Provider>
 		);
@@ -1441,15 +1440,14 @@ class ScrollableNative extends Component {
 					>
 						<div className={componentCss.container}>
 							<ChildWrapper {...childWrapperProps}>
-								{typeof childRenderer === 'function'
-									? childRenderer({
+								{typeof childRenderer === 'function' ?
+									childRenderer({
 										...childComponentProps,
 										cbScrollTo: scrollTo,
 										className: componentCss.scrollableFill,
 										initChildRef,
 										rtl
-									})
-									: null
+									}) : null
 								}
 							</ChildWrapper>
 							{isVerticalScrollbarVisible ? <Scrollbar {...verticalScrollbarProps} disabled={!isVerticalScrollbarVisible} /> : null}
