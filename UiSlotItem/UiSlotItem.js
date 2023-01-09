@@ -37,7 +37,8 @@ const SlotItemBase = kind({
 		 * This component will receive the `inline` prop and any additional unhandled props provided
 		 * to `SlotItem`. A derivative of {@link ui/Item.Item|Item} is recommended.
 		 *
-		 * @type {Component}
+		 * @type {String|Component}
+		 * @default 'div'
 		 * @required
 		 * @public
 		 */
@@ -137,6 +138,7 @@ const SlotItemBase = kind({
 	},
 
 	defaultProps: {
+		component: 'div',
 		inline: false,
 		layout: 'flex'
 	},

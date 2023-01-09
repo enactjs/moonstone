@@ -90,7 +90,8 @@ const ToggleItemBase = kind({
 		 * component and not a simple HTML DOM node. Recommended component or themed
 		 * derivative: {@link moonstone/UiSlotItem.SlotItem|SlotItem}
 		 *
-		 * @type {Component}
+		 * @type {String|Component}
+		 * @default 'div'
 		 * @required
 		 * @public
 		 */
@@ -229,6 +230,7 @@ const ToggleItemBase = kind({
 	},
 
 	defaultProps: {
+		component: 'div',
 		disabled: false,
 		iconPosition: 'before',
 		itemIconPosition: 'afterChildren',
