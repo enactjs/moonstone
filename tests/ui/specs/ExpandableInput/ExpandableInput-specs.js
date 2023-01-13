@@ -7,6 +7,7 @@ describe('ExpandableInput', function () {
 	describe('LTR locale', function () {
 		beforeEach(async function () {
 			await Page.open();
+			await browser.pause(500);
 		});
 
 		describe('default', function () {
