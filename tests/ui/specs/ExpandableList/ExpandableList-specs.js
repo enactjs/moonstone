@@ -6,7 +6,7 @@ describe('ExpandableList', function () {
 
 	beforeEach(async function () {
 		await Page.open();
-		await browser.pause(500);
+		await browser.pause(1000);
 	});
 
 	it('should have focus on first expandable at start', async function () {
