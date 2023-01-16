@@ -6,7 +6,7 @@ describe('ExpandableList', function () {
 
 	beforeEach(async function () {
 		await Page.open();
-		await browser.pause(2000);
+		await Page.components.radioSelect;
 	});
 
 	it('should have focus on first expandable at start', async function () {
