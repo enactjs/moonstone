@@ -75,7 +75,6 @@ class SpotlightMultiplePage extends Page {
 		if (typeof selector !== 'string') {
 			selector = `#${selector.id}`;
 		}
-		console.log(selector, 'here');
 
 		await $(selector).waitForExist({timeout});
 		await this.delay(2000);
