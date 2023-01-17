@@ -71,13 +71,12 @@ class SpotlightMultiplePage extends Page {
 		await super.open('ExpandableList-View', urlExtra);
 	}
 
-	async waitForExist (selector, timeout) {
+	async waitForExist (selector, timeout = 5000) {
 		if (typeof selector !== 'string') {
 			selector = `#${selector.id}`;
 		}
 
 		await $(selector).waitForExist({timeout});
-		await this.delay(2000);
 	}
 }
 
