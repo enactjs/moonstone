@@ -7,7 +7,6 @@ describe('ExpandableInput', function () {
 	describe('LTR locale', function () {
 		beforeEach(async function () {
 			await Page.open();
-			await Page.components.default;
 		});
 
 		describe('default', function () {
@@ -33,45 +32,39 @@ describe('ExpandableInput', function () {
 
 			describe('5-way', function () {
 				it('should open and spot input on select', async function () {
-					await Page.waitTransitionEnd(3000, undefined, async () => {
-						await Page.spotlightSelect();
-					});
+					await Page.spotlightSelect();
+					await browser.pause(500); // needed to pass instead of waitTransitionEnd
 
 					await expectOpen(expandable);
 					expect(await expandable.input.isFocused()).to.be.true();
 				});
 
 				it('should have correct input value', async function () {
-					await Page.waitTransitionEnd(3000, undefined, async () => {
-						await Page.spotlightSelect();
-					});
+					await Page.spotlightSelect();
+					await browser.pause(500); // needed to pass instead of waitTransitionEnd
 
 					await expectOpen(expandable);
 					expect(await expandable.input.getValue()).to.equal('');
 				});
 
 				it('should close when moving up to title', async function () {
-					await Page.waitTransitionEnd(3000, undefined, async () => {
-						await Page.spotlightSelect();
-					});
+					await Page.spotlightSelect();
+					await browser.pause(500); // needed to pass instead of waitTransitionEnd
 
 					await expectOpen(expandable);
-					await Page.waitTransitionEnd(3000, undefined, async () => {
-						await Page.spotlightUp();
-					});
+					await Page.spotlightUp();
+					await browser.pause(500); // needed to pass instead of waitTransitionEnd
 					await expectClosed(expandable);
 					expect(await expandable.title.isFocused()).to.be.true();
 				});
 
 				it('should close and move focus to title on SpotlightDown', async function () {
-					await Page.waitTransitionEnd(3000, undefined, async () => {
-						await Page.spotlightSelect();
-					});
+					await Page.spotlightSelect();
+					await browser.pause(500); // needed to pass instead of waitTransitionEnd
 
 					await expectOpen(expandable);
-					await Page.waitTransitionEnd(3000, undefined, async () => {
-						await Page.spotlightDown();
-					});
+					await Page.spotlightDown();
+					await browser.pause(500); // needed to pass instead of waitTransitionEnd
 					await expectClosed(expandable);
 					expect(await expandable.title.isFocused()).to.be.true();
 				});
@@ -83,56 +76,48 @@ describe('ExpandableInput', function () {
 				});
 
 				it('should close on escape', async function () {
-					await Page.waitTransitionEnd(3000, undefined, async () => {
-						await Page.spotlightSelect();
-					});
+					await Page.spotlightSelect();
+					await browser.pause(500); // needed to pass instead of waitTransitionEnd
 
 					await expectOpen(expandable);
-					await Page.waitTransitionEnd(3000, undefined, () => {
-						Page.escape();
-					});
+					await Page.escape();
+					await browser.pause(500); // needed to pass instead of waitTransitionEnd
 					await expectClosed(expandable);
 				});
 
 				describe('input value', function () {
 					it('should update value text on input and then closed by moving up to title', async function () {
-						await Page.waitTransitionEnd(3000, undefined, async () => {
-							await Page.spotlightSelect();
-						});
+						await Page.spotlightSelect();
+						await browser.pause(500); // needed to pass instead of waitTransitionEnd
 
 						await expectOpen(expandable);
 						await expandable.input.setValue('New Value');
-						await Page.waitTransitionEnd(3000, undefined, async () => {
-							await Page.spotlightUp();
-						});
+						await Page.spotlightUp();
+						await browser.pause(500); // needed to pass instead of waitTransitionEnd
 						await expectClosed(expandable);
 						expect(await expandable.labelText).to.equal('New Value');
 					});
 
 					it('should update value text on input and then closed by SpotlightDown', async function () {
-						await Page.waitTransitionEnd(3000, undefined, async () => {
-							await Page.spotlightSelect();
-						});
+						await Page.spotlightSelect();
+						await browser.pause(500); // needed to pass instead of waitTransitionEnd
 
 						await expectOpen(expandable);
 						await expandable.input.setValue('New Value');
-						await Page.waitTransitionEnd(3000, undefined, async () => {
-							await Page.spotlightDown();
-						});
+						await Page.spotlightDown();
+						await browser.pause(500); // needed to pass instead of waitTransitionEnd
 						await expectClosed(expandable);
 						expect(await expandable.labelText).to.equal('New Value');
 					});
 
 					it('should not update value text on input and then closed by escape key', async function () {
-						await Page.waitTransitionEnd(3000, undefined, async () => {
-							await Page.spotlightSelect();
-						});
+						await Page.spotlightSelect();
+						await browser.pause(500); // needed to pass instead of waitTransitionEnd
 
 						await expectOpen(expandable);
 						await expandable.input.setValue('New Value');
-						await Page.waitTransitionEnd(3000, undefined, () => {
-							Page.escape();
-						});
+						await Page.escape();
+						await browser.pause(500); // needed to pass instead of waitTransitionEnd
 						await expectClosed(expandable);
 						expect(await expandable.labelText).to.equal('No Input Text');
 					});
@@ -141,46 +126,39 @@ describe('ExpandableInput', function () {
 
 			describe('pointer', function () {
 				it('should open and focus input on title click when closed', async function () {
-					await Page.waitTransitionEnd(3000, undefined, () => {
-						expandable.title.click();
-					});
+					await expandable.title.click();
+					await browser.pause(500); // needed to pass instead of waitTransitionEnd
 					await expectOpen(expandable);
 					expect(await expandable.input.isFocused()).to.be.true();
 				});
 
 				it('should close on title click when open', async function () {
-					await Page.waitTransitionEnd(3000, undefined, () => {
-						expandable.title.click();
-					});
+					await expandable.title.click();
+					await browser.pause(500); // needed to pass instead of waitTransitionEnd
 					await expectOpen(expandable);
-					await Page.waitTransitionEnd(3000, undefined, () => {
-						expandable.title.click();
-					});
+					expandable.title.click();
+					await browser.pause(500); // needed to pass instead of waitTransitionEnd
 					await expectClosed(expandable);
 				});
 
 				it('should not close on input click', async function () {
-					await Page.waitTransitionEnd(3000, undefined, () => {
-						expandable.title.click();
-					});
+					await expandable.title.click();
+					await browser.pause(500); // needed to pass instead of waitTransitionEnd
 					await expandable.input.click();
 					await expectOpen(expandable);
 				});
 
 				it('should close on two title clicks', async function () {
-					await Page.waitTransitionEnd(3000, undefined, () => {
-						expandable.title.click();
-					});
-					await Page.waitTransitionEnd(3000, undefined, () => {
-						expandable.title.click();
-					});
+					await expandable.title.click();
+					await browser.pause(500); // needed to pass instead of waitTransitionEnd
+					await expandable.title.click();
+					await browser.pause(500); // needed to pass instead of waitTransitionEnd
 					await expectClosed(expandable);
 				});
 
 				it('should retain the focus on input when hovered on other expandable', async function () {
-					await Page.waitTransitionEnd(3000, undefined, () => {
-						expandable.title.click();
-					});
+					await expandable.title.click();
+					await browser.pause(500); // needed to pass instead of waitTransitionEnd
 					await expectOpen(expandable);
 					await Page.hover();
 					expect(await expandable.input.isFocused()).to.be.true();
@@ -188,14 +166,12 @@ describe('ExpandableInput', function () {
 
 				describe('input value', function () {
 					it('should update value text on input and then closed by title click', async function () {
-						await Page.waitTransitionEnd(3000, undefined, () => {
-							expandable.title.click();
-						});
+						await expandable.title.click();
+						await browser.pause(500); // needed to pass instead of waitTransitionEnd
 						await expectOpen(expandable);
 						await expandable.input.setValue('New Value');
-						await Page.waitTransitionEnd(3000, undefined, () => {
-							expandable.title.click();
-						});
+						await expandable.title.click();
+						await browser.pause(500); // needed to pass instead of waitTransitionEnd
 						await expectClosed(expandable);
 						expect(await expandable.labelText).to.equal('New Value');
 					});
@@ -222,32 +198,28 @@ describe('ExpandableInput', function () {
 				});
 
 				it('should open and spot input on select', async function () {
-					await Page.waitTransitionEnd(3000, undefined, async () => {
-						await Page.spotlightSelect();
-					});
+					await Page.spotlightSelect();
+					await browser.pause(500); // needed to pass instead of waitTransitionEnd
 
 					await expectOpen(expandable);
 					expect(await expandable.input.isFocused()).to.be.true();
 				});
 
 				it('should have correct input value', async function () {
-					await Page.waitTransitionEnd(3000, undefined, async () => {
-						await Page.spotlightSelect();
-					});
+					await Page.spotlightSelect();
+					await browser.pause(500); // needed to pass instead of waitTransitionEnd
 
 					await expectOpen(expandable);
 					expect(await expandable.input.getValue()).to.equal('Default Value');
 				});
 
 				it('should close when moving up to title', async function () {
-					await Page.waitTransitionEnd(3000, undefined, async () => {
-						await Page.spotlightSelect();
-					});
+					await Page.spotlightSelect();
+					await browser.pause(500); // needed to pass instead of waitTransitionEnd
 
 					await expectOpen(expandable);
-					await Page.waitTransitionEnd(3000, undefined, async () => {
-						await Page.spotlightUp();
-					});
+					await Page.spotlightUp();
+					await browser.pause(500); // needed to pass instead of waitTransitionEnd
 					await expectClosed(expandable);
 					expect(await expandable.title.isFocused()).to.be.true();
 				});
@@ -261,39 +233,33 @@ describe('ExpandableInput', function () {
 
 			describe('pointer', function () {
 				it('should open and focus input on title click when closed', async function () {
-					await Page.waitTransitionEnd(3000, undefined, () => {
-						expandable.title.click();
-					});
+					await expandable.title.click();
+					await browser.pause(500); // needed to pass instead of waitTransitionEnd
 					await expectOpen(expandable);
 					expect(await expandable.input.isFocused()).to.be.true();
 				});
 
 				it('should close on title click when open', async function () {
-					await Page.waitTransitionEnd(3000, undefined, () => {
-						expandable.title.click();
-					});
+					await expandable.title.click();
+					await browser.pause(500); // needed to pass instead of waitTransitionEnd
 					await expectOpen(expandable);
-					await Page.waitTransitionEnd(3000, undefined, () => {
-						expandable.title.click();
-					});
+					await expandable.title.click();
+					await browser.pause(500); // needed to pass instead of waitTransitionEnd
 					await expectClosed(expandable);
 				});
 
 				it('should not close on input click', async function () {
-					await Page.waitTransitionEnd(3000, undefined, () => {
-						expandable.title.click();
-					});
+					await expandable.title.click();
+					await browser.pause(500); // needed to pass instead of waitTransitionEnd
 					await expandable.input.click();
 					await expectOpen(expandable);
 				});
 
 				it('should close on two title clicks', async function () {
-					await Page.waitTransitionEnd(3000, undefined, () => {
-						expandable.title.click();
-					});
-					await Page.waitTransitionEnd(3000, undefined, () => {
-						expandable.title.click();
-					});
+					await expandable.title.click();
+					await browser.pause(500); // needed to pass instead of waitTransitionEnd
+					await expandable.title.click();
+					await browser.pause(500); // needed to pass instead of waitTransitionEnd
 					await expectClosed(expandable);
 				});
 			});
@@ -318,9 +284,8 @@ describe('ExpandableInput', function () {
 				});
 
 				it('should close on select', async function () {
-					await Page.waitTransitionEnd(3000, undefined, async () => {
-						await Page.spotlightSelect();
-					});
+					await Page.spotlightSelect();
+					await browser.pause(500); // needed to pass instead of waitTransitionEnd
 
 					await expectClosed(expandable);
 					expect(await expandable.title.isFocused()).to.be.true();
@@ -341,30 +306,25 @@ describe('ExpandableInput', function () {
 
 			describe('pointer', function () {
 				it('should close on title click', async function () {
-					await Page.waitTransitionEnd(3000, undefined, () => {
-						expandable.title.click();
-					});
+					await expandable.title.click();
+					await browser.pause(500); // needed to pass instead of waitTransitionEnd
 					await expectClosed(expandable);
 				});
 
 				it('should open on title click when closed', async function () {
-					await Page.waitTransitionEnd(3000, undefined, () => {
-						expandable.title.click();
-					});
+					await expandable.title.click();
+					await browser.pause(500); // needed to pass instead of waitTransitionEnd
 					await expectClosed(expandable);
-					await Page.waitTransitionEnd(3000, undefined, () => {
-						expandable.title.click();
-					});
+					await expandable.title.click();
+					await browser.pause(500); // needed to pass instead of waitTransitionEnd
 					await expectOpen(expandable);
 				});
 
 				it('should open on two title clicks', async function () {
-					await Page.waitTransitionEnd(3000, undefined, () => {
-						expandable.title.click();
-					});
-					await Page.waitTransitionEnd(3000, undefined, () => {
-						expandable.title.click();
-					});
+					await expandable.title.click();
+					await browser.pause(500); // needed to pass instead of waitTransitionEnd
+					await expandable.title.click();
+					await browser.pause(500); // needed to pass instead of waitTransitionEnd
 					await expectOpen(expandable);
 				});
 			});
@@ -382,14 +342,12 @@ describe('ExpandableInput', function () {
 			describe('5-way', function () {
 				it('should not have value text on open and close', async function () {
 					await expandable.focus();
-					await Page.waitTransitionEnd(3000, undefined, async () => {
-						await Page.spotlightSelect();
-					});
+					await Page.spotlightSelect();
+					await browser.pause(500); // needed to pass instead of waitTransitionEnd
 
 					await expectOpen(expandable);
-					await Page.waitTransitionEnd(3000, undefined, async () => {
-						await Page.spotlightUp();
-					});
+					await Page.spotlightUp();
+					await browser.pause(500); // needed to pass instead of waitTransitionEnd
 					await expectClosed(expandable);
 					expect(await expandable.isLabelExists).to.be.false();
 				});
@@ -398,13 +356,11 @@ describe('ExpandableInput', function () {
 
 			describe('pointer', function () {
 				it('should not have value text on open and close', async function () {
-					await Page.waitTransitionEnd(3000, undefined, () => {
-						expandable.title.click();
-					});
+					await expandable.title.click();
+					await browser.pause(500); // needed to pass instead of waitTransitionEnd
 					await expectOpen(expandable);
-					await Page.waitTransitionEnd(3000, undefined, () => {
-						expandable.title.click();
-					});
+					await expandable.title.click();
+					await browser.pause(500); // needed to pass instead of waitTransitionEnd
 					await expectClosed(expandable);
 					expect(await expandable.isLabelExists).to.be.false();
 				});
@@ -430,9 +386,8 @@ describe('ExpandableInput', function () {
 				});
 
 				it('should close on select', async function () {
-					await Page.waitTransitionEnd(3000, undefined, async () => {
-						await Page.spotlightSelect();
-					});
+					await Page.spotlightSelect();
+					await browser.pause(500); // needed to pass instead of waitTransitionEnd
 
 					await expectClosed(expandable);
 					expect(await expandable.title.isFocused()).to.be.true();
@@ -447,9 +402,8 @@ describe('ExpandableInput', function () {
 
 			describe('pointer', function () {
 				it('should close on title click', async function () {
-					await Page.waitTransitionEnd(3000, undefined, () => {
-						expandable.title.click();
-					});
+					await expandable.title.click();
+					await browser.pause(500); // needed to pass instead of waitTransitionEnd
 					await expectClosed(expandable);
 				});
 			});
@@ -479,9 +433,8 @@ describe('ExpandableInput', function () {
 				});
 
 				it('should close on select', async function () {
-					await Page.waitTransitionEnd(3000, undefined, async () => {
-						await Page.spotlightSelect();
-					});
+					await Page.spotlightSelect();
+					await browser.pause(500); // needed to pass instead of waitTransitionEnd
 
 					await expectClosed(expandable);
 					expect(await expandable.title.isFocused()).to.be.true();
@@ -496,9 +449,8 @@ describe('ExpandableInput', function () {
 
 			describe('pointer', function () {
 				it('should close on title click', async function () {
-					await Page.waitTransitionEnd(3000, undefined, () => {
-						expandable.title.click();
-					});
+					await expandable.title.click();
+					await browser.pause(500); // needed to pass instead of waitTransitionEnd
 					await expectClosed(expandable);
 				});
 			});
@@ -527,9 +479,8 @@ describe('ExpandableInput', function () {
 				});
 
 				it('should close on select', async function () {
-					await Page.waitTransitionEnd(3000, undefined, async () => {
-						await Page.spotlightSelect();
-					});
+					await Page.spotlightSelect();
+					await browser.pause(500); // needed to pass instead of waitTransitionEnd
 
 					await expectClosed(expandable);
 					expect(await expandable.title.isFocused()).to.be.true();
@@ -544,9 +495,8 @@ describe('ExpandableInput', function () {
 
 			describe('pointer', function () {
 				it('should close on title click', async function () {
-					await Page.waitTransitionEnd(3000, undefined, () => {
-						expandable.title.click();
-					});
+					await expandable.title.click();
+					await browser.pause(500); // needed to pass instead of waitTransitionEnd
 					await expectClosed(expandable);
 				});
 			});
@@ -584,9 +534,8 @@ describe('ExpandableInput', function () {
 				});
 
 				it('should close on select', async function () {
-					await Page.waitTransitionEnd(3000, undefined, async () => {
-						await Page.spotlightSelect();
-					});
+					await Page.spotlightSelect();
+					await browser.pause(500); // needed to pass instead of waitTransitionEnd
 
 					await expectClosed(expandable);
 					expect(await expandable.title.isFocused()).to.be.true();
@@ -601,9 +550,8 @@ describe('ExpandableInput', function () {
 
 			describe('pointer', function () {
 				it('should close on title click', async function () {
-					await Page.waitTransitionEnd(3000, undefined, () => {
-						expandable.title.click();
-					});
+					await expandable.title.click();
+					await browser.pause(500); // needed to pass instead of waitTransitionEnd
 					await expectClosed(expandable);
 				});
 			});
@@ -652,12 +600,11 @@ describe('ExpandableInput', function () {
 
 		describe('general pointer operation', function () {
 			it('should prevent selecting other controls when open', async function () {
-				await Page.waitTransitionEnd(3000, undefined, () => {
-					Page.components.default.title.click();
-				});
-				await Page.waitTransitionEnd(3000, undefined, () => {
-					Page.components.defaultValue.title.click();
-				});
+				await Page.components.default.title.click();
+				await browser.pause(500); // needed to pass instead of waitTransitionEnd
+				await Page.components.defaultValue.title.click();
+				await browser.pause(500); // needed to pass instead of waitTransitionEnd
+
 				await expectClosed(Page.components.default);
 				await expectClosed(Page.components.defaultValue);
 			});
