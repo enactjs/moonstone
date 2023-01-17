@@ -6,6 +6,7 @@ describe('ExpandableList', function () {
 
 	beforeEach(async function () {
 		await Page.open();
+		await Page.waitForExist('#expandable7');
 	});
 
 	it('should have focus on first expandable at start', async function () {
