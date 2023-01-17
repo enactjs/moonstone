@@ -104,12 +104,12 @@ class ExpandableInputPage extends Page {
 		await $('#expandable2').moveTo();
 	}
 
-	async waitForExist (selector, timeout = 5000) {
+	async waitForExist (selector, timeout = 5000, timeoutMsg = `timed out waiting for ${selector}`) {
 		if (typeof selector !== 'string') {
 			selector = `#${selector.id}`;
 		}
 
-		await $(selector).waitForExist({timeout});
+		await $(selector).waitForExist({timeout, timeoutMsg});
 	}
 }
 
