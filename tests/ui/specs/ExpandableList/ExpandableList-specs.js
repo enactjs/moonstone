@@ -5,15 +5,15 @@ const Page = require('./ExpandableListPage'),
 describe('ExpandableList', function () {
 	beforeEach(async function () {
 		await Page.open();
+		await Page.waitForExist('#expandable7');
 	});
 
 	it('should have focus on first expandable at start', async function () {
 		expect(await Page.components.radioSelect.title.isFocused()).to.be.true();
 	});
 
-	describe('radio select', async function () {
+	describe('radio select', function () {
 		const expandable = Page.components.radioSelect;
-		await Page.waitForOpen(expandable);
 
 		validateTitle(expandable, 'ExpandableList Radio Select');
 
@@ -147,9 +147,8 @@ describe('ExpandableList', function () {
 		});
 	});
 
-	describe('multi select', async function () {
+	describe('multi select', function () {
 		const expandable = Page.components.multiSelect;
-		await Page.waitForOpen(expandable);
 
 		validateTitle(expandable, 'ExpandableList Multi Select');
 
@@ -277,9 +276,8 @@ describe('ExpandableList', function () {
 		});
 	});
 
-	describe('single select', async function () {
+	describe('single select', function () {
 		const expandable = Page.components.singleSelect;
-		await Page.waitForOpen(expandable);
 
 		validateTitle(expandable, 'ExpandableList Single Select');
 
@@ -405,9 +403,8 @@ describe('ExpandableList', function () {
 		});
 	});
 
-	describe('no lock bottom', async function () {
+	describe('no lock bottom', function () {
 		const expandable = Page.components.noLockBottom;
-		await Page.waitForOpen(expandable);
 
 		validateTitle(expandable, 'ExpandableList No Lock Bottom');
 
@@ -427,9 +424,8 @@ describe('ExpandableList', function () {
 		});
 	});
 
-	describe('no auto close', async function () {
+	describe('no auto close', function () {
 		const expandable = Page.components.noAutoClose;
-		await Page.waitForOpen(expandable);
 
 		validateTitle(expandable, 'ExpandableList No Auto Close');
 
@@ -459,9 +455,8 @@ describe('ExpandableList', function () {
 		});
 	});
 
-	describe('default open', async function () {
+	describe('default open', function () {
 		const expandable = Page.components.defaultOpen;
-		await Page.waitForOpen(expandable);
 
 		validateTitle(expandable, 'ExpandableList Default Open');
 
@@ -509,9 +504,8 @@ describe('ExpandableList', function () {
 		});
 	});
 
-	describe('disabled', async function () {
+	describe('disabled', function () {
 		const expandable = Page.components.disabled;
-		await Page.waitForOpen(expandable);
 
 		validateTitle(expandable, 'ExpandableList Disabled');
 
@@ -548,7 +542,6 @@ describe('ExpandableList', function () {
 
 	describe('general 5-way navigation', function () {
 		it('should not stop 5-way down when closed', async function () {
-			await Page.waitForOpen(Page.components.multiSelect);
 			await Page.spotlightDown();
 			expect(await Page.components.multiSelect.title.isFocused()).to.be.true();
 		});
@@ -556,7 +549,6 @@ describe('ExpandableList', function () {
 
 	describe('general pointer operation', function () {
 		it('should not close other expandable when opening', async function () {
-			await Page.waitForOpen(Page.components.radioSelect);
 			await Page.components.radioSelect.title.click();
 			await browser.pause(500); // needed to pass instead of waitTransitionEnd
 			await Page.components.multiSelect.title.click();

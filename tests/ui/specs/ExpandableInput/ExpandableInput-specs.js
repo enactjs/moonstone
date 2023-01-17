@@ -7,6 +7,7 @@ describe('ExpandableInput', function () {
 	describe('LTR locale', function () {
 		beforeEach(async function () {
 			await Page.open();
+			await Page.waitForExist('#expandable9');
 		});
 
 		describe('default', function () {
@@ -427,7 +428,6 @@ describe('ExpandableInput', function () {
 			});
 
 			describe('5-way', function () {
-
 				beforeEach(async function () {
 					await expandable.focus();
 				});

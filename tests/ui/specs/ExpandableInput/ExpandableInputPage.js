@@ -104,6 +104,14 @@ class ExpandableInputPage extends Page {
 		await $('#expandable2').moveTo();
 	}
 
+	async waitForExist (selector, timeout = 2000) {
+		if (typeof selector !== 'string') {
+			selector = `#${selector.id}`;
+		}
+		console.log(selector, 'here');
+
+		await $(selector).waitForExist({timeout});
+	}
 }
 
 module.exports = new ExpandableInputPage();
