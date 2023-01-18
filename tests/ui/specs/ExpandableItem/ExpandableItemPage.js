@@ -73,8 +73,9 @@ class ExpandableItemPage extends Page {
 		if (typeof selector !== 'string') {
 			selector = `#${selector.id}`;
 		}
+		const element = await $(selector);
 
-		await $(selector).waitForDisplayed({timeout, timeoutMsg});
+		await element.waitForDisplayed({timeout, timeoutMsg});
 	}
 }
 
