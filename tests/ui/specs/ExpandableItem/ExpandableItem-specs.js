@@ -5,6 +5,7 @@ const {expectClosed, expectOpen, validateTitle, getChevronRotation} = require('.
 describe('ExpandableItem', function () {
 	beforeEach(async function () {
 		await Page.open();
+		await Page.waitForExist('#expandableItemDisabledWithNoneText');
 	});
 
 	it('should have focus on start', async function () {
@@ -22,9 +23,8 @@ describe('ExpandableItem', function () {
 
 		describe('5-way', function () {
 			it('should open and spot expanded item on select - [GT-21494]', async function () {
-				await Page.waitTransitionEnd(3000, undefined, () => {
-					Page.spotlightSelect();
-				});
+				await Page.spotlightSelect();
+				await browser.pause(500); // needed to pass instead of waitTransitionEnd
 
 				await expectOpen(expandableItem);
 				expect(await expandableItem.item.isFocused()).to.be.true();
@@ -32,24 +32,21 @@ describe('ExpandableItem', function () {
 
 			it('should close when pressing select on label', async function () {
 				await Page.spotlightUp();
-				await Page.waitTransitionEnd(3000, undefined, () => {
-					Page.spotlightSelect();
-				});
+				await Page.spotlightSelect();
+				await browser.pause(500); // needed to pass instead of waitTransitionEnd
 
 				await expectOpen(expandableItem);
 				await Page.spotlightUp();
-				await Page.waitTransitionEnd(3000, undefined, () => {
-					Page.spotlightSelect();
-				});
+				await Page.spotlightSelect();
+				await browser.pause(500); // needed to pass instead of waitTransitionEnd
 
 				await expectClosed(expandableItem);
 			});
 
 			it('should allow 5-way navigation beyond the last item', async function () {
 				await expandableItem.focus();
-				await Page.waitTransitionEnd(3000, undefined, () => {
-					Page.spotlightSelect();
-				});
+				await Page.spotlightSelect();
+				await browser.pause(500); // needed to pass instead of waitTransitionEnd
 
 				await expectOpen(expandableItem);
 				expect(await expandableItem.item.isFocused()).to.be.true();
@@ -60,20 +57,17 @@ describe('ExpandableItem', function () {
 
 		describe('pointer', function () {
 			it('should open on title click when closed', async function () {
-				await Page.waitTransitionEnd(3000, undefined, () => {
-					expandableItem.title.click();
-				});
+				await expandableItem.title.click();
+				await browser.pause(500); // needed to pass instead of waitTransitionEnd
 				await expectOpen(expandableItem);
 			});
 
 			it('should close on title click when open', async function () {
-				await Page.waitTransitionEnd(3000, undefined, () => {
-					expandableItem.title.click();
-				});
+				await expandableItem.title.click();
+				await browser.pause(500); // needed to pass instead of waitTransitionEnd
 				await expectOpen(expandableItem);
-				await Page.waitTransitionEnd(3000, undefined, () => {
-					expandableItem.title.click();
-				});
+				await expandableItem.title.click();
+				await browser.pause(500); // needed to pass instead of waitTransitionEnd
 				await expectClosed(expandableItem);
 			});
 		});
@@ -97,9 +91,8 @@ describe('ExpandableItem', function () {
 		describe('5-way', function () {
 			it('should close when pressing select', async function () {
 				await expandableItem.focus();
-				await Page.waitTransitionEnd(3000, undefined, () => {
-					Page.spotlightSelect();
-				});
+				await Page.spotlightSelect();
+				await browser.pause(500); // needed to pass instead of waitTransitionEnd
 
 				await expectClosed(expandableItem);
 				expect(await expandableItem.title.isFocused()).to.be.true();
@@ -108,20 +101,17 @@ describe('ExpandableItem', function () {
 
 		describe('pointer', function () {
 			it('should close on title click when open', async function () {
-				await Page.waitTransitionEnd(3000, undefined, () => {
-					expandableItem.title.click();
-				});
+				await expandableItem.title.click();
+				await browser.pause(500); // needed to pass instead of waitTransitionEnd
 				await expectClosed(expandableItem);
 			});
 
 			it('should open on title click when closed', async function () {
-				await Page.waitTransitionEnd(3000, undefined, () => {
-					expandableItem.title.click();
-				});
+				await expandableItem.title.click();
+				await browser.pause(500); // needed to pass instead of waitTransitionEnd
 				await expectClosed(expandableItem);
-				await Page.waitTransitionEnd(3000, undefined, () => {
-					expandableItem.title.click();
-				});
+				await expandableItem.title.click();
+				await browser.pause(500); // needed to pass instead of waitTransitionEnd
 				await expectOpen(expandableItem);
 			});
 		});
@@ -132,15 +122,13 @@ describe('ExpandableItem', function () {
 
 		it('should close when 5-way focus returns to title', async function () {
 			await expandableItem.focus();
-			await Page.waitTransitionEnd(3000, undefined, () => {
-				Page.spotlightSelect();
-			});
+			await Page.spotlightSelect();
+			await browser.pause(500); // needed to pass instead of waitTransitionEnd
 
 			await expectOpen(expandableItem);
 			expect(await expandableItem.item.isFocused()).to.be.true();
-			await Page.waitTransitionEnd(3000, undefined, () => {
-				Page.spotlightUp();
-			});
+			await Page.spotlightUp();
+			await browser.pause(500); // needed to pass instead of waitTransitionEnd
 			await expectClosed(expandableItem);
 		});
 	});
@@ -150,9 +138,8 @@ describe('ExpandableItem', function () {
 
 		it('should not allow 5-way navigation beyond the last item', async function () {
 			await expandableItem.focus();
-			await Page.waitTransitionEnd(3000, undefined, () => {
-				Page.spotlightSelect();
-			});
+			await Page.spotlightSelect();
+			await browser.pause(500); // needed to pass instead of waitTransitionEnd
 
 			await expectOpen(expandableItem);
 			expect(await expandableItem.item.isFocused()).to.be.true();

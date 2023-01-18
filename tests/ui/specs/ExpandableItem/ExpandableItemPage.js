@@ -69,6 +69,13 @@ class ExpandableItemPage extends Page {
 	async open (urlExtra) {
 		await super.open('ExpandableItem-View', urlExtra);
 	}
+	async waitForExist (selector, timeout = 5000, timeoutMsg = `timed out waiting for ${selector}`) {
+		if (typeof selector !== 'string') {
+			selector = `#${selector.id}`;
+		}
+
+		await $(selector).waitForExist({timeout, timeoutMsg});
+	}
 }
 
 module.exports = new ExpandableItemPage();
