@@ -93,7 +93,7 @@ class ExpandableInputPage extends Page {
 	}
 
 	async open (urlExtra) {
-		await super.open('ExpandableInput-View', urlExtra);
+		await super.open('ExpandableInput-View', urlExtra, );
 	}
 
 	async escape () {
@@ -109,7 +109,7 @@ class ExpandableInputPage extends Page {
 			selector = `#${selector.id}`;
 		}
 
-		await $(selector).waitForExist({timeout, timeoutMsg});
+		await $(selector).waitForDisplayed({timeout, timeoutMsg});
 	}
 }
 
