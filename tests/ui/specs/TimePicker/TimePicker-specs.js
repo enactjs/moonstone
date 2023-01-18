@@ -558,7 +558,6 @@ describe('TimePicker', function () {
 
 		it('should display hours in 24-hour format', async function () {
 			await timePicker.title.click();
-			await browser.pause(500);
 			expect((await extractValues(timePicker)).hour).to.equal(0); // midnight hour
 		});
 

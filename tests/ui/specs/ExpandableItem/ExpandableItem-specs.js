@@ -5,7 +5,6 @@ const {expectClosed, expectOpen, validateTitle, getChevronRotation} = require('.
 describe('ExpandableItem', function () {
 	beforeEach(async function () {
 		await Page.open();
-		await Page.waitForExist('#expandableItemDisabledWithNoneText');
 	});
 
 	it('should have focus on start', async function () {
