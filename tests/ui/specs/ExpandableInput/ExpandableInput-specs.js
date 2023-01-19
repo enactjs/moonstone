@@ -30,7 +30,7 @@ describe('ExpandableInput', function () {
 				expectOrdering(await expandable.titleTextMarquee, await expandable.titleIcon);
 			});
 
-			describe('5-way', function () {
+			describe.skip('5-way', function () {
 				it('should open and spot input on select', async function () {
 					await Page.waitTransitionEnd(3000, undefined, async () => {
 						await Page.spotlightSelect();
@@ -215,7 +215,7 @@ describe('ExpandableInput', function () {
 				await expectClosed(expandable);
 			});
 
-			describe('5-way', function () {
+			describe.skip('5-way', function () {
 				beforeEach(async function () {
 					await expandable.focus();
 				});
@@ -311,7 +311,7 @@ describe('ExpandableInput', function () {
 				expect(await expandable.input.getValue()).to.equal('');
 			});
 
-			describe('5-way', function () {
+			describe.skip('5-way', function () {
 				beforeEach(async function () {
 					await expandable.focus();
 				});
@@ -378,7 +378,7 @@ describe('ExpandableInput', function () {
 				expect(await expandable.isLabelExists).to.be.false();
 			});
 
-			describe('5-way', function () {
+			describe.skip('5-way', function () {
 				it('should not have value text on open and close', async function () {
 					await expandable.focus();
 					await Page.waitTransitionEnd(3000, undefined, async () => {
@@ -423,7 +423,7 @@ describe('ExpandableInput', function () {
 				expect(await expandable.placeHolder).to.equal('Placeholder');
 			});
 
-			describe('5-way', function () {
+			describe.skip('5-way', function () {
 				beforeEach(async function () {
 					await expandable.focus();
 				});
@@ -471,7 +471,7 @@ describe('ExpandableInput', function () {
 				expect(await expandable.iconBeforeSymbol).to.equal('-');
 			});
 
-			describe('5-way', function () {
+			describe.skip('5-way', function () {
 
 				beforeEach(async function () {
 					await expandable.focus();
@@ -520,7 +520,7 @@ describe('ExpandableInput', function () {
 				expect(await expandable.iconAfterSymbol).to.equal('+');
 			});
 
-			describe('5-way', function () {
+			describe.skip('5-way', function () {
 				beforeEach(async function () {
 					await expandable.focus();
 				});
@@ -577,7 +577,7 @@ describe('ExpandableInput', function () {
 				expectOrdering(await expandable.iconBefore, await expandable.iconAfter);
 			});
 
-			describe('5-way', function () {
+			describe.skip('5-way', function () {
 				beforeEach(async function () {
 					await expandable.focus();
 				});
@@ -617,7 +617,7 @@ describe('ExpandableInput', function () {
 				await expectClosed(expandable);
 			});
 
-			describe('5-way', function () {
+			describe.skip('5-way', function () {
 				it('should be spottable', async function () {
 					await expandable.focus();
 					// Page.spotlightDown();

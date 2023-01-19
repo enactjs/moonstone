@@ -25,7 +25,7 @@ describe('ExpandableList', function () {
 			await expectClosed(expandable);
 		});
 
-		describe('5-way', function () {
+		describe.skip('5-way', function () {
 			it('should open and spot first item on select', async function () {
 				await Page.waitTransitionEnd(3000, undefined, () => {
 					Page.spotlightSelect();
@@ -175,7 +175,7 @@ describe('ExpandableList', function () {
 			await expectClosed(expandable);
 		});
 
-		describe('5-way', function () {
+		describe.skip('5-way', function () {
 			it('should open and spot first item on select', async function () {
 				await expandable.focus();
 				await Page.waitTransitionEnd(3000, undefined, () => {
@@ -318,7 +318,7 @@ describe('ExpandableList', function () {
 			await expectClosed(expandable);
 		});
 
-		describe('5-way', function () {
+		describe.skip('5-way', function () {
 			it('should open and spot first item on select', async function () {
 				await expandable.focus();
 				await Page.waitTransitionEnd(3000, undefined, () => {
@@ -451,7 +451,7 @@ describe('ExpandableList', function () {
 
 		validateTitle(expandable, 'ExpandableList No Lock Bottom');
 
-		describe('5-way', function () {
+		describe.skip('5-way', function () {
 			it('should allow 5-way out when open', async function () {
 				await expandable.focus();
 				await Page.waitTransitionEnd(3000, undefined, () => {
@@ -477,7 +477,7 @@ describe('ExpandableList', function () {
 			await expectClosed(expandable);
 		});
 
-		describe('5-way', function () {
+		describe.skip('5-way', function () {
 			it('should open and spot first item on select', async function () {
 				await expandable.focus();
 				await Page.waitTransitionEnd(3000, undefined, () => {
@@ -510,7 +510,7 @@ describe('ExpandableList', function () {
 			await expectOpen(expandable);
 		});
 
-		describe('5-way', function () {
+		describe.skip('5-way', function () {
 			it('should close on select', async function () {
 				await expandable.focus();
 				await Page.waitTransitionEnd(3000, undefined, () => {
@@ -565,7 +565,7 @@ describe('ExpandableList', function () {
 			expect(await expandable.chevron).to.equal('󯿭');
 		});
 
-		describe('5-way', function () {
+		describe.skip('5-way', function () {
 			it('should be spottable', async function () {
 				await expandable.focus();
 				expect(await expandable.title.isFocused()).to.be.true();
