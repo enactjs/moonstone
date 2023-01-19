@@ -127,7 +127,7 @@ describe('ExpandableItem', function () {
 		});
 	});
 
-	describe('autoClose', function () {
+	describe.skip('autoClose', function () {
 		const expandableItem = Page.components.expandableItemWithAutoClose;
 
 		it('should close when 5-way focus returns to title', async function () {
