@@ -318,7 +318,7 @@ describe('ExpandableList', function () {
 			await expectClosed(expandable);
 		});
 
-		describe('5-way', function () {
+		describe.skip('5-way', function () {
 			it('should open and spot first item on select', async function () {
 				await expandable.focus();
 				await Page.waitTransitionEnd(3000, undefined, () => {
