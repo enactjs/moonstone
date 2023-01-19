@@ -30,7 +30,7 @@ describe('ExpandableInput', function () {
 				expectOrdering(await expandable.titleTextMarquee, await expandable.titleIcon);
 			});
 
-			describe.skip('5-way', function () {
+			describe('5-way', function () {
 				it('should open and spot input on select', async function () {
 					await Page.waitTransitionEnd(3000, undefined, async () => {
 						await Page.spotlightSelect();
@@ -311,7 +311,7 @@ describe('ExpandableInput', function () {
 				expect(await expandable.input.getValue()).to.equal('');
 			});
 
-			describe.skip('5-way', function () {
+			describe('5-way', function () {
 				beforeEach(async function () {
 					await expandable.focus();
 				});
@@ -423,7 +423,7 @@ describe('ExpandableInput', function () {
 				expect(await expandable.placeHolder).to.equal('Placeholder');
 			});
 
-			describe.skip('5-way', function () {
+			describe('5-way', function () {
 				beforeEach(async function () {
 					await expandable.focus();
 				});
@@ -471,7 +471,7 @@ describe('ExpandableInput', function () {
 				expect(await expandable.iconBeforeSymbol).to.equal('-');
 			});
 
-			describe.skip('5-way', function () {
+			describe('5-way', function () {
 
 				beforeEach(async function () {
 					await expandable.focus();
@@ -520,7 +520,7 @@ describe('ExpandableInput', function () {
 				expect(await expandable.iconAfterSymbol).to.equal('+');
 			});
 
-			describe.skip('5-way', function () {
+			describe('5-way', function () {
 				beforeEach(async function () {
 					await expandable.focus();
 				});
@@ -577,7 +577,7 @@ describe('ExpandableInput', function () {
 				expectOrdering(await expandable.iconBefore, await expandable.iconAfter);
 			});
 
-			describe.skip('5-way', function () {
+			describe('5-way', function () {
 				beforeEach(async function () {
 					await expandable.focus();
 				});
@@ -617,7 +617,7 @@ describe('ExpandableInput', function () {
 				await expectClosed(expandable);
 			});
 
-			describe.skip('5-way', function () {
+			describe('5-way', function () {
 				it('should be spottable', async function () {
 					await expandable.focus();
 					// Page.spotlightDown();
