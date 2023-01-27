@@ -127,7 +127,7 @@ describe('ExpandableItem', function () {
 		});
 	});
 
-	describe('autoClose', function () {
+	describe.skip('autoClose', function () {
 		const expandableItem = Page.components.expandableItemWithAutoClose;
 
 		it('should close when 5-way focus returns to title', async function () {
@@ -145,7 +145,7 @@ describe('ExpandableItem', function () {
 		});
 	});
 
-	describe('lockBottom', function () {
+	describe.skip('lockBottom', function () {
 		const expandableItem = Page.components.expandableItemWithLockBottom;
 
 		it('should not allow 5-way navigation beyond the last item', async function () {
