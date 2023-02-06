@@ -2,7 +2,7 @@ import '@testing-library/jest-dom';
 import {render, screen} from '@testing-library/react';
 
 import DateTimeDecorator from '../';
-
+//
 describe('DateTimeDecorator', () => {
 	test('should accept an updated JavaScript Date for its value prop', () => {
 		const Picker = DateTimeDecorator({}, function PickerBase ({title, value}) {
