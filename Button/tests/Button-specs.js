@@ -11,7 +11,8 @@ describe('Button', () => {
 		render(<Button disabled>I am a disabled Button</Button>);
 		const button = screen.getByRole('button');
 
-		expect(button).toHaveAttribute('disabled');
+		// expect(button).toHaveAttribute('disabled');
+		expect(true).toBe(false);
 	});
 
 	test('should have default `minWidth`', () => {
