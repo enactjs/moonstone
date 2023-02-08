@@ -8,8 +8,7 @@ describe('BodyText Specs', () => {
 		render(<BodyText>Hello!</BodyText>);
 		const bodyText = screen.getByText('Hello!');
 
-		// expect(bodyText).toBeInTheDocument();
-		expect(true).toBe(false);
+		expect(bodyText).toBeInTheDocument();
 	});
 
 	test('should support multi-line content', () => {
