@@ -283,7 +283,7 @@ describe('TimePicker', () => {
 		ilib.setLocale('ar-SA');
 		const date = new Date(2000, 0, 1, 12, 30);
 		render(<TimePicker locale="ar-SA" open title="Date" value={date} />);
-		const header = screen.getByText(timeToLocaleString(date), {collapseWhitespace: false}).parentElement.parentElement;
+		const header = screen.getByText(timeToLocaleString(date)).parentElement.parentElement;
 
 		const expected = 'label';
 
