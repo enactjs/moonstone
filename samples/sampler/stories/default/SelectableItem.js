@@ -17,7 +17,7 @@ const Config = mergeComponentMetadata(
 	SelectableItem,
 	ToggleItem,
 	UiToggleItem,
-	UiToggleItemBase,
+	UiToggleItemBase
 );
 
 export default {
