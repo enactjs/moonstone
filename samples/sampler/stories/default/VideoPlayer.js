@@ -83,7 +83,7 @@ VideoPlayer.displayName = 'VideoPlayer';
 const Config = mergeComponentMetadata(
 	'VideoPlayer',
 	VideoPlayer,
-	VideoPlayerBase,
+	VideoPlayerBase
 );
 
 export default {

@@ -17,7 +17,7 @@ const ScrollerConfig = mergeComponentMetadata(
 	'Scroller',
 	Scroller,
 	ScrollableBase,
-	UiScrollableBase,
+	UiScrollableBase
 );
 
 export default {

@@ -11,7 +11,7 @@ const Config = mergeComponentMetadata(
 	Spinner,
 	SpinnerBase,
 	UiSpinner,
-	UiSpinnerBase,
+	UiSpinnerBase
 );
 
 export default {
