@@ -2,10 +2,10 @@ import CheckboxItem from '@enact/moonstone/CheckboxItem';
 import Icon from '@enact/moonstone/Icon';
 import Item, {ItemBase} from '@enact/moonstone/Item';
 import ToggleItem from '@enact/moonstone/ToggleItem';
+import UiToggleItem, {ToggleItemBase as UiToggleItemBase} from '@enact/moonstone/UiToggleItem';
 import {mergeComponentMetadata, nullify} from '@enact/storybook-utils';
 import {action} from '@enact/storybook-utils/addons/actions';
 import {boolean, select, text} from '@enact/storybook-utils/addons/controls';
-import UiToggleItem, {ToggleItemBase as UiToggleItemBase} from '@enact/ui/ToggleItem';
 import UiItem from '@enact/ui/Item';
 
 import {listIcons} from '../helper/icons';
@@ -14,11 +14,11 @@ CheckboxItem.displayName = 'CheckboxItem';
 const Config = mergeComponentMetadata('CheckboxItem', UiItem, ItemBase, Item, UiToggleItemBase, UiToggleItem, ToggleItem, CheckboxItem);
 
 export default {
-	title: 'Moonstone/Checkbox',
-	component: 'Checkbox'
+	title: 'Moonstone/CheckboxItem',
+	component: 'CheckboxItem'
 };
 
-export const _Checkbox = (args) => {
+export const _CheckboxItem = (args) => {
 	const icon = args['itemIcon'];
 	const itemIcon = nullify(icon ? <Icon>{icon}</Icon> : null);
 	return (
@@ -36,15 +36,15 @@ export const _Checkbox = (args) => {
 	);
 };
 
-boolean('disabled', _Checkbox, Config);
-boolean('inline', _Checkbox, Config);
-select('iconPosition', _Checkbox, ['before', 'after'], Config);
-select('itemIcon', _Checkbox, ['', ...listIcons], Config);
-select('itemIconPosition', _Checkbox, [null, 'before', 'beforeChildren', 'afterChildren', 'after'], Config);
-text('children', _Checkbox, Config, 'Hello CheckboxItem');
+boolean('disabled', _CheckboxItem, Config);
+boolean('inline', _CheckboxItem, Config);
+select('iconPosition', _CheckboxItem, ['before', 'after'], Config);
+select('itemIcon', _CheckboxItem, ['', ...listIcons], Config);
+select('itemIconPosition', _CheckboxItem, [null, 'before', 'beforeChildren', 'afterChildren', 'after'], Config);
+text('children', _CheckboxItem, Config, 'Hello CheckboxItem');
 
-_Checkbox.storyName = 'Checkbox';
-_Checkbox.parameters = {
+_CheckboxItem.storyName = 'CheckboxItem';
+_CheckboxItem.parameters = {
 	info: {
 		text: 'Basic usage of CheckboxItem'
 	}

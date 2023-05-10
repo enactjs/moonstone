@@ -26,7 +26,6 @@ import ForwardRef from '@enact/ui/ForwardRef';
 import Pure from '@enact/ui/internal/Pure';
 import PropTypes from 'prop-types';
 import Toggleable from '@enact/ui/Toggleable';
-import {ToggleItemBase as UiToggleItem} from '@enact/ui/ToggleItem';
 import Touchable from '@enact/ui/Touchable';
 import Spottable from '@enact/spotlight/Spottable';
 import compose from 'ramda/src/compose';
@@ -34,6 +33,7 @@ import compose from 'ramda/src/compose';
 import {MarqueeDecorator} from '../Marquee';
 import Skinnable from '../Skinnable';
 import {SlotItemBase} from '../SlotItem';
+import {ToggleItemBase as UiToggleItem} from '../UiToggleItem';
 
 import componentCss from './ToggleItem.module.less';
 
@@ -135,7 +135,7 @@ const defaultConfig = {
  *
  * @class ToggleItemDecorator
  * @memberof moonstone/ToggleItem
- * @mixes ui/ToggleItem.ToggleItemDecorator
+ * @mixes moonstone/UiToggleItem.ToggleItemDecorator
  * @mixes spotlight/Spottable.Spottable
  * @mixes moonstone/Marquee.MarqueeDecorator
  * @mixes moonstone/Skinnable.Skinnable

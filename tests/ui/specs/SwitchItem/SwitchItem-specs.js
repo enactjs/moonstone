@@ -47,13 +47,13 @@ describe('SwitchItem', function () {
 
 		describe('pointer', function () {
 			it('should select the item when clicked', async function () {
-				switchItem.self.click();
+				await switchItem.self.click();
 				expect(await switchItem.isSelected()).to.be.true();
 			});
 
 			it('should re-unselect the item when clicked twice', async function () {
-				switchItem.self.click();
-				switchItem.self.click();
+				await switchItem.self.click();
+				await switchItem.self.click();
 				expect(await switchItem.isSelected()).to.be.false();
 			});
 		});

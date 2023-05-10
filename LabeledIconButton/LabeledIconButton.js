@@ -18,7 +18,6 @@
 
 import kind from '@enact/core/kind';
 import Spottable from '@enact/spotlight/Spottable';
-import {IconButtonDecorator as UiIconButtonDecorator} from '@enact/ui/IconButton';
 import {LabeledIconBase as UiLabeledIconBase, LabeledIconDecorator as UiLabeledIconDecorator} from '@enact/ui/LabeledIcon';
 import Pure from '@enact/ui/internal/Pure';
 import PropTypes from 'prop-types';
@@ -26,6 +25,7 @@ import compose from 'ramda/src/compose';
 
 import {IconButtonBase} from '../IconButton';
 import Skinnable from '../Skinnable';
+import {IconButtonDecorator as UiIconButtonDecorator} from '../UiIconButton';
 
 import componentCss from './LabeledIconButton.module.less';
 

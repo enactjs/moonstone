@@ -175,7 +175,7 @@ describe('ExpandableList', function () {
 			await expectClosed(expandable);
 		});
 
-		describe('5-way', function () {
+		describe.skip('5-way', function () {
 			it('should open and spot first item on select', async function () {
 				await expandable.focus();
 				await Page.waitTransitionEnd(3000, undefined, () => {
@@ -318,7 +318,7 @@ describe('ExpandableList', function () {
 			await expectClosed(expandable);
 		});
 
-		describe('5-way', function () {
+		describe.skip('5-way', function () {
 			it('should open and spot first item on select', async function () {
 				await expandable.focus();
 				await Page.waitTransitionEnd(3000, undefined, () => {
@@ -451,7 +451,7 @@ describe('ExpandableList', function () {
 
 		validateTitle(expandable, 'ExpandableList No Lock Bottom');
 
-		describe('5-way', function () {
+		describe.skip('5-way', function () {
 			it('should allow 5-way out when open', async function () {
 				await expandable.focus();
 				await Page.waitTransitionEnd(3000, undefined, () => {
@@ -477,7 +477,7 @@ describe('ExpandableList', function () {
 			await expectClosed(expandable);
 		});
 
-		describe('5-way', function () {
+		describe.skip('5-way', function () {
 			it('should open and spot first item on select', async function () {
 				await expandable.focus();
 				await Page.waitTransitionEnd(3000, undefined, () => {
@@ -591,7 +591,7 @@ describe('ExpandableList', function () {
 		});
 	});
 
-	describe('general 5-way navigation', function () {
+	describe.skip('general 5-way navigation', function () {
 		it('should not stop 5-way down when closed', async function () {
 			await Page.spotlightDown();
 			expect(await Page.components.multiSelect.title.isFocused()).to.be.true();

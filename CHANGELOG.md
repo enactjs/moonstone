@@ -2,6 +2,18 @@
 
 The following is a curated list of changes in the Enact moonstone module, newest changes on the top.
 
+## [4.5.3] - 2023-05-10
+
+### Added
+
+- `moonstone/UiGridListImageItem` component, transferred from `moonstone/internal/GridListImageItem`
+- `moonstone/UiIconButton` component, transferred from `ui/IconButton`
+- `moonstone/UiRadioDecorator` component, transferred from `ui/RadioDecorator`
+- `moonstone/UiScroller.ScrollerBase` component, transferred from `ui/Scroller.ScrollerBase`
+- `moonstone/UiSlotItem` component, transferred from `ui/SlotItem`
+- `moonstone/UiToggleItem` component, transferred from `ui/ToggleItem`
+- `moonstone/UiVirtualList.VirtualListBase` component, transferred from `ui/VirtualList.VirtualListBase`
+
 ## [4.5.2] - 2022-12-14
 
 No significant changes.
