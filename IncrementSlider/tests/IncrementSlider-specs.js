@@ -9,8 +9,8 @@ const tap = (node) => {
 	fireEvent.mouseUp(node);
 };
 
-const decrement = () => userEvent.click(screen.getAllByRole('button')[0]);
-const increment = () => userEvent.click(screen.getAllByRole('button')[1]);
+const decrement = async () => await user.click(screen.getAllByRole('button')[0]);
+const increment = async () => await user.click(screen.getAllByRole('button')[1]);
 const keyDown = (keyCode) => (slider) => fireEvent.keyDown(slider, {keyCode});
 
 const leftKeyDown = keyDown(37);

@@ -42,8 +42,10 @@ describe('ExpandableItem', () => {
 		});
 
 		describe('handlers', () => {
-			test('should call onClose when there is a prop onClose', () => {
+			test('should call onClose when there is a prop onClose', async () => {
 				const handleClose = jest.fn();
+				const user = userEvent.setup();
+
 				render(
 					<ExpandableItemBase noneText="hello" onClose={handleClose} open title="Item">
 						{children}
@@ -51,15 +53,17 @@ describe('ExpandableItem', () => {
 				);
 				const item = screen.getByText('Item');
 
-				userEvent.click(item);
+				await user.click(item);
 
 				const expected = 1;
 
 				expect(handleClose).toHaveBeenCalledTimes(expected);
 			});
 
-			test('should call onOpen when there is a prop onOpen', () => {
+			test('should call onOpen when there is a prop onOpen', async () => {
 				const handleOpen = jest.fn();
+				const user = userEvent.setup();
+
 				render(
 					<ExpandableItemBase noneText="hello" onOpen={handleOpen} title="Item">
 						{children}
@@ -67,7 +71,7 @@ describe('ExpandableItem', () => {
 				);
 				const item = screen.getByText('Item');
 
-				userEvent.click(item);
+				await user.click(item);
 
 				const expected = 1;
 

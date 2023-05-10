@@ -23,8 +23,10 @@ describe('DatePicker', () => {
 		expect(actual).toHaveLength(expected);
 	});
 
-	test('should emit an onChange event when changing a component picker', () => {
+	test('should emit an onChange event when changing a component picker', async () => {
 		const handleChange = jest.fn();
+		const user = userEvent.setup();
+
 		render(
 			<DatePicker
 				locale="en-US"
@@ -36,7 +38,7 @@ describe('DatePicker', () => {
 		);
 		const monthPickerUp = screen.getByLabelText('7 month change a value with up down button').children.item(0);
 
-		userEvent.click(monthPickerUp);
+		await user.click(monthPickerUp);
 
 		const expected = 1;
 

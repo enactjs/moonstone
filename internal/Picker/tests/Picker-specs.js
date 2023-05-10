@@ -5,8 +5,8 @@ import userEvent from '@testing-library/user-event';
 import Picker from '../Picker';
 import PickerItem from '../PickerItem';
 
-const increment = (slider) => userEvent.click(slider.firstElementChild);
-const decrement = (slider) => userEvent.click(slider.lastElementChild);
+const increment = async (slider) => await user.click(slider.firstElementChild);
+const decrement = async (slider) => await user.click(slider.lastElementChild);
 
 describe('Picker Specs', () => {
 	test('should have a default \'value\' of 0', () => {

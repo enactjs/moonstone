@@ -41,12 +41,14 @@ describe('Input Specs', () => {
 		expect(actual).toBe(value);
 	});
 
-	test('should blur input on enter if dismissOnEnter', () => {
+	test('should blur input on enter if dismissOnEnter', async () => {
 		const handleChange = jest.fn();
+		const user = userEvent.setup();
+
 		render(<Input dismissOnEnter onBlur={handleChange} />);
 		const input = screen.getByLabelText('Input field');
 
-		userEvent.click(input);
+		await user.click(input);
 		fireEvent.keyUp(input, {keyCode: 13, code:13});
 
 		const expected = 1;
