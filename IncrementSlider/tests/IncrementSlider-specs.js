@@ -9,8 +9,6 @@ const tap = (node) => {
 	fireEvent.mouseUp(node);
 };
 
-const decrement = () => userEvent.click(screen.getAllByRole('button')[0]);
-const increment = () => userEvent.click(screen.getAllByRole('button')[1]);
 const keyDown = (keyCode) => (slider) => fireEvent.keyDown(slider, {keyCode});
 
 const leftKeyDown = keyDown(37);
@@ -19,12 +17,13 @@ const upKeyDown = keyDown(38);
 const downKeyDown = keyDown(40);
 
 describe('IncrementSlider Specs', () => {
-	test('should decrement value', () => {
+	test('should decrement value', async () => {
 		const handleChange = jest.fn();
+		const user = userEvent.setup();
 		const value = 50;
 		render(<IncrementSlider onChange={handleChange} value={value} />);
 
-		decrement();
+		await user.click(screen.getAllByRole('button')[0]);
 
 		const expected = value - 1;
 		const actual = handleChange.mock.calls[0][0].value;
@@ -32,12 +31,13 @@ describe('IncrementSlider Specs', () => {
 		expect(actual).toBe(expected);
 	});
 
-	test('should increment value', () => {
+	test('should increment value', async () => {
 		const handleChange = jest.fn();
+		const user = userEvent.setup();
 		const value = 50;
 		render(<IncrementSlider onChange={handleChange} value={value} />);
 
-		increment();
+		await user.click(screen.getAllByRole('button')[1]);
 
 		const expected = value + 1;
 		const actual = handleChange.mock.calls[0][0].value;

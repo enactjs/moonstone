@@ -24,26 +24,30 @@ describe('CheckboxItem Specs', () => {
 		expect(element).toBeInTheDocument();
 	});
 
-	test('should check with click', () => {
+	test('should check with click', async () => {
+		const user = userEvent.setup();
+
 		render(<CheckboxItem>Hello CheckboxItem</CheckboxItem>);
 
 		const checkboxItem = screen.getByRole('checkbox');
 		const expected = 'true';
 
-		userEvent.click(checkboxItem);
+		await user.click(checkboxItem);
 
 		expect(checkboxItem).toHaveAttribute('aria-checked', expected);
 
 	});
 
-	test('should uncheck with 2 click', () => {
+	test('should uncheck with 2 click', async () => {
+		const user = userEvent.setup();
+
 		render(<CheckboxItem>Hello CheckboxItem</CheckboxItem>);
 
 		const checkboxItem = screen.getByRole('checkbox');
 		const expected = 'false';
 
-		userEvent.click(checkboxItem);
-		userEvent.click(checkboxItem);
+		await user.click(checkboxItem);
+		await user.click(checkboxItem);
 
 		expect(checkboxItem).toHaveAttribute('aria-checked', expected);
 	});

@@ -86,10 +86,12 @@ describe('EditableIntegerPicker', () => {
 		expect(actual).toBeInTheDocument();
 	});
 
-	test('should enable input field on click', () => {
+	test('should enable input field on click', async () => {
+		const user = userEvent.setup();
+
 		render(<EditableIntegerPicker defaultValue={10} max={100} min={0} step={1} />);
 
-		userEvent.click(screen.getByText('10'));
+		await user.click(screen.getByText('10'));
 
 		const inputField = screen.getByRole('spinbutton');
 
@@ -99,10 +101,12 @@ describe('EditableIntegerPicker', () => {
 		expect(actual).toHaveClass(expected);
 	});
 
-	test('should disable input field when blurred', () => {
+	test('should disable input field when blurred', async () => {
+		const user = userEvent.setup();
+
 		render(<EditableIntegerPicker min={0} max={100} defaultValue={10} step={1} />);
 
-		userEvent.click(screen.getByText('10'));
+		await user.click(screen.getByText('10'));
 
 		const input = screen.getByRole('spinbutton');
 		const inputField = input.children.item(0).children.item(0);
@@ -113,7 +117,9 @@ describe('EditableIntegerPicker', () => {
 		expect(inputField).not.toBeInTheDocument();
 	});
 
-	test('should take value inputted and navigate to the value on blur', () => {
+	test('should take value inputted and navigate to the value on blur', async () => {
+		const user = userEvent.setup();
+
 		render(
 			<EditableIntegerPicker
 				decrementIcon={'minus'}
@@ -126,13 +132,13 @@ describe('EditableIntegerPicker', () => {
 			/>
 		);
 
-		userEvent.click(screen.getByText('10'));
+		await user.click(screen.getByText('10'));
 
 		const input = screen.getByRole('spinbutton');
 		const inputField = input.children.item(0).children.item(0);
 
 		fireEvent.focus(inputField);
-		userEvent.type(inputField, '38');
+		await user.type(inputField, '38');
 		fireEvent.blur(inputField);
 
 		const actual = screen.getByText('38');
@@ -140,8 +146,10 @@ describe('EditableIntegerPicker', () => {
 		expect(actual).toBeInTheDocument();
 	});
 
-	test('should send change event with correct value on blur', () => {
+	test('should send change event with correct value on blur', async () => {
 		const handleChange = jest.fn();
+		const user = userEvent.setup();
+
 		render(
 			<EditableIntegerPicker
 				defaultValue={10}
@@ -153,13 +161,13 @@ describe('EditableIntegerPicker', () => {
 			/>
 		);
 
-		userEvent.click(screen.getByText('10'));
+		await user.click(screen.getByText('10'));
 
 		const input = screen.getByRole('spinbutton');
 		const inputField = input.children.item(0).children.item(0);
 
 		fireEvent.focus(inputField);
-		userEvent.type(inputField, '45');
+		await user.type(inputField, '45');
 		fireEvent.blur(inputField);
 
 		const expected = 45;
@@ -168,8 +176,10 @@ describe('EditableIntegerPicker', () => {
 		expect(actual).toBe(expected);
 	});
 
-	test('should not send change event with invalid value on blur', () => {
+	test('should not send change event with invalid value on blur', async () => {
 		const handleChange = jest.fn();
+		const user = userEvent.setup();
+
 		render(
 			<EditableIntegerPicker
 				defaultValue={12}
@@ -181,20 +191,22 @@ describe('EditableIntegerPicker', () => {
 			/>
 		);
 
-		userEvent.click(screen.getByText('12'));
+		await user.click(screen.getByText('12'));
 
 		const input = screen.getByRole('spinbutton');
 		const inputField = input.children.item(0).children.item(0);
 
 		fireEvent.focus(inputField);
-		userEvent.type(inputField, 'invalid');
+		await user.type(inputField, 'invalid');
 		fireEvent.blur(inputField);
 
 		expect(handleChange).not.toHaveBeenCalled();
 	});
 
-	test('should not send two change event when incrementing from edit mode', () => {
+	test('should not send two change event when incrementing from edit mode', async () => {
 		const handleChange = jest.fn();
+		const user = userEvent.setup();
+
 		render(
 			<EditableIntegerPicker
 				defaultValue={15}
@@ -206,13 +218,13 @@ describe('EditableIntegerPicker', () => {
 			/>
 		);
 
-		userEvent.click(screen.getByText('15'));
+		await user.click(screen.getByText('15'));
 
 		const input = screen.getByRole('spinbutton');
 		const inputField = input.children.item(0).children.item(0);
 
 		fireEvent.focus(inputField);
-		userEvent.type(inputField, '12');
+		await user.type(inputField, '12');
 		fireEvent.blur(inputField);
 
 		const expected = 1;
@@ -220,10 +232,12 @@ describe('EditableIntegerPicker', () => {
 		expect(handleChange).toHaveBeenCalledTimes(expected);
 	});
 
-	test('should pause the spotlight when input is focused', () => {
+	test('should pause the spotlight when input is focused', async () => {
+		const user = userEvent.setup();
+
 		render(<EditableIntegerPicker defaultValue={11} max={100} min={0} step={1} />);
 
-		userEvent.click(screen.getByText('11'));
+		await user.click(screen.getByText('11'));
 
 		const input = screen.getByRole('spinbutton');
 		const inputField = input.children.item(0).children.item(0);
@@ -238,10 +252,12 @@ describe('EditableIntegerPicker', () => {
 		expect(actual).toBe(expected);
 	});
 
-	test('should resume the spotlight when input is blurred', () => {
+	test('should resume the spotlight when input is blurred', async () => {
+		const user = userEvent.setup();
+
 		render(<EditableIntegerPicker defaultValue={13} max={100} min={0} step={1} />);
 
-		userEvent.click(screen.getByText('13'));
+		await user.click(screen.getByText('13'));
 
 		const input = screen.getByRole('spinbutton');
 		const inputField = input.children.item(0).children.item(0);

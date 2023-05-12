@@ -32,13 +32,15 @@ describe('SwitchItem Specs', () => {
 		expect(SwitchItemElement).toHaveAttribute('aria-disabled', expected);
 	});
 
-	test('should toggle Switch', () => {
+	test('should toggle Switch', async () => {
 		const handleToggle = jest.fn();
+		const user = userEvent.setup();
+
 		render(<SwitchItem onToggle={handleToggle} />);
 
 		const actual = screen.getByRole('checkbox');
 
-		userEvent.click(actual);
+		await user.click(actual);
 
 		expect(actual).toBeChecked();
 

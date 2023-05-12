@@ -24,8 +24,10 @@ describe('TimePicker', () => {
 		expect(actual).toHaveLength(expected);
 	});
 
-	test('should emit an onChange event when changing a component picker', () => {
+	test('should emit an onChange event when changing a component picker', async () => {
 		const handleChange = jest.fn();
+		const user = userEvent.setup();
+
 		render(
 			<TimePicker
 				locale="en-US"
@@ -38,7 +40,7 @@ describe('TimePicker', () => {
 
 		const hourPickerUp = screen.getByLabelText('3 hour change a value with up down button').children.item(0);
 
-		userEvent.click(hourPickerUp);
+		await user.click(hourPickerUp);
 
 		const expected = 1;
 
