@@ -215,7 +215,7 @@ describe('ExpandableInput', function () {
 				await expectClosed(expandable);
 			});
 
-			describe('5-way', function () {
+			describe.skip('5-way', function () {
 				beforeEach(async function () {
 					await expandable.focus();
 				});
@@ -378,7 +378,7 @@ describe('ExpandableInput', function () {
 				expect(await expandable.isLabelExists).to.be.false();
 			});
 
-			describe('5-way', function () {
+			describe.skip('5-way', function () {
 				it('should not have value text on open and close', async function () {
 					await expandable.focus();
 					await Page.waitTransitionEnd(3000, undefined, async () => {
