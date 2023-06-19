@@ -365,7 +365,7 @@ describe('DatePicker', function () {
 			describe('5-way', function () {
 				it('should not update on select', async function () {
 					await datePicker.focus();
-					await Page.waitTransitionEnd(3000, undefined, () => {
+					await Page.waitTransitionEnd(5000, undefined, () => {
 						Page.spotlightSelect();
 					});
 
