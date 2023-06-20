@@ -20,12 +20,12 @@
     "theme": "moonstone"
   },
   "dependencies": {
-    "@enact/core": "^4.7.0",
-    "@enact/i18n": "^4.7.0",
+    "@enact/core": "^4.7.1",
+    "@enact/i18n": "^4.7.1",
     "@enact/moonstone": "../../",
-    "@enact/spotlight": "^4.7.0",
-    "@enact/storybook-utils": "^5.0.3",
-    "@enact/ui": "^4.7.0",
+    "@enact/spotlight": "^4.7.1",
+    "@enact/storybook-utils": "^5.0.4",
+    "@enact/ui": "^4.7.1",
     "@storybook/addons": "^6.5.16",
     "@storybook/builder-webpack5": "^6.5.16",
     "@storybook/manager-webpack5": "^6.5.16",
