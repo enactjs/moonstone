@@ -2,11 +2,6 @@
 
 The following is a curated list of changes in the Enact Sampler, newest changes on the top.
 
-## unreleased
-
-- Updated `babel-loader` version to `^9.1.2`.
-- Updated the minimum version of Node to `14.15.0`.
-
 ## [3.2.5] - 2019-11-14
 
 No significant changes.
