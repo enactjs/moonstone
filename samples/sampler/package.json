@@ -1,6 +1,6 @@
 {
   "name": "moonstone-sampler",
-  "version": "4.5.4",
+  "version": "4.5.5",
   "description": "Component and QA samples for Moonstone",
   "private": true,
   "main": "index.js",
@@ -20,12 +20,12 @@
     "theme": "moonstone"
   },
   "dependencies": {
-    "@enact/core": "^4.7.8",
-    "@enact/i18n": "^4.7.8",
+    "@enact/core": "^4.7.9",
+    "@enact/i18n": "^4.7.9",
     "@enact/moonstone": "../../",
-    "@enact/spotlight": "^4.7.8",
+    "@enact/spotlight": "^4.7.9",
     "@enact/storybook-utils": "^5.1.1",
-    "@enact/ui": "^4.7.8",
+    "@enact/ui": "^4.7.9",
     "@storybook/addons": "^6.5.16",
     "@storybook/builder-webpack5": "^6.5.16",
     "@storybook/manager-webpack5": "^6.5.16",
