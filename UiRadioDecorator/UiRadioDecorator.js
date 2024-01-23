@@ -24,7 +24,7 @@ const defaultConfig = {
 	 *
 	 * @type {String}
 	 * @default null
-	 * @memberof moonstone/UiRadioDecorator.RadioDecorator.defaultConfig
+	 * @memberof moonstone/UiRadioDecorator.defaultConfig
 	 */
 	activate: null,
 
@@ -33,7 +33,7 @@ const defaultConfig = {
 	 *
 	 * @type {String}
 	 * @default null
-	 * @memberof moonstone/UiRadioDecorator.RadioDecorator.defaultConfig
+	 * @memberof moonstone/UiRadioDecorator.defaultConfig
 	 */
 	deactivate: null,
 
@@ -42,7 +42,7 @@ const defaultConfig = {
 	 *
 	 * @type {String}
 	 * @default 'active'
-	 * @memberof moonstone/UiRadioDecorator.RadioDecorator.defaultConfig
+	 * @memberof moonstone/UiRadioDecorator.defaultConfig
 	 */
 	prop: 'active'
 };
