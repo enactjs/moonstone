@@ -843,7 +843,7 @@ class ScrollableBase extends Component {
 	addEventListeners = (childContainerRef) => {
 		if (childContainerRef.current && childContainerRef.current.addEventListener) {
 			childContainerRef.current.addEventListener('focusin', this.onFocus);
-			if (platform.webos) {
+			if (platform.type === 'webos') {
 				childContainerRef.current.addEventListener('webOSVoice', this.onVoice);
 				childContainerRef.current.setAttribute('data-webos-voice-intent', 'Scroll');
 			}
@@ -854,7 +854,7 @@ class ScrollableBase extends Component {
 	removeEventListeners = (childContainerRef) => {
 		if (childContainerRef.current && childContainerRef.current.removeEventListener) {
 			childContainerRef.current.removeEventListener('focusin', this.onFocus);
-			if (platform.webos) {
+			if (platform.type === 'webos') {
 				childContainerRef.current.removeEventListener('webOSVoice', this.onVoice);
 				childContainerRef.current.removeAttribute('data-webos-voice-intent');
 			}
@@ -965,7 +965,7 @@ class ScrollableBase extends Component {
 
 		return (
 			<UiScrollableBase
-				noScrollByDrag={!platform.touchscreen}
+				noScrollByDrag={!platform.touchScreen}
 				{...rest}
 				addEventListeners={this.addEventListeners}
 				applyOverscrollEffect={this.applyOverscrollEffect}

@@ -687,7 +687,7 @@ const VideoPlayerBase = class extends Component {
 
 	componentDidMount () {
 		on('mousemove', this.activityDetected);
-		if (platform.touch) {
+		if (platform.touchEvent) {
 			on('touchmove', this.activityDetected);
 		}
 		on('keydown', this.handleGlobalKeyDown);
@@ -793,7 +793,7 @@ const VideoPlayerBase = class extends Component {
 
 	componentWillUnmount () {
 		off('mousemove', this.activityDetected);
-		if (platform.touch) {
+		if (platform.touchEvent) {
 			off('touchmove', this.activityDetected);
 		}
 		off('keydown', this.handleGlobalKeyDown);
@@ -1507,7 +1507,7 @@ const VideoPlayerBase = class extends Component {
 		this.playbackRate = rate = String(rate);
 		const pbNumber = calcNumberValueOfPlaybackRate(rate);
 
-		if (!platform.webos) {
+		if (platform.type !== 'webos') {
 			// ReactDOM throws error for setting negative value for playbackRate
 			this.video.playbackRate = pbNumber < 0 ? 0 : pbNumber;
 
