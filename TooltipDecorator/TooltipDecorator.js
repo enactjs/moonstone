@@ -1,5 +1,3 @@
-/* global MutationObserver ResizeObserver */
-
 /**
  * Moonstone styled tooltip components.
  *
