@@ -15,11 +15,11 @@ const MainView = () => {
 	}, []);
 
 	const onChangeFocusableScrollbar = useCallback(() => {
-		setFocusableScrollbar((isFocusable) => setFocusableScrollbar(!isFocusable));
+		setFocusableScrollbar((isFocusable) => !isFocusable);
 	}, []);
 
 	const onChangeDirection = useCallback(() => {
-		setHorizontal((isHorizontal) => setHorizontal(!isHorizontal));
+		setHorizontal((isHorizontal) => !isHorizontal);
 	}, []);
 
 	const getScrollTo = useCallback((newScrollTo) => {
