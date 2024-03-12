@@ -35,7 +35,7 @@ const PanelsBase = kind({
 
 	render: ({children, className, description, noHeader, noPanel, noPanels, title, ...rest}) => {
 		// eslint-disable-next-line
-		const android = platform.browserName !== 'safari' && platform.type === 'mobile' && screen.availHeight < screen.availWidth;
+		const android = platform.platformName.includes('android') && screen.availHeight < screen.availWidth;
 		const panelsClassName = `${className} ${android ? css.panelsAndroid : ''}`;
 
 		return (
