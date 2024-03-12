@@ -419,7 +419,7 @@ const PickerBase = class extends ReactComponent {
 		if (this.props.joined) {
 			this.containerRef.addEventListener('wheel', this.handleWheel);
 		}
-		if (platform.type === 'webos') {
+		if (platform.webos) {
 			this.containerRef.addEventListener('webOSVoice', this.handleVoice);
 		}
 	}
@@ -439,7 +439,7 @@ const PickerBase = class extends ReactComponent {
 		if (this.props.joined) {
 			this.containerRef.removeEventListener('wheel', this.handleWheel);
 		}
-		if (platform.type === 'webos') {
+		if (platform.webos) {
 			this.containerRef.removeEventListener('webOSVoice', this.handleVoice);
 		}
 	}
