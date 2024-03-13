@@ -1170,7 +1170,7 @@ const VirtualListBaseFactory = (type) => {
 
 /**
  * A basic base component for
- * {@link moonstone/UiVirtualList.VirtualList|VirtualList} and {@link moonstone/UiVirtualList.VirtualGridList|VirtualGridList}.
+ * {@link moonstone/VirtualList.VirtualList|VirtualList} and {@link moonstone/VirtualList.VirtualGridList|VirtualGridList}.
  *
  * @class VirtualListBase
  * @memberof moonstone/UiVirtualList

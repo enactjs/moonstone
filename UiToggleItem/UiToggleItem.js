@@ -102,7 +102,7 @@ const ToggleItemBase = kind({
 		 *
 		 * This component receives the `selected` prop and value,
 		 * and must therefore respond to it in some way. It is recommended to use
-		 * {@link moonstone/UiToggleIcon|ToggleIcon} for this.
+		 * {@link moonstone/ToggleIcon|ToggleIcon} for this.
 		 *
 		 * @type {Component|Element}
 		 * @required
