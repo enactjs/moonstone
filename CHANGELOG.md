@@ -2,7 +2,7 @@
 
 The following is a curated list of changes in the Enact moonstone module, newest changes on the top.
 
-## [4.5.6] - 2024-03-13
+## [4.5.6] - 2024-03-14
 
 No significant changes.
 
