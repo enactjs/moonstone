@@ -395,7 +395,7 @@ describe('VirtualList', function () {
 			// Step 3. 1. Position the pointer on the last item in a current page.
 			bottomId = await Page.bottomVisibleItemId();
 			await Page.showPointerByKeycode();
-			await Page.item(bottomId).moveTo({yOffset:10}); // The upper part of the item, not the center
+			await Page.item(bottomId).moveTo({xOffset: 5, yOffset: -5}); // The upper part of the item, not the center
 			// Verify Step 3: Spotlight displays on the item.
 			await Page.delay(1000); // needed to run on mpc
 			await await expectFocusedItem(Number(((await Page.bottomVisibleItemId()).slice(4))), 'focus bottomId');
