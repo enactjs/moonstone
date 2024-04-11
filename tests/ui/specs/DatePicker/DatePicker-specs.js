@@ -6,7 +6,7 @@ describe('DatePicker', function () {
 
 	it('should have focus on start', async function () {
 		await Page.open();
-		expect(await Page.components.datePickerDefaultClosedWithoutNoneText.title.isFocused()).to.be.true();
+		expect(await Page.components.datePickerDefaultClosedWithoutNoneText.title.isFocused()).toBe(true);
 	});
 
 	describe('LTR locale', function () {
@@ -32,11 +32,11 @@ describe('DatePicker', function () {
 				});
 
 				await expectOpen(datePicker);
-				expect(await datePicker.month.isFocused(), 'Month').to.be.true();
+				expect(await datePicker.month.isFocused()).toBe(true);
 				await Page.spotlightRight();
-				expect(await datePicker.day.isFocused(), 'Day').to.be.true();
+				expect(await datePicker.day.isFocused()).toBe(true);
 				await Page.spotlightRight();
-				expect(await datePicker.year.isFocused(), 'Year').to.be.true();
+				expect(await datePicker.year.isFocused()).toBe(true);
 			});
 
 			describe('5-way', function () {
@@ -47,8 +47,9 @@ describe('DatePicker', function () {
 
 					const month = new Date(await datePicker.valueText).getMonth();
 					await expectOpen(await datePicker);
-					expect(await datePicker.month.isFocused()).to.be.true();
-					expect(month).to.be.within(0, 11);
+					expect(await datePicker.month.isFocused()).toBe(true);
+					expect(month).toBeGreaterThanOrEqual(0);
+					expect(month).toBeLessThanOrEqual(11);
 				});
 
 				it('should close when pressing select', async function () {
@@ -57,7 +58,7 @@ describe('DatePicker', function () {
 					});
 
 					await expectOpen(await datePicker);
-					expect(await datePicker.month.isFocused()).to.be.true();
+					expect(await datePicker.month.isFocused()).toBe(true);
 					await Page.spotlightSelect();
 					await expectClosed(await datePicker);
 				});
@@ -68,11 +69,11 @@ describe('DatePicker', function () {
 					});
 
 					await expectOpen(await datePicker);
-					expect(await datePicker.month.isFocused()).to.be.true();
+					expect(await datePicker.month.isFocused()).toBe(true);
 					await Page.spotlightRight();
 					await Page.spotlightRight();
 					await Page.spotlightRight();
-					expect(await datePicker.title.isFocused()).to.be.true();
+					expect(await datePicker.title.isFocused()).toBe(true);
 				});
 
 				it('should increase the month when incrementing the picker', async function () {
@@ -82,13 +83,13 @@ describe('DatePicker', function () {
 
 					const {month} = await extractValues(datePicker);
 					await expectOpen(await datePicker);
-					expect(await datePicker.month.isFocused()).to.be.true();
+					expect(await datePicker.month.isFocused()).toBe(true);
 					await Page.waitTransitionEnd(3000, undefined, () => {
 						Page.spotlightUp();
 					});
 					const {month: value} = await extractValues(datePicker);
 					const expected = month < 12 ? month + 1 : 1;
-					expect(value).to.equal(expected);
+					expect(value).toBe(expected);
 				});
 
 				it('should decrease the month when decrementing the picker - [GT-21247]', async function () {
@@ -98,13 +99,13 @@ describe('DatePicker', function () {
 
 					const {month} = await extractValues(datePicker);
 					await expectOpen(await datePicker);
-					expect(await datePicker.month.isFocused()).to.be.true();
+					expect(await datePicker.month.isFocused()).toBe(true);
 					await Page.waitTransitionEnd(3000, undefined, () => {
 						Page.spotlightDown();
 					});
 					const {month: value} = await extractValues(datePicker);
 					const expected = month > 1 ? month - 1 : 12;
-					expect(value).to.equal(expected);
+					expect(value).toBe(expected);
 				});
 
 				it('should increase the day when incrementing the picker - [GT-21247]', async function () {
@@ -116,13 +117,13 @@ describe('DatePicker', function () {
 					const numDays = daysInMonth({month, year});
 					await expectOpen(await datePicker);
 					await Page.spotlightRight();
-					expect(await datePicker.day.isFocused()).to.be.true();
+					expect(await datePicker.day.isFocused()).toBe(true);
 					await Page.waitTransitionEnd(3000, undefined, () => {
 						Page.spotlightUp();
 					});
 					const {day: value} = await extractValues(datePicker);
 					const expected = day !== numDays ? day + 1 : 1;
-					expect(value).to.equal(expected);
+					expect(value).toBe(expected);
 				});
 
 				it('should decrease the day when decrementing the picker', async function () {
@@ -134,13 +135,13 @@ describe('DatePicker', function () {
 					const numDays = daysInMonth({month, year});
 					await expectOpen(await datePicker);
 					await Page.spotlightRight();
-					expect(await datePicker.day.isFocused()).to.be.true();
+					expect(await datePicker.day.isFocused()).toBe(true);
 					await Page.waitTransitionEnd(3000, undefined, () => {
 						Page.spotlightDown();
 					});
 					const {day: value} = await extractValues(datePicker);
 					const expected = day !== 1 ? day - 1 : numDays;
-					expect(value).to.equal(expected);
+					expect(value).toBe(expected);
 				});
 
 				it('should increase the year when incrementing the picker - [GT-21247]', async function () {
@@ -152,13 +153,13 @@ describe('DatePicker', function () {
 					await expectOpen(await datePicker);
 					await Page.spotlightRight();
 					await Page.spotlightRight();
-					expect(await datePicker.year.isFocused()).to.be.true();
+					expect(await datePicker.year.isFocused()).toBe(true);
 					await Page.waitTransitionEnd(3000, undefined, () => {
 						Page.spotlightUp();
 					});
 					const {year: value} = await extractValues(datePicker);
 					const expected = year + 1;
-					expect(value).to.equal(expected);
+					expect(value).toBe(expected);
 				});
 
 				it('should decrease the year when decrementing the picker', async function () {
@@ -170,13 +171,13 @@ describe('DatePicker', function () {
 					await expectOpen(await datePicker);
 					await Page.spotlightRight();
 					await Page.spotlightRight();
-					expect(await datePicker.year.isFocused()).to.be.true();
+					expect(await datePicker.year.isFocused()).toBe(true);
 					await Page.waitTransitionEnd(3000, undefined, () => {
 						Page.spotlightDown();
 					});
 					const {year: value} = await extractValues(datePicker);
 					const expected = year - 1;
-					expect(value).to.equal(expected);
+					expect(value).toBe(expected);
 				});
 			});
 
@@ -204,7 +205,7 @@ describe('DatePicker', function () {
 						datePicker.title.click();
 					});
 					await datePicker.month.click();
-					expect(await datePicker.month.isFocused()).to.be.true();
+					expect(await datePicker.month.isFocused()).toBe(true);
 				});
 
 				it('should increase the month when incrementing the picker', async function () {
@@ -218,7 +219,7 @@ describe('DatePicker', function () {
 					});
 					const {month: value} = await extractValues(datePicker);
 					const expected = month < 12 ? month + 1 : 1;
-					expect(value).to.equal(expected);
+					expect(value).toBe(expected);
 				});
 
 				it('should decrease the month when decrementing the picker', async function () {
@@ -232,7 +233,7 @@ describe('DatePicker', function () {
 					});
 					const {month: value} = await extractValues(datePicker);
 					const expected = month > 1 ? month - 1 : 12;
-					expect(value).to.equal(expected);
+					expect(value).toBe(expected);
 				});
 
 				it('should increase the day when incrementing the picker', async function () {
@@ -247,7 +248,7 @@ describe('DatePicker', function () {
 					});
 					const {day: value} = await extractValues(datePicker);
 					const expected = day !== numDays ? day + 1 : 1;
-					expect(value).to.equal(expected);
+					expect(value).toBe(expected);
 				});
 
 				it('should decrease the day when decrementing the picker', async function () {
@@ -262,7 +263,7 @@ describe('DatePicker', function () {
 					});
 					const {day: value} = await extractValues(datePicker);
 					const expected = day !== 1 ? day - 1 : numDays;
-					expect(value).to.equal(expected);
+					expect(value).toBe(expected);
 				});
 
 				it('should increase the year when incrementing the picker', async function () {
@@ -276,7 +277,7 @@ describe('DatePicker', function () {
 					});
 					const {year: value} = await extractValues(datePicker);
 					const expected = year + 1;
-					expect(value).to.equal(expected);
+					expect(value).toBe(expected);
 				});
 
 				it('should decrease the year when decrementing the picker', async function () {
@@ -290,7 +291,7 @@ describe('DatePicker', function () {
 					});
 					const {year: value} = await extractValues(datePicker);
 					const expected = year - 1;
-					expect(value).to.equal(expected);
+					expect(value).toBe(expected);
 				});
 			});
 		});
@@ -299,7 +300,7 @@ describe('DatePicker', function () {
 			const datePicker = Page.components.datePickerDefaultClosedWithNoneText;
 
 			it('should display \'noneText\' - [GT-21246]', async function () {
-				expect(await datePicker.valueText).to.equal('Nothing Selected');
+				expect(await datePicker.valueText).toBe('Nothing Selected');
 			});
 		});
 
@@ -319,7 +320,7 @@ describe('DatePicker', function () {
 					});
 
 					await expectClosed(datePicker);
-					expect(await datePicker.title.isFocused()).to.be.true();
+					expect(await datePicker.title.isFocused()).toBe(true);
 				});
 			});
 
@@ -354,7 +355,7 @@ describe('DatePicker', function () {
 			});
 
 			it('should not display \'noneText\'', async function () {
-				expect(await datePicker.valueText).to.not.equal('Nothing Selected');
+				expect(await datePicker.valueText).not.toBe('Nothing Selected');
 			});
 		});
 
@@ -371,9 +372,9 @@ describe('DatePicker', function () {
 
 					const {day, month, year} = await extractValues(datePicker);
 
-					expect(day).to.equal(6);
-					expect(month).to.equal(6); // `Date` uses 0-indexed months, picker displays 1-indexed month values
-					expect(year).to.equal(2009);
+					expect(day).toBe(6);
+					expect(month).toBe(6); // `Date` uses 0-indexed months, picker displays 1-indexed month values
+					expect(year).toBe(2009);
 				});
 			});
 
@@ -384,9 +385,9 @@ describe('DatePicker', function () {
 					});
 					const {day, month, year} = await extractValues(datePicker);
 
-					expect(day).to.equal(6);
-					expect(month).to.equal(6); // `Date` uses 0-indexed months, picker displays 1-indexed month values
-					expect(year).to.equal(2009);
+					expect(day).toBe(6);
+					expect(month).toBe(6); // `Date` uses 0-indexed months, picker displays 1-indexed month values
+					expect(year).toBe(2009);
 				});
 			});
 
@@ -410,14 +411,14 @@ describe('DatePicker', function () {
 			});
 
 			it('should display \'noneText\'', async function () {
-				expect(await datePicker.valueText).to.equal('Nothing Selected');
+				expect(await datePicker.valueText).toBe('Nothing Selected');
 			});
 
 			describe('5-way', function () {
 				it('should be able to receive focus', async function () {
 					await Page.components.datePickerNoLabels.focus();
 					await Page.spotlightDown();
-					expect(await datePicker.title.isFocused()).to.be.true();
+					expect(await datePicker.title.isFocused()).toBe(true);
 				});
 				it('should not open when selected', async function () {
 					await Page.spotlightSelect();
@@ -445,7 +446,7 @@ describe('DatePicker', function () {
 			});
 
 			it('should not display \'noneText\'', async function () {
-				expect(await datePicker.valueText).to.not.equal('Nothing Selected');
+				expect(await datePicker.valueText).not.toBe('Nothing Selected');
 			});
 		});
 
@@ -457,7 +458,7 @@ describe('DatePicker', function () {
 			});
 
 			it('should display \'noneText\'', async function () {
-				expect(await datePicker.valueText).to.equal('Nothing Selected');
+				expect(await datePicker.valueText).toBe('Nothing Selected');
 			});
 		});
 
@@ -471,7 +472,7 @@ describe('DatePicker', function () {
 			});
 
 			it('should not display \'noneText\'', async function () {
-				expect(await datePicker.valueText).to.not.equal('Nothing Selected');
+				expect(await datePicker.valueText).not.toBe('Nothing Selected');
 			});
 		});
 	});
@@ -489,7 +490,7 @@ describe('DatePicker', function () {
 			});
 
 			await expectOpen(datePicker);
-			expect(await datePicker.day.isFocused()).to.be.true();
+			expect(await datePicker.day.isFocused()).toBe(true);
 		});
 
 		it('should have day-month-year order', async function () {
@@ -498,11 +499,11 @@ describe('DatePicker', function () {
 			});
 
 			await expectOpen(datePicker);
-			expect(await datePicker.day.isFocused()).to.be.true();
+			expect(await datePicker.day.isFocused()).toBe(true);
 			await Page.spotlightLeft();
-			expect(await datePicker.month.isFocused()).to.be.true();
+			expect(await datePicker.month.isFocused()).toBe(true);
 			await Page.spotlightLeft();
-			expect(await datePicker.year.isFocused()).to.be.true();
+			expect(await datePicker.year.isFocused()).toBe(true);
 		});
 
 		it('should focus title when 5-way left from last picker - [GT-25238]', async function () {
@@ -511,11 +512,11 @@ describe('DatePicker', function () {
 			});
 
 			await expectOpen(datePicker);
-			expect(await datePicker.day.isFocused()).to.be.true();
+			expect(await datePicker.day.isFocused()).toBe(true);
 			await Page.spotlightLeft();
 			await Page.spotlightLeft();
 			await Page.spotlightLeft();
-			expect(await datePicker.title.isFocused()).to.be.true();
+			expect(await datePicker.title.isFocused()).toBe(true);
 		});
 	});
 

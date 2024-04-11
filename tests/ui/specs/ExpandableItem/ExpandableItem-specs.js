@@ -8,7 +8,7 @@ describe('ExpandableItem', function () {
 	});
 
 	it('should have focus on start', async function () {
-		expect(await Page.components.expandableItemDefaultClosedWithoutNoneText.title.isFocused()).to.be.true();
+		expect(await Page.components.expandableItemDefaultClosedWithoutNoneText.title.isFocused()).toBe(true);
 	});
 
 	describe('default', function () {
@@ -27,7 +27,7 @@ describe('ExpandableItem', function () {
 				});
 
 				await expectOpen(expandableItem);
-				expect(await expandableItem.item.isFocused()).to.be.true();
+				expect(await expandableItem.item.isFocused()).toBe(true);
 			});
 
 			it('should close when pressing select on label', async function () {
@@ -52,9 +52,9 @@ describe('ExpandableItem', function () {
 				});
 
 				await expectOpen(expandableItem);
-				expect(await expandableItem.item.isFocused()).to.be.true();
+				expect(await expandableItem.item.isFocused()).toBe(true);
 				await Page.spotlightDown();
-				expect(await Page.components.expandableItemDefaultClosedWithNoneText.title.isFocused()).to.be.true();
+				expect(await Page.components.expandableItemDefaultClosedWithNoneText.title.isFocused()).toBe(true);
 			});
 		});
 
@@ -83,7 +83,7 @@ describe('ExpandableItem', function () {
 		const expandableItem = Page.components.expandableItemDefaultClosedWithNoneText;
 
 		it('should have correct noneText', async function () {
-			expect(await expandableItem.valueText).to.equal('Nothing Selected');
+			expect(await expandableItem.valueText).toBe('Nothing Selected');
 		});
 	});
 
@@ -102,7 +102,7 @@ describe('ExpandableItem', function () {
 				});
 
 				await expectClosed(expandableItem);
-				expect(await expandableItem.title.isFocused()).to.be.true();
+				expect(await expandableItem.title.isFocused()).toBe(true);
 			});
 		});
 
@@ -137,7 +137,7 @@ describe('ExpandableItem', function () {
 			});
 
 			await expectOpen(expandableItem);
-			expect(await expandableItem.item.isFocused()).to.be.true();
+			expect(await expandableItem.item.isFocused()).toBe(true);
 			await Page.waitTransitionEnd(3000, undefined, () => {
 				Page.spotlightUp();
 			});
@@ -155,9 +155,9 @@ describe('ExpandableItem', function () {
 			});
 
 			await expectOpen(expandableItem);
-			expect(await expandableItem.item.isFocused()).to.be.true();
+			expect(await expandableItem.item.isFocused()).toBe(true);
 			await Page.spotlightDown();
-			expect(await expandableItem.item.isFocused()).to.be.true();
+			expect(await expandableItem.item.isFocused()).toBe(true);
 		});
 	});
 
@@ -169,10 +169,10 @@ describe('ExpandableItem', function () {
 			it.skip('should allow navigation after opening', function () {
 				Page.components.expandableItemWithLockBottom.focus();
 				Page.spotlightDown();
-				expect(expandableItem.title.isFocused()).to.be.true();
+				expect(expandableItem.title.isFocused()).toBe(true);
 				Page.spotlightSelect();
 				Page.spotlightUp();
-				expect(expandableItem.title.isFocused()).to.be.false();
+				expect(expandableItem.title.isFocused()).toBe(false);
 			});
 		});
 
@@ -182,16 +182,16 @@ describe('ExpandableItem', function () {
 			it('should open on title click when closed', async function () {
 				await expandableItem.title.click();
 				await browser.pause(500);
-				expect(await getChevronRotation(expandableItem)).to.equal('up');
+				expect(await getChevronRotation(expandableItem)).toBe('up');
 			});
 
 			it('should close on title click when open', async function () {
 				await expandableItem.title.click();
 				await browser.pause(500);
-				expect(await getChevronRotation(expandableItem)).to.equal('up');
+				expect(await getChevronRotation(expandableItem)).toBe('up');
 				await expandableItem.title.click();
 				await browser.pause(500);
-				expect(await getChevronRotation(expandableItem)).to.equal('down');
+				expect(await getChevronRotation(expandableItem)).toBe('down');
 			});
 		});
 	});
@@ -203,18 +203,18 @@ describe('ExpandableItem', function () {
 			const expandableItem = Page.components.expandableItemAutoLabel;
 
 			it('should override noneText', async function () {
-				expect(await expandableItem.valueText).to.equal('Labeled Item');
+				expect(await expandableItem.valueText).toBe('Labeled Item');
 			});
 
 			it('should display label when closed', async function () {
 				await expectClosed(expandableItem);
-				expect(await expandableItem.hasLabel).to.be.true();
+				expect(await expandableItem.hasLabel).toBe(true);
 			});
 
 			it('should not display label when open', async function () {
 				await expandableItem.title.click();
 				await expectOpen(expandableItem);
-				expect(await expandableItem.hasLabel).to.be.false();
+				expect(await expandableItem.hasLabel).toBe(false);
 			});
 		});
 
@@ -224,13 +224,13 @@ describe('ExpandableItem', function () {
 			it('should display label when closed', async function () {
 				await expandableItem.title.click();
 				await expectOpen(expandableItem);
-				expect(await expandableItem.hasLabel).to.be.true();
+				expect(await expandableItem.hasLabel).toBe(true);
 			});
 
 			it('should display label when open - [GT-21495]', async function () {
 				await expandableItem.title.click();
 				await expectOpen(expandableItem);
-				expect(await expandableItem.hasLabel).to.be.true();
+				expect(await expandableItem.hasLabel).toBe(true);
 			});
 		});
 
@@ -240,13 +240,13 @@ describe('ExpandableItem', function () {
 			it('should not display label when closed', async function () {
 				await expandableItem.title.click();
 				await expectOpen(expandableItem);
-				expect(await expandableItem.hasLabel).to.be.false();
+				expect(await expandableItem.hasLabel).toBe(false);
 			});
 
 			it('should not display label when open', async function () {
 				await expandableItem.title.click();
 				await expectOpen(expandableItem);
-				expect(await expandableItem.hasLabel).to.be.false();
+				expect(await expandableItem.hasLabel).toBe(false);
 			});
 		});
 	});
@@ -259,14 +259,14 @@ describe('ExpandableItem', function () {
 		});
 
 		it('should have correct none text', async function () {
-			expect(await expandableItem.valueText).to.equal('Nothing Selected');
+			expect(await expandableItem.valueText).toBe('Nothing Selected');
 		});
 
 		describe('5-way', function () {
 			it('should be able to receive focus', async function () {
 				await Page.components.expandableItemNeverLabel.focus();
 				await Page.spotlightDown();
-				expect(await expandableItem.title.isFocused()).to.be.true();
+				expect(await expandableItem.title.isFocused()).toBe(true);
 			});
 			it('should not open when selected', async function () {
 				await Page.spotlightSelect();

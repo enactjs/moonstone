@@ -8,14 +8,14 @@ describe('SelectableItem', function () {
 	});
 
 	it('should have focus on first item at start', async function () {
-		expect(await Page.components.selectableDefault.self.isFocused()).to.be.true();
+		expect(await Page.components.selectableDefault.self.isFocused()).toBe(true);
 	});
 
 	describe('default', function () {
 		const selectableItem = Page.components.selectableDefault;
 
 		it('should have correct text', async function () {
-			expect(await selectableItem.valueText).to.equal('Selectable Item1');
+			expect(await selectableItem.valueText).toBe('Selectable Item1');
 		});
 
 		it('should not be selected', async function () {
@@ -36,13 +36,13 @@ describe('SelectableItem', function () {
 
 			it('should move focus down on SpotlightDown', async function () {
 				await Page.spotlightDown();
-				expect(await Page.components.selectableDefaultSelected.self.isFocused()).to.be.true();
+				expect(await Page.components.selectableDefaultSelected.self.isFocused()).toBe(true);
 			});
 
 			it('should move focus up on SpotlightUp', async function () {
 				await Page.components.selectableDefaultSelected.focus();
 				await Page.spotlightUp();
-				expect(await selectableItem.self.isFocused()).to.be.true();
+				expect(await selectableItem.self.isFocused()).toBe(true);
 			});
 		});
 
@@ -64,7 +64,7 @@ describe('SelectableItem', function () {
 		const selectableItem = Page.components.selectableDefaultSelected;
 
 		it('should have correct text', async function () {
-			expect(await selectableItem.valueText).to.equal('Selectable Item selected');
+			expect(await selectableItem.valueText).toBe('Selectable Item selected');
 		});
 
 		it('should be selected', async function () {
@@ -104,7 +104,7 @@ describe('SelectableItem', function () {
 		const selectableItem = Page.components.selectableInline;
 
 		it('should have correct text', async function () {
-			expect(await selectableItem.valueText).to.equal('Selectable Item inline');
+			expect(await selectableItem.valueText).toBe('Selectable Item inline');
 		});
 
 		it('should be selected', async function () {
@@ -112,7 +112,7 @@ describe('SelectableItem', function () {
 		});
 
 		it('should display item inline', async function () {
-			expect(await selectableItem.isInline).to.be.true();
+			expect(await selectableItem.isInline).toBe(true);
 		});
 
 		describe('5-way', function () {
@@ -152,7 +152,7 @@ describe('SelectableItem', function () {
 		const prevSelectableItem = Page.components.selectableInline;
 
 		it('should have correct text', async function () {
-			expect(await selectableItem.valueText).to.equal('Selectable Item disabled');
+			expect(await selectableItem.valueText).toBe('Selectable Item disabled');
 		});
 
 		it('should be selected', async function () {
@@ -163,7 +163,7 @@ describe('SelectableItem', function () {
 			it('should be able to focus the item', async function () {
 				await prevSelectableItem.focus();
 				await Page.spotlightDown();
-				expect(await selectableItem.self.isFocused()).to.be.true();
+				expect(await selectableItem.self.isFocused()).toBe(true);
 			});
 		});
 
@@ -183,7 +183,7 @@ describe('SelectableItem', function () {
 		const selectableDisabled = Page.components.selectableDisabled;
 
 		it('should have correct text', async function () {
-			expect(await selectableItem.valueText).to.equal('Selectable Item inline disabled');
+			expect(await selectableItem.valueText).toBe('Selectable Item inline disabled');
 		});
 
 		it('should be selected', async function () {
@@ -191,14 +191,14 @@ describe('SelectableItem', function () {
 		});
 
 		it('should display item inline', async function () {
-			expect(await selectableItem.isInline).to.be.true();
+			expect(await selectableItem.isInline).toBe(true);
 		});
 
 		describe('5-way', function () {
 			it('should be able to focus the item', async function () {
 				await selectableDisabled.focus();
 				await Page.spotlightDown();
-				expect(await selectableItem.self.isFocused()).to.be.true();
+				expect(await selectableItem.self.isFocused()).toBe(true);
 			});
 			it('should not unselect the item when selected', async function () {
 				await selectableItem.focus();

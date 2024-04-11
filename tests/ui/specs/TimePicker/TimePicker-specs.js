@@ -6,7 +6,7 @@ describe('TimePicker', function () {
 
 	it('should have focus on start', async function () {
 		await Page.open();
-		expect(await Page.components.timePickerDefaultClosedWithoutNoneText.title.isFocused()).to.be.true();
+		expect(await Page.components.timePickerDefaultClosedWithoutNoneText.title.isFocused()).toBe(true);
 	});
 
 	describe('LTR locale', function () {
@@ -32,11 +32,11 @@ describe('TimePicker', function () {
 				});
 
 				await expectOpen(timePicker);
-				expect(await timePicker.hour.isFocused()).to.be.true();
+				expect(await timePicker.hour.isFocused()).toBe(true);
 				await Page.spotlightRight();
-				expect(await timePicker.minute.isFocused()).to.be.true();
+				expect(await timePicker.minute.isFocused()).toBe(true);
 				await Page.spotlightRight();
-				expect(await timePicker.meridiem.isFocused()).to.be.true();
+				expect(await timePicker.meridiem.isFocused()).toBe(true);
 			});
 
 			describe('5-way', function () {
@@ -47,7 +47,7 @@ describe('TimePicker', function () {
 
 					await expectOpen(timePicker);
 					const value = /^\d{1,2}:\d{2}\s[A|P]M$/.test(await timePicker.valueText);
-					expect(value).to.be.true();
+					expect(value).toBe(true);
 				});
 
 				it('should close when pressing select', async function () {
@@ -69,11 +69,11 @@ describe('TimePicker', function () {
 					});
 
 					await expectOpen(timePicker);
-					expect(await timePicker.hour.isFocused()).to.be.true();
+					expect(await timePicker.hour.isFocused()).toBe(true);
 					await Page.spotlightRight();
 					await Page.spotlightRight();
 					await Page.spotlightRight();
-					expect(await timePicker.title.isFocused()).to.be.true();
+					expect(await timePicker.title.isFocused()).toBe(true);
 				});
 
 				it('should increase the hour when incrementing the picker', async function () {
@@ -83,13 +83,13 @@ describe('TimePicker', function () {
 
 					const {hour} = await extractValues(timePicker);
 					await expectOpen(timePicker);
-					expect(await timePicker.hour.isFocused()).to.be.true();
+					expect(await timePicker.hour.isFocused()).toBe(true);
 					await Page.waitTransitionEnd(3000, undefined, () => {
 						Page.spotlightUp();
 					});
 					const {hour: value} = await extractValues(timePicker);
 					const expected = hour < 12 ? hour + 1 : 1;
-					expect(value).to.equal(expected);
+					expect(value).toBe(expected);
 				});
 
 				it('should decrease the hour when decrementing the picker', async function () {
@@ -99,13 +99,13 @@ describe('TimePicker', function () {
 
 					const {hour} = await extractValues(timePicker);
 					await expectOpen(timePicker);
-					expect(await timePicker.hour.isFocused()).to.be.true();
+					expect(await timePicker.hour.isFocused()).toBe(true);
 					await Page.waitTransitionEnd(3000, undefined, () => {
 						Page.spotlightDown();
 					});
 					const {hour: value} = await extractValues(timePicker);
 					const expected = hour > 1 ? hour - 1 : 12;
-					expect(value).to.equal(expected);
+					expect(value).toBe(expected);
 				});
 
 				it('should increase the minute when incrementing the picker', async function () {
@@ -116,13 +116,13 @@ describe('TimePicker', function () {
 					const {minute} = await extractValues(timePicker);
 					await expectOpen(timePicker);
 					await Page.spotlightRight();
-					expect(await timePicker.minute.isFocused()).to.be.true();
+					expect(await timePicker.minute.isFocused()).toBe(true);
 					await Page.waitTransitionEnd(3000, undefined, () => {
 						Page.spotlightUp();
 					});
 					const {minute: value} = await extractValues(timePicker);
 					const expected = minute !== 59 ? minute + 1 : 0;
-					expect(value).to.equal(expected);
+					expect(value).toBe(expected);
 				});
 
 				it('should decrease the minute when decrementing the picker', async function () {
@@ -133,13 +133,13 @@ describe('TimePicker', function () {
 					const {minute} = await extractValues(timePicker);
 					await expectOpen(timePicker);
 					await Page.spotlightRight();
-					expect(await timePicker.minute.isFocused()).to.be.true();
+					expect(await timePicker.minute.isFocused()).toBe(true);
 					await Page.waitTransitionEnd(3000, undefined, () => {
 						Page.spotlightDown();
 					});
 					const {minute: value} = await extractValues(timePicker);
 					const expected = minute !== 0 ? minute - 1 : 59;
-					expect(value).to.equal(expected);
+					expect(value).toBe(expected);
 				});
 
 				it('should update value text when incrementing the meridiem picker', async function () {
@@ -151,13 +151,13 @@ describe('TimePicker', function () {
 					await expectOpen(timePicker);
 					await Page.spotlightRight();
 					await Page.spotlightRight();
-					expect(await timePicker.meridiem.isFocused()).to.be.true();
+					expect(await timePicker.meridiem.isFocused()).toBe(true);
 					await Page.waitTransitionEnd(3000, undefined, () => {
 						Page.spotlightUp();
 					});
 					const newTime = await timePicker.valueText;
 					const value = time !== newTime;
-					expect(value).to.equal(true);
+					expect(value).toBe(true);
 				});
 
 				it('should update value text when decrementing the meridiem picker', async function () {
@@ -169,13 +169,13 @@ describe('TimePicker', function () {
 					await expectOpen(timePicker);
 					await Page.spotlightRight();
 					await Page.spotlightRight();
-					expect(await timePicker.meridiem.isFocused()).to.be.true();
+					expect(await timePicker.meridiem.isFocused()).toBe(true);
 					await Page.waitTransitionEnd(3000, undefined, () => {
 						Page.spotlightDown();
 					});
 					const newTime = await timePicker.valueText;
 					const value = time !== newTime;
-					expect(value).to.equal(true);
+					expect(value).toBe(true);
 				});
 
 				it('should change the meridiem on hour boundaries', async function () {
@@ -188,7 +188,7 @@ describe('TimePicker', function () {
 					for (let i = 12; i; i -= 1) {
 						await Page.spotlightDown();
 					}
-					expect(value !== await timePicker.item(timePicker.meridiem).getText()).to.be.true();
+					expect(value !== (await timePicker.item(timePicker.meridiem).getText())).toBe(true);
 				});
 			});
 
@@ -216,7 +216,7 @@ describe('TimePicker', function () {
 						timePicker.title.click();
 					});
 					await timePicker.hour.click();
-					expect(await timePicker.hour.isFocused()).to.be.true();
+					expect(await timePicker.hour.isFocused()).toBe(true);
 				});
 
 				it('should increase the hour when incrementing the picker', async function () {
@@ -230,7 +230,7 @@ describe('TimePicker', function () {
 					});
 					const {hour: value} = await extractValues(timePicker);
 					const expected = hour < 12 ? hour + 1 : 1;
-					expect(value).to.equal(expected);
+					expect(value).toBe(expected);
 				});
 
 				it('should decrease the hour when decrementing the picker - [GT-21531]', async function () {
@@ -244,7 +244,7 @@ describe('TimePicker', function () {
 					});
 					const {hour: value} = await extractValues(timePicker);
 					const expected = hour > 1 ? hour - 1 : 12;
-					expect(value).to.equal(expected);
+					expect(value).toBe(expected);
 				});
 
 				it('should increase the minute when incrementing the picker - [GT-21531]', async function () {
@@ -258,7 +258,7 @@ describe('TimePicker', function () {
 					});
 					const {minute: value} = await extractValues(timePicker);
 					const expected = minute !== 59 ? minute + 1 : 0;
-					expect(value).to.equal(expected);
+					expect(value).toBe(expected);
 				});
 
 				it('should decrease the minute when decrementing the picker', async function () {
@@ -272,7 +272,7 @@ describe('TimePicker', function () {
 					});
 					const {minute: value} = await extractValues(timePicker);
 					const expected = minute !== 0 ? minute - 1 : 59;
-					expect(value).to.equal(expected);
+					expect(value).toBe(expected);
 				});
 
 				it('should update value text when incrementing the meridiem picker - [GT-21531]', async function () {
@@ -286,7 +286,7 @@ describe('TimePicker', function () {
 					});
 					const newTime = await timePicker.valueText;
 					const value = time !== newTime;
-					expect(value).to.equal(true);
+					expect(value).toBe(true);
 				});
 
 				it('should update value text when decrementing the meridiem picker', async function () {
@@ -300,7 +300,7 @@ describe('TimePicker', function () {
 					});
 					const newTime = await timePicker.valueText;
 					const value = time !== newTime;
-					expect(value).to.equal(true);
+					expect(value).toBe(true);
 				});
 
 				it('should change the meridiem on hour boundaries - [GT-21563]', async function () {
@@ -312,7 +312,7 @@ describe('TimePicker', function () {
 					for (let i = 12; i; i -= 1) {
 						timePicker.decrementer(timePicker.hour).click();
 					}
-					expect(value !== timePicker.valueText).to.be.true();
+					expect(value !== timePicker.valueText).toBe(true);
 				});
 			});
 		});
@@ -321,7 +321,7 @@ describe('TimePicker', function () {
 			const timePicker = Page.components.timePickerDefaultClosedWithNoneText;
 
 			it('should display \'noneText\'', async function () {
-				expect(await timePicker.valueText).to.equal('Nothing Selected');
+				expect(await timePicker.valueText).toBe('Nothing Selected');
 			});
 		});
 
@@ -341,7 +341,7 @@ describe('TimePicker', function () {
 					});
 
 					await expectClosed(timePicker);
-					expect(await timePicker.title.isFocused()).to.be.true();
+					expect(await timePicker.title.isFocused()).toBe(true);
 				});
 			});
 
@@ -376,7 +376,7 @@ describe('TimePicker', function () {
 			});
 
 			it('should not display \'noneText\'', async function () {
-				expect(await timePicker.valueText).to.not.equal('Nothing Selected');
+				expect(await timePicker.valueText).not.toBe('Nothing Selected');
 			});
 		});
 
@@ -393,9 +393,9 @@ describe('TimePicker', function () {
 
 					const {hour, minute, meridiem} = await extractValues(timePicker);
 
-					expect(hour).to.equal(12);
-					expect(minute).to.equal(0);
-					expect(meridiem).to.equal('AM');
+					expect(hour).toBe(12);
+					expect(minute).toBe(0);
+					expect(meridiem).toBe('AM');
 				});
 			});
 
@@ -406,9 +406,9 @@ describe('TimePicker', function () {
 					});
 					const {hour, minute, meridiem} = await extractValues(timePicker);
 
-					expect(hour).to.equal(12);
-					expect(minute).to.equal(0);
-					expect(meridiem).to.equal('AM');
+					expect(hour).toBe(12);
+					expect(minute).toBe(0);
+					expect(meridiem).toBe('AM');
 				});
 			});
 
@@ -432,14 +432,14 @@ describe('TimePicker', function () {
 			});
 
 			it('should display \'noneText\'', async function () {
-				expect(await timePicker.valueText).to.equal('Nothing Selected');
+				expect(await timePicker.valueText).toBe('Nothing Selected');
 			});
 
 			describe('5-way', function () {
 				it('should be able receive focus', async function () {
 					await Page.components.timePickerNoLabels.focus();
 					await Page.spotlightDown();
-					expect(await timePicker.title.isFocused()).to.be.true();
+					expect(await timePicker.title.isFocused()).toBe(true);
 				});
 				it('should not open when selected', async function () {
 					await timePicker.focus();
@@ -469,7 +469,7 @@ describe('TimePicker', function () {
 			});
 
 			it('should not display \'noneText\'', async function () {
-				expect(await timePicker.valueText).to.not.equal('Nothing Selected');
+				expect(await timePicker.valueText).not.toBe('Nothing Selected');
 			});
 		});
 
@@ -482,7 +482,7 @@ describe('TimePicker', function () {
 			});
 
 			it('should display \'noneText\'', async function () {
-				expect(await timePicker.valueText).to.equal('Nothing Selected');
+				expect(await timePicker.valueText).toBe('Nothing Selected');
 			});
 		});
 
@@ -496,7 +496,7 @@ describe('TimePicker', function () {
 			});
 
 			it('should not display \'noneText\'', async function () {
-				expect(await timePicker.valueText).to.not.equal('Nothing Selected');
+				expect(await timePicker.valueText).not.toBe('Nothing Selected');
 			});
 		});
 	});
@@ -514,7 +514,7 @@ describe('TimePicker', function () {
 			});
 
 			await expectOpen(timePicker);
-			expect(await timePicker.hour.isFocused()).to.be.true();
+			expect(await timePicker.hour.isFocused()).toBe(true);
 		});
 
 		it('should have minute-hour-meridiem order', async function () {
@@ -524,11 +524,11 @@ describe('TimePicker', function () {
 
 			await expectOpen(timePicker);
 			await Page.spotlightRight();
-			expect(await timePicker.minute.isFocused()).to.be.true();
+			expect(await timePicker.minute.isFocused()).toBe(true);
 			await Page.spotlightLeft();
-			expect(await timePicker.hour.isFocused()).to.be.true();
+			expect(await timePicker.hour.isFocused()).toBe(true);
 			await Page.spotlightLeft();
-			expect(await timePicker.meridiem.isFocused()).to.be.true();
+			expect(await timePicker.meridiem.isFocused()).toBe(true);
 		});
 
 		it('should focus title when 5-way left from last picker - [GT-25247]', async function () {
@@ -537,10 +537,10 @@ describe('TimePicker', function () {
 			});
 
 			await expectOpen(timePicker);
-			expect(await timePicker.hour.isFocused()).to.be.true();
+			expect(await timePicker.hour.isFocused()).toBe(true);
 			await Page.spotlightLeft();
 			await Page.spotlightLeft();
-			expect(await timePicker.title.isFocused()).to.be.true();
+			expect(await timePicker.title.isFocused()).toBe(true);
 		});
 	});
 
@@ -553,13 +553,13 @@ describe('TimePicker', function () {
 
 		it('should not have a meridiem picker', async function () {
 			await timePicker.title.click();
-			expect(await timePicker.meridiem.isExisting()).to.be.false();
+			expect(await timePicker.meridiem.isExisting()).toBe(false);
 		});
 
 		it('should display hours in 24-hour format', async function () {
 			await timePicker.title.click();
 			await browser.pause(500);
-			expect((await extractValues(timePicker)).hour).to.equal(0); // midnight hour
+			expect((await extractValues(timePicker)).hour).toBe(0); // midnight hour
 		});
 
 		it('should increment hours from 23 to 0', async function () {
@@ -568,10 +568,10 @@ describe('TimePicker', function () {
 			});
 			// go to 23 first
 			await timePicker.decrementer(await timePicker.hour).click();
-			expect((await extractValues(timePicker)).hour).to.equal(23);
+			expect((await extractValues(timePicker)).hour).toBe(23);
 			// now increment
 			await timePicker.incrementer(await timePicker.hour).click();
-			expect((await extractValues(timePicker)).hour).to.equal(0);
+			expect((await extractValues(timePicker)).hour).toBe(0);
 		});
 
 		it('should decrement hours from 0 to 23', async function () {
@@ -579,7 +579,7 @@ describe('TimePicker', function () {
 				timePicker.title.click();
 			});
 			await timePicker.decrementer(await timePicker.hour).click();
-			expect((await extractValues(timePicker)).hour).to.equal(23);
+			expect((await extractValues(timePicker)).hour).toBe(23);
 		});
 	});
 

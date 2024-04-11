@@ -4,19 +4,19 @@
 function validateTitle (item, title) {
 	it('should have correct title', async function () {
 		const match = await item.titleText === title;
-		expect(match).to.be.true();
+		expect(match).toBe(true);
 	});
 }
 
 // Expects are blocks of expects or other commands to be embedded in an 'it' statement
 async function expectClosed (item) {
-	expect(await item.isOpen()).to.be.false();
-	expect(await getChevronRotation(item)).to.equal('down');
+	expect(await item.isOpen()).toBe(false);
+	expect(await getChevronRotation(item)).toBe('down');
 }
 
 async function expectOpen (item) {
-	expect(await item.isOpen()).to.be.true();
-	expect(await getChevronRotation(item)).to.equal('up');
+	expect(await item.isOpen()).toBe(true);
+	expect(await getChevronRotation(item)).toBe('up');
 }
 
 // Other utility functions

@@ -17,13 +17,17 @@ async function hitTest (_selector) {
 
 async function expectFocusedItem (itemNum, comment = 'focused item') {
 	const focusedId = await focusedElement();
-	expect(await focusedId, comment).to.equal(`item${itemNum}`);
+	try {
+		expect(await focusedId).toBe(`item${itemNum}`);
+	} catch (e) {
+		console.error(comment);
+	}
 }
 
 async function expectNoFocusedItem () {
 	expect(await browser.execute(async function () {
 		return document.activeElement === document.body;
-	})).to.be.true();
+	})).toBe(true);
 }
 
 async function waitUntilFocused (itemNum) {
