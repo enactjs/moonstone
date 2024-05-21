@@ -2,6 +2,12 @@
 
 The following is a curated list of changes in the Enact moonstone module, newest changes on the top.
 
+## [unreleased]
+
+### Fixed
+
+- `moonstone/Marquee` to remove override function duplicated with the Enact
+
 ## [4.5.6] - 2024-03-14
 
 No significant changes.
