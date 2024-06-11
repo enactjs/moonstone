@@ -8,7 +8,7 @@ import PickerItem from '../PickerItem';
 describe('Picker Specs', () => {
 	test('should have a default \'value\' of 0', () => {
 		render(<Picker index={0} max={0} min={0} />);
-		const valueText = screen.getAllByRole('button')[0].nextElementSibling;
+		const valueText = screen.getAllByRole('button')[0].nextElementSibling.nextElementSibling;
 
 		const expectedValue = '0';
 		const expectedAttribute = 'aria-valuetext';
@@ -41,7 +41,7 @@ describe('Picker Specs', () => {
 			render(<Picker index={0} max={1} min={-1} onChange={handleChange} value={0} />);
 			const picker = screen.getByLabelText('0 next item').parentElement;
 
-			await user.click(picker.lastElementChild);
+			await user.click(picker.lastElementChild.previousElementSibling);
 
 			const expected = -1;
 			const actual = handleChange.mock.calls[0][0].value;
@@ -81,7 +81,7 @@ describe('Picker Specs', () => {
 		render(<Picker index={0} max={1} min={0} onChange={handleChange} value={0} wrap />);
 		const picker = screen.getByLabelText('0 next item').parentElement;
 
-		await user.click(picker.lastElementChild);
+		await user.click(picker.lastElementChild.previousElementSibling);
 
 		const expected = 1;
 		const actual = handleChange.mock.calls[0][0].value;
@@ -109,7 +109,7 @@ describe('Picker Specs', () => {
 		render(<Picker index={0} max={3} min={0} onChange={handleChange} step={3} value={3} />);
 		const picker = screen.getByLabelText('3 next item').parentElement;
 
-		await user.click(picker.lastElementChild);
+		await user.click(picker.lastElementChild.previousElementSibling);
 
 		const expected = 0;
 		const actual = handleChange.mock.calls[0][0].value;
@@ -137,7 +137,7 @@ describe('Picker Specs', () => {
 		render(<Picker index={0} max={9} min={0} onChange={handleChange} step={3} value={0} wrap />);
 		const picker = screen.getByLabelText('0 next item').parentElement;
 
-		await user.click(picker.lastElementChild);
+		await user.click(picker.lastElementChild.previousElementSibling);
 
 		const expected = 9;
 		const actual = handleChange.mock.calls[0][0].value;
@@ -344,7 +344,7 @@ describe('Picker Specs', () => {
 					<PickerItem>4</PickerItem>
 				</Picker>
 			);
-			const pickerItem = screen.getByLabelText('2 next item').nextElementSibling;
+			const pickerItem = screen.getByLabelText('2 next item').nextElementSibling.nextElementSibling;
 
 			const expectedAttribute = 'aria-valuetext';
 			const expectedValue = '2';
