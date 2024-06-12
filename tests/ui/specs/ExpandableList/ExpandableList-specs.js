@@ -56,9 +56,9 @@ describe('ExpandableList', function () {
 				expect(await expandable.isOpen()).toBe(true);
 				await Page.spotlightDown();
 				await Page.spotlightDown();
-				expect(await expandable.item(4).isFocused()).toBe(true);
+				expect(await expandable.item(2).isFocused()).toBe(true);
 				await Page.spotlightDown();
-				expect(await expandable.item(4).isFocused()).toBe(true);
+				expect(await expandable.item(2).isFocused()).toBe(true);
 			});
 
 			it('should select item when pressing select', async function () {
@@ -99,7 +99,7 @@ describe('ExpandableList', function () {
 				await Page.spotlightDown();
 				await Page.spotlightSelect();
 				expect(await expandable.item(0).$(expandable.selectedClass).isExisting()).toBe(false);
-				expect(await expandable.item(2).$(expandable.selectedClass).isExisting()).toBe(true);
+				expect(await expandable.item(1).$(expandable.selectedClass).isExisting()).toBe(true);
 			});
 		});
 
@@ -155,9 +155,9 @@ describe('ExpandableList', function () {
 					expandable.title.click();
 				});
 				await expandable.item(0).click();
-				await expandable.item(2).click();
+				await expandable.item(1).click();
 				expect(await expandable.item(0).$(expandable.selectedClass).isExisting()).toBe(false);
-				expect(await expandable.item(2).$(expandable.selectedClass).isExisting()).toBe(true);
+				expect(await expandable.item(1).$(expandable.selectedClass).isExisting()).toBe(true);
 			});
 		});
 	});
@@ -298,9 +298,9 @@ describe('ExpandableList', function () {
 					expandable.title.click();
 				});
 				await expandable.item(0).click();
-				await expandable.item(2).click();
+				await expandable.item(1).click();
 				expect(await expandable.item(0).$(expandable.selectedClass).isExisting()).toBe(true);
-				expect(await expandable.item(2).$(expandable.selectedClass).isExisting()).toBe(true);
+				expect(await expandable.item(1).$(expandable.selectedClass).isExisting()).toBe(true);
 			});
 		});
 	});
@@ -439,9 +439,9 @@ describe('ExpandableList', function () {
 					expandable.title.click();
 				});
 				await expandable.item(0).click();
-				await expandable.item(2).click();
+				await expandable.item(1).click();
 				expect(await expandable.item(0).$(expandable.selectedClass).isExisting()).toBe(false);
-				expect(await expandable.item(2).$(expandable.selectedClass).isExisting()).toBe(true);
+				expect(await expandable.item(1).$(expandable.selectedClass).isExisting()).toBe(true);
 			});
 		});
 	});

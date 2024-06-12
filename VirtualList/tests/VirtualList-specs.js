@@ -87,7 +87,7 @@ describe('VirtualList', () => {
 		expect(actual).toHaveTextContent(expected);
 	});
 
-	test.skip('should render (clientHeight / itemHeight + overhang) items', () => {
+	test('should render (clientHeight / itemHeight + overhang) items', () => {
 		render(<VirtualList clientSize={clientSize} dataSize={dataSize} itemRenderer={renderItem} itemSize={30} />);
 
 		const expected = 27; // 720 / 30 + 3

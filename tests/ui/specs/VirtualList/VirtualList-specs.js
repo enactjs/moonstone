@@ -11,7 +11,7 @@ describe('VirtualList', function () {
 		expect(await Page.buttonScrollDown.getAttribute('disabled')).toBeNull();
 	});
 
-	describe.skip('LTR locale', function () {
+	describe('LTR locale', function () {
 		beforeEach(async function () {
 			await Page.open();
 		});

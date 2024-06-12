@@ -104,7 +104,7 @@ describe('Dropdown', () => {
 			</FloatingLayerController>
 		);
 
-		const lessChildrenExpected = 4; // there is a dummy div added by Spottable for each child
+		const lessChildrenExpected = 2;
 		const lessChildrenActual = screen.getByRole('group').children;
 
 		expect(lessChildrenActual).toHaveLength(lessChildrenExpected);
@@ -119,7 +119,7 @@ describe('Dropdown', () => {
 			</FloatingLayerController>
 		);
 
-		const moreChildrenExpected = 6; // there is a dummy div added by Spottable for each child
+		const moreChildrenExpected = 3;
 		const moreChildrenActual = screen.getByRole('group').children;
 
 		expect(moreChildrenActual).toHaveLength(moreChildrenExpected);
