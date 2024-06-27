@@ -13,7 +13,7 @@
         "@enact/i18n": "~4.8.0",
         "@enact/moonstone": "../../",
         "@enact/spotlight": "~4.8.0",
-        "@enact/storybook-utils": "^5.1.3",
+        "@enact/storybook-utils": "^5.1.4",
         "@enact/ui": "~4.8.0",
         "@storybook/addons": "^6.5.16",
         "@storybook/builder-webpack5": "^6.5.16",
@@ -22,9 +22,9 @@
         "@storybook/theming": "^6.5.16",
         "babel-loader": "^9.1.3",
         "classnames": "^2.5.1",
-        "ilib": "14.19.0",
-        "react": "^18.2.0",
-        "react-dom": "^18.2.0"
+        "ilib": "14.20.0",
+        "react": "^18.3.1",
+        "react-dom": "^18.3.1"
       }
     },
     "../..": {
@@ -37,22 +37,22 @@
         "@enact/spotlight": "~4.8.0",
         "@enact/ui": "~4.8.0",
         "classnames": "^2.5.1",
-        "ilib": "14.19.0",
+        "ilib": "14.20.0",
         "invariant": "^2.2.4",
         "prop-types": "^15.8.1",
-        "ramda": "^0.29.1",
-        "react": "^18.2.0",
-        "react-dom": "^18.2.0",
+        "ramda": "^0.30.1",
+        "react": "^18.3.1",
+        "react-dom": "^18.3.1",
         "warning": "^4.0.3"
       },
       "devDependencies": {
         "@enact/docs-utils": "^0.4.9",
         "@enact/ui-test-utils": "^1.0.8",
         "eslint-config-enact-proxy": "^1.0.7",
-        "ilib": "14.19.0"
+        "ilib": "14.20.0"
       },
       "peerDependencies": {
-        "ilib": "14.19.0 || 14.19.0-webos1"
+        "ilib": "^14.20.0 || ^14.20.0-webos1"
       }
     },
     "node_modules/@ampproject/remapping": {
@@ -74428,9 +74428,9 @@
       }
     },
     "node_modules/ilib": {
-      "version": "14.19.0",
-      "resolved": "https://registry.npmjs.org/ilib/-/ilib-14.19.0.tgz",
-      "integrity": "sha512-JixO6ehc/mHNyywjhy3/A31Qo81fcvX/tt6w7dQF4awJuXVl32yIhHWHLVp0H4CxknTrC/7mo4kbSZaeu1qTHA=="
+      "version": "14.20.0",
+      "resolved": "https://registry.npmjs.org/ilib/-/ilib-14.20.0.tgz",
+      "integrity": "sha512-ciPTPDwu7FehlyxU1hSjHJRyfq3YIf4n2BzMYzZNtBiCYw1dH0Yu53J7R9YaqQd8A+3RfGxSz6J76AGsvhCm2Q=="
     },
     "node_modules/import-fresh": {
       "version": "3.3.0",
