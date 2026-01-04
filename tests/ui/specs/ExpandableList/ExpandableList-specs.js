@@ -9,7 +9,7 @@ describe('ExpandableList', function () {
 	});
 
 	it('should have focus on first expandable at start', async function () {
-		expect(await Page.components.radioSelect.title.isFocused()).to.be.true();
+		expect(await Page.components.radioSelect.title.isFocused()).toBe(true);
 	});
 
 	describe('radio select', function () {
@@ -18,7 +18,7 @@ describe('ExpandableList', function () {
 		validateTitle(expandable, 'ExpandableList Radio Select');
 
 		it('should have correct none text', async function () {
-			expect(await expandable.valueText).to.equal('Nothing Selected');
+			expect(await expandable.valueText).toBe('Nothing Selected');
 		});
 
 		it('should be initially closed', async function () {
@@ -32,7 +32,7 @@ describe('ExpandableList', function () {
 				});
 
 				await expectOpen(expandable);
-				expect(await expandable.item(0).isFocused()).to.be.true();
+				expect(await expandable.item(0).isFocused()).toBe(true);
 			});
 
 			it('should close when moving up to header', async function () {
@@ -40,12 +40,12 @@ describe('ExpandableList', function () {
 					Page.spotlightSelect();
 				});
 
-				expect(await expandable.isOpen()).to.be.true();
+				expect(await expandable.isOpen()).toBe(true);
 				await Page.waitTransitionEnd(3000, undefined, () => {
 					Page.spotlightUp();
 				});
-				expect(await expandable.isOpen()).to.be.false();
-				expect(await expandable.title.isFocused()).to.be.true();
+				expect(await expandable.isOpen()).toBe(false);
+				expect(await expandable.title.isFocused()).toBe(true);
 			});
 
 			it('should not allow 5-way exit from bottom', async function () {
@@ -53,12 +53,12 @@ describe('ExpandableList', function () {
 					Page.spotlightSelect();
 				});
 
-				expect(await expandable.isOpen()).to.be.true();
+				expect(await expandable.isOpen()).toBe(true);
 				await Page.spotlightDown();
 				await Page.spotlightDown();
-				expect(await expandable.item(2).isFocused()).to.be.true();
+				expect(await expandable.item(2).isFocused()).toBe(true);
 				await Page.spotlightDown();
-				expect(await expandable.item(2).isFocused()).to.be.true();
+				expect(await expandable.item(2).isFocused()).toBe(true);
 			});
 
 			it('should select item when pressing select', async function () {
@@ -67,7 +67,7 @@ describe('ExpandableList', function () {
 				});
 
 				await Page.spotlightSelect();
-				expect(await expandable.item(0).$(expandable.selectedClass).isExisting()).to.be.true();
+				expect(await expandable.item(0).$(expandable.selectedClass).isExisting()).toBe(true);
 			});
 
 			it('should update value text on select', async function () {
@@ -77,7 +77,7 @@ describe('ExpandableList', function () {
 
 				await Page.spotlightSelect();
 				await Page.spotlightUp();
-				expect(await expandable.valueText).to.equal('option1');
+				expect(await expandable.valueText).toBe('option1');
 			});
 
 			it('should not unselect item', async function () {
@@ -87,7 +87,7 @@ describe('ExpandableList', function () {
 
 				await Page.spotlightSelect();
 				await Page.spotlightSelect();
-				expect(await expandable.item(0).$(expandable.selectedClass).isExisting()).to.be.true();
+				expect(await expandable.item(0).$(expandable.selectedClass).isExisting()).toBe(true);
 			});
 
 			it('should only allow one selected item', async function () {
@@ -98,8 +98,8 @@ describe('ExpandableList', function () {
 				await Page.spotlightSelect();
 				await Page.spotlightDown();
 				await Page.spotlightSelect();
-				expect(await expandable.item(0).$(expandable.selectedClass).isExisting()).to.be.false();
-				expect(await expandable.item(1).$(expandable.selectedClass).isExisting()).to.be.true();
+				expect(await expandable.item(0).$(expandable.selectedClass).isExisting()).toBe(false);
+				expect(await expandable.item(1).$(expandable.selectedClass).isExisting()).toBe(true);
 			});
 		});
 
@@ -115,11 +115,11 @@ describe('ExpandableList', function () {
 				await Page.waitTransitionEnd(3000, undefined, () => {
 					expandable.title.click();
 				});
-				expect(await expandable.isOpen()).to.be.true();
+				expect(await expandable.isOpen()).toBe(true);
 				await Page.waitTransitionEnd(3000, undefined, () => {
 					expandable.title.click();
 				});
-				expect(await expandable.isOpen()).to.be.false();
+				expect(await expandable.isOpen()).toBe(false);
 			});
 
 			it('should select item', async function () {
@@ -127,7 +127,7 @@ describe('ExpandableList', function () {
 					expandable.title.click();
 				});
 				await expandable.item(0).click();
-				expect(await expandable.item(0).$(expandable.selectedClass).isExisting()).to.be.true();
+				expect(await expandable.item(0).$(expandable.selectedClass).isExisting()).toBe(true);
 			});
 
 			it('should update value text', async function () {
@@ -138,7 +138,7 @@ describe('ExpandableList', function () {
 				await Page.waitTransitionEnd(3000, undefined, () => {
 					expandable.title.click();
 				});
-				expect(await expandable.valueText).to.equal('option1');
+				expect(await expandable.valueText).toBe('option1');
 			});
 
 			it('should not unselect item', async function () {
@@ -147,7 +147,7 @@ describe('ExpandableList', function () {
 				});
 				await expandable.item(0).click();
 				await expandable.item(0).click();
-				expect(await expandable.item(0).$(expandable.selectedClass).isExisting()).to.be.true();
+				expect(await expandable.item(0).$(expandable.selectedClass).isExisting()).toBe(true);
 			});
 
 			it('should only allow one selected item', async function () {
@@ -156,8 +156,8 @@ describe('ExpandableList', function () {
 				});
 				await expandable.item(0).click();
 				await expandable.item(1).click();
-				expect(await expandable.item(0).$(expandable.selectedClass).isExisting()).to.be.false();
-				expect(await expandable.item(1).$(expandable.selectedClass).isExisting()).to.be.true();
+				expect(await expandable.item(0).$(expandable.selectedClass).isExisting()).toBe(false);
+				expect(await expandable.item(1).$(expandable.selectedClass).isExisting()).toBe(true);
 			});
 		});
 	});
@@ -168,7 +168,7 @@ describe('ExpandableList', function () {
 		validateTitle(expandable, 'ExpandableList Multi Select');
 
 		it('should have correct none text', async function () {
-			expect(await expandable.valueText).to.equal('Nothing Selected');
+			expect(await expandable.valueText).toBe('Nothing Selected');
 		});
 
 		it('should be initially closed', async function () {
@@ -183,7 +183,7 @@ describe('ExpandableList', function () {
 				});
 
 				await expectOpen(expandable);
-				expect(await expandable.item(0).isFocused()).to.be.true();
+				expect(await expandable.item(0).isFocused()).toBe(true);
 			});
 
 			it('should select item when pressing select', async function () {
@@ -193,7 +193,7 @@ describe('ExpandableList', function () {
 				});
 
 				await Page.spotlightSelect();
-				expect(await expandable.item(0).$(expandable.selectedClass).isExisting()).to.be.true();
+				expect(await expandable.item(0).$(expandable.selectedClass).isExisting()).toBe(true);
 			});
 
 			it('should update value text on select', async function () {
@@ -204,7 +204,7 @@ describe('ExpandableList', function () {
 
 				await Page.spotlightSelect();
 				await Page.spotlightUp();
-				expect(await expandable.valueText).to.equal('option1');
+				expect(await expandable.valueText).toBe('option1');
 			});
 
 			it('should allow unselecting item', async function () {
@@ -215,7 +215,7 @@ describe('ExpandableList', function () {
 
 				await Page.spotlightSelect();
 				await Page.spotlightSelect();
-				expect(await expandable.item(0).$(expandable.selectedClass).isExisting()).to.be.false();
+				expect(await expandable.item(0).$(expandable.selectedClass).isExisting()).toBe(false);
 			});
 
 			it('should allow multiple selected items', async function () {
@@ -227,8 +227,8 @@ describe('ExpandableList', function () {
 				await Page.spotlightSelect();
 				await Page.spotlightDown();
 				await Page.spotlightSelect();
-				expect(await expandable.item(0).$(expandable.selectedClass).isExisting()).to.be.true();
-				expect(await expandable.item(1).$(expandable.selectedClass).isExisting()).to.be.true();
+				expect(await expandable.item(0).$(expandable.selectedClass).isExisting()).toBe(true);
+				expect(await expandable.item(1).$(expandable.selectedClass).isExisting()).toBe(true);
 			});
 
 			it('should combine value text with multi-select', async function () {
@@ -242,7 +242,7 @@ describe('ExpandableList', function () {
 				await Page.spotlightSelect();
 				await Page.spotlightUp();
 				await Page.spotlightUp();
-				expect(await expandable.valueText).to.equal('option1, option2');
+				expect(await expandable.valueText).toBe('option1, option2');
 			});
 		});
 
@@ -258,11 +258,11 @@ describe('ExpandableList', function () {
 				await Page.waitTransitionEnd(3000, undefined, () => {
 					expandable.title.click();
 				});
-				expect(await expandable.isOpen()).to.be.true();
+				expect(await expandable.isOpen()).toBe(true);
 				await Page.waitTransitionEnd(3000, undefined, () => {
 					expandable.title.click();
 				});
-				expect(await expandable.isOpen()).to.be.false();
+				expect(await expandable.isOpen()).toBe(false);
 			});
 
 			it('should select item', async function () {
@@ -270,7 +270,7 @@ describe('ExpandableList', function () {
 					expandable.title.click();
 				});
 				await expandable.item(0).click();
-				expect(await expandable.item(0).$(expandable.selectedClass).isExisting()).to.be.true();
+				expect(await expandable.item(0).$(expandable.selectedClass).isExisting()).toBe(true);
 			});
 
 			it('should update value text', async function () {
@@ -281,7 +281,7 @@ describe('ExpandableList', function () {
 				await Page.waitTransitionEnd(3000, undefined, () => {
 					expandable.title.click();
 				});
-				expect(await expandable.valueText).to.equal('option1');
+				expect(await expandable.valueText).toBe('option1');
 			});
 
 			it('should allow unselecting item', async function () {
@@ -290,7 +290,7 @@ describe('ExpandableList', function () {
 				});
 				await expandable.item(0).click();
 				await expandable.item(0).click();
-				expect(await expandable.item(0).$(expandable.selectedClass).isExisting()).to.be.false();
+				expect(await expandable.item(0).$(expandable.selectedClass).isExisting()).toBe(false);
 			});
 
 			it('should allow multiple selected items', async function () {
@@ -299,8 +299,8 @@ describe('ExpandableList', function () {
 				});
 				await expandable.item(0).click();
 				await expandable.item(1).click();
-				expect(await expandable.item(0).$(expandable.selectedClass).isExisting()).to.be.true();
-				expect(await expandable.item(1).$(expandable.selectedClass).isExisting()).to.be.true();
+				expect(await expandable.item(0).$(expandable.selectedClass).isExisting()).toBe(true);
+				expect(await expandable.item(1).$(expandable.selectedClass).isExisting()).toBe(true);
 			});
 		});
 	});
@@ -311,7 +311,7 @@ describe('ExpandableList', function () {
 		validateTitle(expandable, 'ExpandableList Single Select');
 
 		it('should have correct none text', async function () {
-			expect(await expandable.valueText).to.equal('Nothing Selected');
+			expect(await expandable.valueText).toBe('Nothing Selected');
 		});
 
 		it('should be initially closed', async function () {
@@ -326,7 +326,7 @@ describe('ExpandableList', function () {
 				});
 
 				await expectOpen(expandable);
-				expect(await expandable.item(0).isFocused()).to.be.true();
+				expect(await expandable.item(0).isFocused()).toBe(true);
 			});
 
 			it('should select item when pressing select', async function () {
@@ -336,7 +336,7 @@ describe('ExpandableList', function () {
 				});
 
 				await Page.spotlightSelect();
-				expect(await expandable.item(0).$(expandable.selectedClass).isExisting()).to.be.true();
+				expect(await expandable.item(0).$(expandable.selectedClass).isExisting()).toBe(true);
 			});
 
 			it('should update value text on select', async function () {
@@ -347,7 +347,7 @@ describe('ExpandableList', function () {
 
 				await Page.spotlightSelect();
 				await Page.spotlightUp();
-				expect(await expandable.valueText).to.equal('option1');
+				expect(await expandable.valueText).toBe('option1');
 			});
 
 			it('should allow unselecting item', async function () {
@@ -358,7 +358,7 @@ describe('ExpandableList', function () {
 
 				await Page.spotlightSelect();
 				await Page.spotlightSelect();
-				expect(await expandable.item(0).$(expandable.selectedClass).isExisting()).to.be.false();
+				expect(await expandable.item(0).$(expandable.selectedClass).isExisting()).toBe(false);
 			});
 
 			it('should reset none text if nothing selected', async function () {
@@ -370,7 +370,7 @@ describe('ExpandableList', function () {
 				await Page.spotlightSelect();
 				await Page.spotlightSelect();
 				await Page.spotlightUp();
-				expect(await expandable.valueText).to.equal('Nothing Selected');
+				expect(await expandable.valueText).toBe('Nothing Selected');
 			});
 
 			it('should not allow multiple selected items', async function () {
@@ -382,8 +382,8 @@ describe('ExpandableList', function () {
 				await Page.spotlightSelect();
 				await Page.spotlightDown();
 				await Page.spotlightSelect();
-				expect(await expandable.item(0).$(expandable.selectedClass).isExisting()).to.be.false();
-				expect(await expandable.item(1).$(expandable.selectedClass).isExisting()).to.be.true();
+				expect(await expandable.item(0).$(expandable.selectedClass).isExisting()).toBe(false);
+				expect(await expandable.item(1).$(expandable.selectedClass).isExisting()).toBe(true);
 			});
 		});
 
@@ -399,11 +399,11 @@ describe('ExpandableList', function () {
 				await Page.waitTransitionEnd(3000, undefined, () => {
 					expandable.title.click();
 				});
-				expect(await expandable.isOpen()).to.be.true();
+				expect(await expandable.isOpen()).toBe(true);
 				await Page.waitTransitionEnd(3000, undefined, () => {
 					expandable.title.click();
 				});
-				expect(await expandable.isOpen()).to.be.false();
+				expect(await expandable.isOpen()).toBe(false);
 			});
 
 			it('should select item', async function () {
@@ -411,7 +411,7 @@ describe('ExpandableList', function () {
 					expandable.title.click();
 				});
 				await expandable.item(0).click();
-				expect(await expandable.item(0).$(expandable.selectedClass).isExisting()).to.be.true();
+				expect(await expandable.item(0).$(expandable.selectedClass).isExisting()).toBe(true);
 			});
 
 			it('should update value text', async function () {
@@ -422,7 +422,7 @@ describe('ExpandableList', function () {
 				await Page.waitTransitionEnd(3000, undefined, () => {
 					expandable.title.click();
 				});
-				expect(await expandable.valueText).to.equal('option1');
+				expect(await expandable.valueText).toBe('option1');
 			});
 
 			it('should unselect item', async function () {
@@ -431,7 +431,7 @@ describe('ExpandableList', function () {
 				});
 				await expandable.item(0).click();
 				await expandable.item(0).click();
-				expect(await expandable.item(0).$(expandable.selectedClass).isExisting()).to.be.false();
+				expect(await expandable.item(0).$(expandable.selectedClass).isExisting()).toBe(false);
 			});
 
 			it('should only allow one selected item', async function () {
@@ -440,8 +440,8 @@ describe('ExpandableList', function () {
 				});
 				await expandable.item(0).click();
 				await expandable.item(1).click();
-				expect(await expandable.item(0).$(expandable.selectedClass).isExisting()).to.be.false();
-				expect(await expandable.item(1).$(expandable.selectedClass).isExisting()).to.be.true();
+				expect(await expandable.item(0).$(expandable.selectedClass).isExisting()).toBe(false);
+				expect(await expandable.item(1).$(expandable.selectedClass).isExisting()).toBe(true);
 			});
 		});
 	});
@@ -458,12 +458,12 @@ describe('ExpandableList', function () {
 					Page.spotlightSelect();
 				});
 
-				expect(await expandable.isOpen()).to.be.true();
+				expect(await expandable.isOpen()).toBe(true);
 				await Page.spotlightDown();
 				await Page.spotlightDown();
-				expect(await expandable.item(2).isFocused()).to.be.true();
+				expect(await expandable.item(2).isFocused()).toBe(true);
 				await Page.spotlightDown();
-				expect(await Page.components.noAutoClose.title.isFocused()).to.be.true();
+				expect(await Page.components.noAutoClose.title.isFocused()).toBe(true);
 			});
 		});
 	});
@@ -485,7 +485,7 @@ describe('ExpandableList', function () {
 				});
 
 				await expectOpen(expandable);
-				expect(await expandable.item(0).isFocused()).to.be.true();
+				expect(await expandable.item(0).isFocused()).toBe(true);
 			});
 
 			it('should not close when navigating up to title', async function () {
@@ -496,7 +496,7 @@ describe('ExpandableList', function () {
 
 				await Page.spotlightUp();
 				await expectOpen(expandable);
-				expect(await expandable.title.isFocused()).to.be.true();
+				expect(await expandable.title.isFocused()).toBe(true);
 			});
 		});
 	});
@@ -518,7 +518,7 @@ describe('ExpandableList', function () {
 				});
 
 				await expectClosed(expandable);
-				expect(await expandable.title.isFocused()).to.be.true();
+				expect(await expandable.title.isFocused()).toBe(true);
 			});
 
 			it('should close when navigating up to title', async function () {
@@ -527,9 +527,9 @@ describe('ExpandableList', function () {
 				await Page.waitTransitionEnd(3000, undefined, () => {
 					Page.spotlightUp();
 				});
-				expect(await expandable.isOpen()).to.be.false();
-				expect(await expandable.chevron).to.equal('󯿭');
-				expect(await expandable.title.isFocused()).to.be.true();
+				expect(await expandable.isOpen()).toBe(false);
+				expect(await expandable.chevron).toBe('󯿭');
+				expect(await expandable.title.isFocused()).toBe(true);
 			});
 		});
 
@@ -538,19 +538,19 @@ describe('ExpandableList', function () {
 				await Page.waitTransitionEnd(3000, undefined, () => {
 					expandable.title.click();
 				});
-				expect(await expandable.isOpen()).to.be.false();
-				expect(await expandable.chevron).to.equal('󯿭');
+				expect(await expandable.isOpen()).toBe(false);
+				expect(await expandable.chevron).toBe('󯿭');
 			});
 
 			it('should open on title click when closed', async function () {
 				await Page.waitTransitionEnd(3000, undefined, () => {
 					expandable.title.click();
 				});
-				expect(await expandable.isOpen()).to.be.false();
+				expect(await expandable.isOpen()).toBe(false);
 				await Page.waitTransitionEnd(3000, undefined, () => {
 					expandable.title.click();
 				});
-				expect(await expandable.isOpen()).to.be.true();
+				expect(await expandable.isOpen()).toBe(true);
 			});
 		});
 	});
@@ -561,22 +561,22 @@ describe('ExpandableList', function () {
 		validateTitle(expandable, 'ExpandableList Disabled');
 
 		it('should be initially closed', async function () {
-			expect(await expandable.isOpen()).to.be.false();
-			expect(await expandable.chevron).to.equal('󯿭');
+			expect(await expandable.isOpen()).toBe(false);
+			expect(await expandable.chevron).toBe('󯿭');
 		});
 
 		describe('5-way', function () {
 			it('should be spottable', async function () {
 				await expandable.focus();
-				expect(await expandable.title.isFocused()).to.be.true();
+				expect(await expandable.title.isFocused()).toBe(true);
 			});
 			it('should stay closed on title selected', async function () {
 				await expandable.focus();
 				await Page.spotlightSelect();
 				// In this case, it should never fire, but we need to wait just in case.
 				await browser.pause(500);
-				expect(await expandable.isOpen()).to.be.false();
-				expect(await expandable.chevron).to.equal('󯿭');
+				expect(await expandable.isOpen()).toBe(false);
+				expect(await expandable.chevron).toBe('󯿭');
 			});
 		});
 
@@ -585,8 +585,8 @@ describe('ExpandableList', function () {
 				await expandable.title.click();
 				// In this case, it should never fire, but we need to wait just in case.
 				await browser.pause(500);
-				expect(await expandable.isOpen()).to.be.false();
-				expect(await expandable.chevron).to.equal('󯿭');
+				expect(await expandable.isOpen()).toBe(false);
+				expect(await expandable.chevron).toBe('󯿭');
 			});
 		});
 	});
@@ -594,7 +594,7 @@ describe('ExpandableList', function () {
 	describe.skip('general 5-way navigation', function () {
 		it('should not stop 5-way down when closed', async function () {
 			await Page.spotlightDown();
-			expect(await Page.components.multiSelect.title.isFocused()).to.be.true();
+			expect(await Page.components.multiSelect.title.isFocused()).toBe(true);
 		});
 	});
 
@@ -606,8 +606,8 @@ describe('ExpandableList', function () {
 			await Page.waitTransitionEnd(3000, undefined, () => {
 				Page.components.multiSelect.title.click();
 			});
-			expect(await Page.components.radioSelect.isOpen()).to.be.true();
-			expect(await Page.components.multiSelect.isOpen()).to.be.true();
+			expect(await Page.components.radioSelect.isOpen()).toBe(true);
+			expect(await Page.components.multiSelect.isOpen()).toBe(true);
 		});
 	});
 });

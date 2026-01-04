@@ -10,23 +10,23 @@ const extractValues = async (picker) => {
 // Validations are self-contained 'it' statements
 function validateTitle (picker, title) {
 	it('should have correct title', async function () {
-		expect(await picker.titleText).to.equal(title);
+		expect(await picker.titleText).toBe(title);
 	});
 }
 
 // Expects are blocks of expects or other commands to be embedded in an 'it' statement
 async function expectClosed (picker) {
-	expect(await picker.isOpen()).to.be.false();
+	expect(await picker.isOpen()).toBe(false);
 }
 
 async function expectNoLabels (picker) {
-	expect(await picker.hourLabel.isExisting()).to.be.false();
-	expect(await picker.minuteLabel.isExisting()).to.be.false();
-	expect(await picker.meridiemLabel.isExisting()).to.be.false();
+	expect(await picker.hourLabel.isExisting()).toBe(false);
+	expect(await picker.minuteLabel.isExisting()).toBe(false);
+	expect(await picker.meridiemLabel.isExisting()).toBe(false);
 }
 
 async function expectOpen (picker) {
-	expect(await picker.isOpen()).to.be.true();
+	expect(await picker.isOpen()).toBe(true);
 }
 
 module.exports = {
